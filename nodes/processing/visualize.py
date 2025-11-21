@@ -222,9 +222,11 @@ class SAM3DBodyExportMesh:
         """Export mesh to ASCII STL format."""
         import numpy as np
 
-        # Flip Z axis (negate z coordinates)
+        # Apply 180° X-rotation to undo MHR coordinate transform (flip both Y and Z)
+        # This matches what the renderer does for visualization
         vertices_flipped = vertices.copy()
-        vertices_flipped[:, 2] = -vertices_flipped[:, 2]
+        vertices_flipped[:, 1] = -vertices_flipped[:, 1]  # Flip Y
+        vertices_flipped[:, 2] = -vertices_flipped[:, 2]  # Flip Z
 
         with open(filepath, 'w') as f:
             # Write STL header

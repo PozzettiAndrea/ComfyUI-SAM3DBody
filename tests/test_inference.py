@@ -71,10 +71,10 @@ def test_load_model_cpu():
 @pytest.mark.integration
 def test_model_caching():
     """Test that model caching works correctly."""
-    from nodes.processing.load_model import LoadSAM3DBodyModel, _model_cache
+    from nodes.processing.load_model import LoadSAM3DBodyModel, _MODEL_CACHE
 
     # Clear cache
-    _model_cache.clear()
+    _MODEL_CACHE.clear()
 
     loader = LoadSAM3DBodyModel()
 
@@ -91,7 +91,7 @@ def test_model_caching():
         mhr_path=None
     )
 
-    cache_size_after_first = len(_model_cache)
+    cache_size_after_first = len(_MODEL_CACHE)
 
     result2 = loader.load_model(
         model_source="huggingface",
@@ -101,7 +101,7 @@ def test_model_caching():
         mhr_path=None
     )
 
-    cache_size_after_second = len(_model_cache)
+    cache_size_after_second = len(_MODEL_CACHE)
 
     # Cache should have one entry
     assert cache_size_after_first == 1
