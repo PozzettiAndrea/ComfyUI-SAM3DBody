@@ -12,7 +12,7 @@ export const VIEWER_HTML = `<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>UniRig FBX Viewer</title>
+    <title>SAM3D Body FBX Viewer</title>
     <style>
         body {
             margin: 0;
@@ -108,7 +108,7 @@ export const VIEWER_HTML = `<!DOCTYPE html>
     </div>
 
     <div id="controls">
-        <div><strong>UniRig FBX Viewer</strong></div>
+        <div><strong>SAM3D Body FBX Viewer</strong></div>
 
         <div class="control-group">
             <label class="checkbox-label">
@@ -143,6 +143,13 @@ export const VIEWER_HTML = `<!DOCTYPE html>
                 <input type="checkbox" id="wireframeMode">
                 <span>Wireframe Mode</span>
             </label>
+        </div>
+
+        <div style="font-size: 10px; color: #888; margin-top: 5px;">
+            <strong>Axis Legend:</strong>
+            <span style="color: #ff6666;">X=Red (Left/Right)</span> |
+            <span style="color: #66ff66;">Y=Green (Up/Down)</span> |
+            <span style="color: #6666ff;">Z=Blue (Forward/Back)</span>
         </div>
 
         <div class="control-group">
@@ -37407,7 +37414,7 @@ version 0.6.9
         const TransformControls = window.TransformControls;
         const GLTFExporter = window.GLTFExporter;
 
-        console.log('[UniRig FBX Viewer] Initializing...');
+        console.log('[SAM3DBody FBX Viewer] Initializing...');
 
         const canvas = document.getElementById('canvas');
         const loading = document.getElementById('loading');
@@ -37433,7 +37440,7 @@ version 0.6.9
 
         // WebGL context loss handling
         canvas.addEventListener('webglcontextlost', (event) => {
-            console.error('[UniRig FBX Viewer] WebGL context lost!');
+            console.error('[SAM3DBody FBX Viewer] WebGL context lost!');
             event.preventDefault();
             loading.textContent = 'WebGL context lost. Attempting to restore...';
             loading.style.display = 'block';
@@ -37441,7 +37448,7 @@ version 0.6.9
         }, false);
 
         canvas.addEventListener('webglcontextrestored', () => {
-            console.log('[UniRig FBX Viewer] WebGL context restored');
+            console.log('[SAM3DBody FBX Viewer] WebGL context restored');
             loading.textContent = 'WebGL context restored. Please reload the model.';
             loading.style.color = 'green';
             setTimeout(() => {
@@ -37522,7 +37529,7 @@ version 0.6.9
 
         // Cleanup on page unload to prevent memory leaks
         window.addEventListener('beforeunload', () => {
-            console.log('[UniRig FBX Viewer] Cleaning up resources before unload');
+            console.log('[SAM3DBody FBX Viewer] Cleaning up resources before unload');
             if (currentModel) {
                 disposeObject(currentModel);
             }
@@ -37593,7 +37600,7 @@ version 0.6.9
 
             pivotIndicator.visible = false;
             scene.add(pivotIndicator);
-            console.log('[UniRig FBX Viewer] Created rotation pivot indicator');
+            console.log('[SAM3DBody FBX Viewer] Created rotation pivot indicator');
         }
 
         // Update pivot indicator position
@@ -37611,7 +37618,7 @@ version 0.6.9
 
         // Create bone connection lines (thick lines between parent-child)
         function createBoneLines() {
-            console.log('[UniRig FBX Viewer] Creating bone connection lines');
+            console.log('[SAM3DBody FBX Viewer] Creating bone connection lines');
 
             // Clear existing lines
             boneLines.forEach(line => {
@@ -37651,7 +37658,7 @@ version 0.6.9
                 }
             });
 
-            console.log('[UniRig FBX Viewer] Created', boneLines.length, 'bone connection lines');
+            console.log('[SAM3DBody FBX Viewer] Created', boneLines.length, 'bone connection lines');
         }
 
         // Update bone connection lines positions
@@ -37679,7 +37686,7 @@ version 0.6.9
 
         // Create bone gizmos (clickable spheres at joints)
         function createBoneGizmos() {
-            console.log('[UniRig FBX Viewer] Creating bone gizmos for', bones.length, 'bones');
+            console.log('[SAM3DBody FBX Viewer] Creating bone gizmos for', bones.length, 'bones');
 
             // Clear existing gizmos
             boneGizmos.forEach(gizmo => scene.remove(gizmo));
@@ -37690,7 +37697,7 @@ version 0.6.9
                 const size = meshBounds.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
                 boneGizmoSize = maxDim * 0.02; // 2% of largest dimension
-                console.log('[UniRig FBX Viewer] Bone gizmo size:', boneGizmoSize);
+                console.log('[SAM3DBody FBX Viewer] Bone gizmo size:', boneGizmoSize);
             }
 
             bones.forEach((bone, index) => {
@@ -37717,7 +37724,7 @@ version 0.6.9
                 boneGizmos.push(sphere);
             });
 
-            console.log('[UniRig FBX Viewer] Created', boneGizmos.length, 'bone gizmos');
+            console.log('[SAM3DBody FBX Viewer] Created', boneGizmos.length, 'bone gizmos');
 
             // Create pivot indicator after knowing gizmo size
             createPivotIndicator();
@@ -37746,7 +37753,7 @@ version 0.6.9
 
         // Save rest pose
         function saveRestPose() {
-            console.log('[UniRig FBX Viewer] Saving rest pose for', bones.length, 'bones');
+            console.log('[SAM3DBody FBX Viewer] Saving rest pose for', bones.length, 'bones');
             restPoseData = bones.map(bone => ({
                 position: bone.position.clone(),
                 quaternion: bone.quaternion.clone(),
@@ -37756,10 +37763,10 @@ version 0.6.9
 
         // Reset to rest pose
         function resetToRestPose() {
-            console.log('[UniRig FBX Viewer] Resetting to rest pose');
+            console.log('[SAM3DBody FBX Viewer] Resetting to rest pose');
 
             if (restPoseData.length === 0) {
-                console.warn('[UniRig FBX Viewer] No rest pose saved');
+                console.warn('[SAM3DBody FBX Viewer] No rest pose saved');
                 return;
             }
 
@@ -37823,15 +37830,15 @@ version 0.6.9
 
         // Load FBX file
         function loadFBX(filepath) {
-            console.log('[UniRig FBX Viewer] Loading:', filepath);
-            console.log('[UniRig FBX Viewer] Filepath is already absolute:', filepath);
+            console.log('[SAM3DBody FBX Viewer] Loading:', filepath);
+            console.log('[SAM3DBody FBX Viewer] Filepath is already absolute:', filepath);
             loading.textContent = 'Loading rigged mesh...';
             loading.style.display = 'block';
             loading.style.color = 'white';
 
             // Remove old model and dispose of GPU resources
             if (currentModel) {
-                console.log('[UniRig FBX Viewer] Disposing old model');
+                console.log('[SAM3DBody FBX Viewer] Disposing old model');
                 scene.remove(currentModel);
                 disposeObject(currentModel);
                 currentModel = null;
@@ -37865,7 +37872,7 @@ version 0.6.9
             loader.load(
                 filepath,
                 (fbx) => {
-                    console.log('[UniRig FBX Viewer] FBX loaded successfully');
+                    console.log('[SAM3DBody FBX Viewer] FBX loaded successfully');
                     currentModel = fbx;
 
                     // Center model
@@ -37884,7 +37891,7 @@ version 0.6.9
                     let foundSkeleton = false;
                     currentModel.traverse((child) => {
                         if (child.isSkinnedMesh) {
-                            console.log('[UniRig FBX Viewer] Found SkinnedMesh:', child.name);
+                            console.log('[SAM3DBody FBX Viewer] Found SkinnedMesh:', child.name);
 
                             // Ensure material is visible
                             if (!child.material) {
@@ -37918,24 +37925,24 @@ version 0.6.9
 
                                 // Store bones for manipulation
                                 bones = child.skeleton.bones;
-                                console.log('[UniRig FBX Viewer] Found', bones.length, 'bones');
+                                console.log('[SAM3DBody FBX Viewer] Found', bones.length, 'bones');
 
                                 // Debug: check skeleton bounds
                                 const skeletonBox = new THREE.Box3().setFromObject(skeletonHelper);
                                 const skeletonSize = skeletonBox.getSize(new THREE.Vector3());
                                 const skeletonCenter = skeletonBox.getCenter(new THREE.Vector3());
-                                console.log('[UniRig FBX Viewer] Skeleton bounds:', skeletonBox);
-                                console.log('[UniRig FBX Viewer] Skeleton size:', skeletonSize);
-                                console.log('[UniRig FBX Viewer] Skeleton center:', skeletonCenter);
-                                console.log('[UniRig FBX Viewer] Mesh size:', size);
-                                console.log('[UniRig FBX Viewer] Scale ratio (mesh/skeleton):', maxDim / Math.max(skeletonSize.x, skeletonSize.y, skeletonSize.z));
+                                console.log('[SAM3DBody FBX Viewer] Skeleton bounds:', skeletonBox);
+                                console.log('[SAM3DBody FBX Viewer] Skeleton size:', skeletonSize);
+                                console.log('[SAM3DBody FBX Viewer] Skeleton center:', skeletonCenter);
+                                console.log('[SAM3DBody FBX Viewer] Mesh size:', size);
+                                console.log('[SAM3DBody FBX Viewer] Scale ratio (mesh/skeleton):', maxDim / Math.max(skeletonSize.x, skeletonSize.y, skeletonSize.z));
 
                                 // Save rest pose (only if not already saved)
                                 // This prevents overwriting the original rest pose when loading exported FBX files
                                 if (restPoseData.length === 0) {
                                     saveRestPose();
                                 } else {
-                                    console.log('[UniRig FBX Viewer] Rest pose already saved, skipping saveRestPose()');
+                                    console.log('[SAM3DBody FBX Viewer] Rest pose already saved, skipping saveRestPose()');
                                 }
 
                                 // Create bone gizmos
@@ -37958,9 +37965,39 @@ version 0.6.9
                     grid = new THREE.GridHelper(gridSize, gridDivisions, 0x444444, 0x222222);
                     scene.add(grid);
 
-                    const axesSize = maxDim * 0.3;
+                    // Create larger, more visible axes with spheres at the ends
+                    const axesSize = maxDim * 0.8;  // Much larger for visibility
                     axes = new THREE.AxesHelper(axesSize);
+                    axes.material.linewidth = 3;  // Thicker lines
                     scene.add(axes);
+
+                    // Add colored spheres at the end of each axis for clarity
+                    const sphereRadius = maxDim * 0.05;
+                    const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 16, 16);
+
+                    // X axis = Red
+                    const xSphere = new THREE.Mesh(
+                        sphereGeometry,
+                        new THREE.MeshBasicMaterial({ color: 0xff0000 })
+                    );
+                    xSphere.position.set(axesSize, 0, 0);
+                    axes.add(xSphere);
+
+                    // Y axis = Green
+                    const ySphere = new THREE.Mesh(
+                        sphereGeometry,
+                        new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+                    );
+                    ySphere.position.set(0, axesSize, 0);
+                    axes.add(ySphere);
+
+                    // Z axis = Blue
+                    const zSphere = new THREE.Mesh(
+                        sphereGeometry,
+                        new THREE.MeshBasicMaterial({ color: 0x0000ff })
+                    );
+                    zSphere.position.set(0, 0, axesSize);
+                    axes.add(zSphere);
 
                     defaultCameraPosition.set(distance, distance, distance);
                     camera.position.copy(defaultCameraPosition);
@@ -37971,16 +38008,16 @@ version 0.6.9
                     // Set maxDistance dynamically based on model size (allow zooming out well beyond initial position)
                     controls.maxDistance = maxDim * 10;
 
-                    console.log('[UniRig FBX Viewer] Mesh size:', maxDim.toFixed(2), 'Grid size:', gridSize, 'Camera distance:', distance.toFixed(2));
+                    console.log('[SAM3DBody FBX Viewer] Mesh size:', maxDim.toFixed(2), 'Grid size:', gridSize, 'Camera distance:', distance.toFixed(2));
 
                     loading.style.display = 'none';
 
                     if (foundSkeleton) {
                         statusEl.textContent = \`Loaded: \${bones.length} bones\`;
-                        console.log('[UniRig FBX Viewer] Mesh loaded with skeleton');
+                        console.log('[SAM3DBody FBX Viewer] Mesh loaded with skeleton');
                     } else {
                         statusEl.textContent = 'Loaded (no skeleton found)';
-                        console.warn('[UniRig FBX Viewer] No skeleton found in FBX');
+                        console.warn('[SAM3DBody FBX Viewer] No skeleton found in FBX');
                     }
                 },
                 (progress) => {
@@ -37990,10 +38027,10 @@ version 0.6.9
                     }
                 },
                 (error) => {
-                    console.error('[UniRig FBX Viewer] Error loading FBX:', error);
-                    console.error('[UniRig FBX Viewer] Error type:', error?.constructor?.name);
-                    console.error('[UniRig FBX Viewer] Error message:', error?.message);
-                    console.error('[UniRig FBX Viewer] Attempted URL:', window.location.origin + filepath);
+                    console.error('[SAM3DBody FBX Viewer] Error loading FBX:', error);
+                    console.error('[SAM3DBody FBX Viewer] Error type:', error?.constructor?.name);
+                    console.error('[SAM3DBody FBX Viewer] Error message:', error?.message);
+                    console.error('[SAM3DBody FBX Viewer] Attempted URL:', window.location.origin + filepath);
 
                     // Show more helpful error message
                     let errorMsg = 'Error loading FBX';
@@ -38042,7 +38079,7 @@ version 0.6.9
                 // Show pivot indicator at bone position
                 updatePivotIndicator();
 
-                console.log('[UniRig FBX Viewer] Selected bone:', bone.name || bone.type);
+                console.log('[SAM3DBody FBX Viewer] Selected bone:', bone.name || bone.type);
                 statusEl.textContent = \`Selected: \${bone.name || 'Bone ' + clickedGizmo.userData.boneIndex}\`;
             } else {
                 // Deselect
@@ -38069,10 +38106,10 @@ version 0.6.9
 
         // UI Controls
         document.getElementById('showSkeleton').addEventListener('change', (e) => {
-            console.log('[UniRig FBX Viewer] Show skeleton:', e.target.checked);
+            console.log('[SAM3DBody FBX Viewer] Show skeleton:', e.target.checked);
             if (skeletonHelper) {
                 skeletonHelper.visible = e.target.checked;
-                console.log('[UniRig FBX Viewer] SkeletonHelper visible:', skeletonHelper.visible);
+                console.log('[SAM3DBody FBX Viewer] SkeletonHelper visible:', skeletonHelper.visible);
             }
             boneGizmos.forEach(gizmo => {
                 gizmo.visible = e.target.checked;
@@ -38084,7 +38121,7 @@ version 0.6.9
             if (pivotIndicator && selectedBone) {
                 pivotIndicator.visible = e.target.checked;
             }
-            console.log('[UniRig FBX Viewer] Bone gizmos visible:', boneGizmos.length);
+            console.log('[SAM3DBody FBX Viewer] Bone gizmos visible:', boneGizmos.length);
         });
 
         document.getElementById('showMesh').addEventListener('change', (e) => {
@@ -38164,14 +38201,14 @@ version 0.6.9
 
                 if (response.ok) {
                     statusEl.textContent = \`Screenshot saved: \${filename}\`;
-                    console.log('[UniRig FBX Viewer] Screenshot saved:', filename);
+                    console.log('[SAM3DBody FBX Viewer] Screenshot saved:', filename);
                 } else {
                     statusEl.textContent = 'Screenshot failed';
-                    console.error('[UniRig FBX Viewer] Screenshot upload failed');
+                    console.error('[SAM3DBody FBX Viewer] Screenshot upload failed');
                 }
             } catch (error) {
                 statusEl.textContent = 'Screenshot error';
-                console.error('[UniRig FBX Viewer] Screenshot error:', error);
+                console.error('[SAM3DBody FBX Viewer] Screenshot error:', error);
             }
         });
 
@@ -38221,7 +38258,7 @@ version 0.6.9
 
                 if (!skinnedMesh) {
                     statusEl.textContent = 'No mesh to export';
-                    console.error('[UniRig FBX Viewer] No SkinnedMesh found');
+                    console.error('[SAM3DBody FBX Viewer] No SkinnedMesh found');
                     return;
                 }
 
@@ -38290,28 +38327,38 @@ version 0.6.9
                         // Convert to blob
                         const blob = new Blob([gltf], { type: 'application/octet-stream' });
 
-                        // Upload to ComfyUI output directory
-                        const formData = new FormData();
-                        formData.append('image', blob, filename);
-                        formData.append('type', 'output');
-                        formData.append('subfolder', '');
+                        // Convert blob to base64 for sending to server
+                        const reader = new FileReader();
+                        reader.onloadend = async () => {
+                            const base64data = reader.result.split(',')[1];  // Remove data:application/octet-stream;base64, prefix
 
-                        const uploadUrl = parentOrigin ? \`\${parentOrigin}/upload/image\` : '/upload/image';
-                        const response = await fetch(uploadUrl, {
-                            method: 'POST',
-                            body: formData
-                        });
+                            // Send to server
+                            const saveUrl = parentOrigin ? \`\${parentOrigin}/sam3d/save_glb\` : '/sam3d/save_glb';
+                            const response = await fetch(saveUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    glb_data: base64data,
+                                    filename: filename
+                                })
+                            });
 
-                        if (response.ok) {
-                            statusEl.textContent = \`GLB saved: \${filename}\`;
-                            console.log('[UniRig FBX Viewer] GLB exported:', filename);
-                        } else {
-                            statusEl.textContent = 'GLB export failed';
-                            console.error('[UniRig FBX Viewer] GLB export upload failed');
-                        }
+                            const result = await response.json();
+
+                            if (response.ok && result.success) {
+                                statusEl.textContent = \`GLB saved: \${result.filename}\`;
+                                console.log('[SAM3DBody FBX Viewer] GLB saved to output:', result.filename);
+                            } else {
+                                statusEl.textContent = \`GLB save failed: \${result.error || 'Unknown error'}\`;
+                                console.error('[SAM3DBody FBX Viewer] GLB save failed:', result.error);
+                            }
+                        };
+                        reader.readAsDataURL(blob);
                     },
                     (error) => {
-                        console.error('[UniRig FBX Viewer] GLB export error:', error);
+                        console.error('[SAM3DBody FBX Viewer] GLB export error:', error);
                         statusEl.textContent = 'GLB export error';
                     },
                     {
@@ -38323,7 +38370,7 @@ version 0.6.9
 
             } catch (error) {
                 statusEl.textContent = 'GLB export error';
-                console.error('[UniRig FBX Viewer] GLB export error:', error);
+                console.error('[SAM3DBody FBX Viewer] GLB export error:', error);
             }
         });
 
@@ -38337,7 +38384,7 @@ version 0.6.9
 
                 if (!currentFBXFilename) {
                     statusEl.textContent = 'FBX filename not available';
-                    console.error('[UniRig FBX Viewer] currentFBXFilename is not set');
+                    console.error('[SAM3DBody FBX Viewer] currentFBXFilename is not set');
                     return;
                 }
 
@@ -38379,7 +38426,7 @@ version 0.6.9
                 // Iterate directly through bones array (these are the actual skeleton bones being manipulated)
                 bones.forEach((bone, boneIndex) => {
                     if (!restPoseData[boneIndex]) {
-                        console.warn(\`[UniRig FBX Viewer] No rest pose data for bone index \${boneIndex}: \${bone.name}\`);
+                        console.warn(\`[SAM3DBody FBX Viewer] No rest pose data for bone index \${boneIndex}: \${bone.name}\`);
                         return;
                     }
 
@@ -38419,10 +38466,10 @@ version 0.6.9
                     };
                 });
 
-                console.log(\`[UniRig FBX Viewer] Captured \${Object.keys(boneTransforms).length} bone transforms\`);
+                console.log(\`[SAM3DBody FBX Viewer] Captured \${Object.keys(boneTransforms).length} bone transforms\`);
 
                 // Send to backend API
-                const exportUrl = parentOrigin ? \`\${parentOrigin}/unirig/export_posed_fbx\` : '/unirig/export_posed_fbx';
+                const exportUrl = parentOrigin ? \`\${parentOrigin}/sam3d/export_posed_fbx\` : '/sam3d/export_posed_fbx';
                 const response = await fetch(exportUrl, {
                     method: 'POST',
                     headers: {
@@ -38439,43 +38486,43 @@ version 0.6.9
 
                 if (response.ok && result.success) {
                     statusEl.textContent = \`FBX saved: \${result.filename}\`;
-                    console.log('[UniRig FBX Viewer] FBX exported:', result.filename);
+                    console.log('[SAM3DBody FBX Viewer] FBX exported:', result.filename);
                 } else {
                     statusEl.textContent = \`FBX export failed: \${result.error || 'Unknown error'}\`;
-                    console.error('[UniRig FBX Viewer] FBX export failed:', result.error);
+                    console.error('[SAM3DBody FBX Viewer] FBX export failed:', result.error);
                 }
 
             } catch (error) {
                 statusEl.textContent = 'FBX export error';
-                console.error('[UniRig FBX Viewer] FBX export error:', error);
+                console.error('[SAM3DBody FBX Viewer] FBX export error:', error);
             }
         });
 
         // Listen for messages from parent window
         window.addEventListener('message', (event) => {
-            console.log('[UniRig FBX Viewer] Received postMessage:', event.data);
+            console.log('[SAM3DBody FBX Viewer] Received postMessage:', event.data);
 
             // Store parent origin from the first message
             if (!parentOrigin && event.origin) {
                 parentOrigin = event.origin;
-                console.log('[UniRig FBX Viewer] Stored parent origin:', parentOrigin);
+                console.log('[SAM3DBody FBX Viewer] Stored parent origin:', parentOrigin);
             }
 
             if (event.data.type === 'LOAD_FBX') {
-                console.log('[UniRig FBX Viewer] Loading FBX:', event.data.filepath);
+                console.log('[SAM3DBody FBX Viewer] Loading FBX:', event.data.filepath);
                 // Extract filename from filepath (e.g., "/view?filename=foo.fbx" -> "foo.fbx")
                 const filepathStr = event.data.filepath;
                 const match = filepathStr.match(/filename=([^&]+)/);
                 if (match) {
                     currentFBXFilename = decodeURIComponent(match[1]);
-                    console.log('[UniRig FBX Viewer] Stored filename:', currentFBXFilename);
+                    console.log('[SAM3DBody FBX Viewer] Stored filename:', currentFBXFilename);
                 }
                 loadFBX(event.data.filepath);
             }
         });
 
         // Notify parent that viewer is ready
-        console.log('[UniRig FBX Viewer] Ready');
+        console.log('[SAM3DBody FBX Viewer] Ready');
         if (window.parent) {
             window.parent.postMessage({ type: 'VIEWER_READY' }, '*');
         }

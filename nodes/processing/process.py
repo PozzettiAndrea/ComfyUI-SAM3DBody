@@ -204,6 +204,20 @@ class SAM3DBodyProcess:
                 "focal_length": output.get("focal_length", None),  # Focal length
             }
 
+            # Add joint parent hierarchy from the MHR model (same for all outputs)
+            try:
+                if hasattr(sam_3d_model, 'mhr_head') and hasattr(sam_3d_model.mhr_head, 'mhr'):
+                    mhr = sam_3d_model.mhr_head.mhr
+                    if hasattr(mhr, 'character_torch') and hasattr(mhr.character_torch, 'skeleton'):
+                        skeleton_obj = mhr.character_torch.skeleton
+                        if hasattr(skeleton_obj, 'joint_parents'):
+                            parent_tensor = skeleton_obj.joint_parents
+                            if isinstance(parent_tensor, torch.Tensor):
+                                skeleton["joint_parents"] = parent_tensor.cpu().numpy()
+                                print(f"[SAM3DBody] Added joint parent hierarchy to skeleton output")
+            except Exception as e:
+                print(f"[SAM3DBody] Could not extract joint parents: {e}")
+
             # Create debug visualization
             from ..base import numpy_to_comfy_image
             debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
@@ -470,6 +484,20 @@ class SAM3DBodyProcessAdvanced:
                 "camera": output.get("pred_cam_t", None),  # Camera translation
                 "focal_length": output.get("focal_length", None),  # Focal length
             }
+
+            # Add joint parent hierarchy from the MHR model (same for all outputs)
+            try:
+                if hasattr(sam_3d_model, 'mhr_head') and hasattr(sam_3d_model.mhr_head, 'mhr'):
+                    mhr = sam_3d_model.mhr_head.mhr
+                    if hasattr(mhr, 'character_torch') and hasattr(mhr.character_torch, 'skeleton'):
+                        skeleton_obj = mhr.character_torch.skeleton
+                        if hasattr(skeleton_obj, 'joint_parents'):
+                            parent_tensor = skeleton_obj.joint_parents
+                            if isinstance(parent_tensor, torch.Tensor):
+                                skeleton["joint_parents"] = parent_tensor.cpu().numpy()
+                                print(f"[SAM3DBody] Added joint parent hierarchy to skeleton output")
+            except Exception as e:
+                print(f"[SAM3DBody] Could not extract joint parents: {e}")
 
             # Create debug visualization
             from ..base import numpy_to_comfy_image

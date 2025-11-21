@@ -61,7 +61,16 @@ else:
         NODE_CLASS_MAPPINGS = {}
         NODE_DISPLAY_NAME_MAPPINGS = {}
 
-    # Step 2: Additional initialization (if needed)
+    # Step 2: Import server routes
+    try:
+        from . import server
+        print("[SAM3DBody] [OK] Server routes registered")
+    except Exception as e:
+        print(f"[SAM3DBody] [WARNING] Failed to register server routes: {e}")
+        import traceback
+        traceback.print_exc()
+
+    # Step 3: Additional initialization (if needed)
     if INIT_SUCCESS:
         print("[SAM3DBody] Initialization complete")
     else:
