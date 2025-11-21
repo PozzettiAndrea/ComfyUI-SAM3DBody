@@ -1,4 +1,7 @@
 /**
+ * Copyright (c) 2025 Andrea Pozzetti
+ * SPDX-License-Identifier: MIT
+ *
  * ComfyUI SAM3DBody - Skeleton Preview Widget
  * Interactive 3D skeleton viewer using Three.js
  */

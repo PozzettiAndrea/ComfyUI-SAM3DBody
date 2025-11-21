@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) Meta Platforms, Inc. and affiliates.
+# Copyright (c) 2025 Andrea Pozzetti
+# SPDX-License-Identifier: MIT
+#
+# Portions of this file (Blender installation functions) are adapted from:
+# ComfyUI-UniRig by Tsinghua University and Tripo AI
+# https://github.com/VAST-AI-Research/UniRig
+# Licensed under MIT License
 """
 Installation script for ComfyUI SAM 3D Body.
 

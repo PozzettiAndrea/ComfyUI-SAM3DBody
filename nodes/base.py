@@ -1,4 +1,10 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
+# Copyright (c) 2025 Andrea Pozzetti
+# SPDX-License-Identifier: MIT
+#
+# Blender auto-detection logic adapted from:
+# ComfyUI-UniRig by Tsinghua University and Tripo AI
+# https://github.com/VAST-AI-Research/UniRig
+# Licensed under MIT License
 """
 Base utilities for ComfyUI SAM 3D Body nodes.
 

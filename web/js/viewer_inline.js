@@ -1,3 +1,10 @@
+// Copyright (c) 2025 Andrea Pozzetti
+// SPDX-License-Identifier: MIT
+//
+// FBX viewer code adapted from ComfyUI-UniRig
+// https://github.com/VAST-AI-Research/UniRig
+// Licensed under MIT License
+//
 // Auto-generated inline viewer - DO NOT EDIT
 // Generated on 2025-11-20T23:55:01.387Z
 
