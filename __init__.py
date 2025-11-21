@@ -7,6 +7,12 @@ Provides nodes for loading models, processing images, and visualizing 3D mesh re
 """
 
 import sys
+from pathlib import Path
+
+# Add this directory to sys.path so vendored sam_3d_body package is importable
+_custom_node_dir = Path(__file__).parent
+if str(_custom_node_dir) not in sys.path:
+    sys.path.insert(0, str(_custom_node_dir))
 
 # Pytest guard - only load nodes when running in ComfyUI
 if 'pytest' not in sys.modules:

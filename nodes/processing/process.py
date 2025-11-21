@@ -6,18 +6,12 @@ Performs 3D human mesh reconstruction from a single image.
 """
 
 import os
-import sys
 import tempfile
 import torch
 import numpy as np
 import cv2
 from pathlib import Path
 from ..base import comfy_image_to_numpy, comfy_mask_to_numpy
-
-# Add sam-3d-body to Python path if it exists
-_SAM3D_BODY_PATH = Path(__file__).parent.parent.parent.parent.parent.parent / "sam-3d-body"
-if _SAM3D_BODY_PATH.exists() and str(_SAM3D_BODY_PATH) not in sys.path:
-    sys.path.insert(0, str(_SAM3D_BODY_PATH))
 
 
 class SAM3DBodyProcess:
@@ -144,7 +138,7 @@ class SAM3DBodyProcess:
                 tmp_path = tmp.name
 
             try:
-                # Process image
+                # Process image - returns a list of results (one per detected person)
                 outputs = estimator.process_one_image(
                     tmp_path,
                     bboxes=bboxes,
@@ -163,14 +157,34 @@ class SAM3DBodyProcess:
                     os.unlink(tmp_path)
                 raise e
 
+            # Handle outputs - it's a list of results (one per person)
+            if not outputs or len(outputs) == 0:
+                raise RuntimeError("No people detected in image")
+
+            # For now, take the first person if multiple detected
+            if len(outputs) > 1:
+                print(f"[SAM3DBody] [INFO] Detected {len(outputs)} people, using first one")
+
+            output = outputs[0]
+
             # Extract output data
             mesh_data = {
-                "vertices": outputs.get("pred_vertices", None),  # [N, 3] mesh vertices
+                "vertices": output.get("pred_vertices", None),  # [N, 3] mesh vertices
                 "faces": estimator.faces,  # Face indices
-                "joints": outputs.get("pred_keypoints_3d", None),  # 3D keypoints
-                "camera": outputs.get("pred_cam", None),  # Camera parameters
-                "bboxes": outputs.get("bboxes", None),  # Detected bounding boxes
-                "raw_output": outputs,  # Full output dict for advanced use
+                "joints": output.get("pred_keypoints_3d", None),  # 3D keypoints
+                "camera": output.get("pred_cam_t", None),  # Camera translation
+                "focal_length": output.get("focal_length", None),  # Focal length
+                "bbox": output.get("bbox", None),  # Bounding box
+                "pose_params": {  # All pose parameters
+                    "body_pose": output.get("body_pose_params", None),
+                    "hand_pose": output.get("hand_pose_params", None),
+                    "global_rot": output.get("global_rot", None),
+                    "shape": output.get("shape_params", None),
+                    "scale": output.get("scale_params", None),
+                    "expr": output.get("expr_params", None),
+                },
+                "raw_output": output,  # Full output dict for advanced use
+                "all_people": outputs,  # All detected people
             }
 
             # Create debug visualization
@@ -201,13 +215,10 @@ class SAM3DBodyProcess:
     def _create_debug_visualization(self, img_bgr, outputs, faces):
         """Create a debug visualization of the results."""
         try:
-            # Try to import visualization utilities from the original repo
-            import sys
-            sam_3d_body_path = Path(__file__).parent.parent.parent.parent.parent.parent / "sam-3d-body"
-            if sam_3d_body_path.exists():
-                sys.path.insert(0, str(sam_3d_body_path))
-                from tools.vis_utils import visualize_sample_together
-                return visualize_sample_together(img_bgr, outputs, faces)
+            # TODO: Implement visualization using vendored sam_3d_body package
+            # For now, return original image
+            print(f"[SAM3DBody] [INFO] Debug visualization not yet implemented")
+            return img_bgr
         except Exception as e:
             print(f"[SAM3DBody] [WARNING] Could not create visualization: {e}")
             # Return original image if visualization fails
@@ -376,7 +387,7 @@ class SAM3DBodyProcessAdvanced:
                 tmp_path = tmp.name
 
             try:
-                # Process with advanced options
+                # Process with advanced options - returns a list of results (one per detected person)
                 outputs = estimator.process_one_image(
                     tmp_path,
                     bboxes=bboxes,
@@ -392,14 +403,34 @@ class SAM3DBodyProcessAdvanced:
                     os.unlink(tmp_path)
                 raise e
 
+            # Handle outputs - it's a list of results (one per person)
+            if not outputs or len(outputs) == 0:
+                raise RuntimeError("No people detected in image")
+
+            # For now, take the first person if multiple detected
+            if len(outputs) > 1:
+                print(f"[SAM3DBody] [INFO] Detected {len(outputs)} people, using first one")
+
+            output = outputs[0]
+
             # Extract mesh data
             mesh_data = {
-                "vertices": outputs.get("pred_vertices", None),
+                "vertices": output.get("pred_vertices", None),
                 "faces": estimator.faces,
-                "joints": outputs.get("pred_keypoints_3d", None),
-                "camera": outputs.get("pred_cam", None),
-                "bboxes": outputs.get("bboxes", None),
-                "raw_output": outputs,
+                "joints": output.get("pred_keypoints_3d", None),
+                "camera": output.get("pred_cam_t", None),
+                "focal_length": output.get("focal_length", None),
+                "bbox": output.get("bbox", None),
+                "pose_params": {
+                    "body_pose": output.get("body_pose_params", None),
+                    "hand_pose": output.get("hand_pose_params", None),
+                    "global_rot": output.get("global_rot", None),
+                    "shape": output.get("shape_params", None),
+                    "scale": output.get("scale_params", None),
+                    "expr": output.get("expr_params", None),
+                },
+                "raw_output": output,
+                "all_people": outputs,
             }
 
             # Create debug visualization
@@ -419,12 +450,10 @@ class SAM3DBodyProcessAdvanced:
     def _create_debug_visualization(self, img_bgr, outputs, faces):
         """Create debug visualization."""
         try:
-            import sys
-            sam_3d_body_path = Path(__file__).parent.parent.parent.parent.parent.parent / "sam-3d-body"
-            if sam_3d_body_path.exists():
-                sys.path.insert(0, str(sam_3d_body_path))
-                from tools.vis_utils import visualize_sample_together
-                return visualize_sample_together(img_bgr, outputs, faces)
+            # TODO: Implement visualization using vendored sam_3d_body package
+            # For now, return original image
+            print(f"[SAM3DBody] [INFO] Debug visualization not yet implemented")
+            return img_bgr
         except:
             return img_bgr
 

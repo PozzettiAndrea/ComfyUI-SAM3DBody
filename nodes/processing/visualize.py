@@ -116,9 +116,9 @@ class SAM3DBodyVisualize:
 
 class SAM3DBodyExportMesh:
     """
-    Exports SAM 3D Body mesh to file formats.
+    Exports SAM 3D Body mesh to STL format.
 
-    Saves the reconstructed 3D mesh to common formats like OBJ, PLY, etc.
+    Saves the reconstructed 3D mesh as ASCII STL for use in 3D viewers and editors.
     """
 
     @classmethod
@@ -129,8 +129,8 @@ class SAM3DBodyExportMesh:
                     "tooltip": "Mesh data from SAM3DBodyProcess node"
                 }),
                 "filename": ("STRING", {
-                    "default": "output_mesh.obj",
-                    "tooltip": "Output filename (supports .obj, .ply)"
+                    "default": "output_mesh.stl",
+                    "tooltip": "Output filename (exports as ASCII STL)"
                 }),
                 "output_dir": ("STRING", {
                     "default": "output",
@@ -144,7 +144,7 @@ class SAM3DBodyExportMesh:
     FUNCTION = "export_mesh"
     CATEGORY = "SAM3DBody/io"
 
-    def export_mesh(self, mesh_data, filename="output_mesh.obj", output_dir="output"):
+    def export_mesh(self, mesh_data, filename="output_mesh.stl", output_dir="output"):
         """Export mesh to file."""
 
         print(f"[SAM3DBody] Exporting mesh to {filename}")
@@ -173,18 +173,11 @@ class SAM3DBodyExportMesh:
             if isinstance(faces, torch.Tensor):
                 faces = faces.cpu().numpy()
 
-            # Export based on file extension
-            ext = Path(filename).suffix.lower()
-
-            if ext == ".obj":
-                self._export_obj(vertices, faces, full_path)
-            elif ext == ".ply":
-                self._export_ply(vertices, faces, full_path)
-            else:
-                raise ValueError(f"Unsupported file format: {ext}. Use .obj or .ply")
+            # Export to STL format
+            self._export_stl(vertices, faces, full_path)
 
             print(f"[SAM3DBody] [OK] Mesh exported to {full_path}")
-            return (str(full_path),)
+            return (filename,)
 
         except Exception as e:
             print(f"[SAM3DBody] [ERROR] Export failed: {str(e)}")
@@ -224,6 +217,49 @@ class SAM3DBodyExportMesh:
             # Write faces
             for face in faces:
                 f.write(f"3 {face[0]} {face[1]} {face[2]}\n")
+
+    def _export_stl(self, vertices, faces, filepath):
+        """Export mesh to ASCII STL format."""
+        import numpy as np
+
+        # Flip Z axis (negate z coordinates)
+        vertices_flipped = vertices.copy()
+        vertices_flipped[:, 2] = -vertices_flipped[:, 2]
+
+        with open(filepath, 'w') as f:
+            # Write STL header
+            f.write("solid mesh\n")
+
+            # Write each triangle face
+            for face in faces:
+                # Get the three vertices of the triangle
+                v0 = vertices_flipped[int(face[0])]
+                v1 = vertices_flipped[int(face[1])]
+                v2 = vertices_flipped[int(face[2])]
+
+                # Calculate face normal using cross product
+                edge1 = v1 - v0
+                edge2 = v2 - v0
+                normal = np.cross(edge1, edge2)
+
+                # Normalize the normal vector
+                norm_length = np.linalg.norm(normal)
+                if norm_length > 0:
+                    normal = normal / norm_length
+                else:
+                    normal = np.array([0.0, 0.0, 1.0])  # Default normal if degenerate
+
+                # Write facet
+                f.write(f"  facet normal {normal[0]:.6e} {normal[1]:.6e} {normal[2]:.6e}\n")
+                f.write("    outer loop\n")
+                f.write(f"      vertex {v0[0]:.6e} {v0[1]:.6e} {v0[2]:.6e}\n")
+                f.write(f"      vertex {v1[0]:.6e} {v1[1]:.6e} {v1[2]:.6e}\n")
+                f.write(f"      vertex {v2[0]:.6e} {v2[1]:.6e} {v2[2]:.6e}\n")
+                f.write("    endloop\n")
+                f.write("  endfacet\n")
+
+            # Write STL footer
+            f.write("endsolid mesh\n")
 
 
 class SAM3DBodyGetVertices:

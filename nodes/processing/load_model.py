@@ -6,14 +6,8 @@ Loads the SAM 3D Body model with caching support.
 """
 
 import os
-import sys
 import torch
 from pathlib import Path
-
-# Add sam-3d-body to Python path if it exists
-_SAM3D_BODY_PATH = Path(__file__).parent.parent.parent.parent.parent.parent / "sam-3d-body"
-if _SAM3D_BODY_PATH.exists() and str(_SAM3D_BODY_PATH) not in sys.path:
-    sys.path.insert(0, str(_SAM3D_BODY_PATH))
 
 # Global cache - persists across node executions
 _MODEL_CACHE = {}
@@ -131,10 +125,11 @@ class LoadSAM3DBodyModel:
             return (model_dict,)
 
         except ImportError as e:
-            print(f"[SAM3DBody] [ERROR] Failed to import sam_3d_body module")
-            print(f"[SAM3DBody] Make sure sam_3d_body is installed: pip install -e /path/to/sam-3d-body")
-            print(f"[SAM3DBody] Or run the install.py script in this node's directory")
-            raise RuntimeError(f"sam_3d_body module not found. Run install.py first.") from e
+            print(f"[SAM3DBody] [ERROR] Failed to import vendored sam_3d_body module")
+            print(f"[SAM3DBody] The sam_3d_body package should be vendored in this node's directory")
+            print(f"[SAM3DBody] Please ensure ComfyUI-SAM3DBody/sam_3d_body/ exists with all files")
+            print(f"[SAM3DBody] Run the install.py script to verify the installation")
+            raise RuntimeError(f"Vendored sam_3d_body module not found. Check installation.") from e
 
         except Exception as e:
             print(f"[SAM3DBody] [ERROR] Failed to load model: {str(e)}")
