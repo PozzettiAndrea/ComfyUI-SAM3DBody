@@ -32,6 +32,9 @@ env/
 *.swo
 *~
 
+# Jupyter
+.ipynb_checkpoints/
+
 # OS
 .DS_Store
 Thumbs.db
@@ -41,7 +44,6 @@ Thumbs.db
 *.pth
 *.pt
 checkpoints/
-models/
 .cache/
 
 # Output files
