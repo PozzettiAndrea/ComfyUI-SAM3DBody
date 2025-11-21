@@ -188,6 +188,7 @@ class SAM3DBodyProcess:
                 },
                 "raw_output": output,  # Full output dict for advanced use
                 "all_people": outputs,  # All detected people
+                "mhr_path": model.get("mhr_path", None),  # MHR model path for export node
             }
 
             # Extract skeleton data

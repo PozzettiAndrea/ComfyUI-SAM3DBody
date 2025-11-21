@@ -92,7 +92,7 @@ class LoadSAM3DBodyModel:
             # Load model based on source
             if model_source == "huggingface":
                 print(f"[SAM3DBody] Loading from HuggingFace...")
-                model, model_cfg = load_sam_3d_body_hf(
+                model, model_cfg, mhr_path_used = load_sam_3d_body_hf(
                     model_path,
                     device=torch.device(device)
                 )
@@ -104,7 +104,7 @@ class LoadSAM3DBodyModel:
                         f"Please download the checkpoint first or use HuggingFace mode."
                     )
 
-                model, model_cfg = load_sam_3d_body(
+                model, model_cfg, mhr_path_used = load_sam_3d_body(
                     model_path,
                     device=torch.device(device),
                     mhr_path=mhr_asset_path if mhr_asset_path else None
@@ -117,6 +117,7 @@ class LoadSAM3DBodyModel:
                 "device": device,
                 "model_path": model_path,
                 "source": model_source,
+                "mhr_path": mhr_path_used,
             }
 
             # Cache it
