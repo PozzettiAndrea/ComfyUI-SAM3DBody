@@ -52,6 +52,11 @@ jobs:
         run: |
           pip install numpy cython
 
+      - name: Install xtcocotools (macOS workaround)
+        if: runner.os == 'macOS'
+        run: |
+          pip install --no-build-isolation xtcocotools>=1.14
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -117,6 +122,11 @@ jobs:
       - name: Install build dependencies
         run: |
           pip install numpy cython
+
+      - name: Install xtcocotools (macOS workaround)
+        if: runner.os == 'macOS'
+        run: |
+          pip install --no-build-isolation xtcocotools>=1.14
 
       - name: Install dependencies
         run: |
