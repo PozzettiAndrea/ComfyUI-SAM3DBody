@@ -46,8 +46,8 @@ def install():
 
     # 1. Install build dependencies first (needed for packages that build C extensions)
     print("[SAM3DBody] Installing build dependencies...")
-    cmd = [sys.executable, "-m", "pip", "install", "numpy", "cython"]
-    run_command(cmd, "Installing numpy and cython")
+    cmd = [sys.executable, "-m", "pip", "install", "numpy", "cython", "wheel"]
+    run_command(cmd, "Installing numpy, cython, and wheel")
 
     # 2. macOS-specific: Install xtcocotools with --no-build-isolation
     # This is needed because xtcocotools imports numpy in setup.py but pip's
