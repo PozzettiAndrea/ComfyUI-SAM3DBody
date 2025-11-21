@@ -9,14 +9,33 @@ from .utils.checkpoint import load_state_dict
 
 def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: str = ""):
     print("Loading SAM 3D Body model...")
-    
+
     # Check the current directory, and if not present check the parent dir.
     model_cfg = os.path.join(os.path.dirname(checkpoint_path), "model_config.yaml")
+    tried_paths = [model_cfg]
+
     if not os.path.exists(model_cfg):
         # Looks at parent dir
         model_cfg = os.path.join(
             os.path.dirname(os.path.dirname(checkpoint_path)), "model_config.yaml"
         )
+        tried_paths.append(model_cfg)
+
+    if not os.path.exists(model_cfg):
+        # Use bundled default config
+        bundled_config = os.path.join(
+            os.path.dirname(__file__), "configs", "model_config.yaml"
+        )
+        tried_paths.append(bundled_config)
+        if os.path.exists(bundled_config):
+            model_cfg = bundled_config
+            print(f"[SAM3DBody] Using bundled default config: {bundled_config}")
+        else:
+            raise FileNotFoundError(
+                f"Could not find model_config.yaml in any of these locations:\n" +
+                "\n".join(f"  - {p}" for p in tried_paths) +
+                f"\n\nFor local model loading, please ensure model_config.yaml is in the same directory as your checkpoint."
+            )
 
     model_cfg = get_config(model_cfg)
 
@@ -37,7 +56,7 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: 
 
     model = model.to(device)
     model.eval()
-    return model, model_cfg
+    return model, model_cfg, mhr_path
 
 
 def _hf_download(repo_id):
@@ -48,4 +67,5 @@ def _hf_download(repo_id):
 
 def load_sam_3d_body_hf(repo_id, **kwargs):
     ckpt_path, mhr_path = _hf_download(repo_id)
-    return load_sam_3d_body(checkpoint_path=ckpt_path, mhr_path=mhr_path, **kwargs)
+    model, model_cfg, mhr_path_used = load_sam_3d_body(checkpoint_path=ckpt_path, mhr_path=mhr_path, **kwargs)
+    return model, model_cfg, mhr_path_used

@@ -210,6 +210,42 @@ async def export_posed_fbx(request):
         }, status=500)
 
 
+@routes.get('/sam3d/mesh_files')
+async def get_mesh_files(request):
+    """
+    API endpoint to fetch mesh file list dynamically for refresh button.
+
+    Query params:
+        - source_folder: "input" or "output" (default: "output")
+
+    Returns:
+        - List of mesh file names
+    """
+    try:
+        # Import here to avoid circular dependencies
+        from .nodes.processing.load_mesh import SAM3DBodyLoadMesh
+
+        # Get source from query parameter
+        source = request.query.get('source_folder', 'output')
+
+        # Get file list
+        files = SAM3DBodyLoadMesh.get_mesh_files()
+
+        if not files:
+            files = []
+
+        print(f"[SAM3DBody Server] Returning {len(files)} mesh files")
+
+        return web.json_response(files)
+
+    except Exception as e:
+        print(f"[SAM3DBody Server] Error fetching mesh files: {e}")
+        import traceback
+        traceback.print_exc()
+        return web.json_response({'error': str(e)}, status=500)
+
+
 print("[SAM3DBody] Registered server routes:")
 print("[SAM3DBody]   POST /sam3d/save_glb")
 print("[SAM3DBody]   POST /sam3d/export_posed_fbx")
+print("[SAM3DBody]   GET  /sam3d/mesh_files")
