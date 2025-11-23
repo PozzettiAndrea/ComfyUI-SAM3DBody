@@ -11,13 +11,13 @@ on:
 
 jobs:
   test-install:
-    name: Test Install - ${{ matrix.os }}
+    name: Test Install - ${{ matrix.os }} - Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.10']
+        python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
       - name: Checkout code
@@ -74,13 +74,13 @@ jobs:
           pytest tests/ -v --tb=short -m unit
 
   test-cpu-inference:
-    name: Test CPU Inference - ${{ matrix.os }}
+    name: Test CPU Inference - ${{ matrix.os }} - Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.10']
+        python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
       - name: Checkout code
