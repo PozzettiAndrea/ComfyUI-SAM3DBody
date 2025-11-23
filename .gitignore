@@ -61,3 +61,11 @@ wandb/
 tmp/
 temp/
 *.tmp
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+.hypothesis/
