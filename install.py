@@ -44,7 +44,26 @@ def install():
     script_dir = Path(__file__).parent
     requirements_file = script_dir / "requirements.txt"
 
-    # 1. Install Python dependencies from requirements.txt
+    # 1. Install build dependencies first (needed for packages that build C extensions)
+    print("[SAM3DBody] Installing build dependencies...")
+    cmd = [sys.executable, "-m", "pip", "install", "numpy", "cython"]
+    run_command(cmd, "Installing numpy and cython")
+
+    # 2. macOS-specific: Install xtcocotools with --no-build-isolation
+    # This is needed because xtcocotools imports numpy in setup.py but pip's
+    # build isolation prevents it from seeing the numpy we just installed
+    if sys.platform == 'darwin':
+        print("[SAM3DBody] macOS detected: Installing xtcocotools with special flags...")
+        cmd = [
+            sys.executable, "-m", "pip", "install",
+            "--no-build-isolation", "xtcocotools>=1.14"
+        ]
+        if not run_command(cmd, "Installing xtcocotools (macOS workaround)"):
+            print("[SAM3DBody] [WARNING] xtcocotools installation failed")
+            print("[SAM3DBody] You may need to install it manually:")
+            print("[SAM3DBody]   pip install --no-build-isolation xtcocotools")
+
+    # 3. Install Python dependencies from requirements.txt
     if requirements_file.exists():
         print(f"[SAM3DBody] Installing dependencies from {requirements_file}")
         cmd = [sys.executable, "-m", "pip", "install", "-r", str(requirements_file)]
@@ -52,7 +71,7 @@ def install():
             print("[SAM3DBody] [WARNING] Some dependencies failed to install")
             print("[SAM3DBody] You may need to install them manually")
 
-    # 2. Check SAM 3D Body library (vendored in sam_3d_body/)
+    # 4. Check SAM 3D Body library (vendored in sam_3d_body/)
     print("[SAM3DBody] Checking for vendored SAM 3D Body library...")
     vendored_path = script_dir / "sam_3d_body"
 
@@ -64,7 +83,7 @@ def install():
         print(f"[SAM3DBody] Expected at: {vendored_path}")
         print(f"[SAM3DBody] Please ensure the sam_3d_body directory exists with proper __init__.py files")
 
-    # 3. Install Detectron2 (required dependency)
+    # 5. Install Detectron2 (required dependency)
     print("[SAM3DBody] Installing Detectron2...")
     cmd = [
         sys.executable, "-m", "pip", "install",
@@ -75,7 +94,7 @@ def install():
         print("[SAM3DBody] [WARNING] Detectron2 installation failed")
         print("[SAM3DBody] This is optional but recommended for detection features")
 
-    # 4. Platform-specific setup
+    # 6. Platform-specific setup
     if sys.platform.startswith('linux'):
         print("[SAM3DBody] Detected Linux platform")
     elif sys.platform == 'win32':
@@ -85,7 +104,7 @@ def install():
         print("[SAM3DBody] Detected macOS platform")
         print("[SAM3DBody] [WARNING] CUDA not available on macOS, will use CPU")
 
-    # 5. Verify installation
+    # 7. Verify installation
     print("[SAM3DBody] Verifying installation...")
     try:
         import torch

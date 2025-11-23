@@ -4,6 +4,12 @@ ComfyUI wrapper for Meta's SAM 3D Body - single-image full-body 3D human mesh re
 
 ![body](docs/body.png)
 
+## Installation
+
+Run the installation script: `python install.py`
+
+**macOS Note**: If you encounter build errors with `xtcocotools`, the install script handles this automatically. For manual installation: `pip install --no-build-isolation xtcocotools`
+
 ## Nodes
 
 - **Load SAM 3D Body Model** - Load model from HuggingFace (`facebook/sam-3d-body-dinov3`) or local checkpoint
