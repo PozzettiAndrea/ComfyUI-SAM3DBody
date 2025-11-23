@@ -4,11 +4,17 @@ Base utilities for ComfyUI SAM 3D Body nodes.
 
 Provides conversion functions between ComfyUI tensor formats and other formats
 (PIL, numpy, OpenCV) commonly used in computer vision tasks.
+Also handles Blender auto-detection and installation for FBX export.
 """
 
+import os
+import sys
+from pathlib import Path
 import numpy as np
 import torch
 from PIL import Image
+
+import folder_paths
 
 
 def comfy_image_to_pil(image):
@@ -124,3 +130,52 @@ def vertices_to_point_cloud(vertices):
         "points": vertices,
         "colors": None,  # Can be added if vertex colors are available
     }
+
+
+# ============================================================================
+# Blender Auto-Detection and Installation
+# ============================================================================
+
+# Get paths relative to this file
+NODE_DIR = Path(__file__).parent.parent.absolute()  # Go up from nodes/ to ComfyUI-SAM3DBody/
+LIB_DIR = NODE_DIR / "lib"
+BLENDER_SCRIPT = str(LIB_DIR / "blender_export_sam3d_fbx.py")
+
+# Find Blender executable
+BLENDER_DIR = LIB_DIR / "blender"
+BLENDER_EXE = None
+if BLENDER_DIR.exists():
+    # Support both relative imports (ComfyUI) and absolute imports (testing)
+    try:
+        from ..install import find_blender_executable
+    except ImportError:
+        from install import find_blender_executable
+    blender_bin = find_blender_executable(str(BLENDER_DIR))
+    if blender_bin:
+        BLENDER_EXE = str(blender_bin)
+        os.environ['BLENDER_EXE'] = BLENDER_EXE
+        print(f"[SAM3DBody] Found Blender: {BLENDER_EXE}")
+
+# Install Blender if not found (unless disabled via env var)
+SKIP_BLENDER_INSTALL = os.environ.get('SAM3DBODY_SKIP_BLENDER_INSTALL', '0') == '1'
+
+if not BLENDER_EXE and not SKIP_BLENDER_INSTALL:
+    print("[SAM3DBody] Blender not found, installing...")
+    try:
+        # Import from parent package
+        sys.path.insert(0, str(NODE_DIR))
+        try:
+            from ..install import install_blender
+        except ImportError:
+            from install import install_blender
+        BLENDER_EXE = install_blender(target_dir=BLENDER_DIR)
+        if BLENDER_EXE:
+            os.environ['BLENDER_EXE'] = BLENDER_EXE
+            print(f"[SAM3DBody] Blender installed: {BLENDER_EXE}")
+        else:
+            print("[SAM3DBody] Warning: Blender installation failed")
+    except Exception as e:
+        print(f"[SAM3DBody] Warning: Could not install Blender: {e}")
+elif not BLENDER_EXE and SKIP_BLENDER_INSTALL:
+    print("[SAM3DBody] Blender not found and installation is disabled (SAM3DBODY_SKIP_BLENDER_INSTALL=1)")
+    print("[SAM3DBody] FBX export will not be available")

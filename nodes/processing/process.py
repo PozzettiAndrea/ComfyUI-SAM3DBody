@@ -64,8 +64,8 @@ class SAM3DBodyProcess:
             }
         }
 
-    RETURN_TYPES = ("SAM3D_OUTPUT", "IMAGE")
-    RETURN_NAMES = ("mesh_data", "debug_image")
+    RETURN_TYPES = ("SAM3D_OUTPUT", "SKELETON", "IMAGE")
+    RETURN_NAMES = ("mesh_data", "skeleton", "debug_image")
     FUNCTION = "process"
     CATEGORY = "SAM3DBody/processing"
 
@@ -171,7 +171,9 @@ class SAM3DBodyProcess:
             mesh_data = {
                 "vertices": output.get("pred_vertices", None),  # [N, 3] mesh vertices
                 "faces": estimator.faces,  # Face indices
-                "joints": output.get("pred_keypoints_3d", None),  # 3D keypoints
+                "joints": output.get("pred_keypoints_3d", None),  # 3D keypoints (70 MHR70 keypoints)
+                "joint_coords": output.get("pred_joint_coords", None),  # Full 127 skeleton joints
+                "joint_rotations": output.get("pred_global_rots", None),  # Joint rotation matrices [127, 3, 3]
                 "camera": output.get("pred_cam_t", None),  # Camera translation
                 "focal_length": output.get("focal_length", None),  # Focal length
                 "bbox": output.get("bbox", None),  # Bounding box
@@ -187,6 +189,20 @@ class SAM3DBodyProcess:
                 "all_people": outputs,  # All detected people
             }
 
+            # Extract skeleton data
+            skeleton = {
+                "joint_positions": output.get("pred_joint_coords", None),  # 127 joints [N, 3]
+                "joint_rotations": output.get("pred_global_rots", None),  # 127 rotation matrices [N, 3, 3]
+                "pose_params": output.get("body_pose_params", None),  # MHR pose parameters (133 dims)
+                "shape_params": output.get("shape_params", None),  # Shape parameters (45 dims)
+                "scale_params": output.get("scale_params", None),  # Scale parameters (28 dims)
+                "hand_pose": output.get("hand_pose_params", None),  # Hand pose (54 dims)
+                "global_rot": output.get("global_rot", None),  # Global rotation
+                "expr_params": output.get("expr_params", None),  # Expression parameters (72 dims)
+                "camera": output.get("pred_cam_t", None),  # Camera translation
+                "focal_length": output.get("focal_length", None),  # Focal length
+            }
+
             # Create debug visualization
             from ..base import numpy_to_comfy_image
             debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
@@ -198,8 +214,13 @@ class SAM3DBodyProcess:
                 if isinstance(vertices, torch.Tensor):
                     vertices = vertices.cpu().numpy()
                 print(f"[SAM3DBody] Generated mesh with {len(vertices)} vertices")
+            if skeleton["joint_positions"] is not None:
+                joint_positions = skeleton["joint_positions"]
+                if isinstance(joint_positions, torch.Tensor):
+                    joint_positions = joint_positions.cpu().numpy()
+                print(f"[SAM3DBody] Extracted skeleton with {len(joint_positions)} joints")
 
-            return (mesh_data, debug_img_comfy)
+            return (mesh_data, skeleton, debug_img_comfy)
 
         except ImportError as e:
             print(f"[SAM3DBody] [ERROR] Failed to import required modules")
@@ -292,8 +313,8 @@ class SAM3DBodyProcessAdvanced:
             }
         }
 
-    RETURN_TYPES = ("SAM3D_OUTPUT", "IMAGE")
-    RETURN_NAMES = ("mesh_data", "debug_image")
+    RETURN_TYPES = ("SAM3D_OUTPUT", "SKELETON", "IMAGE")
+    RETURN_NAMES = ("mesh_data", "skeleton", "debug_image")
     FUNCTION = "process_advanced"
     CATEGORY = "SAM3DBody/advanced"
 
@@ -417,7 +438,9 @@ class SAM3DBodyProcessAdvanced:
             mesh_data = {
                 "vertices": output.get("pred_vertices", None),
                 "faces": estimator.faces,
-                "joints": output.get("pred_keypoints_3d", None),
+                "joints": output.get("pred_keypoints_3d", None),  # 3D keypoints (70 MHR70 keypoints)
+                "joint_coords": output.get("pred_joint_coords", None),  # Full 127 skeleton joints
+                "joint_rotations": output.get("pred_global_rots", None),  # Joint rotation matrices [127, 3, 3]
                 "camera": output.get("pred_cam_t", None),
                 "focal_length": output.get("focal_length", None),
                 "bbox": output.get("bbox", None),
@@ -433,13 +456,27 @@ class SAM3DBodyProcessAdvanced:
                 "all_people": outputs,
             }
 
+            # Extract skeleton data
+            skeleton = {
+                "joint_positions": output.get("pred_joint_coords", None),  # 127 joints [N, 3]
+                "joint_rotations": output.get("pred_global_rots", None),  # 127 rotation matrices [N, 3, 3]
+                "pose_params": output.get("body_pose_params", None),  # MHR pose parameters (133 dims)
+                "shape_params": output.get("shape_params", None),  # Shape parameters (45 dims)
+                "scale_params": output.get("scale_params", None),  # Scale parameters (28 dims)
+                "hand_pose": output.get("hand_pose_params", None),  # Hand pose (54 dims)
+                "global_rot": output.get("global_rot", None),  # Global rotation
+                "expr_params": output.get("expr_params", None),  # Expression parameters (72 dims)
+                "camera": output.get("pred_cam_t", None),  # Camera translation
+                "focal_length": output.get("focal_length", None),  # Focal length
+            }
+
             # Create debug visualization
             from ..base import numpy_to_comfy_image
             debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
             debug_img_comfy = numpy_to_comfy_image(debug_img)
 
             print(f"[SAM3DBody] [OK] Advanced reconstruction complete")
-            return (mesh_data, debug_img_comfy)
+            return (mesh_data, skeleton, debug_img_comfy)
 
         except Exception as e:
             print(f"[SAM3DBody] [ERROR] Advanced processing failed: {str(e)}")
