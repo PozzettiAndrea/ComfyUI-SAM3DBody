@@ -1,4 +1,7 @@
 /**
+ * Copyright (c) 2025 Andrea Pozzetti
+ * SPDX-License-Identifier: MIT
+ *
  * ComfyUI SAM3DBody - Rigged Mesh Preview Widget
  * Interactive viewer for SAM3D rigged meshes with skeleton manipulation
  */

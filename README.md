@@ -23,6 +23,30 @@ Run the installation script: `python install.py`
 - **Export Mesh** - Save mesh as OBJ/PLY file
 - **Get Mesh Info** - Display mesh statistics
 
+## License
+
+This project uses a **dual-license structure**:
+
+- **Wrapper Code** (ComfyUI integration): **MIT License** - See [LICENSE-MIT](LICENSE-MIT)
+  - This includes all nodes, UI components, installation scripts, and ComfyUI integration code
+  - Copyright (c) 2025 Andrea Pozzetti
+
+- **SAM 3D Body Library** (vendored in `sam_3d_body/`): **SAM License** - See [LICENSE-SAM](LICENSE-SAM)
+  - The core SAM 3D Body model and inference code
+  - Copyright (c) Meta Platforms, Inc. and affiliates
+  - Permissive research license allowing commercial use and derivative works
+
+See [LICENSE](LICENSE) for complete license information and [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) for attributions.
+
+### Using This Project
+
+- ✅ You can freely use, modify, and distribute the wrapper code under MIT terms
+- ✅ You can use SAM 3D Body for research and commercial purposes under SAM License terms
+- ⚠️ When redistributing, include both LICENSE-MIT and LICENSE-SAM
+- ⚠️ Acknowledge SAM 3D Body in publications (required by SAM License)
+
 ## Credits
 
 [SAM 3D Body](https://github.com/facebookresearch/sam-3d-body) by Meta AI ([paper](https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/))
+
+Blender installation code adapted from [ComfyUI-UniRig](https://github.com/VAST-AI-Research/UniRig) (MIT License)

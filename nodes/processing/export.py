@@ -1,4 +1,5 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
+# Copyright (c) 2025 Andrea Pozzetti
+# SPDX-License-Identifier: MIT
 """
 Export nodes for SAM 3D Body meshes.
 

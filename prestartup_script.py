@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2025 Andrea Pozzetti
+# SPDX-License-Identifier: MIT
 """
 ComfyUI-SAM3DBody prestartup script.
 
