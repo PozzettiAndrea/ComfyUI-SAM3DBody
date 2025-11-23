@@ -294,7 +294,7 @@ class SAM3DBodyExportFBX:
                     cmd.append(skeleton_json_path)
 
                 print(f"[SAM3DBodyExportFBX] Running Blender export...")
-                result = subprocess.run(cmd, capture_output=True, text=True, timeout=BLENDER_TIMEOUT)
+                result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', timeout=BLENDER_TIMEOUT)
 
                 # Always print stdout to see debug info
                 if result.stdout:
