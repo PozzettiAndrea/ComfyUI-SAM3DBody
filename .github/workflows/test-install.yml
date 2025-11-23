@@ -52,10 +52,15 @@ jobs:
         run: |
           pip install numpy cython wheel
 
-      - name: Install xtcocotools (macOS workaround)
-        if: runner.os == 'macOS'
+      - name: Install xtcocotools
+        if: matrix.python-version != '3.13'
         run: |
           pip install --no-build-isolation xtcocotools>=1.14
+
+      - name: Install xtcocotools (Python 3.13 workaround)
+        if: matrix.python-version == '3.13'
+        run: |
+          pip install --no-build-isolation 'xtcocotools>=1.15' || pip install --no-build-isolation pycocotools
 
       - name: Install dependencies
         run: |
@@ -123,10 +128,15 @@ jobs:
         run: |
           pip install numpy cython wheel
 
-      - name: Install xtcocotools (macOS workaround)
-        if: runner.os == 'macOS'
+      - name: Install xtcocotools
+        if: matrix.python-version != '3.13'
         run: |
           pip install --no-build-isolation xtcocotools>=1.14
+
+      - name: Install xtcocotools (Python 3.13 workaround)
+        if: matrix.python-version == '3.13'
+        run: |
+          pip install --no-build-isolation 'xtcocotools>=1.15' || pip install --no-build-isolation pycocotools
 
       - name: Install dependencies
         run: |
