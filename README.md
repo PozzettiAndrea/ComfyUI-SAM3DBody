@@ -4,6 +4,10 @@ ComfyUI wrapper for Meta's SAM 3D Body - single-image full-body 3D human mesh re
 
 ![body](docs/body.png)
 
+
+https://github.com/user-attachments/assets/5b6c0e24-5c64-4413-b4b5-e8b244c51cae
+
+
 ## Installation
 
 Run the installation script: `python install.py`
