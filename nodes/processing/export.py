@@ -14,9 +14,45 @@ import subprocess
 import numpy as np
 import torch
 import folder_paths
+import glob
 
 from ..base import BLENDER_EXE, BLENDER_SCRIPT
 from ...constants import BLENDER_TIMEOUT
+
+
+def find_mhr_model_path(mesh_data=None):
+    """
+    Find the MHR model path using multiple fallback strategies.
+
+    Args:
+        mesh_data: Optional mesh_data dict that may contain mhr_path
+
+    Returns:
+        str: Path to mhr_model.pt or None if not found
+    """
+    # Strategy 1: Check mesh_data for explicitly provided path
+    if mesh_data and mesh_data.get("mhr_path"):
+        mhr_path = mesh_data["mhr_path"]
+        if os.path.exists(mhr_path):
+            return mhr_path
+
+    # Strategy 2: Check environment variable
+    env_path = os.environ.get("SAM3D_MHR_PATH", "")
+    if env_path and os.path.exists(env_path):
+        return env_path
+
+    # Strategy 3: Search HuggingFace cache (any snapshot version)
+    hf_cache_base = os.path.expanduser("~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3")
+    if os.path.exists(hf_cache_base):
+        # Search all snapshots for mhr_model.pt
+        pattern = os.path.join(hf_cache_base, "snapshots", "*", "assets", "mhr_model.pt")
+        matches = glob.glob(pattern)
+        if matches:
+            # Return the most recently modified one
+            matches.sort(key=os.path.getmtime, reverse=True)
+            return matches[0]
+
+    return None
 
 
 class SAM3DBodyExportFBX:
@@ -121,9 +157,10 @@ class SAM3DBodyExportFBX:
             # Extract skinning weights from MHR model
             print(f"[SAM3DBodyExportFBX] Extracting skinning weights from MHR model...")
             try:
-                mhr_model_path = os.path.expanduser('~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3/snapshots/3a55aef9c322e36127d57755573c161baf7c1785/assets/mhr_model.pt')
+                mhr_model_path = find_mhr_model_path(mesh_data)
 
-                if os.path.exists(mhr_model_path):
+                if mhr_model_path and os.path.exists(mhr_model_path):
+                    print(f"[SAM3DBodyExportFBX] Using MHR model from: {mhr_model_path}")
                     mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
                     lbs = mhr_model.character_torch.linear_blend_skinning
 
@@ -163,7 +200,9 @@ class SAM3DBodyExportFBX:
                     num_influenced = len([v for v in skinning_data if len(v) > 0])
                     print(f"[SAM3DBodyExportFBX] Vertices with bone influences: {num_influenced}/{num_vertices}")
                 else:
-                    print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found, skipping skinning weights")
+                    print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found")
+                    print(f"[SAM3DBodyExportFBX] Tried: mesh_data['mhr_path'], SAM3D_MHR_PATH env var, HuggingFace cache")
+                    print(f"[SAM3DBodyExportFBX] Skipping skinning weights")
             except Exception as e:
                 print(f"[SAM3DBodyExportFBX] [WARNING] Failed to extract skinning weights: {e}")
                 import traceback
@@ -197,9 +236,9 @@ class SAM3DBodyExportFBX:
                     print(f"[SAM3DBodyExportFBX] Loading MHR skeleton hierarchy from model...")
                     try:
                         # Load MHR model to extract joint parents
-                        mhr_model_path = os.path.expanduser('~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3/snapshots/3a55aef9c322e36127d57755573c161baf7c1785/assets/mhr_model.pt')
+                        mhr_model_path = find_mhr_model_path(mesh_data)
 
-                        if os.path.exists(mhr_model_path):
+                        if mhr_model_path and os.path.exists(mhr_model_path):
                             print(f"[SAM3DBodyExportFBX] Loading from: {mhr_model_path}")
                             mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
                             joint_parents_tensor = mhr_model.character_torch.skeleton.joint_parents
@@ -208,7 +247,8 @@ class SAM3DBodyExportFBX:
                             print(f"[SAM3DBodyExportFBX] ✓ Loaded MHR hierarchy with {len(joint_parents)} joints")
                             print(f"[SAM3DBodyExportFBX] Root joint (parent=-1) at index: {joint_parents.index(-1)}")
                         else:
-                            print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found at {mhr_model_path}")
+                            print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found")
+                            print(f"[SAM3DBodyExportFBX] Tried: mesh_data['mhr_path'], SAM3D_MHR_PATH env var, HuggingFace cache")
                     except Exception as e:
                         print(f"[SAM3DBodyExportFBX] [WARNING] Failed to load MHR hierarchy: {e}")
                         import traceback
