@@ -48,6 +48,10 @@ jobs:
         run: |
           pip install torch torchvision
 
+      - name: Install build dependencies
+        run: |
+          pip install numpy cython
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -109,6 +113,10 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           pip install torch torchvision
+
+      - name: Install build dependencies
+        run: |
+          pip install numpy cython
 
       - name: Install dependencies
         run: |
