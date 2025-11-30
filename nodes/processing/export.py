@@ -41,7 +41,12 @@ def find_mhr_model_path(mesh_data=None):
     if env_path and os.path.exists(env_path):
         return env_path
 
-    # Strategy 3: Search HuggingFace cache (any snapshot version)
+    # Strategy 3: Search ComfyUI models/sam3dbody/ folder
+    sam3dbody_dir = os.path.join(folder_paths.models_dir, "sam3dbody", "assets", "mhr_model.pt")
+    if os.path.exists(sam3dbody_dir):
+        return sam3dbody_dir
+
+    # Strategy 4 (legacy): Search HuggingFace cache for backwards compatibility
     hf_cache_base = os.path.expanduser("~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3")
     if os.path.exists(hf_cache_base):
         # Search all snapshots for mhr_model.pt
