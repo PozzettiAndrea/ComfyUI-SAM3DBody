@@ -39,22 +39,22 @@ def copy_assets():
             if item.name.startswith('.'):
                 continue
 
-            # Skip directories (only copy files)
-            if item.is_dir():
-                continue
-
             # Destination path
             dest = input_dir / item.name
 
-            # Skip if file already exists
+            # Skip if already exists
             if dest.exists():
                 skipped_count += 1
                 continue
 
-            # Copy file
+            # Copy file or directory
             try:
-                shutil.copy2(item, dest)
-                print(f"[SAM3DBody] Copied asset: {item.name} -> {dest}")
+                if item.is_dir():
+                    shutil.copytree(item, dest)
+                    print(f"[SAM3DBody] Copied asset folder: {item.name} -> {dest}")
+                else:
+                    shutil.copy2(item, dest)
+                    print(f"[SAM3DBody] Copied asset: {item.name} -> {dest}")
                 copied_count += 1
             except Exception as e:
                 print(f"[SAM3DBody] Failed to copy {item.name}: {e}")

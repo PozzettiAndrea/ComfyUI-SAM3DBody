@@ -92,7 +92,7 @@ class SAM3DBodyExportFBX:
         # Extract mesh data
         vertices = mesh_data.get("vertices")
         faces = mesh_data.get("faces")
-        joint_coords = mesh_data.get("joint_coords")  # 127 joints
+        joint_coords = mesh_data.get("joint_coords")  # 127 joints with world coords
 
         if vertices is None or faces is None:
             raise RuntimeError("Mesh vertices or faces not found in mesh_data")
@@ -123,27 +123,17 @@ class SAM3DBodyExportFBX:
         if joint_coords is not None:
             skeleton_json_path = os.path.join(temp_dir, f"skeleton_{int(time.time())}.json")
 
-            # Convert mesh bounds to plain Python types (with coordinate transform applied)
+            # Convert mesh bounds to plain Python types (no transform)
             mesh_min = vertices.min(axis=0)
             mesh_max = vertices.max(axis=0)
             if isinstance(mesh_min, np.ndarray):
                 mesh_min = [float(x) for x in mesh_min]
             if isinstance(mesh_max, np.ndarray):
                 mesh_max = [float(x) for x in mesh_max]
-            # Apply same transform as mesh: flip all axes
-            mesh_min = [-mesh_min[0], -mesh_min[1], -mesh_min[2]]
-            mesh_max = [-mesh_max[0], -mesh_max[1], -mesh_max[2]]
-            # Ensure min < max after flipping (signs reverse order)
-            mesh_min, mesh_max = [min(mesh_min[i], mesh_max[i]) for i in range(3)], [max(mesh_min[i], mesh_max[i]) for i in range(3)]
 
-            # Apply coordinate transform to joint positions to match mesh (flip X, Y, Z)
-            joint_coords_flipped = joint_coords.copy()
-            joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
-            joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
-            joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
-
+            # No coordinate transform - use original predicted coordinates
             skeleton_data = {
-                "joint_positions": joint_coords_flipped.tolist(),
+                "joint_positions": joint_coords.tolist(),
                 "num_joints": len(joint_coords),
                 "mesh_vertices_bounds_min": mesh_min,
                 "mesh_vertices_bounds_max": mesh_max,
@@ -274,7 +264,7 @@ class SAM3DBodyExportFBX:
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
-                f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+                f.write(f"v {v[0]:.6f} {v[1]:.6f} {v[2]:.6f}\n")
             for face in faces:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
@@ -306,16 +296,51 @@ class SAM3DBodyExportMultipleFBX:
     FUNCTION = "export_multi_fbx"
     CATEGORY = "SAM3DBody/export"
     OUTPUT_NODE = True
+    INPUT_IS_LIST = True  # Receive all batched inputs at once
+    OUTPUT_IS_LIST = (True,)  # Return list output
 
     def export_multi_fbx(self, multi_mesh_data, output_filename):
         """Export all meshes with skeletons to a single combined FBX file."""
+
+        # When INPUT_IS_LIST=True, inputs come as lists
+        # Merge all batched multi_mesh_data into one
+        if isinstance(multi_mesh_data, list):
+            print(f"[SAM3D Export] Received {len(multi_mesh_data)} batched inputs, merging...")
+            merged_people = []
+            faces = None
+            mhr_path = None
+
+            for batch_data in multi_mesh_data:
+                if batch_data is None:
+                    continue
+                people = batch_data.get("people", [])
+                merged_people.extend(people)
+                if faces is None:
+                    faces = batch_data.get("faces")
+                if mhr_path is None:
+                    mhr_path = batch_data.get("mhr_path")
+
+            # Create merged multi_mesh_data
+            multi_mesh_data = {
+                "num_people": len(merged_people),
+                "people": merged_people,
+                "faces": faces,
+                "mhr_path": mhr_path,
+            }
+            print(f"[SAM3D Export] Merged into {len(merged_people)} total people")
+
+        # Handle output_filename list
+        if isinstance(output_filename, list):
+            output_filename = output_filename[0]
 
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
         faces = multi_mesh_data.get("faces")
 
+        print(f"[SAM3D Export] ========== EXPORT CALLED ==========")
         print(f"[SAM3D Export] num_people from data: {num_people}")
         print(f"[SAM3D Export] actual people list length: {len(people)}")
+        print(f"[SAM3D Export] output_filename: {output_filename}")
 
         if num_people == 0 or len(people) == 0:
             raise RuntimeError("No mesh data to export")
@@ -381,26 +406,32 @@ class SAM3DBodyExportMultipleFBX:
 
                 # Apply world position offset from camera translation
                 if cam_t is not None:
+                    print(f"[DEBUG EXPORT] Person {i}: cam_t = {cam_t}")
                     vertices = vertices + cam_t  # Broadcast adds cam_t to each vertex
                     if joint_coords is not None:
                         joint_coords = joint_coords + cam_t
 
+                # Debug: print coordinates after cam_t applied
+                print(f"[DEBUG EXPORT] Person {i}: vertices shape = {vertices.shape}")
+                print(f"[DEBUG EXPORT] Person {i}: vertex bounds X=[{vertices[:,0].min():.4f}, {vertices[:,0].max():.4f}]")
+                print(f"[DEBUG EXPORT] Person {i}: vertex bounds Y=[{vertices[:,1].min():.4f}, {vertices[:,1].max():.4f}]")
+                print(f"[DEBUG EXPORT] Person {i}: vertex bounds Z=[{vertices[:,2].min():.4f}, {vertices[:,2].max():.4f}]")
+                if joint_coords is not None:
+                    print(f"[DEBUG EXPORT] Person {i}: joint_coords shape = {joint_coords.shape}")
+                    print(f"[DEBUG EXPORT] Person {i}: first 3 joints = {joint_coords[:3].tolist()}")
+
                 # Write OBJ file for this person
                 temp_obj = tempfile.NamedTemporaryFile(suffix=f'_person{i}.obj', delete=False)
+                temp_obj.close()  # Close before writing to allow _write_obj_file to open it
                 temp_files.append(temp_obj.name)
                 self._write_obj_file(temp_obj.name, vertices, faces)
 
                 # Prepare skeleton data
                 skeleton_info = {}
                 if joint_coords is not None:
-                    # Apply coordinate transform to joint positions
-                    joint_coords_flipped = joint_coords.copy()
-                    joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
-                    joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
-                    joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
-
+                    # No coordinate transform - use original predicted coordinates
                     skeleton_info = {
-                        "joint_positions": joint_coords_flipped.tolist(),
+                        "joint_positions": joint_coords.tolist(),
                         "num_joints": len(joint_coords),
                     }
 
@@ -435,6 +466,8 @@ class SAM3DBodyExportMultipleFBX:
             combined_json = tempfile.NamedTemporaryFile(suffix='_combined.json', delete=False, mode='w')
             temp_files.append(combined_json.name)
             json.dump(combined_data, combined_json)
+            combined_json.flush()  # Ensure all data is written to disk
+            os.fsync(combined_json.fileno())  # Force OS to write to disk
             combined_json.close()
 
             # Export using Blender with combined script
@@ -468,7 +501,7 @@ class SAM3DBodyExportMultipleFBX:
                     shutil.copy(obj_path, fallback_path)
                 output_fbx_path = output_fbx_path.replace('.fbx', '_person0.obj')
 
-            return (os.path.basename(output_fbx_path),)
+            return ([os.path.basename(output_fbx_path)],)
 
         finally:
             # Clean up temp files
@@ -483,7 +516,7 @@ class SAM3DBodyExportMultipleFBX:
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
-                f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+                f.write(f"v {v[0]:.6f} {v[1]:.6f} {v[2]:.6f}\n")
             for face in faces:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 

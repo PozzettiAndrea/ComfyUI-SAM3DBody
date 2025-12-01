@@ -336,11 +336,45 @@ class MHRHead(nn.Module):
         verts, j3d, jcoords, mhr_model_params, joint_global_rots = output
         j3d = j3d[:, :70]  # 308 --> 70 keypoints
 
+        # CAPTURE STAGE 0: Raw MHR output before any transforms
+        intermediate_stages = {
+            "stage_0_raw": {
+                "vertices": verts.clone().detach() if verts is not None else None,
+                "joints": jcoords.clone().detach() if jcoords is not None else None,
+                "keypoints_70": j3d.clone().detach(),
+            }
+        }
+
+        # DEBUG: Write OBJ BEFORE Y/Z flip to see raw MHR output
         if verts is not None:
-            verts[..., [1, 2]] *= -1  # Camera system difference
-        j3d[..., [1, 2]] *= -1  # Camera system difference
+            verts_before_flip = verts[0].detach().cpu().numpy()  # First batch item
+            print(f"[DEBUG MHR BEFORE FLIP] Bounds:")
+            print(f"  X: [{verts_before_flip[:,0].min():.4f}, {verts_before_flip[:,0].max():.4f}] range={verts_before_flip[:,0].max()-verts_before_flip[:,0].min():.4f}")
+            print(f"  Y: [{verts_before_flip[:,1].min():.4f}, {verts_before_flip[:,1].max():.4f}] range={verts_before_flip[:,1].max()-verts_before_flip[:,1].min():.4f}")
+            print(f"  Z: [{verts_before_flip[:,2].min():.4f}, {verts_before_flip[:,2].max():.4f}] range={verts_before_flip[:,2].max()-verts_before_flip[:,2].min():.4f}")
+            with open("/tmp/debug_0_before_flip.obj", 'w') as f:
+                f.write("# Stage0: RAW MHR output BEFORE Y/Z flip\n")
+                for v in verts_before_flip:
+                    f.write(f"v {v[0]:.6f} {v[1]:.6f} {v[2]:.6f}\n")
+                faces_np = self.faces.cpu().numpy()
+                for face in faces_np:
+                    f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
+            print(f"[DEBUG] Wrote /tmp/debug_0_before_flip.obj")
+
+        # Only flip Z axis (not Y) to convert from camera to OpenGL convention
+        # Flipping Y would invert the person (head below feet)
+        if verts is not None:
+            verts[..., 2] *= -1  # Only flip Z
+        j3d[..., 2] *= -1  # Only flip Z
         if jcoords is not None:
-            jcoords[..., [1, 2]] *= -1
+            jcoords[..., 2] *= -1  # Only flip Z
+
+        # CAPTURE STAGE 1: After Z-flip
+        intermediate_stages["stage_1_z_flip"] = {
+            "vertices": verts.clone().detach() if verts is not None else None,
+            "joints": jcoords.clone().detach() if jcoords is not None else None,
+            "keypoints_70": j3d.clone().detach(),
+        }
 
         # Prep outputs
         output = {
@@ -364,6 +398,7 @@ class MHRHead(nn.Module):
             "faces": self.faces.cpu().numpy(),
             "joint_global_rots": joint_global_rots,
             "mhr_model_params": mhr_model_params,
+            "intermediate_stages": intermediate_stages,
         }
 
         return output

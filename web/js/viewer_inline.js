@@ -46,11 +46,12 @@ export const VIEWER_HTML = `<!DOCTYPE html>
         }
         #controls {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(26, 26, 26, 0.95);
-            border-top: 1px solid #444;
+            top: 10px;
+            right: 10px;
+            width: 220px;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid #444;
+            border-radius: 5px;
             padding: 10px;
             color: white;
             font-size: 11px;
@@ -58,8 +59,30 @@ export const VIEWER_HTML = `<!DOCTYPE html>
             flex-direction: column;
             gap: 8px;
             z-index: 100;
-            max-height: 40%;
+            max-height: 80%;
             overflow-y: auto;
+        }
+        #controls.collapsed {
+            width: auto;
+            max-height: none;
+            overflow: visible;
+        }
+        #controls.collapsed > *:not(.collapse-toggle) {
+            display: none;
+        }
+        .collapse-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapse-toggle::after {
+            content: '▼';
+            font-size: 10px;
+        }
+        #controls.collapsed .collapse-toggle::after {
+            content: '◀';
         }
         #controls button {
             background: #4a4a4a;
@@ -108,7 +131,7 @@ export const VIEWER_HTML = `<!DOCTYPE html>
     </div>
 
     <div id="controls">
-        <div><strong>SAM3D Body FBX Viewer</strong></div>
+        <div class="collapse-toggle" onclick="this.parentElement.classList.toggle('collapsed')"><strong>Controls</strong></div>
 
         <div class="control-group">
             <label class="checkbox-label">
@@ -37424,8 +37447,8 @@ version 0.6.9
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x2a2a2a);
 
-        // Camera
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // Camera (far plane increased for large scenes)
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
         camera.position.set(2, 2, 2);
 
         // Renderer with context loss handling
@@ -37456,13 +37479,29 @@ version 0.6.9
             }, 3000);
         }, false);
 
-        // Controls
+        // Use default Y-up coordinate system (matches FBX standard and Three.js default)
+
+        // Controls - ParaView/VTK-style
         const controls = new OrbitControls(camera, canvas);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
         controls.zoomSpeed = 3.0;          // 3x faster zoom
         controls.minDistance = 0.1;        // Allow close zoom
         controls.zoomToCursor = true;      // Zoom towards cursor position
+
+        // ParaView-style controls
+        controls.screenSpacePanning = true;     // Pan parallel to screen
+        controls.enablePan = true;
+        controls.panSpeed = 1.0;
+        controls.rotateSpeed = 1.0;
+
+        // Mouse button mapping (ParaView-style):
+        // Left = rotate, Middle = pan, Right = zoom
+        controls.mouseButtons = {
+            LEFT: THREE.MOUSE.ROTATE,
+            MIDDLE: THREE.MOUSE.PAN,
+            RIGHT: THREE.MOUSE.DOLLY
+        };
 
         // Transform controls for bone manipulation
         const transformControls = new TransformControls(camera, canvas);
@@ -37485,7 +37524,7 @@ version 0.6.9
         dirLight2.position.set(-5, -5, -7);
         scene.add(dirLight2);
 
-        // Grid (will be resized based on mesh)
+        // Grid (will be resized based on mesh) - on XZ plane (Y-up default)
         let grid = new THREE.GridHelper(10, 10, 0x444444, 0x222222);
         scene.add(grid);
 
@@ -37875,9 +37914,15 @@ version 0.6.9
                     console.log('[SAM3DBody FBX Viewer] FBX loaded successfully');
                     currentModel = fbx;
 
-                    // Center model
+                    // Get model bounds BEFORE centering
                     const box = new THREE.Box3().setFromObject(currentModel);
                     const center = box.getCenter(new THREE.Vector3());
+
+                    // Store the original center for camera positioning
+                    const originalCenter = center.clone();
+                    console.log('[SAM3DBody FBX Viewer] Model center (world coords):', originalCenter);
+
+                    // Center model at origin for easier manipulation
                     currentModel.position.sub(center);
 
                     // Store bounds for later use
@@ -37999,10 +38044,13 @@ version 0.6.9
                     zSphere.position.set(0, 0, axesSize);
                     axes.add(zSphere);
 
-                    defaultCameraPosition.set(distance, distance, distance);
+                    // Position camera for front view (like original photo)
+                    // Y-up coordinate system: X=right, Y=up (height), Z=depth (toward camera)
+                    // Camera at positive Z looks at subjects from the front
+                    defaultCameraPosition.set(0, size.y * 0.5, distance);
                     camera.position.copy(defaultCameraPosition);
-                    camera.lookAt(0, 0, 0);
-                    controls.target.set(0, 0, 0);
+                    camera.lookAt(0, size.y * 0.5, 0);  // Look at roughly chest height
+                    controls.target.set(0, size.y * 0.5, 0);
                     controls.update();
 
                     // Set maxDistance dynamically based on model size (allow zooming out well beyond initial position)

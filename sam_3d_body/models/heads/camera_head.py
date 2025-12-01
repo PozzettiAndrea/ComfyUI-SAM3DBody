@@ -107,4 +107,5 @@ class PerspectiveHead(nn.Module):
             "pred_cam_t": pred_cam_t,
             "focal_length": focal_length,
             "pred_keypoints_2d_depth": j3d_cam.reshape(batch_size, -1, 3)[:, :, 2],
+            "pred_keypoints_3d_cam": j3d_cam.reshape(batch_size, -1, 3),
         }

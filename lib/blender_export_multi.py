@@ -47,6 +47,8 @@ people_data = combined_data.get("people", [])
 
 print(f"[SAM3D Multi] Output path: {output_fbx}")
 print(f"[SAM3D Multi] Number of people in JSON: {len(people_data)}")
+for i, p in enumerate(people_data):
+    print(f"[SAM3D Multi] Person {i}: obj_path={p.get('obj_path')}, has_skeleton={bool(p.get('skeleton', {}).get('joint_positions'))}")
 
 if not output_fbx or not people_data:
     print("[SAM3D Multi] Invalid combined data - missing output_path or people")
@@ -86,6 +88,15 @@ def create_armature_for_person(person_idx, skeleton_data, collection):
     joint_parents_list = skeleton_data.get('joint_parents')
     skinning_weights = skeleton_data.get('skinning_weights')
 
+    # Debug: print joint positions received (before transform)
+    print(f"[DEBUG BLENDER] Person {person_idx}: Creating armature with {num_joints} joints")
+    print(f"[DEBUG BLENDER] Person {person_idx}: Joint bounds X=[{joints[:,0].min():.4f}, {joints[:,0].max():.4f}]")
+    print(f"[DEBUG BLENDER] Person {person_idx}: Joint bounds Y=[{joints[:,1].min():.4f}, {joints[:,1].max():.4f}] (height)")
+    print(f"[DEBUG BLENDER] Person {person_idx}: Joint bounds Z=[{joints[:,2].min():.4f}, {joints[:,2].max():.4f}] (depth)")
+
+    # Keep Y-up coordinates (same as mesh from OBJ import)
+    # No transform needed - mesh and skeleton both use Y-up
+
     # Create armature in edit mode
     bpy.ops.object.armature_add(enter_editmode=True)
     armature = bpy.context.active_object.data
@@ -112,19 +123,18 @@ def create_armature_for_person(person_idx, skeleton_data, collection):
     # Make positions relative to skeleton center
     rel_joints = joints - skeleton_center
 
-    # Apply coordinate system correction to match mesh orientation
-    rel_joints_corrected = np.zeros_like(rel_joints)
-    rel_joints_corrected[:, 0] = rel_joints[:, 0]
-    rel_joints_corrected[:, 1] = -rel_joints[:, 2]
-    rel_joints_corrected[:, 2] = rel_joints[:, 1]
+    # Debug: print skeleton center and relative joints
+    print(f"[DEBUG BLENDER] Person {person_idx}: skeleton_center = {skeleton_center.tolist()}")
+    print(f"[DEBUG BLENDER] Person {person_idx}: rel_joints[0] = {rel_joints[0].tolist()}")
 
+    # No coordinate transform - use original predicted coordinates
     # Create all bones with person-specific names
     bones_dict = {}
     for i in range(num_joints):
         bone_name = f'P{person_idx}_Joint_{i:03d}'
         bone = edit_bones.new(bone_name)
-        bone.head = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2]))
-        bone.tail = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2] + extrude_size))
+        bone.head = Vector((rel_joints[i, 0], rel_joints[i, 1], rel_joints[i, 2]))
+        bone.tail = Vector((rel_joints[i, 0], rel_joints[i, 1], rel_joints[i, 2] + extrude_size))
         bones_dict[i] = bone
 
     # Build hierarchical structure using joint parents if available
@@ -143,12 +153,8 @@ def create_armature_for_person(person_idx, skeleton_data, collection):
     # Switch to object mode
     bpy.ops.object.mode_set(mode='OBJECT')
 
-    # Position armature at skeleton center
-    skeleton_center_corrected = np.zeros(3)
-    skeleton_center_corrected[0] = skeleton_center[0]
-    skeleton_center_corrected[1] = -skeleton_center[2]
-    skeleton_center_corrected[2] = skeleton_center[1]
-    armature_obj.location = Vector((skeleton_center_corrected[0], skeleton_center_corrected[1], skeleton_center_corrected[2]))
+    # Position armature at skeleton center (no transform)
+    armature_obj.location = Vector((skeleton_center[0], skeleton_center[1], skeleton_center[2]))
 
     return {
         'armature_obj': armature_obj,
@@ -227,6 +233,7 @@ for person in people_data:
         # Get mesh count before import
         meshes_before = set(obj.name for obj in bpy.context.scene.objects if obj.type == 'MESH')
 
+        # Use Blender defaults to convert Y-up OBJ to Z-up Blender scene
         bpy.ops.wm.obj_import(filepath=obj_path)
 
         # Find newly imported mesh
@@ -240,6 +247,18 @@ for person in people_data:
         mesh_obj = bpy.data.objects[list(new_meshes)[0]]
         mesh_obj.name = f'Person_{person_idx}'
         print(f"[SAM3D Multi] Imported mesh: {mesh_obj.name}")
+
+        # Debug: print mesh bounds after import
+        verts = mesh_obj.data.vertices
+        xs = [v.co.x for v in verts]
+        ys = [v.co.y for v in verts]
+        zs = [v.co.z for v in verts]
+        print(f"[DEBUG BLENDER] Mesh {mesh_obj.name} after OBJ import:")
+        print(f"[DEBUG BLENDER]   Local vertex bounds X=[{min(xs):.4f}, {max(xs):.4f}]")
+        print(f"[DEBUG BLENDER]   Local vertex bounds Y=[{min(ys):.4f}, {max(ys):.4f}]")
+        print(f"[DEBUG BLENDER]   Local vertex bounds Z=[{min(zs):.4f}, {max(zs):.4f}]")
+        print(f"[DEBUG BLENDER]   Mesh location: {mesh_obj.location[:]}")
+        print(f"[DEBUG BLENDER]   First 3 verts: {[(v.co.x, v.co.y, v.co.z) for v in list(verts)[:3]]}")
 
         # Move to our collection
         if mesh_obj.name in bpy.context.scene.collection.objects:
@@ -263,10 +282,21 @@ for person in people_data:
 # Export all to single FBX
 os.makedirs(os.path.dirname(output_fbx) if os.path.dirname(output_fbx) else '.', exist_ok=True)
 
-# Debug: show what's in the collection
+# Debug: show what's in the collection with detailed position info
 print(f"[SAM3D Multi] Objects in collection before export:")
 for obj in collection.objects:
-    print(f"  - {obj.name} ({obj.type})")
+    print(f"  - {obj.name} ({obj.type}) at location {obj.location[:]}")
+    if obj.type == 'MESH':
+        verts = obj.data.vertices
+        if verts:
+            xs = [v.co.x for v in verts]
+            ys = [v.co.y for v in verts]
+            zs = [v.co.z for v in verts]
+            print(f"    [DEBUG] Local vertex bounds: X=[{min(xs):.4f}, {max(xs):.4f}], Y=[{min(ys):.4f}, {max(ys):.4f}], Z=[{min(zs):.4f}, {max(zs):.4f}]")
+    elif obj.type == 'ARMATURE':
+        if obj.data.bones:
+            first_bone = obj.data.bones[0]
+            print(f"    [DEBUG] First bone {first_bone.name}: head_local={first_bone.head_local[:]}")
 
 try:
     # Select all objects in our collection
@@ -275,7 +305,7 @@ try:
     for obj in collection.objects:
         obj.select_set(True)
 
-    # Export FBX with all objects
+    # Export FBX with Y-up (standard FBX convention, matches Three.js default)
     bpy.ops.export_scene.fbx(
         filepath=output_fbx,
         check_existing=False,

@@ -75,6 +75,7 @@ bpy.context.scene.collection.children.link(collection)
 
 # Import OBJ mesh
 try:
+    # Use Blender defaults to convert Y-up OBJ to Z-up Blender scene
     bpy.ops.wm.obj_import(filepath=input_obj)
 
     imported_objects = [obj for obj in bpy.context.scene.objects if obj.type == 'MESH']
@@ -96,6 +97,9 @@ except Exception as e:
 # Create armature from skeleton if provided
 if joints is not None and num_joints > 0:
     try:
+        # Keep Y-up coordinates (same as mesh from OBJ import)
+        # No transform needed - mesh and skeleton both use Y-up
+
         # Create armature in edit mode
         bpy.ops.object.armature_add(enter_editmode=True)
         armature = bpy.data.armatures.get('Armature')
@@ -116,25 +120,14 @@ if joints is not None and num_joints > 0:
         if default_bone:
             edit_bones.remove(default_bone)
 
-        # Calculate skeleton center for root bone placement
-        skeleton_center = joints.mean(axis=0)
-
-        # Make positions relative to skeleton center
-        rel_joints = joints - skeleton_center
-
-        # Apply coordinate system correction to match mesh orientation
-        rel_joints_corrected = np.zeros_like(rel_joints)
-        rel_joints_corrected[:, 0] = rel_joints[:, 0]
-        rel_joints_corrected[:, 1] = -rel_joints[:, 2]
-        rel_joints_corrected[:, 2] = rel_joints[:, 1]
-
+        # No coordinate transform - use original predicted coordinates
         # Create all bones
         bones_dict = {}
         for i in range(num_joints):
             bone_name = f'Joint_{i:03d}'
             bone = edit_bones.new(bone_name)
-            bone.head = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2]))
-            bone.tail = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2] + extrude_size))
+            bone.head = Vector((joints[i, 0], joints[i, 1], joints[i, 2]))
+            bone.tail = Vector((joints[i, 0], joints[i, 1], joints[i, 2] + extrude_size))
             bones_dict[bone_name] = bone
 
         # Build hierarchical structure using joint parents if available
@@ -157,12 +150,8 @@ if joints is not None and num_joints > 0:
         # Switch to object mode
         bpy.ops.object.mode_set(mode='OBJECT')
 
-        # Position armature at skeleton center
-        skeleton_center_corrected = np.zeros(3)
-        skeleton_center_corrected[0] = skeleton_center[0]
-        skeleton_center_corrected[1] = -skeleton_center[2]
-        skeleton_center_corrected[2] = skeleton_center[1]
-        armature_obj.location = Vector((skeleton_center_corrected[0], skeleton_center_corrected[1], skeleton_center_corrected[2]))
+        # Keep armature at origin (mesh and skeleton both use world coords)
+        armature_obj.location = Vector((0, 0, 0))
 
         # Apply skinning weights if available
         if skinning_weights:
@@ -210,7 +199,7 @@ try:
     for obj in collection.objects:
         obj.select_set(True)
 
-    # Export FBX
+    # Export FBX with Y-up (standard FBX convention, matches Three.js default)
     bpy.ops.export_scene.fbx(
         filepath=output_fbx,
         check_existing=False,

@@ -54,6 +54,26 @@ class SAM3DBodyEstimator:
             ]
         )
 
+    def _extract_stages_for_idx(self, stages, idx):
+        """Extract single person's data from batched intermediate stages."""
+        if not stages:
+            return {}
+        result = {}
+        for stage_name, stage_data in stages.items():
+            result[stage_name] = {}
+            for key, val in stage_data.items():
+                if val is None:
+                    result[stage_name][key] = None
+                elif hasattr(val, 'shape') and len(val.shape) > 0:
+                    # Handle both torch tensors and numpy arrays
+                    if hasattr(val, 'cpu'):
+                        result[stage_name][key] = val[idx].cpu().numpy()
+                    else:
+                        result[stage_name][key] = val[idx]
+                else:
+                    result[stage_name][key] = val
+        return result
+
     @torch.no_grad()
     def process_one_image(
         self,
@@ -198,6 +218,10 @@ class SAM3DBodyEstimator:
                     "mask": masks[idx] if masks is not None else None,
                     "pred_joint_coords": out["pred_joint_coords"][idx],
                     "pred_global_rots": out["joint_global_rots"][idx],
+                    "pred_keypoints_3d_cam": out["pred_keypoints_3d_cam"][idx],
+                    "intermediate_stages": self._extract_stages_for_idx(
+                        out.get("intermediate_stages", {}), idx
+                    ),
                 }
             )
 
