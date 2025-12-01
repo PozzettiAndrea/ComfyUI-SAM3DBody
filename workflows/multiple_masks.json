@@ -1,0 +1,428 @@
+{
+  "id": "0ee524cd-7bc8-46f2-8751-32399825f67b",
+  "revision": 0,
+  "last_node_id": 23,
+  "last_link_id": 31,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadSAM3DBodyModel",
+      "pos": [
+        -146.61317323665412,
+        -413.4612632298113
+      ],
+      "size": [
+        270,
+        154
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
+        "Node name for S&R": "LoadSAM3DBodyModel",
+        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
+      },
+      "widgets_values": [
+        "huggingface",
+        ""
+      ]
+    },
+    {
+      "id": 11,
+      "type": "LoadImageDataSetFromFolder",
+      "pos": [
+        -229.25137836165385,
+        -95.94253541340514
+      ],
+      "size": [
+        301.4439453125,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "LoadImageDataSetFromFolder"
+      },
+      "widgets_values": [
+        "multi_people"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SAM3DBodyProcessMultiple",
+      "pos": [
+        310.13806988037925,
+        -51.40382894461709
+      ],
+      "size": [
+        294.4166015625,
+        98
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "link": 18
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 29
+        },
+        {
+          "name": "masks",
+          "type": "MASK",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "multi_mesh_data",
+          "type": "SAM3D_MULTI_OUTPUT",
+          "links": [
+            23
+          ]
+        },
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "0cb5527a152b90d4cfa1d2389f47997ca701d141",
+        "Node name for S&R": "SAM3DBodyProcessMultiple"
+      },
+      "widgets_values": [
+        "full"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        474.74004043522086,
+        277.90789091081365
+      ],
+      "size": [
+        216.20494921875002,
+        289.44467187500004
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.70",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 18,
+      "type": "SAM3DBodyExportMultipleFBX",
+      "pos": [
+        375.89212844756827,
+        -219.84798216127805
+      ],
+      "size": [
+        319.3130859375,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multi_mesh_data",
+          "type": "SAM3D_MULTI_OUTPUT",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fbx_path",
+          "type": "STRING",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "0cb5527a152b90d4cfa1d2389f47997ca701d141",
+        "Node name for S&R": "SAM3DBodyExportMultipleFBX"
+      },
+      "widgets_values": [
+        "sam3d_multi_rigged.fbx"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "SAM3DBodyPreviewRiggedMesh",
+      "pos": [
+        829.7028091383464,
+        -265.66157838215537
+      ],
+      "size": [
+        512,
+        798
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "fbx_output_path",
+          "type": "STRING",
+          "widget": {
+            "name": "fbx_output_path"
+          },
+          "link": 24
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "0cb5527a152b90d4cfa1d2389f47997ca701d141",
+        "Node name for S&R": "SAM3DBodyPreviewRiggedMesh"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 10,
+      "type": "LoadImageDataSetFromFolder",
+      "pos": [
+        -353.28583148665393,
+        91.26242552409491
+      ],
+      "size": [
+        301.4439453125,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            28
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "LoadImageDataSetFromFolder"
+      },
+      "widgets_values": [
+        "multi_people/masks"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "RebatchImages",
+      "pos": [
+        -140.53820511422543,
+        122.93502712267153
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 28
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            29,
+            30
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "RebatchImages"
+      },
+      "widgets_values": [
+        6
+      ]
+    },
+    {
+      "id": 23,
+      "type": "ImageToMask",
+      "pos": [
+        216.08444808959908,
+        131.17956117646858
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            31
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "ImageToMask"
+      },
+      "widgets_values": [
+        "red"
+      ]
+    }
+  ],
+  "links": [
+    [
+      18,
+      1,
+      0,
+      16,
+      0,
+      "SAM3D_MODEL"
+    ],
+    [
+      21,
+      16,
+      1,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      16,
+      0,
+      18,
+      0,
+      "SAM3D_MULTI_OUTPUT"
+    ],
+    [
+      24,
+      18,
+      0,
+      15,
+      0,
+      "STRING"
+    ],
+    [
+      28,
+      10,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      29,
+      21,
+      0,
+      16,
+      1,
+      "IMAGE"
+    ],
+    [
+      30,
+      21,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      23,
+      0,
+      16,
+      2,
+      "MASK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9229599817706424,
+      "offset": [
+        397.08372678001814,
+        502.9554626164088
+      ]
+    },
+    "frontendVersion": "1.32.9",
+    "workflowRendererVersion": "LG"
+  },
+  "version": 0.4
+}

@@ -1,115 +1,9 @@
 {
   "id": "0ee524cd-7bc8-46f2-8751-32399825f67b",
   "revision": 0,
-  "last_node_id": 9,
-  "last_link_id": 9,
+  "last_node_id": 10,
+  "last_link_id": 10,
   "nodes": [
-    {
-      "id": 1,
-      "type": "LoadSAM3DBodyModel",
-      "pos": [
-        -146.61317323665412,
-        -413.4612632298113
-      ],
-      "size": [
-        270,
-        154
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "SAM3D_MODEL",
-          "links": [
-            1
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
-        "Node name for S&R": "LoadSAM3DBodyModel",
-        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
-      },
-      "widgets_values": [
-        "huggingface",
-        "facebook/sam-3d-body-dinov3",
-        "auto",
-        "",
-        ""
-      ]
-    },
-    {
-      "id": 4,
-      "type": "PreviewImage",
-      "pos": [
-        705.8783998102209,
-        -199.28585908918637
-      ],
-      "size": [
-        140,
-        246
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 9
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.70",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 7,
-      "type": "SAM3DBodyExportMesh",
-      "pos": [
-        696.4222544508463,
-        -427.16112916340495
-      ],
-      "size": [
-        274.1890625,
-        82
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "mesh_data",
-          "type": "SAM3D_OUTPUT",
-          "link": 7
-        }
-      ],
-      "outputs": [
-        {
-          "name": "file_path",
-          "type": "STRING",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
-        "Node name for S&R": "SAM3DBodyExportMesh",
-        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
-      },
-      "widgets_values": [
-        "output_mesh.stl",
-        "output"
-      ]
-    },
     {
       "id": 3,
       "type": "LoadImage",
@@ -122,7 +16,7 @@
         314
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -217,6 +111,186 @@
         false,
         false
       ]
+    },
+    {
+      "id": 1,
+      "type": "LoadSAM3DBodyModel",
+      "pos": [
+        -146.61317323665412,
+        -413.4612632298113
+      ],
+      "size": [
+        270,
+        154
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
+        "Node name for S&R": "LoadSAM3DBodyModel",
+        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
+      },
+      "widgets_values": [
+        "huggingface",
+        "yourtoken"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        705.8783998102209,
+        -199.28585908918637
+      ],
+      "size": [
+        243.07247747469546,
+        259.74870734460893
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.70",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "SAM3DBodyExportMesh",
+      "pos": [
+        696.4222544508463,
+        -427.16112916340495
+      ],
+      "size": [
+        274.1890625,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mesh_data",
+          "type": "SAM3D_OUTPUT",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "file_path",
+          "type": "STRING",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
+        "Node name for S&R": "SAM3DBodyExportMesh",
+        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
+      },
+      "widgets_values": [
+        "output_mesh.stl",
+        "output"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "Preview3D",
+      "pos": [
+        1054.7903972406693,
+        -443.20047541480005
+      ],
+      "size": [
+        400,
+        550
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "camera_info",
+          "shape": 7,
+          "type": "LOAD3D_CAMERA",
+          "link": null
+        },
+        {
+          "name": "bg_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "model_file",
+          "type": "STRING",
+          "widget": {
+            "name": "model_file"
+          },
+          "link": 10
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "Preview3D",
+        "Last Time Model File": "output_mesh.stl",
+        "Scene Config": {
+          "showGrid": true,
+          "backgroundColor": "#282828",
+          "backgroundImage": "",
+          "backgroundRenderMode": "tiled"
+        },
+        "Camera Config": {
+          "cameraType": "perspective",
+          "fov": 35,
+          "state": {
+            "position": {
+              "x": -0.6886997854070056,
+              "y": 3.96403408858522,
+              "z": 10.01838667669006
+            },
+            "target": {
+              "x": 0,
+              "y": 2.4999999999999996,
+              "z": 0
+            },
+            "zoom": 1,
+            "cameraType": "perspective"
+          }
+        },
+        "Light Config": {
+          "intensity": 3
+        }
+      },
+      "widgets_values": [
+        "output_mesh.stl",
+        ""
+      ]
     }
   ],
   "links": [
@@ -259,19 +333,28 @@
       4,
       0,
       "IMAGE"
+    ],
+    [
+      10,
+      7,
+      0,
+      10,
+      2,
+      "STRING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8264462809917354,
+      "scale": 0.8108228282849641,
       "offset": [
-        281.30028461165386,
-        587.9540588509052
+        459.5185816926748,
+        753.8532609447144
       ]
     },
-    "frontendVersion": "1.28.9"
+    "frontendVersion": "1.32.9",
+    "workflowRendererVersion": "LG"
   },
   "version": 0.4
 }

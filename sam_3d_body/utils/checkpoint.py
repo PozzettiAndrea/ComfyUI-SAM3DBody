@@ -114,5 +114,4 @@ def load_state_dict(module, state_dict, strict=False, logger=None):
         err_msg = "\n".join(err_msg)
         if strict:
             raise RuntimeError(err_msg)
-        else:
-            log.warning(err_msg)
+        # Silently ignore non-strict mismatches (expected for MHR model buffers)

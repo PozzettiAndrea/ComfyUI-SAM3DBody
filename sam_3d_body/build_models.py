@@ -8,7 +8,6 @@ from .utils.checkpoint import load_state_dict
 
 
 def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: str = ""):
-    print("Loading SAM 3D Body model...")
 
     # Check the current directory, and if not present check the parent dir.
     model_cfg = os.path.join(os.path.dirname(checkpoint_path), "model_config.yaml")
@@ -29,7 +28,6 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: 
         tried_paths.append(bundled_config)
         if os.path.exists(bundled_config):
             model_cfg = bundled_config
-            print(f"[SAM3DBody] Using bundled default config: {bundled_config}")
         else:
             raise FileNotFoundError(
                 f"Could not find model_config.yaml in any of these locations:\n" +
