@@ -53,10 +53,12 @@ class LoadSAM3DBodyModel:
         # Auto-detect device
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
+        # Resolve to absolute path for clear error messages
+        model_path = os.path.abspath(model_path)
+
         # Check cache
         cache_key = f"{model_path}_{device}"
         if cache_key in _MODEL_CACHE:
-            print(f"[SAM3DBody] Using cached model")
             return (_MODEL_CACHE[cache_key],)
 
         # Expected file paths
@@ -67,14 +69,12 @@ class LoadSAM3DBodyModel:
         model_exists = os.path.exists(ckpt_path) and os.path.exists(mhr_path)
 
         if not model_exists:
-            print(f"[SAM3DBody] Model not found at {model_path}")
-
             # If no token provided, give instructions immediately
             if not hf_token:
                 raise RuntimeError(
                     f"\n[SAM3DBody] Model not found.\n\n"
                     f"Please place the model files at:\n"
-                    f"  {model_path}/\n"
+                    f"  {DEFAULT_MODEL_PATH}/\n"
                     f"    ├── model.ckpt          (SAM 3D Body checkpoint)\n"
                     f"    ├── model_config.yaml   (model configuration)\n"
                     f"    └── assets/\n"
@@ -86,7 +86,6 @@ class LoadSAM3DBodyModel:
                 )
 
             # Try to download with token
-            print(f"[SAM3DBody] Attempting to download from HuggingFace...")
             os.environ["HF_TOKEN"] = hf_token
 
             try:
@@ -97,14 +96,13 @@ class LoadSAM3DBodyModel:
                     repo_id="facebook/sam-3d-body-dinov3",
                     local_dir=model_path
                 )
-                print(f"[SAM3DBody] Downloaded model to {model_path}")
 
             except Exception as e:
                 # Download failed - give user instructions
                 raise RuntimeError(
                     f"\n[SAM3DBody] Download failed.\n\n"
                     f"Please manually place the model files at:\n"
-                    f"  {model_path}/\n"
+                    f"  {DEFAULT_MODEL_PATH}/\n"
                     f"    ├── model.ckpt          (SAM 3D Body checkpoint)\n"
                     f"    ├── model_config.yaml   (model configuration)\n"
                     f"    └── assets/\n"
@@ -113,17 +111,20 @@ class LoadSAM3DBodyModel:
                 ) from e
 
         # Now load the model
-        print(f"[SAM3DBody] Loading model from {model_path}...")
-        print(f"[SAM3DBody] Using device: {device}")
-
         try:
             from sam_3d_body import load_sam_3d_body
 
-            model, model_cfg, mhr_path_used = load_sam_3d_body(
+            result = load_sam_3d_body(
                 checkpoint_path=ckpt_path,
                 device=device,
                 mhr_path=mhr_path
             )
+            # Handle both 2-value and 3-value returns from different sam_3d_body versions
+            if len(result) == 3:
+                model, model_cfg, mhr_path_used = result
+            else:
+                model, model_cfg = result
+                mhr_path_used = mhr_path
 
             # Create model dictionary
             model_dict = {
@@ -137,7 +138,6 @@ class LoadSAM3DBodyModel:
             # Cache it
             _MODEL_CACHE[cache_key] = model_dict
 
-            print(f"[SAM3DBody] Model loaded successfully on {device}")
             return (model_dict,)
 
         except ImportError as e:

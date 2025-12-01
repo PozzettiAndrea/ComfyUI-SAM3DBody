@@ -10,7 +10,7 @@ import torch.utils.checkpoint as checkpoint
 try:
     from flash_attn.flash_attn_interface import flash_attn_func
 except:
-    print("No Flash Attention!")
+    pass  # Flash Attention not available
 
 from timm.models.layers import drop_path, to_2tuple, trunc_normal_
 

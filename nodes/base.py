@@ -146,6 +146,7 @@ def vertices_to_point_cloud(vertices):
 NODE_DIR = Path(__file__).parent.parent.absolute()  # Go up from nodes/ to ComfyUI-SAM3DBody/
 LIB_DIR = NODE_DIR / "lib"
 BLENDER_SCRIPT = str(LIB_DIR / "blender_export_sam3d_fbx.py")
+BLENDER_MULTI_SCRIPT = str(LIB_DIR / "blender_export_multi.py")
 
 # Find Blender executable
 BLENDER_DIR = LIB_DIR / "blender"

@@ -1,5 +1,9 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 
+import os
+import sys
+from contextlib import redirect_stdout, redirect_stderr
+
 import torch
 from torch import nn
 
@@ -12,13 +16,16 @@ class Dinov3Backbone(nn.Module):
         self.name = name
         self.cfg = cfg
 
-        self.encoder = torch.hub.load(
-            "facebookresearch/dinov3",
-            self.name,
-            source="github",
-            pretrained=False,
-            drop_path=self.cfg.MODEL.BACKBONE.DROP_PATH_RATE,
-        )
+        # Suppress verbose output from torch.hub.load
+        with open(os.devnull, 'w') as devnull:
+            with redirect_stdout(devnull), redirect_stderr(devnull):
+                self.encoder = torch.hub.load(
+                    "facebookresearch/dinov3",
+                    self.name,
+                    source="github",
+                    pretrained=False,
+                    drop_path=self.cfg.MODEL.BACKBONE.DROP_PATH_RATE,
+                )
         self.patch_size = self.encoder.patch_size
         self.embed_dim = self.embed_dims = self.encoder.embed_dim
 

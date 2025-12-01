@@ -16,7 +16,7 @@ import torch
 import folder_paths
 import glob
 
-from ..base import BLENDER_EXE, BLENDER_SCRIPT
+from ..base import BLENDER_EXE, BLENDER_SCRIPT, BLENDER_MULTI_SCRIPT
 from ...constants import BLENDER_TIMEOUT
 
 
@@ -49,11 +49,9 @@ def find_mhr_model_path(mesh_data=None):
     # Strategy 4 (legacy): Search HuggingFace cache for backwards compatibility
     hf_cache_base = os.path.expanduser("~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3")
     if os.path.exists(hf_cache_base):
-        # Search all snapshots for mhr_model.pt
         pattern = os.path.join(hf_cache_base, "snapshots", "*", "assets", "mhr_model.pt")
         matches = glob.glob(pattern)
         if matches:
-            # Return the most recently modified one
             matches.sort(key=os.path.getmtime, reverse=True)
             return matches[0]
 
@@ -90,7 +88,6 @@ class SAM3DBodyExportFBX:
 
     def export_fbx(self, mesh_data, output_filename):
         """Export mesh with skeleton to FBX format."""
-        print(f"[SAM3DBodyExportFBX] Exporting to FBX...")
 
         # Extract mesh data
         vertices = mesh_data.get("vertices")
@@ -108,10 +105,6 @@ class SAM3DBodyExportFBX:
         if joint_coords is not None and isinstance(joint_coords, torch.Tensor):
             joint_coords = joint_coords.cpu().numpy()
 
-        print(f"[SAM3DBodyExportFBX] Mesh: {len(vertices)} vertices, {len(faces)} faces")
-        if joint_coords is not None:
-            print(f"[SAM3DBodyExportFBX] Skeleton: {len(joint_coords)} joints")
-
         # Prepare output path
         output_dir = folder_paths.get_output_directory()
         if not output_filename.endswith('.fbx'):
@@ -124,7 +117,6 @@ class SAM3DBodyExportFBX:
 
         # Write OBJ file
         self._write_obj_file(temp_obj_path, vertices, faces)
-        print(f"[SAM3DBodyExportFBX] Wrote temporary OBJ: {temp_obj_path}")
 
         # Save skeleton data if available
         skeleton_json_path = None
@@ -146,36 +138,29 @@ class SAM3DBodyExportFBX:
 
             # Apply coordinate transform to joint positions to match mesh (flip X, Y, Z)
             joint_coords_flipped = joint_coords.copy()
-            joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]  # Flip X (demirror)
-            joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]  # Flip Y (point up)
-            joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]  # Flip Z
-            print(f"[SAM3DBodyExportFBX] Applied coordinate transform to mesh and skeleton (flipped X, Y, Z)")
+            joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
+            joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
+            joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
 
             skeleton_data = {
                 "joint_positions": joint_coords_flipped.tolist(),
                 "num_joints": len(joint_coords),
-                # Add mesh vertices bounds for debugging coordinate spaces
                 "mesh_vertices_bounds_min": mesh_min,
                 "mesh_vertices_bounds_max": mesh_max,
             }
 
             # Extract skinning weights from MHR model
-            print(f"[SAM3DBodyExportFBX] Extracting skinning weights from MHR model...")
             try:
                 mhr_model_path = find_mhr_model_path(mesh_data)
 
                 if mhr_model_path and os.path.exists(mhr_model_path):
-                    print(f"[SAM3DBodyExportFBX] Using MHR model from: {mhr_model_path}")
                     mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
                     lbs = mhr_model.character_torch.linear_blend_skinning
 
-                    # Get the flattened skinning data
                     vert_indices = lbs.vert_indices_flattened.cpu().numpy().astype(int)
                     skin_indices = lbs.skin_indices_flattened.cpu().numpy().astype(int)
                     skin_weights = lbs.skin_weights_flattened.cpu().numpy().astype(float)
 
-                    # Convert from flattened format to per-vertex format
-                    # Create a dictionary mapping vertex index to list of (bone_index, weight) tuples
                     vertex_weights = {}
                     for i in range(len(vert_indices)):
                         vert_idx = int(vert_indices[i])
@@ -186,39 +171,22 @@ class SAM3DBodyExportFBX:
                             vertex_weights[vert_idx] = []
                         vertex_weights[vert_idx].append([bone_idx, weight])
 
-                    # Convert to list format for JSON serialization
-                    # Format: list of lists, where each inner list is [bone_idx, weight] pairs for that vertex
                     skinning_data = []
                     num_vertices = len(vertices)
                     for vert_idx in range(num_vertices):
                         if vert_idx in vertex_weights:
                             skinning_data.append(vertex_weights[vert_idx])
                         else:
-                            skinning_data.append([])  # No influences for this vertex
+                            skinning_data.append([])
 
                     skeleton_data["skinning_weights"] = skinning_data
+            except Exception:
+                pass  # Skip skinning weights if extraction fails
 
-                    print(f"[SAM3DBodyExportFBX] ✓ Extracted skinning weights for {num_vertices} vertices")
-                    print(f"[SAM3DBodyExportFBX] Total bone influences: {len(vert_indices)}")
-
-                    # Show statistics
-                    num_influenced = len([v for v in skinning_data if len(v) > 0])
-                    print(f"[SAM3DBodyExportFBX] Vertices with bone influences: {num_influenced}/{num_vertices}")
-                else:
-                    print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found")
-                    print(f"[SAM3DBodyExportFBX] Tried: mesh_data['mhr_path'], SAM3D_MHR_PATH env var, HuggingFace cache")
-                    print(f"[SAM3DBodyExportFBX] Skipping skinning weights")
-            except Exception as e:
-                print(f"[SAM3DBodyExportFBX] [WARNING] Failed to extract skinning weights: {e}")
-                import traceback
-                traceback.print_exc()
-
-            # Get joint parent hierarchy from mesh_data (added by Process node)
-            # The skeleton output now includes joint_parents from the MHR model
+            # Get joint parent hierarchy from mesh_data
             joint_parents = None
             joint_rotations = mesh_data.get("joint_rotations")
 
-            # Check if joint_parents is in joint_rotations (they're bundled together sometimes)
             if isinstance(joint_rotations, dict) and "joint_parents" in joint_rotations:
                 joint_parents_data = joint_rotations["joint_parents"]
             else:
@@ -231,37 +199,21 @@ class SAM3DBodyExportFBX:
                     joint_parents = joint_parents_data.cpu().numpy().astype(int).tolist()
                 else:
                     joint_parents = [int(p) for p in joint_parents_data]
-
-                print(f"[SAM3DBodyExportFBX] ✓ Found {len(joint_parents)} joint parents in mesh data")
-                print(f"[SAM3DBodyExportFBX] First 10 parents: {joint_parents[:10]}")
                 skeleton_data["joint_parents"] = joint_parents
             else:
                 # Load joint parents from MHR model if we have 127 joints
                 if len(joint_coords) == 127:
-                    print(f"[SAM3DBodyExportFBX] Loading MHR skeleton hierarchy from model...")
                     try:
-                        # Load MHR model to extract joint parents
                         mhr_model_path = find_mhr_model_path(mesh_data)
-
                         if mhr_model_path and os.path.exists(mhr_model_path):
-                            print(f"[SAM3DBodyExportFBX] Loading from: {mhr_model_path}")
                             mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
                             joint_parents_tensor = mhr_model.character_torch.skeleton.joint_parents
                             joint_parents = joint_parents_tensor.cpu().numpy().astype(int).tolist()
                             skeleton_data["joint_parents"] = joint_parents
-                            print(f"[SAM3DBodyExportFBX] ✓ Loaded MHR hierarchy with {len(joint_parents)} joints")
-                            print(f"[SAM3DBodyExportFBX] Root joint (parent=-1) at index: {joint_parents.index(-1)}")
-                        else:
-                            print(f"[SAM3DBodyExportFBX] [WARNING] MHR model not found")
-                            print(f"[SAM3DBodyExportFBX] Tried: mesh_data['mhr_path'], SAM3D_MHR_PATH env var, HuggingFace cache")
-                    except Exception as e:
-                        print(f"[SAM3DBodyExportFBX] [WARNING] Failed to load MHR hierarchy: {e}")
-                        import traceback
-                        traceback.print_exc()
-                else:
-                    print(f"[SAM3DBodyExportFBX] No joint parent hierarchy available")
+                    except Exception:
+                        pass
 
-            # Add camera and other transform data if available
+            # Add camera and focal length if available
             camera = mesh_data.get("camera")
             focal_length = mesh_data.get("focal_length")
             if camera is not None:
@@ -275,17 +227,13 @@ class SAM3DBodyExportFBX:
 
             with open(skeleton_json_path, 'w') as f:
                 json.dump(skeleton_data, f)
-            print(f"[SAM3DBodyExportFBX] Saved skeleton data: {skeleton_json_path}")
 
         try:
-            # Use Blender to convert OBJ to FBX (if available)
+            # Use Blender to convert OBJ to FBX
             if BLENDER_EXE and os.path.exists(BLENDER_EXE):
-                print(f"[SAM3DBodyExportFBX] Using Blender: {BLENDER_EXE}")
-
                 if not os.path.exists(BLENDER_SCRIPT):
                     raise RuntimeError(f"Blender export script not found: {BLENDER_SCRIPT}")
 
-                # Run Blender with export script
                 cmd = [
                     BLENDER_EXE,
                     '--background',
@@ -298,31 +246,20 @@ class SAM3DBodyExportFBX:
                 if skeleton_json_path:
                     cmd.append(skeleton_json_path)
 
-                print(f"[SAM3DBodyExportFBX] Running Blender export...")
                 result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', timeout=BLENDER_TIMEOUT)
-
-                # Always print stdout to see debug info
-                if result.stdout:
-                    print(f"[SAM3DBodyExportFBX] Blender stdout:\n{result.stdout}")
-                if result.stderr:
-                    print(f"[SAM3DBodyExportFBX] Blender stderr:\n{result.stderr}")
 
                 if result.returncode != 0:
                     raise RuntimeError(f"Blender export failed with return code {result.returncode}")
 
             else:
                 # Fallback: just copy the OBJ to output with .obj extension
-                print("[SAM3DBodyExportFBX] [WARNING] Blender not found, exporting as OBJ instead")
                 fallback_path = output_fbx_path.replace('.fbx', '.obj')
                 import shutil
                 shutil.copy(temp_obj_path, fallback_path)
                 output_fbx_path = fallback_path
-                print(f"[SAM3DBodyExportFBX] Saved as OBJ: {fallback_path}")
 
             if not os.path.exists(output_fbx_path):
                 raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
-
-            print(f"[SAM3DBodyExportFBX] ✓ Successfully exported to: {output_fbx_path}")
 
             return (os.path.basename(output_fbx_path),)
 
@@ -336,11 +273,217 @@ class SAM3DBodyExportFBX:
     def _write_obj_file(self, filepath, vertices, faces):
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
-            # Write vertices (with coordinate transform to match skeleton: flip X and Z, negate Y)
             for v in vertices:
                 f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+            for face in faces:
+                f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
-            # Write faces (OBJ uses 1-based indexing)
+
+class SAM3DBodyExportMultipleFBX:
+    """
+    Export multiple SAM3D Body meshes with skeletons to a single FBX file.
+
+    Takes multi-person mesh data and exports all meshes with their armatures
+    into a single combined FBX file.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "multi_mesh_data": ("SAM3D_MULTI_OUTPUT", {
+                    "tooltip": "Multi-person mesh data from SAM3D Body Process Multiple node"
+                }),
+                "output_filename": ("STRING", {
+                    "default": "sam3d_multi_rigged.fbx",
+                    "tooltip": "Output filename for the combined FBX file"
+                }),
+            },
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("fbx_path",)
+    FUNCTION = "export_multi_fbx"
+    CATEGORY = "SAM3DBody/export"
+    OUTPUT_NODE = True
+
+    def export_multi_fbx(self, multi_mesh_data, output_filename):
+        """Export all meshes with skeletons to a single combined FBX file."""
+
+        num_people = multi_mesh_data.get("num_people", 0)
+        people = multi_mesh_data.get("people", [])
+        faces = multi_mesh_data.get("faces")
+
+        print(f"[SAM3D Export] num_people from data: {num_people}")
+        print(f"[SAM3D Export] actual people list length: {len(people)}")
+
+        if num_people == 0 or len(people) == 0:
+            raise RuntimeError("No mesh data to export")
+
+        # Setup output path
+        output_dir = folder_paths.get_output_directory()
+        if not output_filename.endswith('.fbx'):
+            output_filename = output_filename + '.fbx'
+        output_fbx_path = os.path.join(output_dir, output_filename)
+
+        # Find MHR model path for skinning weights
+        mhr_model_path = find_mhr_model_path(multi_mesh_data)
+
+        # Load skinning data once (same for all people)
+        skinning_data = None
+        joint_parents = None
+        if mhr_model_path and os.path.exists(mhr_model_path):
+            try:
+                mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
+                lbs = mhr_model.character_torch.linear_blend_skinning
+
+                vert_indices = lbs.vert_indices_flattened.cpu().numpy().astype(int)
+                skin_indices = lbs.skin_indices_flattened.cpu().numpy().astype(int)
+                skin_weights = lbs.skin_weights_flattened.cpu().numpy().astype(float)
+
+                vertex_weights = {}
+                for j in range(len(vert_indices)):
+                    vert_idx = int(vert_indices[j])
+                    bone_idx = int(skin_indices[j])
+                    weight = float(skin_weights[j])
+                    if vert_idx not in vertex_weights:
+                        vertex_weights[vert_idx] = []
+                    vertex_weights[vert_idx].append([bone_idx, weight])
+
+                # Get joint parents
+                joint_parents = mhr_model.character_torch.skeleton.joint_parents.cpu().numpy().astype(int).tolist()
+            except Exception:
+                pass
+
+        # Build combined data structure for all people
+        temp_files = []
+        combined_data = {
+            "output_path": output_fbx_path,
+            "people": [],
+        }
+
+        try:
+            for i, person in enumerate(people):
+                vertices = person.get("pred_vertices")
+                joint_coords = person.get("pred_joint_coords")
+                cam_t = person.get("pred_cam_t")  # Camera translation for world positioning
+
+                if vertices is None:
+                    continue
+
+                # Convert to numpy
+                if isinstance(vertices, torch.Tensor):
+                    vertices = vertices.cpu().numpy()
+                if joint_coords is not None and isinstance(joint_coords, torch.Tensor):
+                    joint_coords = joint_coords.cpu().numpy()
+                if cam_t is not None and isinstance(cam_t, torch.Tensor):
+                    cam_t = cam_t.cpu().numpy()
+
+                # Apply world position offset from camera translation
+                if cam_t is not None:
+                    vertices = vertices + cam_t  # Broadcast adds cam_t to each vertex
+                    if joint_coords is not None:
+                        joint_coords = joint_coords + cam_t
+
+                # Write OBJ file for this person
+                temp_obj = tempfile.NamedTemporaryFile(suffix=f'_person{i}.obj', delete=False)
+                temp_files.append(temp_obj.name)
+                self._write_obj_file(temp_obj.name, vertices, faces)
+
+                # Prepare skeleton data
+                skeleton_info = {}
+                if joint_coords is not None:
+                    # Apply coordinate transform to joint positions
+                    joint_coords_flipped = joint_coords.copy()
+                    joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
+                    joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
+                    joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
+
+                    skeleton_info = {
+                        "joint_positions": joint_coords_flipped.tolist(),
+                        "num_joints": len(joint_coords),
+                    }
+
+                    # Add skinning weights (build per-vertex data)
+                    if vertex_weights:
+                        num_vertices = len(vertices)
+                        skinning_list = []
+                        for vert_idx in range(num_vertices):
+                            if vert_idx in vertex_weights:
+                                skinning_list.append(vertex_weights[vert_idx])
+                            else:
+                                skinning_list.append([])
+                        skeleton_info["skinning_weights"] = skinning_list
+
+                    # Add joint parents
+                    if joint_parents:
+                        skeleton_info["joint_parents"] = joint_parents
+
+                # Add person to combined data
+                combined_data["people"].append({
+                    "obj_path": temp_obj.name,
+                    "skeleton": skeleton_info,
+                    "index": i,
+                })
+
+            print(f"[SAM3D Export] people added to combined_data: {len(combined_data['people'])}")
+
+            if not combined_data["people"]:
+                raise RuntimeError("No valid mesh data to export")
+
+            # Write combined JSON
+            combined_json = tempfile.NamedTemporaryFile(suffix='_combined.json', delete=False, mode='w')
+            temp_files.append(combined_json.name)
+            json.dump(combined_data, combined_json)
+            combined_json.close()
+
+            # Export using Blender with combined script
+            if BLENDER_EXE and os.path.exists(BLENDER_EXE):
+                if not os.path.exists(BLENDER_MULTI_SCRIPT):
+                    raise RuntimeError(f"Blender multi-export script not found: {BLENDER_MULTI_SCRIPT}")
+
+                cmd = [
+                    BLENDER_EXE,
+                    "--background",
+                    "--python", BLENDER_MULTI_SCRIPT,
+                    "--",
+                    combined_json.name,
+                ]
+
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=BLENDER_TIMEOUT)
+
+                if result.returncode != 0:
+                    raise RuntimeError(f"Blender export failed: {result.stderr}")
+
+                if not os.path.exists(output_fbx_path):
+                    raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
+
+            else:
+                # Fallback: export individual OBJs
+                for person_data in combined_data["people"]:
+                    obj_path = person_data["obj_path"]
+                    idx = person_data["index"]
+                    fallback_path = output_fbx_path.replace('.fbx', f'_person{idx}.obj')
+                    import shutil
+                    shutil.copy(obj_path, fallback_path)
+                output_fbx_path = output_fbx_path.replace('.fbx', '_person0.obj')
+
+            return (os.path.basename(output_fbx_path),)
+
+        finally:
+            # Clean up temp files
+            for temp_file in temp_files:
+                if os.path.exists(temp_file):
+                    try:
+                        os.unlink(temp_file)
+                    except Exception:
+                        pass
+
+    def _write_obj_file(self, filepath, vertices, faces):
+        """Write mesh to OBJ file format."""
+        with open(filepath, 'w') as f:
+            for v in vertices:
+                f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
             for face in faces:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
@@ -348,8 +491,10 @@ class SAM3DBodyExportFBX:
 # Register nodes
 NODE_CLASS_MAPPINGS = {
     "SAM3DBodyExportFBX": SAM3DBodyExportFBX,
+    "SAM3DBodyExportMultipleFBX": SAM3DBodyExportMultipleFBX,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SAM3DBodyExportFBX": "SAM 3D Body: Export FBX",
+    "SAM3DBodyExportMultipleFBX": "SAM 3D Body: Export Multiple FBX",
 }
