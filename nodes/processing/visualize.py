@@ -11,6 +11,7 @@ import numpy as np
 import cv2
 import torch
 from pathlib import Path
+import folder_paths
 from ..base import numpy_to_comfy_image
 
 # Add sam-3d-body to Python path if it exists
