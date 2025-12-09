@@ -149,9 +149,66 @@ BLENDER_SCRIPT = str(LIB_DIR / "blender_export_sam3d_fbx.py")
 BLENDER_MULTI_SCRIPT = str(LIB_DIR / "blender_export_multi.py")
 
 # Find Blender executable
+# Priority: 1) SAM3DBODY_BLENDER_PATH env var, 2) system blender, 3) bundled blender, 4) auto-install
 BLENDER_DIR = LIB_DIR / "blender"
 BLENDER_EXE = None
-if BLENDER_DIR.exists():
+
+
+def find_system_blender():
+    """Find Blender installed on the system."""
+    import shutil
+
+    # Check PATH first
+    blender_on_path = shutil.which("blender")
+    if blender_on_path:
+        return blender_on_path
+
+    # Common install locations by platform
+    plat = sys.platform
+    candidates = []
+
+    if plat == "darwin":  # macOS
+        candidates = [
+            "/Applications/Blender.app/Contents/MacOS/Blender",
+            Path.home() / "Applications/Blender.app/Contents/MacOS/Blender",
+        ]
+    elif plat == "win32":  # Windows
+        program_files = os.environ.get("ProgramFiles", "C:\\Program Files")
+        program_files_x86 = os.environ.get("ProgramFiles(x86)", "C:\\Program Files (x86)")
+        candidates = [
+            Path(program_files) / "Blender Foundation" / "Blender 4.2" / "blender.exe",
+            Path(program_files) / "Blender Foundation" / "Blender 4.1" / "blender.exe",
+            Path(program_files) / "Blender Foundation" / "Blender 4.0" / "blender.exe",
+            Path(program_files_x86) / "Blender Foundation" / "Blender 4.2" / "blender.exe",
+        ]
+    else:  # Linux
+        candidates = [
+            Path("/usr/bin/blender"),
+            Path("/usr/local/bin/blender"),
+            Path("/snap/bin/blender"),
+            Path.home() / ".local/bin/blender",
+        ]
+
+    for candidate in candidates:
+        if Path(candidate).is_file():
+            return str(candidate)
+
+    return None
+
+
+# Check for user-specified Blender path first
+custom_blender = os.environ.get('SAM3DBODY_BLENDER_PATH', '')
+if custom_blender and os.path.isfile(custom_blender):
+    BLENDER_EXE = custom_blender
+    print(f"[SAM3DBody] Using custom Blender: {BLENDER_EXE}")
+else:
+    # Try to find system-installed Blender
+    system_blender = find_system_blender()
+    if system_blender:
+        BLENDER_EXE = system_blender
+        print(f"[SAM3DBody] Found system Blender: {BLENDER_EXE}")
+
+if not BLENDER_EXE and BLENDER_DIR.exists():
     # Support both relative imports (ComfyUI) and absolute imports (testing)
     try:
         from ..install import find_blender_executable

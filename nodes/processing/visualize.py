@@ -133,10 +133,6 @@ class SAM3DBodyExportMesh:
                     "default": "output_mesh.stl",
                     "tooltip": "Output filename (exports as ASCII STL)"
                 }),
-                "output_dir": ("STRING", {
-                    "default": "output",
-                    "tooltip": "Output directory path (relative to ComfyUI root or absolute)"
-                }),
             },
         }
 
@@ -145,21 +141,17 @@ class SAM3DBodyExportMesh:
     FUNCTION = "export_mesh"
     CATEGORY = "SAM3DBody/io"
 
-    def export_mesh(self, mesh_data, filename="output_mesh.stl", output_dir="output"):
+    def export_mesh(self, mesh_data, filename="output_mesh.stl"):
         """Export mesh to file."""
 
         print(f"[SAM3DBody] Exporting mesh to {filename}")
 
         try:
             import os
-            from pathlib import Path
 
-            # Create output directory
-            output_path = Path(output_dir)
-            output_path.mkdir(parents=True, exist_ok=True)
-
-            # Full output path
-            full_path = output_path / filename
+            # Use ComfyUI's output directory
+            output_dir = folder_paths.get_output_directory()
+            full_path = os.path.join(output_dir, filename)
 
             # Extract mesh data
             vertices = mesh_data.get("vertices", None)

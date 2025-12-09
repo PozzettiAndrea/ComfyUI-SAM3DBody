@@ -209,7 +209,8 @@ def find_blender_executable(blender_dir):
     if plat == "windows":
         exe_pattern = "**/blender.exe"
     elif plat == "macos":
-        exe_pattern = "**/MacOS/blender"
+        # macOS Blender.app has executable at Contents/MacOS/Blender (capital B)
+        exe_pattern = "**/MacOS/Blender"
     else:  # linux
         exe_pattern = "**/blender"
 
