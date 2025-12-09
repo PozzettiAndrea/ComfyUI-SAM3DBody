@@ -46,6 +46,129 @@ def run_command(cmd, description):
 
 
 # ============================================================================
+# Prebuilt Wheel Installation Functions
+# ============================================================================
+
+def get_torch_cuda_version():
+    """
+    Get PyTorch version and CUDA version for wheel selection.
+
+    Returns:
+        tuple: (torch_version, cuda_tag) e.g. ("2.5.0", "cu121") or ("2.5.0", "cpu")
+    """
+    try:
+        import torch
+        torch_version = torch.__version__.split('+')[0]  # Strip +cu121 etc
+
+        if torch.cuda.is_available():
+            cuda_version = torch.version.cuda
+            if cuda_version:
+                # Convert "12.1" to "cu121", "12.8" to "cu128"
+                cuda_tag = "cu" + cuda_version.replace(".", "")
+            else:
+                cuda_tag = "cpu"
+        else:
+            cuda_tag = "cpu"
+
+        return torch_version, cuda_tag
+    except ImportError:
+        return None, None
+
+
+def install_detectron2_wheel():
+    """
+    Install detectron2 from prebuilt wheels with fallback to source.
+
+    Uses https://miropsota.github.io/torch_packages_builder for prebuilt wheels.
+    """
+    torch_version, cuda_tag = get_torch_cuda_version()
+
+    if not torch_version:
+        print("[SAM3DBody] PyTorch not found, skipping detectron2 wheel install")
+        return False
+
+    print(f"[SAM3DBody] Detected PyTorch {torch_version} with {cuda_tag}")
+
+    # Try prebuilt wheel first
+    # Format: detectron2==0.6+<commit>pt<torch_version><cuda_tag>
+    # Available for PyTorch 2.1.0 - 2.8.0
+    wheel_index = "https://miropsota.github.io/torch_packages_builder"
+
+    # Use a recent stable commit
+    commit = "2a420ed"
+
+    # Build wheel specifier
+    wheel_spec = f"detectron2==0.6+{commit}pt{torch_version}{cuda_tag}"
+
+    print(f"[SAM3DBody] Trying prebuilt detectron2 wheel: {wheel_spec}")
+
+    cmd = [
+        sys.executable, "-m", "pip", "install",
+        "--extra-index-url", wheel_index,
+        wheel_spec
+    ]
+
+    if run_command(cmd, f"Installing detectron2 from prebuilt wheel"):
+        return True
+
+    # Fallback: try without specific version (let pip find compatible wheel)
+    print("[SAM3DBody] Specific wheel not found, trying any compatible wheel...")
+    cmd = [
+        sys.executable, "-m", "pip", "install",
+        "--extra-index-url", wheel_index,
+        "detectron2"
+    ]
+
+    if run_command(cmd, "Installing detectron2 (any compatible wheel)"):
+        return True
+
+    # Final fallback: build from source
+    print("[SAM3DBody] No prebuilt wheel available, falling back to source build...")
+    cmd = [
+        sys.executable, "-m", "pip", "install",
+        "git+https://github.com/facebookresearch/detectron2.git@a1ce2f9",
+        "--no-build-isolation", "--no-deps"
+    ]
+
+    return run_command(cmd, "Installing detectron2 from source")
+
+
+def install_pyg_extensions():
+    """
+    Install PyTorch Geometric extensions (torch-scatter, torch-sparse, torch-cluster)
+    from prebuilt wheels.
+
+    Uses https://data.pyg.org/whl/ for prebuilt wheels.
+    """
+    torch_version, cuda_tag = get_torch_cuda_version()
+
+    if not torch_version:
+        print("[SAM3DBody] PyTorch not found, skipping PyG extensions")
+        return False
+
+    print(f"[SAM3DBody] Installing PyG extensions for PyTorch {torch_version} + {cuda_tag}")
+
+    # PyG wheel index
+    wheel_url = f"https://data.pyg.org/whl/torch-{torch_version}+{cuda_tag}.html"
+
+    packages = ["torch_scatter", "torch_sparse", "torch_cluster"]
+
+    cmd = [
+        sys.executable, "-m", "pip", "install",
+        "-f", wheel_url
+    ] + packages
+
+    if run_command(cmd, "Installing PyG extensions from prebuilt wheels"):
+        return True
+
+    # Fallback: try without wheel index (will attempt to build from source)
+    print("[SAM3DBody] Prebuilt PyG wheels not found, trying pip install...")
+    cmd = [sys.executable, "-m", "pip", "install"] + packages
+
+    return run_command(cmd, "Installing PyG extensions (may build from source)")
+
+
+# ============================================================================
 # Blender Installation Functions (adapted from ComfyUI-UniRig)
 # ============================================================================
 
@@ -357,28 +480,33 @@ def install():
         print(f"[SAM3DBody] Expected at: {vendored_path}")
         print(f"[SAM3DBody] Please ensure the sam_3d_body directory exists with proper __init__.py files")
 
-    # 5. Install Detectron2 (required dependency)
+    # 5. Install Detectron2 (required dependency) - use prebuilt wheels when available
     print("[SAM3DBody] Installing Detectron2...")
-    cmd = [
-        sys.executable, "-m", "pip", "install",
-        "git+https://github.com/facebookresearch/detectron2.git@a1ce2f9",
-        "--no-build-isolation", "--no-deps"
-    ]
-    if not run_command(cmd, "Installing Detectron2"):
+    if not install_detectron2_wheel():
         print("[SAM3DBody] [WARNING] Detectron2 installation failed")
         print("[SAM3DBody] This is optional but recommended for detection features")
 
-    # 6. Platform-specific setup
+    # 6. Install PyG extensions (torch-scatter, torch-sparse, torch-cluster) if needed
+    print("[SAM3DBody] Checking PyG extensions...")
+    try:
+        import torch_scatter
+        print("[SAM3DBody] [OK] PyG extensions already installed")
+    except ImportError:
+        print("[SAM3DBody] Installing PyG extensions...")
+        if not install_pyg_extensions():
+            print("[SAM3DBody] [WARNING] PyG extensions installation failed")
+            print("[SAM3DBody] Some features may not be available")
+
+    # 7. Platform-specific setup
     if sys.platform.startswith('linux'):
         print("[SAM3DBody] Detected Linux platform")
     elif sys.platform == 'win32':
         print("[SAM3DBody] Detected Windows platform")
-        print("[SAM3DBody] [WARNING] Windows support may be limited")
     elif sys.platform == 'darwin':
         print("[SAM3DBody] Detected macOS platform")
-        print("[SAM3DBody] [WARNING] CUDA not available on macOS, will use CPU")
+        print("[SAM3DBody] [NOTE] CUDA not available on macOS, will use CPU")
 
-    # 7. Verify installation
+    # 8. Verify installation
     print("[SAM3DBody] Verifying installation...")
     try:
         import torch
