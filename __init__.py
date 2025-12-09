@@ -25,13 +25,11 @@ if str(_custom_node_dir) not in sys.path:
 INIT_SUCCESS = False
 INIT_ERRORS = []
 
-# Robust pytest detection with override capability
+# Pytest detection - only skip init during actual test runs
 force_init = os.environ.get('SAM3DB_FORCE_INIT') == '1'
-is_pytest = (
-    'PYTEST_CURRENT_TEST' in os.environ or
-    '_pytest' in sys.modules or
-    'pytest' in sys.modules
-)
+# Only PYTEST_CURRENT_TEST reliably indicates an actual test run
+# Checking sys.modules for pytest caused false positives in some ComfyUI setups
+is_pytest = 'PYTEST_CURRENT_TEST' in os.environ
 skip_init = is_pytest and not force_init
 
 if skip_init:
