@@ -13,7 +13,6 @@ import numpy as np
 import cv2
 from ..base import comfy_image_to_numpy, comfy_mask_to_numpy, numpy_to_comfy_image
 
-
 class SAM3DBodyProcessMultiple:
     """
     Performs 3D human mesh reconstruction for multiple people.
@@ -40,6 +39,13 @@ class SAM3DBodyProcessMultiple:
                 "inference_type": (["full", "body"], {
                     "default": "full",
                     "tooltip": "full: body+hand decoders, body: body decoder only"
+                }),
+                "depth_map": ("IMAGE", {
+                    "tooltip": "Depth map from Depth Anything V3 (Raw mode) for scale correction - helps fix children/small people appearing too large"
+                }),
+                "adjust_position_from_depth": ("BOOLEAN", {
+                    "default": False,
+                    "tooltip": "Adjust Z-position of each person based on depth map (requires depth_map)"
                 }),
             }
         }
@@ -80,10 +86,232 @@ class SAM3DBodyProcessMultiple:
 
         return prepared
 
-    def process_multiple(self, model, image, masks, inference_type="full"):
+    def _sample_depth_at_point(self, depth_map, x, y, depth_h, depth_w, img_h, img_w):
+        """Sample depth at a 2D point, handling coordinate scaling."""
+        if x < 0 or y < 0 or x >= img_w or y >= img_h:
+            return None
+
+        # Scale to depth map coordinates
+        dx = int(x * depth_w / img_w)
+        dy = int(y * depth_h / img_h)
+        dx = max(0, min(depth_w - 1, dx))
+        dy = max(0, min(depth_h - 1, dy))
+
+        depth = depth_map[dy, dx]
+        return depth if depth > 0 else None
+
+    def _compute_bone_scale(self, keypoints_2d, joint_coords_3d, depth_map, focal_length,
+                            depth_h, depth_w, img_h, img_w, joint_pair):
+        """
+        Compute scale factor for a single bone using pinhole camera model.
+
+        Returns (scale_factor, actual_3d_length, predicted_3d_length, depth) or None if invalid.
+        """
+        idx1, idx2 = joint_pair
+
+        if idx1 >= len(keypoints_2d) or idx2 >= len(keypoints_2d):
+            return None
+        if idx1 >= len(joint_coords_3d) or idx2 >= len(joint_coords_3d):
+            return None
+
+        # 2D keypoint positions
+        pt1_2d = keypoints_2d[idx1][:2]
+        pt2_2d = keypoints_2d[idx2][:2]
+
+        # Check visibility (points within image)
+        if not (0 <= pt1_2d[0] < img_w and 0 <= pt1_2d[1] < img_h):
+            return None
+        if not (0 <= pt2_2d[0] < img_w and 0 <= pt2_2d[1] < img_h):
+            return None
+
+        # 2D pixel distance
+        pixel_dist = np.sqrt((pt2_2d[0] - pt1_2d[0])**2 + (pt2_2d[1] - pt1_2d[1])**2)
+        if pixel_dist < 5:  # Too small to be reliable
+            return None
+
+        # Sample depth at midpoint of the bone
+        mid_x = (pt1_2d[0] + pt2_2d[0]) / 2
+        mid_y = (pt1_2d[1] + pt2_2d[1]) / 2
+        depth = self._sample_depth_at_point(depth_map, mid_x, mid_y, depth_h, depth_w, img_h, img_w)
+        if depth is None or depth <= 0:
+            return None
+
+        # Predicted 3D distance from SAM3DBody
+        pt1_3d = joint_coords_3d[idx1]
+        pt2_3d = joint_coords_3d[idx2]
+        predicted_3d = np.sqrt(np.sum((pt2_3d - pt1_3d)**2))
+        if predicted_3d < 0.01:  # Too small
+            return None
+
+        # Actual 3D distance using pinhole camera model
+        # X_3d = x_2d * Z / f
+        actual_3d = (pixel_dist * depth) / focal_length
+
+        # Scale factor
+        scale = actual_3d / predicted_3d
+
+        return {
+            "scale": scale,
+            "actual_3d": actual_3d,
+            "predicted_3d": predicted_3d,
+            "depth": depth,
+            "pixel_dist": pixel_dist,
+        }
+
+    def _apply_depth_scale_correction(self, outputs, depth_map, adjust_position=False):
+        """
+        Correct mesh scales using pinhole camera model with metric depth.
+
+        For each person:
+        1. Measure bone length in 2D pixels (from pred_keypoints_2d)
+        2. Get predicted 3D bone length (from pred_joint_coords)
+        3. Calculate actual 3D bone length: actual = (pixel_dist × depth) / focal_length
+        4. Scale factor = actual / predicted
+        """
+        if depth_map is None or len(outputs) == 0:
+            return outputs
+
+        depth_h, depth_w = depth_map.shape
+
+        # Estimate image dimensions from keypoints range
+        all_kpts = []
+        for output in outputs:
+            kpts = output.get("pred_keypoints_2d")
+            if kpts is not None:
+                all_kpts.extend(kpts[:, :2].tolist())
+        if all_kpts:
+            all_kpts = np.array(all_kpts)
+            img_w = int(np.max(all_kpts[:, 0]) * 1.1)
+            img_h = int(np.max(all_kpts[:, 1]) * 1.1)
+        else:
+            img_w, img_h = depth_w, depth_h
+
+        # Bone pairs to try (in order of preference for torso stability)
+        # (joint1_idx, joint2_idx): left_hip-left_shoulder, right_hip-right_shoulder, hip-hip, shoulder-shoulder
+        bone_pairs = [
+            (9, 5),   # left_hip to left_shoulder
+            (10, 6),  # right_hip to right_shoulder
+            (9, 10),  # left_hip to right_hip
+            (5, 6),   # left_shoulder to right_shoulder
+        ]
+
+        # 1. Compute scale factors for each person
+        person_data = []
+        for i, output in enumerate(outputs):
+            keypoints_2d = output.get("pred_keypoints_2d")
+            joint_coords_3d = output.get("pred_joint_coords")
+            focal_length = output.get("focal_length", 5000.0)
+
+            if isinstance(focal_length, np.ndarray):
+                focal_length = float(focal_length.flatten()[0])
+
+            # Try each bone pair until we get a valid measurement
+            bone_result = None
+            bone_used = None
+            for pair in bone_pairs:
+                if keypoints_2d is None or joint_coords_3d is None:
+                    continue
+                result = self._compute_bone_scale(
+                    keypoints_2d, joint_coords_3d, depth_map, focal_length,
+                    depth_h, depth_w, img_h, img_w, pair
+                )
+                if result is not None:
+                    bone_result = result
+                    bone_used = pair
+                    break
+
+            if bone_result is None:
+                # Fallback: no valid bone measurement
+                person_data.append({
+                    "scale": 1.0,
+                    "depth": np.median(depth_map),
+                    "actual_3d": None,
+                    "predicted_3d": None,
+                    "bone_used": None,
+                    "valid": False,
+                })
+            else:
+                person_data.append({
+                    "scale": bone_result["scale"],
+                    "depth": bone_result["depth"],
+                    "actual_3d": bone_result["actual_3d"],
+                    "predicted_3d": bone_result["predicted_3d"],
+                    "pixel_dist": bone_result["pixel_dist"],
+                    "bone_used": bone_used,
+                    "valid": True,
+                })
+
+        # 2. Normalize scales relative to median (so relative sizes are preserved)
+        valid_scales = [p["scale"] for p in person_data if p["valid"]]
+        if len(valid_scales) == 0:
+            print("[SAM3DBody] Warning: No valid bone measurements, skipping scale correction")
+            return outputs
+
+        median_scale = np.median(valid_scales)
+
+        # 3. Apply scale and position correction to each mesh
+        for i, output in enumerate(outputs):
+            data = person_data[i]
+
+            if not data["valid"]:
+                print(f"[SAM3DBody] Person {i}: No valid bone measurement, skipping")
+                continue
+
+            # Normalize scale relative to median
+            scale_factor = data["scale"] / median_scale
+
+            # Scale vertices around mesh centroid
+            vertices = output.get("pred_vertices")
+            if vertices is not None:
+                centroid = vertices.mean(axis=0)
+                output["pred_vertices"] = (vertices - centroid) * scale_factor + centroid
+
+            # Also scale joint coordinates if present
+            joints = output.get("pred_joint_coords")
+            if joints is not None:
+                joint_centroid = joints.mean(axis=0)
+                output["pred_joint_coords"] = (joints - joint_centroid) * scale_factor + joint_centroid
+
+            # Adjust Z-position if enabled
+            if adjust_position:
+                cam_t = output.get("pred_cam_t")
+                if cam_t is not None:
+                    output["pred_cam_t"] = np.array([cam_t[0], cam_t[1], data["depth"]])
+
+            # Calculate mesh height from vertices
+            mesh_height = None
+            if vertices is not None:
+                mesh_height = float(np.max(output["pred_vertices"][:, 1]) - np.min(output["pred_vertices"][:, 1]))
+
+            # Store metadata for reference
+            output["depth_scale_factor"] = scale_factor
+            output["measured_depth"] = data["depth"]
+            output["mesh_height"] = mesh_height
+
+            bone_name = f"{data['bone_used'][0]}-{data['bone_used'][1]}" if data["bone_used"] else "none"
+            height_str = f", height={mesh_height:.2f}m" if mesh_height else ""
+            print(f"[SAM3DBody] Person {i}: depth={data['depth']:.2f}m, "
+                  f"bone_3d={data['actual_3d']:.3f}m (pred={data['predicted_3d']:.3f}m), "
+                  f"scale={scale_factor:.3f}{height_str} (bone: {bone_name})")
+
+        return outputs
+
+    def process_multiple(self, model, image, masks, inference_type="full", depth_map=None, adjust_position_from_depth=False):
         """Process image with multiple masks and reconstruct 3D meshes for all people."""
 
         from sam_3d_body import SAM3DBodyEstimator
+
+        # Process depth map input if provided
+        depth_map_np = None
+        if depth_map is not None:
+            # Convert ComfyUI IMAGE tensor [B, H, W, C] to numpy depth map [H, W]
+            if isinstance(depth_map, torch.Tensor):
+                depth_map_np = depth_map[0, :, :, 0].cpu().numpy()
+            else:
+                depth_map_np = depth_map[0, :, :, 0] if depth_map.ndim == 4 else depth_map[:, :, 0]
+            print(f"[SAM3DBody] Depth map provided: shape={depth_map_np.shape}, range=[{depth_map_np.min():.2f}, {depth_map_np.max():.2f}]")
+            if adjust_position_from_depth:
+                print("[SAM3DBody] Position adjustment from depth enabled")
 
         # Extract model components
         sam_3d_model = model["model"]
@@ -150,6 +378,12 @@ class SAM3DBodyProcessMultiple:
 
         # Prepare outputs (convert tensors, add indices)
         prepared_outputs = self._prepare_outputs(outputs)
+
+        # Apply depth-based scale correction if depth map provided
+        if depth_map_np is not None:
+            prepared_outputs = self._apply_depth_scale_correction(
+                prepared_outputs, depth_map_np, adjust_position=adjust_position_from_depth
+            )
 
         # Create combined mesh data - use model's world coordinates directly
         multi_mesh_data = {
