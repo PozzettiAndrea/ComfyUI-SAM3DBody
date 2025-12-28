@@ -75,6 +75,27 @@ def clean_bpy():
         bpy.data.textures.remove(c)
 
 
+def make_mesh_double_sided(mesh_obj):
+    """Make mesh double-sided by duplicating faces with flipped normals."""
+    # Select the mesh and enter edit mode
+    bpy.context.view_layer.objects.active = mesh_obj
+    bpy.ops.object.mode_set(mode='EDIT')
+
+    # Select all geometry
+    bpy.ops.mesh.select_all(action='SELECT')
+
+    # Duplicate faces
+    bpy.ops.mesh.duplicate()
+
+    # Flip normals on duplicated faces
+    bpy.ops.mesh.flip_normals()
+
+    # Return to object mode
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    print(f"[SAM3D Multi] Made mesh double-sided: {mesh_obj.name}")
+
+
 def create_armature_for_person(person_idx, skeleton_data, collection):
     """Create armature from skeleton data for a specific person."""
     joint_positions = skeleton_data.get('joint_positions', [])
@@ -259,6 +280,9 @@ for person in people_data:
                 apply_skinning_to_mesh(mesh_obj, armature_info)
         except Exception as e:
             print(f"[SAM3D Multi] Failed to create armature for person {person_idx}: {e}")
+
+    # Make mesh double-sided AFTER skinning (so duplicated vertices inherit weights)
+    make_mesh_double_sided(mesh_obj)
 
 # Export all to single FBX
 os.makedirs(os.path.dirname(output_fbx) if os.path.dirname(output_fbx) else '.', exist_ok=True)

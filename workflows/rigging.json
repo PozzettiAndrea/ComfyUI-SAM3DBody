@@ -1,47 +1,9 @@
 {
   "id": "0ee524cd-7bc8-46f2-8751-32399825f67b",
   "revision": 0,
-  "last_node_id": 14,
-  "last_link_id": 18,
+  "last_node_id": 15,
+  "last_link_id": 19,
   "nodes": [
-    {
-      "id": 1,
-      "type": "LoadSAM3DBodyModel",
-      "pos": [
-        -146.61317323665412,
-        -413.4612632298113
-      ],
-      "size": [
-        270,
-        154
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "SAM3D_MODEL",
-          "links": [
-            10
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
-        "Node name for S&R": "LoadSAM3DBodyModel",
-        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
-      },
-      "widgets_values": [
-        "huggingface",
-        "facebook/sam-3d-body-dinov3",
-        "auto",
-        "",
-        ""
-      ]
-    },
     {
       "id": 3,
       "type": "LoadImage",
@@ -54,7 +16,7 @@
         314
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -101,7 +63,7 @@
         {
           "name": "model",
           "type": "SAM3D_MODEL",
-          "link": 10
+          "link": 19
         },
         {
           "name": "image",
@@ -144,10 +106,7 @@
       },
       "widgets_values": [
         0.8,
-        "full",
-        false,
-        false,
-        false
+        "full"
       ]
     },
     {
@@ -254,17 +213,42 @@
         "",
         ""
       ]
+    },
+    {
+      "id": 15,
+      "type": "LoadSAM3DBodyModel",
+      "pos": [
+        -145.44942523665372,
+        -381.6774182259052
+      ],
+      "size": [
+        273.7994140625,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "5fef822c291d4a440e8392acdc40fa3d93a0820d",
+        "Node name for S&R": "LoadSAM3DBodyModel"
+      },
+      "widgets_values": [
+        "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"
+      ]
     }
   ],
   "links": [
-    [
-      10,
-      1,
-      0,
-      10,
-      0,
-      "SAM3D_MODEL"
-    ],
     [
       11,
       3,
@@ -304,19 +288,28 @@
       13,
       0,
       "STRING"
+    ],
+    [
+      19,
+      15,
+      0,
+      10,
+      0,
+      "SAM3D_MODEL"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8264462809917354,
+      "scale": 0.7513148009015777,
       "offset": [
-        502.89571429915384,
-        541.7897229134054
+        632.6570509474147,
+        694.5531213151539
       ]
     },
-    "frontendVersion": "1.28.9"
+    "frontendVersion": "1.35.9",
+    "workflowRendererVersion": "LG"
   },
   "version": 0.4
 }

@@ -30,7 +30,7 @@ def copy_assets():
         # Create input directory if it doesn't exist
         input_dir.mkdir(parents=True, exist_ok=True)
 
-        # Copy all files from assets/
+        # Copy all files and directories from assets/
         copied_count = 0
         skipped_count = 0
 
@@ -39,12 +39,21 @@ def copy_assets():
             if item.name.startswith('.'):
                 continue
 
-            # Skip directories (only copy files)
-            if item.is_dir():
-                continue
-
             # Destination path
             dest = input_dir / item.name
+
+            # Handle directories
+            if item.is_dir():
+                if dest.exists():
+                    skipped_count += 1
+                    continue
+                try:
+                    shutil.copytree(item, dest)
+                    print(f"[SAM3DBody] Copied asset directory: {item.name} -> {dest}")
+                    copied_count += 1
+                except Exception as e:
+                    print(f"[SAM3DBody] Failed to copy directory {item.name}: {e}")
+                continue
 
             # Skip if file already exists
             if dest.exists():
