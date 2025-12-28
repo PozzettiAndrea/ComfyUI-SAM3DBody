@@ -1,8 +1,8 @@
 {
   "id": "0ee524cd-7bc8-46f2-8751-32399825f67b",
   "revision": 0,
-  "last_node_id": 10,
-  "last_link_id": 10,
+  "last_node_id": 11,
+  "last_link_id": 11,
   "nodes": [
     {
       "id": 3,
@@ -46,137 +46,6 @@
       ]
     },
     {
-      "id": 2,
-      "type": "SAM3DBodyProcess",
-      "pos": [
-        295.371164888346,
-        -312.0305885032488
-      ],
-      "size": [
-        288.9751953125,
-        194
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "SAM3D_MODEL",
-          "link": 1
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 2
-        },
-        {
-          "name": "mask",
-          "shape": 7,
-          "type": "MASK",
-          "link": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "mesh_data",
-          "type": "SAM3D_OUTPUT",
-          "links": [
-            7
-          ]
-        },
-        {
-          "name": "skeleton",
-          "type": "SKELETON",
-          "links": []
-        },
-        {
-          "name": "debug_image",
-          "type": "IMAGE",
-          "links": [
-            9
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
-        "Node name for S&R": "SAM3DBodyProcess",
-        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
-      },
-      "widgets_values": [
-        0.8,
-        "full",
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": 1,
-      "type": "LoadSAM3DBodyModel",
-      "pos": [
-        -146.61317323665412,
-        -413.4612632298113
-      ],
-      "size": [
-        270,
-        154
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "SAM3D_MODEL",
-          "links": [
-            1
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
-        "Node name for S&R": "LoadSAM3DBodyModel",
-        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
-      },
-      "widgets_values": [
-        "huggingface",
-        "yourtoken"
-      ]
-    },
-    {
-      "id": 4,
-      "type": "PreviewImage",
-      "pos": [
-        705.8783998102209,
-        -199.28585908918637
-      ],
-      "size": [
-        243.07247747469546,
-        259.74870734460893
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 9
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.70",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
       "id": 7,
       "type": "SAM3DBodyExportMesh",
       "pos": [
@@ -213,8 +82,7 @@
         "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
       },
       "widgets_values": [
-        "output_mesh.stl",
-        "output"
+        "output_mesh.stl"
       ]
     },
     {
@@ -270,9 +138,9 @@
           "fov": 35,
           "state": {
             "position": {
-              "x": -0.6886997854070056,
-              "y": 3.96403408858522,
-              "z": 10.01838667669006
+              "x": -2.9224013324339304,
+              "y": 9.434152802435799,
+              "z": 6.809028577947073
             },
             "target": {
               "x": 0,
@@ -291,17 +159,135 @@
         "output_mesh.stl",
         ""
       ]
+    },
+    {
+      "id": 11,
+      "type": "LoadSAM3DBodyModel",
+      "pos": [
+        -142.46989542942552,
+        -424.0619250056362
+      ],
+      "size": [
+        273.7994140625,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "5fef822c291d4a440e8392acdc40fa3d93a0820d",
+        "Node name for S&R": "LoadSAM3DBodyModel"
+      },
+      "widgets_values": [
+        "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SAM3DBodyProcess",
+      "pos": [
+        295.371164888346,
+        -312.0305885032488
+      ],
+      "size": [
+        288.9751953125,
+        194
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "link": 11
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mesh_data",
+          "type": "SAM3D_OUTPUT",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "skeleton",
+          "type": "SKELETON",
+          "links": []
+        },
+        {
+          "name": "debug_image",
+          "type": "IMAGE",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "1399ee459ce84cae93e5767844d9227052fe1153",
+        "Node name for S&R": "SAM3DBodyProcess",
+        "aux_id": "PozzettiAndrea/ComfyUI-SAM3DBody"
+      },
+      "widgets_values": [
+        0.8,
+        "full"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        705.8783998102209,
+        -199.28585908918637
+      ],
+      "size": [
+        243.07247747469546,
+        259.74870734460893
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.70",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
     }
   ],
   "links": [
-    [
-      1,
-      1,
-      0,
-      2,
-      0,
-      "SAM3D_MODEL"
-    ],
     [
       2,
       3,
@@ -341,19 +327,27 @@
       10,
       2,
       "STRING"
+    ],
+    [
+      11,
+      11,
+      0,
+      2,
+      0,
+      "SAM3D_MODEL"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8108228282849641,
+      "scale": 0.9810956222248073,
       "offset": [
-        459.5185816926748,
-        753.8532609447144
+        450.8457746927193,
+        732.921298894604
       ]
     },
-    "frontendVersion": "1.32.9",
+    "frontendVersion": "1.35.9",
     "workflowRendererVersion": "LG"
   },
   "version": 0.4

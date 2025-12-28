@@ -34,12 +34,6 @@ class LoadSAM3DBodyModel:
                     "tooltip": "Path to SAM 3D Body model folder (contains model.ckpt and assets/mhr_model.pt)"
                 }),
             },
-            "optional": {
-                "hf_token": ("STRING", {
-                    "default": "",
-                    "tooltip": "HuggingFace API token. If model not found locally, will attempt to download. Get token from https://huggingface.co/settings/tokens"
-                }),
-            }
         }
 
     RETURN_TYPES = ("SAM3D_MODEL",)
@@ -47,7 +41,7 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path, hf_token=""):
+    def load_model(self, model_path):
         """Load and cache the SAM 3D Body model."""
 
         # Auto-detect device
@@ -69,39 +63,25 @@ class LoadSAM3DBodyModel:
         model_exists = os.path.exists(ckpt_path) and os.path.exists(mhr_path)
 
         if not model_exists:
-            # If no token provided, give instructions immediately
-            if not hf_token:
-                raise RuntimeError(
-                    f"\n[SAM3DBody] Model not found.\n\n"
-                    f"Please place the model files at:\n"
-                    f"  {DEFAULT_MODEL_PATH}/\n"
-                    f"    ├── model.ckpt          (SAM 3D Body checkpoint)\n"
-                    f"    ├── model_config.yaml   (model configuration)\n"
-                    f"    └── assets/\n"
-                    f"        └── mhr_model.pt    (Momentum Human Rig model)\n\n"
-                    f"To download automatically, provide your HuggingFace token:\n"
-                    f"  1. Request access at https://huggingface.co/facebook/sam-3d-body-dinov3\n"
-                    f"  2. Get your token from https://huggingface.co/settings/tokens\n"
-                    f"  3. Enter the token in the 'hf_token' input field"
-                )
-
-            # Try to download with token
-            os.environ["HF_TOKEN"] = hf_token
-
+            # Try to download from public HuggingFace repo
             try:
                 from huggingface_hub import snapshot_download
 
+                print(f"[SAM3DBody] Model not found locally. Downloading from HuggingFace...")
                 os.makedirs(model_path, exist_ok=True)
                 snapshot_download(
-                    repo_id="facebook/sam-3d-body-dinov3",
+                    repo_id="jetjodh/sam-3d-body-dinov3",
                     local_dir=model_path
                 )
+                print(f"[SAM3DBody] Download complete.")
 
             except Exception as e:
                 # Download failed - give user instructions
                 raise RuntimeError(
                     f"\n[SAM3DBody] Download failed.\n\n"
-                    f"Please manually place the model files at:\n"
+                    f"Please manually download from:\n"
+                    f"  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\n"
+                    f"And place the model files at:\n"
                     f"  {DEFAULT_MODEL_PATH}/\n"
                     f"    ├── model.ckpt          (SAM 3D Body checkpoint)\n"
                     f"    ├── model_config.yaml   (model configuration)\n"
