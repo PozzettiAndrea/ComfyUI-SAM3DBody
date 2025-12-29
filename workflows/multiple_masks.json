@@ -182,12 +182,117 @@
         }
       ],
       "properties": {
-        "aux_id": "PozzettiAndrea/ComfyUI-Multiband",
+        "cnr_id": "comfyui-multiband",
         "ver": "9b51a21173c154aa9adae9e8b76db5e82f87f657",
-        "Node name for S&R": "MultibandToImage"
+        "Node name for S&R": "MultibandToImage",
+        "aux_id": "PozzettiAndrea/ComfyUI-Multiband"
       },
       "widgets_values": [
         "0,1,2"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SAM3DBodyProcessMultiple",
+      "pos": [
+        310.13806988037925,
+        -51.40382894461709
+      ],
+      "size": [
+        294.4166015625,
+        142
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "SAM3D_MODEL",
+          "link": 32
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 43
+        },
+        {
+          "name": "masks",
+          "type": "MASK",
+          "link": 45
+        },
+        {
+          "name": "depth_map",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "multi_mesh_data",
+          "type": "SAM3D_MULTI_OUTPUT",
+          "links": [
+            23
+          ]
+        },
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-SAM3DBody",
+        "ver": "0cb5527a152b90d4cfa1d2389f47997ca701d141",
+        "Node name for S&R": "SAM3DBodyProcessMultiple"
+      },
+      "widgets_values": [
+        "full",
+        false
+      ]
+    },
+    {
+      "id": 39,
+      "type": "MultibandToMasks",
+      "pos": [
+        -171.71536834138104,
+        57.60299660377296
+      ],
+      "size": [
+        272.62109375,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiband",
+          "type": "MULTIBAND_IMAGE",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [
+            45
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-multiband",
+        "ver": "fc620d0d8eee86ab8dc75990df5f0a24e35dbdb3",
+        "Node name for S&R": "MultibandToMasks",
+        "aux_id": "PozzettiAndrea/ComfyUI-Multiband"
+      },
+      "widgets_values": [
+        "0",
+        true
       ]
     },
     {
@@ -226,108 +331,13 @@
         }
       ],
       "properties": {
-        "aux_id": "PozzettiAndrea/ComfyUI-Multiband",
+        "cnr_id": "comfyui-multiband",
         "ver": "9b51a21173c154aa9adae9e8b76db5e82f87f657",
-        "Node name for S&R": "MultibandLoad"
+        "Node name for S&R": "MultibandLoad",
+        "aux_id": "PozzettiAndrea/ComfyUI-Multiband"
       },
       "widgets_values": [
-        "fellowship.npz",
-        true
-      ]
-    },
-    {
-      "id": 16,
-      "type": "SAM3DBodyProcessMultiple",
-      "pos": [
-        310.13806988037925,
-        -51.40382894461709
-      ],
-      "size": [
-        294.4166015625,
-        98
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "SAM3D_MODEL",
-          "link": 32
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 43
-        },
-        {
-          "name": "masks",
-          "type": "MASK",
-          "link": 45
-        }
-      ],
-      "outputs": [
-        {
-          "name": "multi_mesh_data",
-          "type": "SAM3D_MULTI_OUTPUT",
-          "links": [
-            23
-          ]
-        },
-        {
-          "name": "preview",
-          "type": "IMAGE",
-          "links": [
-            21
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-SAM3DBody",
-        "ver": "0cb5527a152b90d4cfa1d2389f47997ca701d141",
-        "Node name for S&R": "SAM3DBodyProcessMultiple"
-      },
-      "widgets_values": [
-        "full"
-      ]
-    },
-    {
-      "id": 39,
-      "type": "MultibandToMasks",
-      "pos": [
-        -171.71536834138104,
-        57.60299660377296
-      ],
-      "size": [
-        272.62109375,
-        82
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "multiband",
-          "type": "MULTIBAND_IMAGE",
-          "link": 44
-        }
-      ],
-      "outputs": [
-        {
-          "name": "masks",
-          "type": "MASK",
-          "links": [
-            45
-          ]
-        }
-      ],
-      "properties": {
-        "aux_id": "PozzettiAndrea/ComfyUI-Multiband",
-        "ver": "fc620d0d8eee86ab8dc75990df5f0a24e35dbdb3",
-        "Node name for S&R": "MultibandToMasks"
-      },
-      "widgets_values": [
-        "0",
+        "people.npz",
         true
       ]
     },
@@ -335,8 +345,8 @@
       "id": 4,
       "type": "PreviewImage",
       "pos": [
-        394.95014393599746,
-        307.99716102403454
+        534.5683873065636,
+        151.11197305797026
       ],
       "size": [
         216.20494921875002,
@@ -431,10 +441,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8382740639566078,
+      "scale": 0.7620673308696438,
       "offset": [
-        477.02330164176226,
-        430.254341262335
+        682.3283208744734,
+        617.9791699016657
       ]
     },
     "frontendVersion": "1.35.9",
