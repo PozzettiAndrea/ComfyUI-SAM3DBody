@@ -59,7 +59,7 @@ See [LICENSE](LICENSE) for complete license information and [THIRD_PARTY_NOTICES
 
 Questions or feature requests? Open a [Discussion](https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody/discussions) on GitHub.
 
-Join the [Comfy3D Discord](https://discord.gg/PN743tE5) for help, updates, and chat about 3D workflows in ComfyUI.
+Join the [Comfy3D Discord](https://discord.gg/bcdQCUjnHE) for help, updates, and chat about 3D workflows in ComfyUI.
 
 ## Credits
 
