@@ -35,18 +35,18 @@ Run the installation script: `python install.py`
 
 ## License
 
-This project uses a **dual-license structure**:
+This project uses a **dual-license structure**. License files are located in `docs/licenses/`.
 
-- **Wrapper Code** (ComfyUI integration): **MIT License** - See [LICENSE-MIT](LICENSE-MIT)
+- **Wrapper Code** (ComfyUI integration): **MIT License** - See [LICENSE-MIT](docs/licenses/LICENSE-MIT)
   - This includes all nodes, UI components, installation scripts, and ComfyUI integration code
   - Copyright (c) 2025 Andrea Pozzetti
 
-- **SAM 3D Body Library** (vendored in `sam_3d_body/`): **SAM License** - See [LICENSE-SAM](LICENSE-SAM)
+- **SAM 3D Body Library** (vendored in `sam_3d_body/`): **SAM License** - See [LICENSE-SAM](docs/licenses/LICENSE-SAM)
   - The core SAM 3D Body model and inference code
   - Copyright (c) Meta Platforms, Inc. and affiliates
   - Permissive research license allowing commercial use and derivative works
 
-See [LICENSE](LICENSE) for complete license information and [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) for attributions.
+See [LICENSE](docs/licenses/LICENSE) for complete license information and [THIRD_PARTY_NOTICES](docs/licenses/THIRD_PARTY_NOTICES) for attributions.
 
 ### Using This Project
 
