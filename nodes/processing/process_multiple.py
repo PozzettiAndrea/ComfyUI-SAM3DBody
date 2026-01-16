@@ -5,6 +5,9 @@ Multi-person processing node for SAM 3D Body.
 
 Performs 3D human mesh reconstruction for multiple people from a single image.
 Runs in isolated venv via @isolated decorator.
+
+Model loading happens lazily inside the worker (not in host process)
+to avoid importing CUDA dependencies in the main ComfyUI environment.
 """
 
 import os
@@ -13,7 +16,74 @@ import torch
 import numpy as np
 import cv2
 from comfy_env import isolated
-from ..base import comfy_image_to_numpy, comfy_mask_to_numpy, numpy_to_comfy_image
+
+
+# =============================================================================
+# Helper functions (inlined to avoid relative import issues in worker)
+# =============================================================================
+
+def comfy_image_to_numpy(image):
+    """Convert ComfyUI image tensor [B,H,W,C] to numpy BGR [H,W,C] for OpenCV."""
+    img_np = image[0].cpu().numpy()
+    img_np = (img_np * 255).astype(np.uint8)
+    return img_np[..., ::-1].copy()  # RGB -> BGR
+
+
+def comfy_mask_to_numpy(mask):
+    """Convert ComfyUI mask tensor [N,H,W] to numpy [N,H,W]."""
+    return mask.cpu().numpy()
+
+
+def numpy_to_comfy_image(np_image):
+    """Convert numpy BGR [H,W,C] to ComfyUI image tensor [1,H,W,C]."""
+    img_rgb = np_image[..., ::-1].copy()  # BGR -> RGB
+    img_rgb = img_rgb.astype(np.float32) / 255.0
+    return torch.from_numpy(img_rgb).unsqueeze(0)
+
+
+# Module-level cache for loaded model (persists across calls in worker)
+_MODEL_CACHE = {}
+
+
+def _load_sam3d_model(model_config: dict):
+    """
+    Load SAM 3D Body model from config paths.
+
+    Uses module-level caching to avoid reloading on every call.
+    This runs inside the isolated worker subprocess.
+    """
+    cache_key = model_config["ckpt_path"]
+
+    if cache_key in _MODEL_CACHE:
+        return _MODEL_CACHE[cache_key]
+
+    # Import heavy dependencies only inside worker
+    from sam_3d_body import load_sam_3d_body
+
+    ckpt_path = model_config["ckpt_path"]
+    device = model_config["device"]
+    mhr_path = model_config.get("mhr_path", "")
+
+    # Load model using the library's built-in function
+    print(f"[SAM3DBody] Loading model from {ckpt_path}...")
+    sam_3d_model, model_cfg, _ = load_sam_3d_body(
+        checkpoint_path=ckpt_path,
+        device=device,
+        mhr_path=mhr_path,
+    )
+
+    print(f"[SAM3DBody] Model loaded successfully on {device}")
+
+    # Cache for reuse
+    result = {
+        "model": sam_3d_model,
+        "model_cfg": model_cfg,
+        "device": device,
+        "mhr_path": mhr_path,
+    }
+    _MODEL_CACHE[cache_key] = result
+
+    return result
 
 
 @isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
@@ -508,8 +578,16 @@ class SAM3DBodyProcessMultiple:
         return outputs
 
     def process_multiple(self, model, image, masks, inference_type="full", depth_map=None, adjust_position_from_depth=False):
-        """Process image with multiple masks and reconstruct 3D meshes for all people."""
+        """Process image with multiple masks and reconstruct 3D meshes for all people.
 
+        Args:
+            model: Config dict from LoadSAM3DBodyModel with paths (model loaded lazily here)
+            image: Input image tensor
+            masks: Batched masks - one per person (N, H, W)
+            inference_type: "full" or "body"
+            depth_map: Optional depth map for scale correction
+            adjust_position_from_depth: Adjust Z-position based on depth map
+        """
         from sam_3d_body import SAM3DBodyEstimator
 
         # Process depth map input if provided
@@ -524,9 +602,10 @@ class SAM3DBodyProcessMultiple:
             if adjust_position_from_depth:
                 print("[SAM3DBody] Position adjustment from depth enabled")
 
-        # Extract model components
-        sam_3d_model = model["model"]
-        model_cfg = model["model_cfg"]
+        # Lazy load model (cached after first call)
+        loaded = _load_sam3d_model(model)
+        sam_3d_model = loaded["model"]
+        model_cfg = loaded["model_cfg"]
 
         # Create estimator
         estimator = SAM3DBodyEstimator(
@@ -603,7 +682,7 @@ class SAM3DBodyProcessMultiple:
             "num_people": len(prepared_outputs),
             "people": prepared_outputs,
             "faces": estimator.faces,
-            "mhr_path": model.get("mhr_path", None),
+            "mhr_path": loaded.get("mhr_path", None),
             "all_vertices": [p["pred_vertices"] for p in prepared_outputs],
             "all_joints": [p.get("pred_joint_coords") for p in prepared_outputs],
             "all_cam_t": [p.get("pred_cam_t") for p in prepared_outputs],
