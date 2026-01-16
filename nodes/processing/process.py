@@ -4,6 +4,7 @@
 Processing node for SAM 3D Body.
 
 Performs 3D human mesh reconstruction from a single image.
+Runs in isolated venv via @isolated decorator.
 """
 
 import os
@@ -11,9 +12,11 @@ import tempfile
 import torch
 import numpy as np
 import cv2
+from comfy_env import isolated
 from ..base import comfy_image_to_numpy, comfy_mask_to_numpy
 
 
+@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class SAM3DBodyProcess:
     """
     Performs 3D human mesh reconstruction from a single image.
@@ -186,6 +189,7 @@ class SAM3DBodyProcess:
         return img_bgr
 
 
+@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class SAM3DBodyProcessAdvanced:
     """
     Advanced processing node with full control over detection, segmentation, and FOV estimation.
