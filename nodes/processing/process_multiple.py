@@ -4,6 +4,7 @@
 Multi-person processing node for SAM 3D Body.
 
 Performs 3D human mesh reconstruction for multiple people from a single image.
+Runs in isolated venv via @isolated decorator.
 """
 
 import os
@@ -11,8 +12,11 @@ import tempfile
 import torch
 import numpy as np
 import cv2
+from comfy_env import isolated
 from ..base import comfy_image_to_numpy, comfy_mask_to_numpy, numpy_to_comfy_image
 
+
+@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class SAM3DBodyProcessMultiple:
     """
     Performs 3D human mesh reconstruction for multiple people.
