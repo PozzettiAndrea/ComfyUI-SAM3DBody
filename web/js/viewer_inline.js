@@ -38030,7 +38030,7 @@ version 0.6.9
                     console.error('[SAM3DBody FBX Viewer] Error loading FBX:', error);
                     console.error('[SAM3DBody FBX Viewer] Error type:', error?.constructor?.name);
                     console.error('[SAM3DBody FBX Viewer] Error message:', error?.message);
-                    console.error('[SAM3DBody FBX Viewer] Attempted URL:', window.location.origin + filepath);
+                    console.error('[SAM3DBody FBX Viewer] Attempted URL:', filepath);
 
                     // Show more helpful error message
                     let errorMsg = 'Error loading FBX';
@@ -38516,6 +38516,17 @@ version 0.6.9
                 if (match) {
                     currentFBXFilename = decodeURIComponent(match[1]);
                     console.log('[SAM3DBody FBX Viewer] Stored filename:', currentFBXFilename);
+
+                    // Check file extension
+                    const ext = currentFBXFilename.split('.').pop().toLowerCase();
+                    if (ext === 'obj') {
+                        console.error('[SAM3DBody FBX Viewer] OBJ files not supported - Blender export to FBX failed');
+                        loading.textContent = 'OBJ format not supported - install Blender for FBX export';
+                        loading.style.display = 'block';
+                        loading.style.color = '#ffaa00';
+                        statusEl.textContent = 'Error: OBJ files cannot be displayed (need FBX)';
+                        return;
+                    }
                 }
                 loadFBX(event.data.filepath);
             }

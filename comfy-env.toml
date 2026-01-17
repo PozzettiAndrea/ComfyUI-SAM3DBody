@@ -61,7 +61,7 @@ pytorch_version = "auto"
         "transformers>=4.30.0",
 
         # Blender Python module (headless)
-        "bpy",
+        "bpy==4.2",
     ]
 
     [sam3dbody.packages.linux]
