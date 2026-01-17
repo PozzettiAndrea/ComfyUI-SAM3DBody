@@ -24,15 +24,23 @@ class BpyFBXExporter:
 
     FUNCTION = "export"
 
-    def export(self, input_obj_path, output_fbx_path, skeleton_json_path=None):
-        """Export OBJ mesh to FBX using bpy."""
+    def export(self, input_obj_path, output_fbx_path, skeleton_json_path=None, combined_json_path=None):
+        """Export OBJ mesh to FBX using bpy.
+
+        If combined_json_path is provided, exports multiple people into a single FBX.
+        Otherwise, exports a single person.
+        """
         import bpy
         from mathutils import Vector
         import numpy as np
         import json
         import os
 
-        # Load skeleton data from JSON if provided
+        # Handle combined export mode
+        if combined_json_path and os.path.exists(combined_json_path):
+            return self._export_combined(combined_json_path, output_fbx_path)
+
+        # Single person export mode - load skeleton data from JSON if provided
         joints = None
         num_joints = 0
         joint_parents_list = None
@@ -219,6 +227,325 @@ class BpyFBXExporter:
             embed_textures=True,
         )
 
+        return {"success": True, "output_path": output_fbx_path}
+
+    def _export_combined(self, combined_json_path, output_fbx_path):
+        """
+        Export multiple people into a single combined FBX file.
+
+        Args:
+            combined_json_path: Path to JSON file containing list of people data
+            output_fbx_path: Output path for the combined FBX file
+        """
+        import bpy
+        from mathutils import Vector
+        import numpy as np
+        import json
+        import os
+
+        # Load the combined data from JSON
+        with open(combined_json_path, 'r') as f:
+            people_data = json.load(f)
+
+        # Clean default scene
+        for c in bpy.data.actions:
+            bpy.data.actions.remove(c)
+        for c in bpy.data.armatures:
+            bpy.data.armatures.remove(c)
+        for c in bpy.data.cameras:
+            bpy.data.cameras.remove(c)
+        for c in bpy.data.collections:
+            bpy.data.collections.remove(c)
+        for c in bpy.data.images:
+            bpy.data.images.remove(c)
+        for c in bpy.data.materials:
+            bpy.data.materials.remove(c)
+        for c in bpy.data.meshes:
+            bpy.data.meshes.remove(c)
+        for c in bpy.data.objects:
+            bpy.data.objects.remove(c)
+        for c in bpy.data.textures:
+            bpy.data.textures.remove(c)
+
+        # Create collection for all exported objects
+        collection = bpy.data.collections.new('SAM3D_Export')
+        bpy.context.scene.collection.children.link(collection)
+
+        # Process each person
+        for person in people_data:
+            obj_path = person["obj_path"]
+            skeleton_json_path = person.get("skeleton_json_path")
+            idx = person["index"]
+
+            # Load skeleton data from JSON if provided
+            joints = None
+            num_joints = 0
+            joint_parents_list = None
+            skinning_weights = None
+
+            if skeleton_json_path and os.path.exists(skeleton_json_path):
+                with open(skeleton_json_path, 'r') as f:
+                    skeleton_data = json.load(f)
+
+                joint_positions = skeleton_data.get('joint_positions', [])
+                num_joints = skeleton_data.get('num_joints', len(joint_positions))
+                joint_parents_list = skeleton_data.get('joint_parents')
+                skinning_weights = skeleton_data.get('skinning_weights')
+
+                if joint_positions:
+                    joints = np.array(joint_positions, dtype=np.float32)
+
+            # Import OBJ mesh
+            bpy.ops.wm.obj_import(filepath=obj_path)
+
+            imported_objects = [obj for obj in bpy.context.selected_objects if obj.type == 'MESH']
+            if not imported_objects:
+                continue
+
+            mesh_obj = imported_objects[0]
+            mesh_obj.name = f'SAM3D_Character_{idx}'
+
+            # Move to our collection
+            if mesh_obj.name in bpy.context.scene.collection.objects:
+                bpy.context.scene.collection.objects.unlink(mesh_obj)
+            collection.objects.link(mesh_obj)
+
+            # Create armature from skeleton if provided
+            if joints is not None and num_joints > 0:
+                # Create armature in edit mode
+                bpy.ops.object.armature_add(enter_editmode=True)
+                armature = bpy.context.active_object.data
+                armature.name = f'SAM3D_Skeleton_{idx}'
+                armature_obj = bpy.context.active_object
+                armature_obj.name = f'SAM3D_Skeleton_{idx}'
+
+                # Move to our collection
+                if armature_obj.name in bpy.context.scene.collection.objects:
+                    bpy.context.scene.collection.objects.unlink(armature_obj)
+                collection.objects.link(armature_obj)
+
+                edit_bones = armature.edit_bones
+                extrude_size = 0.05
+
+                # Remove default bone
+                default_bone = edit_bones.get('Bone')
+                if default_bone:
+                    edit_bones.remove(default_bone)
+
+                # Calculate skeleton center for root bone placement
+                skeleton_center = joints.mean(axis=0)
+
+                # Make positions relative to skeleton center
+                rel_joints = joints - skeleton_center
+
+                # Apply coordinate system correction to match mesh orientation
+                rel_joints_corrected = np.zeros_like(rel_joints)
+                rel_joints_corrected[:, 0] = rel_joints[:, 0]
+                rel_joints_corrected[:, 1] = -rel_joints[:, 2]
+                rel_joints_corrected[:, 2] = rel_joints[:, 1]
+
+                # Create all bones with unique names for this person
+                bones_dict = {}
+                for i in range(num_joints):
+                    bone_name = f'P{idx}_Joint_{i:03d}'
+                    bone = edit_bones.new(bone_name)
+                    bone.head = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2]))
+                    bone.tail = Vector((rel_joints_corrected[i, 0], rel_joints_corrected[i, 1], rel_joints_corrected[i, 2] + extrude_size))
+                    bones_dict[bone_name] = bone
+
+                # Build hierarchical structure using joint parents if available
+                if joint_parents_list and len(joint_parents_list) == num_joints:
+                    for i in range(num_joints):
+                        parent_idx = joint_parents_list[i]
+                        if parent_idx >= 0 and parent_idx < num_joints and parent_idx != i:
+                            bone_name = f'P{idx}_Joint_{i:03d}'
+                            parent_bone_name = f'P{idx}_Joint_{parent_idx:03d}'
+                            bones_dict[bone_name].parent = bones_dict[parent_bone_name]
+                            bones_dict[bone_name].use_connect = False
+                else:
+                    # Fallback: create flat hierarchy with Joint_000 as root
+                    root_bone_name = f'P{idx}_Joint_000'
+                    for i in range(1, num_joints):
+                        bone_name = f'P{idx}_Joint_{i:03d}'
+                        bones_dict[bone_name].parent = bones_dict[root_bone_name]
+                        bones_dict[bone_name].use_connect = False
+
+                # Switch to object mode
+                bpy.ops.object.mode_set(mode='OBJECT')
+
+                # Position armature at skeleton center
+                skeleton_center_corrected = np.zeros(3)
+                skeleton_center_corrected[0] = skeleton_center[0]
+                skeleton_center_corrected[1] = -skeleton_center[2]
+                skeleton_center_corrected[2] = skeleton_center[1]
+                armature_obj.location = Vector((skeleton_center_corrected[0], skeleton_center_corrected[1], skeleton_center_corrected[2]))
+
+                # Apply skinning weights if available
+                if skinning_weights:
+                    # Create vertex groups for each bone
+                    for i in range(num_joints):
+                        bone_name = f'P{idx}_Joint_{i:03d}'
+                        mesh_obj.vertex_groups.new(name=bone_name)
+
+                    # Assign weights to vertices
+                    num_vertices = len(mesh_obj.data.vertices)
+                    for vert_idx in range(min(num_vertices, len(skinning_weights))):
+                        influences = skinning_weights[vert_idx]
+                        if influences and len(influences) > 0:
+                            for bone_idx, weight in influences:
+                                if 0 <= bone_idx < num_joints and weight > 0.0001:
+                                    bone_name = f'P{idx}_Joint_{bone_idx:03d}'
+                                    vertex_group = mesh_obj.vertex_groups.get(bone_name)
+                                    if vertex_group:
+                                        vertex_group.add([vert_idx], weight, 'REPLACE')
+
+                # Deselect all
+                for obj in bpy.context.selected_objects:
+                    obj.select_set(False)
+
+                # Parent mesh to armature
+                mesh_obj.select_set(True)
+                armature_obj.select_set(True)
+                bpy.context.view_layer.objects.active = armature_obj
+
+                if skinning_weights:
+                    bpy.ops.object.parent_set(type='ARMATURE')
+                else:
+                    bpy.ops.object.parent_set(type='ARMATURE_NAME')
+
+            # Make mesh double-sided AFTER skinning (so duplicated vertices inherit weights)
+            bpy.context.view_layer.objects.active = mesh_obj
+            bpy.ops.object.mode_set(mode='EDIT')
+            bpy.ops.mesh.select_all(action='SELECT')
+            bpy.ops.mesh.duplicate()
+            bpy.ops.mesh.flip_normals()
+            bpy.ops.object.mode_set(mode='OBJECT')
+
+        # Export to FBX
+        os.makedirs(os.path.dirname(output_fbx_path) if os.path.dirname(output_fbx_path) else '.', exist_ok=True)
+
+        # Select all objects in our collection
+        for obj in bpy.context.selected_objects:
+            obj.select_set(False)
+        for obj in collection.objects:
+            obj.select_set(True)
+
+        # Export FBX with all objects
+        bpy.ops.export_scene.fbx(
+            filepath=output_fbx_path,
+            check_existing=False,
+            use_selection=True,
+            add_leaf_bones=False,
+            path_mode='COPY',
+            embed_textures=True,
+        )
+
+        return {"success": True, "output_path": output_fbx_path}
+
+
+@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
+class BpyPoseApplier:
+    """Isolated bpy-based pose applier that runs in the sam3dbody venv."""
+
+    FUNCTION = "apply_pose"
+
+    def apply_pose(self, input_fbx_path, output_fbx_path, transforms_json_path):
+        """
+        Load an FBX, apply bone transforms, and export to new FBX.
+
+        Args:
+            input_fbx_path: Path to input FBX file
+            output_fbx_path: Path to output FBX file
+            transforms_json_path: Path to JSON file containing bone transforms
+        """
+        import bpy
+        import mathutils
+        import json
+        import os
+
+        print(f"[BpyPoseApplier] Loading FBX: {input_fbx_path}")
+
+        # Clear the scene
+        bpy.ops.object.select_all(action='SELECT')
+        bpy.ops.object.delete()
+
+        # Import the FBX
+        bpy.ops.import_scene.fbx(filepath=input_fbx_path)
+
+        # Load bone transforms from JSON
+        with open(transforms_json_path, 'r') as f:
+            bone_transforms = json.load(f)
+
+        print(f"[BpyPoseApplier] Loaded {len(bone_transforms)} bone transforms")
+
+        # Find the armature
+        armature = None
+        for obj in bpy.data.objects:
+            if obj.type == 'ARMATURE':
+                armature = obj
+                break
+
+        if not armature:
+            return {"success": False, "error": "No armature found in FBX"}
+
+        print(f"[BpyPoseApplier] Found armature: {armature.name}")
+        print(f"[BpyPoseApplier] Armature has {len(armature.pose.bones)} pose bones")
+
+        # Apply transforms to pose bones
+        applied_count = 0
+        for bone_name, transform in bone_transforms.items():
+            if bone_name not in armature.pose.bones:
+                print(f"[BpyPoseApplier] WARNING: Bone '{bone_name}' not found in armature")
+                continue
+
+            pose_bone = armature.pose.bones[bone_name]
+
+            # Apply position delta (offset from rest pose)
+            pos_delta = transform.get('position', {})
+            if pos_delta:
+                pose_bone.location.x += pos_delta.get('x', 0)
+                pose_bone.location.y += pos_delta.get('y', 0)
+                pose_bone.location.z += pos_delta.get('z', 0)
+
+            # Apply rotation delta (quaternion multiply)
+            quat_delta = transform.get('quaternion', {})
+            if quat_delta:
+                delta_quat = mathutils.Quaternion((
+                    quat_delta.get('w', 1.0),
+                    quat_delta.get('x', 0.0),
+                    quat_delta.get('y', 0.0),
+                    quat_delta.get('z', 0.0)
+                ))
+                # Multiply current rotation by delta
+                pose_bone.rotation_quaternion = pose_bone.rotation_quaternion @ delta_quat
+
+            # Apply scale delta (multiply)
+            scale_delta = transform.get('scale', {})
+            if scale_delta:
+                pose_bone.scale.x *= scale_delta.get('x', 1.0)
+                pose_bone.scale.y *= scale_delta.get('y', 1.0)
+                pose_bone.scale.z *= scale_delta.get('z', 1.0)
+
+            applied_count += 1
+
+        print(f"[BpyPoseApplier] Applied transforms to {applied_count} bones")
+
+        # Update the scene to apply transforms
+        bpy.context.view_layer.update()
+
+        # Export to FBX with current pose
+        os.makedirs(os.path.dirname(output_fbx_path) if os.path.dirname(output_fbx_path) else '.', exist_ok=True)
+
+        print(f"[BpyPoseApplier] Exporting posed FBX: {output_fbx_path}")
+        bpy.ops.export_scene.fbx(
+            filepath=output_fbx_path,
+            use_selection=False,
+            apply_scale_options='FBX_SCALE_ALL',
+            bake_anim=False,
+            add_leaf_bones=False,
+        )
+
+        print(f"[BpyPoseApplier] Export complete")
         return {"success": True, "output_path": output_fbx_path}
 
 
@@ -482,6 +809,10 @@ class SAM3DBodyExportMultipleFBX:
                     "default": "sam3d_multi_rigged.fbx",
                     "tooltip": "Output filename for the combined FBX file"
                 }),
+                "combine": ("BOOLEAN", {
+                    "default": True,
+                    "tooltip": "When enabled, exports all people into a single FBX file (works with Preview3D). When disabled, creates separate FBX files per person."
+                }),
             },
         }
 
@@ -491,8 +822,14 @@ class SAM3DBodyExportMultipleFBX:
     CATEGORY = "SAM3DBody/export"
     OUTPUT_NODE = True
 
-    def export_multi_fbx(self, multi_mesh_data, output_filename):
-        """Export all meshes with skeletons to a single combined FBX file."""
+    def export_multi_fbx(self, multi_mesh_data, output_filename, combine):
+        """Export all meshes with skeletons to FBX file(s).
+
+        Args:
+            multi_mesh_data: Multi-person mesh data from SAM3D Body Process Multiple node
+            output_filename: Output filename for the FBX file
+            combine: If True, export all people into single FBX. If False, create separate FBX per person.
+        """
 
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
@@ -611,61 +948,104 @@ class SAM3DBodyExportMultipleFBX:
                 })
 
             print(f"[SAM3D Export] people added to combined_data: {len(combined_data['people'])}")
+            print(f"[SAM3D Export] combine: {combine}")
 
             if not combined_data["people"]:
                 raise RuntimeError("No valid mesh data to export")
 
-            # Write combined JSON
-            combined_json = tempfile.NamedTemporaryFile(suffix='_combined.json', delete=False, mode='w')
-            temp_files.append(combined_json.name)
-            json.dump(combined_data, combined_json)
-            combined_json.close()
-
-            # Export each person using isolated bpy exporter
             exporter = BpyFBXExporter()
-            exported_files = []
 
-            for person_data in combined_data["people"]:
-                obj_path = person_data["obj_path"]
-                idx = person_data["index"]
-                skeleton_info = person_data.get("skeleton", {})
+            if combine:
+                # Combined mode: export all people into a single FBX file
+                # Write skeleton JSON files for each person and build combined data
+                people_data_for_export = []
+                for person_data in combined_data["people"]:
+                    idx = person_data["index"]
+                    skeleton_info = person_data.get("skeleton", {})
 
-                # Create per-person FBX filename
-                if len(combined_data["people"]) == 1:
-                    person_fbx_path = output_fbx_path
-                else:
-                    person_fbx_path = output_fbx_path.replace('.fbx', f'_person{idx}.fbx')
+                    # Write skeleton JSON for this person if available
+                    person_skeleton_json = None
+                    if skeleton_info:
+                        person_skeleton_json = tempfile.NamedTemporaryFile(
+                            suffix=f'_person{idx}_skeleton.json', delete=False, mode='w'
+                        )
+                        temp_files.append(person_skeleton_json.name)
+                        json.dump(skeleton_info, person_skeleton_json)
+                        person_skeleton_json.close()
+                        person_skeleton_json = person_skeleton_json.name
 
-                # Write skeleton JSON for this person if available
-                person_skeleton_json = None
-                if skeleton_info:
-                    person_skeleton_json = tempfile.NamedTemporaryFile(
-                        suffix=f'_person{idx}_skeleton.json', delete=False, mode='w'
-                    )
-                    temp_files.append(person_skeleton_json.name)
-                    json.dump(skeleton_info, person_skeleton_json)
-                    person_skeleton_json.close()
-                    person_skeleton_json = person_skeleton_json.name
+                    people_data_for_export.append({
+                        "obj_path": person_data["obj_path"],
+                        "skeleton_json_path": person_skeleton_json,
+                        "index": idx,
+                    })
 
-                # Export using isolated bpy
+                # Write combined data JSON file
+                combined_json = tempfile.NamedTemporaryFile(
+                    suffix='_combined_export.json', delete=False, mode='w'
+                )
+                temp_files.append(combined_json.name)
+                json.dump(people_data_for_export, combined_json)
+                combined_json.close()
+
+                # Export all people into single FBX via combined_json_path
                 result = exporter.export(
-                    input_obj_path=obj_path,
-                    output_fbx_path=person_fbx_path,
-                    skeleton_json_path=person_skeleton_json
+                    input_obj_path=None,
+                    output_fbx_path=output_fbx_path,
+                    combined_json_path=combined_json.name
                 )
 
-                if result.get("success"):
-                    exported_files.append(person_fbx_path)
-                else:
-                    raise RuntimeError(f"FBX export failed for person {idx}")
+                if not result.get("success"):
+                    raise RuntimeError("Combined FBX export failed")
 
-            if not exported_files:
-                raise RuntimeError("No FBX files were exported")
+                print(f"[SAM3D Export] Combined FBX created: {output_fbx_path}")
+                return (os.path.basename(output_fbx_path),)
 
-            # Return the first (or only) exported file
-            output_fbx_path = exported_files[0]
+            else:
+                # Separate mode: export each person to individual FBX files
+                exported_files = []
 
-            return (os.path.basename(output_fbx_path),)
+                for person_data in combined_data["people"]:
+                    obj_path = person_data["obj_path"]
+                    idx = person_data["index"]
+                    skeleton_info = person_data.get("skeleton", {})
+
+                    # Create per-person FBX filename
+                    if len(combined_data["people"]) == 1:
+                        person_fbx_path = output_fbx_path
+                    else:
+                        person_fbx_path = output_fbx_path.replace('.fbx', f'_person{idx}.fbx')
+
+                    # Write skeleton JSON for this person if available
+                    person_skeleton_json = None
+                    if skeleton_info:
+                        person_skeleton_json = tempfile.NamedTemporaryFile(
+                            suffix=f'_person{idx}_skeleton.json', delete=False, mode='w'
+                        )
+                        temp_files.append(person_skeleton_json.name)
+                        json.dump(skeleton_info, person_skeleton_json)
+                        person_skeleton_json.close()
+                        person_skeleton_json = person_skeleton_json.name
+
+                    # Export using isolated bpy
+                    result = exporter.export(
+                        input_obj_path=obj_path,
+                        output_fbx_path=person_fbx_path,
+                        skeleton_json_path=person_skeleton_json
+                    )
+
+                    if result.get("success"):
+                        exported_files.append(person_fbx_path)
+                    else:
+                        raise RuntimeError(f"FBX export failed for person {idx}")
+
+                if not exported_files:
+                    raise RuntimeError("No FBX files were exported")
+
+                # Return the first exported file (separate mode returns first file for compatibility)
+                output_fbx_path = exported_files[0]
+                print(f"[SAM3D Export] Separate FBX files created: {len(exported_files)} files")
+                return (os.path.basename(output_fbx_path),)
 
         finally:
             # Clean up temp files

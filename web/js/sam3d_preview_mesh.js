@@ -4,12 +4,42 @@
  *
  * ComfyUI SAM3DBody - Rigged Mesh Preview Widget
  * Interactive viewer for SAM3D rigged meshes with skeleton manipulation
+ *
+ * Uses file-based viewer loading from comfy-3d-viewers package.
+ * The viewer_fbx.html and Three.js bundle are copied by prestartup_script.py.
  */
 
 import { app } from "../../../../scripts/app.js";
-import { VIEWER_HTML } from "./viewer_inline.js";
 
 console.log("[SAM3DBody] Loading rigged mesh preview extension...");
+
+/**
+ * Detect the extension folder name from the current script URL
+ */
+function detectExtensionFolder() {
+    try {
+        if (typeof import.meta !== 'undefined' && import.meta.url) {
+            const match = import.meta.url.match(/\/extensions\/([^\/]+)\//);
+            if (match) {
+                return match[1];
+            }
+        }
+    } catch (e) {
+        console.warn('[SAM3DBody] Could not detect extension folder from import.meta:', e);
+    }
+    // Fallback to hardcoded name
+    return 'ComfyUI-SAM3DBody';
+}
+
+/**
+ * Get the viewer URL for the FBX viewer HTML file
+ */
+function getViewerUrl(extensionFolder) {
+    return `/extensions/${extensionFolder}/viewer_fbx.html?v=` + Date.now();
+}
+
+const EXTENSION_FOLDER = detectExtensionFolder();
+console.log("[SAM3DBody] Detected extension folder:", EXTENSION_FOLDER);
 
 app.registerExtension({
     name: "sam3dbody.meshpreview",
@@ -32,17 +62,10 @@ app.registerExtension({
                 iframe.style.border = "none";
                 iframe.style.backgroundColor = "#2a2a2a";
 
-                // Create blob URL from inline HTML (no external requests!)
-                const blob = new Blob([VIEWER_HTML], { type: 'text/html' });
-                const blobUrl = URL.createObjectURL(blob);
-                iframe.src = blobUrl;
-                console.log('[SAM3DBody] Setting iframe src to blob URL (fully self-contained)');
-
-                // Clean up blob URL when iframe is removed
-                iframe.addEventListener('load', () => {
-                    // Keep blob URL alive while iframe is loaded
-                    iframe._blobUrl = blobUrl;
-                });
+                // Load viewer from file URL (copied by prestartup_script.py)
+                const viewerUrl = getViewerUrl(EXTENSION_FOLDER);
+                iframe.src = viewerUrl;
+                console.log('[SAM3DBody] Setting iframe src to:', viewerUrl);
 
                 // Add load event listener
                 iframe.onload = () => {
@@ -75,13 +98,72 @@ app.registerExtension({
 
                 // Listen for ready message from iframe
                 const onMessage = (event) => {
-                    console.log('[SAM3DBody] Received message from iframe:', event.data);
                     if (event.data && event.data.type === 'VIEWER_READY') {
                         console.log('[SAM3DBody] Viewer iframe is ready!');
                         this.fbxViewerReady = true;
                     }
                 };
                 window.addEventListener('message', onMessage.bind(this));
+
+                const notifyIframeResize = () => {
+                    if (iframe.contentWindow) {
+                        const rect = iframe.getBoundingClientRect();
+                        iframe.contentWindow.postMessage({
+                            type: 'RESIZE',
+                            width: rect.width,
+                            height: rect.height
+                        }, '*');
+                    }
+                };
+
+                this.onResize = function(size) {
+                    const isVueNodes = iframe.closest('[data-node-id]') !== null ||
+                                       document.querySelector('.vue-graph-canvas') !== null;
+
+                    if (!isVueNodes && size && size[1]) {
+                        const nodeHeight = size[1];
+                        const headerHeight = 70;
+                        const availableHeight = Math.max(200, nodeHeight - headerHeight);
+                        iframe.style.height = availableHeight + 'px';
+                    }
+
+                    requestAnimationFrame(() => {
+                        notifyIframeResize();
+                    });
+                };
+
+                let resizeTimeout = null;
+                let lastSize = { width: 0, height: 0 };
+                const resizeObserver = new ResizeObserver((entries) => {
+                    const entry = entries[0];
+                    const newWidth = entry.contentRect.width;
+                    const newHeight = entry.contentRect.height;
+
+                    if (Math.abs(newWidth - lastSize.width) < 1 && Math.abs(newHeight - lastSize.height) < 1) {
+                        return;
+                    }
+                    lastSize = { width: newWidth, height: newHeight };
+
+                    if (resizeTimeout) {
+                        clearTimeout(resizeTimeout);
+                    }
+                    resizeTimeout = setTimeout(() => {
+                        notifyIframeResize();
+                    }, 50);
+                });
+                resizeObserver.observe(iframe);
+
+                const originalOnRemoved = this.onRemoved;
+                this.onRemoved = function() {
+                    resizeObserver.disconnect();
+                    if (resizeTimeout) {
+                        clearTimeout(resizeTimeout);
+                    }
+                    window.removeEventListener('message', onMessage);
+                    if (originalOnRemoved) {
+                        originalOnRemoved.apply(this, arguments);
+                    }
+                };
 
                 // Set initial node size (taller to accommodate controls)
                 this.setSize([512, 768]);
@@ -120,6 +202,7 @@ app.registerExtension({
                                     type: "LOAD_FBX",
                                     filepath: filepath,
                                     timestamp: Date.now()
+                                    // Note: SAM3DBody doesn't have FBX export API, so no fbxExportApiPath
                                 }, "*");
                             } else {
                                 console.error("[SAM3DBody] Iframe contentWindow not available");
