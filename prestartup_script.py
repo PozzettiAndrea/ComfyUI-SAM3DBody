@@ -21,11 +21,13 @@ THREE_DIR = WEB_DIR / "three"
 def copy_fbx_viewer():
     """Copy FBX viewer files from comfy-3d-viewers package."""
     try:
-        from comfy_3d_viewers import get_fbx_html_path, get_fbx_bundle_path
+        from comfy_3d_viewers import get_fbx_html_path, get_fbx_bundle_path, get_fbx_node_widget_path
 
         # Ensure directories exist
         WEB_DIR.mkdir(parents=True, exist_ok=True)
         THREE_DIR.mkdir(parents=True, exist_ok=True)
+        JS_DIR = WEB_DIR / "js"
+        JS_DIR.mkdir(parents=True, exist_ok=True)
 
         # Copy viewer_fbx.html to web/
         src_html = get_fbx_html_path()
@@ -51,6 +53,18 @@ def copy_fbx_viewer():
                 print(f"[SAM3DBody] viewer-bundle.js is up to date")
         else:
             print(f"[SAM3DBody] Warning: viewer-bundle.js not found in comfy-3d-viewers package")
+
+        # Copy mesh_preview_fbx.js to web/js/
+        src_widget = get_fbx_node_widget_path()
+        dst_widget = JS_DIR / "mesh_preview_fbx.js"
+        if os.path.exists(src_widget):
+            if not dst_widget.exists() or os.path.getmtime(src_widget) > os.path.getmtime(dst_widget):
+                shutil.copy2(src_widget, dst_widget)
+                print(f"[SAM3DBody] Copied mesh_preview_fbx.js from comfy-3d-viewers")
+            else:
+                print(f"[SAM3DBody] mesh_preview_fbx.js is up to date")
+        else:
+            print(f"[SAM3DBody] Warning: mesh_preview_fbx.js not found in comfy-3d-viewers package")
 
     except ImportError:
         print("[SAM3DBody] Warning: comfy-3d-viewers package not installed, FBX viewer may not work")
