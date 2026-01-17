@@ -1,0 +1,19 @@
+[test]
+name = "ComfyUI-SAM3DBody"
+python_version = "3.11"
+cpu_only = true
+timeout = 300
+levels = ["syntax", "install", "registration", "instantiation", "validation"]
+
+[test.workflows]
+files = [
+    "workflows/workflow.json",
+    "workflows/rigging.json",
+    "workflows/multiple_masks.json",
+]
+timeout = 120
+
+[test.platforms]
+linux = true
+windows = true
+windows_portable = true
