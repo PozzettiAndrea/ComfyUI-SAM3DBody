@@ -16,10 +16,11 @@ __version__ = "1.0.0"
 __author__ = "SAM 3D Body Team - Meta AI"
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS', 'WEB_DIRECTORY']
 
-# Add this directory to sys.path so vendored sam_3d_body package is importable
+# Add nodes directory to sys.path so vendored sam_3d_body package is importable
 _custom_node_dir = Path(__file__).parent
-if str(_custom_node_dir) not in sys.path:
-    sys.path.insert(0, str(_custom_node_dir))
+_nodes_dir = _custom_node_dir / "nodes"
+if str(_nodes_dir) not in sys.path:
+    sys.path.insert(0, str(_nodes_dir))
 
 # Initialization tracking
 INIT_SUCCESS = False
