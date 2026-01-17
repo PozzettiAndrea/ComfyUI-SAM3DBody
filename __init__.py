@@ -61,7 +61,7 @@ else:
 
     # Step 2: Import server routes
     try:
-        from . import server
+        from .nodes import server
         print("[SAM3DBody] [OK] Server routes registered")
     except Exception as e:
         print(f"[SAM3DBody] [WARNING] Failed to register server routes: {e}")
