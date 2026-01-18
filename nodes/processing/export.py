@@ -45,6 +45,7 @@ class BpyFBXExporter:
         num_joints = 0
         joint_parents_list = None
         skinning_weights = None
+        global_rotations = None
 
         if skeleton_json_path and os.path.exists(skeleton_json_path):
             with open(skeleton_json_path, 'r') as f:
@@ -54,9 +55,14 @@ class BpyFBXExporter:
             num_joints = skeleton_data.get('num_joints', len(joint_positions))
             joint_parents_list = skeleton_data.get('joint_parents')
             skinning_weights = skeleton_data.get('skinning_weights')
+            global_rotations_data = skeleton_data.get('global_rotations')
 
             if joint_positions:
                 joints = np.array(joint_positions, dtype=np.float32)
+
+            if global_rotations_data:
+                global_rotations = np.array(global_rotations_data, dtype=np.float32)
+                print(f"[BpyFBXExporter] Loaded global_rotations: shape {global_rotations.shape}")
 
         # Clean default scene
         for c in bpy.data.actions:
@@ -282,6 +288,7 @@ class BpyFBXExporter:
             num_joints = 0
             joint_parents_list = None
             skinning_weights = None
+            global_rotations = None
 
             if skeleton_json_path and os.path.exists(skeleton_json_path):
                 with open(skeleton_json_path, 'r') as f:
@@ -291,9 +298,14 @@ class BpyFBXExporter:
                 num_joints = skeleton_data.get('num_joints', len(joint_positions))
                 joint_parents_list = skeleton_data.get('joint_parents')
                 skinning_weights = skeleton_data.get('skinning_weights')
+                global_rotations_data = skeleton_data.get('global_rotations')
 
                 if joint_positions:
                     joints = np.array(joint_positions, dtype=np.float32)
+
+                if global_rotations_data:
+                    global_rotations = np.array(global_rotations_data, dtype=np.float32)
+                    print(f"[BpyFBXExporter] Person {idx}: Loaded global_rotations shape {global_rotations.shape}")
 
             # Import OBJ mesh
             bpy.ops.wm.obj_import(filepath=obj_path)
@@ -887,6 +899,7 @@ class SAM3DBodyExportMultipleFBX:
                 vertices = person.get("pred_vertices")
                 joint_coords = person.get("pred_joint_coords")
                 cam_t = person.get("pred_cam_t")  # Camera translation for world positioning
+                global_rots = person.get("pred_global_rots")  # Global joint rotations for bone orientations
 
                 if vertices is None:
                     continue
@@ -898,6 +911,8 @@ class SAM3DBodyExportMultipleFBX:
                     joint_coords = joint_coords.cpu().numpy()
                 if cam_t is not None and isinstance(cam_t, torch.Tensor):
                     cam_t = cam_t.cpu().numpy()
+                if global_rots is not None and isinstance(global_rots, torch.Tensor):
+                    global_rots = global_rots.cpu().numpy()
 
                 # Apply world position offset from camera translation
                 if cam_t is not None:
@@ -937,6 +952,11 @@ class SAM3DBodyExportMultipleFBX:
                     # Add joint parents
                     if joint_parents:
                         skeleton_info["joint_parents"] = joint_parents
+
+                    # Add global joint rotations for better bone orientations in FBX
+                    if global_rots is not None:
+                        skeleton_info["global_rotations"] = global_rots.tolist()
+                        print(f"[SAM3D Export] Person {i}: Including global_rots shape {global_rots.shape}")
 
                 # Add person to combined data
                 combined_data["people"].append({
