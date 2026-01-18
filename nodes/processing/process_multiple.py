@@ -117,6 +117,12 @@ class SAM3DBodyProcessMultiple:
                 "depth_map": ("IMAGE", {
                     "tooltip": "Depth map from Depth Anything V3 (Raw mode) for scale correction - helps fix children/small people appearing too large"
                 }),
+                "intrinsics": ("INTRINSICS", {
+                    "tooltip": "Camera intrinsics from Depth Anything V3 - [3,3] matrix with fx, fy, cx, cy. Provides accurate focal length instead of default 5000"
+                }),
+                "depth_confidence": ("IMAGE", {
+                    "tooltip": "Confidence map from Depth Anything V3 - used to weight depth samples and filter unreliable measurements"
+                }),
                 "adjust_position_from_depth": ("BOOLEAN", {
                     "default": False,
                     "tooltip": "Adjust Z-position of each person based on depth map (requires depth_map)"
@@ -367,6 +373,244 @@ class SAM3DBodyProcessMultiple:
 
         return np.array([cmin, rmin, cmax, rmax], dtype=np.float32)
 
+    def _identify_visible_joints(self, smpl_joints_3d, smpl_joints_2d, depth_map, depth_conf,
+                                  mask, img_h, img_w, cam_t=None, tolerance=0.20):
+        """
+        Identify which joints are truly visible vs self-occluded using depth ratio consistency.
+
+        Key insight: For all VISIBLE joints, the ratio (measured_depth / predicted_camera_z)
+        should be approximately 1.0. Self-occluded joints will have LOWER measured_depth
+        (because we see the occluding body part which is closer), so their ratio will be < 1.0.
+
+        Args:
+            smpl_joints_3d: [J, 3] SMPL canonical joint positions (root-relative)
+            smpl_joints_2d: [J, 2] projected joint positions in image coordinates
+            depth_map: [H, W] depth values from DA3 (in meters)
+            depth_conf: [H, W] confidence values (optional, can be None)
+            mask: [H, W] segmentation mask for this person
+            img_h, img_w: original image dimensions
+            cam_t: [3] camera translation vector (required to convert to camera space)
+            tolerance: relative tolerance for inlier detection (default 20%)
+
+        Returns:
+            visible_joints: list of joint indices that are visible
+            scale_factor: the consensus ratio (z_measured / z_camera), or None if insufficient data
+            confidence: quality metric for the estimation (0-1)
+        """
+        if smpl_joints_3d is None or smpl_joints_2d is None or depth_map is None:
+            return [], None, 0.0
+
+        # cam_t is required to convert SMPL coordinates to camera space
+        if cam_t is None:
+            print("      WARNING: cam_t not provided, cannot compute camera-space Z")
+            return [], None, 0.0
+
+        depth_h, depth_w = depth_map.shape
+        mask_h, mask_w = mask.shape if mask is not None else (depth_h, depth_w)
+
+        # Debug: print array shapes
+        print(f"    [DEBUG] _identify_visible_joints:")
+        print(f"      smpl_joints_3d shape: {smpl_joints_3d.shape}")
+        print(f"      smpl_joints_2d shape: {smpl_joints_2d.shape}")
+        print(f"      depth_map shape: {depth_map.shape}")
+        print(f"      mask shape: {mask.shape if mask is not None else 'None'}")
+        print(f"      img_h={img_h}, img_w={img_w}")
+
+        ratios = []
+        confidences = []
+        joint_indices = []
+
+        # Use minimum of 3D and 2D joint counts (they may differ)
+        num_joints = min(len(smpl_joints_3d), len(smpl_joints_2d))
+        print(f"      Processing {num_joints} joints (3D has {len(smpl_joints_3d)}, 2D has {len(smpl_joints_2d)})")
+
+        for j in range(num_joints):
+            # Get 2D projection
+            px, py = smpl_joints_2d[j, 0], smpl_joints_2d[j, 1]
+
+            # Skip if outside image bounds
+            if px < 0 or py < 0 or px >= img_w or py >= img_h:
+                continue
+
+            # Check if joint is inside mask (if provided)
+            if mask is not None:
+                mx = int(px * mask_w / img_w)
+                my = int(py * mask_h / img_h)
+                mx = max(0, min(mask_w - 1, mx))
+                my = max(0, min(mask_h - 1, my))
+                if mask[my, mx] < 0.5:
+                    continue
+
+            # Sample depth at joint location
+            dx = int(px * depth_w / img_w)
+            dy = int(py * depth_h / img_h)
+            dx = max(0, min(depth_w - 1, dx))
+            dy = max(0, min(depth_h - 1, dy))
+
+            z_measured = depth_map[dy, dx]
+            # Convert SMPL joint Z to camera space by adding camera translation
+            # smpl_joints_3d is root-relative, cam_t[2] is the depth of the root from camera
+            z_camera = smpl_joints_3d[j, 2] + cam_t[2]
+
+            # Skip invalid depth values (z_camera must be positive - in front of camera)
+            if z_measured <= 0 or z_camera <= 0:
+                continue
+
+            # Ratio should be ~1.0 for visible joints (measured matches predicted)
+            ratio = z_measured / z_camera
+
+            # Get confidence weight
+            if depth_conf is not None:
+                conf_h, conf_w = depth_conf.shape
+                cx = int(px * conf_w / img_w)
+                cy = int(py * conf_h / img_h)
+                cx = max(0, min(conf_w - 1, cx))
+                cy = max(0, min(conf_h - 1, cy))
+                conf = depth_conf[cy, cx]
+            else:
+                conf = 1.0
+
+            ratios.append(ratio)
+            confidences.append(conf)
+            joint_indices.append(j)
+
+        print(f"      Sampled {len(ratios)} joints with valid depth")
+
+        if len(ratios) < 3:
+            print(f"      ERROR: Not enough valid joints ({len(ratios)} < 3)")
+            return [], None, 0.0
+
+        ratios = np.array(ratios)
+        confidences = np.array(confidences)
+
+        print(f"      Ratios: min={ratios.min():.4f}, max={ratios.max():.4f}, mean={ratios.mean():.4f}")
+
+        # Compute weighted median for robust estimation
+        # (majority of joints should be visible, so median finds consensus)
+        sorted_idx = np.argsort(ratios)
+        cumsum = np.cumsum(confidences[sorted_idx])
+        median_idx = np.searchsorted(cumsum, cumsum[-1] / 2)
+        median_ratio = ratios[sorted_idx[median_idx]]
+
+        print(f"      Median ratio (scale factor): {median_ratio:.4f}")
+
+        # Identify inliers: joints where ratio matches consensus
+        # Self-occluded joints have LOWER ratio (z_measured < expected because we see occluder)
+        visible_mask = []
+        for i, r in enumerate(ratios):
+            relative_error = (r - median_ratio) / median_ratio
+            # Allow asymmetric tolerance: more suspicious of joints with ratio << median
+            # (indicates self-occlusion where we see a closer surface)
+            is_inlier = relative_error > -tolerance and relative_error < tolerance * 1.5
+            visible_mask.append(is_inlier)
+            if not is_inlier:
+                print(f"        Joint {joint_indices[i]}: ratio={r:.4f}, rel_error={relative_error:.3f} -> OUTLIER")
+
+        visible_joints = [j for j, v in zip(joint_indices, visible_mask) if v]
+
+        # The median ratio IS our scale factor
+        scale_factor = float(median_ratio)
+
+        # Confidence based on inlier ratio and average depth confidence
+        inlier_ratio = sum(visible_mask) / len(visible_mask) if visible_mask else 0
+        avg_conf = float(np.mean([c for c, v in zip(confidences, visible_mask) if v])) if any(visible_mask) else 0
+        confidence = inlier_ratio * avg_conf
+
+        print(f"      Inliers: {sum(visible_mask)}/{len(visible_mask)}, confidence={confidence:.3f}")
+
+        return visible_joints, scale_factor, confidence
+
+    def _compute_scale_with_intrinsics(self, output, depth_map, depth_conf, mask, intrinsics,
+                                        img_h, img_w):
+        """
+        Compute scale factor using camera intrinsics and self-occlusion-aware joint visibility.
+
+        This method:
+        1. Projects SMPL joints to 2D using intrinsics
+        2. Identifies visible vs self-occluded joints via depth ratio consistency
+        3. Returns scale factor from the consensus of visible joints
+
+        Args:
+            output: SAM3DBody output dict containing pred_joint_coords, pred_keypoints_2d
+            depth_map: [H, W] depth values from DA3
+            depth_conf: [H, W] confidence values (optional)
+            mask: [H, W] segmentation mask
+            intrinsics: [3, 3] camera intrinsics matrix from DA3
+            img_h, img_w: image dimensions
+
+        Returns:
+            dict with scale, visible_joints, occluded_joints, confidence, etc.
+        """
+        joints_3d = output.get("pred_joint_coords")
+        keypoints_2d = output.get("pred_keypoints_2d")
+        cam_t = output.get("pred_cam_t")
+
+        if joints_3d is None or keypoints_2d is None:
+            return None
+
+        if cam_t is None:
+            print("      WARNING: pred_cam_t not available, cannot use intrinsics method")
+            return None
+
+        # Extract focal length from intrinsics
+        fx = float(intrinsics[0, 0])
+        fy = float(intrinsics[1, 1])
+        focal_length = (fx + fy) / 2  # Average focal length
+
+        # Use the 2D keypoints from SAM3DBody (already projected)
+        # Note: These are in image coordinates
+        # Pass cam_t to convert SMPL coords to camera space
+        visible_joints, scale_factor, confidence = self._identify_visible_joints(
+            joints_3d, keypoints_2d, depth_map, depth_conf,
+            mask, img_h, img_w, cam_t=cam_t, tolerance=0.20
+        )
+
+        if scale_factor is None:
+            return None
+
+        # Compute median depth for position adjustment
+        depth_h, depth_w = depth_map.shape
+        if mask is not None:
+            mask_h, mask_w = mask.shape
+            if (mask_h, mask_w) != (depth_h, depth_w):
+                mask_resized = cv2.resize(mask.astype(np.float32), (depth_w, depth_h),
+                                          interpolation=cv2.INTER_NEAREST)
+            else:
+                mask_resized = mask
+            mask_bool = mask_resized > 0.5
+            if np.any(mask_bool):
+                mask_depths = depth_map[mask_bool]
+                valid_depths = mask_depths[mask_depths > 0]
+                if len(valid_depths) > 0:
+                    median_depth = float(np.median(valid_depths))
+                else:
+                    median_depth = None
+            else:
+                median_depth = None
+        else:
+            median_depth = None
+
+        # Identify occluded joints (those not in visible list but were sampled)
+        # Use only joints that could have been sampled (min of 3D and 2D counts)
+        num_joints = min(len(joints_3d), len(keypoints_2d))
+        all_joints = set(range(num_joints))
+        occluded_joints = [j for j in all_joints if j not in visible_joints]
+
+        print(f"    [DEBUG] _compute_scale_with_intrinsics result:")
+        print(f"      scale_factor={scale_factor:.4f}, confidence={confidence:.3f}")
+        print(f"      visible_joints={len(visible_joints)}, occluded_joints={len(occluded_joints)}")
+        print(f"      median_depth={median_depth}")
+
+        return {
+            'scale': scale_factor,
+            'tz': median_depth,
+            'focal_length': focal_length,
+            'visible_joints': visible_joints,
+            'occluded_joints': occluded_joints,
+            'confidence': confidence,
+            'method': 'intrinsics_visibility'
+        }
+
     def _prepare_outputs(self, outputs):
         """Convert tensors to numpy and add person indices."""
         prepared = []
@@ -457,19 +701,33 @@ class SAM3DBodyProcessMultiple:
             "pixel_dist": pixel_dist,
         }
 
-    def _apply_depth_scale_correction(self, outputs, depth_map, masks_np=None, img_shape=None, adjust_position=False):
+    def _apply_depth_scale_correction(self, outputs, depth_map, masks_np=None, img_shape=None,
+                                        adjust_position=False, intrinsics=None, depth_conf=None):
         """
-        Correct mesh scales using 2D reprojection constraint with depth ratios.
+        Correct mesh scales using depth information and camera intrinsics.
+
+        When intrinsics are provided (from Depth Anything V3):
+        - Uses self-occlusion-aware visibility detection
+        - Identifies visible vs occluded joints via depth ratio consistency
+        - Uses accurate focal length from DA3 instead of default 5000
+
+        Fallback (no intrinsics):
+        - Uses mask-based height estimation with default focal length
 
         For each person:
-        1. Sample depth at each joint's 2D location (within mask)
-        2. Use depth ratios between joint pairs to compute scale
-        3. Identify visible vs occluded joints from consistency
-        4. Apply scale and set Z-position
+        1. Compute scale factor from visible joints (intrinsics) or mask height (fallback)
+        2. Normalize scales relative to median across all people
+        3. Apply scale transformation to vertices and joints
+        4. Optionally adjust Z-position based on depth
 
-        The key insight: for two visible joints j1, j2:
-            D1 - D2 = (z1 - z2) * scale
-        where D is sampled depth, z is mesh-local Z.
+        Args:
+            outputs: List of SAM3DBody output dicts
+            depth_map: [H, W] depth values from DA3
+            masks_np: [N, H, W] segmentation masks
+            img_shape: (H, W) tuple of original image dimensions
+            adjust_position: Whether to adjust Z-position based on depth
+            intrinsics: [3, 3] camera intrinsics matrix from DA3 (optional)
+            depth_conf: [H, W] confidence values from DA3 (optional)
         """
         if depth_map is None or len(outputs) == 0:
             return outputs
@@ -482,42 +740,98 @@ class SAM3DBodyProcessMultiple:
         else:
             img_h, img_w = depth_h, depth_w
 
-        print(f"[SAM3DBody] Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
+        # Check if we have intrinsics for the improved method
+        use_intrinsics = intrinsics is not None
 
-        # 1. Compute scale using mask-based height (always, for debug)
+        if use_intrinsics:
+            fx = float(intrinsics[0, 0])
+            fy = float(intrinsics[1, 1])
+            focal_from_intrinsics = (fx + fy) / 2
+            print(f"[SAM3DBody] Using DA3 intrinsics: fx={fx:.1f}, fy={fy:.1f}")
+            print(f"[SAM3DBody] Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
+        else:
+            print(f"[SAM3DBody] No intrinsics provided, using fallback method with default focal length")
+            print(f"[SAM3DBody] Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
+
+        # 1. Compute scale for each person
         person_data = []
         for i, output in enumerate(outputs):
             person_mask = masks_np[i] if masks_np is not None and i < len(masks_np) else None
 
-            # Get focal length from model output
-            focal_length = output.get("focal_length", 5000.0)
-            if isinstance(focal_length, np.ndarray):
-                focal_length = float(focal_length.flatten()[0])
-
-            # Get mesh height
+            # Get mesh height for reference
             vertices = output.get("pred_vertices")
             mesh_height = float(np.max(vertices[:, 1]) - np.min(vertices[:, 1])) if vertices is not None else None
 
             print(f"[SAM3DBody] Person {i}:")
             print(f"  mesh_height={mesh_height:.3f}m" if mesh_height else "  mesh_height=N/A")
 
-            # Always compute mask-based for debug
-            mask_data = self._compute_mask_depth_and_height(
-                person_mask, depth_map, focal_length, img_h, img_w
-            )
+            if use_intrinsics:
+                # NEW: Use intrinsics-based visibility detection
+                scale_data = self._compute_scale_with_intrinsics(
+                    output, depth_map, depth_conf, person_mask, intrinsics, img_h, img_w
+                )
 
-            if mask_data is not None and mesh_height and mesh_height > 0.1:
-                scale = mask_data["actual_height_m"] / mesh_height
-                person_data.append({
-                    "valid": True,
-                    "scale": scale,
-                    "tz": mask_data["depth"],
-                    "visible_joints": [],
-                    "occluded_joints": [],
-                })
+                if scale_data is not None:
+                    num_visible = len(scale_data['visible_joints'])
+                    num_occluded = len(scale_data['occluded_joints'])
+                    print(f"  [intrinsics method] scale={scale_data['scale']:.3f}, "
+                          f"visible_joints={num_visible}, occluded_joints={num_occluded}, "
+                          f"confidence={scale_data['confidence']:.2f}")
+                    person_data.append({
+                        "valid": True,
+                        "scale": scale_data['scale'],
+                        "tz": scale_data['tz'],
+                        "visible_joints": scale_data['visible_joints'],
+                        "occluded_joints": scale_data['occluded_joints'],
+                        "confidence": scale_data['confidence'],
+                        "method": "intrinsics_visibility"
+                    })
+                else:
+                    print(f"  [intrinsics method] Failed, falling back to mask-based")
+                    # Fallback to mask-based for this person
+                    focal_length = focal_from_intrinsics
+                    mask_data = self._compute_mask_depth_and_height(
+                        person_mask, depth_map, focal_length, img_h, img_w
+                    )
+                    if mask_data is not None and mesh_height and mesh_height > 0.1:
+                        scale = mask_data["actual_height_m"] / mesh_height
+                        person_data.append({
+                            "valid": True,
+                            "scale": scale,
+                            "tz": mask_data["depth"],
+                            "visible_joints": [],
+                            "occluded_joints": [],
+                            "confidence": 0.5,
+                            "method": "mask_fallback"
+                        })
+                    else:
+                        print(f"  No valid measurement")
+                        person_data.append({"valid": False})
             else:
-                print(f"  No valid mask measurement")
-                person_data.append({"valid": False})
+                # FALLBACK: Use mask-based height estimation (original method)
+                focal_length = output.get("focal_length", 5000.0)
+                if isinstance(focal_length, np.ndarray):
+                    focal_length = float(focal_length.flatten()[0])
+
+                mask_data = self._compute_mask_depth_and_height(
+                    person_mask, depth_map, focal_length, img_h, img_w
+                )
+
+                if mask_data is not None and mesh_height and mesh_height > 0.1:
+                    scale = mask_data["actual_height_m"] / mesh_height
+                    print(f"  [mask method] scale={scale:.3f}, depth={mask_data['depth']:.2f}m")
+                    person_data.append({
+                        "valid": True,
+                        "scale": scale,
+                        "tz": mask_data["depth"],
+                        "visible_joints": [],
+                        "occluded_joints": [],
+                        "confidence": 0.5,
+                        "method": "mask_height"
+                    })
+                else:
+                    print(f"  No valid mask measurement")
+                    person_data.append({"valid": False})
 
         # 2. Normalize scales relative to median
         valid_scales = [p["scale"] for p in person_data if p.get("valid")]
@@ -554,8 +868,6 @@ class SAM3DBodyProcessMultiple:
             if adjust_position and data.get("tz") is not None:
                 cam_t = output.get("pred_cam_t")
                 if cam_t is not None:
-                    # tz was computed as: D - z_mesh * scale
-                    # After scaling mesh, need to recompute
                     new_tz = data["tz"]
                     output["pred_cam_t"] = np.array([cam_t[0], cam_t[1], new_tz])
 
@@ -569,15 +881,21 @@ class SAM3DBodyProcessMultiple:
             output["mesh_height"] = final_height
             output["visible_joints"] = data.get("visible_joints", [])
             output["occluded_joints"] = data.get("occluded_joints", [])
+            output["scale_method"] = data.get("method", "unknown")
+            output["scale_confidence"] = data.get("confidence", 0)
 
             height_str = f"{final_height:.2f}m" if final_height else "N/A"
             tz_val = data.get('tz')
             tz_str = f"{tz_val:.2f}" if tz_val is not None else "N/A"
-            print(f"[SAM3DBody] Person {i} final: scale={scale_factor:.3f}, height={height_str}, tz={tz_str}")
+            method = data.get('method', 'unknown')
+            conf = data.get('confidence', 0)
+            print(f"[SAM3DBody] Person {i} final: scale={scale_factor:.3f}, height={height_str}, "
+                  f"tz={tz_str}, method={method}, confidence={conf:.2f}")
 
         return outputs
 
-    def process_multiple(self, model, image, masks, inference_type="full", depth_map=None, adjust_position_from_depth=False):
+    def process_multiple(self, model, image, masks, inference_type="full", depth_map=None,
+                          intrinsics=None, depth_confidence=None, adjust_position_from_depth=False):
         """Process image with multiple masks and reconstruct 3D meshes for all people.
 
         Args:
@@ -585,7 +903,9 @@ class SAM3DBodyProcessMultiple:
             image: Input image tensor
             masks: Batched masks - one per person (N, H, W)
             inference_type: "full" or "body"
-            depth_map: Optional depth map for scale correction
+            depth_map: Optional depth map for scale correction (from DA3)
+            intrinsics: Optional camera intrinsics [3,3] tensor from DA3
+            depth_confidence: Optional confidence map [B,H,W,C] from DA3
             adjust_position_from_depth: Adjust Z-position based on depth map
         """
         from sam_3d_body import SAM3DBodyEstimator
@@ -601,6 +921,32 @@ class SAM3DBodyProcessMultiple:
             print(f"[SAM3DBody] Depth map provided: shape={depth_map_np.shape}, range=[{depth_map_np.min():.2f}, {depth_map_np.max():.2f}]")
             if adjust_position_from_depth:
                 print("[SAM3DBody] Position adjustment from depth enabled")
+
+        # Process intrinsics if provided
+        intrinsics_np = None
+        if intrinsics is not None:
+            if isinstance(intrinsics, torch.Tensor):
+                # Intrinsics is [B, 3, 3] or [3, 3] - we need [3, 3]
+                intrinsics_np = intrinsics.squeeze().cpu().numpy()
+                if intrinsics_np.ndim == 3:
+                    intrinsics_np = intrinsics_np[0]  # Take first batch element
+            else:
+                intrinsics_np = np.array(intrinsics)
+                if intrinsics_np.ndim == 3:
+                    intrinsics_np = intrinsics_np[0]
+            print(f"[SAM3DBody] Intrinsics provided: fx={intrinsics_np[0,0]:.1f}, fy={intrinsics_np[1,1]:.1f}, "
+                  f"cx={intrinsics_np[0,2]:.1f}, cy={intrinsics_np[1,2]:.1f}")
+
+        # Process depth confidence if provided
+        depth_conf_np = None
+        if depth_confidence is not None:
+            if isinstance(depth_confidence, torch.Tensor):
+                # Confidence is [B, H, W, C] IMAGE format - take first channel
+                depth_conf_np = depth_confidence[0, :, :, 0].cpu().numpy()
+            else:
+                depth_conf_np = depth_confidence[0, :, :, 0] if depth_confidence.ndim == 4 else depth_confidence[:, :, 0]
+            print(f"[SAM3DBody] Depth confidence provided: shape={depth_conf_np.shape}, "
+                  f"range=[{depth_conf_np.min():.2f}, {depth_conf_np.max():.2f}]")
 
         # Lazy load model (cached after first call)
         loaded = _load_sam3d_model(model)
@@ -674,7 +1020,8 @@ class SAM3DBodyProcessMultiple:
             img_h, img_w = img_bgr.shape[:2]
             prepared_outputs = self._apply_depth_scale_correction(
                 prepared_outputs, depth_map_np, masks_np=valid_masks,
-                img_shape=(img_h, img_w), adjust_position=adjust_position_from_depth
+                img_shape=(img_h, img_w), adjust_position=adjust_position_from_depth,
+                intrinsics=intrinsics_np, depth_conf=depth_conf_np
             )
 
         # Create combined mesh data - use model's world coordinates directly
@@ -690,18 +1037,43 @@ class SAM3DBodyProcessMultiple:
 
         # Create preview visualization
         preview = self._create_multi_person_preview(
-            img_bgr, prepared_outputs, estimator.faces
+            img_bgr, prepared_outputs, estimator.faces, valid_masks
         )
         preview_comfy = numpy_to_comfy_image(preview)
 
         return (multi_mesh_data, preview_comfy)
 
-    def _create_multi_person_preview(self, img_bgr, outputs, faces):
+    def _create_multi_person_preview(self, img_bgr, outputs, faces, masks_np=None):
         """Create a preview visualization showing all detected people."""
         try:
             from sam_3d_body.visualization.renderer import Renderer
 
             h, w = img_bgr.shape[:2]
+
+            # Overlay masks with semi-transparent colors
+            if masks_np is not None:
+                result = img_bgr.copy()
+                colors = [
+                    (255, 0, 0), (0, 255, 0), (0, 0, 255),
+                    (255, 255, 0), (255, 0, 255), (0, 255, 255),
+                    (128, 255, 0), (255, 128, 0), (128, 0, 255),
+                    (0, 128, 255), (255, 0, 128),
+                ]
+                for i, mask in enumerate(masks_np):
+                    color = colors[i % len(colors)]
+                    # Resize mask to image size if needed
+                    if mask.shape != (h, w):
+                        mask_resized = cv2.resize(mask, (w, h), interpolation=cv2.INTER_NEAREST)
+                    else:
+                        mask_resized = mask
+                    # Apply colored overlay where mask > 0.5
+                    mask_bool = mask_resized > 0.5
+                    overlay = result.copy()
+                    overlay[mask_bool] = color
+                    # Blend with alpha
+                    alpha = 0.3
+                    result = cv2.addWeighted(overlay, alpha, result, 1 - alpha, 0)
+                img_bgr = result  # Use the mask-overlaid image as base
 
             # Get vertices and camera translations
             vertices_list = [o["pred_vertices"] for o in outputs if o.get("pred_vertices") is not None]
