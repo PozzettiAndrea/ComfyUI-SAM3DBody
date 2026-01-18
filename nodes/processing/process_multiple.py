@@ -155,6 +155,63 @@ class SAM3DBodyProcessMultiple:
         11: "left_knee", 12: "right_knee",
     }
 
+    # SMPL-X skeleton connections for visualization (based on COCO-WholeBody format)
+    # Format: (parent_joint, child_joint) - bones connect these pairs
+    SKELETON_BONES = [
+        # Torso
+        (0, 1),    # pelvis -> spine
+        (1, 2),    # spine -> spine1
+        (2, 3),    # spine1 -> spine2
+        (3, 4),    # spine2 -> neck
+        (4, 15),   # neck -> head
+        # Left arm
+        (4, 5),    # neck -> left_shoulder (actually through collar)
+        (5, 7),    # left_shoulder -> left_elbow
+        (7, 9),    # left_elbow -> left_wrist
+        # Right arm
+        (4, 6),    # neck -> right_shoulder
+        (6, 8),    # right_shoulder -> right_elbow
+        (8, 10),   # right_elbow -> right_wrist
+        # Left leg
+        (0, 11),   # pelvis -> left_hip
+        (11, 13),  # left_hip -> left_knee
+        (13, 15),  # left_knee -> left_ankle
+        # Right leg
+        (0, 12),   # pelvis -> right_hip
+        (12, 14),  # right_hip -> right_knee
+        (14, 16),  # right_knee -> right_ankle
+    ]
+
+    # Alternative SMPL-X 22 joint skeleton (more accurate for SAM3DBody output)
+    SMPLX_SKELETON_22 = [
+        # Spine chain
+        (0, 3),    # pelvis -> spine1
+        (3, 6),    # spine1 -> spine2
+        (6, 9),    # spine2 -> spine3
+        (9, 12),   # spine3 -> neck
+        (12, 15),  # neck -> head
+        # Left arm
+        (9, 13),   # spine3 -> left_collar
+        (13, 16),  # left_collar -> left_shoulder
+        (16, 18),  # left_shoulder -> left_elbow
+        (18, 20),  # left_elbow -> left_wrist
+        # Right arm
+        (9, 14),   # spine3 -> right_collar
+        (14, 17),  # right_collar -> right_shoulder
+        (17, 19),  # right_shoulder -> right_elbow
+        (19, 21),  # right_elbow -> right_wrist
+        # Left leg
+        (0, 1),    # pelvis -> left_hip
+        (1, 4),    # left_hip -> left_knee
+        (4, 7),    # left_knee -> left_ankle
+        (7, 10),   # left_ankle -> left_foot
+        # Right leg
+        (0, 2),    # pelvis -> right_hip
+        (2, 5),    # right_hip -> right_knee
+        (5, 8),    # right_knee -> right_ankle
+        (8, 11),   # right_ankle -> right_foot
+    ]
+
     def _compute_mask_depth_and_height(self, mask, depth_map, focal_length, img_h, img_w):
         """
         Compute person's depth and actual height using mask and depth map.
@@ -485,12 +542,11 @@ class SAM3DBodyProcessMultiple:
 
         print(f"      Ratios: min={ratios.min():.4f}, max={ratios.max():.4f}, mean={ratios.mean():.4f}")
 
-        # Compute weighted median for robust estimation
-        # (majority of joints should be visible, so median finds consensus)
-        sorted_idx = np.argsort(ratios)
-        cumsum = np.cumsum(confidences[sorted_idx])
-        median_idx = np.searchsorted(cumsum, cumsum[-1] / 2)
-        median_ratio = ratios[sorted_idx[median_idx]]
+        # Use UNWEIGHTED median for robust outlier detection
+        # Weighted median can be dominated by a single high-confidence joint that happens to be an outlier
+        # (e.g., one joint with high depth confidence but wrong ratio due to self-occlusion)
+        # Simple unweighted median is more robust: majority vote of all visible joints
+        median_ratio = float(np.median(ratios))
 
         print(f"      Median ratio (scale factor): {median_ratio:.4f}")
 
@@ -627,7 +683,64 @@ class SAM3DBodyProcessMultiple:
             prepared_output["person_index"] = i
             prepared.append(prepared_output)
 
+            # Log SMPL-X face/expression data availability for this person
+            self._log_smplx_data_info(i, prepared_output)
+
         return prepared
+
+    def _log_smplx_data_info(self, person_idx, output):
+        """Log information about available SMPL-X parameters for a person."""
+        info_parts = []
+
+        # Check for expression parameters (face blendshapes)
+        expr_params = output.get("expr_params") or output.get("pred_expr") or output.get("expression")
+        if expr_params is not None:
+            if isinstance(expr_params, np.ndarray):
+                info_parts.append(f"expression[{expr_params.shape[-1]} params]")
+            else:
+                info_parts.append("expression[available]")
+
+        # Check for jaw pose
+        jaw_pose = output.get("jaw_pose") or output.get("pred_jaw_pose")
+        if jaw_pose is not None:
+            info_parts.append("jaw_pose")
+
+        # Check for hand poses
+        left_hand = output.get("left_hand_pose") or output.get("pred_lhand_pose")
+        right_hand = output.get("right_hand_pose") or output.get("pred_rhand_pose")
+        if left_hand is not None:
+            info_parts.append("left_hand")
+        if right_hand is not None:
+            info_parts.append("right_hand")
+
+        # Check for global rotations (useful for FBX export)
+        global_rots = output.get("pred_global_rots") or output.get("global_orient")
+        if global_rots is not None:
+            if isinstance(global_rots, np.ndarray):
+                info_parts.append(f"global_rots[{global_rots.shape}]")
+            else:
+                info_parts.append("global_rots")
+
+        # Check for body pose parameters
+        body_pose = output.get("body_pose_params") or output.get("pred_body_pose")
+        if body_pose is not None:
+            if isinstance(body_pose, np.ndarray):
+                info_parts.append(f"body_pose[{body_pose.shape[-1]} params]")
+
+        # Check for shape parameters (betas)
+        shape_params = output.get("shape_params") or output.get("pred_betas") or output.get("betas")
+        if shape_params is not None:
+            if isinstance(shape_params, np.ndarray):
+                info_parts.append(f"shape[{shape_params.shape[-1]} betas]")
+
+        # Log summary
+        if info_parts:
+            print(f"[SAM3DBody] Person {person_idx} SMPL-X data: {', '.join(info_parts)}")
+        else:
+            # Log all available keys for debugging (first person only to avoid spam)
+            if person_idx == 0:
+                all_keys = [k for k in output.keys() if not k.startswith('_')]
+                print(f"[SAM3DBody] Person {person_idx} available keys: {sorted(all_keys)}")
 
     def _sample_depth_at_point(self, depth_map, x, y, depth_h, depth_w, img_h, img_w):
         """Sample depth at a 2D point, handling coordinate scaling."""
@@ -997,11 +1110,17 @@ class SAM3DBodyProcessMultiple:
             tmp_path = tmp.name
 
         try:
+            # Convert intrinsics to tensor for SAM3DBody if available
+            cam_int_tensor = None
+            if intrinsics_np is not None:
+                cam_int_tensor = torch.from_numpy(intrinsics_np).float().unsqueeze(0)
+
             # Process all people at once
             outputs = estimator.process_one_image(
                 tmp_path,
                 bboxes=bboxes,
                 masks=masks_for_estimator,
+                cam_int=cam_int_tensor,
                 use_mask=True,
                 inference_type=inference_type,
             )
@@ -1042,6 +1161,54 @@ class SAM3DBodyProcessMultiple:
         preview_comfy = numpy_to_comfy_image(preview)
 
         return (multi_mesh_data, preview_comfy)
+
+    def _draw_skeleton_overlay(self, image, keypoints_2d, color, thickness=2, joint_radius=4):
+        """
+        Draw skeleton overlay on image using 2D keypoints.
+
+        Args:
+            image: BGR image to draw on (modified in-place)
+            keypoints_2d: [J, 2] array of 2D joint positions
+            color: BGR color tuple for this person
+            thickness: Line thickness for bones
+            joint_radius: Radius for joint circles
+        """
+        h, w = image.shape[:2]
+        num_joints = len(keypoints_2d)
+
+        # Choose skeleton based on number of joints
+        if num_joints >= 22:
+            skeleton = self.SMPLX_SKELETON_22
+        else:
+            skeleton = self.SKELETON_BONES
+
+        # Draw bones (lines between connected joints)
+        for parent_idx, child_idx in skeleton:
+            if parent_idx >= num_joints or child_idx >= num_joints:
+                continue
+
+            pt1 = keypoints_2d[parent_idx]
+            pt2 = keypoints_2d[child_idx]
+
+            x1, y1 = int(pt1[0]), int(pt1[1])
+            x2, y2 = int(pt2[0]), int(pt2[1])
+
+            # Skip if either point is outside image
+            if not (0 <= x1 < w and 0 <= y1 < h):
+                continue
+            if not (0 <= x2 < w and 0 <= y2 < h):
+                continue
+
+            # Draw bone
+            cv2.line(image, (x1, y1), (x2, y2), color, thickness, cv2.LINE_AA)
+
+        # Draw joints (circles at each keypoint)
+        for j, pt in enumerate(keypoints_2d):
+            x, y = int(pt[0]), int(pt[1])
+            if 0 <= x < w and 0 <= y < h:
+                # Filled circle with outline
+                cv2.circle(image, (x, y), joint_radius, color, -1, cv2.LINE_AA)
+                cv2.circle(image, (x, y), joint_radius, (255, 255, 255), 1, cv2.LINE_AA)
 
     def _create_multi_person_preview(self, img_bgr, outputs, faces, masks_np=None):
         """Create a preview visualization showing all detected people."""
@@ -1112,12 +1279,24 @@ class SAM3DBodyProcessMultiple:
                     render_rgb = render_rgba[:, :, :3]
                     render_bgr = cv2.cvtColor(render_rgb, cv2.COLOR_RGB2BGR)
                     result = (img_bgr * (1 - alpha) + render_bgr * alpha).astype(np.uint8)
+
+                    # Draw skeleton overlay on top of rendered mesh
+                    skeleton_colors = [
+                        (255, 100, 100), (100, 255, 100), (100, 100, 255),
+                        (255, 255, 100), (255, 100, 255), (100, 255, 255),
+                    ]
+                    for i, output in enumerate(outputs):
+                        kpts_2d = output.get("pred_keypoints_2d")
+                        if kpts_2d is not None:
+                            color = skeleton_colors[i % len(skeleton_colors)]
+                            self._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
+
                     return result
 
             return img_bgr
 
         except Exception:
-            # Fallback: draw skeleton points
+            # Fallback: draw skeleton with bones (not just points)
             result = img_bgr.copy()
 
             colors = [
@@ -1129,10 +1308,7 @@ class SAM3DBodyProcessMultiple:
                 kpts_2d = output.get("pred_keypoints_2d")
                 if kpts_2d is not None:
                     color = colors[i % len(colors)]
-                    for pt in kpts_2d:
-                        x, y = int(pt[0]), int(pt[1])
-                        if 0 <= x < result.shape[1] and 0 <= y < result.shape[0]:
-                            cv2.circle(result, (x, y), 3, color, -1)
+                    self._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
 
             return result
 
