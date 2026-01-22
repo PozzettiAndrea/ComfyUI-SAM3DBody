@@ -688,12 +688,20 @@ class SAM3DBodyProcessMultiple:
 
         return prepared
 
+    def _get_first_available(self, output, *keys):
+        """Get the first non-None value from output for given keys."""
+        for key in keys:
+            val = output.get(key)
+            if val is not None:
+                return val
+        return None
+
     def _log_smplx_data_info(self, person_idx, output):
         """Log information about available SMPL-X parameters for a person."""
         info_parts = []
 
         # Check for expression parameters (face blendshapes)
-        expr_params = output.get("expr_params") or output.get("pred_expr") or output.get("expression")
+        expr_params = self._get_first_available(output, "expr_params", "pred_expr", "expression")
         if expr_params is not None:
             if isinstance(expr_params, np.ndarray):
                 info_parts.append(f"expression[{expr_params.shape[-1]} params]")
@@ -701,20 +709,20 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("expression[available]")
 
         # Check for jaw pose
-        jaw_pose = output.get("jaw_pose") or output.get("pred_jaw_pose")
+        jaw_pose = self._get_first_available(output, "jaw_pose", "pred_jaw_pose")
         if jaw_pose is not None:
             info_parts.append("jaw_pose")
 
         # Check for hand poses
-        left_hand = output.get("left_hand_pose") or output.get("pred_lhand_pose")
-        right_hand = output.get("right_hand_pose") or output.get("pred_rhand_pose")
+        left_hand = self._get_first_available(output, "left_hand_pose", "pred_lhand_pose")
+        right_hand = self._get_first_available(output, "right_hand_pose", "pred_rhand_pose")
         if left_hand is not None:
             info_parts.append("left_hand")
         if right_hand is not None:
             info_parts.append("right_hand")
 
         # Check for global rotations (useful for FBX export)
-        global_rots = output.get("pred_global_rots") or output.get("global_orient")
+        global_rots = self._get_first_available(output, "pred_global_rots", "global_orient")
         if global_rots is not None:
             if isinstance(global_rots, np.ndarray):
                 info_parts.append(f"global_rots[{global_rots.shape}]")
@@ -722,13 +730,13 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("global_rots")
 
         # Check for body pose parameters
-        body_pose = output.get("body_pose_params") or output.get("pred_body_pose")
+        body_pose = self._get_first_available(output, "body_pose_params", "pred_body_pose")
         if body_pose is not None:
             if isinstance(body_pose, np.ndarray):
                 info_parts.append(f"body_pose[{body_pose.shape[-1]} params]")
 
         # Check for shape parameters (betas)
-        shape_params = output.get("shape_params") or output.get("pred_betas") or output.get("betas")
+        shape_params = self._get_first_available(output, "shape_params", "pred_betas", "betas")
         if shape_params is not None:
             if isinstance(shape_params, np.ndarray):
                 info_parts.append(f"shape[{shape_params.shape[-1]} betas]")
