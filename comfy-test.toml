@@ -1,13 +1,8 @@
 [test]
-name = "ComfyUI-SAM3DBody"
-python_version = "3.11"
-timeout = 300
-levels = ["syntax", "install", "registration", "instantiation", "execution"]
+levels = "all"
 
 [test.workflows]
-run = "all"
-screenshot = "all"
-timeout = 120
+gpu = "all"
 
 [test.platforms]
 linux = true
