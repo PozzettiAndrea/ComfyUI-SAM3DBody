@@ -155,61 +155,46 @@ class SAM3DBodyProcessMultiple:
         11: "left_knee", 12: "right_knee",
     }
 
-    # SMPL-X skeleton connections for visualization (based on COCO-WholeBody format)
-    # Format: (parent_joint, child_joint) - bones connect these pairs
-    SKELETON_BONES = [
+    # MHR70 skeleton - matches SAM3DBody output joint ordering
+    # Joint indices from mhr70.py:
+    # 0: nose, 1: left_eye, 2: right_eye, 3: left_ear, 4: right_ear
+    # 5: left_shoulder, 6: right_shoulder, 7: left_elbow, 8: right_elbow
+    # 9: left_hip, 10: right_hip, 11: left_knee, 12: right_knee
+    # 13: left_ankle, 14: right_ankle, 15-20: feet
+    # 21-41: right hand (wrist at 41), 42-62: left hand (wrist at 62)
+    # 63-68: olecranon/cubital/acromion, 69: neck
+    MHR70_SKELETON_BODY = [
+        # Legs
+        (13, 11),  # left_ankle -> left_knee
+        (11, 9),   # left_knee -> left_hip
+        (14, 12),  # right_ankle -> right_knee
+        (12, 10),  # right_knee -> right_hip
+        # Hips
+        (9, 10),   # left_hip -> right_hip
         # Torso
-        (0, 1),    # pelvis -> spine
-        (1, 2),    # spine -> spine1
-        (2, 3),    # spine1 -> spine2
-        (3, 4),    # spine2 -> neck
-        (4, 15),   # neck -> head
-        # Left arm
-        (4, 5),    # neck -> left_shoulder (actually through collar)
+        (5, 9),    # left_shoulder -> left_hip
+        (6, 10),   # right_shoulder -> right_hip
+        (5, 6),    # left_shoulder -> right_shoulder
+        # Arms
         (5, 7),    # left_shoulder -> left_elbow
-        (7, 9),    # left_elbow -> left_wrist
-        # Right arm
-        (4, 6),    # neck -> right_shoulder
         (6, 8),    # right_shoulder -> right_elbow
-        (8, 10),   # right_elbow -> right_wrist
-        # Left leg
-        (0, 11),   # pelvis -> left_hip
-        (11, 13),  # left_hip -> left_knee
-        (13, 15),  # left_knee -> left_ankle
-        # Right leg
-        (0, 12),   # pelvis -> right_hip
-        (12, 14),  # right_hip -> right_knee
-        (14, 16),  # right_knee -> right_ankle
-    ]
-
-    # Alternative SMPL-X 22 joint skeleton (more accurate for SAM3DBody output)
-    SMPLX_SKELETON_22 = [
-        # Spine chain
-        (0, 3),    # pelvis -> spine1
-        (3, 6),    # spine1 -> spine2
-        (6, 9),    # spine2 -> spine3
-        (9, 12),   # spine3 -> neck
-        (12, 15),  # neck -> head
-        # Left arm
-        (9, 13),   # spine3 -> left_collar
-        (13, 16),  # left_collar -> left_shoulder
-        (16, 18),  # left_shoulder -> left_elbow
-        (18, 20),  # left_elbow -> left_wrist
-        # Right arm
-        (9, 14),   # spine3 -> right_collar
-        (14, 17),  # right_collar -> right_shoulder
-        (17, 19),  # right_shoulder -> right_elbow
-        (19, 21),  # right_elbow -> right_wrist
-        # Left leg
-        (0, 1),    # pelvis -> left_hip
-        (1, 4),    # left_hip -> left_knee
-        (4, 7),    # left_knee -> left_ankle
-        (7, 10),   # left_ankle -> left_foot
-        # Right leg
-        (0, 2),    # pelvis -> right_hip
-        (2, 5),    # right_hip -> right_knee
-        (5, 8),    # right_knee -> right_ankle
-        (8, 11),   # right_ankle -> right_foot
+        (7, 62),   # left_elbow -> left_wrist
+        (8, 41),   # right_elbow -> right_wrist
+        # Head/Face
+        (1, 2),    # left_eye -> right_eye
+        (0, 1),    # nose -> left_eye
+        (0, 2),    # nose -> right_eye
+        (1, 3),    # left_eye -> left_ear
+        (2, 4),    # right_eye -> right_ear
+        (3, 5),    # left_ear -> left_shoulder
+        (4, 6),    # right_ear -> right_shoulder
+        # Feet
+        (13, 15),  # left_ankle -> left_big_toe
+        (13, 16),  # left_ankle -> left_small_toe
+        (13, 17),  # left_ankle -> left_heel
+        (14, 18),  # right_ankle -> right_big_toe
+        (14, 19),  # right_ankle -> right_small_toe
+        (14, 20),  # right_ankle -> right_heel
     ]
 
     def _compute_mask_depth_and_height(self, mask, depth_map, focal_length, img_h, img_w):
@@ -1184,11 +1169,8 @@ class SAM3DBodyProcessMultiple:
         h, w = image.shape[:2]
         num_joints = len(keypoints_2d)
 
-        # Choose skeleton based on number of joints
-        if num_joints >= 22:
-            skeleton = self.SMPLX_SKELETON_22
-        else:
-            skeleton = self.SKELETON_BONES
+        # Use MHR70 skeleton for SAM3DBody output (70 keypoints)
+        skeleton = self.MHR70_SKELETON_BODY
 
         # Draw bones (lines between connected joints)
         for parent_idx, child_idx in skeleton:
