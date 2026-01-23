@@ -2,7 +2,7 @@
 levels = "all"
 
 [test.workflows]
-gpu = "all"
+gpu = ["workflow","rigging","multiple_masks","multiple_masks_depth"]
 
 [test.platforms]
 linux = true
