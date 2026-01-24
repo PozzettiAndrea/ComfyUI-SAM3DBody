@@ -25,17 +25,16 @@ class SAM3DBodyLoadMesh:
 
     @classmethod
     def INPUT_TYPES(cls):
+        mesh_files = cls.get_mesh_files()
+        if not mesh_files:
+            mesh_files = ["No mesh files found"]
         return {
             "required": {
                 "source_folder": (["input", "output"], {
-                    "default": "output",
+                    "default": "input",
                     "tooltip": "Source folder to load mesh from"
                 }),
-                "file_path": ("COMBO", {
-                    "remote": {
-                        "route": "/sam3d/mesh_files",
-                        "refresh_button": True,
-                    },
+                "file_path": (mesh_files, {
                     "tooltip": "Mesh file to load. Supports FBX, OBJ, PLY, STL, GLB, etc."
                 }),
             },
@@ -208,17 +207,16 @@ class SAM3DBodySelectMesh:
 
     @classmethod
     def INPUT_TYPES(cls):
+        mesh_files = SAM3DBodyLoadMesh.get_mesh_files()
+        if not mesh_files:
+            mesh_files = ["No mesh files found"]
         return {
             "required": {
                 "source_folder": (["input", "output"], {
-                    "default": "output",
+                    "default": "input",
                     "tooltip": "Source folder to select mesh from"
                 }),
-                "file_path": ("COMBO", {
-                    "remote": {
-                        "route": "/sam3d/mesh_files",
-                        "refresh_button": True,
-                    },
+                "file_path": (mesh_files, {
                     "tooltip": "Mesh file to select"
                 }),
             },
@@ -262,11 +260,9 @@ class SAM3DBodySelectMesh:
                 f"Searched in: {source_folder} folder"
             )
 
-        # Return just the basename (for preview nodes)
-        basename = os.path.basename(full_path)
-        print(f"[SAM3DBodySelectMesh] Selected: {basename}")
+        print(f"[SAM3DBodySelectMesh] Selected: {full_path}")
 
-        return (basename,)
+        return (full_path,)
 
 
 # Register nodes
