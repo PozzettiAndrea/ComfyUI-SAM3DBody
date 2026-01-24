@@ -37,12 +37,9 @@ class SAM3DBodyPreviewRiggedMesh:
         """Preview the rigged mesh in an interactive FBX viewer."""
         print(f"[SAM3DBodyPreviewRiggedMesh] Preparing preview...")
 
-        # FBX should already be in output directory
-        output_dir = folder_paths.get_output_directory()
-        fbx_path = os.path.join(output_dir, fbx_output_path)
-
+        fbx_path = fbx_output_path
         if not os.path.exists(fbx_path):
-            raise RuntimeError(f"FBX file not found in output directory: {fbx_output_path}")
+            raise RuntimeError(f"FBX file not found: {fbx_path}")
 
         print(f"[SAM3DBodyPreviewRiggedMesh] FBX path: {fbx_path}")
 
