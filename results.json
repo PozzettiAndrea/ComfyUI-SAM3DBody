@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-01-24T13:26:35.217946+00:00",
+  "timestamp": "2026-01-24T13:40:08.393076+00:00",
   "platform": "linux",
   "summary": {
     "total": 5,
-    "passed": 4,
-    "failed": 1
+    "passed": 5,
+    "failed": 0
   },
   "workflows": [
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 14.32,
+      "duration_seconds": 14.22,
       "error": null,
       "hardware": {
         "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
@@ -20,7 +20,7 @@
     {
       "name": "multiple_masks_depthcorrected",
       "status": "pass",
-      "duration_seconds": 131.41,
+      "duration_seconds": 144.09,
       "error": null,
       "hardware": {
         "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
@@ -29,9 +29,9 @@
     },
     {
       "name": "rigged_mesh_manipulation",
-      "status": "fail",
-      "duration_seconds": 5.62,
-      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"3\": {\n    \"errors\": [\n      {\n        \"type\": \"value_not_in_list\",\n        \"message\": \"Value not in list\",\n        \"details\": \"file_path: '[input] posed.fbx' not in ['[output] gaussians_raw_0000.ply', 'sam3d_rigged.fbx']\",\n        \"extra_info\": {\n          \"input_name\": \"file_path\",\n          \"input_config\": [\n            [\n              \"[output] gaussians_raw_0000.ply\",\n              \"sam3d_rigged.fbx\"\n            ],\n            {\n              \"tooltip\": \"Mesh file to select\"\n            }\n          ],\n          \"received_value\": \"[input] posed.fbx\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"2\"\n    ],\n    \"class_type\": \"SAM3DBodySelectMesh\"\n  }\n}",
+      "status": "pass",
+      "duration_seconds": 14.72,
+      "error": null,
       "hardware": {
         "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
         "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
@@ -40,7 +40,7 @@
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 14.32,
+      "duration_seconds": 14.22,
       "error": null,
       "hardware": {
         "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
@@ -50,7 +50,7 @@
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 13.42,
+      "duration_seconds": 13.63,
       "error": null,
       "hardware": {
         "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",

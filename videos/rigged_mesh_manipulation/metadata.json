@@ -1,0 +1,30 @@
+{
+  "frames": [
+    {
+      "file": "frame_000.jpg",
+      "time": 0.0,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json"
+    },
+    {
+      "file": "frame_001.jpg",
+      "time": 0.39,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Validating workflow...\n  [ComfyUI] === /validate endpoint called ===\n  [ComfyUI] Received JSON with keys: ['prompt']\n  [ComfyUI] Prompt has 2 nodes\n  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh\n  [ComfyUI]     Inputs: {\"fbx_output_path\": [\"4\", 0], \"preview\": \"\"}\n  [ComfyUI]   Node 4: SAM3DBodySelectMesh\n  [ComfyUI]     Inputs: {\"source_folder\": \"input\", \"file_path\": \"sam3d_rigged.fbx\"}\n  [ComfyUI] Generated prompt_id: 5d1d2cb5-86a8-4444-861b-aceee3e6408c\n  [ComfyUI] Calling execution.validate_prompt()...\n  [ComfyUI] Validation result: valid=True\n  [ComfyUI] === Validation PASSED ===\n  Queuing workflow for execution...\n  [ComfyUI] got prompt\n  [ComfyUI] Prompt executed in 0.09 seconds"
+    },
+    {
+      "file": "frame_002.jpg",
+      "time": 0.72,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Validating workflow...\n  [ComfyUI] === /validate endpoint called ===\n  [ComfyUI] Received JSON with keys: ['prompt']\n  [ComfyUI] Prompt has 2 nodes\n  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh\n  [ComfyUI]     Inputs: {\"fbx_output_path\": [\"4\", 0], \"preview\": \"\"}\n  [ComfyUI]   Node 4: SAM3DBodySelectMesh\n  [ComfyUI]     Inputs: {\"source_folder\": \"input\", \"file_path\": \"sam3d_rigged.fbx\"}\n  [ComfyUI] Generated prompt_id: 5d1d2cb5-86a8-4444-861b-aceee3e6408c\n  [ComfyUI] Calling execution.validate_prompt()...\n  [ComfyUI] Validation result: valid=True\n  [ComfyUI] === Validation PASSED ===\n  Queuing workflow for execution...\n  [ComfyUI] got prompt\n  [ComfyUI] Prompt executed in 0.09 seconds"
+    },
+    {
+      "file": "frame_003.jpg",
+      "time": 1.95,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Validating workflow...\n  [ComfyUI] === /validate endpoint called ===\n  [ComfyUI] Received JSON with keys: ['prompt']\n  [ComfyUI] Prompt has 2 nodes\n  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh\n  [ComfyUI]     Inputs: {\"fbx_output_path\": [\"4\", 0], \"preview\": \"\"}\n  [ComfyUI]   Node 4: SAM3DBodySelectMesh\n  [ComfyUI]     Inputs: {\"source_folder\": \"input\", \"file_path\": \"sam3d_rigged.fbx\"}\n  [ComfyUI] Generated prompt_id: 5d1d2cb5-86a8-4444-861b-aceee3e6408c\n  [ComfyUI] Calling execution.validate_prompt()...\n  [ComfyUI] Validation result: valid=True\n  [ComfyUI] === Validation PASSED ===\n  Queuing workflow for execution...\n  [ComfyUI] got prompt\n  [ComfyUI] Prompt executed in 0.09 seconds"
+    },
+    {
+      "file": "frame_004.jpg",
+      "time": 9.395827293395996,
+      "log": "Final screenshot"
+    }
+  ],
+  "total_time": 2.14
+}

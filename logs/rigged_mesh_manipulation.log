@@ -4,48 +4,18 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Prompt has 2 nodes
   [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_output_path": ["3", 0], "preview": ""}
-  [ComfyUI]   Node 3: SAM3DBodySelectMesh
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "[input] posed.fbx"}
-  [ComfyUI] Generated prompt_id: 153ddd09-c657-4aa0-a8e9-4f6e2c4c7fc6
+  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+  [ComfyUI]   Node 4: SAM3DBodySelectMesh
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI] Generated prompt_id: 5d1d2cb5-86a8-4444-861b-aceee3e6408c
   [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Failed to validate prompt for output 2:
-  [ComfyUI] * SAM3DBodySelectMesh 3:
-  [ComfyUI]   - Value not in list: file_path: '[input] posed.fbx' not in ['[output] gaussians_raw_0000.ply', 'sam3d_rigged.fbx']
-  [ComfyUI] Output will be ignored
-  [ComfyUI] Validation result: valid=False
-  [ComfyUI]   Error: {'type': 'prompt_outputs_failed_validation', 'message': 'Prompt outputs failed validation', 'details': '', 'extra_info': {}}
-  [ComfyUI]   Node errors: {"3": {"errors": [{"type": "value_not_in_list", "message": "Value not in list", "details": "file_path: '[input] posed.fbx' not in ['[output] gaussians_raw_0000.ply', 'sam3d_rigged.fbx']", "extra_info": {"input_name": "file_path", "input_config": [["[output] gaussians_raw_0000.ply", "sam3d_rigged.fbx"], {"tooltip": "Mesh file to select"}], "received_value": "[input] posed.fbx"}}], "dependent_outputs": ["2"], "class_type": "SAM3DBodySelectMesh"}}
-  [ComfyUI] === Validation FAILED ===
-    Status: FAILED
-    Error: Workflow validation failed
-    Details: Prompt outputs failed validation
-Node errors:
-{
-  "3": {
-    "errors": [
-      {
-        "type": "value_not_in_list",
-        "message": "Value not in list",
-        "details": "file_path: '[input] posed.fbx' not in ['[output] gaussians_raw_0000.ply', 'sam3d_rigged.fbx']",
-        "extra_info": {
-          "input_name": "file_path",
-          "input_config": [
-            [
-              "[output] gaussians_raw_0000.ply",
-              "sam3d_rigged.fbx"
-            ],
-            {
-              "tooltip": "Mesh file to select"
-            }
-          ],
-          "received_value": "[input] posed.fbx"
-        }
-      }
-    ],
-    "dependent_outputs": [
-      "2"
-    ],
-    "class_type": "SAM3DBodySelectMesh"
-  }
-}
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  Queuing workflow for execution...
+  [ComfyUI] got prompt
+  [ComfyUI] Prompt executed in 0.09 seconds
+  Captured 4 frames over 2.14s
+  4 unique frames saved as WebP
+  Waiting 5000ms for previews to render...
+  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+    Captured 5 video frames

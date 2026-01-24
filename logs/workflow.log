@@ -15,11 +15,11 @@ Capturing execution frames: workflow.json
   [ComfyUI]     Inputs: {"model_file": ["7", 0], "image": ""}
   [ComfyUI]   Node 11: LoadSAM3DBodyModel
   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
-  [ComfyUI] Generated prompt_id: 6f04f71c-e62b-46f2-a7be-b7437e52a85c
+  [ComfyUI] Generated prompt_id: 3bfa69e4-3afa-402b-a3ca-9d37a3bb8403
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
-  Queuing workflow for execution...
   [ComfyUI] === Validation PASSED ===
+  Queuing workflow for execution...
   [ComfyUI] got prompt
   [ComfyUI] !!! Exception during processing !!!
   [ComfyUI] [SAM3DBody] Download failed.
@@ -38,11 +38,12 @@ Capturing execution frames: workflow.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 63, in load_model
   [ComfyUI]     os.makedirs(model_path, exist_ok=True)
-  [ComfyUI]   File "<frozen os>", line 215, in makedirs
-  [ComfyUI]   File "<frozen os>", line 215, in makedirs
-  [ComfyUI]   File "<frozen os>", line 215, in makedirs
+  [ComfyUI]     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "<frozen os>", line 218, in makedirs
+  [ComfyUI]   File "<frozen os>", line 218, in makedirs
+  [ComfyUI]   File "<frozen os>", line 218, in makedirs
   [ComfyUI]   [Previous line repeated 1 more time]
-  [ComfyUI]   File "<frozen os>", line 225, in makedirs
+  [ComfyUI]   File "<frozen os>", line 228, in makedirs
   [ComfyUI] PermissionError: [Errno 13] Permission denied: '/home/shadeform'
   [ComfyUI] 
   [ComfyUI] The above exception was the direct cause of the following exception:
@@ -58,9 +59,10 @@ Capturing execution frames: workflow.json
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 291, in process_inputs
   [ComfyUI]     result = f(**inputs)
-  [ComfyUI]              ^^^^^^^^^^^
   [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 71, in load_model
   [ComfyUI]     raise RuntimeError(
+  [ComfyUI]     ...<10 lines>...
+  [ComfyUI]     ) from e
   [ComfyUI] RuntimeError:
   [ComfyUI] [SAM3DBody] Download failed.
   [ComfyUI] 
@@ -77,8 +79,8 @@ Capturing execution frames: workflow.json
   [ComfyUI] Download error: [Errno 13] Permission denied: '/home/shadeform'
   [ComfyUI] 
   [ComfyUI] Prompt executed in 0.01 seconds
-  Execution error: {'prompt_id': 'f73b3674-6a4a-4eeb-975a-564a69c1460d', 'node_id': '11', 'node_type': 'LoadSAM3DBodyModel', 'executed': [], 'exception_message': "\n[SAM3DBody] Download failed.\n\nPlease manually download from:\n  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\nAnd place the model files at:\n  /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/sam3dbody/\n    ├── model.ckpt          (SAM 3D Body checkpoint)\n    ├── model_config.yaml   (model configuration)\n    └── assets/\n        └── mhr_model.pt    (Momentum Human Rig model)\n\nDownload error: [Errno 13] Permission denied: '/home/shadeform'\n", 'exception_type': 'RuntimeError', 'traceback': ['  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 518, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 329, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 303, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 291, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 71, in load_model\n    raise RuntimeError(\n'], 'current_inputs': {'model_path': ['/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody']}, 'current_outputs': ['11', '3', '7', '4', '10', '2'], 'timestamp': 1769261186594}
-  Captured 4 frames over 1.67s
+  Execution error: {'prompt_id': 'a9e1e0fb-3797-4f8e-86f0-228c520e7c5d', 'node_id': '11', 'node_type': 'LoadSAM3DBodyModel', 'executed': [], 'exception_message': "\n[SAM3DBody] Download failed.\n\nPlease manually download from:\n  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\nAnd place the model files at:\n  /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/sam3dbody/\n    ├── model.ckpt          (SAM 3D Body checkpoint)\n    ├── model_config.yaml   (model configuration)\n    └── assets/\n        └── mhr_model.pt    (Momentum Human Rig model)\n\nDownload error: [Errno 13] Permission denied: '/home/shadeform'\n", 'exception_type': 'RuntimeError', 'traceback': ['  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 518, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 329, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 303, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 291, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 71, in load_model\n    raise RuntimeError(\n    ...<10 lines>...\n    ) from e\n'], 'current_inputs': {'model_path': ['/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody']}, 'current_outputs': ['2', '7', '3', '10', '4', '11'], 'timestamp': 1769261999691}
+  Captured 4 frames over 1.73s
   4 unique frames saved as WebP
   Waiting 5000ms for previews to render...
   Saved high-quality screenshot: workflow_executed.png
