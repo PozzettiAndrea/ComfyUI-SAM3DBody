@@ -27,6 +27,12 @@ web/
 venv/
 ENV/
 env/
+_env_*
+
+# comfy-env / pixi
+.pixi/
+pixi.lock
+pixi.toml
 
 # IDE
 .vscode/

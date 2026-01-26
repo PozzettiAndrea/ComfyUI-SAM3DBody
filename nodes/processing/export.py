@@ -783,7 +783,7 @@ class SAM3DBodyExportFBX:
             if not os.path.exists(output_fbx_path):
                 raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
 
-            return (os.path.basename(output_fbx_path),)
+            return (output_fbx_path,)
 
         finally:
             # Clean up temporary files
@@ -1017,7 +1017,7 @@ class SAM3DBodyExportMultipleFBX:
                     raise RuntimeError("Combined FBX export failed")
 
                 print(f"[SAM3D Export] Combined FBX created: {output_fbx_path}")
-                return (os.path.basename(output_fbx_path),)
+                return (output_fbx_path,)
 
             else:
                 # Separate mode: export each person to individual FBX files
@@ -1063,7 +1063,7 @@ class SAM3DBodyExportMultipleFBX:
                 # Return the first exported file (separate mode returns first file for compatibility)
                 output_fbx_path = exported_files[0]
                 print(f"[SAM3D Export] Separate FBX files created: {len(exported_files)} files")
-                return (os.path.basename(output_fbx_path),)
+                return (output_fbx_path,)
 
         finally:
             # Clean up temp files
