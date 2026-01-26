@@ -1,87 +1,123 @@
-Capturing execution frames: rigging.json
-  Validating workflow...
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Prompt has 6 nodes
-  [ComfyUI]   Node 3: LoadImage
-  [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
-  [ComfyUI]   Node 4: PreviewImage
-  [ComfyUI]     Inputs: {"images": ["10", 2]}
-  [ComfyUI]   Node 10: SAM3DBodyProcess
-  [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
-  [ComfyUI]   Node 12: SAM3DBodyExportFBX
-  [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
-  [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
-  [ComfyUI]   Node 15: LoadSAM3DBodyModel
-  [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
-  [ComfyUI] Generated prompt_id: 8cd487ac-b9bb-4ce3-87e7-8c554770d9eb
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] === Validation PASSED ===
-  Queuing workflow for execution...
-  [ComfyUI] got prompt
-  [ComfyUI] !!! Exception during processing !!!
-  [ComfyUI] [SAM3DBody] Download failed.
-  [ComfyUI] 
-  [ComfyUI] Please manually download from:
-  [ComfyUI]   https://huggingface.co/jetjodh/sam-3d-body-dinov3
-  [ComfyUI] 
-  [ComfyUI] And place the model files at:
-  [ComfyUI]   /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/sam3dbody/
-  [ComfyUI]     ├── model.ckpt          (SAM 3D Body checkpoint)
-  [ComfyUI]     ├── model_config.yaml   (model configuration)
-  [ComfyUI]     └── assets/
-  [ComfyUI]         └── mhr_model.pt    (Momentum Human Rig model)
-  [ComfyUI] 
-  [ComfyUI] Download error: [Errno 13] Permission denied: '/home/shadeform'
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 63, in load_model
-  [ComfyUI]     os.makedirs(model_path, exist_ok=True)
-  [ComfyUI]     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "<frozen os>", line 218, in makedirs
-  [ComfyUI]   File "<frozen os>", line 218, in makedirs
-  [ComfyUI]   File "<frozen os>", line 218, in makedirs
-  [ComfyUI]   [Previous line repeated 1 more time]
-  [ComfyUI]   File "<frozen os>", line 228, in makedirs
-  [ComfyUI] PermissionError: [Errno 13] Permission denied: '/home/shadeform'
-  [ComfyUI] 
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] 
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 518, in execute
-  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
-  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 329, in get_output_data
-  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
-  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 303, in _async_map_node_over_list
-  [ComfyUI]     await process_inputs(input_dict, i)
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 291, in process_inputs
-  [ComfyUI]     result = f(**inputs)
-  [ComfyUI]   File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 71, in load_model
-  [ComfyUI]     raise RuntimeError(
-  [ComfyUI]     ...<10 lines>...
-  [ComfyUI]     ) from e
-  [ComfyUI] RuntimeError:
-  [ComfyUI] [SAM3DBody] Download failed.
-  [ComfyUI] 
-  [ComfyUI] Please manually download from:
-  [ComfyUI]   https://huggingface.co/jetjodh/sam-3d-body-dinov3
-  [ComfyUI] 
-  [ComfyUI] And place the model files at:
-  [ComfyUI]   /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/sam3dbody/
-  [ComfyUI]     ├── model.ckpt          (SAM 3D Body checkpoint)
-  [ComfyUI]     ├── model_config.yaml   (model configuration)
-  [ComfyUI]     └── assets/
-  [ComfyUI]         └── mhr_model.pt    (Momentum Human Rig model)
-  [ComfyUI] 
-  [ComfyUI] Download error: [Errno 13] Permission denied: '/home/shadeform'
-  [ComfyUI] 
-  [ComfyUI] Prompt executed in 0.22 seconds
-  Execution error: {'prompt_id': '7bacac82-773e-4f51-9158-b784db68bd2b', 'node_id': '15', 'node_type': 'LoadSAM3DBodyModel', 'executed': ['3'], 'exception_message': "\n[SAM3DBody] Download failed.\n\nPlease manually download from:\n  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\nAnd place the model files at:\n  /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/sam3dbody/\n    ├── model.ckpt          (SAM 3D Body checkpoint)\n    ├── model_config.yaml   (model configuration)\n    └── assets/\n        └── mhr_model.pt    (Momentum Human Rig model)\n\nDownload error: [Errno 13] Permission denied: '/home/shadeform'\n", 'exception_type': 'RuntimeError', 'traceback': ['  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 518, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 329, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 303, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/execution.py", line 291, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/processing/load_model.py", line 71, in load_model\n    raise RuntimeError(\n    ...<10 lines>...\n    ) from e\n'], 'current_inputs': {'model_path': ['/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody']}, 'current_outputs': ['15', '3', '13', '10', '4', '12'], 'timestamp': 1769261985578}
-  Captured 4 frames over 2.39s
-  4 unique frames saved as WebP
-  Waiting 5000ms for previews to render...
-  Saved high-quality screenshot: rigging_executed.png
-    Captured 5 video frames
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | executing rigging.json [4/5]  [DEBUG] _resolve_workflow_path: input=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigging.json
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: node_dir=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: resolved=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigging.json
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: exists=True
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | Capturing execution frames: rigging.json
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:01] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[09:01] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[09:02] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0301608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[09:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0301608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[09:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Validating workflow...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["10", 2]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["10", 2]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: SAM3DBodyProcess
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: SAM3DBodyProcess
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 12: SAM3DBodyExportFBX
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 12: SAM3DBodyExportFBX
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 15: LoadSAM3DBodyModel
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 15: LoadSAM3DBodyModel
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 53a5f920-0a8d-4d3c-819b-61139cfe9de7
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 53a5f920-0a8d-4d3c-819b-61139cfe9de7
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Queuing workflow for execution...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_03c794a0_in.pt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_03c794a0_in.pt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'bbox_threshold', 'inference_type', 'mask']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'bbox_threshold', 'inference_type', 'mask']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcess...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcess...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Loading model from /home/shadeform/sam3dbody/ComfyUI/models/sam3dbody/model.ckpt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Loading model from /home/shadeform/sam3dbody/ComfyUI/models/sam3dbody/model.ckpt...
+[09:37] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Model loaded successfully on cuda
+[09:37] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Model loaded successfully on cuda
+[09:41] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:41] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_24bc34d1_in.pt...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_24bc34d1_in.pt...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'temp_mesh_1769389844.obj' took 23.38 ms
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'temp_mesh_1769389844.obj' took 23.38 ms
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_rigged.fbx'
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_rigged.fbx'
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton'], 'POSE')
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton'], 'POSE')
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 0.5406 sec.
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 0.5406 sec.
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 37.87 seconds
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 37.87 seconds
+[09:49] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Captured 102 frames over 42.49s
+[09:56] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   5 unique frames saved as WebP
+[09:56] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Waiting 5000ms for previews to render...
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Saved high-quality screenshot: rigging_executed.png
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     Captured 6 video frames
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | [01:04] rigging.json [4/5] - PASS

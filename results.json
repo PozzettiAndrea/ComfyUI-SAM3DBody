@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-24T13:40:08.393076+00:00",
+  "timestamp": "2026-01-26T01:11:28.243875+00:00",
   "platform": "linux",
   "summary": {
     "total": 5,
@@ -10,51 +10,56 @@
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 14.22,
+      "duration_seconds": 121.8,
       "error": null,
       "hardware": {
-        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
       "status": "pass",
-      "duration_seconds": 144.09,
+      "duration_seconds": 122.3,
       "error": null,
       "hardware": {
-        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
       }
     },
     {
       "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 14.72,
+      "duration_seconds": 37.04,
       "error": null,
       "hardware": {
-        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
       }
     },
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 14.22,
+      "duration_seconds": 64.4,
       "error": null,
       "hardware": {
-        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
       }
     },
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 13.63,
+      "duration_seconds": 20.73,
       "error": null,
       "hardware": {
-        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
       }
     }
   ]
