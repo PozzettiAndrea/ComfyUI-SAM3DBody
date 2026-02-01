@@ -15,7 +15,7 @@ import tempfile
 import torch
 import numpy as np
 import cv2
-from comfy_env import isolated
+from comfy_env import isolation
 
 
 # =============================================================================
