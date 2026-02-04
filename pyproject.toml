@@ -2,57 +2,9 @@
 name = "ComfyUI-SAM3DBody"
 description = "SAM 3D Body integration for ComfyUI - Robust full-body human mesh recovery from single images. Reconstruct 3D human meshes with pose, shape, and hand details. First draft, please open a github issue if you have any problems or feature requests :)"
 version = "0.1.0"
-license = { text = "MIT License (wrapper) + SAM License (vendored library)" }
-readme = "README.md"
-authors = [
-    { name = "Andrea Pozzetti", email = "pznodes@gmail.com" }
-]
-dynamic = ["dependencies"]
-
-[project.urls]
-Repository = "https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody"
-Documentation = "https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody/blob/main/README.md"
+license = {file = "LICENSE"}
 
 [tool.comfy]
 PublisherId = "pznodes"
 DisplayName = "SAM3DBody"
 Icon = ""
-
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = [
-    "-v",
-    "--tb=short",
-    "--strict-markers",
-]
-markers = [
-    "unit: Unit tests (fast, no model loading)",
-    "integration: Integration tests with real models (slow, requires HF_TOKEN)",
-]
-filterwarnings = [
-    "ignore::DeprecationWarning",
-    "ignore::UserWarning",
-]
-
-[tool.coverage.run]
-source = ["nodes", "sam_3d_body"]
-omit = [
-    "*/tests/*",
-    "*/test_*.py",
-    "*/__pycache__/*",
-]
-
-[tool.coverage.report]
-precision = 2
-show_missing = true
-skip_covered = false
