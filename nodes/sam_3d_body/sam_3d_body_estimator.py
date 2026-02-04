@@ -6,16 +6,16 @@ import cv2
 import numpy as np
 import torch
 
-from sam_3d_body.data.transforms import (
+from .data.transforms import (
     Compose,
     GetBBoxCenterScale,
     TopdownAffine,
     VisionTransformWrapper,
 )
 
-from sam_3d_body.data.utils.io import load_image
-from sam_3d_body.data.utils.prepare_batch import prepare_batch
-from sam_3d_body.utils import recursive_to
+from .data.utils.io import load_image
+from .data.utils.prepare_batch import prepare_batch
+from .utils import recursive_to
 from torchvision.transforms import ToTensor
 
 
