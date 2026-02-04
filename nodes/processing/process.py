@@ -1,22 +1,8 @@
-# Copyright (c) 2025 Andrea Pozzetti
-# SPDX-License-Identifier: MIT
-"""
-Processing node for SAM 3D Body.
-
-Performs 3D human mesh reconstruction from a single image.
-Runs in isolated venv via @isolated decorator.
-
-Model loading happens lazily inside the worker (not in host process)
-to avoid importing CUDA dependencies in the main ComfyUI environment.
-"""
-
 import os
 import tempfile
 import torch
 import numpy as np
 import cv2
-from comfy_env import isolated
-
 
 # =============================================================================
 # Helper functions (inlined to avoid relative import issues in worker)
@@ -84,8 +70,6 @@ def _load_sam3d_model(model_config: dict):
 
     return result
 
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class SAM3DBodyProcess:
     """
     Performs 3D human mesh reconstruction from a single image.
@@ -264,8 +248,6 @@ class SAM3DBodyProcess:
         # Return original image for now
         return img_bgr
 
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class SAM3DBodyProcessAdvanced:
     """
     Advanced processing node with full control over detection, segmentation, and FOV estimation.

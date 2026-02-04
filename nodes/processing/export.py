@@ -15,10 +15,6 @@ import torch
 import folder_paths
 import glob
 
-from comfy_env import isolated
-
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class BpyFBXExporter:
     """Isolated bpy-based FBX exporter that runs in the sam3dbody venv."""
 
@@ -454,8 +450,6 @@ class BpyFBXExporter:
 
         return {"success": True, "output_path": output_fbx_path}
 
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class BpyPoseApplier:
     """Isolated bpy-based pose applier that runs in the sam3dbody venv."""
 
@@ -841,6 +835,7 @@ class SAM3DBodyExportMultipleFBX:
             output_filename: Output filename for the FBX file
             combine: If True, export all people into single FBX. If False, create separate FBX per person.
         """
+        import bpy
 
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
