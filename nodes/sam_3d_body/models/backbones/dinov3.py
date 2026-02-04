@@ -16,13 +16,14 @@ class Dinov3Backbone(nn.Module):
         self.name = name
         self.cfg = cfg
 
-        # Suppress verbose output from torch.hub.load
+        # Use local bundled dinov3 repo to avoid SSL issues in isolated env
+        dinov3_repo_path = os.path.join(os.path.dirname(__file__), "dinov3_repo")
         with open(os.devnull, 'w') as devnull:
             with redirect_stdout(devnull), redirect_stderr(devnull):
                 self.encoder = torch.hub.load(
-                    "facebookresearch/dinov3",
+                    dinov3_repo_path,
                     self.name,
-                    source="github",
+                    source="local",
                     pretrained=False,
                     drop_path=self.cfg.MODEL.BACKBONE.DROP_PATH_RATE,
                 )
