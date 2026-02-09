@@ -70,7 +70,7 @@ class SAM3DBodySaveSkeleton:
         else:
             raise ValueError(f"Unsupported format: {format}")
 
-        print(f"[SAM3DBodySaveSkeleton] ✓ Saved to: {output_path}")
+        print(f"[SAM3DBodySaveSkeleton] OK Saved to: {output_path}")
         return (os.path.basename(output_path),)
 
     def _save_json(self, skeleton, output_path):
@@ -353,7 +353,7 @@ class SAM3DBodyLoadSkeleton:
         else:
             raise ValueError(f"Unsupported file format: {ext}")
 
-        print(f"[SAM3DBodyLoadSkeleton] ✓ Loaded skeleton")
+        print(f"[SAM3DBodyLoadSkeleton] OK Loaded skeleton")
         return (skeleton,)
 
     def _load_json(self, filepath):
@@ -550,7 +550,7 @@ class SAM3DBodyAddMeshToSkeleton:
                 "all_people": [],
             }
 
-            print(f"[SAM3DBodyAddMeshToSkeleton] ✓ Generated mesh with {len(vertices[0])} vertices")
+            print(f"[SAM3DBodyAddMeshToSkeleton] OK Generated mesh with {len(vertices[0])} vertices")
             return (mesh_data,)
 
         except Exception as e:
