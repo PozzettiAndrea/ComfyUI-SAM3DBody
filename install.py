@@ -38,12 +38,6 @@ def install() -> bool:
     log("=" * 60)
     log("Installation complete!")
     log("=" * 60)
-    log("")
-    log("Next steps:")
-    log("1. Request access: https://huggingface.co/facebook/sam-3d-body-dinov3")
-    log("2. Login: huggingface-cli login")
-    log("3. Use LoadSAM3DBodyModel node in ComfyUI")
-    log("")
 
     return True
 
