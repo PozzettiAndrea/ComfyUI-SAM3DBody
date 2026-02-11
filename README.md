@@ -11,20 +11,27 @@ https://github.com/user-attachments/assets/8429690a-a251-458f-8b4f-aad5e723525e
 
 https://github.com/user-attachments/assets/2906d9b5-bdf7-4593-a3ae-1f2c866d2b2e
 
+## Multi people support
+
+I have also added multi people support.
+![body](docs/multi_people.png)
+
+Unfortunately, there is a known issue by which people who are smaller are predicted as normal sized people, just further
+https://github.com/facebookresearch/sam-3d-body/issues/69
+
+I have tried to include some depth-supported size correction.
+
+![body](docs/fellowship_nocorrection.png)
+
+![body](docs/fellowship_depth_corrected.png)
+
+Still needs some work!
+
 ## Installation
 
 Run the installation script: `python install.py`
 
 **macOS Note**: If you encounter build errors with `xtcocotools`, the install script handles this automatically. For manual installation: `pip install --no-build-isolation xtcocotools`
-
-## Nodes
-
-- **Load SAM 3D Body Model** - Load model from HuggingFace (`facebook/sam-3d-body-dinov3`) or local checkpoint
-- **Process Image** - Reconstruct 3D mesh from image with optional mask/detection (full/body/hand modes)
-- **Process Image (Advanced)** - Full control over detection, segmentation, and FOV estimation
-- **Visualize Mesh** - Render 3D mesh overlay on image
-- **Export Mesh** - Save mesh as OBJ/PLY file
-- **Get Mesh Info** - Display mesh statistics
 
 ## License
 
