@@ -72,3 +72,12 @@ pytorch_version = "auto"
 
     [sam3dbody.packages.windows]
     requirements = ["xtcocotools>=1.14"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NODE DEPENDENCIES
+# ═══════════════════════════════════════════════════════════════════════════════
+# Other ComfyUI custom nodes required by workflows
+
+[node_reqs]
+ComfyUI-Multiband = "PozzettiAndrea/ComfyUI-Multiband"
+ComfyUI-DepthAnythingV3 = "PozzettiAndrea/ComfyUI-DepthAnythingV3"
