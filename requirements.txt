@@ -1,4 +1,5 @@
 # Core dependencies for SAM 3D Body
+msvc-runtime; sys_platform == "win32"
 torch>=2.0.0
 torchvision>=0.15.0
 numpy>=1.21.0,<2.0.0  # NumPy 2.x breaks cv2 and other dependencies

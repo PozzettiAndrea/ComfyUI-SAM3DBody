@@ -8,6 +8,7 @@ authors = [
     { name = "Andrea Pozzetti", email = "pznodes@gmail.com" }
 ]
 dependencies = [
+    "msvc-runtime; sys_platform == 'win32'",
     "torch>=2.0.0",
     "torchvision>=0.15.0",
     "numpy>=1.21.0",

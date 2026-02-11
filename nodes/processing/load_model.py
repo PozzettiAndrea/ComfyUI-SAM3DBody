@@ -4,11 +4,13 @@
 Model loading node for SAM 3D Body.
 
 Loads the SAM 3D Body model with caching support.
+Runs in isolated venv via @isolated decorator.
 """
 
 import os
 import torch
 import folder_paths
+from comfy_env import isolated
 
 # Global cache - persists across node executions
 _MODEL_CACHE = {}
@@ -17,6 +19,7 @@ _MODEL_CACHE = {}
 DEFAULT_MODEL_PATH = os.path.join(folder_paths.models_dir, "sam3dbody")
 
 
+@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class LoadSAM3DBodyModel:
     """
     Loads the SAM 3D Body model with caching.
