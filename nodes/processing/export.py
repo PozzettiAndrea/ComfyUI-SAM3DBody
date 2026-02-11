@@ -15,10 +15,6 @@ import torch
 import folder_paths
 import glob
 
-from comfy_env import isolated
-
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class BpyFBXExporter:
     """Isolated bpy-based FBX exporter that runs in the sam3dbody venv."""
 
@@ -454,8 +450,6 @@ class BpyFBXExporter:
 
         return {"success": True, "output_path": output_fbx_path}
 
-
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class BpyPoseApplier:
     """Isolated bpy-based pose applier that runs in the sam3dbody venv."""
 
@@ -783,7 +777,7 @@ class SAM3DBodyExportFBX:
             if not os.path.exists(output_fbx_path):
                 raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
 
-            return (os.path.basename(output_fbx_path),)
+            return (output_fbx_path,)
 
         finally:
             # Clean up temporary files
@@ -841,6 +835,7 @@ class SAM3DBodyExportMultipleFBX:
             output_filename: Output filename for the FBX file
             combine: If True, export all people into single FBX. If False, create separate FBX per person.
         """
+        import bpy
 
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
@@ -1017,7 +1012,7 @@ class SAM3DBodyExportMultipleFBX:
                     raise RuntimeError("Combined FBX export failed")
 
                 print(f"[SAM3D Export] Combined FBX created: {output_fbx_path}")
-                return (os.path.basename(output_fbx_path),)
+                return (output_fbx_path,)
 
             else:
                 # Separate mode: export each person to individual FBX files
@@ -1063,7 +1058,7 @@ class SAM3DBodyExportMultipleFBX:
                 # Return the first exported file (separate mode returns first file for compatibility)
                 output_fbx_path = exported_files[0]
                 print(f"[SAM3D Export] Separate FBX files created: {len(exported_files)} files")
-                return (os.path.basename(output_fbx_path),)
+                return (output_fbx_path,)
 
         finally:
             # Clean up temp files

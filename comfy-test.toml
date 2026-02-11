@@ -1,19 +1,17 @@
 [test]
-name = "ComfyUI-SAM3DBody"
-python_version = "3.11"
-cpu_only = true
-timeout = 300
-levels = ["syntax", "install", "registration", "instantiation", "validation"]
+levels = ["syntax", "install", "registration", "instantiation", "execution"]
+publish = true
 
 [test.workflows]
-files = [
-    "workflows/workflow.json",
-    "workflows/rigging.json",
-    "workflows/multiple_masks.json",
-]
-timeout = 120
+timeout = 300
+cpu = ['rigged_mesh_manipulation']
+gpu = ['multiple_masks_depthcorrected','multiple_masks','rigging','workflow']
 
 [test.platforms]
 linux = true
+macos = true
 windows = true
 windows_portable = true
+linux_gpu = true
+windows_gpu = true
+windows_portable_gpu = true

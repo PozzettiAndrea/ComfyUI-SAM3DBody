@@ -5,7 +5,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from sam_3d_body.models.modules.transformer import LayerNorm2d
+from .transformer import LayerNorm2d
 from torch import nn
 
 
