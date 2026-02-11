@@ -67,7 +67,7 @@ def _load_sam3d_model(model_config: dict):
         return _MODEL_CACHE[cache_key]
 
     # Import heavy dependencies only inside worker
-    from sam_3d_body import load_sam_3d_body
+    from ..sam_3d_body import load_sam_3d_body
 
     ckpt_path = model_config["ckpt_path"]
     device = model_config["device"]
@@ -1064,7 +1064,11 @@ class SAM3DBodyProcessMultiple:
             depth_confidence: Optional confidence map [B,H,W,C] from DA3
             adjust_position_from_depth: Adjust Z-position based on depth map
         """
-        from sam_3d_body import SAM3DBodyEstimator
+        from ..sam_3d_body import SAM3DBodyEstimator
+
+        # DEBUG: Print all input shapes at function entry
+        print(f"[DEBUG] FUNCTION ENTRY - image type={type(image)}, shape={image.shape if hasattr(image, 'shape') else 'N/A'}")
+        print(f"[DEBUG] FUNCTION ENTRY - masks type={type(masks)}, shape={masks.shape if hasattr(masks, 'shape') else 'N/A'}")
 
         # Process depth map input if provided
         depth_map_np = None
@@ -1264,7 +1268,7 @@ class SAM3DBodyProcessMultiple:
     def _create_multi_person_preview(self, img_bgr, outputs, faces, masks_np=None):
         """Create a preview visualization showing all detected people."""
         try:
-            from sam_3d_body.visualization.renderer import Renderer
+            from ..sam_3d_body.visualization.renderer import Renderer
 
             h, w = img_bgr.shape[:2]
 

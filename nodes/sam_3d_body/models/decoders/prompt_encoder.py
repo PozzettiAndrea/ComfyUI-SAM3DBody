@@ -7,7 +7,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from sam_3d_body.models.modules.transformer import LayerNorm2d
+from ..modules.transformer import LayerNorm2d
 
 
 class PromptEncoder(nn.Module):
