@@ -1,5 +1,7 @@
 # ComfyUI-SAM3DBody
 
+**[View Workflow Gallery](https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/)**
+
 ComfyUI wrapper for Meta's SAM 3D Body - single-image full-body 3D human mesh recovery.
 
 ![body](docs/body.png)
