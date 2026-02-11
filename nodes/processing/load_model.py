@@ -3,29 +3,23 @@
 """
 Model loading node for SAM 3D Body.
 
-Loads the SAM 3D Body model with caching support.
-Runs in isolated venv via @isolated decorator.
+Returns a config dict with model paths. Actual model loading happens
+lazily inside the @isolated inference nodes.
 """
 
 import os
-import torch
 import folder_paths
-from comfy_env import isolated
-
-# Global cache - persists across node executions
-_MODEL_CACHE = {}
 
 # Default model path in ComfyUI models folder
 DEFAULT_MODEL_PATH = os.path.join(folder_paths.models_dir, "sam3dbody")
 
 
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
 class LoadSAM3DBodyModel:
     """
-    Loads the SAM 3D Body model with caching.
+    Prepares SAM 3D Body model configuration.
 
-    Models are cached globally and reused across executions to save memory
-    and loading time. Checks local path first, then tries HuggingFace download.
+    Returns a config dict with model paths. The actual model is loaded
+    lazily inside the isolated worker when inference runs.
     """
 
     @classmethod
@@ -45,28 +39,23 @@ class LoadSAM3DBodyModel:
     CATEGORY = "SAM3DBody"
 
     def load_model(self, model_path):
-        """Load and cache the SAM 3D Body model."""
+        """Prepare model config (actual loading happens in inference nodes)."""
+        import torch
 
         # Auto-detect device
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
-        # Resolve to absolute path for clear error messages
+        # Resolve to absolute path
         model_path = os.path.abspath(model_path)
-
-        # Check cache
-        cache_key = f"{model_path}_{device}"
-        if cache_key in _MODEL_CACHE:
-            return (_MODEL_CACHE[cache_key],)
 
         # Expected file paths
         ckpt_path = os.path.join(model_path, "model.ckpt")
         mhr_path = os.path.join(model_path, "assets", "mhr_model.pt")
 
-        # Check if model exists locally
+        # Check if model exists locally, download if not
         model_exists = os.path.exists(ckpt_path) and os.path.exists(mhr_path)
 
         if not model_exists:
-            # Try to download from public HuggingFace repo
             try:
                 from huggingface_hub import snapshot_download
 
@@ -79,7 +68,6 @@ class LoadSAM3DBodyModel:
                 print(f"[SAM3DBody] Download complete.")
 
             except Exception as e:
-                # Download failed - give user instructions
                 raise RuntimeError(
                     f"\n[SAM3DBody] Download failed.\n\n"
                     f"Please manually download from:\n"
@@ -93,40 +81,15 @@ class LoadSAM3DBodyModel:
                     f"Download error: {e}"
                 ) from e
 
-        # Now load the model
-        try:
-            from sam_3d_body import load_sam_3d_body
+        # Return config dict (not the actual model)
+        model_config = {
+            "model_path": model_path,
+            "ckpt_path": ckpt_path,
+            "mhr_path": mhr_path,
+            "device": device,
+        }
 
-            result = load_sam_3d_body(
-                checkpoint_path=ckpt_path,
-                device=device,
-                mhr_path=mhr_path
-            )
-            # Handle both 2-value and 3-value returns from different sam_3d_body versions
-            if len(result) == 3:
-                model, model_cfg, mhr_path_used = result
-            else:
-                model, model_cfg = result
-                mhr_path_used = mhr_path
-
-            # Create model dictionary
-            model_dict = {
-                "model": model,
-                "model_cfg": model_cfg,
-                "device": device,
-                "model_path": model_path,
-                "mhr_path": mhr_path_used,
-            }
-
-            # Cache it
-            _MODEL_CACHE[cache_key] = model_dict
-
-            return (model_dict,)
-
-        except ImportError as e:
-            raise RuntimeError(
-                f"Failed to import sam_3d_body module. Check installation."
-            ) from e
+        return (model_config,)
 
 
 # Register node

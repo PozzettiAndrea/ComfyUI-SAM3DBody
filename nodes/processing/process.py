@@ -5,6 +5,9 @@ Processing node for SAM 3D Body.
 
 Performs 3D human mesh reconstruction from a single image.
 Runs in isolated venv via @isolated decorator.
+
+Model loading happens lazily inside the worker (not in host process)
+to avoid importing CUDA dependencies in the main ComfyUI environment.
 """
 
 import os
@@ -13,7 +16,73 @@ import torch
 import numpy as np
 import cv2
 from comfy_env import isolated
-from ..base import comfy_image_to_numpy, comfy_mask_to_numpy
+
+
+# =============================================================================
+# Helper functions (inlined to avoid relative import issues in worker)
+# =============================================================================
+
+def comfy_image_to_numpy(image):
+    """Convert ComfyUI image tensor [B,H,W,C] to numpy BGR [H,W,C] for OpenCV."""
+    img_np = image[0].cpu().numpy()
+    img_np = (img_np * 255).astype(np.uint8)
+    return img_np[..., ::-1].copy()  # RGB -> BGR
+
+
+def comfy_mask_to_numpy(mask):
+    """Convert ComfyUI mask tensor [N,H,W] to numpy [N,H,W]."""
+    return mask.cpu().numpy()
+
+
+def numpy_to_comfy_image(np_image):
+    """Convert numpy BGR [H,W,C] to ComfyUI image tensor [1,H,W,C]."""
+    img_rgb = np_image[..., ::-1].copy()  # BGR -> RGB
+    img_rgb = img_rgb.astype(np.float32) / 255.0
+    return torch.from_numpy(img_rgb).unsqueeze(0)
+
+# Module-level cache for loaded model (persists across calls in worker)
+_MODEL_CACHE = {}
+
+
+def _load_sam3d_model(model_config: dict):
+    """
+    Load SAM 3D Body model from config paths.
+
+    Uses module-level caching to avoid reloading on every call.
+    This runs inside the isolated worker subprocess.
+    """
+    cache_key = model_config["ckpt_path"]
+
+    if cache_key in _MODEL_CACHE:
+        return _MODEL_CACHE[cache_key]
+
+    # Import heavy dependencies only inside worker
+    from sam_3d_body import load_sam_3d_body
+
+    ckpt_path = model_config["ckpt_path"]
+    device = model_config["device"]
+    mhr_path = model_config.get("mhr_path", "")
+
+    # Load model using the library's built-in function
+    print(f"[SAM3DBody] Loading model from {ckpt_path}...")
+    sam_3d_model, model_cfg, _ = load_sam_3d_body(
+        checkpoint_path=ckpt_path,
+        device=device,
+        mhr_path=mhr_path,
+    )
+
+    print(f"[SAM3DBody] Model loaded successfully on {device}")
+
+    # Cache for reuse
+    result = {
+        "model": sam_3d_model,
+        "model_cfg": model_cfg,
+        "device": device,
+        "mhr_path": mhr_path,
+    }
+    _MODEL_CACHE[cache_key] = result
+
+    return result
 
 
 @isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
@@ -73,13 +142,21 @@ class SAM3DBodyProcess:
         return np.array([[cmin, rmin, cmax, rmax]], dtype=np.float32)
 
     def process(self, model, image, bbox_threshold=0.8, inference_type="full", mask=None):
-        """Process image and reconstruct 3D human mesh."""
+        """Process image and reconstruct 3D human mesh.
 
+        Args:
+            model: Config dict from LoadSAM3DBodyModel with paths (model loaded lazily here)
+            image: Input image tensor
+            bbox_threshold: Detection confidence threshold
+            inference_type: "full", "body", or "hand"
+            mask: Optional segmentation mask
+        """
         from sam_3d_body import SAM3DBodyEstimator
 
-        # Extract model components
-        sam_3d_model = model["model"]
-        model_cfg = model["model_cfg"]
+        # Lazy load model (cached after first call)
+        loaded = _load_sam3d_model(model)
+        sam_3d_model = loaded["model"]
+        model_cfg = loaded["model_cfg"]
 
         # Create estimator
         estimator = SAM3DBodyEstimator(
@@ -146,7 +223,7 @@ class SAM3DBodyProcess:
             },
             "raw_output": output,
             "all_people": outputs,
-            "mhr_path": model.get("mhr_path", None),
+            "mhr_path": loaded.get("mhr_path", None),
         }
 
         # Extract skeleton data
@@ -177,7 +254,6 @@ class SAM3DBodyProcess:
             pass
 
         # Create debug visualization
-        from ..base import numpy_to_comfy_image
         debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
         debug_img_comfy = numpy_to_comfy_image(debug_img)
 
@@ -276,14 +352,29 @@ class SAM3DBodyProcessAdvanced:
     def process_advanced(self, model, image, bbox_threshold=0.8, nms_threshold=0.3,
                         inference_type="full", detector_name="none", segmentor_name="none",
                         fov_name="none", detector_path="", segmentor_path="", fov_path="", mask=None):
-        """Process image with advanced options."""
+        """Process image with advanced options.
 
+        Args:
+            model: Config dict from LoadSAM3DBodyModel with paths (model loaded lazily here)
+            image: Input image tensor
+            bbox_threshold: Detection confidence threshold
+            nms_threshold: Non-maximum suppression threshold
+            inference_type: "full", "body", or "hand"
+            detector_name: Human detector to use
+            segmentor_name: Segmentation model to use
+            fov_name: FOV estimator to use
+            detector_path: Path to detector model
+            segmentor_path: Path to segmentor model
+            fov_path: Path to FOV model
+            mask: Optional pre-computed segmentation mask
+        """
         from sam_3d_body import SAM3DBodyEstimator
 
-        # Extract model components
-        sam_3d_model = model["model"]
-        model_cfg = model["model_cfg"]
-        device = torch.device(model["device"])
+        # Lazy load model (cached after first call)
+        loaded = _load_sam3d_model(model)
+        sam_3d_model = loaded["model"]
+        model_cfg = loaded["model_cfg"]
+        device = torch.device(loaded["device"])
 
         # Initialize optional components
         detector = None
@@ -375,6 +466,7 @@ class SAM3DBodyProcessAdvanced:
             },
             "raw_output": output,
             "all_people": outputs,
+            "mhr_path": loaded.get("mhr_path", None),
         }
 
         # Extract skeleton data
@@ -405,7 +497,6 @@ class SAM3DBodyProcessAdvanced:
             pass
 
         # Create debug visualization
-        from ..base import numpy_to_comfy_image
         debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
         debug_img_comfy = numpy_to_comfy_image(debug_img)
 
