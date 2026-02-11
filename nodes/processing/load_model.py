@@ -65,10 +65,10 @@ class LoadSAM3DBodyModel:
                     f"  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\n"
                     f"And place the model files at:\n"
                     f"  {DEFAULT_MODEL_PATH}/\n"
-                    f"    ├── model.ckpt          (SAM 3D Body checkpoint)\n"
-                    f"    ├── model_config.yaml   (model configuration)\n"
-                    f"    └── assets/\n"
-                    f"        └── mhr_model.pt    (Momentum Human Rig model)\n\n"
+                    f"    +-- model.ckpt          (SAM 3D Body checkpoint)\n"
+                    f"    +-- model_config.yaml   (model configuration)\n"
+                    f"    \\-- assets/\n"
+                    f"        \\-- mhr_model.pt    (Momentum Human Rig model)\n\n"
                     f"Download error: {e}"
                 ) from e
 
