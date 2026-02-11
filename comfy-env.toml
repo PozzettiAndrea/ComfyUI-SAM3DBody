@@ -1,17 +1,12 @@
 # SAM3DBody - Environment Configuration
 # Run: comfy-env install
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ISOLATED ENVIRONMENT
-# ═══════════════════════════════════════════════════════════════════════════════
-
 [sam3dbody]
-python = "3.11"  # bpy only supports up to 3.11
+python = "3.11"
 cuda_version = "auto"
 pytorch_version = "auto"
 
     [sam3dbody.cuda]
-    # CUDA extensions - resolved automatically by comfy-env
     detectron2 = "*"
     torch-scatter = "*"
     torch-sparse = "*"
@@ -19,12 +14,13 @@ pytorch_version = "auto"
 
     [sam3dbody.packages]
     requirements = [
-        # Core dependencies
+        # Core
         "numpy>=1.21.0,<2.0.0",
         "pillow>=9.0.0",
         "opencv-python>=4.8.0",
+        "comfy-3d-viewers>=0.1.0",
 
-        # SAM 3D Body specific
+        # SAM 3D Body
         "pytorch-lightning>=2.0.0",
         "pyrender>=0.1.45",
         "yacs>=0.1.8",
@@ -55,13 +51,13 @@ pytorch_version = "auto"
         "fvcore>=0.1.5",
         "pycocotools>=2.0.6",
         "tensorboard>=2.13.0",
-        
+        "addict>=2.4.0",
 
         # HuggingFace
         "huggingface-hub>=0.16.0",
         "transformers>=4.30.0",
 
-        # Blender Python module (headless)
+        # Blender
         "bpy==4.2",
     ]
 
@@ -72,12 +68,7 @@ pytorch_version = "auto"
     requirements = []
 
     [sam3dbody.packages.windows]
-    requirements = ["xtcocotools>=1.14"]
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# NODE DEPENDENCIES
-# ═══════════════════════════════════════════════════════════════════════════════
-# Other ComfyUI custom nodes required by workflows
+    requirements = ["xtcocotools>=1.14", "msvc-runtime"]
 
 [node_reqs]
 ComfyUI-Multiband = "PozzettiAndrea/ComfyUI-Multiband"

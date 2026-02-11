@@ -1,8 +1,13 @@
 [test]
-levels = "all"
+name = "ComfyUI-SAM3DBody"
+python_version = "3.11"
+levels = ["syntax", "install", "registration", "instantiation", "execution"]
 
 [test.workflows]
-gpu = ["workflow","rigging","multiple_masks","multiple_masks_depth"]
+run = "all"
+screenshot = "all"
+timeout = 300
+gpu = ["workflow", "rigging", "multiple_masks", "multiple_masks_depth"]
 
 [test.platforms]
 linux = true
