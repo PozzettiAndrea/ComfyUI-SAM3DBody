@@ -659,15 +659,14 @@ class SAM3DBodyExportFBX:
                 mesh_min = [float(x) for x in mesh_min]
             if isinstance(mesh_max, np.ndarray):
                 mesh_max = [float(x) for x in mesh_max]
-            # Apply same transform as mesh: flip all axes
-            mesh_min = [-mesh_min[0], -mesh_min[1], -mesh_min[2]]
-            mesh_max = [-mesh_max[0], -mesh_max[1], -mesh_max[2]]
+            # Apply same transform as mesh: flip Y and Z axes
+            mesh_min = [mesh_min[0], -mesh_min[1], -mesh_min[2]]
+            mesh_max = [mesh_max[0], -mesh_max[1], -mesh_max[2]]
             # Ensure min < max after flipping (signs reverse order)
             mesh_min, mesh_max = [min(mesh_min[i], mesh_max[i]) for i in range(3)], [max(mesh_min[i], mesh_max[i]) for i in range(3)]
 
-            # Apply coordinate transform to joint positions to match mesh (flip X, Y, Z)
+            # Apply coordinate transform to joint positions to match mesh (flip Y and Z)
             joint_coords_flipped = joint_coords.copy()
-            joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
             joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
             joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
 
@@ -785,7 +784,7 @@ class SAM3DBodyExportFBX:
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
-                f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+                f.write(f"v {v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
             for face in faces:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
@@ -914,9 +913,8 @@ class SAM3DBodyExportMultipleFBX:
                 # Prepare skeleton data
                 skeleton_info = {}
                 if joint_coords is not None:
-                    # Apply coordinate transform to joint positions
+                    # Apply coordinate transform to joint positions (flip Y and Z)
                     joint_coords_flipped = joint_coords.copy()
-                    joint_coords_flipped[:, 0] = -joint_coords_flipped[:, 0]
                     joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
                     joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
 
@@ -1060,7 +1058,7 @@ class SAM3DBodyExportMultipleFBX:
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
-                f.write(f"v {-v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+                f.write(f"v {v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
             for face in faces:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
