@@ -1,12 +1,3 @@
-# Copyright (c) 2025 Andrea Pozzetti
-# SPDX-License-Identifier: MIT
-"""
-Model loading node for SAM 3D Body.
-
-Returns a config dict with model paths. Actual model loading happens
-lazily inside the @isolated inference nodes.
-"""
-
 import os
 import folder_paths
 

@@ -1,7 +1,7 @@
 # ComfyUI-SAM3DBody Requirements
 
-comfy-env>=0.0.19
-comfy-3d-viewers>=0.1.0
+comfy-env
+comfy-3d-viewers>=0.2.1
 msvc-runtime; sys_platform == "win32"
 
 # Core
