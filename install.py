@@ -11,37 +11,29 @@ import sys
 from pathlib import Path
 
 
-def log(msg: str) -> None:
-    """Log a message with prefix."""
-    print(f"[SAM3DBody] {msg}")
+def main():
+    print("\n" + "=" * 60)
+    print("ComfyUI-UniRig Installation")
+    print("=" * 60)
 
+    from comfy_env import install, IsolatedEnvManager, discover_config
+    from comfy_env.tools import find_blender
 
-def install() -> bool:
-    """Main installation function using comfy-env."""
-    log("=" * 60)
-    log("Starting installation...")
-    log("=" * 60)
+    node_root = Path(__file__).parent.absolute()
 
+    # Run comfy-env install
     try:
-        from comfy_env import install as comfy_install
-        node_dir = Path(__file__).parent
-        log("Installing isolated environment via comfy-env...")
-        comfy_install(node_dir=node_dir, mode="isolated")
-    except ImportError:
-        log("[ERROR] comfy-env not found. Install it first:")
-        log("  pip install comfy-env")
-        return False
+        install(config=node_root / "comfy-env.toml", mode="isolated", node_dir=node_root)
     except Exception as e:
-        log(f"[ERROR] Installation failed: {e}")
-        return False
+        print(f"\n[UniRig] Installation FAILED: {e}")
+        print("[UniRig] Report issues at: https://github.com/PozzettiAndrea/ComfyUI-UniRig/issues")
+        return 1
 
-    log("=" * 60)
-    log("Installation complete!")
-    log("=" * 60)
-
-    return True
+    print("\n" + "=" * 60)
+    print("[UniRig] Installation completed!")
+    print("=" * 60)
+    return 0
 
 
 if __name__ == "__main__":
-    success = install()
-    sys.exit(0 if success else 1)
+    sys.exit(main())
