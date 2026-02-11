@@ -2,7 +2,7 @@
   "id": "0ee524cd-7bc8-46f2-8751-32399825f67b",
   "revision": 0,
   "last_node_id": 41,
-  "last_link_id": 48,
+  "last_link_id": 50,
   "nodes": [
     {
       "id": 24,
@@ -236,7 +236,9 @@
         {
           "name": "confidence",
           "type": "IMAGE",
-          "links": null
+          "links": [
+            49
+          ]
         },
         {
           "name": "resized_rgb_image",
@@ -276,7 +278,9 @@
         {
           "name": "intrinsics",
           "type": "INTRINSICS",
-          "links": null
+          "links": [
+            50
+          ]
         },
         {
           "name": "gaussian_ply_path",
@@ -331,6 +335,18 @@
           "shape": 7,
           "type": "IMAGE",
           "link": 48
+        },
+        {
+          "name": "intrinsics",
+          "shape": 7,
+          "type": "INTRINSICS",
+          "link": 50
+        },
+        {
+          "name": "depth_confidence",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 49
         }
       ],
       "outputs": [
@@ -591,6 +607,22 @@
       16,
       3,
       "IMAGE"
+    ],
+    [
+      49,
+      40,
+      1,
+      16,
+      5,
+      "IMAGE"
+    ],
+    [
+      50,
+      40,
+      9,
+      16,
+      4,
+      "INTRINSICS"
     ]
   ],
   "groups": [],
