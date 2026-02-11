@@ -6,11 +6,7 @@ timeout = 300
 levels = ["syntax", "install", "registration", "instantiation", "validation"]
 
 [test.workflows]
-files = [
-    "workflows/workflow.json",
-    "workflows/rigging.json",
-    "workflows/multiple_masks.json",
-]
+run = "all"
 timeout = 120
 
 [test.platforms]
