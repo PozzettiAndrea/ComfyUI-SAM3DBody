@@ -1,6 +1,12 @@
 # ComfyUI-SAM3DBody
 
-**[View Workflow Gallery](https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/)**
+<div align="center">
+<a href="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/">
+<img src="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/gallery-preview.png" alt="Workflow Test Gallery" width="800">
+</a>
+<br>
+<b><a href="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/">View Live Test Gallery →</a></b>
+</div>
 
 ComfyUI wrapper for Meta's SAM 3D Body - single-image full-body 3D human mesh recovery.
 
