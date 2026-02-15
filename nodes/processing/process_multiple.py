@@ -1,3 +1,4 @@
+import gc
 import os
 import tempfile
 import json
@@ -59,13 +60,19 @@ def _load_sam3d_model(model_config: dict):
     Load SAM 3D Body model from config paths.
 
     Uses module-level caching to avoid reloading on every call.
-    This runs inside the isolated worker subprocess.
+    Respects memory strategy: cache_gpu, cpu_offload, delete.
     """
     attn_backend = model_config.get("attn_backend", "sdpa")
     cache_key = (model_config["ckpt_path"], attn_backend)
 
     if cache_key in _MODEL_CACHE:
-        return _MODEL_CACHE[cache_key]
+        cached = _MODEL_CACHE[cache_key]
+        model = cached["model"]
+        # Move back to GPU if it was offloaded to CPU
+        if next(model.parameters()).device.type != "cuda":
+            print(f"[SAM3DBody] Moving cached model back to GPU...")
+            model.cuda()
+        return cached
 
     # Import heavy dependencies only inside worker
     from ..sam_3d_body import load_sam_3d_body
@@ -85,7 +92,7 @@ def _load_sam3d_model(model_config: dict):
 
     print(f"[SAM3DBody] Model loaded successfully on {device}")
 
-    # Cache for reuse
+    # Cache for reuse (offload happens after inference)
     result = {
         "model": sam_3d_model,
         "model_cfg": model_cfg,
@@ -95,6 +102,27 @@ def _load_sam3d_model(model_config: dict):
     _MODEL_CACHE[cache_key] = result
 
     return result
+
+
+def _offload_model(model_config: dict):
+    """Offload model after inference according to memory strategy."""
+    memory = model_config.get("memory", "cpu_offload")
+    attn_backend = model_config.get("attn_backend", "sdpa")
+    cache_key = (model_config["ckpt_path"], attn_backend)
+
+    if memory == "cache_gpu":
+        return  # keep on GPU
+    elif memory == "cpu_offload":
+        if cache_key in _MODEL_CACHE:
+            print(f"[SAM3DBody] Offloading model to CPU...")
+            _MODEL_CACHE[cache_key]["model"].cpu()
+            torch.cuda.empty_cache()
+    else:  # delete
+        if cache_key in _MODEL_CACHE:
+            print(f"[SAM3DBody] Deleting model from memory...")
+            del _MODEL_CACHE[cache_key]
+            gc.collect()
+            torch.cuda.empty_cache()
 
 
 def find_mhr_model_path(mesh_data=None):
@@ -1219,6 +1247,9 @@ class SAM3DBodyProcessMultiple:
             img_bgr, prepared_outputs, estimator.faces, valid_masks
         )
         preview_comfy = numpy_to_comfy_image(preview)
+
+        # Offload model after inference
+        _offload_model(model)
 
         return (multi_mesh_data, preview_comfy)
 

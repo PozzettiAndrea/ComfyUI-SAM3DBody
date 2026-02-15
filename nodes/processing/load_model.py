@@ -25,6 +25,10 @@ class LoadSAM3DBodyModel:
                     "default": "sdpa",
                     "tooltip": "Attention backend: sdpa (PyTorch built-in, no extra deps) or flash_attn (requires flash-attn package)"
                 }),
+                "memory": (["cache_gpu", "cpu_offload", "delete"], {
+                    "default": "cpu_offload",
+                    "tooltip": "Model memory strategy: cache_gpu = keep on GPU between runs, cpu_offload = move to CPU RAM after use, delete = free after use"
+                }),
             },
         }
 
@@ -33,7 +37,7 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path, attn_backend="sdpa"):
+    def load_model(self, model_path, attn_backend="sdpa", memory="cpu_offload"):
         """Prepare model config (actual loading happens in inference nodes)."""
         import torch
 
@@ -83,6 +87,7 @@ class LoadSAM3DBodyModel:
             "mhr_path": mhr_path,
             "device": device,
             "attn_backend": attn_backend,
+            "memory": memory,
         }
 
         return (model_config,)
