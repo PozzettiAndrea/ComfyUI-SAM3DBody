@@ -1,0 +1,83 @@
+[00:00] Crash dump logging enabled: D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-0026\windows_portable-cpu\crash_dump.log
+[00:00] 
+[00:00] [1/3] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 654 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/3] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x0000014A33BFCD70>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000014A33BFCEC0>
+[00:00] Testing node constructors...
+[00:06] 
+windows_portable: FAILED
+[00:06] Error: Instantiation test failed
+[00:06] Details: stdout: [comfy-env] Version: 0.1.95
+[comfy-env] Parsed D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml: health_check_timeout=5.0
+[comfy-env] Wrapped 15 nodes
+
+stderr: D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:184: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
+  return torch._C._cuda_getDeviceCount() > 0
+Windows fatal exception: access violation
+
+Current thread 0x00001678 (most recent call first):
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py", line 424 in _lazy_init
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py", line 1094 in current_device
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\comfy\model_management.py", line 196 in get_torch_device
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\comfy\model_management.py", line 246 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\comfy\sd.py", line 7 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\comfy\diffusers_load.py", line 3 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\nodes.py", line 25 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\server.py", line 7 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\server.py", line 12 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
+  File "D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\__init__.py", line 12 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1023 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1387 in _gcd_import
+  File "importlib\__init__.py", line 88 in import_module
+  File "<string>", line 35 in <module>
+

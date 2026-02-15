@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-02-15T00:26:06.563444+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.14.0-1017-azure-x86_64-with-glibc2.39",
+    "cpu": "AMD EPYC 7763 64-Core Processor"
+  },
+  "summary": {
+    "total": 5,
+    "passed": 1,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "pass",
+      "duration_seconds": 32.25,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.14.0-1017-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      },
+      "resources": {
+        "ram": {
+          "peak": 2.21,
+          "avg": 2.1
+        },
+        "total_ram_gb": 15.6,
+        "samples": 33
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "workflow",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}
