@@ -21,6 +21,10 @@ class LoadSAM3DBodyModel:
                     "default": DEFAULT_MODEL_PATH,
                     "tooltip": "Path to SAM 3D Body model folder (contains model.ckpt and assets/mhr_model.pt)"
                 }),
+                "attn_backend": (["sdpa", "flash_attn"], {
+                    "default": "sdpa",
+                    "tooltip": "Attention backend: sdpa (PyTorch built-in, no extra deps) or flash_attn (requires flash-attn package)"
+                }),
             },
         }
 
@@ -29,7 +33,7 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path):
+    def load_model(self, model_path, attn_backend="sdpa"):
         """Prepare model config (actual loading happens in inference nodes)."""
         import torch
 
@@ -78,6 +82,7 @@ class LoadSAM3DBodyModel:
             "ckpt_path": ckpt_path,
             "mhr_path": mhr_path,
             "device": device,
+            "attn_backend": attn_backend,
         }
 
         return (model_config,)

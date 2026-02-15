@@ -17,6 +17,17 @@ from timm.models.layers import drop_path, to_2tuple, trunc_normal_
 from ..modules.transformer import LayerNorm32
 
 
+def _get_attn_backend(cfg):
+    """Resolve attention backend from config, with FLASH_ATTN fallback."""
+    backend = cfg.MODEL.BACKBONE.get("ATTN_BACKEND", None)
+    if backend is not None:
+        return backend
+    # Legacy fallback
+    if cfg.MODEL.BACKBONE.get("FLASH_ATTN", False):
+        return "flash_attn"
+    return "sdpa"
+
+
 def vit(cfg):
     return ViT(
         img_size=(256, 192),
@@ -31,7 +42,7 @@ def vit(cfg):
         qkv_bias=True,
         drop_path_rate=0.55,
         frozen_stages=cfg.MODEL.BACKBONE.get("FROZEN_STAGES", -1),
-        flash_attn=cfg.MODEL.BACKBONE.get("FLASH_ATTN", False),
+        attn_backend=_get_attn_backend(cfg),
     )
 
 
@@ -49,7 +60,7 @@ def vit_l(cfg):
         qkv_bias=True,
         drop_path_rate=0.55,
         frozen_stages=cfg.MODEL.BACKBONE.get("FROZEN_STAGES", -1),
-        flash_attn=cfg.MODEL.BACKBONE.get("FLASH_ATTN", False),
+        attn_backend=_get_attn_backend(cfg),
     )
 
 
@@ -67,7 +78,7 @@ def vit_b(cfg):
         qkv_bias=True,
         drop_path_rate=0.3,
         frozen_stages=cfg.MODEL.BACKBONE.get("FROZEN_STAGES", -1),
-        flash_attn=cfg.MODEL.BACKBONE.get("FLASH_ATTN", False),
+        attn_backend=_get_attn_backend(cfg),
     )
 
 
@@ -85,7 +96,7 @@ def vit256(cfg):
         qkv_bias=True,
         drop_path_rate=0.55,
         frozen_stages=cfg.MODEL.BACKBONE.get("FROZEN_STAGES", -1),
-        flash_attn=cfg.MODEL.BACKBONE.get("FLASH_ATTN", False),
+        attn_backend=_get_attn_backend(cfg),
     )
 
 
@@ -103,7 +114,7 @@ def vit512_384(cfg):
         qkv_bias=True,
         drop_path_rate=0.55,
         frozen_stages=cfg.MODEL.BACKBONE.get("FROZEN_STAGES", -1),
-        flash_attn=cfg.MODEL.BACKBONE.get("FLASH_ATTN", False),
+        attn_backend=_get_attn_backend(cfg),
     )
 
 
@@ -235,6 +246,44 @@ class Attention(nn.Module):
         return x
 
 
+class SDPAttention(nn.Module):
+    def __init__(
+        self,
+        dim,
+        num_heads=8,
+        qkv_bias=False,
+        qk_scale=None,
+        attn_drop=0.0,
+        proj_drop=0.0,
+        attn_head_dim=None,
+    ):
+        super().__init__()
+        self.num_heads = num_heads
+        head_dim = dim // num_heads
+        if attn_head_dim is not None:
+            head_dim = attn_head_dim
+        all_head_dim = head_dim * self.num_heads
+        self.qkv = nn.Linear(dim, all_head_dim * 3, bias=qkv_bias)
+        self.attn_drop = attn_drop
+        self.proj = nn.Linear(all_head_dim, dim)
+        self.proj_drop = nn.Dropout(proj_drop)
+
+    def forward(self, x):
+        B, N, C = x.shape
+        qkv = self.qkv(x)
+        qkv = qkv.reshape(B, N, 3, self.num_heads, -1).permute(2, 0, 3, 1, 4)
+        q, k, v = qkv.unbind(0)  # each: (B, num_heads, N, head_dim)
+
+        x = F.scaled_dot_product_attention(
+            q, k, v,
+            dropout_p=self.attn_drop if self.training else 0.0,
+        )
+        x = x.transpose(1, 2).reshape(B, N, -1)
+        x = self.proj(x)
+        x = self.proj_drop(x)
+        return x
+
+
 class FlashAttention(nn.Module):
     def __init__(
         self,
@@ -281,7 +330,6 @@ class FlashAttention(nn.Module):
         # If needed, cast back to float32
         out = out.reshape(B, N, -1)
         out = out.to(x.dtype)
-        # breakpoint()
         out = self.proj(out)
         out = self.proj_drop(out)
         return out
@@ -303,30 +351,30 @@ class Block(nn.Module):
         norm_layer=nn.LayerNorm,
         attn_head_dim=None,
         flash_attn=False,
+        attn_backend=None,
     ):
         super().__init__()
 
+        # Resolve backend: new attn_backend param takes priority over legacy flash_attn bool
+        if attn_backend is None:
+            attn_backend = "flash_attn" if flash_attn else "manual"
+
         self.norm1 = norm_layer(dim)
-        if flash_attn:
-            self.attn = FlashAttention(
-                dim,
-                num_heads=num_heads,
-                qkv_bias=qkv_bias,
-                qk_scale=qk_scale,
-                attn_drop=attn_drop,
-                proj_drop=drop,
-                attn_head_dim=attn_head_dim,
-            )
+        attn_kwargs = dict(
+            dim=dim,
+            num_heads=num_heads,
+            qkv_bias=qkv_bias,
+            qk_scale=qk_scale,
+            attn_drop=attn_drop,
+            proj_drop=drop,
+            attn_head_dim=attn_head_dim,
+        )
+        if attn_backend == "flash_attn":
+            self.attn = FlashAttention(**attn_kwargs)
+        elif attn_backend == "sdpa":
+            self.attn = SDPAttention(**attn_kwargs)
         else:
-            self.attn = Attention(
-                dim,
-                num_heads=num_heads,
-                qkv_bias=qkv_bias,
-                qk_scale=qk_scale,
-                attn_drop=attn_drop,
-                proj_drop=drop,
-                attn_head_dim=attn_head_dim,
-            )
+            self.attn = Attention(**attn_kwargs)
 
         # NOTE: drop path for stochastic depth, we shall see if this is better than dropout here
         self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
@@ -487,10 +535,14 @@ class ViT(nn.Module):
         freeze_attn=False,
         freeze_ffn=False,
         flash_attn=False,
+        attn_backend=None,
         no_patch_padding=False,
     ):
         # Protect mutable default arguments
         super(ViT, self).__init__()
+        # Resolve backend: new attn_backend param takes priority over legacy flash_attn bool
+        if attn_backend is None:
+            attn_backend = "flash_attn" if flash_attn else "manual"
         norm_layer = norm_layer or partial(nn.LayerNorm, eps=1e-6)
         self.num_classes = num_classes
         self.num_features = self.embed_dim = self.embed_dims = (
@@ -549,7 +601,7 @@ class ViT(nn.Module):
                     attn_drop=attn_drop_rate,
                     drop_path=dpr[i],
                     norm_layer=norm_layer,
-                    flash_attn=flash_attn,
+                    attn_backend=attn_backend,
                 )
                 for i in range(depth)
             ]
