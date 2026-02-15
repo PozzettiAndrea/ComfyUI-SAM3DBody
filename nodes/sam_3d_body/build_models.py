@@ -7,7 +7,7 @@ from .utils.config import get_config
 from .utils.checkpoint import load_state_dict
 
 
-def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: str = ""):
+def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: str = "", attn_backend: str = "sdpa"):
 
     # Check the current directory, and if not present check the parent dir.
     model_cfg = os.path.join(os.path.dirname(checkpoint_path), "model_config.yaml")
@@ -37,9 +37,10 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: 
 
     model_cfg = get_config(model_cfg)
 
-    # Disable face for inference
+    # Configure model
     model_cfg.defrost()
     model_cfg.MODEL.MHR_HEAD.MHR_MODEL_PATH = mhr_path
+    model_cfg.MODEL.BACKBONE.ATTN_BACKEND = attn_backend
     model_cfg.freeze()
 
     # Initialze the model

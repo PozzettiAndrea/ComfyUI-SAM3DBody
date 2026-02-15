@@ -61,7 +61,8 @@ def _load_sam3d_model(model_config: dict):
     Uses module-level caching to avoid reloading on every call.
     This runs inside the isolated worker subprocess.
     """
-    cache_key = model_config["ckpt_path"]
+    attn_backend = model_config.get("attn_backend", "sdpa")
+    cache_key = (model_config["ckpt_path"], attn_backend)
 
     if cache_key in _MODEL_CACHE:
         return _MODEL_CACHE[cache_key]
@@ -74,11 +75,12 @@ def _load_sam3d_model(model_config: dict):
     mhr_path = model_config.get("mhr_path", "")
 
     # Load model using the library's built-in function
-    print(f"[SAM3DBody] Loading model from {ckpt_path}...")
+    print(f"[SAM3DBody] Loading model from {ckpt_path} (attn_backend={attn_backend})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
         device=device,
         mhr_path=mhr_path,
+        attn_backend=attn_backend,
     )
 
     print(f"[SAM3DBody] Model loaded successfully on {device}")
