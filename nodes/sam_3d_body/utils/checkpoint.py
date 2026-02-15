@@ -30,6 +30,27 @@ class _IncompatibleKeys(
     __str__ = __repr__
 
 
+def _materialize_meta_params(module, state_dict, prefix=""):
+    """Replace meta-device parameters and buffers with real tensors from state_dict.
+
+    When a model is constructed under torch.device('meta'), all parameters are
+    weightless metadata. This function replaces them with real tensors from the
+    checkpoint before the standard _load_from_state_dict (which uses copy_).
+    """
+    for name, param in list(module._parameters.items()):
+        key = prefix + name
+        if param is not None and param.is_meta and key in state_dict:
+            module._parameters[name] = torch.nn.Parameter(
+                state_dict[key].clone(), requires_grad=param.requires_grad)
+    for name, buf in list(module._buffers.items()):
+        key = prefix + name
+        if buf is not None and buf.is_meta and key in state_dict:
+            module._buffers[name] = state_dict[key].clone()
+    for name, child in module._modules.items():
+        if child is not None:
+            _materialize_meta_params(child, state_dict, prefix + name + ".")
+
+
 def load_state_dict(module, state_dict, strict=False, logger=None):
     """Load state_dict to a module.
 
@@ -46,6 +67,9 @@ def load_state_dict(module, state_dict, strict=False, logger=None):
         logger (:obj:`logging.Logger`, optional): Logger to log the error
             message. If not specified, print function will be used.
     """
+    # Materialize any meta-device tensors before standard loading
+    _materialize_meta_params(module, state_dict)
+
     unexpected_keys = []
     missing_keys = []
     err_msg = []
