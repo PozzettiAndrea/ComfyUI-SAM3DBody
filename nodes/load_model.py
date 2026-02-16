@@ -1,6 +1,5 @@
 import logging
 import os
-import torch
 import folder_paths
 import comfy.model_management as mm
 
@@ -46,22 +45,17 @@ class LoadSAM3DBodyModel:
         """Prepare model config (actual loading happens in inference nodes)."""
         device = mm.get_torch_device()
 
-        # Resolve precision to torch dtype
+        # Resolve "auto" precision to concrete string (bf16/fp16/fp32)
+        # Stored as string because comfy_env serializes via JSON (torch.dtype not JSON-safe)
         if precision == "auto":
             if mm.should_use_bf16(device):
-                dtype = torch.bfloat16
+                precision = "bf16"
             elif mm.should_use_fp16(device):
-                dtype = torch.float16
+                precision = "fp16"
             else:
-                dtype = torch.float32
-        elif precision == "bf16":
-            dtype = torch.bfloat16
-        elif precision == "fp16":
-            dtype = torch.float16
-        else:
-            dtype = torch.float32
+                precision = "fp32"
 
-        log.info(f"Resolved precision: {precision} -> {dtype}")
+        log.info(f"Precision: {precision}")
 
         # Resolve attention backend
         if attn_backend == "auto":
@@ -118,7 +112,7 @@ class LoadSAM3DBodyModel:
             "model_path": model_path,
             "ckpt_path": ckpt_path,
             "mhr_path": mhr_path,
-            "dtype": dtype,
+            "precision": precision,
             "attn_backend": attn_backend,
         }
 

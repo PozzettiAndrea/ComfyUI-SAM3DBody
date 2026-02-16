@@ -164,6 +164,17 @@ class SAM3DBodyEstimator:
         else:
             cam_int = batch["cam_int"].clone()
 
+        # DEBUG: Check batch before model inference
+        import logging
+        _log = logging.getLogger("sam3dbody")
+        img_tensor = batch["img"]
+        _log.info(f" [DEBUG] batch['img'] shape={img_tensor.shape}, dtype={img_tensor.dtype}, "
+                  f"device={img_tensor.device}, has_nan={torch.isnan(img_tensor).any().item()}, "
+                  f"range=[{img_tensor.min().item():.3f}, {img_tensor.max().item():.3f}]")
+        _log.info(f" [DEBUG] image_mean={self.model.image_mean.flatten().tolist()}, "
+                  f"image_std={self.model.image_std.flatten().tolist()}, "
+                  f"backbone_dtype={self.model.backbone_dtype}")
+
         outputs = self.model.run_inference(
             img,
             batch,
@@ -177,6 +188,13 @@ class SAM3DBodyEstimator:
             pose_output = outputs
 
         out = pose_output["mhr"]
+
+        # DEBUG: Check output for NaN
+        for key in ["pred_keypoints_3d", "pred_vertices", "pred_cam_t"]:
+            if key in out:
+                val = out[key]
+                has_nan = torch.isnan(val).any().item() if isinstance(val, torch.Tensor) else np.isnan(val).any()
+                _log.info(f" [DEBUG] out['{key}'] has_nan={has_nan}")
         out = recursive_to(out, "cpu")
         out = recursive_to(out, "numpy")
         all_out = []

@@ -3,7 +3,6 @@ import os
 import tempfile
 import json
 import glob
-from contextlib import nullcontext
 import torch
 import numpy as np
 import cv2
@@ -59,12 +58,20 @@ def numpy_to_comfy_image(np_image):
 _MODEL_CACHE = {}
 
 
+def _resolve_dtype(precision: str) -> torch.dtype:
+    """Convert precision string to torch.dtype."""
+    if precision == "bf16":
+        return torch.bfloat16
+    if precision == "fp16":
+        return torch.float16
+    return torch.float32
+
+
 def _load_sam3d_model(model_config: dict):
     """
     Load SAM 3D Body model from config paths.
 
     Uses module-level caching to avoid reloading on every call.
-    Respects memory strategy: cache_gpu, cpu_offload, delete.
     """
     attn_backend = model_config.get("attn_backend", "sdpa")
     cache_key = (model_config["ckpt_path"], attn_backend)
@@ -85,10 +92,11 @@ def _load_sam3d_model(model_config: dict):
     ckpt_path = model_config["ckpt_path"]
     device = comfy.model_management.get_torch_device()
     mhr_path = model_config.get("mhr_path", "")
-    dtype = model_config.get("dtype", None)
+    precision = model_config.get("precision", "fp32")
+    dtype = _resolve_dtype(precision)
 
     # Load model using the library's built-in function
-    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend}, dtype={dtype})...")
+    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend}, precision={precision})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
         device=str(device),
@@ -99,7 +107,7 @@ def _load_sam3d_model(model_config: dict):
 
     log.info(f" Model loaded successfully on {device}")
 
-    # Cache for reuse (offload happens after inference)
+    # Cache for reuse
     result = {
         "model": sam_3d_model,
         "model_cfg": model_cfg,
@@ -1186,14 +1194,6 @@ class SAM3DBodyProcessMultiple:
             cv2.imwrite(tmp.name, img_bgr)
             tmp_path = tmp.name
 
-        # Resolve autocast context
-        dtype = model.get("dtype", None)
-        device = comfy.model_management.get_torch_device()
-        autocast_condition = (dtype is not None and dtype != torch.float32
-                              and not comfy.model_management.is_device_mps(device))
-        autocast_ctx = (torch.autocast(comfy.model_management.get_autocast_device(device), dtype=dtype)
-                        if autocast_condition else nullcontext())
-
         try:
             # Convert intrinsics to tensor for SAM3DBody if available
             cam_int_tensor = None
@@ -1201,15 +1201,14 @@ class SAM3DBodyProcessMultiple:
                 cam_int_tensor = torch.from_numpy(intrinsics_np).float().unsqueeze(0)
 
             # Process all people at once
-            with autocast_ctx:
-                outputs = estimator.process_one_image(
-                    tmp_path,
-                    bboxes=bboxes,
-                    masks=masks_for_estimator,
-                    cam_int=cam_int_tensor,
-                    use_mask=True,
-                    inference_type=inference_type,
-                )
+            outputs = estimator.process_one_image(
+                tmp_path,
+                bboxes=bboxes,
+                masks=masks_for_estimator,
+                cam_int=cam_int_tensor,
+                use_mask=True,
+                inference_type=inference_type,
+            )
         finally:
             if os.path.exists(tmp_path):
                 os.unlink(tmp_path)
@@ -1271,6 +1270,10 @@ class SAM3DBodyProcessMultiple:
             pt1 = keypoints_2d[parent_idx]
             pt2 = keypoints_2d[child_idx]
 
+            # Skip if either point contains NaN
+            if np.isnan(pt1[0]) or np.isnan(pt1[1]) or np.isnan(pt2[0]) or np.isnan(pt2[1]):
+                continue
+
             x1, y1 = int(pt1[0]), int(pt1[1])
             x2, y2 = int(pt2[0]), int(pt2[1])
 
@@ -1285,6 +1288,8 @@ class SAM3DBodyProcessMultiple:
 
         # Draw joints (circles at each keypoint)
         for j, pt in enumerate(keypoints_2d):
+            if np.isnan(pt[0]) or np.isnan(pt[1]):
+                continue
             x, y = int(pt[0]), int(pt[1])
             if 0 <= x < w and 0 <= y < h:
                 # Filled circle with outline
@@ -1338,10 +1343,7 @@ class SAM3DBodyProcessMultiple:
             # Create renderer
             renderer = Renderer(
                 focal_length=focal_length,
-                img_w=w,
-                img_h=h,
                 faces=faces,
-                same_mesh_color=False,
             )
 
             # Render all meshes
