@@ -1,10 +1,13 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
+import logging
 import os
 import torch
 import comfy.model_management
 
 from .models.meta_arch import SAM3DBody
 from .utils.config import get_config
+
+log = logging.getLogger("sam3dbody")
 
 
 def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", attn_backend: str = "sdpa", dtype: torch.dtype = None):
@@ -51,12 +54,46 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: st
     state_dict = comfy.utils.load_torch_file(str(checkpoint_path))
 
     # Build model on meta device (zero memory, no random init)
+    # Note: convert_to_fp16() runs during __init__ but is a no-op on meta tensors.
+    # We re-run it below after loading real weights.
     with torch.device("meta"):
         model = SAM3DBody(model_cfg)
+
+    # Load checkpoint weights — assign=True replaces meta tensors with real data
     model.load_state_dict(state_dict, strict=False, assign=True)
+
+    # Materialize any remaining meta tensors (params/buffers not in checkpoint)
+    for name, param in list(model.named_parameters()):
+        if param.device.type == 'meta':
+            parts = name.split('.')
+            mod = model
+            for p in parts[:-1]:
+                mod = getattr(mod, p)
+            mod._parameters[parts[-1]] = torch.nn.Parameter(
+                torch.zeros(param.shape, dtype=param.dtype, device='cpu'),
+                requires_grad=param.requires_grad,
+            )
+    for name, buf in list(model.named_buffers()):
+        if buf.device.type == 'meta':
+            parts = name.split('.')
+            mod = model
+            for p in parts[:-1]:
+                mod = getattr(mod, p)
+            mod._buffers[parts[-1]] = torch.zeros(buf.shape, dtype=buf.dtype, device='cpu')
+
+    # Re-initialize persistent=False buffers from config (not saved in checkpoint)
+    model.image_mean = torch.tensor(model_cfg.MODEL.IMAGE_MEAN).view(-1, 1, 1)
+    model.image_std = torch.tensor(model_cfg.MODEL.IMAGE_STD).view(-1, 1, 1)
+
+    # Now convert backbone to bf16/fp16 on the real loaded weights
+    # (convert_to_fp16 during __init__ was a no-op on meta tensors)
+    if model_cfg.TRAIN.USE_FP16:
+        model.convert_to_fp16()
+
+    log.info(f" backbone_dtype: {model.backbone_dtype}")
+    log.info(f" image_mean: {model.image_mean.flatten().tolist()}")
+    log.info(f" image_std: {model.image_std.flatten().tolist()}")
 
     model = model.to(device)
     model.eval()
     return model, model_cfg, mhr_path
-
-

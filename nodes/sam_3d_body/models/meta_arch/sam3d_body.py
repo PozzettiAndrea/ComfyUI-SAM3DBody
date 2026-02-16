@@ -1073,6 +1073,12 @@ class SAM3DBody(BaseModel):
             ),
         )
 
+        # DEBUG: Check after preprocessing
+        import logging as _logging
+        _dbg = _logging.getLogger("sam3dbody")
+        _dbg.info(f" [DEBUG] after data_preprocess: x shape={x.shape}, dtype={x.dtype}, "
+                  f"has_nan={torch.isnan(x).any().item()}, range=[{x.min().item():.3f}, {x.max().item():.3f}]")
+
         # Optionally get ray conditioining
         ray_cond = self.get_ray_condition(batch)  # This is B x num_person x 2 x H x W
         ray_cond = self._flatten_person(ray_cond)
@@ -1094,12 +1100,19 @@ class SAM3DBody(BaseModel):
             batch["ray_cond_hand"] = ray_cond[self.hand_batch_idx].clone()
         ray_cond = None
 
+        backbone_input = x.type(self.backbone_dtype)
+        _dbg.info(f" [DEBUG] backbone input: dtype={backbone_input.dtype}, has_nan={torch.isnan(backbone_input).any().item()}")
+
         image_embeddings = self.backbone(
-            x.type(self.backbone_dtype), extra_embed=ray_cond
+            backbone_input, extra_embed=ray_cond
         )  # (B, C, H, W)
 
         if isinstance(image_embeddings, tuple):
             image_embeddings = image_embeddings[-1]
+
+        _dbg.info(f" [DEBUG] backbone output: shape={image_embeddings.shape}, dtype={image_embeddings.dtype}, "
+                  f"has_nan={torch.isnan(image_embeddings).any().item()}")
+
         image_embeddings = image_embeddings.type(x.dtype)
 
         # Mask condition if available
