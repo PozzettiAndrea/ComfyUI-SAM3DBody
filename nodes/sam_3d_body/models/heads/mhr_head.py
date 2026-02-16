@@ -7,6 +7,7 @@ from typing import Optional
 import roma
 import torch
 import torch.nn as nn
+import comfy.model_management
 
 from ..modules import rot6d_to_rotmat
 from ..modules.mhr_utils import (
@@ -107,13 +108,13 @@ class MHRHead(nn.Module):
         # Load MHR itself
         if MOMENTUM_ENABLED:
             self.mhr = MHR.from_files(
-                device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),
+                device=comfy.model_management.get_torch_device(),
                 lod=1,
             )
         else:
             self.mhr = torch.jit.load(
                 mhr_model_path,
-                map_location=("cuda" if torch.cuda.is_available() else "cpu"),
+                map_location=comfy.model_management.get_torch_device(),
             )
 
         for param in self.mhr.parameters():

@@ -587,7 +587,7 @@ def main(argv=None):
         args = get_args_parser().parse_args(argv[1:])
         args.output_dir = sys.argv[1]
     if args.multi_distillation:
-        print("performing multidistillation run")
+        logger.info("performing multidistillation run")
         cfg = setup_multidistillation(args)
         torch.distributed.barrier()
         logger.info("setup_multidistillation done")

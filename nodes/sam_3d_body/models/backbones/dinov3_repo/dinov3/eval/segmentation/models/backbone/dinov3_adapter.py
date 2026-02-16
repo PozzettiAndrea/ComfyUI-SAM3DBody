@@ -3,9 +3,12 @@
 # This software may be used and distributed in accordance with
 # the terms of the DINOv3 License Agreement.
 
+import logging
 import math
 
 import torch
+
+log = logging.getLogger("sam3dbody")
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as cp
@@ -330,9 +333,9 @@ class DINOv3_Adapter(nn.Module):
         self.add_vit_feature = add_vit_feature
         embed_dim = self.backbone.embed_dim
         self.patch_size = self.backbone.patch_size
-        print("embed dim", embed_dim)
-        print("interaction_indexes", self.interaction_indexes)
-        print("patch_size", self.patch_size)
+        log.info(f"embed dim {embed_dim}")
+        log.info(f"interaction_indexes {self.interaction_indexes}")
+        log.info(f"patch_size {self.patch_size}")
 
         block_fn = InteractionBlockWithCls
         self.level_embed = nn.Parameter(torch.zeros(3, embed_dim))

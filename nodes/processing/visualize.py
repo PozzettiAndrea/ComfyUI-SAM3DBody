@@ -6,6 +6,7 @@ Visualization nodes for SAM 3D Body outputs.
 Provides nodes for rendering and visualizing 3D mesh reconstructions.
 """
 
+import logging
 import sys
 import numpy as np
 import cv2
@@ -13,6 +14,8 @@ import torch
 from pathlib import Path
 import folder_paths
 from ..base import numpy_to_comfy_image
+
+log = logging.getLogger("sam3dbody")
 
 # Add sam-3d-body to Python path if it exists
 _SAM3D_BODY_PATH = Path(__file__).parent.parent.parent.parent.parent.parent / "sam-3d-body"
@@ -52,7 +55,7 @@ class SAM3DBodyVisualize:
     def visualize(self, mesh_data, image, render_mode="overlay"):
         """Visualize the 3D mesh reconstruction."""
 
-        print(f"[SAM3DBody] Visualizing mesh with mode: {render_mode}")
+        log.info(f"Visualizing mesh with mode: {render_mode}")
 
         try:
             from ..base import comfy_image_to_numpy
@@ -67,7 +70,7 @@ class SAM3DBodyVisualize:
             raw_output = mesh_data.get("raw_output", {})
 
             if vertices is None or faces is None:
-                print(f"[SAM3DBody] [WARNING] No mesh data available for visualization")
+                log.warning(f"No mesh data available for visualization")
                 return (image,)
 
             # Convert tensors to numpy if needed
@@ -76,7 +79,7 @@ class SAM3DBodyVisualize:
             if isinstance(faces, torch.Tensor):
                 faces = faces.cpu().numpy()
 
-            print(f"[SAM3DBody] Rendering mesh with {len(vertices)} vertices, {len(faces)} faces")
+            log.info(f"Rendering mesh with {len(vertices)} vertices, {len(faces)} faces")
 
             # Try to use the original visualization tools
             try:
@@ -100,18 +103,16 @@ class SAM3DBodyVisualize:
 
                     # Convert back to ComfyUI format
                     result_comfy = numpy_to_comfy_image(result_img)
-                    print(f"[SAM3DBody] [OK] Visualization complete")
+                    log.info(f"Visualization complete")
                     return (result_comfy,)
 
             except Exception as e:
-                print(f"[SAM3DBody] [WARNING] Could not use visualization tools: {e}")
-                print(f"[SAM3DBody] Returning original image")
+                log.warning(f"Could not use visualization tools: {e}")
+                log.info(f"Returning original image")
                 return (image,)
 
         except Exception as e:
-            print(f"[SAM3DBody] [ERROR] Visualization failed: {str(e)}")
-            import traceback
-            traceback.print_exc()
+            log.error(f"Visualization failed: {str(e)}", exc_info=True)
             # Return original image on error
             return (image,)
 
@@ -145,7 +146,7 @@ class SAM3DBodyExportMesh:
     def export_mesh(self, mesh_data, filename="output_mesh.stl"):
         """Export mesh to file."""
 
-        print(f"[SAM3DBody] Exporting mesh to {filename}")
+        log.info(f"Exporting mesh to {filename}")
 
         try:
             import os
@@ -170,13 +171,11 @@ class SAM3DBodyExportMesh:
             # Export to STL format
             self._export_stl(vertices, faces, full_path)
 
-            print(f"[SAM3DBody] [OK] Mesh exported to {full_path}")
+            log.info(f"Mesh exported to {full_path}")
             return (filename,)
 
         except Exception as e:
-            print(f"[SAM3DBody] [ERROR] Export failed: {str(e)}")
-            import traceback
-            traceback.print_exc()
+            log.error(f"Export failed: {str(e)}", exc_info=True)
             raise
 
     def _export_obj(self, vertices, faces, filepath):
@@ -307,13 +306,13 @@ class SAM3DBodyGetVertices:
                 info_lines.append(f"Joints: {len(joints)} keypoints")
 
             info = "\n".join(info_lines)
-            print(info)
+            log.info(info)
 
             return (info,)
 
         except Exception as e:
             error_msg = f"[SAM3DBody] [ERROR] Failed to get mesh info: {str(e)}"
-            print(error_msg)
+            log.error(error_msg)
             return (error_msg,)
 
 

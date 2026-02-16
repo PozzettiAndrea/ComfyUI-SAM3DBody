@@ -1,5 +1,8 @@
+import logging
 import os
 import folder_paths
+
+log = logging.getLogger("sam3dbody")
 
 # Default model path in ComfyUI models folder
 DEFAULT_MODEL_PATH = os.path.join(folder_paths.models_dir, "sam3dbody")
@@ -25,6 +28,10 @@ class LoadSAM3DBodyModel:
                     "default": "sdpa",
                     "tooltip": "Attention backend: sdpa (PyTorch built-in, no extra deps) or flash_attn (requires flash-attn package)"
                 }),
+                "precision": (["auto", "bf16", "fp16", "fp32"], {
+                    "default": "auto",
+                    "tooltip": "Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."
+                }),
                 "memory": (["cache_gpu", "cpu_offload", "delete"], {
                     "default": "cpu_offload",
                     "tooltip": "Model memory strategy: cache_gpu = keep on GPU between runs, cpu_offload = move to CPU RAM after use, delete = free after use"
@@ -37,12 +44,12 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path, attn_backend="sdpa", memory="cpu_offload"):
+    def load_model(self, model_path, attn_backend="sdpa", precision="auto", memory="cpu_offload"):
         """Prepare model config (actual loading happens in inference nodes)."""
-        import torch
+        import comfy.model_management
 
         # Auto-detect device
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = str(comfy.model_management.get_torch_device())
 
         # Resolve to absolute path
         model_path = os.path.abspath(model_path)
@@ -58,13 +65,13 @@ class LoadSAM3DBodyModel:
             try:
                 from huggingface_hub import snapshot_download
 
-                print(f"[SAM3DBody] Model not found locally. Downloading from HuggingFace...")
+                log.info(f"Model not found locally. Downloading from HuggingFace...")
                 os.makedirs(model_path, exist_ok=True)
                 snapshot_download(
                     repo_id="jetjodh/sam-3d-body-dinov3",
                     local_dir=model_path
                 )
-                print(f"[SAM3DBody] Download complete.")
+                log.info(f"Download complete.")
 
             except Exception as e:
                 raise RuntimeError(
@@ -86,6 +93,7 @@ class LoadSAM3DBodyModel:
             "ckpt_path": ckpt_path,
             "mhr_path": mhr_path,
             "device": device,
+            "precision": precision,
             "attn_backend": attn_backend,
             "memory": memory,
         }

@@ -6,28 +6,9 @@ ComfyUI SAM 3D Body Custom Nodes
 Aggregate all node class mappings from submodules.
 """
 
-# Patch torch.nn.init to skip wasteful random weight initialization.
-# All models load checkpoint weights via load_state_dict() immediately after
-# construction, so the default kaiming/xavier/etc. init is pure overhead.
-# Safe: this file only runs inside the comfy-env isolated subprocess.
-import torch.nn.init as _init
-
-def _noop(tensor, *args, **kwargs):
-    return tensor
-
-for _fn in (
-    "kaiming_uniform_", "kaiming_normal_",
-    "xavier_uniform_", "xavier_normal_",
-    "uniform_", "normal_", "trunc_normal_",
-    "ones_", "zeros_", "constant_",
-    "orthogonal_",
-):
-    if hasattr(_init, _fn):
-        setattr(_init, _fn, _noop)
-
 # Import node mappings from processing modules
-from .processing.load_model import NODE_CLASS_MAPPINGS as LOAD_MAPPINGS
-from .processing.load_model import NODE_DISPLAY_NAME_MAPPINGS as LOAD_DISPLAY_MAPPINGS
+from .load_model import NODE_CLASS_MAPPINGS as LOAD_MAPPINGS
+from .load_model import NODE_DISPLAY_NAME_MAPPINGS as LOAD_DISPLAY_MAPPINGS
 
 from .processing.load_mesh import NODE_CLASS_MAPPINGS as LOAD_MESH_MAPPINGS
 from .processing.load_mesh import NODE_DISPLAY_NAME_MAPPINGS as LOAD_MESH_DISPLAY_MAPPINGS

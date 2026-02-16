@@ -88,7 +88,8 @@ class SAM3DBodyEstimator:
         self.image_embeddings = None
         self.output = None
         self.prev_prompt = []
-        torch.cuda.empty_cache()
+        import comfy.model_management
+        comfy.model_management.soft_empty_cache()
 
         if type(img) == str:
             img = load_image(img, backend="cv2", image_format="bgr")

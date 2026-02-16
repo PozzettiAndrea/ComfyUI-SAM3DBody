@@ -1,8 +1,11 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 
+import logging
 import os
 import time
 from typing import Any, List
+
+log = logging.getLogger("sam3dbody")
 
 import braceexpand
 import cv2
@@ -66,7 +69,7 @@ def load_image(
         if img is not None:
             return img
         else:
-            print("Reading {} failed. Will retry.".format(path))
+            log.warning("Reading {} failed. Will retry.".format(path))
             time.sleep(1.0)
         if i_try == retry - 1:
             raise Exception("Failed to load image {}".format(path))

@@ -6,8 +6,11 @@ Preview node for SAM 3D Body rigged meshes.
 Displays rigged FBX files with interactive skeleton manipulation.
 """
 
+import logging
 import os
 import folder_paths
+
+log = logging.getLogger("sam3dbody")
 
 
 class SAM3DBodyPreviewRiggedMesh:
@@ -35,21 +38,21 @@ class SAM3DBodyPreviewRiggedMesh:
 
     def preview(self, fbx_output_path):
         """Preview the rigged mesh in an interactive FBX viewer."""
-        print(f"[SAM3DBodyPreviewRiggedMesh] Preparing preview...")
+        log.info(f" Preparing preview...")
 
         fbx_path = fbx_output_path
         if not os.path.exists(fbx_path):
             raise RuntimeError(f"FBX file not found: {fbx_path}")
 
-        print(f"[SAM3DBodyPreviewRiggedMesh] FBX path: {fbx_path}")
+        log.info(f" FBX path: {fbx_path}")
 
         # FBX is already in output, so viewer can access it directly
         # Assume all FBX files have skinning and skeleton
         has_skinning = True
         has_skeleton = True
 
-        print(f"[SAM3DBodyPreviewRiggedMesh] Has skinning: {has_skinning}")
-        print(f"[SAM3DBodyPreviewRiggedMesh] Has skeleton: {has_skeleton}")
+        log.info(f" Has skinning: {has_skinning}")
+        log.info(f" Has skeleton: {has_skeleton}")
 
         return {
             "ui": {

@@ -6,10 +6,13 @@ Mesh loading node for SAM 3D Body.
 Loads mesh files (FBX, OBJ, PLY, STL, GLB, etc.) from ComfyUI folders.
 """
 
+import logging
 import os
 import numpy as np
 import torch
 import folder_paths
+
+log = logging.getLogger("sam3dbody")
 
 
 class SAM3DBodyLoadMesh:
@@ -126,7 +129,7 @@ class SAM3DBodyLoadMesh:
         Returns:
             tuple: (mesh_data,)
         """
-        print(f"[SAM3DBodyLoadMesh] Loading mesh from {source_folder} folder...")
+        log.info(f" Loading mesh from {source_folder} folder...")
 
         # Resolve full path
         full_path = self._resolve_file_path(source_folder, file_path)
@@ -138,7 +141,7 @@ class SAM3DBodyLoadMesh:
                 f"Make sure the file exists in the selected folder."
             )
 
-        print(f"[SAM3DBodyLoadMesh] Loading: {full_path}")
+        log.info(f" Loading: {full_path}")
 
         # Load mesh using trimesh
         try:
@@ -153,7 +156,7 @@ class SAM3DBodyLoadMesh:
 
         # Handle Scene vs Mesh
         if isinstance(loaded, trimesh.Scene):
-            print(f"[SAM3DBodyLoadMesh] Converting Scene to mesh ({len(loaded.geometry)} geometries)")
+            log.info(f" Converting Scene to mesh ({len(loaded.geometry)} geometries)")
             mesh = loaded.dump(concatenate=True)
         else:
             mesh = loaded
@@ -161,7 +164,7 @@ class SAM3DBodyLoadMesh:
         if mesh is None or len(mesh.vertices) == 0 or len(mesh.faces) == 0:
             raise ValueError(f"Failed to load mesh or mesh is empty: {full_path}")
 
-        print(f"[SAM3DBodyLoadMesh] Initial mesh: {len(mesh.vertices)} vertices, {len(mesh.faces)} faces")
+        log.info(f" Initial mesh: {len(mesh.vertices)} vertices, {len(mesh.faces)} faces")
 
         # Clean up mesh
         verts_before = len(mesh.vertices)
@@ -175,7 +178,7 @@ class SAM3DBodyLoadMesh:
         faces_after = len(mesh.faces)
 
         if verts_before != verts_after or faces_before != faces_after:
-            print(f"[SAM3DBodyLoadMesh] Cleanup: {verts_before}->{verts_after} vertices, {faces_before}->{faces_after} faces")
+            log.info(f" Cleanup: {verts_before}->{verts_after} vertices, {faces_before}->{faces_after} faces")
 
         # Convert to SAM3DBody format
         vertices = torch.from_numpy(mesh.vertices.astype(np.float32))
@@ -189,7 +192,7 @@ class SAM3DBodyLoadMesh:
             "file_name": os.path.basename(full_path),
         }
 
-        print(f"[SAM3DBodyLoadMesh] Successfully loaded: {len(vertices)} vertices, {len(faces)} faces")
+        log.info(f" Successfully loaded: {len(vertices)} vertices, {len(faces)} faces")
 
         return (mesh_data,)
 
@@ -246,7 +249,7 @@ class SAM3DBodySelectMesh:
         Returns:
             tuple: (basename,)
         """
-        print(f"[SAM3DBodySelectMesh] Selecting mesh from {source_folder} folder...")
+        log.info(f" Selecting mesh from {source_folder} folder...")
 
         # Remove [output] prefix if present
         clean_path = file_path.replace("[output] ", "")
@@ -260,7 +263,7 @@ class SAM3DBodySelectMesh:
                 f"Searched in: {source_folder} folder"
             )
 
-        print(f"[SAM3DBodySelectMesh] Selected: {full_path}")
+        log.info(f" Selected: {full_path}")
 
         return (full_path,)
 
