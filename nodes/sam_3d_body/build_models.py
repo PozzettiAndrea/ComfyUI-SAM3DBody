@@ -7,7 +7,7 @@ from .models.meta_arch import SAM3DBody
 from .utils.config import get_config
 
 
-def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", attn_backend: str = "sdpa"):
+def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", attn_backend: str = "sdpa", dtype: torch.dtype = None):
 
     if device is None:
         device = str(comfy.model_management.get_torch_device())

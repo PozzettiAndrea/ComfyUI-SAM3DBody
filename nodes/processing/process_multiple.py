@@ -1,9 +1,9 @@
-import gc
 import logging
 import os
 import tempfile
 import json
 import glob
+from contextlib import nullcontext
 import torch
 import numpy as np
 import cv2
@@ -72,7 +72,7 @@ def _load_sam3d_model(model_config: dict):
     if cache_key in _MODEL_CACHE:
         cached = _MODEL_CACHE[cache_key]
         model = cached["model"]
-        device = torch.device(model_config["device"])
+        device = comfy.model_management.get_torch_device()
         # Move back to compute device if it was offloaded to CPU
         if next(model.parameters()).device != device:
             log.info(f" Moving cached model back to {device}...")
@@ -83,16 +83,18 @@ def _load_sam3d_model(model_config: dict):
     from ..sam_3d_body import load_sam_3d_body
 
     ckpt_path = model_config["ckpt_path"]
-    device = model_config["device"]
+    device = comfy.model_management.get_torch_device()
     mhr_path = model_config.get("mhr_path", "")
+    dtype = model_config.get("dtype", None)
 
     # Load model using the library's built-in function
-    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend})...")
+    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend}, dtype={dtype})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
-        device=device,
+        device=str(device),
         mhr_path=mhr_path,
         attn_backend=attn_backend,
+        dtype=dtype,
     )
 
     log.info(f" Model loaded successfully on {device}")
@@ -101,7 +103,6 @@ def _load_sam3d_model(model_config: dict):
     result = {
         "model": sam_3d_model,
         "model_cfg": model_cfg,
-        "device": device,
         "mhr_path": mhr_path,
     }
     _MODEL_CACHE[cache_key] = result
@@ -109,25 +110,6 @@ def _load_sam3d_model(model_config: dict):
     return result
 
 
-def _offload_model(model_config: dict):
-    """Offload model after inference according to memory strategy."""
-    memory = model_config.get("memory", "cpu_offload")
-    attn_backend = model_config.get("attn_backend", "sdpa")
-    cache_key = (model_config["ckpt_path"], attn_backend)
-
-    if memory == "cache_gpu":
-        return  # keep on GPU
-    elif memory == "cpu_offload":
-        if cache_key in _MODEL_CACHE:
-            log.info(f" Offloading model to CPU...")
-            _MODEL_CACHE[cache_key]["model"].cpu()
-            comfy.model_management.soft_empty_cache()
-    else:  # delete
-        if cache_key in _MODEL_CACHE:
-            log.info(f" Deleting model from memory...")
-            del _MODEL_CACHE[cache_key]
-            gc.collect()
-            comfy.model_management.soft_empty_cache()
 
 
 def find_mhr_model_path(mesh_data=None):
@@ -1204,6 +1186,14 @@ class SAM3DBodyProcessMultiple:
             cv2.imwrite(tmp.name, img_bgr)
             tmp_path = tmp.name
 
+        # Resolve autocast context
+        dtype = model.get("dtype", None)
+        device = comfy.model_management.get_torch_device()
+        autocast_condition = (dtype is not None and dtype != torch.float32
+                              and not comfy.model_management.is_device_mps(device))
+        autocast_ctx = (torch.autocast(comfy.model_management.get_autocast_device(device), dtype=dtype)
+                        if autocast_condition else nullcontext())
+
         try:
             # Convert intrinsics to tensor for SAM3DBody if available
             cam_int_tensor = None
@@ -1211,14 +1201,15 @@ class SAM3DBodyProcessMultiple:
                 cam_int_tensor = torch.from_numpy(intrinsics_np).float().unsqueeze(0)
 
             # Process all people at once
-            outputs = estimator.process_one_image(
-                tmp_path,
-                bboxes=bboxes,
-                masks=masks_for_estimator,
-                cam_int=cam_int_tensor,
-                use_mask=True,
-                inference_type=inference_type,
-            )
+            with autocast_ctx:
+                outputs = estimator.process_one_image(
+                    tmp_path,
+                    bboxes=bboxes,
+                    masks=masks_for_estimator,
+                    cam_int=cam_int_tensor,
+                    use_mask=True,
+                    inference_type=inference_type,
+                )
         finally:
             if os.path.exists(tmp_path):
                 os.unlink(tmp_path)
@@ -1252,9 +1243,6 @@ class SAM3DBodyProcessMultiple:
             img_bgr, prepared_outputs, estimator.faces, valid_masks
         )
         preview_comfy = numpy_to_comfy_image(preview)
-
-        # Offload model after inference
-        _offload_model(model)
 
         return (multi_mesh_data, preview_comfy)
 
