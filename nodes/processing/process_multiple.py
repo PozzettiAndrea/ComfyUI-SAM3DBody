@@ -1,4 +1,5 @@
 import gc
+import logging
 import os
 import tempfile
 import json
@@ -7,6 +8,9 @@ import torch
 import numpy as np
 import cv2
 import folder_paths
+import comfy.model_management
+
+log = logging.getLogger("sam3dbody")
 
 # =============================================================================
 # Helper functions (inlined to avoid relative import issues in worker)
@@ -68,10 +72,11 @@ def _load_sam3d_model(model_config: dict):
     if cache_key in _MODEL_CACHE:
         cached = _MODEL_CACHE[cache_key]
         model = cached["model"]
-        # Move back to GPU if it was offloaded to CPU
-        if next(model.parameters()).device.type != "cuda":
-            print(f"[SAM3DBody] Moving cached model back to GPU...")
-            model.cuda()
+        device = torch.device(model_config["device"])
+        # Move back to compute device if it was offloaded to CPU
+        if next(model.parameters()).device != device:
+            log.info(f" Moving cached model back to {device}...")
+            model.to(device)
         return cached
 
     # Import heavy dependencies only inside worker
@@ -82,7 +87,7 @@ def _load_sam3d_model(model_config: dict):
     mhr_path = model_config.get("mhr_path", "")
 
     # Load model using the library's built-in function
-    print(f"[SAM3DBody] Loading model from {ckpt_path} (attn_backend={attn_backend})...")
+    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
         device=device,
@@ -90,7 +95,7 @@ def _load_sam3d_model(model_config: dict):
         attn_backend=attn_backend,
     )
 
-    print(f"[SAM3DBody] Model loaded successfully on {device}")
+    log.info(f" Model loaded successfully on {device}")
 
     # Cache for reuse (offload happens after inference)
     result = {
@@ -114,15 +119,15 @@ def _offload_model(model_config: dict):
         return  # keep on GPU
     elif memory == "cpu_offload":
         if cache_key in _MODEL_CACHE:
-            print(f"[SAM3DBody] Offloading model to CPU...")
+            log.info(f" Offloading model to CPU...")
             _MODEL_CACHE[cache_key]["model"].cpu()
-            torch.cuda.empty_cache()
+            comfy.model_management.soft_empty_cache()
     else:  # delete
         if cache_key in _MODEL_CACHE:
-            print(f"[SAM3DBody] Deleting model from memory...")
+            log.info(f" Deleting model from memory...")
             del _MODEL_CACHE[cache_key]
             gc.collect()
-            torch.cuda.empty_cache()
+            comfy.model_management.soft_empty_cache()
 
 
 def find_mhr_model_path(mesh_data=None):
@@ -321,9 +326,9 @@ class SAM3DBodyProcessMultiple:
         actual_height_m = (pixel_height_img * median_depth) / focal_length
 
         # Debug: show formula values
-        print(f"  [DEBUG] focal_length={focal_length:.1f}, mask_height_px={pixel_height_img:.1f}, "
+        log.debug(f" focal_length={focal_length:.1f}, mask_height_px={pixel_height_img:.1f}, "
               f"median_depth={median_depth:.3f}m")
-        print(f"  [DEBUG] actual_height = {pixel_height_img:.1f} × {median_depth:.3f} / {focal_length:.1f} = {actual_height_m:.3f}m")
+        log.debug(f" actual_height = {pixel_height_img:.1f} × {median_depth:.3f} / {focal_length:.1f} = {actual_height_m:.3f}m")
 
         return {
             "depth": median_depth,
@@ -516,23 +521,23 @@ class SAM3DBodyProcessMultiple:
 
         # cam_t is required to convert SMPL coordinates to camera space
         if cam_t is None:
-            print("      WARNING: cam_t not provided, cannot compute camera-space Z")
+            log.warning("cam_t not provided, cannot compute camera-space Z")
             return [], None, 0.0
 
         depth_h, depth_w = depth_map.shape
-        print(f"    [DEBUG] mask type: {type(mask)}, mask shape: {mask.shape if mask is not None else 'None'}")
+        log.debug(f" mask type: {type(mask)}, mask shape: {mask.shape if mask is not None else 'None'}")
         if mask is not None:
             mask_h, mask_w = mask.shape[:2]
         else:
             mask_h, mask_w = depth_h, depth_w
 
         # Debug: print array shapes
-        print(f"    [DEBUG] _identify_visible_joints:")
-        print(f"      smpl_joints_3d shape: {smpl_joints_3d.shape}")
-        print(f"      smpl_joints_2d shape: {smpl_joints_2d.shape}")
-        print(f"      depth_map shape: {depth_map.shape}")
-        print(f"      mask shape: {mask.shape if mask is not None else 'None'}")
-        print(f"      img_h={img_h}, img_w={img_w}")
+        log.debug(f" _identify_visible_joints:")
+        log.debug(f"smpl_joints_3d shape: {smpl_joints_3d.shape}")
+        log.debug(f"smpl_joints_2d shape: {smpl_joints_2d.shape}")
+        log.debug(f"depth_map shape: {depth_map.shape}")
+        log.debug(f"mask shape: {mask.shape if mask is not None else 'None'}")
+        log.debug(f"img_h={img_h}, img_w={img_w}")
 
         ratios = []
         confidences = []
@@ -540,7 +545,7 @@ class SAM3DBodyProcessMultiple:
 
         # Use minimum of 3D and 2D joint counts (they may differ)
         num_joints = min(len(smpl_joints_3d), len(smpl_joints_2d))
-        print(f"      Processing {num_joints} joints (3D has {len(smpl_joints_3d)}, 2D has {len(smpl_joints_2d)})")
+        log.debug(f"Processing {num_joints} joints (3D has {len(smpl_joints_3d)}, 2D has {len(smpl_joints_2d)})")
 
         for j in range(num_joints):
             # Get 2D projection
@@ -596,16 +601,16 @@ class SAM3DBodyProcessMultiple:
             confidences.append(conf)
             joint_indices.append(j)
 
-        print(f"      Sampled {len(ratios)} joints with valid depth")
+        log.debug(f"Sampled {len(ratios)} joints with valid depth")
 
         if len(ratios) < 3:
-            print(f"      ERROR: Not enough valid joints ({len(ratios)} < 3)")
+            log.error(f"Not enough valid joints ({len(ratios)} < 3)")
             return [], None, 0.0
 
         ratios = np.array(ratios)
         confidences = np.array(confidences)
 
-        print(f"      Ratios: min={ratios.min():.4f}, max={ratios.max():.4f}, mean={ratios.mean():.4f}")
+        log.debug(f"Ratios: min={ratios.min():.4f}, max={ratios.max():.4f}, mean={ratios.mean():.4f}")
 
         # Use UNWEIGHTED median for robust outlier detection
         # Weighted median can be dominated by a single high-confidence joint that happens to be an outlier
@@ -613,7 +618,7 @@ class SAM3DBodyProcessMultiple:
         # Simple unweighted median is more robust: majority vote of all visible joints
         median_ratio = float(np.median(ratios))
 
-        print(f"      Median ratio (scale factor): {median_ratio:.4f}")
+        log.debug(f"Median ratio (scale factor): {median_ratio:.4f}")
 
         # Identify inliers: joints where ratio matches consensus
         # Self-occluded joints have LOWER ratio (z_measured < expected because we see occluder)
@@ -625,7 +630,7 @@ class SAM3DBodyProcessMultiple:
             is_inlier = relative_error > -tolerance and relative_error < tolerance * 1.5
             visible_mask.append(is_inlier)
             if not is_inlier:
-                print(f"        Joint {joint_indices[i]}: ratio={r:.4f}, rel_error={relative_error:.3f} -> OUTLIER")
+                log.debug(f"Joint {joint_indices[i]}: ratio={r:.4f}, rel_error={relative_error:.3f} -> OUTLIER")
 
         visible_joints = [j for j, v in zip(joint_indices, visible_mask) if v]
 
@@ -637,7 +642,7 @@ class SAM3DBodyProcessMultiple:
         avg_conf = float(np.mean([c for c, v in zip(confidences, visible_mask) if v])) if any(visible_mask) else 0
         confidence = inlier_ratio * avg_conf
 
-        print(f"      Inliers: {sum(visible_mask)}/{len(visible_mask)}, confidence={confidence:.3f}")
+        log.debug(f"Inliers: {sum(visible_mask)}/{len(visible_mask)}, confidence={confidence:.3f}")
 
         return visible_joints, scale_factor, confidence
 
@@ -670,7 +675,7 @@ class SAM3DBodyProcessMultiple:
             return None
 
         if cam_t is None:
-            print("      WARNING: pred_cam_t not available, cannot use intrinsics method")
+            log.warning("pred_cam_t not available, cannot use intrinsics method")
             return None
 
         # Extract focal length from intrinsics
@@ -717,10 +722,10 @@ class SAM3DBodyProcessMultiple:
         all_joints = set(range(num_joints))
         occluded_joints = [j for j in all_joints if j not in visible_joints]
 
-        print(f"    [DEBUG] _compute_scale_with_intrinsics result:")
-        print(f"      scale_factor={scale_factor:.4f}, confidence={confidence:.3f}")
-        print(f"      visible_joints={len(visible_joints)}, occluded_joints={len(occluded_joints)}")
-        print(f"      median_depth={median_depth}")
+        log.debug(f" _compute_scale_with_intrinsics result:")
+        log.debug(f"scale_factor={scale_factor:.4f}, confidence={confidence:.3f}")
+        log.debug(f"visible_joints={len(visible_joints)}, occluded_joints={len(occluded_joints)}")
+        log.debug(f"median_depth={median_depth}")
 
         return {
             'scale': scale_factor,
@@ -808,12 +813,12 @@ class SAM3DBodyProcessMultiple:
 
         # Log summary
         if info_parts:
-            print(f"[SAM3DBody] Person {person_idx} SMPL-X data: {', '.join(info_parts)}")
+            log.info(f" Person {person_idx} SMPL-X data: {', '.join(info_parts)}")
         else:
             # Log all available keys for debugging (first person only to avoid spam)
             if person_idx == 0:
                 all_keys = [k for k in output.keys() if not k.startswith('_')]
-                print(f"[SAM3DBody] Person {person_idx} available keys: {sorted(all_keys)}")
+                log.info(f" Person {person_idx} available keys: {sorted(all_keys)}")
 
     def _sample_depth_at_point(self, depth_map, x, y, depth_h, depth_w, img_h, img_w):
         """Sample depth at a 2D point, handling coordinate scaling."""
@@ -933,11 +938,11 @@ class SAM3DBodyProcessMultiple:
             fx = float(intrinsics[0, 0])
             fy = float(intrinsics[1, 1])
             focal_from_intrinsics = (fx + fy) / 2
-            print(f"[SAM3DBody] Using DA3 intrinsics: fx={fx:.1f}, fy={fy:.1f}")
-            print(f"[SAM3DBody] Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
+            log.info(f" Using DA3 intrinsics: fx={fx:.1f}, fy={fy:.1f}")
+            log.info(f" Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
         else:
-            print(f"[SAM3DBody] No intrinsics provided, using fallback method with default focal length")
-            print(f"[SAM3DBody] Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
+            log.info(f" No intrinsics provided, using fallback method with default focal length")
+            log.info(f" Image: {img_w}x{img_h}, Depth map: {depth_w}x{depth_h}")
 
         # 1. Compute scale for each person
         person_data = []
@@ -948,8 +953,8 @@ class SAM3DBodyProcessMultiple:
             vertices = output.get("pred_vertices")
             mesh_height = float(np.max(vertices[:, 1]) - np.min(vertices[:, 1])) if vertices is not None else None
 
-            print(f"[SAM3DBody] Person {i}:")
-            print(f"  mesh_height={mesh_height:.3f}m" if mesh_height else "  mesh_height=N/A")
+            log.info(f" Person {i}:")
+            log.info(f"  mesh_height={mesh_height:.3f}m" if mesh_height else "  mesh_height=N/A")
 
             if use_intrinsics:
                 # NEW: Use intrinsics-based visibility detection
@@ -960,7 +965,7 @@ class SAM3DBodyProcessMultiple:
                 if scale_data is not None:
                     num_visible = len(scale_data['visible_joints'])
                     num_occluded = len(scale_data['occluded_joints'])
-                    print(f"  [intrinsics method] scale={scale_data['scale']:.3f}, "
+                    log.info(f"[intrinsics method] scale={scale_data['scale']:.3f}, "
                           f"visible_joints={num_visible}, occluded_joints={num_occluded}, "
                           f"confidence={scale_data['confidence']:.2f}")
                     person_data.append({
@@ -973,7 +978,7 @@ class SAM3DBodyProcessMultiple:
                         "method": "intrinsics_visibility"
                     })
                 else:
-                    print(f"  [intrinsics method] Failed, falling back to mask-based")
+                    log.info(f"[intrinsics method] Failed, falling back to mask-based")
                     # Fallback to mask-based for this person
                     focal_length = focal_from_intrinsics
                     mask_data = self._compute_mask_depth_and_height(
@@ -991,7 +996,7 @@ class SAM3DBodyProcessMultiple:
                             "method": "mask_fallback"
                         })
                     else:
-                        print(f"  No valid measurement")
+                        log.info(f"No valid measurement")
                         person_data.append({"valid": False})
             else:
                 # FALLBACK: Use mask-based height estimation (original method)
@@ -1005,7 +1010,7 @@ class SAM3DBodyProcessMultiple:
 
                 if mask_data is not None and mesh_height and mesh_height > 0.1:
                     scale = mask_data["actual_height_m"] / mesh_height
-                    print(f"  [mask method] scale={scale:.3f}, depth={mask_data['depth']:.2f}m")
+                    log.info(f"[mask method] scale={scale:.3f}, depth={mask_data['depth']:.2f}m")
                     person_data.append({
                         "valid": True,
                         "scale": scale,
@@ -1016,17 +1021,17 @@ class SAM3DBodyProcessMultiple:
                         "method": "mask_height"
                     })
                 else:
-                    print(f"  No valid mask measurement")
+                    log.info(f"No valid mask measurement")
                     person_data.append({"valid": False})
 
         # 2. Normalize scales relative to median
         valid_scales = [p["scale"] for p in person_data if p.get("valid")]
         if len(valid_scales) == 0:
-            print("[SAM3DBody] Warning: No valid measurements, skipping scale correction")
+            log.info(" Warning: No valid measurements, skipping scale correction")
             return outputs
 
         median_scale = float(np.median(valid_scales))
-        print(f"[SAM3DBody] Median scale: {median_scale:.3f}")
+        log.info(f" Median scale: {median_scale:.3f}")
 
         # 3. Apply corrections
         for i, output in enumerate(outputs):
@@ -1075,7 +1080,7 @@ class SAM3DBodyProcessMultiple:
             tz_str = f"{tz_val:.2f}" if tz_val is not None else "N/A"
             method = data.get('method', 'unknown')
             conf = data.get('confidence', 0)
-            print(f"[SAM3DBody] Person {i} final: scale={scale_factor:.3f}, height={height_str}, "
+            log.info(f" Person {i} final: scale={scale_factor:.3f}, height={height_str}, "
                   f"tz={tz_str}, method={method}, confidence={conf:.2f}")
 
         return outputs
@@ -1097,8 +1102,8 @@ class SAM3DBodyProcessMultiple:
         from ..sam_3d_body import SAM3DBodyEstimator
 
         # DEBUG: Print all input shapes at function entry
-        print(f"[DEBUG] FUNCTION ENTRY - image type={type(image)}, shape={image.shape if hasattr(image, 'shape') else 'N/A'}")
-        print(f"[DEBUG] FUNCTION ENTRY - masks type={type(masks)}, shape={masks.shape if hasattr(masks, 'shape') else 'N/A'}")
+        log.debug(f" FUNCTION ENTRY - image type={type(image)}, shape={image.shape if hasattr(image, 'shape') else 'N/A'}")
+        log.debug(f" FUNCTION ENTRY - masks type={type(masks)}, shape={masks.shape if hasattr(masks, 'shape') else 'N/A'}")
 
         # Process depth map input if provided
         depth_map_np = None
@@ -1108,9 +1113,9 @@ class SAM3DBodyProcessMultiple:
                 depth_map_np = depth_map[0, :, :, 0].cpu().numpy()
             else:
                 depth_map_np = depth_map[0, :, :, 0] if depth_map.ndim == 4 else depth_map[:, :, 0]
-            print(f"[SAM3DBody] Depth map provided: shape={depth_map_np.shape}, range=[{depth_map_np.min():.2f}, {depth_map_np.max():.2f}]")
+            log.info(f" Depth map provided: shape={depth_map_np.shape}, range=[{depth_map_np.min():.2f}, {depth_map_np.max():.2f}]")
             if adjust_position_from_depth:
-                print("[SAM3DBody] Position adjustment from depth enabled")
+                log.info(" Position adjustment from depth enabled")
 
         # Process intrinsics if provided
         intrinsics_np = None
@@ -1124,7 +1129,7 @@ class SAM3DBodyProcessMultiple:
                 intrinsics_np = np.array(intrinsics)
                 if intrinsics_np.ndim == 3:
                     intrinsics_np = intrinsics_np[0]
-            print(f"[SAM3DBody] Intrinsics provided: fx={intrinsics_np[0,0]:.1f}, fy={intrinsics_np[1,1]:.1f}, "
+            log.info(f" Intrinsics provided: fx={intrinsics_np[0,0]:.1f}, fy={intrinsics_np[1,1]:.1f}, "
                   f"cx={intrinsics_np[0,2]:.1f}, cy={intrinsics_np[1,2]:.1f}")
 
         # Process depth confidence if provided
@@ -1135,7 +1140,7 @@ class SAM3DBodyProcessMultiple:
                 depth_conf_np = depth_confidence[0, :, :, 0].cpu().numpy()
             else:
                 depth_conf_np = depth_confidence[0, :, :, 0] if depth_confidence.ndim == 4 else depth_confidence[:, :, 0]
-            print(f"[SAM3DBody] Depth confidence provided: shape={depth_conf_np.shape}, "
+            log.info(f" Depth confidence provided: shape={depth_conf_np.shape}, "
                   f"range=[{depth_conf_np.min():.2f}, {depth_conf_np.max():.2f}]")
 
         # Lazy load model (cached after first call)
@@ -1156,20 +1161,20 @@ class SAM3DBodyProcessMultiple:
         img_bgr = comfy_image_to_numpy(image)
 
         # DEBUG: Log raw mask tensor BEFORE conversion
-        print(f"[DEBUG] RAW masks type: {type(masks)}")
-        print(f"[DEBUG] RAW masks shape: {masks.shape if hasattr(masks, 'shape') else 'N/A'}")
+        log.debug(f" RAW masks type: {type(masks)}")
+        log.debug(f" RAW masks shape: {masks.shape if hasattr(masks, 'shape') else 'N/A'}")
 
         # Convert masks to numpy - always returns [N, H, W]
         masks_np = comfy_mask_to_numpy(masks)
         num_people = masks_np.shape[0]
 
         # DEBUG: Log mask info AFTER conversion
-        print(f"[DEBUG] masks_np shape: {masks_np.shape}")
-        print(f"[DEBUG] masks_np dtype: {masks_np.dtype}")
+        log.debug(f" masks_np shape: {masks_np.shape}")
+        log.debug(f" masks_np dtype: {masks_np.dtype}")
         for i in range(masks_np.shape[0]):
             mask_sum = masks_np[i].sum()
             mask_nonzero = (masks_np[i] > 0.5).sum()
-            print(f"[DEBUG] Mask {i}: sum={mask_sum:.2f}, nonzero_pixels={mask_nonzero}")
+            log.debug(f" Mask {i}: sum={mask_sum:.2f}, nonzero_pixels={mask_nonzero}")
 
         # Compute bounding boxes from each mask
         bboxes_list = []
@@ -1181,8 +1186,8 @@ class SAM3DBodyProcessMultiple:
                 valid_mask_indices.append(i)
 
         # DEBUG: Log valid bboxes
-        print(f"[DEBUG] Valid bboxes: {len(bboxes_list)} out of {num_people} masks")
-        print(f"[DEBUG] Valid mask indices: {valid_mask_indices}")
+        log.debug(f" Valid bboxes: {len(bboxes_list)} out of {num_people} masks")
+        log.debug(f" Valid mask indices: {valid_mask_indices}")
 
         if len(bboxes_list) == 0:
             raise RuntimeError("No valid masks found (all masks are empty)")
@@ -1551,7 +1556,7 @@ class SAM3DBodyProcessMultiple:
                 if not result.get("success"):
                     raise RuntimeError("Combined FBX export failed")
 
-                print(f"[SAM3DBody] Combined FBX created: {output_fbx_path}")
+                log.info(f" Combined FBX created: {output_fbx_path}")
                 return output_fbx_path
 
             else:
@@ -1582,7 +1587,7 @@ class SAM3DBodyProcessMultiple:
                 if not exported_files:
                     raise RuntimeError("No FBX files were exported")
 
-                print(f"[SAM3DBody] Separate FBX files created: {len(exported_files)} files")
+                log.info(f" Separate FBX files created: {len(exported_files)} files")
                 return exported_files[0]
 
         finally:

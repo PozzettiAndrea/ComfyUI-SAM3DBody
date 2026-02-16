@@ -6,6 +6,7 @@ Skeleton I/O nodes for SAM 3D Body.
 Save, load, and manipulate skeleton data.
 """
 
+import logging
 import os
 import json
 import time
@@ -13,6 +14,8 @@ import subprocess
 import numpy as np
 import torch
 import folder_paths
+
+log = logging.getLogger("sam3dbody")
 
 
 class SAM3DBodySaveSkeleton:
@@ -49,7 +52,7 @@ class SAM3DBodySaveSkeleton:
 
     def save_skeleton(self, skeleton, output_filename, format="json"):
         """Save skeleton to file in specified format."""
-        print(f"[SAM3DBodySaveSkeleton] Saving skeleton as {format.upper()}...")
+        log.info(f" Saving skeleton as {format.upper()}...")
 
         # Prepare output path
         output_dir = folder_paths.get_output_directory()
@@ -70,7 +73,7 @@ class SAM3DBodySaveSkeleton:
         else:
             raise ValueError(f"Unsupported format: {format}")
 
-        print(f"[SAM3DBodySaveSkeleton] OK Saved to: {output_path}")
+        log.info(f" OK Saved to: {output_path}")
         return (os.path.basename(output_path),)
 
     def _save_json(self, skeleton, output_path):
@@ -91,7 +94,7 @@ class SAM3DBodySaveSkeleton:
         with open(output_path, 'w') as f:
             json.dump(json_data, f, indent=2)
 
-        print(f"[SAM3DBodySaveSkeleton] Saved JSON with {len(json_data)} fields")
+        log.info(f" Saved JSON with {len(json_data)} fields")
 
     def _save_bvh(self, skeleton, output_path):
         """Save skeleton to BVH format (animation format)."""
@@ -156,7 +159,7 @@ class SAM3DBodySaveSkeleton:
 
             f.write("\n")
 
-        print(f"[SAM3DBodySaveSkeleton] Saved BVH with {num_joints} joints")
+        log.info(f" Saved BVH with {num_joints} joints")
 
     def _save_fbx(self, skeleton, output_path):
         """Save skeleton to FBX format (armature only) using Blender."""
@@ -205,18 +208,18 @@ class SAM3DBodySaveSkeleton:
                 output_path,
             ]
 
-            print(f"[SAM3DBodySaveSkeleton] Running Blender to export FBX...")
+            log.info(f" Running Blender to export FBX...")
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
 
             if result.returncode != 0:
-                print(f"[SAM3DBodySaveSkeleton] Blender stderr: {result.stderr}")
-                print(f"[SAM3DBodySaveSkeleton] Blender stdout: {result.stdout}")
+                log.info(f" Blender stderr: {result.stderr}")
+                log.info(f" Blender stdout: {result.stdout}")
                 raise RuntimeError(f"Blender export failed with return code {result.returncode}")
 
             if not os.path.exists(output_path):
                 raise RuntimeError(f"Export completed but output file not found: {output_path}")
 
-            print(f"[SAM3DBodySaveSkeleton] Exported skeleton as FBX")
+            log.info(f" Exported skeleton as FBX")
 
         finally:
             # Clean up temporary files
@@ -246,8 +249,8 @@ class SAM3DBodySaveSkeleton:
             result = subprocess.run(['which', 'blender'], capture_output=True, text=True)
             if result.returncode == 0:
                 return result.stdout.strip()
-        except:
-            pass
+        except Exception as e:
+            log.debug("Failed to locate blender via 'which': %s", e)
 
         return None
 
@@ -331,7 +334,7 @@ class SAM3DBodyLoadSkeleton:
 
     def load_skeleton(self, filepath):
         """Load skeleton from file."""
-        print(f"[SAM3DBodyLoadSkeleton] Loading skeleton from: {filepath}")
+        log.info(f" Loading skeleton from: {filepath}")
 
         if not os.path.exists(filepath):
             # Try in output directory
@@ -353,7 +356,7 @@ class SAM3DBodyLoadSkeleton:
         else:
             raise ValueError(f"Unsupported file format: {ext}")
 
-        print(f"[SAM3DBodyLoadSkeleton] OK Loaded skeleton")
+        log.info(f" OK Loaded skeleton")
         return (skeleton,)
 
     def _load_json(self, filepath):
@@ -371,7 +374,7 @@ class SAM3DBodyLoadSkeleton:
             else:
                 skeleton[key] = value
 
-        print(f"[SAM3DBodyLoadSkeleton] Loaded JSON with {len(skeleton)} fields")
+        log.info(f" Loaded JSON with {len(skeleton)} fields")
         return skeleton
 
     def _load_bvh(self, filepath):
@@ -410,7 +413,7 @@ class SAM3DBodyLoadSkeleton:
             "focal_length": None,
         }
 
-        print(f"[SAM3DBodyLoadSkeleton] Loaded BVH with {len(joint_positions)} joints")
+        log.info(f" Loaded BVH with {len(joint_positions)} joints")
         return skeleton
 
     def _load_fbx(self, filepath):
@@ -448,7 +451,7 @@ class SAM3DBodyAddMeshToSkeleton:
 
     def add_mesh(self, skeleton, model):
         """Generate mesh from skeleton parameters using MHR model."""
-        print(f"[SAM3DBodyAddMeshToSkeleton] Generating mesh from skeleton...")
+        log.info(f" Generating mesh from skeleton...")
 
         try:
             # Extract MHR model from loaded model
@@ -550,13 +553,11 @@ class SAM3DBodyAddMeshToSkeleton:
                 "all_people": [],
             }
 
-            print(f"[SAM3DBodyAddMeshToSkeleton] OK Generated mesh with {len(vertices[0])} vertices")
+            log.info(f" OK Generated mesh with {len(vertices[0])} vertices")
             return (mesh_data,)
 
         except Exception as e:
-            print(f"[SAM3DBodyAddMeshToSkeleton] [ERROR] Failed to generate mesh: {str(e)}")
-            import traceback
-            traceback.print_exc()
+            log.error(f"Failed to generate mesh: {str(e)}", exc_info=True)
             raise
 
 

@@ -6,6 +6,7 @@ Export nodes for SAM 3D Body meshes.
 Exports meshes with rigging data to various formats using bpy in isolated venv.
 """
 
+import logging
 import os
 import json
 import time
@@ -14,6 +15,8 @@ import numpy as np
 import torch
 import folder_paths
 import glob
+
+log = logging.getLogger("sam3dbody")
 
 class BpyFBXExporter:
     """Isolated bpy-based FBX exporter that runs in the sam3dbody venv."""
@@ -58,7 +61,7 @@ class BpyFBXExporter:
 
             if global_rotations_data:
                 global_rotations = np.array(global_rotations_data, dtype=np.float32)
-                print(f"[BpyFBXExporter] Loaded global_rotations: shape {global_rotations.shape}")
+                log.info(f" Loaded global_rotations: shape {global_rotations.shape}")
 
         # Clean default scene
         for c in bpy.data.actions:
@@ -301,7 +304,7 @@ class BpyFBXExporter:
 
                 if global_rotations_data:
                     global_rotations = np.array(global_rotations_data, dtype=np.float32)
-                    print(f"[BpyFBXExporter] Person {idx}: Loaded global_rotations shape {global_rotations.shape}")
+                    log.info(f" Person {idx}: Loaded global_rotations shape {global_rotations.shape}")
 
             # Import OBJ mesh
             bpy.ops.wm.obj_import(filepath=obj_path)
@@ -469,7 +472,7 @@ class BpyPoseApplier:
         import json
         import os
 
-        print(f"[BpyPoseApplier] Loading FBX: {input_fbx_path}")
+        log.info(f" Loading FBX: {input_fbx_path}")
 
         # Clear the scene
         bpy.ops.object.select_all(action='SELECT')
@@ -482,7 +485,7 @@ class BpyPoseApplier:
         with open(transforms_json_path, 'r') as f:
             bone_transforms = json.load(f)
 
-        print(f"[BpyPoseApplier] Loaded {len(bone_transforms)} bone transforms")
+        log.info(f" Loaded {len(bone_transforms)} bone transforms")
 
         # Find the armature
         armature = None
@@ -494,14 +497,14 @@ class BpyPoseApplier:
         if not armature:
             return {"success": False, "error": "No armature found in FBX"}
 
-        print(f"[BpyPoseApplier] Found armature: {armature.name}")
-        print(f"[BpyPoseApplier] Armature has {len(armature.pose.bones)} pose bones")
+        log.info(f" Found armature: {armature.name}")
+        log.info(f" Armature has {len(armature.pose.bones)} pose bones")
 
         # Apply transforms to pose bones
         applied_count = 0
         for bone_name, transform in bone_transforms.items():
             if bone_name not in armature.pose.bones:
-                print(f"[BpyPoseApplier] WARNING: Bone '{bone_name}' not found in armature")
+                log.info(f" WARNING: Bone '{bone_name}' not found in armature")
                 continue
 
             pose_bone = armature.pose.bones[bone_name]
@@ -534,7 +537,7 @@ class BpyPoseApplier:
 
             applied_count += 1
 
-        print(f"[BpyPoseApplier] Applied transforms to {applied_count} bones")
+        log.info(f" Applied transforms to {applied_count} bones")
 
         # Update the scene to apply transforms
         bpy.context.view_layer.update()
@@ -542,7 +545,7 @@ class BpyPoseApplier:
         # Export to FBX with current pose
         os.makedirs(os.path.dirname(output_fbx_path) if os.path.dirname(output_fbx_path) else '.', exist_ok=True)
 
-        print(f"[BpyPoseApplier] Exporting posed FBX: {output_fbx_path}")
+        log.info(f" Exporting posed FBX: {output_fbx_path}")
         bpy.ops.export_scene.fbx(
             filepath=output_fbx_path,
             use_selection=False,
@@ -551,7 +554,7 @@ class BpyPoseApplier:
             add_leaf_bones=False,
         )
 
-        print(f"[BpyPoseApplier] Export complete")
+        log.info(f" Export complete")
         return {"success": True, "output_path": output_fbx_path}
 
 
@@ -841,8 +844,8 @@ class SAM3DBodyExportMultipleFBX:
         people = multi_mesh_data.get("people", [])
         faces = multi_mesh_data.get("faces")
 
-        print(f"[SAM3D Export] num_people from data: {num_people}")
-        print(f"[SAM3D Export] actual people list length: {len(people)}")
+        log.info(f" num_people from data: {num_people}")
+        log.info(f" actual people list length: {len(people)}")
 
         if num_people == 0 or len(people) == 0:
             raise RuntimeError("No mesh data to export")
@@ -951,7 +954,7 @@ class SAM3DBodyExportMultipleFBX:
                     # Add global joint rotations for better bone orientations in FBX
                     if global_rots is not None:
                         skeleton_info["global_rotations"] = global_rots.tolist()
-                        print(f"[SAM3D Export] Person {i}: Including global_rots shape {global_rots.shape}")
+                        log.info(f" Person {i}: Including global_rots shape {global_rots.shape}")
 
                 # Add person to combined data
                 combined_data["people"].append({
@@ -960,8 +963,8 @@ class SAM3DBodyExportMultipleFBX:
                     "index": i,
                 })
 
-            print(f"[SAM3D Export] people added to combined_data: {len(combined_data['people'])}")
-            print(f"[SAM3D Export] combine: {combine}")
+            log.info(f" people added to combined_data: {len(combined_data['people'])}")
+            log.info(f" combine: {combine}")
 
             if not combined_data["people"]:
                 raise RuntimeError("No valid mesh data to export")
@@ -1011,7 +1014,7 @@ class SAM3DBodyExportMultipleFBX:
                 if not result.get("success"):
                     raise RuntimeError("Combined FBX export failed")
 
-                print(f"[SAM3D Export] Combined FBX created: {output_fbx_path}")
+                log.info(f" Combined FBX created: {output_fbx_path}")
                 return (output_fbx_path,)
 
             else:
@@ -1057,7 +1060,7 @@ class SAM3DBodyExportMultipleFBX:
 
                 # Return the first exported file (separate mode returns first file for compatibility)
                 output_fbx_path = exported_files[0]
-                print(f"[SAM3D Export] Separate FBX files created: {len(exported_files)} files")
+                log.info(f" Separate FBX files created: {len(exported_files)} files")
                 return (output_fbx_path,)
 
         finally:

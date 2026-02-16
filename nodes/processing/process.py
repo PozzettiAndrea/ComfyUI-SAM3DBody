@@ -1,9 +1,13 @@
 import gc
+import logging
 import os
 import tempfile
 import torch
 import numpy as np
 import cv2
+import comfy.model_management
+
+log = logging.getLogger("sam3dbody")
 
 # =============================================================================
 # Helper functions (inlined to avoid relative import issues in worker)
@@ -44,10 +48,11 @@ def _load_sam3d_model(model_config: dict):
     if cache_key in _MODEL_CACHE:
         cached = _MODEL_CACHE[cache_key]
         model = cached["model"]
-        # Move back to GPU if it was offloaded to CPU
-        if next(model.parameters()).device.type != "cuda":
-            print(f"[SAM3DBody] Moving cached model back to GPU...")
-            model.cuda()
+        device = torch.device(model_config["device"])
+        # Move back to compute device if it was offloaded to CPU
+        if next(model.parameters()).device != device:
+            log.info(f" Moving cached model back to {device}...")
+            model.to(device)
         return cached
 
     # Import heavy dependencies only inside worker
@@ -58,7 +63,7 @@ def _load_sam3d_model(model_config: dict):
     mhr_path = model_config.get("mhr_path", "")
 
     # Load model using the library's built-in function
-    print(f"[SAM3DBody] Loading model from {ckpt_path} (attn_backend={attn_backend})...")
+    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
         device=device,
@@ -66,7 +71,7 @@ def _load_sam3d_model(model_config: dict):
         attn_backend=attn_backend,
     )
 
-    print(f"[SAM3DBody] Model loaded successfully on {device}")
+    log.info(f" Model loaded successfully on {device}")
 
     # Cache for reuse (offload happens after inference)
     result = {
@@ -90,15 +95,15 @@ def _offload_model(model_config: dict):
         return  # keep on GPU
     elif memory == "cpu_offload":
         if cache_key in _MODEL_CACHE:
-            print(f"[SAM3DBody] Offloading model to CPU...")
+            log.info(f" Offloading model to CPU...")
             _MODEL_CACHE[cache_key]["model"].cpu()
-            torch.cuda.empty_cache()
+            comfy.model_management.soft_empty_cache()
     else:  # delete
         if cache_key in _MODEL_CACHE:
-            print(f"[SAM3DBody] Deleting model from memory...")
+            log.info(f" Deleting model from memory...")
             del _MODEL_CACHE[cache_key]
             gc.collect()
-            torch.cuda.empty_cache()
+            comfy.model_management.soft_empty_cache()
 
 class SAM3DBodyProcess:
     """

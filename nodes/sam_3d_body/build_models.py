@@ -1,13 +1,16 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 import os
 import torch
+import comfy.model_management
 
 from .models.meta_arch import SAM3DBody
 from .utils.config import get_config
-from .utils.checkpoint import load_state_dict
 
 
-def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: str = "", attn_backend: str = "sdpa"):
+def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", attn_backend: str = "sdpa"):
+
+    if device is None:
+        device = str(comfy.model_management.get_torch_device())
 
     # Check the current directory, and if not present check the parent dir.
     model_cfg = os.path.join(os.path.dirname(checkpoint_path), "model_config.yaml")
@@ -43,23 +46,14 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = "cuda", mhr_path: 
     model_cfg.MODEL.BACKBONE.ATTN_BACKEND = attn_backend
     model_cfg.freeze()
 
-    # Load checkpoint first (before model construction for meta-device optimization)
-    checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
-    if "state_dict" in checkpoint:
-        state_dict = checkpoint["state_dict"]
-    else:
-        state_dict = checkpoint
+    # Load checkpoint to CPU first
+    import comfy.utils
+    state_dict = comfy.utils.load_torch_file(str(checkpoint_path))
 
-    # Try meta-device init to halve peak VRAM during loading
-    try:
-        with torch.device('meta'):
-            model = SAM3DBody(model_cfg)
-        load_state_dict(model, state_dict, strict=False)
-        print("[SAM3DBody] Meta-device init succeeded — zero memory allocated for weights")
-    except Exception as e:
-        print(f"[SAM3DBody] Meta-device init failed ({type(e).__name__}: {e}), falling back to standard init")
+    # Build model on meta device (zero memory, no random init)
+    with torch.device("meta"):
         model = SAM3DBody(model_cfg)
-        load_state_dict(model, state_dict, strict=False)
+    model.load_state_dict(state_dict, strict=False, assign=True)
 
     model = model.to(device)
     model.eval()
