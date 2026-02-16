@@ -1,6 +1,8 @@
 import logging
 import os
+import torch
 import folder_paths
+import comfy.model_management as mm
 
 log = logging.getLogger("sam3dbody")
 
@@ -24,17 +26,13 @@ class LoadSAM3DBodyModel:
                     "default": DEFAULT_MODEL_PATH,
                     "tooltip": "Path to SAM 3D Body model folder (contains model.ckpt and assets/mhr_model.pt)"
                 }),
-                "attn_backend": (["sdpa", "flash_attn"], {
-                    "default": "sdpa",
-                    "tooltip": "Attention backend: sdpa (PyTorch built-in, no extra deps) or flash_attn (requires flash-attn package)"
+                "attn_backend": (["auto", "sdpa", "flash_attn"], {
+                    "default": "auto",
+                    "tooltip": "Attention backend: auto (best available: flash_attn > sdpa), sdpa (PyTorch built-in), flash_attn (requires flash-attn package)"
                 }),
                 "precision": (["auto", "bf16", "fp16", "fp32"], {
                     "default": "auto",
                     "tooltip": "Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."
-                }),
-                "memory": (["cache_gpu", "cpu_offload", "delete"], {
-                    "default": "cpu_offload",
-                    "tooltip": "Model memory strategy: cache_gpu = keep on GPU between runs, cpu_offload = move to CPU RAM after use, delete = free after use"
                 }),
             },
         }
@@ -44,12 +42,40 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path, attn_backend="sdpa", precision="auto", memory="cpu_offload"):
+    def load_model(self, model_path, attn_backend="auto", precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
-        import comfy.model_management
+        device = mm.get_torch_device()
 
-        # Auto-detect device
-        device = str(comfy.model_management.get_torch_device())
+        # Resolve precision to torch dtype
+        if precision == "auto":
+            if mm.should_use_bf16(device):
+                dtype = torch.bfloat16
+            elif mm.should_use_fp16(device):
+                dtype = torch.float16
+            else:
+                dtype = torch.float32
+        elif precision == "bf16":
+            dtype = torch.bfloat16
+        elif precision == "fp16":
+            dtype = torch.float16
+        else:
+            dtype = torch.float32
+
+        log.info(f"Resolved precision: {precision} -> {dtype}")
+
+        # Resolve attention backend
+        if attn_backend == "auto":
+            for module in ["flash_attn", "xformers"]:
+                try:
+                    __import__(module)
+                    attn_backend = module
+                    break
+                except ImportError:
+                    continue
+            else:
+                attn_backend = "sdpa"
+
+        log.info(f"Attention backend: {attn_backend}")
 
         # Resolve to absolute path
         model_path = os.path.abspath(model_path)
@@ -87,15 +113,13 @@ class LoadSAM3DBodyModel:
                     f"Download error: {e}"
                 ) from e
 
-        # Return config dict (not the actual model)
+        # Return config dict (not the actual model — loading happens in inference nodes)
         model_config = {
             "model_path": model_path,
             "ckpt_path": ckpt_path,
             "mhr_path": mhr_path,
-            "device": device,
-            "precision": precision,
+            "dtype": dtype,
             "attn_backend": attn_backend,
-            "memory": memory,
         }
 
         return (model_config,)
