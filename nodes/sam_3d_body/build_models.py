@@ -10,7 +10,7 @@ from .utils.config import get_config
 log = logging.getLogger("sam3dbody")
 
 
-def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", attn_backend: str = "sdpa", dtype: torch.dtype = None):
+def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", dtype: torch.dtype = None):
 
     if device is None:
         device = str(comfy.model_management.get_torch_device())
@@ -46,12 +46,11 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: st
     # Configure model
     model_cfg.defrost()
     model_cfg.MODEL.MHR_HEAD.MHR_MODEL_PATH = mhr_path
-    model_cfg.MODEL.BACKBONE.ATTN_BACKEND = attn_backend
     model_cfg.freeze()
 
-    # Load checkpoint to CPU first
-    import comfy.utils
-    state_dict = comfy.utils.load_torch_file(str(checkpoint_path))
+    # Load safetensors checkpoint to CPU
+    from safetensors.torch import load_file
+    state_dict = load_file(str(checkpoint_path), device="cpu")
 
     # Build model on meta device (zero memory, no random init)
     # Note: convert_to_fp16() runs during __init__ but is a no-op on meta tensors.
@@ -94,6 +93,5 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: st
     log.info(f" image_mean: {model.image_mean.flatten().tolist()}")
     log.info(f" image_std: {model.image_std.flatten().tolist()}")
 
-    model = model.to(device)
     model.eval()
     return model, model_cfg, mhr_path

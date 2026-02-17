@@ -47,45 +47,50 @@ def _load_sam3d_model(model_config: dict):
     """
     Load SAM 3D Body model from config paths.
 
-    Uses module-level caching to avoid reloading on every call.
+    Uses ModelPatcher + module-level caching for ComfyUI VRAM management.
     """
-    attn_backend = model_config.get("attn_backend", "sdpa")
-    cache_key = (model_config["ckpt_path"], attn_backend)
+    import comfy.model_patcher
+    from ..sam_3d_body.lowvram import _enable_lowvram_cast
+
+    cache_key = model_config["ckpt_path"]
 
     if cache_key in _MODEL_CACHE:
         cached = _MODEL_CACHE[cache_key]
-        model = cached["model"]
-        device = comfy.model_management.get_torch_device()
-        # Move back to compute device if it was offloaded to CPU
-        if next(model.parameters()).device != device:
-            log.info(f" Moving cached model back to {device}...")
-            model.to(device)
+        # Let ModelPatcher handle device placement
+        comfy.model_management.load_models_gpu([cached["patcher"]])
         return cached
 
     # Import heavy dependencies only inside worker
     from ..sam_3d_body import load_sam_3d_body
 
     ckpt_path = model_config["ckpt_path"]
-    device = comfy.model_management.get_torch_device()
     mhr_path = model_config.get("mhr_path", "")
     precision = model_config.get("precision", "fp32")
     dtype = _resolve_dtype(precision)
 
     # Load model using the library's built-in function
-    log.info(f" Loading model from {ckpt_path} (attn_backend={attn_backend}, precision={precision})...")
+    log.info(f" Loading model from {ckpt_path} (precision={precision})...")
     sam_3d_model, model_cfg, _ = load_sam_3d_body(
         checkpoint_path=ckpt_path,
-        device=str(device),
         mhr_path=mhr_path,
-        attn_backend=attn_backend,
         dtype=dtype,
     )
 
-    log.info(f" Model loaded successfully on {device}")
+    # Enable lowvram layer streaming and wrap in ModelPatcher
+    _enable_lowvram_cast(sam_3d_model)
+    patcher = comfy.model_patcher.ModelPatcher(
+        sam_3d_model,
+        load_device=comfy.model_management.get_torch_device(),
+        offload_device=comfy.model_management.unet_offload_device(),
+    )
+    comfy.model_management.load_models_gpu([patcher])
+
+    log.info(f" Model loaded successfully via ModelPatcher")
 
     # Cache for reuse
     result = {
         "model": sam_3d_model,
+        "patcher": patcher,
         "model_cfg": model_cfg,
         "mhr_path": mhr_path,
     }
