@@ -23,11 +23,7 @@ class LoadSAM3DBodyModel:
             "required": {
                 "model_path": ("STRING", {
                     "default": DEFAULT_MODEL_PATH,
-                    "tooltip": "Path to SAM 3D Body model folder (contains model.ckpt and assets/mhr_model.pt)"
-                }),
-                "attn_backend": (["auto", "sdpa", "flash_attn"], {
-                    "default": "auto",
-                    "tooltip": "Attention backend: auto (best available: flash_attn > sdpa), sdpa (PyTorch built-in), flash_attn (requires flash-attn package)"
+                    "tooltip": "Path to SAM 3D Body model folder (contains model.safetensors and assets/mhr_model.pt)"
                 }),
                 "precision": (["auto", "bf16", "fp16", "fp32"], {
                     "default": "auto",
@@ -41,7 +37,9 @@ class LoadSAM3DBodyModel:
     FUNCTION = "load_model"
     CATEGORY = "SAM3DBody"
 
-    def load_model(self, model_path, attn_backend="auto", precision="auto"):
+    REPO_ID = "apozz/sam-3d-body-safetensors"
+
+    def load_model(self, model_path, precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
         device = mm.get_torch_device()
 
@@ -57,29 +55,15 @@ class LoadSAM3DBodyModel:
 
         log.info(f"Precision: {precision}")
 
-        # Resolve attention backend
-        if attn_backend == "auto":
-            for module in ["flash_attn", "xformers"]:
-                try:
-                    __import__(module)
-                    attn_backend = module
-                    break
-                except ImportError:
-                    continue
-            else:
-                attn_backend = "sdpa"
-
-        log.info(f"Attention backend: {attn_backend}")
-
         # Resolve to absolute path
         model_path = os.path.abspath(model_path)
 
         # Expected file paths
-        ckpt_path = os.path.join(model_path, "model.ckpt")
+        model_file = os.path.join(model_path, "model.safetensors")
         mhr_path = os.path.join(model_path, "assets", "mhr_model.pt")
 
         # Check if model exists locally, download if not
-        model_exists = os.path.exists(ckpt_path) and os.path.exists(mhr_path)
+        model_exists = os.path.exists(model_file) and os.path.exists(mhr_path)
 
         if not model_exists:
             try:
@@ -88,7 +72,7 @@ class LoadSAM3DBodyModel:
                 log.info(f"Model not found locally. Downloading from HuggingFace...")
                 os.makedirs(model_path, exist_ok=True)
                 snapshot_download(
-                    repo_id="jetjodh/sam-3d-body-dinov3",
+                    repo_id=self.REPO_ID,
                     local_dir=model_path
                 )
                 log.info(f"Download complete.")
@@ -97,10 +81,10 @@ class LoadSAM3DBodyModel:
                 raise RuntimeError(
                     f"\n[SAM3DBody] Download failed.\n\n"
                     f"Please manually download from:\n"
-                    f"  https://huggingface.co/jetjodh/sam-3d-body-dinov3\n\n"
+                    f"  https://huggingface.co/{self.REPO_ID}\n\n"
                     f"And place the model files at:\n"
                     f"  {DEFAULT_MODEL_PATH}/\n"
-                    f"    +-- model.ckpt          (SAM 3D Body checkpoint)\n"
+                    f"    +-- model.safetensors   (SAM 3D Body weights)\n"
                     f"    +-- model_config.yaml   (model configuration)\n"
                     f"    \\-- assets/\n"
                     f"        \\-- mhr_model.pt    (Momentum Human Rig model)\n\n"
@@ -110,10 +94,9 @@ class LoadSAM3DBodyModel:
         # Return config dict (not the actual model — loading happens in inference nodes)
         model_config = {
             "model_path": model_path,
-            "ckpt_path": ckpt_path,
+            "ckpt_path": model_file,
             "mhr_path": mhr_path,
             "precision": precision,
-            "attn_backend": attn_backend,
         }
 
         return (model_config,)

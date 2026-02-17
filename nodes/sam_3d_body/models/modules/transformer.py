@@ -6,6 +6,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from comfy_attn import dispatch_attention
+
 from .drop_path import DropPath
 
 from .layer_scale import LayerScale
@@ -257,8 +259,7 @@ class MultiheadAttention(nn.Module):
         )
         q, k, v = qkv[0], qkv[1], qkv[2]
 
-        attn_drop = self.attn_drop if self.training else 0.0
-        x = F.scaled_dot_product_attention(q, k, v, dropout_p=attn_drop)
+        x = dispatch_attention(q, k, v)
         x = x.transpose(1, 2).reshape(B, N, self.embed_dims)
 
         x = self.proj(x)
@@ -358,13 +359,10 @@ class Attention(nn.Module):
         k = self._separate_heads(self.k_proj(k))
         v = self._separate_heads(self.v_proj(v))
 
-        attn_drop = self.attn_drop if self.training else 0.0
         if attn_mask is not None:
             attn_mask = attn_mask.unsqueeze(1).expand(-1, self.num_heads, -1, -1)
 
-        x = F.scaled_dot_product_attention(
-            q, k, v, attn_mask=attn_mask, dropout_p=attn_drop
-        )
+        x = dispatch_attention(q, k, v, attn_mask=attn_mask)
         x = x.transpose(1, 2).reshape(B, N, self.embed_dims)
 
         x = self.proj(x)
