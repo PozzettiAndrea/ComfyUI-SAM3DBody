@@ -6,15 +6,14 @@ import cv2
 import numpy as np
 import torch
 
-from .data.transforms import (
+from .utils_data import (
     Compose,
     GetBBoxCenterScale,
     TopdownAffine,
     VisionTransformWrapper,
+    load_image,
+    prepare_batch,
 )
-
-from .data.utils.io import load_image
-from .data.utils.prepare_batch import prepare_batch
 from .utils import recursive_to
 from torchvision.transforms import ToTensor
 

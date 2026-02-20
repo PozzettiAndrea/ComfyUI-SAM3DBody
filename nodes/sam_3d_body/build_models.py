@@ -4,7 +4,7 @@ import os
 import torch
 import comfy.model_management
 
-from .models.meta_arch import SAM3DBody
+from .model import SAM3DBody
 from .utils.config import get_config
 
 log = logging.getLogger("sam3dbody")
@@ -84,10 +84,15 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: st
     model.image_mean = torch.tensor(model_cfg.MODEL.IMAGE_MEAN).view(-1, 1, 1)
     model.image_std = torch.tensor(model_cfg.MODEL.IMAGE_STD).view(-1, 1, 1)
 
-    # Now convert backbone to bf16/fp16 on the real loaded weights
-    # (convert_to_fp16 during __init__ was a no-op on meta tensors)
-    if model_cfg.TRAIN.USE_FP16:
-        model.convert_to_fp16()
+    # Debug: show key model info at load time
+    import sys
+    print(f"[DEBUG] build_models: USE_FP16={model_cfg.TRAIN.USE_FP16} FP16_TYPE={model_cfg.TRAIN.get('FP16_TYPE', 'float16')}", file=sys.stderr, flush=True)
+    for name, p in model.named_parameters():
+        if any(k in name for k in ['backbone.blocks.0.attn.qkv.weight', 'decoder.layers.0', 'init_pose.weight', 'head_pose.']):
+            print(f"[DEBUG] build_models param: {name} dtype={p.dtype} device={p.device} shape={p.shape}", file=sys.stderr, flush=True)
+    print(f"[DEBUG] build_models: backbone_dtype={model.backbone_dtype}", file=sys.stderr, flush=True)
+    print(f"[DEBUG] build_models: image_mean={model.image_mean.flatten().tolist()} dtype={model.image_mean.dtype}", file=sys.stderr, flush=True)
+    print(f"[DEBUG] build_models: image_std={model.image_std.flatten().tolist()} dtype={model.image_std.dtype}", file=sys.stderr, flush=True)
 
     log.info(f" backbone_dtype: {model.backbone_dtype}")
     log.info(f" image_mean: {model.image_mean.flatten().tolist()}")

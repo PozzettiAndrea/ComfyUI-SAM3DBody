@@ -50,7 +50,6 @@ def _load_sam3d_model(model_config: dict):
     Uses ModelPatcher + module-level caching for ComfyUI VRAM management.
     """
     import comfy.model_patcher
-    from ..sam_3d_body.lowvram import _enable_lowvram_cast
 
     cache_key = model_config["ckpt_path"]
 
@@ -76,8 +75,7 @@ def _load_sam3d_model(model_config: dict):
         dtype=dtype,
     )
 
-    # Enable lowvram layer streaming and wrap in ModelPatcher
-    _enable_lowvram_cast(sam_3d_model)
+    # Wrap in ModelPatcher for ComfyUI VRAM management
     patcher = comfy.model_patcher.ModelPatcher(
         sam_3d_model,
         load_device=comfy.model_management.get_torch_device(),
