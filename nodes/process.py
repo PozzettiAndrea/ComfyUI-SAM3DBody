@@ -60,7 +60,7 @@ def _load_sam3d_model(model_config: dict):
         return cached
 
     # Import heavy dependencies only inside worker
-    from ..sam_3d_body import load_sam_3d_body
+    from .sam_3d_body import load_sam_3d_body
 
     ckpt_path = model_config["ckpt_path"]
     mhr_path = model_config.get("mhr_path", "")
@@ -163,7 +163,7 @@ class SAM3DBodyProcess:
             inference_type: "full", "body", or "hand"
             mask: Optional segmentation mask
         """
-        from ..sam_3d_body import SAM3DBodyEstimator
+        from .sam_3d_body import SAM3DBodyEstimator
 
         # Lazy load model (cached after first call)
         loaded = _load_sam3d_model(model)
@@ -379,7 +379,7 @@ class SAM3DBodyProcessAdvanced:
             fov_path: Path to FOV model
             mask: Optional pre-computed segmentation mask
         """
-        from ..sam_3d_body import SAM3DBodyEstimator
+        from .sam_3d_body import SAM3DBodyEstimator
 
         # Lazy load model (cached after first call)
         loaded = _load_sam3d_model(model)
