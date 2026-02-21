@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import comfy.ops
-from comfy_attn import dispatch_attention
+from comfy.ldm.modules.attention import optimized_attention
 
 from .layers import DropPath, LayerScale, LayerNorm32, build_norm_layer
 
@@ -236,8 +236,7 @@ class MultiheadAttention(nn.Module):
         )
         q, k, v = qkv[0], qkv[1], qkv[2]
 
-        x = dispatch_attention(q, k, v)
-        x = x.transpose(1, 2).reshape(B, N, self.embed_dims)
+        x = optimized_attention(q, k, v, heads=self.num_heads, skip_reshape=True)
 
         x = self.proj(x)
         x = self.out_drop(self.gamma1(self.proj_drop(x)))
@@ -316,8 +315,7 @@ class CrossAttention(nn.Module):
         if attn_mask is not None:
             attn_mask = attn_mask.unsqueeze(1).expand(-1, self.num_heads, -1, -1)
 
-        x = dispatch_attention(q, k, v, attn_mask=attn_mask)
-        x = x.transpose(1, 2).reshape(B, N, self.embed_dims)
+        x = optimized_attention(q, k, v, heads=self.num_heads, mask=attn_mask, skip_reshape=True)
 
         x = self.proj(x)
         x = self.out_drop(self.gamma1(self.proj_drop(x)))

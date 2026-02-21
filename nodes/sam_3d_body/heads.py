@@ -223,9 +223,14 @@ class MHRHead(nn.Module):
         if self.enable_hand_model:
             model_params[:, self.nonhand_param_idxs] = 0
 
+        # Cast to fp32 for MHR JIT model (sparse CUDA ops don't support bf16)
+        input_dtype = shape_params.dtype
         curr_skinned_verts, curr_skel_state = self.mhr(
-            shape_params, model_params, expr_params
+            shape_params.float(), model_params.float(),
+            expr_params.float() if expr_params is not None else None
         )
+        curr_skinned_verts = curr_skinned_verts.to(input_dtype)
+        curr_skel_state = curr_skel_state.to(input_dtype)
         curr_joint_coords, curr_joint_quats, _ = torch.split(
             curr_skel_state, [3, 4, 1], dim=2
         )

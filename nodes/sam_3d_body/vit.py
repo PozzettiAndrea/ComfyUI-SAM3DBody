@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint_utils
 
 import comfy.ops
-from comfy_attn import dispatch_attention
+from comfy.ldm.modules.attention import optimized_attention
 
 from .layers import DropPath, LayerNorm32
 from .utils_model import to_2tuple
@@ -80,8 +80,7 @@ class VitAttention(nn.Module):
         qkv = qkv.reshape(B, N, 3, self.num_heads, -1).permute(2, 0, 3, 1, 4)
         q, k_t, v = qkv.unbind(0)
 
-        x = dispatch_attention(q, k_t, v)
-        x = x.transpose(1, 2).reshape(B, N, -1)
+        x = optimized_attention(q, k_t, v, heads=self.num_heads, skip_reshape=True)
         x = self.proj(x)
         x = self.proj_drop(x)
         return x
@@ -101,8 +100,6 @@ class Block(nn.Module):
         act_layer=nn.GELU,
         norm_layer=nn.LayerNorm,
         attn_head_dim=None,
-        flash_attn=False,
-        attn_backend=None,
         dtype=None,
         device=None,
         operations=ops,
@@ -311,16 +308,12 @@ class ViT(nn.Module):
         patch_padding="pad",
         freeze_attn=False,
         freeze_ffn=False,
-        flash_attn=False,
-        attn_backend=None,
         no_patch_padding=False,
         dtype=None,
         device=None,
         operations=ops,
     ):
         super().__init__()
-        if attn_backend is None:
-            attn_backend = "flash_attn" if flash_attn else "manual"
         norm_layer = norm_layer or partial(ops.LayerNorm, eps=1e-6)
         self.num_classes = num_classes
         self.num_features = self.embed_dim = self.embed_dims = embed_dim
@@ -361,7 +354,7 @@ class ViT(nn.Module):
                 dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio,
                 qkv_bias=qkv_bias, qk_scale=qk_scale, drop=drop_rate,
                 attn_drop=attn_drop_rate, drop_path=dpr[i],
-                norm_layer=norm_layer, attn_backend=attn_backend,
+                norm_layer=norm_layer,
                 dtype=dtype, device=device, operations=operations,
             )
             for i in range(depth)
