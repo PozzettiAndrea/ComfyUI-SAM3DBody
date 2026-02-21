@@ -140,6 +140,10 @@ class BaseModel(nn.Module):
         self._max_num_person = None
         self._person_valid = None
 
+    def get_dtype(self):
+        """Return the model's working dtype (native ComfyUI pattern)."""
+        return self.image_mean.dtype
+
     @abstractmethod
     def _initialze_model(self, dtype=None, device=None, operations=ops, **kwargs) -> None:
         pass
@@ -999,7 +1003,8 @@ class SAM3DBody(BaseModel):
             kpt_shape = pred_keypoints_2d_hand.shape[1:]
 
         all_prev_estimate = torch.zeros(
-            (image_embeddings.shape[0], *prev_shape), device=image_embeddings.device
+            (image_embeddings.shape[0], *prev_shape), device=image_embeddings.device,
+            dtype=image_embeddings.dtype,
         )
         if "mhr" in output and output["mhr"] is not None:
             all_prev_estimate[self.body_batch_idx] = prev_estimate
@@ -1007,7 +1012,8 @@ class SAM3DBody(BaseModel):
             all_prev_estimate[self.hand_batch_idx] = prev_estimate_hand
 
         all_pred_keypoints_2d = torch.zeros(
-            (image_embeddings.shape[0], *kpt_shape), device=image_embeddings.device
+            (image_embeddings.shape[0], *kpt_shape), device=image_embeddings.device,
+            dtype=image_embeddings.dtype,
         )
         if "mhr" in output and output["mhr"] is not None:
             all_pred_keypoints_2d[self.body_batch_idx] = pred_keypoints_2d
@@ -1167,7 +1173,7 @@ class SAM3DBody(BaseModel):
                 torch.meshgrid(torch.arange(H), torch.arange(W), indexing="xy"), dim=2
             )[None, None, :, :, :]
             .repeat(B, N, 1, 1, 1)
-            .to(self.image_mean.device)
+            .to(device=self.image_mean.device, dtype=self.get_dtype())
         )
         meshgrid_xy = (
             meshgrid_xy / batch["affine_trans"][:, :, None, None, [0, 1], [0, 1]]
@@ -1185,10 +1191,18 @@ class SAM3DBody(BaseModel):
             meshgrid_xy / batch["cam_int"][:, None, None, None, [0, 1], [0, 1]]
         )
 
-        return meshgrid_xy.permute(0, 1, 4, 2, 3).to(batch["img"].dtype)
+        return meshgrid_xy.permute(0, 1, 4, 2, 3)
 
     def forward_pose_branch(self, batch: Dict) -> Dict:
         """Run a forward pass for the crop-image (pose) branch."""
+        # Cast batch tensors to model dtype at boundary (native ComfyUI pattern).
+        # Batch data arrives as fp32 from numpy; model weights may be bf16/fp16.
+        dtype = self.get_dtype()
+        for key in list(batch.keys()):
+            v = batch[key]
+            if isinstance(v, torch.Tensor) and v.is_floating_point():
+                batch[key] = v.to(dtype=dtype)
+
         batch_size, num_person = batch["img"].shape[:2]
 
         # Forward backbone encoder
@@ -1801,11 +1815,11 @@ class SAM3DBody(BaseModel):
     def _get_hand_box(self, pose_output, batch):
         """Get hand bbox from the hand detector"""
         pred_left_hand_box = (
-            pose_output["mhr"]["hand_box"][:, 0].detach().cpu().numpy()
+            pose_output["mhr"]["hand_box"][:, 0].detach().cpu().float().numpy()
             * self.cfg.MODEL.IMAGE_SIZE[0]
         )
         pred_right_hand_box = (
-            pose_output["mhr"]["hand_box"][:, 1].detach().cpu().numpy()
+            pose_output["mhr"]["hand_box"][:, 1].detach().cpu().float().numpy()
             * self.cfg.MODEL.IMAGE_SIZE[0]
         )
 
@@ -1820,22 +1834,23 @@ class SAM3DBody(BaseModel):
         )
 
         # Crop to full. batch["affine_trans"] is full-to-crop, right application
+        affine = batch["affine_trans"].float()
         batch["left_scale"] = (
             batch["left_scale"]
-            / batch["affine_trans"][0, :, 0, 0].cpu().numpy()[:, None]
+            / affine[0, :, 0, 0].cpu().numpy()[:, None]
         )
         batch["right_scale"] = (
             batch["right_scale"]
-            / batch["affine_trans"][0, :, 0, 0].cpu().numpy()[:, None]
+            / affine[0, :, 0, 0].cpu().numpy()[:, None]
         )
         batch["left_center"] = (
             batch["left_center"]
-            - batch["affine_trans"][0, :, [0, 1], [2, 2]].cpu().numpy()
-        ) / batch["affine_trans"][0, :, 0, 0].cpu().numpy()[:, None]
+            - affine[0, :, [0, 1], [2, 2]].cpu().numpy()
+        ) / affine[0, :, 0, 0].cpu().numpy()[:, None]
         batch["right_center"] = (
             batch["right_center"]
-            - batch["affine_trans"][0, :, [0, 1], [2, 2]].cpu().numpy()
-        ) / batch["affine_trans"][0, :, 0, 0].cpu().numpy()[:, None]
+            - affine[0, :, [0, 1], [2, 2]].cpu().numpy()
+        ) / affine[0, :, 0, 0].cpu().numpy()[:, None]
 
         left_xyxy = np.concatenate(
             [

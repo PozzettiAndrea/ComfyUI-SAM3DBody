@@ -27,7 +27,7 @@ class SAM3DBodyEstimator:
         human_segmentor=None,
         fov_estimator=None,
     ):
-        self.device = sam_3d_body_model.device
+        self.device = next(sam_3d_body_model.parameters()).device
         self.model, self.cfg = sam_3d_body_model, model_cfg
         self.detector = human_detector
         self.sam = human_segmentor
@@ -191,7 +191,7 @@ class SAM3DBodyEstimator:
         for idx in range(batch["img"].shape[1]):
             all_out.append(
                 {
-                    "bbox": batch["bbox"][0, idx].cpu().numpy(),
+                    "bbox": batch["bbox"][0, idx].cpu().float().numpy(),
                     "focal_length": out["focal_length"][idx],
                     "pred_keypoints_3d": out["pred_keypoints_3d"][idx],
                     "pred_keypoints_2d": out["pred_keypoints_2d"][idx],

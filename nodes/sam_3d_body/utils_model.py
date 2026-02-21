@@ -501,7 +501,7 @@ def recursive_to(x: Any, target):
         return {k: recursive_to(v, target) for k, v in x.items()}
     elif isinstance(x, torch.Tensor):
         if target == "numpy":
-            return x.numpy()
+            return x.float().numpy() if x.is_floating_point() else x.numpy()
         else:
             return x.to(target)
     elif isinstance(x, list):

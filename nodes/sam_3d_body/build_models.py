@@ -55,13 +55,12 @@ def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: st
     model.image_mean = torch.tensor(model_cfg.MODEL.IMAGE_MEAN, dtype=dtype).view(-1, 1, 1)
     model.image_std = torch.tensor(model_cfg.MODEL.IMAGE_STD, dtype=dtype).view(-1, 1, 1)
 
-    # Fix F: Cast model weights to target dtype, preserving MHR JIT models
+    # Cast model weights to target dtype, then restore MHR JIT models to fp32
+    # (sparse CUDA ops in MHR don't support bf16)
     if dtype is not None:
-        mhr_body = model.head_pose.mhr
-        mhr_hand = model.head_pose_hand.mhr
         model.to(dtype=dtype)
-        model.head_pose.mhr = mhr_body
-        model.head_pose_hand.mhr = mhr_hand
+        model.head_pose.mhr.float()
+        model.head_pose_hand.mhr.float()
 
     log.info(f" image_mean: {model.image_mean.flatten().tolist()}")
     log.info(f" image_std: {model.image_std.flatten().tolist()}")

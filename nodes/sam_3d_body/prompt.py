@@ -26,7 +26,7 @@ def _generate_fourier_features(pos, num_bands, max_resolution):
     min_freq = 1.0
     freq_bands = torch.stack(
         [
-            torch.linspace(start=min_freq, end=res / 2, steps=num_bands, device=device)
+            torch.linspace(start=min_freq, end=res / 2, steps=num_bands, device=device, dtype=pos.dtype)
             for res in max_resolution
         ],
         dim=0,
@@ -265,9 +265,12 @@ class PromptEncoder(nn.Module):
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         bs = self._get_batch_size(keypoints, boxes, masks)
         sparse_embeddings = torch.empty(
-            (bs, 0, self.embed_dim), device=self._get_device()
+            (bs, 0, self.embed_dim), device=self._get_device(),
+            dtype=self.point_embeddings[0].weight.dtype,
         )
-        sparse_masks = torch.empty((bs, 0), device=self._get_device())
+        sparse_masks = torch.empty(
+            (bs, 0), device=self._get_device(), dtype=torch.bool,
+        )
         if keypoints is not None:
             coords = keypoints[:, :, :2]
             labels = keypoints[:, :, -1]
