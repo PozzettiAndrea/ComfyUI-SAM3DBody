@@ -61,7 +61,7 @@ class SAM3DBodyLoadMesh:
             if os.path.exists(input_3d):
                 for file in os.listdir(input_3d):
                     if any(file.lower().endswith(ext) for ext in cls.SUPPORTED_EXTENSIONS):
-                        mesh_files.append(f"3d/{file}")
+                        mesh_files.append(os.path.join("3d", file))
 
             # Then scan input root
             for file in os.listdir(input_dir):
@@ -95,6 +95,8 @@ class SAM3DBodyLoadMesh:
         """Resolve the full path to the mesh file."""
         # Remove [output] prefix if present
         clean_path = file_path.replace("[output] ", "")
+        # Normalize path separators for the current OS
+        clean_path = clean_path.replace("\\", os.sep).replace("/", os.sep)
 
         if source_folder == "input":
             input_dir = folder_paths.get_input_directory()
@@ -253,6 +255,8 @@ class SAM3DBodySelectMesh:
 
         # Remove [output] prefix if present
         clean_path = file_path.replace("[output] ", "")
+        # Normalize path separators for the current OS
+        clean_path = clean_path.replace("\\", os.sep).replace("/", os.sep)
 
         # Resolve full path to verify file exists
         full_path = SAM3DBodyLoadMesh._resolve_file_path(source_folder, file_path)
