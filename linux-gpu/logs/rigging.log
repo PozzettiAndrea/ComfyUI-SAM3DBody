@@ -1,0 +1,123 @@
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | executing rigging.json [4/5]  [DEBUG] _resolve_workflow_path: input=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigging.json
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: node_dir=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: resolved=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigging.json
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: exists=True
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | Capturing execution frames: rigging.json
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:00] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[09:01] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[09:01] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[09:02] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0301608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[09:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0301608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[09:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Validating workflow...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["10", 2]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["10", 2]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: SAM3DBodyProcess
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: SAM3DBodyProcess
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 12: SAM3DBodyExportFBX
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 12: SAM3DBodyExportFBX
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 15: LoadSAM3DBodyModel
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 15: LoadSAM3DBodyModel
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 53a5f920-0a8d-4d3c-819b-61139cfe9de7
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 53a5f920-0a8d-4d3c-819b-61139cfe9de7
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Queuing workflow for execution...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_03c794a0_in.pt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_03c794a0_in.pt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'bbox_threshold', 'inference_type', 'mask']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'bbox_threshold', 'inference_type', 'mask']
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcess...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcess...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Loading model from /home/shadeform/sam3dbody/ComfyUI/models/sam3dbody/model.ckpt...
+[09:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Loading model from /home/shadeform/sam3dbody/ComfyUI/models/sam3dbody/model.ckpt...
+[09:37] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Model loaded successfully on cuda
+[09:37] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Model loaded successfully on cuda
+[09:41] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:41] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_24bc34d1_in.pt...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_24bc34d1_in.pt...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'temp_mesh_1769389844.obj' took 23.38 ms
+[09:43] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'temp_mesh_1769389844.obj' took 23.38 ms
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_rigged.fbx'
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_rigged.fbx'
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton'], 'POSE')
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton'], 'POSE')
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 0.5406 sec.
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 0.5406 sec.
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 37.87 seconds
+[09:44] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 37.87 seconds
+[09:49] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Captured 102 frames over 42.49s
+[09:56] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   5 unique frames saved as WebP
+[09:56] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Waiting 5000ms for previews to render...
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Saved high-quality screenshot: rigging_executed.png
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     Captured 6 video frames
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | [01:04] rigging.json [4/5] - PASS

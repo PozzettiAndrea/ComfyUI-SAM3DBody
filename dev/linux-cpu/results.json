@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-02-21T18:26:15.526015+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+    "cpu": "AMD EPYC 7763 64-Core Processor"
+  },
+  "summary": {
+    "total": 5,
+    "passed": 0,
+    "failed": 1
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "fail",
+      "duration_seconds": 11.45,
+      "error": "Workflow execution failed: {'prompt_id': 'b37cf813-bcb7-4abe-bb97-f6fce31525db', 'node_id': '4', 'node_type': 'SAM3DBodySelectMesh', 'executed': [], 'exception_message': 'Socket closed\\n', 'exception_type': 'ConnectionError', 'traceback': ['  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/ComfyUI/execution.py\", line 530, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/ComfyUI/execution.py\", line 334, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/ComfyUI/execution.py\", line 308, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/ComfyUI/execution.py\", line 296, in process_inputs\\n    result = f(**inputs)\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.venv/lib/python3.13/site-packages/comfy_env/isolation/wrap.py\", line 478, in proxy\\n    result = worker.call_method(\\n        module_name=module_name, class_name=cls.__name__, method_name=func_name,\\n        self_state=self.__dict__.copy() if hasattr(self, \"__dict__\") else None,\\n        kwargs=kwargs, timeout=600.0,\\n    )\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 2273, in call_method\\n    self._ensure_started()\\n    ~~~~~~~~~~~~~~~~~~~~^^\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 2135, in _ensure_started\\n    msg = self._transport.recv(timeout=60)\\n', '  File \"/home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/.venv/lib/python3.13/site-packages/comfy_env/isolation/workers/subprocess.py\", line 152, in recv\\n    raise ConnectionError(\"Socket closed\")\\n'], 'current_inputs': {'source_folder': ['input'], 'file_path': ['sam3d_rigged.fbx']}, 'current_outputs': ['2', '4'], 'timestamp': 1771698374651}\n\nDetails:\nWorkflow: /home/runner/work/ComfyUI-SAM3DBody/ComfyUI-SAM3DBody/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/workflows/rigged_mesh_manipulation.json\nNode error: SAM3DBodySelectMesh",
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      },
+      "resources": {
+        "ram": {
+          "peak": 2.23,
+          "avg": 2.03
+        },
+        "total_ram_gb": 15.6,
+        "samples": 12
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "workflow",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}

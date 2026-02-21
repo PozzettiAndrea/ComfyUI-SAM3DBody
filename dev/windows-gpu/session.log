@@ -1,0 +1,53 @@
+[00:00] Crash dump logging enabled: C:\github-runners\PozzettiAndrea-ComfyUI-SAM3DBody\_work\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-1230\windows-gpu\crash_dump.log
+[00:00] 
+[00:00] [1/3] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=None, server_url=http://127.0.0.1:8288, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8288...
+[00:00] Connecting to existing server at http://127.0.0.1:8288...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 652 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/3] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x000001C683961A90>, server_url=http://127.0.0.1:8288, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001C683961BE0>
+[00:00] Testing node constructors...
+[00:23] All 15 node(s) instantiated successfully!
+[00:23] [INSTANTIATION] PASSED
+[00:23] 
+[00:23] [3/3] EXECUTION
+[00:23] ----------------------------------------
+[00:23] [DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x000001C683961A90>, server_url=http://127.0.0.1:8288, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001C683961BE0>
+[00:23] GPU runner - will execute 4 workflow(s)
+[00:23] Running 5 workflow(s) (all with videos)...
+[00:24] Starting headless browser...
+[00:33] Capturing execution frames: multiple_masks.json
+[00:35]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:35]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:37]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:38]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:38]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:38]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:38]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui.js" is deprecated and will be removed in v1.34.
+[00:38]   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[00:39]   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[00:41]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/buttonGroup.js" is deprecated and will be removed in v1.34.
+[00:41]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/button.js" is deprecated and will be removed in v1.34.
+[00:47]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:47]   [Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:8288/api/view?type=output&subfolder=&filename=sam3d_multi_rigged.fbx" responded with 404: Not Found
+    at http://127.0.0.1:8288/assets/vendor-three-BDtRe4OM.js:3824:95202
+[00:48]   [Console-warning] [.WebGL-0x700c0b76bf00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:48]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:48]   [Console-warning] [.WebGL-0x700c0b76bf00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:48]   [Console-warning] [.WebGL-0x700c0b76bf00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:49]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[00:49]   Validating workflow...
+[00:50]   Queuing workflow for execution...
+[00:53]   Frame 2 saved (frame_001.jpg, t=3.3s)
+[00:55]   Frame 3 saved (frame_002.jpg, t=6.1s)
+[02:34]   Frame 4 saved (frame_003.jpg, t=105.2s)
+[02:37]   Frame 5 saved (frame_004.jpg, t=107.9s)

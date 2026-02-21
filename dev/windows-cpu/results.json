@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-02-21T18:26:46.051104+00:00",
+  "platform": "windows",
+  "hardware": {
+    "os": "Windows-2025Server-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+  },
+  "summary": {
+    "total": 5,
+    "passed": 0,
+    "failed": 1
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "fail",
+      "duration_seconds": 15.02,
+      "error": "Workflow execution failed: {'prompt_id': 'ca44bac2-8043-4aab-bfc9-4115d170550c', 'node_id': '4', 'node_type': 'SAM3DBodySelectMesh', 'executed': [], 'exception_message': '[WinError 10054] An existing connection was forcibly closed by the remote host\\n', 'exception_type': 'ConnectionResetError', 'traceback': ['  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\ComfyUI\\\\execution.py\", line 530, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\ComfyUI\\\\execution.py\", line 334, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\ComfyUI\\\\execution.py\", line 308, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\ComfyUI\\\\execution.py\", line 296, in process_inputs\\n    result = f(**inputs)\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\wrap.py\", line 478, in proxy\\n    result = worker.call_method(\\n        module_name=module_name, class_name=cls.__name__, method_name=func_name,\\n        self_state=self.__dict__.copy() if hasattr(self, \"__dict__\") else None,\\n        kwargs=kwargs, timeout=600.0,\\n    )\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 2273, in call_method\\n    self._ensure_started()\\n    ~~~~~~~~~~~~~~~~~~~~^^\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 2135, in _ensure_started\\n    msg = self._transport.recv(timeout=60)\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 150, in recv\\n    raw_len = self._recvall(4)\\n', '  File \"D:\\\\a\\\\ComfyUI-SAM3DBody\\\\ComfyUI-SAM3DBody\\\\.venv\\\\Lib\\\\site-packages\\\\comfy_env\\\\isolation\\\\workers\\\\subprocess.py\", line 175, in _recvall\\n    chunk = self._sock.recv(n - len(data))\\n'], 'current_inputs': {'source_folder': ['input'], 'file_path': ['sam3d_rigged.fbx']}, 'current_outputs': ['4', '2'], 'timestamp': 1771698404914}\n\nDetails:\nWorkflow: D:\\a\\ComfyUI-SAM3DBody\\ComfyUI-SAM3DBody\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\workflows\\rigged_mesh_manipulation.json\nNode error: SAM3DBodySelectMesh",
+      "hardware": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 4.56,
+          "avg": 4.38
+        },
+        "total_ram_gb": 16.0,
+        "samples": 15
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "workflow",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}
