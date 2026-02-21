@@ -13,7 +13,7 @@ import cv2
 import torch
 from pathlib import Path
 import folder_paths
-from ..base import numpy_to_comfy_image
+from .base import numpy_to_comfy_image
 
 log = logging.getLogger("sam3dbody")
 
@@ -58,7 +58,7 @@ class SAM3DBodyVisualize:
         log.info(f"Visualizing mesh with mode: {render_mode}")
 
         try:
-            from ..base import comfy_image_to_numpy
+            from .base import comfy_image_to_numpy
 
             # Get original image
             img_bgr = comfy_image_to_numpy(image)

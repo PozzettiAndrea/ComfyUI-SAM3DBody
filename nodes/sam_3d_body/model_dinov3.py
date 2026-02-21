@@ -447,7 +447,6 @@ class SelfAttention(nn.Module):
         x_flat = self.proj(x_flat)
         return uncat_with_shapes(x_flat, shapes, num_tokens)
 
-    _dinov3_attn_count = 0
 
     def compute_attention(self, qkv: Tensor, attn_bias=None, rope=None) -> Tensor:
         assert attn_bias is None
@@ -459,11 +458,6 @@ class SelfAttention(nn.Module):
         q, k, v = [t.transpose(1, 2) for t in [q, k, v]]
         if rope is not None:
             q, k = self.apply_rope(q, k, rope)
-
-        import sys
-        if SelfAttention._dinov3_attn_count == 0:
-            print(f"[DEBUG] SelfAttention.compute_attention: q.dtype={q.dtype} q.device={q.device} q.shape={q.shape}", file=sys.stderr, flush=True)
-        SelfAttention._dinov3_attn_count += 1
 
         try:
             from comfy_attn import dispatch_attention

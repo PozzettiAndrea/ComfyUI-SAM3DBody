@@ -1,11 +1,11 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 #
 # Consolidated utility functions for SAM 3D Body inference.
-# Sources: geometry_utils.py, mhr_utils.py, misc.py, fp16_utils.py
+# Sources: geometry_utils.py, mhr_utils.py, misc.py, fp16_utils.py, dist.py
 
 import collections.abc
 from itertools import repeat
-from typing import Optional
+from typing import Any, Optional
 
 import cv2
 import numpy as np
@@ -489,3 +489,22 @@ mhr_cont_hand_idxs = [72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,9
 mhr_param_hand_mask = torch.zeros(133).bool(); mhr_param_hand_mask[mhr_param_hand_idxs] = True
 mhr_cont_hand_mask = torch.zeros(260).bool(); mhr_cont_hand_mask[mhr_cont_hand_idxs] = True
 # fmt: on
+
+
+# =============================================================================
+# dist.py — recursive device/numpy transfer
+# =============================================================================
+
+def recursive_to(x: Any, target):
+    """Recursively transfer a batch of data to the target device or numpy."""
+    if isinstance(x, dict):
+        return {k: recursive_to(v, target) for k, v in x.items()}
+    elif isinstance(x, torch.Tensor):
+        if target == "numpy":
+            return x.numpy()
+        else:
+            return x.to(target)
+    elif isinstance(x, list):
+        return [recursive_to(i, target) for i in x]
+    else:
+        return x

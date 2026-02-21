@@ -14,7 +14,7 @@ from .utils_data import (
     load_image,
     prepare_batch,
 )
-from .utils import recursive_to
+from .utils_model import recursive_to
 from torchvision.transforms import ToTensor
 
 
@@ -167,12 +167,9 @@ class SAM3DBodyEstimator:
         import logging
         _log = logging.getLogger("sam3dbody")
         img_tensor = batch["img"]
-        _log.info(f" [DEBUG] batch['img'] shape={img_tensor.shape}, dtype={img_tensor.dtype}, "
-                  f"device={img_tensor.device}, has_nan={torch.isnan(img_tensor).any().item()}, "
+        _log.info(f" batch['img'] shape={img_tensor.shape}, dtype={img_tensor.dtype}, "
+                  f"device={img_tensor.device}, "
                   f"range=[{img_tensor.min().item():.3f}, {img_tensor.max().item():.3f}]")
-        _log.info(f" [DEBUG] image_mean={self.model.image_mean.flatten().tolist()}, "
-                  f"image_std={self.model.image_std.flatten().tolist()}, "
-                  f"backbone_dtype={self.model.backbone_dtype}")
 
         outputs = self.model.run_inference(
             img,
@@ -188,12 +185,6 @@ class SAM3DBodyEstimator:
 
         out = pose_output["mhr"]
 
-        # DEBUG: Check output for NaN
-        for key in ["pred_keypoints_3d", "pred_vertices", "pred_cam_t"]:
-            if key in out:
-                val = out[key]
-                has_nan = torch.isnan(val).any().item() if isinstance(val, torch.Tensor) else np.isnan(val).any()
-                _log.info(f" [DEBUG] out['{key}'] has_nan={has_nan}")
         out = recursive_to(out, "cpu")
         out = recursive_to(out, "numpy")
         all_out = []
