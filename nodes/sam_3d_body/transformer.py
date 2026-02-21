@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import comfy.ops
-from comfy.ldm.modules.attention import optimized_attention
+from .attention import sam3d_attention
 
 from .layers import DropPath, LayerScale, LayerNorm32, build_norm_layer
 
@@ -236,7 +236,7 @@ class MultiheadAttention(nn.Module):
         )
         q, k, v = qkv[0], qkv[1], qkv[2]
 
-        x = optimized_attention(q, k, v, heads=self.num_heads, skip_reshape=True)
+        x = sam3d_attention(q, k, v, heads=self.num_heads, skip_reshape=True)
 
         x = self.proj(x)
         x = self.out_drop(self.gamma1(self.proj_drop(x)))
@@ -315,7 +315,7 @@ class CrossAttention(nn.Module):
         if attn_mask is not None:
             attn_mask = attn_mask.unsqueeze(1).expand(-1, self.num_heads, -1, -1)
 
-        x = optimized_attention(q, k, v, heads=self.num_heads, mask=attn_mask, skip_reshape=True)
+        x = sam3d_attention(q, k, v, heads=self.num_heads, mask=attn_mask, skip_reshape=True)
 
         x = self.proj(x)
         x = self.out_drop(self.gamma1(self.proj_drop(x)))

@@ -25,8 +25,12 @@ class LoadSAM3DBodyModel:
                     "default": DEFAULT_MODEL_PATH,
                     "tooltip": "Path to SAM 3D Body model folder (contains model.safetensors and assets/mhr_model.pt)"
                 }),
-                "precision": (["auto", "bf16", "fp16", "fp32"], {
+                "attn_backend": (["auto", "flash_attn", "sage_attn", "sdpa", "xformers"], {
                     "default": "auto",
+                    "tooltip": "Attention backend. auto: use ComfyUI's global setting. Otherwise override for this model."
+                }),
+                "precision": (["fp32", "auto", "bf16", "fp16"], {
+                    "default": "fp32",
                     "tooltip": "Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."
                 }),
             },
@@ -39,7 +43,7 @@ class LoadSAM3DBodyModel:
 
     REPO_ID = "apozz/sam-3d-body-safetensors"
 
-    def load_model(self, model_path, precision="auto"):
+    def load_model(self, model_path, attn_backend="auto", precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
         device = mm.get_torch_device()
 
@@ -96,6 +100,7 @@ class LoadSAM3DBodyModel:
             "model_path": model_path,
             "ckpt_path": model_file,
             "mhr_path": mhr_path,
+            "attn_backend": attn_backend,
             "precision": precision,
         }
 
