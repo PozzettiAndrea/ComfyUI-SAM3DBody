@@ -1,7 +1,6 @@
 import logging
 import os
 import folder_paths
-import comfy.model_management as mm
 
 log = logging.getLogger("sam3dbody")
 
@@ -45,6 +44,7 @@ class LoadSAM3DBodyModel:
 
     def load_model(self, model_path, attn_backend="auto", precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
+        import comfy.model_management as mm
         device = mm.get_torch_device()
 
         # Resolve "auto" precision to concrete string (bf16/fp16/fp32)
