@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint_utils
 
 import comfy.ops
-from comfy.ldm.modules.attention import optimized_attention
+from .attention import sam3d_attention
 
 from .layers import DropPath, LayerNorm32
 from .utils_model import to_2tuple
@@ -80,7 +80,7 @@ class VitAttention(nn.Module):
         qkv = qkv.reshape(B, N, 3, self.num_heads, -1).permute(2, 0, 3, 1, 4)
         q, k_t, v = qkv.unbind(0)
 
-        x = optimized_attention(q, k_t, v, heads=self.num_heads, skip_reshape=True)
+        x = sam3d_attention(q, k_t, v, heads=self.num_heads, skip_reshape=True)
         x = self.proj(x)
         x = self.proj_drop(x)
         return x

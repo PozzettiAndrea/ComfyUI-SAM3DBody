@@ -61,11 +61,15 @@ def _load_sam3d_model(model_config: dict):
 
     # Import heavy dependencies only inside worker
     from .sam_3d_body import load_sam_3d_body
+    from .sam_3d_body.attention import set_attn_backend
 
     ckpt_path = model_config["ckpt_path"]
     mhr_path = model_config.get("mhr_path", "")
     precision = model_config.get("precision", "fp32")
     dtype = _resolve_dtype(precision)
+
+    # Set attention backend
+    set_attn_backend(model_config.get("attn_backend", "auto"))
 
     # Load model using the library's built-in function
     log.info(f" Loading model from {ckpt_path} (precision={precision})...")
