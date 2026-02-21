@@ -1,7 +1,7 @@
 python = "3.11"
 
 [cuda]
-packages = ["torch", "torchvision", "detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn"]
+packages = ["torch", "torchvision", "detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
 
 [pypi-dependencies]
 bpy = ">=4.2"

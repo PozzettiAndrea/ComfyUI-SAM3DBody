@@ -3,3 +3,6 @@ ComfyUI-Multiband = "PozzettiAndrea/ComfyUI-Multiband"
 ComfyUI-DepthAnythingV3 = "PozzettiAndrea/ComfyUI-DepthAnythingV3"
 ComfyUI-CameraPack = "PozzettiAndrea/ComfyUI-CameraPack"
 ComfyUI-Env-Manager = "PozzettiAndrea/ComfyUI-Env-Manager"
+
+[cuda]
+packages = ["flash-attn", "sageattention"]

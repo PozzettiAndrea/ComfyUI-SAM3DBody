@@ -7,7 +7,6 @@ import torch
 import numpy as np
 import cv2
 import folder_paths
-import comfy.model_management
 
 log = logging.getLogger("sam3dbody")
 
@@ -73,6 +72,7 @@ def _load_sam3d_model(model_config: dict):
 
     Uses ModelPatcher + module-level caching for ComfyUI VRAM management.
     """
+    import comfy.model_management
     import comfy.model_patcher
 
     cache_key = (model_config["ckpt_path"], model_config.get("precision", "fp32"))
