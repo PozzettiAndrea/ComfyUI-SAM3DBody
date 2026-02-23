@@ -192,7 +192,7 @@ class SAM3DBodyProcessMultiple:
                     "tooltip": "Depth map from Depth Anything V3 (Raw mode) for scale correction - helps fix children/small people appearing too large"
                 }),
                 "intrinsics": ("INTRINSICS", {
-                    "tooltip": "Camera intrinsics from Depth Anything V3 - [3,3] matrix with fx, fy, cx, cy. Provides accurate focal length instead of default 5000"
+                    "tooltip": "Camera intrinsics from Depth Anything V3 - [3,3] or [4,4] matrix with fx, fy, cx, cy. Provides accurate focal length instead of default 5000"
                 }),
                 "depth_confidence": ("IMAGE", {
                     "tooltip": "Confidence map from Depth Anything V3 - used to weight depth samples and filter unreliable measurements"
@@ -1118,7 +1118,7 @@ class SAM3DBodyProcessMultiple:
         intrinsics_np = None
         if intrinsics is not None:
             if isinstance(intrinsics, torch.Tensor):
-                # Intrinsics is [B, 3, 3] or [3, 3] - we need [3, 3]
+                # Intrinsics may be [B,4,4], [4,4], [B,3,3] or [3,3] — we need [3,3]
                 intrinsics_np = intrinsics.squeeze().cpu().numpy()
                 if intrinsics_np.ndim == 3:
                     intrinsics_np = intrinsics_np[0]  # Take first batch element
@@ -1126,6 +1126,8 @@ class SAM3DBodyProcessMultiple:
                 intrinsics_np = np.array(intrinsics)
                 if intrinsics_np.ndim == 3:
                     intrinsics_np = intrinsics_np[0]
+            if intrinsics_np.shape[-1] == 4:
+                intrinsics_np = intrinsics_np[:3, :3]
             log.info(f" Intrinsics provided: fx={intrinsics_np[0,0]:.1f}, fy={intrinsics_np[1,1]:.1f}, "
                   f"cx={intrinsics_np[0,2]:.1f}, cy={intrinsics_np[1,2]:.1f}")
 
