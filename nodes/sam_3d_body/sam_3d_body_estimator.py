@@ -153,6 +153,8 @@ class SAM3DBodyEstimator:
         # - either provided externally or generated via default FOV estimator
         if cam_int is not None:
             cam_int = cam_int.to(batch["img"])
+            if cam_int.shape[-1] == 4:
+                cam_int = cam_int[..., :3, :3]
             batch["cam_int"] = cam_int.clone()
         elif self.fov_estimator is not None:
             input_image = batch["img_ori"][0].data
