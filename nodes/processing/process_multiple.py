@@ -1,22 +1,11 @@
-# Copyright (c) 2025 Andrea Pozzetti
-# SPDX-License-Identifier: MIT
-"""
-Multi-person processing node for SAM 3D Body.
-
-Performs 3D human mesh reconstruction for multiple people from a single image.
-Runs in isolated venv via @isolated decorator.
-
-Model loading happens lazily inside the worker (not in host process)
-to avoid importing CUDA dependencies in the main ComfyUI environment.
-"""
-
 import os
 import tempfile
+import json
+import glob
 import torch
 import numpy as np
 import cv2
-from comfy_env import isolated
-
+import folder_paths
 
 # =============================================================================
 # Helper functions (inlined to avoid relative import issues in worker)
@@ -30,8 +19,28 @@ def comfy_image_to_numpy(image):
 
 
 def comfy_mask_to_numpy(mask):
-    """Convert ComfyUI mask tensor [N,H,W] to numpy [N,H,W]."""
-    return mask.cpu().numpy()
+    """Convert ComfyUI mask tensor to numpy [N,H,W].
+
+    Handles:
+    - Standard masks: [N, H, W] -> [N, H, W]
+    - Single mask: [H, W] -> [1, H, W]
+    - RGB/RGBA masks: [N, H, W, C] or [H, W, C] -> grayscale [N, H, W]
+    """
+    arr = mask.cpu().numpy()
+
+    # Handle RGB/RGBA: convert to grayscale by averaging channels
+    if arr.ndim == 3 and arr.shape[-1] in (3, 4):
+        # [H, W, C] -> [H, W]
+        arr = arr.mean(axis=-1)
+    elif arr.ndim == 4 and arr.shape[-1] in (3, 4):
+        # [N, H, W, C] -> [N, H, W]
+        arr = arr.mean(axis=-1)
+
+    # Ensure batch dimension
+    if arr.ndim == 2:
+        arr = arr[np.newaxis, ...]
+
+    return arr
 
 
 def numpy_to_comfy_image(np_image):
@@ -58,7 +67,7 @@ def _load_sam3d_model(model_config: dict):
         return _MODEL_CACHE[cache_key]
 
     # Import heavy dependencies only inside worker
-    from sam_3d_body import load_sam_3d_body
+    from ..sam_3d_body import load_sam_3d_body
 
     ckpt_path = model_config["ckpt_path"]
     device = model_config["device"]
@@ -86,7 +95,40 @@ def _load_sam3d_model(model_config: dict):
     return result
 
 
-@isolated(env="sam3dbody", import_paths=[".", "..", "../.."])
+def find_mhr_model_path(mesh_data=None):
+    """Find the MHR model path using multiple fallback strategies."""
+    # Strategy 1: Check mesh_data for explicitly provided path
+    if mesh_data and mesh_data.get("mhr_path"):
+        mhr_path = mesh_data["mhr_path"]
+        if os.path.exists(mhr_path):
+            return mhr_path
+
+    # Strategy 2: Check environment variable
+    env_path = os.environ.get("SAM3D_MHR_PATH", "")
+    if env_path and os.path.exists(env_path):
+        return env_path
+
+    # Strategy 3: Search ComfyUI models/sam3dbody/ folder
+    sam3dbody_dir = os.path.join(folder_paths.models_dir, "sam3dbody", "assets", "mhr_model.pt")
+    if os.path.exists(sam3dbody_dir):
+        return sam3dbody_dir
+
+    # Strategy 4 (legacy): Search HuggingFace cache
+    hf_cache_base = os.path.expanduser("~/.cache/huggingface/hub/models--facebook--sam-3d-body-dinov3")
+    if os.path.exists(hf_cache_base):
+        pattern = os.path.join(hf_cache_base, "snapshots", "*", "assets", "mhr_model.pt")
+        matches = glob.glob(pattern)
+        if matches:
+            matches.sort(key=os.path.getmtime, reverse=True)
+            return matches[0]
+
+    return None
+
+
+# Import BpyFBXExporter from export module (runs in isolated bpy environment)
+from .export import BpyFBXExporter
+
+
 class SAM3DBodyProcessMultiple:
     """
     Performs 3D human mesh reconstruction for multiple people.
@@ -155,61 +197,46 @@ class SAM3DBodyProcessMultiple:
         11: "left_knee", 12: "right_knee",
     }
 
-    # SMPL-X skeleton connections for visualization (based on COCO-WholeBody format)
-    # Format: (parent_joint, child_joint) - bones connect these pairs
-    SKELETON_BONES = [
+    # MHR70 skeleton - matches SAM3DBody output joint ordering
+    # Joint indices from mhr70.py:
+    # 0: nose, 1: left_eye, 2: right_eye, 3: left_ear, 4: right_ear
+    # 5: left_shoulder, 6: right_shoulder, 7: left_elbow, 8: right_elbow
+    # 9: left_hip, 10: right_hip, 11: left_knee, 12: right_knee
+    # 13: left_ankle, 14: right_ankle, 15-20: feet
+    # 21-41: right hand (wrist at 41), 42-62: left hand (wrist at 62)
+    # 63-68: olecranon/cubital/acromion, 69: neck
+    MHR70_SKELETON_BODY = [
+        # Legs
+        (13, 11),  # left_ankle -> left_knee
+        (11, 9),   # left_knee -> left_hip
+        (14, 12),  # right_ankle -> right_knee
+        (12, 10),  # right_knee -> right_hip
+        # Hips
+        (9, 10),   # left_hip -> right_hip
         # Torso
-        (0, 1),    # pelvis -> spine
-        (1, 2),    # spine -> spine1
-        (2, 3),    # spine1 -> spine2
-        (3, 4),    # spine2 -> neck
-        (4, 15),   # neck -> head
-        # Left arm
-        (4, 5),    # neck -> left_shoulder (actually through collar)
+        (5, 9),    # left_shoulder -> left_hip
+        (6, 10),   # right_shoulder -> right_hip
+        (5, 6),    # left_shoulder -> right_shoulder
+        # Arms
         (5, 7),    # left_shoulder -> left_elbow
-        (7, 9),    # left_elbow -> left_wrist
-        # Right arm
-        (4, 6),    # neck -> right_shoulder
         (6, 8),    # right_shoulder -> right_elbow
-        (8, 10),   # right_elbow -> right_wrist
-        # Left leg
-        (0, 11),   # pelvis -> left_hip
-        (11, 13),  # left_hip -> left_knee
-        (13, 15),  # left_knee -> left_ankle
-        # Right leg
-        (0, 12),   # pelvis -> right_hip
-        (12, 14),  # right_hip -> right_knee
-        (14, 16),  # right_knee -> right_ankle
-    ]
-
-    # Alternative SMPL-X 22 joint skeleton (more accurate for SAM3DBody output)
-    SMPLX_SKELETON_22 = [
-        # Spine chain
-        (0, 3),    # pelvis -> spine1
-        (3, 6),    # spine1 -> spine2
-        (6, 9),    # spine2 -> spine3
-        (9, 12),   # spine3 -> neck
-        (12, 15),  # neck -> head
-        # Left arm
-        (9, 13),   # spine3 -> left_collar
-        (13, 16),  # left_collar -> left_shoulder
-        (16, 18),  # left_shoulder -> left_elbow
-        (18, 20),  # left_elbow -> left_wrist
-        # Right arm
-        (9, 14),   # spine3 -> right_collar
-        (14, 17),  # right_collar -> right_shoulder
-        (17, 19),  # right_shoulder -> right_elbow
-        (19, 21),  # right_elbow -> right_wrist
-        # Left leg
-        (0, 1),    # pelvis -> left_hip
-        (1, 4),    # left_hip -> left_knee
-        (4, 7),    # left_knee -> left_ankle
-        (7, 10),   # left_ankle -> left_foot
-        # Right leg
-        (0, 2),    # pelvis -> right_hip
-        (2, 5),    # right_hip -> right_knee
-        (5, 8),    # right_knee -> right_ankle
-        (8, 11),   # right_ankle -> right_foot
+        (7, 62),   # left_elbow -> left_wrist
+        (8, 41),   # right_elbow -> right_wrist
+        # Head/Face
+        (1, 2),    # left_eye -> right_eye
+        (0, 1),    # nose -> left_eye
+        (0, 2),    # nose -> right_eye
+        (1, 3),    # left_eye -> left_ear
+        (2, 4),    # right_eye -> right_ear
+        (3, 5),    # left_ear -> left_shoulder
+        (4, 6),    # right_ear -> right_shoulder
+        # Feet
+        (13, 15),  # left_ankle -> left_big_toe
+        (13, 16),  # left_ankle -> left_small_toe
+        (13, 17),  # left_ankle -> left_heel
+        (14, 18),  # right_ankle -> right_big_toe
+        (14, 19),  # right_ankle -> right_small_toe
+        (14, 20),  # right_ankle -> right_heel
     ]
 
     def _compute_mask_depth_and_height(self, mask, depth_map, focal_length, img_h, img_w):
@@ -226,7 +253,7 @@ class SAM3DBodyProcessMultiple:
         if mask is None or depth_map is None:
             return None
 
-        mask_h, mask_w = mask.shape
+        mask_h, mask_w = mask.shape[:2]
         depth_h, depth_w = depth_map.shape
 
         # Resize mask to depth map resolution if needed
@@ -308,7 +335,7 @@ class SAM3DBodyProcessMultiple:
 
             # Check mask
             if mask is not None:
-                mask_h, mask_w = mask.shape
+                mask_h, mask_w = mask.shape[:2]
                 u_mask = int(u * mask_w / img_w)
                 v_mask = int(v * mask_h / img_h)
                 if not (0 <= u_mask < mask_w and 0 <= v_mask < mask_h):
@@ -463,7 +490,11 @@ class SAM3DBodyProcessMultiple:
             return [], None, 0.0
 
         depth_h, depth_w = depth_map.shape
-        mask_h, mask_w = mask.shape if mask is not None else (depth_h, depth_w)
+        print(f"    [DEBUG] mask type: {type(mask)}, mask shape: {mask.shape if mask is not None else 'None'}")
+        if mask is not None:
+            mask_h, mask_w = mask.shape[:2]
+        else:
+            mask_h, mask_w = depth_h, depth_w
 
         # Debug: print array shapes
         print(f"    [DEBUG] _identify_visible_joints:")
@@ -495,7 +526,11 @@ class SAM3DBodyProcessMultiple:
                 my = int(py * mask_h / img_h)
                 mx = max(0, min(mask_w - 1, mx))
                 my = max(0, min(mask_h - 1, my))
-                if mask[my, mx] < 0.5:
+                # Handle both (H,W) and (H,W,C) masks
+                mask_val = mask[my, mx]
+                if hasattr(mask_val, '__len__'):
+                    mask_val = mask_val.mean()  # Average RGB channels
+                if mask_val < 0.5:
                     continue
 
             # Sample depth at joint location
@@ -627,7 +662,7 @@ class SAM3DBodyProcessMultiple:
         # Compute median depth for position adjustment
         depth_h, depth_w = depth_map.shape
         if mask is not None:
-            mask_h, mask_w = mask.shape
+            mask_h, mask_w = mask.shape[:2]
             if (mask_h, mask_w) != (depth_h, depth_w):
                 mask_resized = cv2.resize(mask.astype(np.float32), (depth_w, depth_h),
                                           interpolation=cv2.INTER_NEAREST)
@@ -688,12 +723,20 @@ class SAM3DBodyProcessMultiple:
 
         return prepared
 
+    def _get_first_available(self, output, *keys):
+        """Get the first non-None value from output for given keys."""
+        for key in keys:
+            val = output.get(key)
+            if val is not None:
+                return val
+        return None
+
     def _log_smplx_data_info(self, person_idx, output):
         """Log information about available SMPL-X parameters for a person."""
         info_parts = []
 
         # Check for expression parameters (face blendshapes)
-        expr_params = output.get("expr_params") or output.get("pred_expr") or output.get("expression")
+        expr_params = self._get_first_available(output, "expr_params", "pred_expr", "expression")
         if expr_params is not None:
             if isinstance(expr_params, np.ndarray):
                 info_parts.append(f"expression[{expr_params.shape[-1]} params]")
@@ -701,20 +744,20 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("expression[available]")
 
         # Check for jaw pose
-        jaw_pose = output.get("jaw_pose") or output.get("pred_jaw_pose")
+        jaw_pose = self._get_first_available(output, "jaw_pose", "pred_jaw_pose")
         if jaw_pose is not None:
             info_parts.append("jaw_pose")
 
         # Check for hand poses
-        left_hand = output.get("left_hand_pose") or output.get("pred_lhand_pose")
-        right_hand = output.get("right_hand_pose") or output.get("pred_rhand_pose")
+        left_hand = self._get_first_available(output, "left_hand_pose", "pred_lhand_pose")
+        right_hand = self._get_first_available(output, "right_hand_pose", "pred_rhand_pose")
         if left_hand is not None:
             info_parts.append("left_hand")
         if right_hand is not None:
             info_parts.append("right_hand")
 
         # Check for global rotations (useful for FBX export)
-        global_rots = output.get("pred_global_rots") or output.get("global_orient")
+        global_rots = self._get_first_available(output, "pred_global_rots", "global_orient")
         if global_rots is not None:
             if isinstance(global_rots, np.ndarray):
                 info_parts.append(f"global_rots[{global_rots.shape}]")
@@ -722,13 +765,13 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("global_rots")
 
         # Check for body pose parameters
-        body_pose = output.get("body_pose_params") or output.get("pred_body_pose")
+        body_pose = self._get_first_available(output, "body_pose_params", "pred_body_pose")
         if body_pose is not None:
             if isinstance(body_pose, np.ndarray):
                 info_parts.append(f"body_pose[{body_pose.shape[-1]} params]")
 
         # Check for shape parameters (betas)
-        shape_params = output.get("shape_params") or output.get("pred_betas") or output.get("betas")
+        shape_params = self._get_first_available(output, "shape_params", "pred_betas", "betas")
         if shape_params is not None:
             if isinstance(shape_params, np.ndarray):
                 info_parts.append(f"shape[{shape_params.shape[-1]} betas]")
@@ -1021,7 +1064,11 @@ class SAM3DBodyProcessMultiple:
             depth_confidence: Optional confidence map [B,H,W,C] from DA3
             adjust_position_from_depth: Adjust Z-position based on depth map
         """
-        from sam_3d_body import SAM3DBodyEstimator
+        from ..sam_3d_body import SAM3DBodyEstimator
+
+        # DEBUG: Print all input shapes at function entry
+        print(f"[DEBUG] FUNCTION ENTRY - image type={type(image)}, shape={image.shape if hasattr(image, 'shape') else 'N/A'}")
+        print(f"[DEBUG] FUNCTION ENTRY - masks type={type(masks)}, shape={masks.shape if hasattr(masks, 'shape') else 'N/A'}")
 
         # Process depth map input if provided
         depth_map_np = None
@@ -1078,12 +1125,21 @@ class SAM3DBodyProcessMultiple:
         # Convert ComfyUI image to numpy (BGR format)
         img_bgr = comfy_image_to_numpy(image)
 
-        # Convert masks to numpy - shape should be (N, H, W)
-        masks_np = comfy_mask_to_numpy(masks)
-        if masks_np.ndim == 2:
-            masks_np = masks_np[np.newaxis, ...]  # Add batch dim if single mask
+        # DEBUG: Log raw mask tensor BEFORE conversion
+        print(f"[DEBUG] RAW masks type: {type(masks)}")
+        print(f"[DEBUG] RAW masks shape: {masks.shape if hasattr(masks, 'shape') else 'N/A'}")
 
+        # Convert masks to numpy - always returns [N, H, W]
+        masks_np = comfy_mask_to_numpy(masks)
         num_people = masks_np.shape[0]
+
+        # DEBUG: Log mask info AFTER conversion
+        print(f"[DEBUG] masks_np shape: {masks_np.shape}")
+        print(f"[DEBUG] masks_np dtype: {masks_np.dtype}")
+        for i in range(masks_np.shape[0]):
+            mask_sum = masks_np[i].sum()
+            mask_nonzero = (masks_np[i] > 0.5).sum()
+            print(f"[DEBUG] Mask {i}: sum={mask_sum:.2f}, nonzero_pixels={mask_nonzero}")
 
         # Compute bounding boxes from each mask
         bboxes_list = []
@@ -1093,6 +1149,10 @@ class SAM3DBodyProcessMultiple:
             if bbox is not None:
                 bboxes_list.append(bbox)
                 valid_mask_indices.append(i)
+
+        # DEBUG: Log valid bboxes
+        print(f"[DEBUG] Valid bboxes: {len(bboxes_list)} out of {num_people} masks")
+        print(f"[DEBUG] Valid mask indices: {valid_mask_indices}")
 
         if len(bboxes_list) == 0:
             raise RuntimeError("No valid masks found (all masks are empty)")
@@ -1143,15 +1203,13 @@ class SAM3DBodyProcessMultiple:
                 intrinsics=intrinsics_np, depth_conf=depth_conf_np
             )
 
-        # Create combined mesh data - use model's world coordinates directly
+        # Create combined mesh data (internal structure for export)
+        faces_np = estimator.faces.cpu().numpy() if isinstance(estimator.faces, torch.Tensor) else estimator.faces
         multi_mesh_data = {
             "num_people": len(prepared_outputs),
             "people": prepared_outputs,
-            "faces": estimator.faces,
+            "faces": faces_np,
             "mhr_path": loaded.get("mhr_path", None),
-            "all_vertices": [p["pred_vertices"] for p in prepared_outputs],
-            "all_joints": [p.get("pred_joint_coords") for p in prepared_outputs],
-            "all_cam_t": [p.get("pred_cam_t") for p in prepared_outputs],
         }
 
         # Create preview visualization
@@ -1176,11 +1234,8 @@ class SAM3DBodyProcessMultiple:
         h, w = image.shape[:2]
         num_joints = len(keypoints_2d)
 
-        # Choose skeleton based on number of joints
-        if num_joints >= 22:
-            skeleton = self.SMPLX_SKELETON_22
-        else:
-            skeleton = self.SKELETON_BONES
+        # Use MHR70 skeleton for SAM3DBody output (70 keypoints)
+        skeleton = self.MHR70_SKELETON_BODY
 
         # Draw bones (lines between connected joints)
         for parent_idx, child_idx in skeleton:
@@ -1213,7 +1268,7 @@ class SAM3DBodyProcessMultiple:
     def _create_multi_person_preview(self, img_bgr, outputs, faces, masks_np=None):
         """Create a preview visualization showing all detected people."""
         try:
-            from sam_3d_body.visualization.renderer import Renderer
+            from ..sam_3d_body.visualization.renderer import Renderer
 
             h, w = img_bgr.shape[:2]
 
@@ -1311,6 +1366,208 @@ class SAM3DBodyProcessMultiple:
                     self._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
 
             return result
+
+    def _export_to_fbx(self, multi_mesh_data, output_filename, combine):
+        """Export multi-person mesh data to FBX file(s)."""
+        num_people = multi_mesh_data.get("num_people", 0)
+        people = multi_mesh_data.get("people", [])
+        faces = multi_mesh_data.get("faces")
+
+        if num_people == 0 or len(people) == 0:
+            raise RuntimeError("No mesh data to export")
+
+        # Setup output path
+        output_dir = folder_paths.get_output_directory()
+        if not output_filename.endswith('.fbx'):
+            output_filename = output_filename + '.fbx'
+        output_fbx_path = os.path.join(output_dir, output_filename)
+
+        # Find MHR model path for skinning weights
+        mhr_model_path = find_mhr_model_path(multi_mesh_data)
+
+        # Load skinning data once (same for all people)
+        vertex_weights = {}
+        joint_parents = None
+        if mhr_model_path and os.path.exists(mhr_model_path):
+            try:
+                mhr_model = torch.jit.load(mhr_model_path, map_location='cpu')
+                lbs = mhr_model.character_torch.linear_blend_skinning
+
+                vert_indices = lbs.vert_indices_flattened.cpu().numpy().astype(int)
+                skin_indices = lbs.skin_indices_flattened.cpu().numpy().astype(int)
+                skin_weights = lbs.skin_weights_flattened.cpu().numpy().astype(float)
+
+                for j in range(len(vert_indices)):
+                    vert_idx = int(vert_indices[j])
+                    bone_idx = int(skin_indices[j])
+                    weight = float(skin_weights[j])
+                    if vert_idx not in vertex_weights:
+                        vertex_weights[vert_idx] = []
+                    vertex_weights[vert_idx].append([bone_idx, weight])
+
+                # Get joint parents
+                joint_parents = mhr_model.character_torch.skeleton.joint_parents.cpu().numpy().astype(int).tolist()
+            except Exception:
+                pass
+
+        # Build combined data structure for all people
+        temp_files = []
+
+        try:
+            people_data_for_export = []
+
+            for i, person in enumerate(people):
+                vertices = person.get("pred_vertices")
+                joint_coords = person.get("pred_joint_coords")
+                cam_t = person.get("pred_cam_t")
+                global_rots = person.get("pred_global_rots")
+
+                if vertices is None:
+                    continue
+
+                # Convert to numpy
+                if isinstance(vertices, torch.Tensor):
+                    vertices = vertices.cpu().numpy()
+                if joint_coords is not None and isinstance(joint_coords, torch.Tensor):
+                    joint_coords = joint_coords.cpu().numpy()
+                if cam_t is not None and isinstance(cam_t, torch.Tensor):
+                    cam_t = cam_t.cpu().numpy()
+                if global_rots is not None and isinstance(global_rots, torch.Tensor):
+                    global_rots = global_rots.cpu().numpy()
+
+                # Apply world position offset from camera translation
+                if cam_t is not None:
+                    vertices = vertices + cam_t
+                    if joint_coords is not None:
+                        joint_coords = joint_coords + cam_t
+
+                # Write OBJ file for this person
+                temp_obj = tempfile.NamedTemporaryFile(suffix=f'_person{i}.obj', delete=False)
+                temp_files.append(temp_obj.name)
+                self._write_obj_file(temp_obj.name, vertices, faces)
+
+                # Prepare skeleton data
+                skeleton_info = {}
+                if joint_coords is not None:
+                    # Apply coordinate transform to joint positions (flip Y and Z)
+                    joint_coords_flipped = joint_coords.copy()
+                    joint_coords_flipped[:, 1] = -joint_coords_flipped[:, 1]
+                    joint_coords_flipped[:, 2] = -joint_coords_flipped[:, 2]
+
+                    skeleton_info = {
+                        "joint_positions": joint_coords_flipped.tolist(),
+                        "num_joints": len(joint_coords),
+                    }
+
+                    # Add skinning weights
+                    if vertex_weights:
+                        num_vertices = len(vertices)
+                        skinning_list = []
+                        for vert_idx in range(num_vertices):
+                            if vert_idx in vertex_weights:
+                                skinning_list.append(vertex_weights[vert_idx])
+                            else:
+                                skinning_list.append([])
+                        skeleton_info["skinning_weights"] = skinning_list
+
+                    # Add joint parents
+                    if joint_parents:
+                        skeleton_info["joint_parents"] = joint_parents
+
+                    # Add global joint rotations
+                    if global_rots is not None:
+                        skeleton_info["global_rotations"] = global_rots.tolist()
+
+                # Write skeleton JSON for this person
+                person_skeleton_json = None
+                if skeleton_info:
+                    person_skeleton_json = tempfile.NamedTemporaryFile(
+                        suffix=f'_person{i}_skeleton.json', delete=False, mode='w'
+                    )
+                    temp_files.append(person_skeleton_json.name)
+                    json.dump(skeleton_info, person_skeleton_json)
+                    person_skeleton_json.close()
+                    person_skeleton_json = person_skeleton_json.name
+
+                people_data_for_export.append({
+                    "obj_path": temp_obj.name,
+                    "skeleton_json_path": person_skeleton_json,
+                    "index": i,
+                })
+
+            if not people_data_for_export:
+                raise RuntimeError("No valid mesh data to export")
+
+            exporter = BpyFBXExporter()
+
+            if combine:
+                # Combined mode: export all people into a single FBX file
+                combined_json = tempfile.NamedTemporaryFile(
+                    suffix='_combined_export.json', delete=False, mode='w'
+                )
+                temp_files.append(combined_json.name)
+                json.dump(people_data_for_export, combined_json)
+                combined_json.close()
+
+                result = exporter.export(
+                    input_obj_path=None,
+                    output_fbx_path=output_fbx_path,
+                    combined_json_path=combined_json.name
+                )
+
+                if not result.get("success"):
+                    raise RuntimeError("Combined FBX export failed")
+
+                print(f"[SAM3DBody] Combined FBX created: {output_fbx_path}")
+                return output_fbx_path
+
+            else:
+                # Separate mode: export each person to individual FBX files
+                exported_files = []
+
+                for person_data in people_data_for_export:
+                    obj_path = person_data["obj_path"]
+                    idx = person_data["index"]
+                    person_skeleton_json = person_data.get("skeleton_json_path")
+
+                    if len(people_data_for_export) == 1:
+                        person_fbx_path = output_fbx_path
+                    else:
+                        person_fbx_path = output_fbx_path.replace('.fbx', f'_person{idx}.fbx')
+
+                    result = exporter.export(
+                        input_obj_path=obj_path,
+                        output_fbx_path=person_fbx_path,
+                        skeleton_json_path=person_skeleton_json
+                    )
+
+                    if result.get("success"):
+                        exported_files.append(person_fbx_path)
+                    else:
+                        raise RuntimeError(f"FBX export failed for person {idx}")
+
+                if not exported_files:
+                    raise RuntimeError("No FBX files were exported")
+
+                print(f"[SAM3DBody] Separate FBX files created: {len(exported_files)} files")
+                return exported_files[0]
+
+        finally:
+            # Clean up temp files
+            for temp_file in temp_files:
+                if os.path.exists(temp_file):
+                    try:
+                        os.unlink(temp_file)
+                    except Exception:
+                        pass
+
+    def _write_obj_file(self, filepath, vertices, faces):
+        """Write mesh to OBJ file format."""
+        with open(filepath, 'w') as f:
+            for v in vertices:
+                f.write(f"v {v[0]:.6f} {-v[1]:.6f} {-v[2]:.6f}\n")
+            for face in faces:
+                f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
 
 # Register node

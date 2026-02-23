@@ -1,84 +1,17 @@
 # Copyright (c) 2025 Andrea Pozzetti
 # SPDX-License-Identifier: MIT
-"""
-ComfyUI SAM 3D Body Custom Nodes
+"""ComfyUI SAM 3D Body - Robust Full-Body Human Mesh Recovery."""
 
-A ComfyUI wrapper for Meta's SAM 3D Body - Robust Full-Body Human Mesh Recovery.
-Provides nodes for loading models, processing images, and visualizing 3D mesh reconstructions.
-"""
+from comfy_env import wrap_nodes
+from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
 
-import sys
-import os
-from pathlib import Path
+wrap_nodes()
 
-# Module metadata
-__version__ = "1.0.0"
-__author__ = "SAM 3D Body Team - Meta AI"
-__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS', 'WEB_DIRECTORY']
+# Server routes for API endpoints
+try:
+    from .nodes import server
+except Exception:
+    pass
 
-# Add nodes directory to sys.path so vendored sam_3d_body package is importable
-_custom_node_dir = Path(__file__).parent
-_nodes_dir = _custom_node_dir / "nodes"
-if str(_nodes_dir) not in sys.path:
-    sys.path.insert(0, str(_nodes_dir))
-
-# Initialization tracking
-INIT_SUCCESS = False
-INIT_ERRORS = []
-
-# Pytest detection - only skip init during actual test runs
-force_init = os.environ.get('SAM3DB_FORCE_INIT') == '1'
-# Only PYTEST_CURRENT_TEST reliably indicates an actual test run
-# Checking sys.modules for pytest caused false positives in some ComfyUI setups
-is_pytest = 'PYTEST_CURRENT_TEST' in os.environ
-skip_init = is_pytest and not force_init
-
-if skip_init:
-    print("[SAM3DBody] Running in pytest mode, skipping node initialization")
-    print("[SAM3DBody] Set SAM3DB_FORCE_INIT=1 to force initialization in pytest")
-    NODE_CLASS_MAPPINGS = {}
-    NODE_DISPLAY_NAME_MAPPINGS = {}
-else:
-    # Step 1: Import node classes
-    print("[SAM3DBody] Initializing ComfyUI-SAM3DBody custom nodes...")
-    try:
-        from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
-        print(f"[SAM3DBody] [OK] Loaded {len(NODE_CLASS_MAPPINGS)} node(s)")
-
-        # List available nodes
-        for node_name in sorted(NODE_CLASS_MAPPINGS.keys()):
-            print(f"[SAM3DBody]   - {node_name}")
-
-        INIT_SUCCESS = True
-
-    except Exception as e:
-        print(f"[SAM3DBody] [ERROR] Failed to import nodes: {e}")
-        INIT_ERRORS.append(f"Node import failed: {e}")
-        import traceback
-        traceback.print_exc()
-        # Provide empty mappings so ComfyUI can still load
-        NODE_CLASS_MAPPINGS = {}
-        NODE_DISPLAY_NAME_MAPPINGS = {}
-
-    # Step 2: Import server routes
-    try:
-        from .nodes import server
-        print("[SAM3DBody] [OK] Server routes registered")
-    except Exception as e:
-        print(f"[SAM3DBody] [WARNING] Failed to register server routes: {e}")
-        import traceback
-        traceback.print_exc()
-
-    # Step 3: Additional initialization (if needed)
-    if INIT_SUCCESS:
-        print("[SAM3DBody] Initialization complete")
-    else:
-        print("[SAM3DBody] [WARNING] Initialization completed with errors")
-        print("[SAM3DBody] Check the error messages above for details")
-        print("[SAM3DBody] If you see import errors, verify the installation:")
-        print("[SAM3DBody]   1. Run install.py if not already done")
-        print("[SAM3DBody]   2. Check that sam_3d_body/ directory has all required files")
-        print("[SAM3DBody]   3. Verify requirements.txt dependencies are installed")
-
-# Web directory (if web UI components are added in future)
 WEB_DIRECTORY = "./web"
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]

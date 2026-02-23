@@ -27,6 +27,13 @@ web/
 venv/
 ENV/
 env/
+_env_*
+
+# comfy-env / pixi
+.pixi/
+pixi.lock
+pixi.toml
+.comfy-env-marker.toml
 
 # IDE
 .vscode/
@@ -72,3 +79,6 @@ htmlcov/
 .tox/
 *.cover
 .hypothesis/
+
+# comfy-test output
+.comfy-test-logs/
