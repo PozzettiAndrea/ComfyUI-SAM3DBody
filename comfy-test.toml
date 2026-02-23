@@ -3,7 +3,6 @@ levels = ["syntax", "install", "registration", "instantiation", "execution"]
 publish = true
 
 [test.workflows]
-timeout = 300
 cpu = ['rigged_mesh_manipulation']
 gpu = ['multiple_masks_depthcorrected','multiple_masks','rigging','workflow']
 
