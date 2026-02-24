@@ -5,29 +5,22 @@
   <style>
     * { box-sizing: border-box; }
     html, body { height: 100%; margin: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; background: #1a1a2e; color: #eee; display: flex; flex-direction: column; }
-    .tabs { display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap; }
-    .tab { padding: 10px 20px; background: #16213e; border: none; color: #888; cursor: pointer; border-radius: 8px 8px 0 0; font-size: 14px; }
-    .tab:hover { background: #1f3460; color: #fff; }
-    .tab.active { background: #0f3460; color: #fff; }
-    .tab.available { color: #4ade80; }
-    .tab.unavailable { color: #666; cursor: not-allowed; }
-    iframe { flex: 1; width: 100%; border: none; background: #1a1a2e; }
-    h1 { margin: 0 0 20px 0; font-size: 24px; }
-    .legend { display: flex; gap: 20px; margin-bottom: 15px; font-size: 12px; }
-    .legend span { display: flex; align-items: center; gap: 6px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot.available { background: #4ade80; }
-    .dot.unavailable { background: #666; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1923; color: #e6edf3; display: flex; flex-direction: column; }
+    .tab-bar { display: flex; gap: 4px; padding: 12px 20px; flex-wrap: wrap; align-items: center; background: #162033; border-bottom: 1px solid #243656; }
+    .tab-bar-label { font-size: 0.7rem; color: #4a6282; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-right: 8px; }
+    .tab { padding: 6px 14px; background: #1c2d44; border: 1px solid #243656; color: #8ba3c1; cursor: pointer; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.15s; }
+    .tab:hover { background: #243656; color: #e6edf3; border-color: #4a6282; }
+    .tab.active { background: #58a6ff; color: #fff; border-color: #58a6ff; }
+    .tab.available { color: #3fb950; }
+    .tab.unavailable { color: #4a6282; cursor: not-allowed; border-color: #1c2d44; background: #0f1923; }
+    iframe { flex: 1; width: 100%; border: none; background: #0f1923; }
   </style>
 </head>
 <body>
-  <h1>PozzettiAndrea/ComfyUI-SAM3DBody Test Results</h1>
-  <div class="legend">
-    <span><span class="dot available"></span> Results available</span>
-    <span><span class="dot unavailable"></span> No results yet</span>
+  <div class="tab-bar">
+    <span class="tab-bar-label">Platform</span>
+    <div id="tabs" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
   </div>
-  <div class="tabs" id="tabs"></div>
   <iframe id="frame" src="about:blank"></iframe>
   <script>
     const platforms = [{"id": "linux-cpu", "label": "Linux CPU"}, {"id": "linux-gpu", "label": "Linux GPU"}, {"id": "windows-cpu", "label": "Windows CPU"}, {"id": "windows-gpu", "label": "Windows GPU"}, {"id": "windows-portable-cpu", "label": "Win Portable CPU"}, {"id": "windows-portable-gpu", "label": "Win Portable GPU"}, {"id": "macos-cpu", "label": "macOS CPU"}];

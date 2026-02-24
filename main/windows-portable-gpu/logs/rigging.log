@@ -1,0 +1,75 @@
+Capturing execution frames: rigging.json
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-warning] Extension KJNodes.browserstatus is disabled.
+  [Console-warning] WARNING: Multiple instances of Three.js being imported.
+  [Console-warning] WARNING: Multiple instances of Three.js being imported.
+  [Console-error] Error loading extension /extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js Error: Extension named 'Comfy.DynamicWidgets' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:83:1634)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-DaLZjKA7.js:8:5819)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:86:51130)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:280:21199)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5
+  [Console-error] Error loading extension /extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js Error: Extension named 'comfy3d.pointcloud.vtk' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:83:1634)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-DaLZjKA7.js:8:5819)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:86:51130)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:280:21199)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui.js" is deprecated and will be removed in v1.34.
+  [Console-warning] [ComfyUI Notice] "extensions/core/widgetInputs.js" is an internal module, not part of the public API. Future updates may break this import.
+  [Console-warning] [ComfyUI Notice] "scripts/utils.js" is an internal module, not part of the public API. Future updates may break this import.
+  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/buttonGroup.js" is deprecated and will be removed in v1.34.
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/button.js" is deprecated and will be removed in v1.34.
+  [Console-warning] Parent element not found
+  [Console-error] Failed to reload model: TypeError: Cannot read properties of null (reading 'setCameraState')
+    at restoreConfigurationsFromNode (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:101:21264)
+    at async Proxy.initializeLoad3d (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:101:20110)
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.9s)
+  [capture-periodic] freeze=27ms shot=396ms unfreeze=20ms saved=True
+  [capture-loop] iter=50 t=9.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=21
+  [capture-loop] iter=100 t=17.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=24
+  Frame 3 saved (frame_002.jpg, t=18.1s)
+  [capture-periodic] freeze=17ms shot=354ms unfreeze=21ms saved=True
+  [capture-loop] iter=150 t=26.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=200 t=35.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=250 t=43.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=21
+  [capture-loop] iter=300 t=52.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=19
+  [capture-loop] iter=350 t=60.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=400 t=69.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=20
+  Frame 4 saved (frame_003.jpg, t=76.0s)
+  [capture-periodic] freeze=20ms shot=436ms unfreeze=23ms saved=True
+  Node executed (1 total), capturing...
+  Frame 5 saved (frame_004.jpg, t=76.9s)
+  [capture-node] freeze=25ms shot=465ms unfreeze=19ms saved=True
+  [capture-loop] iter=450 t=78.8s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=18
+  [capture-loop] iter=500 t=87.1s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=21
+  Node executed (2 total), capturing...
+  Frame 6 saved (frame_005.jpg, t=88.5s)
+  [capture-node] freeze=22ms shot=408ms unfreeze=0ms saved=True
+  Execution complete (t=88.5s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 done in 0.1s
+  [3d-wait] Phase 2: iframes=1
+  [3d-wait] iframe viewer_ready=False (matched 0 console logs)
+  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...
+  [3d-wait] iframe wait exception: Timeout 60000ms exceeded while waiting for event "console"
+=========================== logs ===========================
+waiting for event "console"
+============================================================
+  [3d-wait] Total 3D wait: 60.2s
+  Captured 6 unique frames over 149.28s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=17719194, canvas=1176x1836, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: rigging_executed.png
+  [timing] final_screenshot: 2.3s
+    Captured 7 video frames

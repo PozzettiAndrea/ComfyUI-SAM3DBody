@@ -9,117 +9,172 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e;
-            color: #eee;
+            background: #0f1923;
+            color: #e6edf3;
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         header {
-            background: #16213e;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #0f3460;
+            background: #162033;
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid #243656;
+        }
+
+        body.in-iframe header {
+            display: none;
+        }
+
+        body.in-iframe .container {
+            padding-top: 1.25rem;
+        }
+
+        body.in-iframe .summary-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
         h1 {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         h1 a {
-            color: #fff;
+            color: #e6edf3;
             text-decoration: none;
         }
 
-        h1 a:hover { color: #4da6ff; }
+        h1 a:hover { color: #58a6ff; }
 
-        .meta {
-            color: #888;
-            font-size: 0.9rem;
+        .meta-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .meta-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.2rem 0.6rem;
+            background: #1c2d44;
+            border: 1px solid #243656;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: #8ba3c1;
+        }
+
+        .meta-chip svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+            flex-shrink: 0;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         /* Summary Section */
         .summary {
-            background: #16213e;
+            background: #162033;
+            border: 1px solid #243656;
             border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .progress-bar {
-            background: #0f3460;
-            border-radius: 4px;
-            height: 24px;
-            overflow: hidden;
+        .progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
+        .progress-bar {
+            background: #1c2d44;
+            border-radius: 6px;
+            height: 10px;
+            overflow: hidden;
+            flex: 1;
+        }
+
         .progress-fill {
-            background: linear-gradient(90deg, #00c853, #69f0ae);
+            background: #3fb950;
             height: 100%;
+            border-radius: 6px;
             transition: width 0.3s ease;
         }
 
         .progress-fill.has-failures {
-            background: linear-gradient(90deg, #00c853 0%, #00c853 20.0%, #ff5252 20.0%, #ff5252 100%);
+            background: linear-gradient(90deg, #3fb950 0%, #3fb950 100.0%, #f85149 100.0%, #f85149 100%);
             width: 100% !important;
+            border-radius: 6px;
+        }
+
+        .progress-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8ba3c1;
+            white-space: nowrap;
+            min-width: 3.5rem;
+            text-align: right;
         }
 
         .stats {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .stat-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .stat-pass {
-            background: rgba(0, 200, 83, 0.2);
-            color: #69f0ae;
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
         }
 
         .stat-fail {
-            background: rgba(255, 82, 82, 0.2);
-            color: #ff8a80;
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
         }
 
         .stat-total {
-            color: #888;
-            font-size: 1rem;
+            color: #8ba3c1;
+            font-size: 0.85rem;
         }
 
         /* Failed Section */
         .failed-section {
-            background: rgba(255, 82, 82, 0.1);
-            border: 1px solid rgba(255, 82, 82, 0.3);
+            background: rgba(248, 81, 73, 0.08);
+            border: 1px solid rgba(248, 81, 73, 0.3);
             border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
         }
 
         .failed-section h2 {
-            color: #ff8a80;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: #f85149;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
         .failed-item {
-            background: #16213e;
+            background: #162033;
+            border: 1px solid #243656;
             border-radius: 6px;
             padding: 1rem;
             margin-bottom: 0.5rem;
@@ -138,28 +193,29 @@
 
         .failed-name {
             font-weight: 600;
-            color: #ff8a80;
+            color: #f85149;
         }
 
         .failed-duration {
-            color: #888;
-            font-size: 0.85rem;
+            color: #8ba3c1;
+            font-size: 0.8rem;
         }
 
         .failed-error {
-            background: #0f3460;
+            background: #0f1923;
+            border: 1px solid #243656;
             padding: 0.75rem;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #ffa;
+            border-radius: 6px;
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            font-size: 0.8rem;
+            color: #d29922;
             margin-bottom: 0.5rem;
         }
 
         .log-link {
-            color: #4da6ff;
+            color: #58a6ff;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .log-link:hover {
@@ -167,30 +223,112 @@
         }
 
         /* Workflow Grid */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
         .section-title {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #8ba3c1;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 0;
+            align-items: center;
+            border: 1px solid #243656;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            background: #1c2d44;
+            color: #8ba3c1;
+            border: none;
+            border-right: 1px solid #243656;
+            padding: 0.3rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+
+        .view-btn:last-child {
+            border-right: none;
+        }
+
+        .view-btn:hover {
+            background: #243656;
+            color: #e6edf3;
+        }
+
+        .view-btn.active {
+            background: #58a6ff;
+            color: #fff;
         }
 
         .workflow-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
         }
 
+        .workflow-grid.view-list {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .workflow-grid.view-list .workflow-card {
+            border-radius: 0;
+            border-bottom: 1px solid #243656;
+        }
+
+        .workflow-grid.view-list .workflow-card:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .workflow-grid.view-list .workflow-card:last-child {
+            border-radius: 0 0 8px 8px;
+            border-bottom: none;
+        }
+
+        .workflow-grid.view-list .workflow-card:only-child {
+            border-radius: 8px;
+        }
+
+        .workflow-grid.view-list .workflow-screenshot {
+            width: 100%;
+            height: auto;
+            aspect-ratio: auto;
+        }
+
+        .workflow-grid.view-list .workflow-info {
+            border-top: 1px solid #243656;
+            padding: 0.75rem 1rem;
+        }
+
+        .workflow-grid.view-list .workflow-name {
+            max-width: none;
+            font-size: 0.9rem;
+        }
+
         .workflow-card {
-            background: #16213e;
+            background: #162033;
+            border: 1px solid #243656;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.15s, border-color 0.15s;
         }
 
         .workflow-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
+            border-color: #4a6282;
         }
 
         .workflow-card.clickable {
@@ -198,15 +336,18 @@
         }
 
         .workflow-card.failed {
-            border: 2px solid #ff5252;
-            box-shadow: 0 0 8px rgba(255, 82, 82, 0.3);
+            border-color: #f85149;
+        }
+
+        .workflow-card.failed:hover {
+            border-color: #f85149;
         }
 
         .workflow-screenshot {
             width: 100%;
             aspect-ratio: 16/10;
             object-fit: cover;
-            background: #0f3460;
+            background: #0f1923;
             display: block;
         }
 
@@ -214,55 +355,59 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #444;
-            font-size: 0.85rem;
+            color: #4a6282;
+            font-size: 0.8rem;
         }
 
         .workflow-info {
             padding: 0.75rem 1rem;
-            border-top: 1px solid #0f3460;
+            border-top: 1px solid #243656;
         }
 
         .workflow-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 0.5rem;
             margin-bottom: 0.25rem;
         }
 
         .workflow-name {
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: #e6edf3;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 60%;
+            max-width: 65%;
         }
 
         .workflow-badge {
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.03em;
+            flex-shrink: 0;
         }
 
         .workflow-badge.pass {
-            background: rgba(0, 200, 83, 0.2);
-            color: #69f0ae;
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
         }
 
         .workflow-badge.fail {
-            background: rgba(255, 82, 82, 0.2);
-            color: #ff8a80;
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
         }
 
         .workflow-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
-            color: #666;
+            font-size: 0.75rem;
+            color: #4a6282;
         }
 
         /* Lightbox */
@@ -273,7 +418,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(1, 4, 9, 0.9);
             z-index: 1000;
             justify-content: center;
             align-items: flex-start;
@@ -297,7 +442,8 @@
             max-width: 100%;
             max-height: 60vh;
             object-fit: contain;
-            border-radius: 4px;
+            border-radius: 8px;
+            border: 1px solid #243656;
             align-self: center;
         }
 
@@ -306,9 +452,9 @@
             top: 1rem;
             right: 1.5rem;
             font-size: 2rem;
-            color: #fff;
+            color: #e6edf3;
             cursor: pointer;
-            opacity: 0.7;
+            opacity: 0.6;
             background: none;
             border: none;
             z-index: 1001;
@@ -322,22 +468,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            background: #16213e;
-            border-radius: 4px;
+            padding: 1rem 1.25rem;
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
             margin-top: 1rem;
         }
 
         .lightbox-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #fff;
+            color: #e6edf3;
         }
 
         .lightbox-hardware {
             display: block;
-            font-size: 0.8rem;
-            color: #888;
+            font-size: 0.75rem;
+            color: #8ba3c1;
             margin-top: 0.25rem;
         }
 
@@ -349,40 +496,41 @@
 
         .lightbox-badge {
             padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
         }
 
         .lightbox-badge.pass {
-            background: rgba(0, 200, 83, 0.2);
-            color: #69f0ae;
+            background: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
         }
 
         .lightbox-badge.fail {
-            background: rgba(255, 82, 82, 0.2);
-            color: #ff8a80;
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
         }
 
         .lightbox-duration {
-            color: #888;
-            font-size: 0.9rem;
+            color: #8ba3c1;
+            font-size: 0.85rem;
         }
 
         .lightbox-log {
-            background: #0f3460;
-            border-radius: 4px;
+            background: #0f1923;
+            border: 1px solid #243656;
+            border-radius: 8px;
             padding: 1rem;
             margin-top: 1rem;
             max-height: 300px;
             overflow-y: auto;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
             font-size: 0.8rem;
-            line-height: 1.4;
+            line-height: 1.5;
             white-space: pre-wrap;
             word-break: break-all;
-            color: #ccc;
+            color: #8ba3c1;
         }
 
         .lightbox-log::-webkit-scrollbar {
@@ -390,20 +538,25 @@
         }
 
         .lightbox-log::-webkit-scrollbar-track {
-            background: #16213e;
+            background: #162033;
             border-radius: 4px;
         }
 
         .lightbox-log::-webkit-scrollbar-thumb {
-            background: #4da6ff;
+            background: #243656;
             border-radius: 4px;
+        }
+
+        .lightbox-log::-webkit-scrollbar-thumb:hover {
+            background: #4a6282;
         }
 
         /* Resource Graph */
         .resource-graph {
             display: none;
             margin-top: 1rem;
-            background: #0f3460;
+            background: #162033;
+            border: 1px solid #243656;
             border-radius: 8px;
             padding: 1rem;
         }
@@ -413,14 +566,16 @@
         }
 
         .resource-graph-title {
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.8rem;
+            color: #8ba3c1;
+            font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
         .resource-graph canvas {
             width: 100%;
             height: 120px;
+            cursor: crosshair;
         }
 
         .resource-legend {
@@ -428,6 +583,7 @@
             gap: 1rem;
             margin-top: 0.5rem;
             font-size: 0.75rem;
+            color: #8ba3c1;
         }
 
         .resource-legend span {
@@ -442,15 +598,15 @@
             border-radius: 50%;
         }
 
-        .resource-legend .cpu { background: #4da6ff; }
-        .resource-legend .ram { background: #22c55e; }
-        .resource-legend .gpu { background: #f97316; }
+        .resource-legend .ram { background: #3fb950; }
+        .resource-legend .gpu { background: #d29922; }
 
         /* Video Player */
         .video-player {
             display: none;
             margin-top: 1rem;
-            background: #1a1a2e;
+            background: #162033;
+            border: 1px solid #243656;
             border-radius: 8px;
             padding: 1rem;
         }
@@ -467,22 +623,23 @@
         }
 
         .video-play-btn {
-            background: #4da6ff;
-            color: white;
+            background: #58a6ff;
+            color: #fff;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .video-play-btn:hover {
-            background: #3d8ee0;
+            background: #79b8ff;
         }
 
         .video-frame-counter {
-            color: #888;
-            font-size: 0.85rem;
+            color: #8ba3c1;
+            font-size: 0.8rem;
         }
 
         .video-slider-container {
@@ -492,19 +649,19 @@
         /* noUiSlider customization */
         #video-slider {
             height: 6px;
-            background: #333;
+            background: #1c2d44;
             border: none;
             box-shadow: none;
         }
 
         #video-slider .noUi-connect {
-            background: #4da6ff;
+            background: #58a6ff;
         }
 
         #video-slider .noUi-handle {
             width: 16px;
             height: 16px;
-            background: #4da6ff;
+            background: #58a6ff;
             border: none;
             border-radius: 50%;
             box-shadow: none;
@@ -520,11 +677,11 @@
 
         /* Pips (tick marks) */
         .noUi-pips {
-            color: #666;
+            color: #4a6282;
         }
 
         .noUi-marker {
-            background: #4da6ff;
+            background: #243656;
             width: 2px;
         }
 
@@ -536,16 +693,125 @@
             display: none;
         }
 
+        /* Models Section */
+        .models-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .models-total {
+            font-size: 0.8rem;
+            color: #8ba3c1;
+        }
+
+        .models-folder {
+            background: #162033;
+            border: 1px solid #243656;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .models-folder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+        }
+
+        .models-folder-header::-webkit-details-marker {
+            display: none;
+        }
+
+        .models-folder-header::before {
+            content: '\25B6';
+            font-size: 0.6rem;
+            color: #4a6282;
+            margin-right: 0.5rem;
+            transition: transform 0.15s;
+        }
+
+        .models-folder[open] > .models-folder-header::before {
+            transform: rotate(90deg);
+        }
+
+        .models-folder-name {
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .models-folder-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .models-folder-size {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8ba3c1;
+        }
+
+        .models-source-link {
+            font-size: 0.75rem;
+            color: #3fb950;
+            text-decoration: none;
+            padding: 0.15rem 0.5rem;
+            background: rgba(63, 185, 80, 0.1);
+            border: 1px solid rgba(63, 185, 80, 0.2);
+            border-radius: 2rem;
+        }
+
+        .models-source-link:hover {
+            background: rgba(63, 185, 80, 0.2);
+            text-decoration: none;
+        }
+
+        .models-file-list {
+            border-top: 1px solid #243656;
+            padding: 0.25rem 0;
+        }
+
+        .models-file {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.35rem 1rem 0.35rem 2rem;
+            font-size: 0.8rem;
+        }
+
+        .models-file:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .models-file-path {
+            font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+            color: #8ba3c1;
+            word-break: break-all;
+        }
+
+        .models-file-size {
+            color: #4a6282;
+            white-space: nowrap;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #666;
-            font-size: 0.85rem;
+            padding: 2.5rem;
+            color: #4a6282;
+            font-size: 0.8rem;
         }
 
         footer a {
-            color: #4da6ff;
+            color: #58a6ff;
             text-decoration: none;
         }
 
@@ -556,12 +822,32 @@
         /* Responsive */
         @media (max-width: 600px) {
             .workflow-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .workflow-grid.view-list .workflow-card {
                 grid-template-columns: 1fr;
+            }
+
+            .workflow-grid.view-list .workflow-screenshot {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/10;
             }
 
             .stats {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 1rem;
             }
         }
     </style>
@@ -571,54 +857,35 @@
 <body>
     <header>
         <h1><a href="https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody">ComfyUI-SAM3DBody</a> Test Results</h1>
-        <p class="meta">2026-02-11 21:44 UTC | macOS-15.7.3-arm64-arm-64bit-Mach-O | arm</p>
+        <div class="meta-chips">
+            <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm.5 4.5a.5.5 0 00-1 0v3.793L5.854 9.854a.5.5 0 10.708.708l1.853-1.854a.5.5 0 00.085-.094V4.5z"/></svg> 2026-02-24 07:16 UTC</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M2.5 4a.5.5 0 100 1 .5.5 0 000-1zM4 4.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zM2.5 7a.5.5 0 100 1 .5.5 0 000-1zM4 7.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 014 7.5zM2.5 10a.5.5 0 100 1 .5.5 0 000-1zM4 10.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5z"/></svg> macOS-15.7.4-arm64-arm-64bit-Mach-O</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M5 0a.5.5 0 01.5.5V2h1V.5a.5.5 0 011 0V2h1V.5a.5.5 0 011 0V2h.5A2.5 2.5 0 0112.5 4.5H14v1h-1.5v1H14v1h-1.5v1H14v1h-1.5A2.5 2.5 0 0110 12h-.5v1.5a.5.5 0 01-1 0V12h-1v1.5a.5.5 0 01-1 0V12H6v1.5a.5.5 0 01-1 0V12h-.5A2.5 2.5 0 012 9.5H.5v-1H2v-1H.5v-1H2v-1H.5v-1H2A2.5 2.5 0 014.5 2V.5A.5.5 0 015 0zm-.5 4A1.5 1.5 0 003 5.5v4A1.5 1.5 0 004.5 11h6a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0010.5 4h-6z"/></svg> arm</span>
+        </div>
     </header>
 
     <div class="container">
         <div class="summary">
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 20.0%"></div>
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100.0%"></div>
+                </div>
+                <span class="progress-label">100.0%</span>
             </div>
             <div class="stats">
-                <span class="stat-badge stat-pass">1 PASSED</span>
+                <span class="stat-badge stat-pass">1 passed</span>
                 
-                <span class="stat-total">1/5 tests (20.0%)</span>
+                <span class="stat-total">1/1 tests</span>
             </div>
         </div>
 
-        
-
-        <h2 class="section-title">All Workflows</h2>
-        <div class="workflow-grid">
+        <div class="section-header">
+            <h2 class="section-title">Workflows</h2>
+            <div class="view-controls">
+                <button class="view-btn active" onclick="setView('grid')">Grid</button>
+                <button class="view-btn" onclick="setView('list')">List</button>
+            </div>
+        </div>
+        <div class="workflow-grid" id="workflow-grid">
             
-            <div class="workflow-card clickable " onclick="openLightboxByName('multiple_masks')">
-                <div class="workflow-screenshot placeholder">No screenshot</div>
-                <div class="workflow-info">
-                    <div class="workflow-header">
-                        <span class="workflow-name" title="multiple_masks">multiple_masks</span>
-                        <span class="workflow-badge skipped">skipped</span>
-                    </div>
-                    <div class="workflow-meta">
-                        <span>0.00s</span>
-                    </div>
-                </div>
-            </div>
-        
-
-            <div class="workflow-card clickable " onclick="openLightboxByName('multiple_masks_depthcorrected')">
-                <div class="workflow-screenshot placeholder">No screenshot</div>
-                <div class="workflow-info">
-                    <div class="workflow-header">
-                        <span class="workflow-name" title="multiple_masks_depthcorrected">multiple_masks_depthcorrected</span>
-                        <span class="workflow-badge skipped">skipped</span>
-                    </div>
-                    <div class="workflow-meta">
-                        <span>0.00s</span>
-                    </div>
-                </div>
-            </div>
-        
-
             <div class="workflow-card clickable " onclick="openLightboxByName('rigged_mesh_manipulation')">
                 
                 <img class="workflow-screenshot" src="screenshots/rigged_mesh_manipulation_executed.png"
@@ -630,40 +897,16 @@
                         <span class="workflow-badge pass">pass</span>
                     </div>
                     <div class="workflow-meta">
-                        <span>72.60s</span>
-                    </div>
-                </div>
-            </div>
-        
-
-            <div class="workflow-card clickable " onclick="openLightboxByName('rigging')">
-                <div class="workflow-screenshot placeholder">No screenshot</div>
-                <div class="workflow-info">
-                    <div class="workflow-header">
-                        <span class="workflow-name" title="rigging">rigging</span>
-                        <span class="workflow-badge skipped">skipped</span>
-                    </div>
-                    <div class="workflow-meta">
-                        <span>0.00s</span>
-                    </div>
-                </div>
-            </div>
-        
-
-            <div class="workflow-card clickable " onclick="openLightboxByName('workflow')">
-                <div class="workflow-screenshot placeholder">No screenshot</div>
-                <div class="workflow-info">
-                    <div class="workflow-header">
-                        <span class="workflow-name" title="workflow">workflow</span>
-                        <span class="workflow-badge skipped">skipped</span>
-                    </div>
-                    <div class="workflow-meta">
-                        <span>0.00s</span>
+                        <span>93.50s</span>
                     </div>
                 </div>
             </div>
         
         </div>
+
+        
+
+        
     </div>
 
     <div class="lightbox" id="lightbox">
@@ -682,9 +925,8 @@
                 <div class="resource-graph-title">Resource Usage</div>
                 <canvas id="resource-canvas"></canvas>
                 <div class="resource-legend">
-                    <span><span class="dot cpu"></span> CPU (cores)</span>
                     <span><span class="dot ram"></span> RAM (GB)</span>
-                    <span id="gpu-legend" style="display:none"><span class="dot gpu"></span> GPU (%)</span>
+                    <span id="gpu-legend" style="display:none"><span class="dot gpu"></span> VRAM (GB)</span>
                 </div>
             </div>
             <div class="lightbox-info">
@@ -706,8 +948,16 @@
     </footer>
 
     <script>
-        const workflowData = {"multiple_masks": {"src": "", "title": "multiple_masks", "status": "skipped", "duration": "0.00", "log": "", "hardware": null}, "multiple_masks_depthcorrected": {"src": "", "title": "multiple_masks_depthcorrected", "status": "skipped", "duration": "0.00", "log": "", "hardware": null}, "rigged_mesh_manipulation": {"src": "screenshots/rigged_mesh_manipulation_executed.png", "title": "rigged_mesh_manipulation", "status": "pass", "duration": "72.60", "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Validating workflow...\n  Queuing workflow for execution...\n  Captured 25 frames over 41.41s\n  5 unique frames saved as WebP\n  Waiting 5000ms for previews to render...\n  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png\n    Captured 6 video frames", "hardware": {"os": "macOS-15.7.3-arm64-arm-64bit-Mach-O", "cpu": "arm"}}, "rigging": {"src": "", "title": "rigging", "status": "skipped", "duration": "0.00", "log": "", "hardware": null}, "workflow": {"src": "", "title": "workflow", "status": "skipped", "duration": "0.00", "log": "", "hardware": null}};
-        const videoData = {"rigged_mesh_manipulation": {"frames": [{"file": "frame_000.jpg", "time": 0.0, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"}, {"file": "frame_001.jpg", "time": 0.84, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_002.jpg", "time": 12.34, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_003.jpg", "time": 14.7, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_004.jpg", "time": 16.22, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x114000f3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_005.jpg", "time": 64.71553301811218, "log": "Final screenshot"}], "total_time": 41.41}};
+        function setView(mode) {
+            const grid = document.getElementById('workflow-grid');
+            grid.className = mode === 'list' ? 'workflow-grid view-list' : 'workflow-grid';
+            document.querySelectorAll('.view-controls .view-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === mode);
+            });
+        }
+
+        const workflowData = {"rigged_mesh_manipulation": {"src": "screenshots/rigged_mesh_manipulation_executed.png", "title": "rigged_mesh_manipulation", "status": "pass", "duration": "93.50", "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] Extension KJNodes.browserstatus is disabled.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-error] [vite:preloadError] Error: Extension named 'Comfy.DynamicWidgets' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5\n  [Console-error] [vite:preloadError] Error: Extension named 'comfy3d.pointcloud.vtk' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Notice] \"extensions/core/widgetInputs.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-warning] [ComfyUI Notice] \"scripts/utils.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/buttonGroup.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/button.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=4.3s)\n  [capture-periodic] freeze=118ms shot=361ms unfreeze=9ms saved=True\n  [capture-loop] iter=50 t=13.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6\n  Node executed (1 total), capturing...\n  Frame 3 saved (frame_002.jpg, t=17.4s)\n  [capture-node] freeze=178ms shot=378ms unfreeze=0ms saved=True\n  Execution complete (t=17.4s)\n  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...\n  [3d-wait] Phase 1 done in 0.0s\n  [3d-wait] Phase 2: iframes=1\n  [3d-wait] iframe viewer_ready=False (matched 0 console logs)\n  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...\n  [3d-wait] iframe wait exception: Timeout 60000ms exceeded while waiting for event \"console\"\n=========================== logs ===========================\nwaiting for event \"console\"\n============================================================\n  [3d-wait] Total 3D wait: 60.1s\n  Captured 3 unique frames over 78.13s\n  [debug] iframes: 1\n  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-SAM3DBody/viewer_fbx.html?v=17719172909, canvas=1176x1776, rafFrozen=True\n  [timing] trigger_3d_previews: 0.0s\n  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png\n  [timing] final_screenshot: 0.7s\n    Captured 4 video frames", "hardware": {"os": "macOS-15.7.4-arm64-arm-64bit-Mach-O", "cpu": "arm"}}};
+        const videoData = {"rigged_mesh_manipulation": {"frames": [{"file": "frame_000.jpg", "time": 0.0, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] Extension KJNodes.browserstatus is disabled.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-error] [vite:preloadError] Error: Extension named 'Comfy.DynamicWidgets' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5\n  [Console-error] [vite:preloadError] Error: Extension named 'comfy3d.pointcloud.vtk' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Notice] \"extensions/core/widgetInputs.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-warning] [ComfyUI Notice] \"scripts/utils.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/buttonGroup.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/button.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"}, {"file": "frame_001.jpg", "time": 4.33, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] Extension KJNodes.browserstatus is disabled.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-error] [vite:preloadError] Error: Extension named 'Comfy.DynamicWidgets' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5\n  [Console-error] [vite:preloadError] Error: Extension named 'comfy3d.pointcloud.vtk' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Notice] \"extensions/core/widgetInputs.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-warning] [ComfyUI Notice] \"scripts/utils.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/buttonGroup.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/button.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_002.jpg", "time": 17.43, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] Extension KJNodes.browserstatus is disabled.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-warning] WARNING: Multiple instances of Three.js being imported.\n  [Console-error] [vite:preloadError] Error: Extension named 'Comfy.DynamicWidgets' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5\n  [Console-error] [vite:preloadError] Error: Extension named 'comfy3d.pointcloud.vtk' already registered.\n    at Proxy.registerExtension (http://127.0.0.1:8188/assets/systemStatsStore-DM5NIESU.js:1:5552)\n    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-core-X6q-rGJs.js:2:90540)\n    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:3:162877)\n    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-45wv8NTN.js:177:20530)\n    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Notice] \"extensions/core/widgetInputs.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-warning] [ComfyUI Notice] \"scripts/utils.js\" is an internal module, not part of the public API. Future updates may break this import.\n  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)\n  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/buttonGroup.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [ComfyUI Deprecated] Importing from \"scripts/ui/components/button.js\" is deprecated and will be removed in v1.34.\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels\n  [Console-warning] [.WebGL-0x104001c9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=4.3s)\n  [capture-periodic] freeze=118ms shot=361ms unfreeze=9ms saved=True\n  [capture-loop] iter=50 t=13.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6"}, {"file": "frame_003.jpg", "time": 80.88062787055969, "log": "Final screenshot"}], "total_time": 78.13}};
 
         let currentWorkflow = null;
         let playInterval = null;
@@ -856,10 +1106,14 @@
             }
         }
 
+        let resourceGraphState = null;
+
         async function loadResourceGraph(workflowName) {
             const graphContainer = document.getElementById('resource-graph');
             const canvas = document.getElementById('resource-canvas');
             const gpuLegend = document.getElementById('gpu-legend');
+
+            resourceGraphState = null;
 
             try {
                 const csvResponse = await fetch('logs/' + workflowName + '_resources.csv');
@@ -872,12 +1126,11 @@
                 const text = await csvResponse.text();
                 const allLines = text.trim().split('\n');
 
-                let cpuCount = 8, totalRamGb = 32;
+                let totalRamGb = 32;
                 if (allLines[0].startsWith('#')) {
-                    const metaMatch = allLines[0].match(/cpu_count=(\d+),total_ram_gb=([\d.]+)/);
+                    const metaMatch = allLines[0].match(/total_ram_gb=([\d.]+)/);
                     if (metaMatch) {
-                        cpuCount = parseInt(metaMatch[1]);
-                        totalRamGb = parseFloat(metaMatch[2]);
+                        totalRamGb = parseFloat(metaMatch[1]);
                     }
                 }
 
@@ -889,17 +1142,16 @@
                 }
 
                 const data = dataLines.map(line => {
-                    const [t, cpu, ram, gpu] = line.split(',');
+                    const [t, ram, vram] = line.split(',');
                     return {
                         t: parseFloat(t),
-                        cpu: parseFloat(cpu),
                         ram: parseFloat(ram),
-                        gpu: gpu ? parseFloat(gpu) : null
+                        vram: vram ? parseFloat(vram) : null
                     };
                 });
 
-                const hasGpu = data.some(d => d.gpu !== null);
-                gpuLegend.style.display = hasGpu ? 'flex' : 'none';
+                const hasVram = data.some(d => d.vram !== null);
+                gpuLegend.style.display = hasVram ? 'flex' : 'none';
 
                 graphContainer.classList.add('active');
                 await new Promise(r => setTimeout(r, 10));
@@ -917,80 +1169,143 @@
                 const graphW = w - padding.left - padding.right;
                 const graphH = h - padding.top - padding.bottom;
 
-                ctx.clearRect(0, 0, w, h);
-
-                const maxCpu = Math.max(...data.map(d => d.cpu), cpuCount * 0.5);
-                const maxRam = Math.max(...data.map(d => d.ram), totalRamGb * 0.5);
+                const maxRam = Math.max(...data.map(d => d.ram), 0.5);
+                const maxVram = hasVram ? Math.max(...data.filter(d => d.vram !== null).map(d => d.vram), 0.5) : 1;
                 const maxTime = data[data.length - 1].t;
 
-                ctx.strokeStyle = '#1a3a5c';
-                ctx.lineWidth = 0.5;
-                for (let i = 1; i < 4; i++) {
-                    const y = padding.top + (graphH * i / 4);
-                    ctx.beginPath();
-                    ctx.moveTo(padding.left, y);
-                    ctx.lineTo(w - padding.right, y);
-                    ctx.stroke();
-                }
+                resourceGraphState = { data, padding, w, h, graphW, graphH, maxRam, maxVram, maxTime, hasVram, dpr };
 
-                ctx.strokeStyle = '#333';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(padding.left, padding.top);
-                ctx.lineTo(padding.left, h - padding.bottom);
-                ctx.lineTo(w - padding.right, h - padding.bottom);
-                ctx.lineTo(w - padding.right, padding.top);
-                ctx.stroke();
-
-                ctx.fillStyle = '#4da6ff';
-                ctx.font = '9px sans-serif';
-                ctx.textAlign = 'right';
-                const cpuMax = Math.ceil(maxCpu);
-                ctx.fillText(cpuMax + ' cores', padding.left - 3, padding.top + 4);
-                ctx.fillText('0', padding.left - 3, h - padding.bottom + 4);
-
-                ctx.fillStyle = '#22c55e';
-                ctx.textAlign = 'left';
-                const ramMax = Math.ceil(maxRam);
-                ctx.fillText(ramMax + ' GB', w - padding.right + 3, padding.top + 4);
-                ctx.fillText('0', w - padding.right + 3, h - padding.bottom + 4);
-
-                ctx.fillStyle = '#666';
-                ctx.textAlign = 'center';
-                ctx.fillText('0s', padding.left, h - padding.bottom + 12);
-                ctx.fillText(maxTime.toFixed(0) + 's', w - padding.right, h - padding.bottom + 12);
-
-                function drawLine(values, maxVal, color) {
-                    if (values.every(v => v === null || isNaN(v))) return;
-                    ctx.strokeStyle = color;
-                    ctx.lineWidth = 1.5;
-                    ctx.beginPath();
-                    let started = false;
-                    data.forEach((d, i) => {
-                        const val = values[i];
-                        if (val === null || isNaN(val)) return;
-                        const x = padding.left + (d.t / maxTime) * graphW;
-                        const y = padding.top + (1 - val / maxVal) * graphH;
-                        if (!started) {
-                            ctx.moveTo(x, y);
-                            started = true;
-                        } else {
-                            ctx.lineTo(x, y);
-                        }
-                    });
-                    ctx.stroke();
-                }
-
-                drawLine(data.map(d => d.cpu), cpuMax, '#4da6ff');
-                drawLine(data.map(d => d.ram), ramMax, '#22c55e');
-                if (hasGpu) {
-                    drawLine(data.map(d => d.gpu), 100, '#f97316');
-                }
+                drawResourceGraph();
             } catch (e) {
                 console.error('Resource graph error:', e);
                 graphContainer.classList.remove('active');
             }
         }
+
+        function drawResourceGraph(hoverX) {
+            if (!resourceGraphState) return;
+            const { data, padding, w, h, graphW, graphH, maxRam, maxVram, maxTime, hasVram, dpr } = resourceGraphState;
+
+            const canvas = document.getElementById('resource-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, w, h);
+
+            // Grid lines
+            ctx.strokeStyle = '#1c2d44';
+            ctx.lineWidth = 0.5;
+            for (let i = 1; i < 4; i++) {
+                const y = padding.top + (graphH * i / 4);
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(w - padding.right, y);
+                ctx.stroke();
+            }
+
+            // Axes
+            ctx.strokeStyle = '#243656';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, h - padding.bottom);
+            ctx.lineTo(w - padding.right, h - padding.bottom);
+            ctx.lineTo(w - padding.right, padding.top);
+            ctx.stroke();
+
+            // Left axis: RAM
+            ctx.fillStyle = '#3fb950';
+            ctx.font = '9px sans-serif';
+            ctx.textAlign = 'right';
+            const ramMax = Math.ceil(maxRam * 10) / 10;
+            ctx.fillText(ramMax.toFixed(1) + ' GB', padding.left - 3, padding.top + 4);
+            ctx.fillText('0', padding.left - 3, h - padding.bottom + 4);
+
+            // Right axis: VRAM (if present)
+            if (hasVram) {
+                ctx.fillStyle = '#d29922';
+                ctx.textAlign = 'left';
+                const vramMax = Math.ceil(maxVram * 10) / 10;
+                ctx.fillText(vramMax.toFixed(1) + ' GB', w - padding.right + 3, padding.top + 4);
+                ctx.fillText('0', w - padding.right + 3, h - padding.bottom + 4);
+            }
+
+            // Time labels
+            ctx.fillStyle = '#4a6282';
+            ctx.textAlign = 'center';
+            ctx.fillText('0s', padding.left, h - padding.bottom + 12);
+            ctx.fillText(maxTime.toFixed(0) + 's', w - padding.right, h - padding.bottom + 12);
+
+            function drawLine(values, maxVal, color) {
+                if (values.every(v => v === null || isNaN(v))) return;
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                let started = false;
+                data.forEach((d, i) => {
+                    const val = values[i];
+                    if (val === null || isNaN(val)) return;
+                    const x = padding.left + (d.t / maxTime) * graphW;
+                    const y = padding.top + (1 - val / maxVal) * graphH;
+                    if (!started) { ctx.moveTo(x, y); started = true; }
+                    else { ctx.lineTo(x, y); }
+                });
+                ctx.stroke();
+            }
+
+            drawLine(data.map(d => d.ram), ramMax, '#3fb950');
+            if (hasVram) {
+                drawLine(data.map(d => d.vram), Math.ceil(maxVram * 10) / 10, '#d29922');
+            }
+
+            // Hover crosshair
+            if (hoverX !== undefined && hoverX >= padding.left && hoverX <= w - padding.right) {
+                const timeAtCursor = ((hoverX - padding.left) / graphW) * maxTime;
+                let closest = data[0], closestDist = Infinity;
+                for (const d of data) {
+                    const dist = Math.abs(d.t - timeAtCursor);
+                    if (dist < closestDist) { closestDist = dist; closest = d; }
+                }
+
+                const snapX = padding.left + (closest.t / maxTime) * graphW;
+
+                // Vertical line
+                ctx.strokeStyle = 'rgba(230,237,243,0.2)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(snapX, padding.top);
+                ctx.lineTo(snapX, h - padding.bottom);
+                ctx.stroke();
+
+                // Readout
+                ctx.font = '10px sans-serif';
+                ctx.textAlign = 'left';
+                const readoutX = snapX + 6;
+                let readoutY = padding.top + 14;
+
+                ctx.fillStyle = '#8ba3c1';
+                ctx.fillText(closest.t.toFixed(1) + 's', readoutX, readoutY);
+                readoutY += 13;
+
+                ctx.fillStyle = '#3fb950';
+                ctx.fillText('RAM: ' + closest.ram.toFixed(2) + ' GB', readoutX, readoutY);
+                readoutY += 13;
+
+                if (hasVram && closest.vram !== null) {
+                    ctx.fillStyle = '#d29922';
+                    ctx.fillText('VRAM: ' + closest.vram.toFixed(2) + ' GB', readoutX, readoutY);
+                }
+            }
+        }
+
+        // Canvas hover handler
+        document.getElementById('resource-canvas').addEventListener('mousemove', function(e) {
+            if (!resourceGraphState) return;
+            const rect = this.getBoundingClientRect();
+            drawResourceGraph(e.clientX - rect.left);
+        });
+        document.getElementById('resource-canvas').addEventListener('mouseleave', function() {
+            drawResourceGraph();
+        });
 
         function closeLightbox() {
             if (playInterval) {
@@ -1021,6 +1336,19 @@
 
         window.addEventListener('hashchange', openFromHash);
         window.addEventListener('load', openFromHash);
+
+        // Detect iframe: hide header and move meta chips into summary
+        if (window !== window.top) {
+            document.body.classList.add('in-iframe');
+            const chips = document.querySelector('.meta-chips');
+            const summary = document.querySelector('.summary');
+            if (chips && summary) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'summary-meta';
+                while (chips.firstChild) wrapper.appendChild(chips.firstChild);
+                summary.insertBefore(wrapper, summary.firstChild);
+            }
+        }
     </script>
 </body>
 </html>

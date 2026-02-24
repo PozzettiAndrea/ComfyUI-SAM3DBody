@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-02-23T21:55:21.124620+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu": "Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz",
+    "gpu": "NVIDIA RTX A6000"
+  },
+  "commit_hash": "4ac899b0d52a9935fce21a699275509884a0b700",
+  "success": true,
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "pass",
+      "duration_seconds": 142.34,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz",
+        "gpu": "NVIDIA RTX A6000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 6.51,
+          "avg": 3.07
+        },
+        "total_ram_gb": 23.5,
+        "samples": 137,
+        "vram": {
+          "peak": 7.54,
+          "avg": 5.81
+        }
+      }
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "pass",
+      "duration_seconds": 211.49,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz",
+        "gpu": "NVIDIA RTX A6000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 11.04,
+          "avg": 5.97
+        },
+        "total_ram_gb": 23.5,
+        "samples": 197,
+        "vram": {
+          "peak": 11.95,
+          "avg": 9.72
+        }
+      }
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigging",
+      "status": "pass",
+      "duration_seconds": 110.23,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz",
+        "gpu": "NVIDIA RTX A6000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 9.52,
+          "avg": 6.34
+        },
+        "total_ram_gb": 23.5,
+        "samples": 106,
+        "vram": {
+          "peak": 11.05,
+          "avg": 6.69
+        }
+      }
+    },
+    {
+      "name": "workflow",
+      "status": "pass",
+      "duration_seconds": 95.52,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz",
+        "gpu": "NVIDIA RTX A6000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 9.45,
+          "avg": 6.02
+        },
+        "total_ram_gb": 23.5,
+        "samples": 92,
+        "vram": {
+          "peak": 6.97,
+          "avg": 6.31
+        }
+      }
+    }
+  ]
+}

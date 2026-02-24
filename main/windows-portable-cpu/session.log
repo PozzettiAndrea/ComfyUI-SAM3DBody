@@ -1,0 +1,100 @@
+[00:00] Crash dump logging enabled: D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-0718\windows_portable-cpu\crash_dump.log
+[00:00] 
+[00:00] [1/3] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 997 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/3] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x000001CE0FC70EC0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001CE0FC71010>
+[00:00] Testing node constructors...
+[00:05] All 15 node(s) instantiated successfully!
+[00:05] [INSTANTIATION] PASSED
+[00:05] 
+[00:05] [3/3] EXECUTION
+[00:05] ----------------------------------------
+[00:05] [DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x000001CE0FC70EC0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001CE0FC71010>
+[00:05] CPU runner - will execute 1 workflow(s)
+[00:05] Running 5 workflow(s) (all with videos)...
+[00:05] Starting headless browser...
+[00:06]   Downloading Mesa llvmpipe for Windows...
+[00:10]   Copied opengl32.dll to Chromium dir
+[00:10]   Copied libgallium_wgl.dll to Chromium dir
+[00:10]   Using Mesa llvmpipe (desktop GL) — multithreaded CPU rendering
+[00:11]   [1/5] SKIPPED (not in cpu list) multiple_masks.json
+[00:11]   [2/5] SKIPPED (not in cpu list) multiple_masks_depthcorrected.json
+[00:12] Capturing execution frames: rigged_mesh_manipulation.json
+[00:12]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:12]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:13]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:13]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:13]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:13]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:13]   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[00:14]   [Console-warning] Extension KJNodes.browserstatus is disabled.
+[00:14]   [Console-error] [vite:preloadError] Error: Extension named 'Comfy.DynamicWidgets' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/PanelTemplate-DCbkVgfF.js:1:7530)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-BAQ5VIVR.js:1:4647)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-CN1Hjai9.js:3:110199)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-CN1Hjai9.js:192:20543)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5
+[00:14]   [Console-error] [vite:preloadError] Error: Extension named 'comfy3d.pointcloud.vtk' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/PanelTemplate-DCbkVgfF.js:1:7530)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-BAQ5VIVR.js:1:4647)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/dialogService-CN1Hjai9.js:3:110199)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/dialogService-CN1Hjai9.js:192:20543)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5
+[00:14]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui.js" is deprecated and will be removed in v1.34.
+[00:14]   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[00:14]   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[00:14]   [Console-warning] [ComfyUI Notice] "extensions/core/widgetInputs.js" is an internal module, not part of the public API. Future updates may break this import.
+[00:14]   [Console-warning] [ComfyUI Notice] "scripts/utils.js" is an internal module, not part of the public API. Future updates may break this import.
+[00:14]   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[00:14]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/buttonGroup.js" is deprecated and will be removed in v1.34.
+[00:14]   [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/button.js" is deprecated and will be removed in v1.34.
+[00:18]   [Console-warning] [.WebGL-0x1f5c067a1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:18]   [Console-warning] [.WebGL-0x1f5c067a1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:18]   [Console-warning] [.WebGL-0x1f5c067a1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[00:18]   [Console-warning] [.WebGL-0x1f5c067a1c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[00:21]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[00:21]   Validating workflow...
+[00:21]   Queuing workflow for execution...
+[00:23]   Frame 2 saved (frame_001.jpg, t=2.5s)
+[00:23]   [capture-periodic] freeze=20ms shot=164ms unfreeze=5ms saved=True
+[00:28]   [capture-loop] iter=50 t=6.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7
+[00:32]   Node executed (1 total), capturing...
+[00:32]   Frame 3 saved (frame_002.jpg, t=11.2s)
+[00:32]   [capture-node] freeze=23ms shot=160ms unfreeze=0ms saved=True
+[00:32]   Execution complete (t=11.2s)
+[00:33]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[00:33]   [3d-wait] Phase 1 done in 0.0s
+[00:33]   [3d-wait] Phase 2: iframes=1
+[00:33]   [3d-wait] iframe viewer_ready=False (matched 0 console logs)
+[00:33]   [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...
+[01:33]   [3d-wait] iframe wait exception: Timeout 60000ms exceeded while waiting for event "console"
+=========================== logs ===========================
+waiting for event "console"
+============================================================
+[01:33]   [3d-wait] Total 3D wait: 60.1s
+[01:33]   Captured 3 unique frames over 72.34s
+[01:33]   [debug] iframes: 1
+[01:33]   [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=17719175, canvas=1176x1836, rafFrozen=True
+[01:33]   [timing] trigger_3d_previews: 0.0s
+[01:36]   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+[01:36]   [timing] final_screenshot: 0.8s
+[01:36]   [4/5] SKIPPED (not in cpu list) rigging.json
+[01:36]   [5/5] SKIPPED (not in cpu list) workflow.json
+[01:37] Results saved to D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-0718\windows_portable-cpu\results.json
+[01:37] Model report: 8 files, 18.7 MB -> D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-0718\windows_portable-cpu\models.json
+[01:37] Saved: D:\a\ComfyUI-SAM3DBody\ComfyUI-SAM3DBody\comfy-test-logs\SAM3DBody-0718\windows_portable-cpu\index.html
+[01:37] [EXECUTION] PASSED
+[01:37] 
+windows_portable: PASSED

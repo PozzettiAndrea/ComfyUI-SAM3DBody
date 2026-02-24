@@ -1,0 +1,94 @@
+Capturing execution frames: multiple_masks_depthcorrected.json
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-warning] Extension KJNodes.browserstatus is disabled.
+  [Console-warning] WARNING: Multiple instances of Three.js being imported.
+  [Console-warning] WARNING: Multiple instances of Three.js being imported.
+  [Console-error] Error loading extension /extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js Error: Extension named 'Comfy.DynamicWidgets' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:83:1634)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-DaLZjKA7.js:8:5819)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:86:51130)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:280:21199)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/dynamic_widgets.js:125:5
+  [Console-error] Error loading extension /extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js Error: Extension named 'comfy3d.pointcloud.vtk' already registered.
+    at Proxy.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:83:1634)
+    at Proxy.wrappedAction (http://127.0.0.1:8188/assets/vendor-vue-DaLZjKA7.js:8:5819)
+    at Object.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:86:51130)
+    at ComfyApp.registerExtension (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:280:21199)
+    at http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/js/pointcloud_preview_vtk.js:13:5
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui.js" is deprecated and will be removed in v1.34.
+  [Console-warning] [ComfyUI Notice] "extensions/core/widgetInputs.js" is an internal module, not part of the public API. Future updates may break this import.
+  [Console-warning] [ComfyUI Notice] "scripts/utils.js" is an internal module, not part of the public API. Future updates may break this import.
+  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/buttonGroup.js" is deprecated and will be removed in v1.34.
+  [Console-warning] [ComfyUI Deprecated] Importing from "scripts/ui/components/button.js" is deprecated and will be removed in v1.34.
+  [Console-warning] Parent element not found
+  [Console-error] Failed to reload model: TypeError: Cannot read properties of null (reading 'setCameraState')
+    at restoreConfigurationsFromNode (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:101:21264)
+    at async Proxy.initializeLoad3d (http://127.0.0.1:8188/assets/index-BFHZsBkN.js:101:20110)
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Node executed (1 total), capturing...
+  Frame 2 saved (frame_001.jpg, t=1.6s)
+  [capture-node] freeze=23ms shot=392ms unfreeze=20ms saved=True
+  Node executed (2 total), capturing...
+  Frame 3 saved (frame_002.jpg, t=2.5s)
+  [capture-node] freeze=20ms shot=380ms unfreeze=24ms saved=True
+  [capture-loop] iter=50 t=11.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=100 t=19.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=150 t=28.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=21
+  [capture-loop] iter=200 t=37.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=19
+  [capture-loop] iter=250 t=45.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=23
+  [capture-loop] iter=300 t=54.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=17
+  [capture-loop] iter=350 t=62.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=18
+  [capture-loop] iter=400 t=71.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=18
+  Frame 4 saved (frame_003.jpg, t=71.3s)
+  [capture-periodic] freeze=20ms shot=450ms unfreeze=23ms saved=True
+  [capture-loop] iter=450 t=80.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=24
+  [capture-loop] iter=500 t=88.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=25
+  Frame 5 saved (frame_004.jpg, t=92.1s)
+  [capture-periodic] freeze=18ms shot=405ms unfreeze=20ms saved=True
+  [capture-loop] iter=550 t=97.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=19
+  Node executed (4 total), capturing...
+  Frame 6 saved (frame_005.jpg, t=101.0s)
+  [capture-node] freeze=27ms shot=375ms unfreeze=21ms saved=True
+  [capture-loop] iter=600 t=107.2s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=26
+  [capture-loop] iter=650 t=115.4s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=14
+  Frame 7 saved (frame_006.jpg, t=116.1s)
+  [capture-periodic] freeze=17ms shot=384ms unfreeze=20ms saved=True
+  [capture-loop] iter=700 t=123.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=19
+  [capture-loop] iter=750 t=132.5s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=21
+  [capture-loop] iter=800 t=140.9s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=18
+  [capture-loop] iter=850 t=149.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=900 t=158.2s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=950 t=166.5s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=17
+  [capture-loop] iter=1000 t=175.3s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=19
+  [capture-loop] iter=1050 t=183.8s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=26
+  Frame 8 saved (frame_007.jpg, t=184.7s)
+  [capture-periodic] freeze=22ms shot=553ms unfreeze=22ms saved=True
+  [capture-loop] iter=1100 t=192.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=20
+  [capture-loop] iter=1150 t=201.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=18
+  [capture-loop] iter=1200 t=209.9s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=33
+  [capture-loop] iter=1250 t=218.1s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=21
+  [capture-loop] iter=1300 t=226.9s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=19
+  [capture-loop] iter=1350 t=235.4s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=16
+  [capture-loop] iter=1400 t=243.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=20
+  Node executed (6 total), capturing...
+  Frame 9 saved (frame_008.jpg, t=252.7s)
+  [capture-node] freeze=50ms shot=592ms unfreeze=0ms saved=True
+  Execution complete (t=252.7s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+  [3d-wait] Phase 2: iframes=0
+  [3d-wait] Total 3D wait: 60.1s
+  Captured 9 unique frames over 313.6s
+  [debug] iframes: 0
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: multiple_masks_depthcorrected_executed.png
+  [timing] final_screenshot: 2.3s
+    Captured 10 video frames
