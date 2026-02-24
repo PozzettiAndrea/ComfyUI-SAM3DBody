@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-01-26T01:11:28.243875+00:00",
+  "platform": "linux",
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "pass",
+      "duration_seconds": 121.8,
+      "error": null,
+      "hardware": {
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
+      }
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "pass",
+      "duration_seconds": 122.3,
+      "error": null,
+      "hardware": {
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
+      }
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "pass",
+      "duration_seconds": 37.04,
+      "error": null,
+      "hardware": {
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "pass",
+      "duration_seconds": 64.4,
+      "error": null,
+      "hardware": {
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
+      }
+    },
+    {
+      "name": "workflow",
+      "status": "pass",
+      "duration_seconds": 20.73,
+      "error": null,
+      "hardware": {
+        "os": "Linux-5.15.0-164-generic-x86_64-with-glibc2.35",
+        "cpu": "AMD EPYC 7B12 64-Core Processor",
+        "gpu": "NVIDIA L40S"
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-02-24T07:56:03.678509+00:00",
+  "platform": "windows_portable",
+  "hardware": {
+    "os": "Windows-11-10.0.26100-SP0",
+    "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+    "gpu": "NVIDIA RTX A4000"
+  },
+  "commit_hash": "4ac899b0d52a9935fce21a699275509884a0b700",
+  "success": true,
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "pass",
+      "duration_seconds": 248.75,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+        "gpu": "NVIDIA RTX A4000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 15.96,
+          "avg": 12.05
+        },
+        "total_ram_gb": 30.0,
+        "samples": 198,
+        "vram": {
+          "peak": 6.67,
+          "avg": 3.99
+        }
+      }
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "pass",
+      "duration_seconds": 355.72,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+        "gpu": "NVIDIA RTX A4000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 20.79,
+          "avg": 14.58
+        },
+        "total_ram_gb": 30.0,
+        "samples": 296,
+        "vram": {
+          "peak": 11.12,
+          "avg": 8.4
+        }
+      }
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigging",
+      "status": "pass",
+      "duration_seconds": 190.64,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+        "gpu": "NVIDIA RTX A4000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 17.38,
+          "avg": 14.41
+        },
+        "total_ram_gb": 30.0,
+        "samples": 159,
+        "vram": {
+          "peak": 10.16,
+          "avg": 5.4
+        }
+      }
+    },
+    {
+      "name": "workflow",
+      "status": "pass",
+      "duration_seconds": 163.72,
+      "error": null,
+      "hardware": {
+        "os": "Windows-11-10.0.26100-SP0",
+        "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+        "gpu": "NVIDIA RTX A4000"
+      },
+      "resources": {
+        "ram": {
+          "peak": 17.27,
+          "avg": 13.54
+        },
+        "total_ram_gb": 30.0,
+        "samples": 137,
+        "vram": {
+          "peak": 6.06,
+          "avg": 4.79
+        }
+      }
+    }
+  ]
+}

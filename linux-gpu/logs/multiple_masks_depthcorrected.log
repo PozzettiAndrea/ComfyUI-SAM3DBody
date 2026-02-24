@@ -1,0 +1,810 @@
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | executing multiple_masks_depthcorrected.json [2/5]
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: input=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/multiple_masks_depthcorrected.json
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: node_dir=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: resolved=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/multiple_masks_depthcorrected.json
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: exists=True
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | Capturing execution frames: multiple_masks_depthcorrected.json
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[06:20] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[06:21] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[06:21] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[06:21] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[06:21] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[06:21] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[06:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0601800C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[06:36] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WebGL: INVALID_OPERATION: loseContext: context already lost
+[06:36] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0601800C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Validating workflow...
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 16 nodes
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 16 nodes
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["16", 1]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["16", 1]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": true, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0], "depth_map": ["40", 0], "intrinsics": ["40", 9], "depth_confidence": ["40", 1
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": true, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0], "depth_map": ["40", 0], "intrinsics": ["40", 9], "depth_confidence": ["40", 1
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 24: LoadSAM3DBodyModel
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 24: LoadSAM3DBodyModel
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 29: Preview3D
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 29: Preview3D
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_file": ["18", 0], "image": "", "camera_info": ["60", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_file": ["18", 0], "image": "", "camera_info": ["60", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 35: MultibandLoad
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 35: MultibandLoad
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "fellowship.npz", "normalize": true}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "fellowship.npz", "normalize": true}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 36: MultibandToImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 36: MultibandToImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"channels": "0,1,2", "multiband": ["35", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"channels": "0,1,2", "multiband": ["35", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 39: MultibandToMasks
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 39: MultibandToMasks
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"channels": "0", "auto_detect_masks": true, "multiband": ["35", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"channels": "0", "auto_detect_masks": true, "multiband": ["35", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 40: DepthAnything_V3
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 40: DepthAnything_V3
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"normalization_mode": "Raw", "resize_method": "resize", "invert_depth": false, "keep_model_size": false, "da3_model": ["41", 0], "images": ["36", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"normalization_mode": "Raw", "resize_method": "resize", "invert_depth": false, "keep_model_size": false, "da3_model": ["41", 0], "images": ["36", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 41: DownloadAndLoadDepthAnythingV3Model
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 41: DownloadAndLoadDepthAnythingV3Model
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model": "da3_giant.safetensors", "precision": "auto"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model": "da3_giant.safetensors", "precision": "auto"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 43: MaskPreview
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 43: MaskPreview
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"mask": ["39", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"mask": ["39", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 44: PreviewImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 44: PreviewImage
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["36", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["36", 0]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 46: PreviewAny
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 46: PreviewAny
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"preview": "", "previewMode": null, "source": ["40", 9]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"preview": "", "previewMode": null, "source": ["40", 9]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 58: LoadImageDataSetFromFolder
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 58: LoadImageDataSetFromFolder
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"folder": "3d"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"folder": "3d"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 59: PreviewAny
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 59: PreviewAny
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"preview": "", "previewMode": null, "source": ["40", 8]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"preview": "", "previewMode": null, "source": ["40", 8]}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 60: CreateLoad3DCamera
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 60: CreateLoad3DCamera
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"pos_x": 3, "pos_y": 5.1, "pos_z": 8, "target_x": -0.5, "target_y": 2.1, "target_z": 0.4, "zoom": 3, "camera_type": "perspective"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"pos_x": 3, "pos_y": 5.1, "pos_z": 8, "target_x": -0.5, "target_y": 2.1, "target_z": 0.4, "zoom": 3, "camera_type": "perspective"}
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: cc6575d7-ac4b-4535-ae59-0c0a288a58a7
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: cc6575d7-ac4b-4535-ae59-0c0a288a58a7
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Queuing workflow for execution...
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[06:50] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Downloading model to: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/depthanything3/da3_giant.safetensors
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Downloading model to: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/depthanything3/da3_giant.safetensors
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/huggingface_hub/file_download.py:979: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/huggingface_hub/file_download.py:979: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] viewer_fbx.html is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] viewer_fbx.html is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] viewer-bundle.js is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] viewer-bundle.js is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   warnings.warn(
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   warnings.warn(
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] mesh_preview_fbx.js is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] mesh_preview_fbx.js is up to date
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Skipped 5 existing asset file(s)
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Skipped 5 existing asset file(s)
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Prestartup script completed
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Prestartup script completed
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] ComfyUI-Multiband loaded: 13 nodes registered
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] ComfyUI-Multiband loaded: 13 nodes registered
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] Initializing custom node...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] Initializing custom node...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] [OK] Node classes imported successfully
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] [OK] Node classes imported successfully
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] [OK] Loaded successfully!
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [ComfyUI-DepthAnythingV3] [OK] Loaded successfully!
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Isolated environment found
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Isolated environment found
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [comfy-env] Stubbed 76 imports: Cython, OpenGL, absl, appdirs, appnope, braceexpand, chump, click, cloudpickle, colorlog... and 66 more
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [comfy-env] Stubbed 76 imports: Cython, OpenGL, absl, appdirs, appnope, braceexpand, chump, click, cloudpickle, colorlog... and 66 more
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Initializing ComfyUI-SAM3DBody custom nodes...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Initializing ComfyUI-SAM3DBody custom nodes...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [sam3dbody] Auto-discovered v2 config: sam3dbody
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] [OK] Loaded 15 node(s)
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] [OK] Loaded 15 node(s)
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - LoadSAM3DBodyModel
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - LoadSAM3DBodyModel
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyAddMeshToSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyAddMeshToSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportFBX
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportFBX
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportMultipleFBX
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyExportMultipleFBX
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyGetVertices
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyGetVertices
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyLoadMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyLoadMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyLoadSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyLoadSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyPreviewRiggedMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyPreviewRiggedMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcess
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcess
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcessAdvanced
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcessAdvanced
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcessMultiple
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyProcessMultiple
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodySaveSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodySaveSkeleton
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodySelectMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodySelectMesh
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyVisualize
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   - SAM3DBodyVisualize
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Registered server routes:
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Registered server routes:
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   POST /sam3d/save_glb
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   POST /sam3d/save_glb
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   POST /sam3d/export_posed_fbx
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody]   POST /sam3d/export_posed_fbx
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] [OK] Server routes registered
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] [OK] Server routes registered
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Initialization complete
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Initialization complete
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Model not found locally. Downloading from HuggingFace...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Model not found locally. Downloading from HuggingFace...
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Download complete.
+[06:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [SAM3DBody] Download complete.
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files: 100%|██████████| 1/1 [00:13<00:00, 13.35s/it]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files: 100%|██████████| 1/1 [00:13<00:00, 13.35s/it]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files: 100%|██████████| 1/1 [00:13<00:00, 13.35s/it]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Fetching 1 files: 100%|██████████| 1/1 [00:13<00:00, 13.35s/it]
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Loading model from: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/depthanything3/da3_giant.safetensors
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Loading model from: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/models/depthanything3/da3_giant.safetensors
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: using SwiGLU layer as FFN
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: using SwiGLU layer as FFN
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Built GS head and adapter for Giant model (Gaussian splatting enabled)
+[07:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Built GS head and adapter for Giant model (Gaussian splatting enabled)
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Input image size: 497x1200
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Input image size: 497x1200
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model input size (after resize): 504x1204
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model input size (after resize): 504x1204
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model supports 3D Gaussians - will output raw Gaussians
+[07:06] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model supports 3D Gaussians - will output raw Gaussians
+[07:09] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model output intrinsics (batch 0): shape=torch.Size([1, 1, 3, 3]), values=
+[07:09] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Model output intrinsics (batch 0): shape=torch.Size([1, 1, 3, 3]), values=
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] tensor([[2.9869e+03, 0.0000e+00, 6.0200e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] tensor([[2.9869e+03, 0.0000e+00, 6.0200e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 2.6462e+03, 2.5200e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 2.6462e+03, 2.5200e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 0.0000e+00, 1.0000e+00]])
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 0.0000e+00, 1.0000e+00]])
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Resizing from 504x1204 to 496x1200, scale: h=0.9841, w=0.9967
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Resizing from 504x1204 to 496x1200, scale: h=0.9841, w=0.9967
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Scaled intrinsics (batch 0):
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Scaled intrinsics (batch 0):
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] tensor([[2.9770e+03, 0.0000e+00, 6.0000e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] tensor([[2.9770e+03, 0.0000e+00, 6.0000e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 2.6042e+03, 2.4800e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 2.6042e+03, 2.4800e+02],
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 0.0000e+00, 1.0000e+00]])
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         [0.0000e+00, 0.0000e+00, 1.0000e+00]])
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Normalized coordinates: center offset=[-0.00743412  0.01509491  2.532924  ], scale_factor=267.8195
+[07:12] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Normalized coordinates: center offset=[-0.00743412  0.01509491  2.532924  ], scale_factor=267.8195
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Saved raw Gaussians (606816 points) to: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/gaussians_raw_0000.ply
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] [DepthAnythingV3] INFO: Saved raw Gaussians (606816 points) to: /tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/gaussians_raw_0000.ply
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process_multiple
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method process_multiple
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_3f6c6174_in.pt...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_3f6c6174_in.pt...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'masks', 'inference_type', 'depth_map', 'intrinsics', 'depth_confidence', 'adjust_position_from_depth']
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['model', 'image', 'masks', 'inference_type', 'depth_map', 'intrinsics', 'depth_confidence', 'adjust_position_from_depth']
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process_multiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module process_multiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcessMultiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class SAM3DBodyProcessMultiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process_multiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling process_multiple...
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Depth map provided: shape=(496, 1200), range=[0.85, 2.59]
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Depth map provided: shape=(496, 1200), range=[0.85, 2.59]
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Position adjustment from depth enabled
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Position adjustment from depth enabled
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Intrinsics provided: fx=2977.0, fy=2604.2, cx=600.0, cy=248.0
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Intrinsics provided: fx=2977.0, fy=2604.2, cx=600.0, cy=248.0
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Depth confidence provided: shape=(496, 1200), range=[0.00, 1.00]
+[07:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Depth confidence provided: shape=(496, 1200), range=[0.00, 1.00]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10 SMPL-X data: expression[72 params], global_rots[(127, 3, 3)], body_pose[133 params], shape[45 betas]
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Using DA3 intrinsics: fx=2977.0, fy=2604.2
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Using DA3 intrinsics: fx=2977.0, fy=2604.2
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Image: 1200x497, Depth map: 1200x496
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Image: 1200x497, Depth map: 1200x496
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.265m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.265m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 39 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 39 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1009, max=0.1133, mean=0.1045
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1009, max=0.1133, mean=0.1045
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1031
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1031
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 39/39, confidence=0.069
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 39/39, confidence=0.069
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1031, confidence=0.069
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1031, confidence=0.069
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=39, occluded_joints=31
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=39, occluded_joints=31
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.1322896480560303
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.1322896480560303
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.103, visible_joints=39, occluded_joints=31, confidence=0.07
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.103, visible_joints=39, occluded_joints=31, confidence=0.07
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.443m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.443m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 15 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 15 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0992, max=0.1084, mean=0.1039
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0992, max=0.1084, mean=0.1039
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1031
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1031
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 15/15, confidence=0.626
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 15/15, confidence=0.626
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1031, confidence=0.626
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1031, confidence=0.626
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=15, occluded_joints=55
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=15, occluded_joints=55
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8624514937400818
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8624514937400818
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.103, visible_joints=15, occluded_joints=55, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.103, visible_joints=15, occluded_joints=55, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.643m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.643m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 13 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 13 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1490, max=0.1603, mean=0.1540
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1490, max=0.1603, mean=0.1540
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1547
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1547
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 13/13, confidence=0.545
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 13/13, confidence=0.545
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1547, confidence=0.545
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1547, confidence=0.545
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=13, occluded_joints=57
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=13, occluded_joints=57
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9505064487457275
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9505064487457275
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.155, visible_joints=13, occluded_joints=57, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.155, visible_joints=13, occluded_joints=57, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.494m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.494m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 14 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 14 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0945, max=0.1015, mean=0.0972
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0945, max=0.1015, mean=0.0972
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0966
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0966
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 14/14, confidence=0.000
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 14/14, confidence=0.000
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0966, confidence=0.000
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0966, confidence=0.000
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=14, occluded_joints=56
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=14, occluded_joints=56
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.3449103832244873
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.3449103832244873
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.097, visible_joints=14, occluded_joints=56, confidence=0.00
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.097, visible_joints=14, occluded_joints=56, confidence=0.00
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.649m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.649m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 13 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 13 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1395, max=0.2134, mean=0.1505
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1395, max=0.2134, mean=0.1505
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1431
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1431
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]           Joint 2: ratio=0.2134, rel_error=0.492 -> OUTLIER
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]           Joint 2: ratio=0.2134, rel_error=0.492 -> OUTLIER
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 12/13, confidence=0.544
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 12/13, confidence=0.544
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1431, confidence=0.544
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1431, confidence=0.544
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=12, occluded_joints=58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=12, occluded_joints=58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9796111583709717
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9796111583709717
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.143, visible_joints=12, occluded_joints=58, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.143, visible_joints=12, occluded_joints=58, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.606m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.606m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 32 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 32 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1213, max=0.1404, mean=0.1275
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1213, max=0.1404, mean=0.1275
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1251
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1251
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 32/32, confidence=0.488
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 32/32, confidence=0.488
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1251, confidence=0.488
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1251, confidence=0.488
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=32, occluded_joints=38
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=32, occluded_joints=38
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.008958339691162
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=1.008958339691162
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.125, visible_joints=32, occluded_joints=38, confidence=0.49
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.125, visible_joints=32, occluded_joints=38, confidence=0.49
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.485m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.485m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 9 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 9 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0921, max=0.0970, mean=0.0946
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0921, max=0.0970, mean=0.0946
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0942
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0942
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 9/9, confidence=0.701
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 9/9, confidence=0.701
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0942, confidence=0.701
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0942, confidence=0.701
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=9, occluded_joints=61
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=9, occluded_joints=61
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9265626072883606
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9265626072883606
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.094, visible_joints=9, occluded_joints=61, confidence=0.70
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.094, visible_joints=9, occluded_joints=61, confidence=0.70
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.594m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.594m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 31 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 31 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0962, max=0.1042, mean=0.0999
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0962, max=0.1042, mean=0.0999
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0997
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0997
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 31/31, confidence=0.674
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 31/31, confidence=0.674
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0997, confidence=0.674
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0997, confidence=0.674
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=31, occluded_joints=39
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=31, occluded_joints=39
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8953904509544373
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8953904509544373
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.100, visible_joints=31, occluded_joints=39, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.100, visible_joints=31, occluded_joints=39, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.661m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.661m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 60 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 60 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1334, max=0.2002, mean=0.1412
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1334, max=0.2002, mean=0.1412
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1416
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1416
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]           Joint 67: ratio=0.2002, rel_error=0.414 -> OUTLIER
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]           Joint 67: ratio=0.2002, rel_error=0.414 -> OUTLIER
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 59/60, confidence=0.577
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 59/60, confidence=0.577
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1416, confidence=0.577
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1416, confidence=0.577
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=59, occluded_joints=11
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=59, occluded_joints=11
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8718128800392151
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8718128800392151
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.142, visible_joints=59, occluded_joints=11, confidence=0.58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.142, visible_joints=59, occluded_joints=11, confidence=0.58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.499m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.499m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 34 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 34 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1042, max=0.1123, mean=0.1091
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.1042, max=0.1123, mean=0.1091
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1100
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.1100
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 34/34, confidence=0.628
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 34/34, confidence=0.628
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1100, confidence=0.628
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.1100, confidence=0.628
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=34, occluded_joints=36
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=34, occluded_joints=36
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9202026128768921
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.9202026128768921
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.110, visible_joints=34, occluded_joints=36, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.110, visible_joints=34, occluded_joints=36, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.508m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     mesh_height=1.508m
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _identify_visible_joints:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_3d shape: (127, 3)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         smpl_joints_2d shape: (70, 2)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         depth_map shape: (496, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         mask shape: (497, 1200)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         img_h=497, img_w=1200
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Processing 70 joints (3D has 127, 2D has 70)
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 16 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Sampled 16 joints with valid depth
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0942, max=0.1016, mean=0.0982
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Ratios: min=0.0942, max=0.1016, mean=0.0982
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0982
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Median ratio (scale factor): 0.0982
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 16/16, confidence=0.666
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         Inliers: 16/16, confidence=0.666
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]       [DEBUG] _compute_scale_with_intrinsics result:
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0982, confidence=0.666
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         scale_factor=0.0982, confidence=0.666
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=16, occluded_joints=54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         visible_joints=16, occluded_joints=54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8790579438209534
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]         median_depth=0.8790579438209534
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.098, visible_joints=16, occluded_joints=54, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     [intrinsics method] scale=0.098, visible_joints=16, occluded_joints=54, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Median scale: 0.103
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Median scale: 0.103
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0 final: scale=1.000, height=1.26m, tz=1.13, method=intrinsics_visibility, confidence=0.07
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 0 final: scale=1.000, height=1.26m, tz=1.13, method=intrinsics_visibility, confidence=0.07
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1 final: scale=1.000, height=1.44m, tz=0.86, method=intrinsics_visibility, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 1 final: scale=1.000, height=1.44m, tz=0.86, method=intrinsics_visibility, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2 final: scale=1.500, height=2.46m, tz=0.95, method=intrinsics_visibility, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 2 final: scale=1.500, height=2.46m, tz=0.95, method=intrinsics_visibility, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3 final: scale=0.937, height=1.40m, tz=1.34, method=intrinsics_visibility, confidence=0.00
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 3 final: scale=0.937, height=1.40m, tz=1.34, method=intrinsics_visibility, confidence=0.00
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4 final: scale=1.388, height=2.29m, tz=0.98, method=intrinsics_visibility, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 4 final: scale=1.388, height=2.29m, tz=0.98, method=intrinsics_visibility, confidence=0.54
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5 final: scale=1.214, height=1.95m, tz=1.01, method=intrinsics_visibility, confidence=0.49
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 5 final: scale=1.214, height=1.95m, tz=1.01, method=intrinsics_visibility, confidence=0.49
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6 final: scale=0.914, height=1.36m, tz=0.93, method=intrinsics_visibility, confidence=0.70
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 6 final: scale=0.914, height=1.36m, tz=0.93, method=intrinsics_visibility, confidence=0.70
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7 final: scale=0.966, height=1.54m, tz=0.90, method=intrinsics_visibility, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 7 final: scale=0.966, height=1.54m, tz=0.90, method=intrinsics_visibility, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8 final: scale=1.373, height=2.28m, tz=0.87, method=intrinsics_visibility, confidence=0.58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 8 final: scale=1.373, height=2.28m, tz=0.87, method=intrinsics_visibility, confidence=0.58
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9 final: scale=1.067, height=1.60m, tz=0.92, method=intrinsics_visibility, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 9 final: scale=1.067, height=1.60m, tz=0.92, method=intrinsics_visibility, confidence=0.63
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10 final: scale=0.953, height=1.44m, tz=0.88, method=intrinsics_visibility, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [SAM3DBody] Person 10 final: scale=0.953, height=1.44m, tz=0.88, method=intrinsics_visibility, confidence=0.67
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[07:19] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Request: call_method export
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_8dddf901_in.pt...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Loading inputs from /dev/shm/comfyui_pvenv_8dddf901_in.pt...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Deserializing isolated objects...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Resolving object references...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Inputs ready: ['input_obj_path', 'output_fbx_path', 'skeleton_json_path', 'combined_json_path']
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Importing module export...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Module imported
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Getting class BpyFBXExporter...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Creating instance...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Calling export...
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 0: Loaded global_rotations shape (127, 3, 3)
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 0: Loaded global_rotations shape (127, 3, 3)
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmplpg4znbb_person0.obj' took 22.70 ms
+[07:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmplpg4znbb_person0.obj' took 22.70 ms
+[07:26] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 1: Loaded global_rotations shape (127, 3, 3)
+[07:26] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 1: Loaded global_rotations shape (127, 3, 3)
+[07:26] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmprj_8xmpi_person1.obj' took 24.04 ms
+[07:26] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmprj_8xmpi_person1.obj' took 24.04 ms
+[07:27] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 2: Loaded global_rotations shape (127, 3, 3)
+[07:27] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 2: Loaded global_rotations shape (127, 3, 3)
+[07:27] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpu6qin_8s_person2.obj' took 38.19 ms
+[07:27] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpu6qin_8s_person2.obj' took 38.19 ms
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 3: Loaded global_rotations shape (127, 3, 3)
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 3: Loaded global_rotations shape (127, 3, 3)
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpjnjux039_person3.obj' took 25.49 ms
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpjnjux039_person3.obj' took 25.49 ms
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 4: Loaded global_rotations shape (127, 3, 3)
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 4: Loaded global_rotations shape (127, 3, 3)
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpg7zgylzr_person4.obj' took 24.65 ms
+[07:28] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpg7zgylzr_person4.obj' took 24.65 ms
+[07:29] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 5: Loaded global_rotations shape (127, 3, 3)
+[07:29] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 5: Loaded global_rotations shape (127, 3, 3)
+[07:29] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpux4gf70q_person5.obj' took 26.78 ms
+[07:29] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpux4gf70q_person5.obj' took 26.78 ms
+[07:30] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 6: Loaded global_rotations shape (127, 3, 3)
+[07:30] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 6: Loaded global_rotations shape (127, 3, 3)
+[07:30] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmptuihhro6_person6.obj' took 23.37 ms
+[07:30] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmptuihhro6_person6.obj' took 23.37 ms
+[07:31] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 7: Loaded global_rotations shape (127, 3, 3)
+[07:31] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 7: Loaded global_rotations shape (127, 3, 3)
+[07:31] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpxxijr5ou_person7.obj' took 26.07 ms
+[07:31] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpxxijr5ou_person7.obj' took 26.07 ms
+[07:32] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 8: Loaded global_rotations shape (127, 3, 3)
+[07:32] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 8: Loaded global_rotations shape (127, 3, 3)
+[07:32] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpz9v9tqra_person8.obj' took 25.88 ms
+[07:32] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpz9v9tqra_person8.obj' took 25.88 ms
+[07:33] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 9: Loaded global_rotations shape (127, 3, 3)
+[07:33] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 9: Loaded global_rotations shape (127, 3, 3)
+[07:33] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpz9wududk_person9.obj' took 22.31 ms
+[07:33] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpz9wududk_person9.obj' took 22.31 ms
+[07:34] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 10: Loaded global_rotations shape (127, 3, 3)
+[07:34] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [BpyFBXExporter] Person 10: Loaded global_rotations shape (127, 3, 3)
+[07:34] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpwhrdtol6_person10.obj' took 23.16 ms
+[07:34] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   OBJ import of 'tmpwhrdtol6_person10.obj' took 23.16 ms
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_multi_rigged.fbx'
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   FBX export starting... '/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/.comfy-test-env/ComfyUI/output/sam3d_multi_rigged.fbx'
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_0'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_0'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_1'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_1'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_2'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_2'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_3'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_3'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_4'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_4'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_5'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_5'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_6'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_6'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_7'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_7'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_8'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_8'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_9'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_9'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_10'], 'POSE')
+[07:35] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   (bpy.data.armatures['SAM3D_Skeleton_10'], 'POSE')
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 5.2529 sec.
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   export finished in 5.2529 sec.
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   [worker] Method returned
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 47.55 seconds
+[07:38] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 47.55 seconds
+[08:02] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Captured 208 frames over 71.98s
+[08:15] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   14 unique frames saved as WebP
+[08:15] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Waiting 5000ms for previews to render...
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Saved high-quality screenshot: multiple_masks_depthcorrected_executed.png
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     Captured 15 video frames
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | [02:02] multiple_masks_depthcorrected.json [2/5] - PASS
