@@ -1,10 +1,10 @@
 # ComfyUI-SAM3DBody Requirements
 
-comfy-env==0.1.91
-comfy-3d-viewers==0.2.15
+comfy-env==0.2.12
+comfy-3d-viewers==0.2.33
 msvc-runtime; sys_platform == "win32"
 
 # Core
-numpy>=1.21.0,<2.0.0
+numpy
 pillow>=9.0.0
 opencv-python-headless>=4.8.0

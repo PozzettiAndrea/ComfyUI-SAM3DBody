@@ -6,16 +6,15 @@ import cv2
 import numpy as np
 import torch
 
-from .data.transforms import (
+from .utils_data import (
     Compose,
     GetBBoxCenterScale,
     TopdownAffine,
     VisionTransformWrapper,
+    load_image,
+    prepare_batch,
 )
-
-from .data.utils.io import load_image
-from .data.utils.prepare_batch import prepare_batch
-from .utils import recursive_to
+from .utils_model import recursive_to
 from torchvision.transforms import ToTensor
 
 
@@ -28,7 +27,7 @@ class SAM3DBodyEstimator:
         human_segmentor=None,
         fov_estimator=None,
     ):
-        self.device = sam_3d_body_model.device
+        self.device = next(sam_3d_body_model.parameters()).device
         self.model, self.cfg = sam_3d_body_model, model_cfg
         self.detector = human_detector
         self.sam = human_segmentor
@@ -88,7 +87,8 @@ class SAM3DBodyEstimator:
         self.image_embeddings = None
         self.output = None
         self.prev_prompt = []
-        torch.cuda.empty_cache()
+        import comfy.model_management
+        comfy.model_management.soft_empty_cache()
 
         if type(img) == str:
             img = load_image(img, backend="cv2", image_format="bgr")
@@ -153,6 +153,8 @@ class SAM3DBodyEstimator:
         # - either provided externally or generated via default FOV estimator
         if cam_int is not None:
             cam_int = cam_int.to(batch["img"])
+            if cam_int.shape[-1] == 4:
+                cam_int = cam_int[..., :3, :3]
             batch["cam_int"] = cam_int.clone()
         elif self.fov_estimator is not None:
             input_image = batch["img_ori"][0].data
@@ -162,6 +164,14 @@ class SAM3DBodyEstimator:
             batch["cam_int"] = cam_int.clone()
         else:
             cam_int = batch["cam_int"].clone()
+
+        # DEBUG: Check batch before model inference
+        import logging
+        _log = logging.getLogger("sam3dbody")
+        img_tensor = batch["img"]
+        _log.info(f" batch['img'] shape={img_tensor.shape}, dtype={img_tensor.dtype}, "
+                  f"device={img_tensor.device}, "
+                  f"range=[{img_tensor.min().item():.3f}, {img_tensor.max().item():.3f}]")
 
         outputs = self.model.run_inference(
             img,
@@ -176,13 +186,14 @@ class SAM3DBodyEstimator:
             pose_output = outputs
 
         out = pose_output["mhr"]
+
         out = recursive_to(out, "cpu")
         out = recursive_to(out, "numpy")
         all_out = []
         for idx in range(batch["img"].shape[1]):
             all_out.append(
                 {
-                    "bbox": batch["bbox"][0, idx].cpu().numpy(),
+                    "bbox": batch["bbox"][0, idx].cpu().float().numpy(),
                     "focal_length": out["focal_length"][idx],
                     "pred_keypoints_3d": out["pred_keypoints_3d"][idx],
                     "pred_keypoints_2d": out["pred_keypoints_2d"][idx],

@@ -1,16 +1,16 @@
-name: Test Installation
+name: Workflow Tests
 on:
   push:
-    branches: [main, dev]
+    branches: [dev]
+    paths-ignore:
+      - '**.md'
+      - 'pyproject.toml'
+      - 'LICENSE'
+      - '.github/workflows/publish.yml'
+      - '.github/workflows/pr-gate.yml'
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-    environment: test
-    steps:
-      - run: echo "Approved"
   test:
-    needs: approve
-    uses: PozzettiAndrea/comfy-test/.github/workflows/test-matrix.yml@main
+    uses: PozzettiAndrea/comfy-test/.github/workflows/test-matrix.yml@v0.2.21
     with:
       config-file: "comfy-test.toml"

@@ -1,7 +1,7 @@
 python = "3.11"
 
 [cuda]
-packages = ["torch", "torchvision", "detectron2", "torch-scatter", "torch-sparse", "torch-cluster"]
+packages = ["torch", "torchvision", "detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
 
 [pypi-dependencies]
 bpy = ">=4.2"
@@ -42,3 +42,5 @@ optree = ">=0.9.0"
 fvcore = ">=0.1.5"
 pycocotools = ">=2.0.6"
 addict = ">=2.4.0"
+psutil = "*"
+comfy-aimdo = "*"
