@@ -1,14 +1,17 @@
 import logging
 import os
 import folder_paths
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
 # Default model path in ComfyUI models folder
 DEFAULT_MODEL_PATH = os.path.join(folder_paths.models_dir, "sam3dbody")
+os.makedirs(DEFAULT_MODEL_PATH, exist_ok=True)
+folder_paths.add_model_folder_path("sam3dbody", DEFAULT_MODEL_PATH)
 
 
-class LoadSAM3DBodyModel:
+class LoadSAM3DBodyModel(io.ComfyNode):
     """
     Prepares SAM 3D Body model configuration.
 
@@ -16,33 +19,28 @@ class LoadSAM3DBodyModel:
     lazily inside the isolated worker when inference runs.
     """
 
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model_path": ("STRING", {
-                    "default": DEFAULT_MODEL_PATH,
-                    "tooltip": "Path to SAM 3D Body model folder (contains model.safetensors and assets/mhr_model.pt)"
-                }),
-                "attn_backend": (["auto", "flash_attn", "sage_attn", "sdpa", "xformers"], {
-                    "default": "auto",
-                    "tooltip": "Attention backend. auto: use ComfyUI's global setting. Otherwise override for this model."
-                }),
-                "precision": (["fp32", "auto", "bf16", "fp16"], {
-                    "default": "fp32",
-                    "tooltip": "Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("SAM3D_MODEL",)
-    RETURN_NAMES = ("model",)
-    FUNCTION = "load_model"
-    CATEGORY = "SAM3DBody"
-
     REPO_ID = "apozz/sam-3d-body-safetensors"
 
-    def load_model(self, model_path, attn_backend="auto", precision="auto"):
+    @classmethod
+    def define_schema(cls):
+        return io.Schema(
+            node_id="LoadSAM3DBodyModel",
+            display_name="(Down)Load SAM 3D Body Model",
+            category="SAM3DBody",
+            inputs=[
+                io.String.Input("model_path", default=DEFAULT_MODEL_PATH,
+                                tooltip="Path to SAM 3D Body model folder (contains model.safetensors and assets/mhr_model.pt)"),
+                io.Combo.Input("precision", options=["fp32", "auto", "bf16", "fp16"],
+                               default="fp32",
+                               tooltip="Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."),
+            ],
+            outputs=[
+                io.Custom("SAM3D_MODEL").Output(display_name="model"),
+            ],
+        )
+
+    @classmethod
+    def execute(cls, model_path, precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
         import comfy.model_management as mm
         device = mm.get_torch_device()
@@ -76,7 +74,7 @@ class LoadSAM3DBodyModel:
                 log.info(f"Model not found locally. Downloading from HuggingFace...")
                 os.makedirs(model_path, exist_ok=True)
                 snapshot_download(
-                    repo_id=self.REPO_ID,
+                    repo_id=cls.REPO_ID,
                     local_dir=model_path
                 )
                 log.info(f"Download complete.")
@@ -85,7 +83,7 @@ class LoadSAM3DBodyModel:
                 raise RuntimeError(
                     f"\n[SAM3DBody] Download failed.\n\n"
                     f"Please manually download from:\n"
-                    f"  https://huggingface.co/{self.REPO_ID}\n\n"
+                    f"  https://huggingface.co/{cls.REPO_ID}\n\n"
                     f"And place the model files at:\n"
                     f"  {DEFAULT_MODEL_PATH}/\n"
                     f"    +-- model.safetensors   (SAM 3D Body weights)\n"
@@ -95,16 +93,15 @@ class LoadSAM3DBodyModel:
                     f"Download error: {e}"
                 ) from e
 
-        # Return config dict (not the actual model — loading happens in inference nodes)
+        # Return config dict (not the actual model -- loading happens in inference nodes)
         model_config = {
             "model_path": model_path,
             "ckpt_path": model_file,
             "mhr_path": mhr_path,
-            "attn_backend": attn_backend,
             "precision": precision,
         }
 
-        return (model_config,)
+        return io.NodeOutput(model_config)
 
 
 # Register node
@@ -113,5 +110,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "LoadSAM3DBodyModel": "Load SAM 3D Body Model",
+    "LoadSAM3DBodyModel": "(Down)Load SAM 3D Body Model",
 }

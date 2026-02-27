@@ -14,11 +14,14 @@ import subprocess
 import numpy as np
 import torch
 import folder_paths
+import comfy.model_management
+import comfy.utils
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
 
-class SAM3DBodySaveSkeleton:
+class SAM3DBodySaveSkeleton(io.ComfyNode):
     """
     Save skeleton data to file in multiple formats.
 
@@ -27,30 +30,28 @@ class SAM3DBodySaveSkeleton:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "skeleton": ("SKELETON", {
-                    "tooltip": "Skeleton data from SAM3D Body Process node"
-                }),
-                "output_filename": ("STRING", {
-                    "default": "skeleton",
-                    "tooltip": "Output filename (extension will be added based on format)"
-                }),
-                "format": (["json", "bvh", "fbx"], {
-                    "default": "json",
-                    "tooltip": "Export format: JSON (full data), BVH (animation), or FBX (armature)"
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodySaveSkeleton",
+            display_name="SAM 3D Body: Save Skeleton",
+            category="SAM3DBody/skeleton",
+            is_output_node=True,
+            inputs=[
+                io.Custom("SKELETON").Input("skeleton",
+                    tooltip="Skeleton data from SAM3D Body Process node"),
+                io.String.Input("output_filename", default="skeleton",
+                    tooltip="Output filename (extension will be added based on format)"),
+                io.Combo.Input("format", options=["json", "bvh", "fbx"],
+                    default="json",
+                    tooltip="Export format: JSON (full data), BVH (animation), or FBX (armature)"),
+            ],
+            outputs=[
+                io.String.Output(display_name="filepath"),
+            ],
+        )
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("filepath",)
-    FUNCTION = "save_skeleton"
-    CATEGORY = "SAM3DBody/skeleton"
-    OUTPUT_NODE = True
-
-    def save_skeleton(self, skeleton, output_filename, format="json"):
+    @classmethod
+    def execute(cls, skeleton, output_filename, format="json"):
         """Save skeleton to file in specified format."""
         log.info(f" Saving skeleton as {format.upper()}...")
 
@@ -65,18 +66,19 @@ class SAM3DBodySaveSkeleton:
 
         # Save based on format
         if format == "json":
-            self._save_json(skeleton, output_path)
+            cls._save_json(skeleton, output_path)
         elif format == "bvh":
-            self._save_bvh(skeleton, output_path)
+            cls._save_bvh(skeleton, output_path)
         elif format == "fbx":
-            self._save_fbx(skeleton, output_path)
+            cls._save_fbx(skeleton, output_path)
         else:
             raise ValueError(f"Unsupported format: {format}")
 
         log.info(f" OK Saved to: {output_path}")
-        return (os.path.basename(output_path),)
+        return io.NodeOutput(os.path.basename(output_path))
 
-    def _save_json(self, skeleton, output_path):
+    @staticmethod
+    def _save_json(skeleton, output_path):
         """Save skeleton to JSON format (full data)."""
         # Convert tensors to numpy/lists
         json_data = {}
@@ -96,7 +98,8 @@ class SAM3DBodySaveSkeleton:
 
         log.info(f" Saved JSON with {len(json_data)} fields")
 
-    def _save_bvh(self, skeleton, output_path):
+    @staticmethod
+    def _save_bvh(skeleton, output_path):
         """Save skeleton to BVH format (animation format)."""
         joint_positions = skeleton.get("joint_positions")
         joint_rotations = skeleton.get("joint_rotations")
@@ -125,7 +128,9 @@ class SAM3DBodySaveSkeleton:
 
             # Write joints (simplified - first 20 joints)
             num_joints = min(len(joint_positions), 20)
+            pbar = comfy.utils.ProgressBar(num_joints)
             for i in range(1, num_joints):
+                comfy.model_management.throw_exception_if_processing_interrupted()
                 pos = joint_positions[i]
                 f.write(f"  JOINT Joint_{i:03d}\n")
                 f.write("  {\n")
@@ -140,6 +145,7 @@ class SAM3DBodySaveSkeleton:
                     f.write("    }\n")
 
                 f.write("  }\n")
+                pbar.update(1)
 
             f.write("}\n")
 
@@ -161,7 +167,8 @@ class SAM3DBodySaveSkeleton:
 
         log.info(f" Saved BVH with {num_joints} joints")
 
-    def _save_fbx(self, skeleton, output_path):
+    @staticmethod
+    def _save_fbx(skeleton, output_path):
         """Save skeleton to FBX format (armature only) using Blender."""
         joint_positions = skeleton.get("joint_positions")
 
@@ -186,13 +193,13 @@ class SAM3DBodySaveSkeleton:
 
         try:
             # Find Blender
-            blender_exe = self._find_blender()
+            blender_exe = SAM3DBodySaveSkeleton._find_blender()
 
             if not blender_exe or not os.path.exists(blender_exe):
                 raise RuntimeError("Blender not found. Set BLENDER_EXE environment variable or install Blender.")
 
             # Create Blender script
-            blender_script = self._create_blender_skeleton_export_script()
+            blender_script = SAM3DBodySaveSkeleton._create_blender_skeleton_export_script()
             script_path = os.path.join(temp_dir, f"export_skeleton_{int(time.time())}.py")
 
             with open(script_path, 'w') as f:
@@ -228,7 +235,8 @@ class SAM3DBodySaveSkeleton:
             if 'script_path' in locals() and os.path.exists(script_path):
                 os.unlink(script_path)
 
-    def _find_blender(self):
+    @staticmethod
+    def _find_blender():
         """Try to find Blender executable."""
         possible_paths = [
             "/usr/bin/blender",
@@ -254,7 +262,8 @@ class SAM3DBodySaveSkeleton:
 
         return None
 
-    def _create_blender_skeleton_export_script(self):
+    @staticmethod
+    def _create_blender_skeleton_export_script():
         """Create Blender script for exporting skeleton to FBX."""
         return """
 import bpy
@@ -309,7 +318,7 @@ print(f"Successfully exported skeleton to {fbx_path}")
 """
 
 
-class SAM3DBodyLoadSkeleton:
+class SAM3DBodyLoadSkeleton(io.ComfyNode):
     """
     Load skeleton data from file.
 
@@ -317,22 +326,22 @@ class SAM3DBodyLoadSkeleton:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "filepath": ("STRING", {
-                    "default": "",
-                    "tooltip": "Path to skeleton file (JSON, BVH, or FBX)"
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyLoadSkeleton",
+            display_name="SAM 3D Body: Load Skeleton",
+            category="SAM3DBody/skeleton",
+            inputs=[
+                io.String.Input("filepath", default="",
+                    tooltip="Path to skeleton file (JSON, BVH, or FBX)"),
+            ],
+            outputs=[
+                io.Custom("SKELETON").Output(display_name="skeleton"),
+            ],
+        )
 
-    RETURN_TYPES = ("SKELETON",)
-    RETURN_NAMES = ("skeleton",)
-    FUNCTION = "load_skeleton"
-    CATEGORY = "SAM3DBody/skeleton"
-
-    def load_skeleton(self, filepath):
+    @classmethod
+    def execute(cls, filepath):
         """Load skeleton from file."""
         log.info(f" Loading skeleton from: {filepath}")
 
@@ -348,18 +357,19 @@ class SAM3DBodyLoadSkeleton:
         ext = os.path.splitext(filepath)[1].lower()
 
         if ext == '.json':
-            skeleton = self._load_json(filepath)
+            skeleton = cls._load_json(filepath)
         elif ext == '.bvh':
-            skeleton = self._load_bvh(filepath)
+            skeleton = cls._load_bvh(filepath)
         elif ext == '.fbx':
-            skeleton = self._load_fbx(filepath)
+            skeleton = cls._load_fbx(filepath)
         else:
             raise ValueError(f"Unsupported file format: {ext}")
 
         log.info(f" OK Loaded skeleton")
-        return (skeleton,)
+        return io.NodeOutput(skeleton)
 
-    def _load_json(self, filepath):
+    @staticmethod
+    def _load_json(filepath):
         """Load skeleton from JSON format."""
         with open(filepath, 'r') as f:
             json_data = json.load(f)
@@ -377,7 +387,8 @@ class SAM3DBodyLoadSkeleton:
         log.info(f" Loaded JSON with {len(skeleton)} fields")
         return skeleton
 
-    def _load_bvh(self, filepath):
+    @staticmethod
+    def _load_bvh(filepath):
         """Load skeleton from BVH format."""
         # Simplified BVH parser - extract joint positions from hierarchy
         joint_positions = []
@@ -416,14 +427,15 @@ class SAM3DBodyLoadSkeleton:
         log.info(f" Loaded BVH with {len(joint_positions)} joints")
         return skeleton
 
-    def _load_fbx(self, filepath):
+    @staticmethod
+    def _load_fbx(filepath):
         """Load skeleton from FBX format using Blender."""
         # This would require Blender to extract skeleton data from FBX
         # For now, raise not implemented
         raise NotImplementedError("Loading from FBX not yet implemented. Use JSON format for full compatibility.")
 
 
-class SAM3DBodyAddMeshToSkeleton:
+class SAM3DBodyAddMeshToSkeleton(io.ComfyNode):
     """
     Generate mesh from skeleton using MHR model.
 
@@ -432,24 +444,24 @@ class SAM3DBodyAddMeshToSkeleton:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "skeleton": ("SKELETON", {
-                    "tooltip": "Skeleton data with pose/shape/scale parameters"
-                }),
-                "model": ("SAM3D_MODEL", {
-                    "tooltip": "Loaded SAM3D Body model (needed for MHR)"
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyAddMeshToSkeleton",
+            display_name="SAM 3D Body: Add Mesh to Skeleton",
+            category="SAM3DBody/skeleton",
+            inputs=[
+                io.Custom("SKELETON").Input("skeleton",
+                    tooltip="Skeleton data with pose/shape/scale parameters"),
+                io.Custom("SAM3D_MODEL").Input("model",
+                    tooltip="Loaded SAM3D Body model (needed for MHR)"),
+            ],
+            outputs=[
+                io.Custom("SAM3D_OUTPUT").Output(display_name="mesh_data"),
+            ],
+        )
 
-    RETURN_TYPES = ("SAM3D_OUTPUT",)
-    RETURN_NAMES = ("mesh_data",)
-    FUNCTION = "add_mesh"
-    CATEGORY = "SAM3DBody/skeleton"
-
-    def add_mesh(self, skeleton, model):
+    @classmethod
+    def execute(cls, skeleton, model):
         """Generate mesh from skeleton parameters using MHR model."""
         log.info(f" Generating mesh from skeleton...")
 
@@ -554,7 +566,7 @@ class SAM3DBodyAddMeshToSkeleton:
             }
 
             log.info(f" OK Generated mesh with {len(vertices[0])} vertices")
-            return (mesh_data,)
+            return io.NodeOutput(mesh_data)
 
         except Exception as e:
             log.error(f"Failed to generate mesh: {str(e)}", exc_info=True)

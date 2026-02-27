@@ -15,6 +15,9 @@ import numpy as np
 import torch
 import folder_paths
 import glob
+import comfy.model_management
+import comfy.utils
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
@@ -596,7 +599,7 @@ def find_mhr_model_path(mesh_data=None):
     return None
 
 
-class SAM3DBodyExportFBX:
+class SAM3DBodyExportFBX(io.ComfyNode):
     """
     Export SAM3D Body mesh with skeleton to FBX format.
 
@@ -605,26 +608,25 @@ class SAM3DBodyExportFBX:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "mesh_data": ("SAM3D_OUTPUT", {
-                    "tooltip": "Mesh data from SAM3D Body Process node"
-                }),
-                "output_filename": ("STRING", {
-                    "default": "sam3d_rigged.fbx",
-                    "tooltip": "Output filename for the FBX file"
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyExportFBX",
+            display_name="SAM 3D Body: Export FBX",
+            category="SAM3DBody/export",
+            is_output_node=True,
+            inputs=[
+                io.Custom("SAM3D_OUTPUT").Input("mesh_data",
+                    tooltip="Mesh data from SAM3D Body Process node"),
+                io.String.Input("output_filename", default="sam3d_rigged.fbx",
+                    tooltip="Output filename for the FBX file"),
+            ],
+            outputs=[
+                io.String.Output(display_name="fbx_path"),
+            ],
+        )
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("fbx_path",)
-    FUNCTION = "export_fbx"
-    CATEGORY = "SAM3DBody/export"
-    OUTPUT_NODE = True
-
-    def export_fbx(self, mesh_data, output_filename):
+    @classmethod
+    def execute(cls, mesh_data, output_filename):
         """Export mesh with skeleton to FBX format."""
 
         # Extract mesh data
@@ -654,7 +656,7 @@ class SAM3DBodyExportFBX:
         temp_obj_path = os.path.join(temp_dir, f"temp_mesh_{int(time.time())}.obj")
 
         # Write OBJ file
-        self._write_obj_file(temp_obj_path, vertices, faces)
+        cls._write_obj_file(temp_obj_path, vertices, faces)
 
         # Save skeleton data if available
         skeleton_json_path = None
@@ -780,7 +782,7 @@ class SAM3DBodyExportFBX:
             if not os.path.exists(output_fbx_path):
                 raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
 
-            return (output_fbx_path,)
+            return io.NodeOutput(output_fbx_path)
 
         finally:
             # Clean up temporary files
@@ -789,7 +791,8 @@ class SAM3DBodyExportFBX:
             if skeleton_json_path and os.path.exists(skeleton_json_path):
                 os.unlink(skeleton_json_path)
 
-    def _write_obj_file(self, filepath, vertices, faces):
+    @staticmethod
+    def _write_obj_file(filepath, vertices, faces):
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
@@ -798,7 +801,7 @@ class SAM3DBodyExportFBX:
                 f.write(f"f {face[0]+1} {face[1]+1} {face[2]+1}\n")
 
 
-class SAM3DBodyExportMultipleFBX:
+class SAM3DBodyExportMultipleFBX(io.ComfyNode):
     """
     Export multiple SAM3D Body meshes with skeletons to a single FBX file.
 
@@ -807,30 +810,27 @@ class SAM3DBodyExportMultipleFBX:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "multi_mesh_data": ("SAM3D_MULTI_OUTPUT", {
-                    "tooltip": "Multi-person mesh data from SAM3D Body Process Multiple node"
-                }),
-                "output_filename": ("STRING", {
-                    "default": "sam3d_multi_rigged.fbx",
-                    "tooltip": "Output filename for the combined FBX file"
-                }),
-                "combine": ("BOOLEAN", {
-                    "default": True,
-                    "tooltip": "When enabled, exports all people into a single FBX file (works with Preview3D). When disabled, creates separate FBX files per person."
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyExportMultipleFBX",
+            display_name="SAM 3D Body: Export Multiple FBX",
+            category="SAM3DBody/export",
+            is_output_node=True,
+            inputs=[
+                io.Custom("SAM3D_MULTI_OUTPUT").Input("multi_mesh_data",
+                    tooltip="Multi-person mesh data from SAM3D Body Process Multiple node"),
+                io.String.Input("output_filename", default="sam3d_multi_rigged.fbx",
+                    tooltip="Output filename for the combined FBX file"),
+                io.Boolean.Input("combine", default=True,
+                    tooltip="When enabled, exports all people into a single FBX file (works with Preview3D). When disabled, creates separate FBX files per person."),
+            ],
+            outputs=[
+                io.String.Output(display_name="fbx_path"),
+            ],
+        )
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("fbx_path",)
-    FUNCTION = "export_multi_fbx"
-    CATEGORY = "SAM3DBody/export"
-    OUTPUT_NODE = True
-
-    def export_multi_fbx(self, multi_mesh_data, output_filename, combine):
+    @classmethod
+    def execute(cls, multi_mesh_data, output_filename, combine):
         """Export all meshes with skeletons to FBX file(s).
 
         Args:
@@ -893,13 +893,16 @@ class SAM3DBodyExportMultipleFBX:
         }
 
         try:
+            pbar = comfy.utils.ProgressBar(len(people))
             for i, person in enumerate(people):
+                comfy.model_management.throw_exception_if_processing_interrupted()
                 vertices = person.get("pred_vertices")
                 joint_coords = person.get("pred_joint_coords")
                 cam_t = person.get("pred_cam_t")  # Camera translation for world positioning
                 global_rots = person.get("pred_global_rots")  # Global joint rotations for bone orientations
 
                 if vertices is None:
+                    pbar.update(1)
                     continue
 
                 # Convert to numpy
@@ -921,7 +924,7 @@ class SAM3DBodyExportMultipleFBX:
                 # Write OBJ file for this person
                 temp_obj = tempfile.NamedTemporaryFile(suffix=f'_person{i}.obj', delete=False)
                 temp_files.append(temp_obj.name)
-                self._write_obj_file(temp_obj.name, vertices, faces)
+                cls._write_obj_file(temp_obj.name, vertices, faces)
 
                 # Prepare skeleton data
                 skeleton_info = {}
@@ -962,6 +965,7 @@ class SAM3DBodyExportMultipleFBX:
                     "skeleton": skeleton_info,
                     "index": i,
                 })
+                pbar.update(1)
 
             log.info(f" people added to combined_data: {len(combined_data['people'])}")
             log.info(f" combine: {combine}")
@@ -1015,13 +1019,15 @@ class SAM3DBodyExportMultipleFBX:
                     raise RuntimeError("Combined FBX export failed")
 
                 log.info(f" Combined FBX created: {output_fbx_path}")
-                return (output_fbx_path,)
+                return io.NodeOutput(output_fbx_path)
 
             else:
                 # Separate mode: export each person to individual FBX files
                 exported_files = []
+                pbar_export = comfy.utils.ProgressBar(len(combined_data["people"]))
 
                 for person_data in combined_data["people"]:
+                    comfy.model_management.throw_exception_if_processing_interrupted()
                     obj_path = person_data["obj_path"]
                     idx = person_data["index"]
                     skeleton_info = person_data.get("skeleton", {})
@@ -1054,6 +1060,7 @@ class SAM3DBodyExportMultipleFBX:
                         exported_files.append(person_fbx_path)
                     else:
                         raise RuntimeError(f"FBX export failed for person {idx}")
+                    pbar_export.update(1)
 
                 if not exported_files:
                     raise RuntimeError("No FBX files were exported")
@@ -1061,7 +1068,7 @@ class SAM3DBodyExportMultipleFBX:
                 # Return the first exported file (separate mode returns first file for compatibility)
                 output_fbx_path = exported_files[0]
                 log.info(f" Separate FBX files created: {len(exported_files)} files")
-                return (output_fbx_path,)
+                return io.NodeOutput(output_fbx_path)
 
         finally:
             # Clean up temp files
@@ -1072,7 +1079,8 @@ class SAM3DBodyExportMultipleFBX:
                     except Exception:
                         pass
 
-    def _write_obj_file(self, filepath, vertices, faces):
+    @staticmethod
+    def _write_obj_file(filepath, vertices, faces):
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:

@@ -11,11 +11,12 @@ import os
 import numpy as np
 import torch
 import folder_paths
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
 
-class SAM3DBodyLoadMesh:
+class SAM3DBodyLoadMesh(io.ComfyNode):
     """
     Load a mesh from ComfyUI input or output folder.
 
@@ -27,26 +28,25 @@ class SAM3DBodyLoadMesh:
     SUPPORTED_EXTENSIONS = ['.fbx', '.obj', '.ply', '.stl', '.off', '.gltf', '.glb', '.dae', '.3ds']
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def define_schema(cls):
         mesh_files = cls.get_mesh_files()
         if not mesh_files:
             mesh_files = ["No mesh files found"]
-        return {
-            "required": {
-                "source_folder": (["input", "output"], {
-                    "default": "input",
-                    "tooltip": "Source folder to load mesh from"
-                }),
-                "file_path": (mesh_files, {
-                    "tooltip": "Mesh file to load. Supports FBX, OBJ, PLY, STL, GLB, etc."
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("SAM3D_OUTPUT",)
-    RETURN_NAMES = ("mesh_data",)
-    FUNCTION = "load_mesh"
-    CATEGORY = "SAM3DBody/IO"
+        return io.Schema(
+            node_id="SAM3DBodyLoadMesh",
+            display_name="SAM 3D Body: Load Mesh",
+            category="SAM3DBody/IO",
+            inputs=[
+                io.Combo.Input("source_folder", options=["input", "output"],
+                               default="input",
+                               tooltip="Source folder to load mesh from"),
+                io.Combo.Input("file_path", options=mesh_files,
+                               tooltip="Mesh file to load. Supports FBX, OBJ, PLY, STL, GLB, etc."),
+            ],
+            outputs=[
+                io.Custom("SAM3D_OUTPUT").Output(display_name="mesh_data"),
+            ],
+        )
 
     @classmethod
     def get_mesh_files(cls):
@@ -83,15 +83,17 @@ class SAM3DBodyLoadMesh:
         return sorted(mesh_files)
 
     @classmethod
-    def IS_CHANGED(cls, source_folder, file_path):
+    def fingerprint_inputs(cls, **kwargs):
         """Force re-execution when file changes."""
+        source_folder = kwargs.get("source_folder")
+        file_path = kwargs.get("file_path")
         full_path = cls._resolve_file_path(source_folder, file_path)
         if full_path and os.path.exists(full_path):
             return os.path.getmtime(full_path)
         return f"{source_folder}:{file_path}"
 
-    @classmethod
-    def _resolve_file_path(cls, source_folder, file_path):
+    @staticmethod
+    def _resolve_file_path(source_folder, file_path):
         """Resolve the full path to the mesh file."""
         # Remove [output] prefix if present
         clean_path = file_path.replace("[output] ", "")
@@ -120,7 +122,8 @@ class SAM3DBodyLoadMesh:
 
         return None
 
-    def load_mesh(self, source_folder, file_path):
+    @classmethod
+    def execute(cls, source_folder, file_path):
         """
         Load mesh from file.
 
@@ -129,12 +132,12 @@ class SAM3DBodyLoadMesh:
             file_path: Path to mesh file
 
         Returns:
-            tuple: (mesh_data,)
+            io.NodeOutput with mesh_data
         """
         log.info(f" Loading mesh from {source_folder} folder...")
 
         # Resolve full path
-        full_path = self._resolve_file_path(source_folder, file_path)
+        full_path = cls._resolve_file_path(source_folder, file_path)
 
         if full_path is None:
             raise FileNotFoundError(
@@ -196,10 +199,10 @@ class SAM3DBodyLoadMesh:
 
         log.info(f" Successfully loaded: {len(vertices)} vertices, {len(faces)} faces")
 
-        return (mesh_data,)
+        return io.NodeOutput(mesh_data)
 
 
-class SAM3DBodySelectMesh:
+class SAM3DBodySelectMesh(io.ComfyNode):
     """
     Select a mesh file and return its path as a string.
 
@@ -211,36 +214,38 @@ class SAM3DBodySelectMesh:
     SUPPORTED_EXTENSIONS = ['.fbx', '.obj', '.ply', '.stl', '.off', '.gltf', '.glb', '.dae', '.3ds']
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def define_schema(cls):
         mesh_files = SAM3DBodyLoadMesh.get_mesh_files()
         if not mesh_files:
             mesh_files = ["No mesh files found"]
-        return {
-            "required": {
-                "source_folder": (["input", "output"], {
-                    "default": "input",
-                    "tooltip": "Source folder to select mesh from"
-                }),
-                "file_path": (mesh_files, {
-                    "tooltip": "Mesh file to select"
-                }),
-            },
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("file_path",)
-    FUNCTION = "select_mesh"
-    CATEGORY = "SAM3DBody/IO"
+        return io.Schema(
+            node_id="SAM3DBodySelectMesh",
+            display_name="SAM 3D Body: Select Mesh File",
+            category="SAM3DBody/IO",
+            inputs=[
+                io.Combo.Input("source_folder", options=["input", "output"],
+                               default="input",
+                               tooltip="Source folder to select mesh from"),
+                io.Combo.Input("file_path", options=mesh_files,
+                               tooltip="Mesh file to select"),
+            ],
+            outputs=[
+                io.String.Output(display_name="file_path"),
+            ],
+        )
 
     @classmethod
-    def IS_CHANGED(cls, source_folder, file_path):
+    def fingerprint_inputs(cls, **kwargs):
         """Force re-execution when file changes."""
+        source_folder = kwargs.get("source_folder")
+        file_path = kwargs.get("file_path")
         full_path = SAM3DBodyLoadMesh._resolve_file_path(source_folder, file_path)
         if full_path and os.path.exists(full_path):
             return os.path.getmtime(full_path)
         return f"{source_folder}:{file_path}"
 
-    def select_mesh(self, source_folder, file_path):
+    @classmethod
+    def execute(cls, source_folder, file_path):
         """
         Select mesh file and return its basename.
 
@@ -249,7 +254,7 @@ class SAM3DBodySelectMesh:
             file_path: Path to mesh file
 
         Returns:
-            tuple: (basename,)
+            io.NodeOutput with file_path
         """
         log.info(f" Selecting mesh from {source_folder} folder...")
 
@@ -269,7 +274,7 @@ class SAM3DBodySelectMesh:
 
         log.info(f" Selected: {full_path}")
 
-        return (full_path,)
+        return io.NodeOutput(full_path)
 
 
 # Register nodes

@@ -7,6 +7,9 @@ import torch
 import numpy as np
 import cv2
 import folder_paths
+import comfy.model_management
+import comfy.utils
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
@@ -85,15 +88,11 @@ def _load_sam3d_model(model_config: dict):
 
     # Import heavy dependencies only inside worker
     from .sam_3d_body import load_sam_3d_body
-    from .sam_3d_body.attention import set_attn_backend
 
     ckpt_path = model_config["ckpt_path"]
     mhr_path = model_config.get("mhr_path", "")
     precision = model_config.get("precision", "fp32")
     dtype = _resolve_dtype(precision)
-
-    # Set attention backend
-    set_attn_backend(model_config.get("attn_backend", "auto"))
 
     # Load model using the library's built-in function
     log.info(f" Loading model from {ckpt_path} (precision={precision})...")
@@ -161,7 +160,7 @@ def find_mhr_model_path(mesh_data=None):
 from .export import BpyFBXExporter
 
 
-class SAM3DBodyProcessMultiple:
+class SAM3DBodyProcessMultiple(io.ComfyNode):
     """
     Performs 3D human mesh reconstruction for multiple people.
 
@@ -170,44 +169,35 @@ class SAM3DBodyProcessMultiple:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model": ("SAM3D_MODEL", {
-                    "tooltip": "Loaded SAM 3D Body model from Load node"
-                }),
-                "image": ("IMAGE", {
-                    "tooltip": "Input image containing multiple people"
-                }),
-                "masks": ("MASK", {
-                    "tooltip": "Batched masks - one per person (N, H, W)"
-                }),
-            },
-            "optional": {
-                "inference_type": (["full", "body"], {
-                    "default": "full",
-                    "tooltip": "full: body+hand decoders, body: body decoder only"
-                }),
-                "depth_map": ("IMAGE", {
-                    "tooltip": "Depth map from Depth Anything V3 (Raw mode) for scale correction - helps fix children/small people appearing too large"
-                }),
-                "intrinsics": ("INTRINSICS", {
-                    "tooltip": "Camera intrinsics from Depth Anything V3 - [3,3] or [4,4] matrix with fx, fy, cx, cy. Provides accurate focal length instead of default 5000"
-                }),
-                "depth_confidence": ("IMAGE", {
-                    "tooltip": "Confidence map from Depth Anything V3 - used to weight depth samples and filter unreliable measurements"
-                }),
-                "adjust_position_from_depth": ("BOOLEAN", {
-                    "default": False,
-                    "tooltip": "Adjust Z-position of each person based on depth map (requires depth_map)"
-                }),
-            }
-        }
-
-    RETURN_TYPES = ("SAM3D_MULTI_OUTPUT", "IMAGE")
-    RETURN_NAMES = ("multi_mesh_data", "preview")
-    FUNCTION = "process_multiple"
-    CATEGORY = "SAM3DBody/processing"
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyProcessMultiple",
+            display_name="SAM 3D Body Process Multiple",
+            category="SAM3DBody/processing",
+            inputs=[
+                io.Custom("SAM3D_MODEL").Input("model",
+                    tooltip="Loaded SAM 3D Body model from Load node"),
+                io.Image.Input("image",
+                    tooltip="Input image containing multiple people"),
+                io.Mask.Input("masks",
+                    tooltip="Batched masks - one per person (N, H, W)"),
+                io.Combo.Input("inference_type", options=["full", "body"],
+                    default="full", optional=True,
+                    tooltip="full: body+hand decoders, body: body decoder only"),
+                io.Image.Input("depth_map", optional=True,
+                    tooltip="Depth map from Depth Anything V3 (Raw mode) for scale correction - helps fix children/small people appearing too large"),
+                io.Custom("INTRINSICS").Input("intrinsics", optional=True,
+                    tooltip="Camera intrinsics from Depth Anything V3 - [3,3] or [4,4] matrix with fx, fy, cx, cy. Provides accurate focal length instead of default 5000"),
+                io.Image.Input("depth_confidence", optional=True,
+                    tooltip="Confidence map from Depth Anything V3 - used to weight depth samples and filter unreliable measurements"),
+                io.Boolean.Input("adjust_position_from_depth", default=False, optional=True,
+                    tooltip="Adjust Z-position of each person based on depth map (requires depth_map)"),
+            ],
+            outputs=[
+                io.Custom("SAM3D_MULTI_OUTPUT").Output(display_name="multi_mesh_data"),
+                io.Image.Output(display_name="preview"),
+            ],
+        )
 
     # Big bones - prioritize upper body (more visible), then torso, then legs
     BIG_BONES = [
@@ -271,7 +261,8 @@ class SAM3DBodyProcessMultiple:
         (14, 20),  # right_ankle -> right_heel
     ]
 
-    def _compute_mask_depth_and_height(self, mask, depth_map, focal_length, img_h, img_w):
+    @staticmethod
+    def _compute_mask_depth_and_height(mask, depth_map, focal_length, img_h, img_w):
         """
         Compute person's depth and actual height using mask and depth map.
 
@@ -333,7 +324,8 @@ class SAM3DBodyProcessMultiple:
             "actual_height_m": actual_height_m,
         }
 
-    def _compute_scale_from_depth_ratios(self, output, depth_map, mask, img_h, img_w):
+    @staticmethod
+    def _compute_scale_from_depth_ratios(output, depth_map, mask, img_h, img_w):
         """
         Compute scale using depth ratios between joint pairs.
 
@@ -476,7 +468,8 @@ class SAM3DBodyProcessMultiple:
             'joint_depths': joint_depths,
         }
 
-    def _compute_bbox_from_mask(self, mask):
+    @staticmethod
+    def _compute_bbox_from_mask(mask):
         """Compute bounding box from binary mask."""
         rows = np.any(mask > 0.5, axis=1)
         cols = np.any(mask > 0.5, axis=0)
@@ -489,7 +482,8 @@ class SAM3DBodyProcessMultiple:
 
         return np.array([cmin, rmin, cmax, rmax], dtype=np.float32)
 
-    def _identify_visible_joints(self, smpl_joints_3d, smpl_joints_2d, depth_map, depth_conf,
+    @staticmethod
+    def _identify_visible_joints(smpl_joints_3d, smpl_joints_2d, depth_map, depth_conf,
                                   mask, img_h, img_w, cam_t=None, tolerance=0.20):
         """
         Identify which joints are truly visible vs self-occluded using depth ratio consistency.
@@ -643,7 +637,8 @@ class SAM3DBodyProcessMultiple:
 
         return visible_joints, scale_factor, confidence
 
-    def _compute_scale_with_intrinsics(self, output, depth_map, depth_conf, mask, intrinsics,
+    @classmethod
+    def _compute_scale_with_intrinsics(cls, output, depth_map, depth_conf, mask, intrinsics,
                                         img_h, img_w):
         """
         Compute scale factor using camera intrinsics and self-occlusion-aware joint visibility.
@@ -683,7 +678,7 @@ class SAM3DBodyProcessMultiple:
         # Use the 2D keypoints from SAM3DBody (already projected)
         # Note: These are in image coordinates
         # Pass cam_t to convert SMPL coords to camera space
-        visible_joints, scale_factor, confidence = self._identify_visible_joints(
+        visible_joints, scale_factor, confidence = cls._identify_visible_joints(
             joints_3d, keypoints_2d, depth_map, depth_conf,
             mask, img_h, img_w, cam_t=cam_t, tolerance=0.20
         )
@@ -734,10 +729,13 @@ class SAM3DBodyProcessMultiple:
             'method': 'intrinsics_visibility'
         }
 
-    def _prepare_outputs(self, outputs):
+    @classmethod
+    def _prepare_outputs(cls, outputs):
         """Convert tensors to numpy and add person indices."""
         prepared = []
+        pbar = comfy.utils.ProgressBar(len(outputs))
         for i, output in enumerate(outputs):
+            comfy.model_management.throw_exception_if_processing_interrupted()
             prepared_output = {}
             for key, value in output.items():
                 if isinstance(value, torch.Tensor):
@@ -751,11 +749,13 @@ class SAM3DBodyProcessMultiple:
             prepared.append(prepared_output)
 
             # Log SMPL-X face/expression data availability for this person
-            self._log_smplx_data_info(i, prepared_output)
+            cls._log_smplx_data_info(i, prepared_output)
+            pbar.update(1)
 
         return prepared
 
-    def _get_first_available(self, output, *keys):
+    @staticmethod
+    def _get_first_available(output, *keys):
         """Get the first non-None value from output for given keys."""
         for key in keys:
             val = output.get(key)
@@ -763,12 +763,13 @@ class SAM3DBodyProcessMultiple:
                 return val
         return None
 
-    def _log_smplx_data_info(self, person_idx, output):
+    @classmethod
+    def _log_smplx_data_info(cls, person_idx, output):
         """Log information about available SMPL-X parameters for a person."""
         info_parts = []
 
         # Check for expression parameters (face blendshapes)
-        expr_params = self._get_first_available(output, "expr_params", "pred_expr", "expression")
+        expr_params = cls._get_first_available(output, "expr_params", "pred_expr", "expression")
         if expr_params is not None:
             if isinstance(expr_params, np.ndarray):
                 info_parts.append(f"expression[{expr_params.shape[-1]} params]")
@@ -776,20 +777,20 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("expression[available]")
 
         # Check for jaw pose
-        jaw_pose = self._get_first_available(output, "jaw_pose", "pred_jaw_pose")
+        jaw_pose = cls._get_first_available(output, "jaw_pose", "pred_jaw_pose")
         if jaw_pose is not None:
             info_parts.append("jaw_pose")
 
         # Check for hand poses
-        left_hand = self._get_first_available(output, "left_hand_pose", "pred_lhand_pose")
-        right_hand = self._get_first_available(output, "right_hand_pose", "pred_rhand_pose")
+        left_hand = cls._get_first_available(output, "left_hand_pose", "pred_lhand_pose")
+        right_hand = cls._get_first_available(output, "right_hand_pose", "pred_rhand_pose")
         if left_hand is not None:
             info_parts.append("left_hand")
         if right_hand is not None:
             info_parts.append("right_hand")
 
         # Check for global rotations (useful for FBX export)
-        global_rots = self._get_first_available(output, "pred_global_rots", "global_orient")
+        global_rots = cls._get_first_available(output, "pred_global_rots", "global_orient")
         if global_rots is not None:
             if isinstance(global_rots, np.ndarray):
                 info_parts.append(f"global_rots[{global_rots.shape}]")
@@ -797,13 +798,13 @@ class SAM3DBodyProcessMultiple:
                 info_parts.append("global_rots")
 
         # Check for body pose parameters
-        body_pose = self._get_first_available(output, "body_pose_params", "pred_body_pose")
+        body_pose = cls._get_first_available(output, "body_pose_params", "pred_body_pose")
         if body_pose is not None:
             if isinstance(body_pose, np.ndarray):
                 info_parts.append(f"body_pose[{body_pose.shape[-1]} params]")
 
         # Check for shape parameters (betas)
-        shape_params = self._get_first_available(output, "shape_params", "pred_betas", "betas")
+        shape_params = cls._get_first_available(output, "shape_params", "pred_betas", "betas")
         if shape_params is not None:
             if isinstance(shape_params, np.ndarray):
                 info_parts.append(f"shape[{shape_params.shape[-1]} betas]")
@@ -817,7 +818,8 @@ class SAM3DBodyProcessMultiple:
                 all_keys = [k for k in output.keys() if not k.startswith('_')]
                 log.info(f" Person {person_idx} available keys: {sorted(all_keys)}")
 
-    def _sample_depth_at_point(self, depth_map, x, y, depth_h, depth_w, img_h, img_w):
+    @staticmethod
+    def _sample_depth_at_point(depth_map, x, y, depth_h, depth_w, img_h, img_w):
         """Sample depth at a 2D point, handling coordinate scaling."""
         if x < 0 or y < 0 or x >= img_w or y >= img_h:
             return None
@@ -831,7 +833,8 @@ class SAM3DBodyProcessMultiple:
         depth = depth_map[dy, dx]
         return depth if depth > 0 else None
 
-    def _compute_bone_scale(self, keypoints_2d, joint_coords_3d, depth_map, focal_length,
+    @classmethod
+    def _compute_bone_scale(cls, keypoints_2d, joint_coords_3d, depth_map, focal_length,
                             depth_h, depth_w, img_h, img_w, joint_pair):
         """
         Compute scale factor for a single bone using pinhole camera model.
@@ -863,7 +866,7 @@ class SAM3DBodyProcessMultiple:
         # Sample depth at midpoint of the bone
         mid_x = (pt1_2d[0] + pt2_2d[0]) / 2
         mid_y = (pt1_2d[1] + pt2_2d[1]) / 2
-        depth = self._sample_depth_at_point(depth_map, mid_x, mid_y, depth_h, depth_w, img_h, img_w)
+        depth = cls._sample_depth_at_point(depth_map, mid_x, mid_y, depth_h, depth_w, img_h, img_w)
         if depth is None or depth <= 0:
             return None
 
@@ -889,7 +892,8 @@ class SAM3DBodyProcessMultiple:
             "pixel_dist": pixel_dist,
         }
 
-    def _apply_depth_scale_correction(self, outputs, depth_map, masks_np=None, img_shape=None,
+    @classmethod
+    def _apply_depth_scale_correction(cls, outputs, depth_map, masks_np=None, img_shape=None,
                                         adjust_position=False, intrinsics=None, depth_conf=None):
         """
         Correct mesh scales using depth information and camera intrinsics.
@@ -943,7 +947,9 @@ class SAM3DBodyProcessMultiple:
 
         # 1. Compute scale for each person
         person_data = []
+        pbar_scale = comfy.utils.ProgressBar(len(outputs))
         for i, output in enumerate(outputs):
+            comfy.model_management.throw_exception_if_processing_interrupted()
             person_mask = masks_np[i] if masks_np is not None and i < len(masks_np) else None
 
             # Get mesh height for reference
@@ -955,7 +961,7 @@ class SAM3DBodyProcessMultiple:
 
             if use_intrinsics:
                 # NEW: Use intrinsics-based visibility detection
-                scale_data = self._compute_scale_with_intrinsics(
+                scale_data = cls._compute_scale_with_intrinsics(
                     output, depth_map, depth_conf, person_mask, intrinsics, img_h, img_w
                 )
 
@@ -978,7 +984,7 @@ class SAM3DBodyProcessMultiple:
                     log.info(f"[intrinsics method] Failed, falling back to mask-based")
                     # Fallback to mask-based for this person
                     focal_length = focal_from_intrinsics
-                    mask_data = self._compute_mask_depth_and_height(
+                    mask_data = cls._compute_mask_depth_and_height(
                         person_mask, depth_map, focal_length, img_h, img_w
                     )
                     if mask_data is not None and mesh_height and mesh_height > 0.1:
@@ -1001,7 +1007,7 @@ class SAM3DBodyProcessMultiple:
                 if isinstance(focal_length, np.ndarray):
                     focal_length = float(focal_length.flatten()[0])
 
-                mask_data = self._compute_mask_depth_and_height(
+                mask_data = cls._compute_mask_depth_and_height(
                     person_mask, depth_map, focal_length, img_h, img_w
                 )
 
@@ -1020,6 +1026,7 @@ class SAM3DBodyProcessMultiple:
                 else:
                     log.info(f"No valid mask measurement")
                     person_data.append({"valid": False})
+            pbar_scale.update(1)
 
         # 2. Normalize scales relative to median
         valid_scales = [p["scale"] for p in person_data if p.get("valid")]
@@ -1031,10 +1038,13 @@ class SAM3DBodyProcessMultiple:
         log.info(f" Median scale: {median_scale:.3f}")
 
         # 3. Apply corrections
+        pbar_apply = comfy.utils.ProgressBar(len(outputs))
         for i, output in enumerate(outputs):
+            comfy.model_management.throw_exception_if_processing_interrupted()
             data = person_data[i]
 
             if not data.get("valid"):
+                pbar_apply.update(1)
                 continue
 
             # Normalize scale relative to median
@@ -1079,10 +1089,12 @@ class SAM3DBodyProcessMultiple:
             conf = data.get('confidence', 0)
             log.info(f" Person {i} final: scale={scale_factor:.3f}, height={height_str}, "
                   f"tz={tz_str}, method={method}, confidence={conf:.2f}")
+            pbar_apply.update(1)
 
         return outputs
 
-    def process_multiple(self, model, image, masks, inference_type="full", depth_map=None,
+    @classmethod
+    def execute(cls, model, image, masks, inference_type="full", depth_map=None,
                           intrinsics=None, depth_confidence=None, adjust_position_from_depth=False):
         """Process image with multiple masks and reconstruct 3D meshes for all people.
 
@@ -1178,11 +1190,14 @@ class SAM3DBodyProcessMultiple:
         # Compute bounding boxes from each mask
         bboxes_list = []
         valid_mask_indices = []
+        pbar = comfy.utils.ProgressBar(num_people)
         for i in range(num_people):
-            bbox = self._compute_bbox_from_mask(masks_np[i])
+            comfy.model_management.throw_exception_if_processing_interrupted()
+            bbox = cls._compute_bbox_from_mask(masks_np[i])
             if bbox is not None:
                 bboxes_list.append(bbox)
                 valid_mask_indices.append(i)
+            pbar.update(1)
 
         # DEBUG: Log valid bboxes
         log.debug(f" Valid bboxes: {len(bboxes_list)} out of {num_people} masks")
@@ -1226,12 +1241,12 @@ class SAM3DBodyProcessMultiple:
             raise RuntimeError("No people detected in image")
 
         # Prepare outputs (convert tensors, add indices)
-        prepared_outputs = self._prepare_outputs(outputs)
+        prepared_outputs = cls._prepare_outputs(outputs)
 
         # Apply depth-based scale correction if depth map provided
         if depth_map_np is not None:
             img_h, img_w = img_bgr.shape[:2]
-            prepared_outputs = self._apply_depth_scale_correction(
+            prepared_outputs = cls._apply_depth_scale_correction(
                 prepared_outputs, depth_map_np, masks_np=valid_masks,
                 img_shape=(img_h, img_w), adjust_position=adjust_position_from_depth,
                 intrinsics=intrinsics_np, depth_conf=depth_conf_np
@@ -1247,14 +1262,15 @@ class SAM3DBodyProcessMultiple:
         }
 
         # Create preview visualization
-        preview = self._create_multi_person_preview(
+        preview = cls._create_multi_person_preview(
             img_bgr, prepared_outputs, estimator.faces, valid_masks
         )
         preview_comfy = numpy_to_comfy_image(preview)
 
-        return (multi_mesh_data, preview_comfy)
+        return io.NodeOutput(multi_mesh_data, preview_comfy)
 
-    def _draw_skeleton_overlay(self, image, keypoints_2d, color, thickness=2, joint_radius=4):
+    @staticmethod
+    def _draw_skeleton_overlay(image, keypoints_2d, color, thickness=2, joint_radius=4):
         """
         Draw skeleton overlay on image using 2D keypoints.
 
@@ -1269,7 +1285,7 @@ class SAM3DBodyProcessMultiple:
         num_joints = len(keypoints_2d)
 
         # Use MHR70 skeleton for SAM3DBody output (70 keypoints)
-        skeleton = self.MHR70_SKELETON_BODY
+        skeleton = SAM3DBodyProcessMultiple.MHR70_SKELETON_BODY
 
         # Draw bones (lines between connected joints)
         for parent_idx, child_idx in skeleton:
@@ -1305,7 +1321,8 @@ class SAM3DBodyProcessMultiple:
                 cv2.circle(image, (x, y), joint_radius, color, -1, cv2.LINE_AA)
                 cv2.circle(image, (x, y), joint_radius, (255, 255, 255), 1, cv2.LINE_AA)
 
-    def _create_multi_person_preview(self, img_bgr, outputs, faces, masks_np=None):
+    @classmethod
+    def _create_multi_person_preview(cls, img_bgr, outputs, faces, masks_np=None):
         """Create a preview visualization showing all detected people."""
         try:
             from .sam_3d_body.visualization.renderer import Renderer
@@ -1381,7 +1398,7 @@ class SAM3DBodyProcessMultiple:
                         kpts_2d = output.get("pred_keypoints_2d")
                         if kpts_2d is not None:
                             color = skeleton_colors[i % len(skeleton_colors)]
-                            self._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
+                            cls._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
 
                     return result
 
@@ -1400,11 +1417,12 @@ class SAM3DBodyProcessMultiple:
                 kpts_2d = output.get("pred_keypoints_2d")
                 if kpts_2d is not None:
                     color = colors[i % len(colors)]
-                    self._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
+                    cls._draw_skeleton_overlay(result, kpts_2d, color, thickness=2, joint_radius=3)
 
             return result
 
-    def _export_to_fbx(self, multi_mesh_data, output_filename, combine):
+    @classmethod
+    def _export_to_fbx(cls, multi_mesh_data, output_filename, combine):
         """Export multi-person mesh data to FBX file(s)."""
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
@@ -1452,14 +1470,17 @@ class SAM3DBodyProcessMultiple:
 
         try:
             people_data_for_export = []
+            pbar_fbx = comfy.utils.ProgressBar(len(people))
 
             for i, person in enumerate(people):
+                comfy.model_management.throw_exception_if_processing_interrupted()
                 vertices = person.get("pred_vertices")
                 joint_coords = person.get("pred_joint_coords")
                 cam_t = person.get("pred_cam_t")
                 global_rots = person.get("pred_global_rots")
 
                 if vertices is None:
+                    pbar_fbx.update(1)
                     continue
 
                 # Convert to numpy
@@ -1481,7 +1502,7 @@ class SAM3DBodyProcessMultiple:
                 # Write OBJ file for this person
                 temp_obj = tempfile.NamedTemporaryFile(suffix=f'_person{i}.obj', delete=False)
                 temp_files.append(temp_obj.name)
-                self._write_obj_file(temp_obj.name, vertices, faces)
+                cls._write_obj_file(temp_obj.name, vertices, faces)
 
                 # Prepare skeleton data
                 skeleton_info = {}
@@ -1531,6 +1552,7 @@ class SAM3DBodyProcessMultiple:
                     "skeleton_json_path": person_skeleton_json,
                     "index": i,
                 })
+                pbar_fbx.update(1)
 
             if not people_data_for_export:
                 raise RuntimeError("No valid mesh data to export")
@@ -1561,8 +1583,10 @@ class SAM3DBodyProcessMultiple:
             else:
                 # Separate mode: export each person to individual FBX files
                 exported_files = []
+                pbar_sep = comfy.utils.ProgressBar(len(people_data_for_export))
 
                 for person_data in people_data_for_export:
+                    comfy.model_management.throw_exception_if_processing_interrupted()
                     obj_path = person_data["obj_path"]
                     idx = person_data["index"]
                     person_skeleton_json = person_data.get("skeleton_json_path")
@@ -1582,6 +1606,7 @@ class SAM3DBodyProcessMultiple:
                         exported_files.append(person_fbx_path)
                     else:
                         raise RuntimeError(f"FBX export failed for person {idx}")
+                    pbar_sep.update(1)
 
                 if not exported_files:
                     raise RuntimeError("No FBX files were exported")
@@ -1598,7 +1623,8 @@ class SAM3DBodyProcessMultiple:
                     except Exception:
                         pass
 
-    def _write_obj_file(self, filepath, vertices, faces):
+    @staticmethod
+    def _write_obj_file(filepath, vertices, faces):
         """Write mesh to OBJ file format."""
         with open(filepath, 'w') as f:
             for v in vertices:
