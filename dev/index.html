@@ -58,6 +58,47 @@
       }
     }
 
+    // Forward keyboard events to report iframe
+    document.onkeydown = function(e) {
+      if (['Escape', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+        if (frameReady) frame.contentWindow.postMessage({ type: 'comfytest-key', key: e.key }, '*');
+      }
+    };
+
+    let pendingMessage = null;
+    let frameReady = false;
+
+    frame.addEventListener('load', function() {
+      if (frame.src !== 'about:blank') {
+        frameReady = true;
+        if (pendingMessage) {
+          // Small delay to let report.html initialize
+          setTimeout(function() {
+            frame.contentWindow.postMessage(pendingMessage, '*');
+            pendingMessage = null;
+          }, 200);
+        }
+      }
+    });
+
+    // Forward messages between report iframe and parent (branch_index)
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.type && e.data.type.startsWith('comfytest-')) {
+        if (e.source === frame.contentWindow) {
+          // From report iframe -> forward to parent
+          if (window !== window.top) window.parent.postMessage(e.data, '*');
+        } else {
+          // From parent -> forward to report iframe
+          if (frameReady) {
+            frame.contentWindow.postMessage(e.data, '*');
+          } else {
+            pendingMessage = e.data;
+          }
+        }
+      }
+    });
+
     init();
   </script>
 </body>
