@@ -28,8 +28,6 @@ class LoadSAM3DBodyModel(io.ComfyNode):
             display_name="(Down)Load SAM 3D Body Model",
             category="SAM3DBody",
             inputs=[
-                io.String.Input("model_path", default=DEFAULT_MODEL_PATH,
-                                tooltip="Path to SAM 3D Body model folder (contains model.safetensors and assets/mhr_model.pt)"),
                 io.Combo.Input("precision", options=["fp32", "auto", "bf16", "fp16"],
                                default="fp32",
                                tooltip="Model precision. auto: best for your GPU (bf16 on Ampere+, fp16 on Volta/Turing, fp32 on older)."),
@@ -40,7 +38,7 @@ class LoadSAM3DBodyModel(io.ComfyNode):
         )
 
     @classmethod
-    def execute(cls, model_path, precision="auto"):
+    def execute(cls, precision="auto"):
         """Prepare model config (actual loading happens in inference nodes)."""
         import comfy.model_management as mm
         device = mm.get_torch_device()
@@ -57,8 +55,7 @@ class LoadSAM3DBodyModel(io.ComfyNode):
 
         log.info(f"Precision: {precision}")
 
-        # Resolve to absolute path
-        model_path = os.path.abspath(model_path)
+        model_path = DEFAULT_MODEL_PATH
 
         # Expected file paths
         model_file = os.path.join(model_path, "model.safetensors")
