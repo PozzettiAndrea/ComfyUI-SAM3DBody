@@ -3,10 +3,12 @@ python = "3.11"
 [cuda]
 packages = ["detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
 
+[dependencies]
+numpy = "<2.0"
+
 [pypi-dependencies]
 bpy = ">=4.2"
 trimesh = { version = "*", extras = ["easy"] }
-numpy = ">=1.21.0,<2.0.0"
 pillow = ">=9.0.0"
 opencv-python-headless = ">=4.8.0"
 huggingface-hub = ">=0.16.0"
