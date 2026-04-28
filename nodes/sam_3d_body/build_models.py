@@ -1,7 +1,6 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 import logging
 import torch
-import comfy.model_management
 
 from .model import SAM3DBody
 from .configs import get_default_config
@@ -12,6 +11,7 @@ log = logging.getLogger("sam3dbody")
 def load_sam_3d_body(checkpoint_path: str = "", device: str = None, mhr_path: str = "", dtype: torch.dtype = None):
 
     if device is None:
+        import comfy.model_management
         device = str(comfy.model_management.get_torch_device())
 
     model_cfg = get_default_config()

@@ -14,8 +14,6 @@ import subprocess
 import numpy as np
 import torch
 import folder_paths
-import comfy.model_management
-import comfy.utils
 from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
@@ -127,6 +125,8 @@ class SAM3DBodySaveSkeleton(io.ComfyNode):
             f.write("  CHANNELS 6 Xposition Yposition Zposition Zrotation Xrotation Yrotation\n")
 
             # Write joints (simplified - first 20 joints)
+            import comfy.model_management
+            import comfy.utils
             num_joints = min(len(joint_positions), 20)
             pbar = comfy.utils.ProgressBar(num_joints)
             for i in range(1, num_joints):

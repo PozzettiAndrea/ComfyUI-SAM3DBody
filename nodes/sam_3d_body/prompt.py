@@ -8,11 +8,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import comfy.ops
-
 from .layers import LayerNorm2d
 
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 # =============================================================================

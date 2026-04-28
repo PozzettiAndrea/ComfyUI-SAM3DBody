@@ -8,9 +8,6 @@ import roma
 import torch
 import torch.nn as nn
 
-import comfy.model_management
-import comfy.ops
-
 from .transformer import FFN
 from .utils_model import (
     compact_cont_to_model_params_body,
@@ -22,7 +19,7 @@ from .utils_model import (
     to_2tuple,
 )
 
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 # =============================================================================
@@ -121,13 +118,13 @@ class MHRHead(nn.Module):
         # Load MHR itself
         if MOMENTUM_ENABLED:
             self.mhr = MHR.from_files(
-                device=comfy.model_management.get_torch_device(),
+                device="cpu",  # ModelPatcher handles device placement
                 lod=1,
             )
         else:
             self.mhr = torch.jit.load(
                 mhr_model_path,
-                map_location=comfy.model_management.get_torch_device(),
+                map_location="cpu",  # ModelPatcher handles device placement
             )
 
         for param in self.mhr.parameters():

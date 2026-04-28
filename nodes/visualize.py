@@ -13,8 +13,6 @@ import cv2
 import torch
 from pathlib import Path
 import folder_paths
-import comfy.model_management
-import comfy.utils
 from .base import numpy_to_comfy_image
 from comfy_api.latest import io
 
@@ -182,6 +180,8 @@ class SAM3DBodyExportMesh(io.ComfyNode):
     @staticmethod
     def _export_obj(vertices, faces, filepath):
         """Export mesh to OBJ format."""
+        import comfy.model_management
+        import comfy.utils
         total_items = len(vertices) + len(faces)
         pbar = comfy.utils.ProgressBar(total_items)
         with open(filepath, 'w') as f:
@@ -200,6 +200,8 @@ class SAM3DBodyExportMesh(io.ComfyNode):
     @staticmethod
     def _export_ply(vertices, faces, filepath):
         """Export mesh to PLY format."""
+        import comfy.model_management
+        import comfy.utils
         total_items = len(vertices) + len(faces)
         pbar = comfy.utils.ProgressBar(total_items)
         with open(filepath, 'w') as f:
@@ -229,6 +231,8 @@ class SAM3DBodyExportMesh(io.ComfyNode):
     @staticmethod
     def _export_stl(vertices, faces, filepath):
         """Export mesh to ASCII STL format."""
+        import comfy.model_management
+        import comfy.utils
         import numpy as np
 
         # Apply 180 deg X-rotation to undo MHR coordinate transform (flip both Y and Z)

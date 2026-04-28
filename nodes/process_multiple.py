@@ -7,8 +7,6 @@ import torch
 import numpy as np
 import cv2
 import folder_paths
-import comfy.model_management
-import comfy.utils
 from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
@@ -732,6 +730,8 @@ class SAM3DBodyProcessMultiple(io.ComfyNode):
     @classmethod
     def _prepare_outputs(cls, outputs):
         """Convert tensors to numpy and add person indices."""
+        import comfy.model_management
+        import comfy.utils
         prepared = []
         pbar = comfy.utils.ProgressBar(len(outputs))
         for i, output in enumerate(outputs):
@@ -921,6 +921,9 @@ class SAM3DBodyProcessMultiple(io.ComfyNode):
             intrinsics: [3, 3] camera intrinsics matrix from DA3 (optional)
             depth_conf: [H, W] confidence values from DA3 (optional)
         """
+        import comfy.model_management
+        import comfy.utils
+
         if depth_map is None or len(outputs) == 0:
             return outputs
 
@@ -1108,6 +1111,8 @@ class SAM3DBodyProcessMultiple(io.ComfyNode):
             depth_confidence: Optional confidence map [B,H,W,C] from DA3
             adjust_position_from_depth: Adjust Z-position based on depth map
         """
+        import comfy.model_management
+        import comfy.utils
         from .sam_3d_body import SAM3DBodyEstimator
 
         # DEBUG: Print all input shapes at function entry
@@ -1424,6 +1429,8 @@ class SAM3DBodyProcessMultiple(io.ComfyNode):
     @classmethod
     def _export_to_fbx(cls, multi_mesh_data, output_filename, combine):
         """Export multi-person mesh data to FBX file(s)."""
+        import comfy.model_management
+        import comfy.utils
         num_people = multi_mesh_data.get("num_people", 0)
         people = multi_mesh_data.get("people", [])
         faces = multi_mesh_data.get("faces")

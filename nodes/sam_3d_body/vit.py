@@ -7,13 +7,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint_utils
 
-import comfy.ops
 from .attention import sam3d_attention
 
 from .layers import DropPath, LayerNorm32
 from .utils_model import to_2tuple
 
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 # =============================================================================

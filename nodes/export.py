@@ -15,8 +15,6 @@ import numpy as np
 import torch
 import folder_paths
 import glob
-import comfy.model_management
-import comfy.utils
 from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
@@ -838,6 +836,8 @@ class SAM3DBodyExportMultipleFBX(io.ComfyNode):
             output_filename: Output filename for the FBX file
             combine: If True, export all people into single FBX. If False, create separate FBX per person.
         """
+        import comfy.model_management
+        import comfy.utils
         import bpy
 
         num_people = multi_mesh_data.get("num_people", 0)

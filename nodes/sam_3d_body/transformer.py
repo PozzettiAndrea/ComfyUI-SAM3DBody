@@ -7,12 +7,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import comfy.ops
 from .attention import sam3d_attention
 
 from .layers import DropPath, LayerScale, LayerNorm32, build_norm_layer
 
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 # =============================================================================
