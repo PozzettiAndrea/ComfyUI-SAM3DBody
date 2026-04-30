@@ -14,7 +14,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import comfy.ops
+from ._lazy_ops import ops as _ops_import
 
 from .utils_model import (
     cam_crop_to_full,
@@ -39,7 +39,7 @@ from .heads import MHRHead, PerspectiveHead
 
 log = logging.getLogger("sam3dbody")
 
-ops = comfy.ops.manual_cast
+ops = _ops_import
 
 
 # =============================================================================

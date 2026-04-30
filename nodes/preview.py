@@ -9,11 +9,12 @@ Displays rigged FBX files with interactive skeleton manipulation.
 import logging
 import os
 import folder_paths
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
 
-class SAM3DBodyPreviewRiggedMesh:
+class SAM3DBodyPreviewRiggedMesh(io.ComfyNode):
     """
     Preview rigged mesh with interactive FBX viewer.
 
@@ -22,21 +23,21 @@ class SAM3DBodyPreviewRiggedMesh:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "fbx_output_path": ("STRING", {
-                    "tooltip": "FBX filename from output directory (from SAM3D export node)"
-                }),
-            },
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyPreviewRiggedMesh",
+            display_name="SAM 3D Body: Preview Rigged Mesh",
+            category="SAM3DBody/visualization",
+            is_output_node=True,
+            inputs=[
+                io.String.Input("fbx_output_path",
+                                tooltip="FBX filename from output directory (from SAM3D export node)"),
+            ],
+            outputs=[],
+        )
 
-    RETURN_TYPES = ()
-    OUTPUT_NODE = True
-    FUNCTION = "preview"
-    CATEGORY = "SAM3DBody/visualization"
-
-    def preview(self, fbx_output_path):
+    @classmethod
+    def execute(cls, fbx_output_path):
         """Preview the rigged mesh in an interactive FBX viewer."""
         log.info(f" Preparing preview...")
 
@@ -54,13 +55,13 @@ class SAM3DBodyPreviewRiggedMesh:
         log.info(f" Has skinning: {has_skinning}")
         log.info(f" Has skeleton: {has_skeleton}")
 
-        return {
-            "ui": {
+        return io.NodeOutput(
+            ui={
                 "fbx_file": [fbx_output_path],
                 "has_skinning": [bool(has_skinning)],
                 "has_skeleton": [bool(has_skeleton)],
             }
-        }
+        )
 
 
 # Register nodes

@@ -14,9 +14,7 @@ import torch
 import torch.nn.functional as F
 from torch import Tensor, nn
 
-import comfy.ops
-
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 logger = logging.getLogger("dinov3")
 

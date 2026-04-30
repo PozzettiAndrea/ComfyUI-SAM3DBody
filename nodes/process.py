@@ -4,6 +4,7 @@ import tempfile
 import torch
 import numpy as np
 import cv2
+from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
@@ -61,15 +62,11 @@ def _load_sam3d_model(model_config: dict):
 
     # Import heavy dependencies only inside worker
     from .sam_3d_body import load_sam_3d_body
-    from .sam_3d_body.attention import set_attn_backend
 
     ckpt_path = model_config["ckpt_path"]
     mhr_path = model_config.get("mhr_path", "")
     precision = model_config.get("precision", "fp32")
     dtype = _resolve_dtype(precision)
-
-    # Set attention backend
-    set_attn_backend(model_config.get("attn_backend", "auto"))
 
     # Load model using the library's built-in function
     log.info(f" Loading model from {ckpt_path} (precision={precision})...")
@@ -102,7 +99,7 @@ def _load_sam3d_model(model_config: dict):
 
 
 
-class SAM3DBodyProcess:
+class SAM3DBodyProcess(io.ComfyNode):
     """
     Performs 3D human mesh reconstruction from a single image.
 
@@ -111,40 +108,33 @@ class SAM3DBodyProcess:
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model": ("SAM3D_MODEL", {
-                    "tooltip": "Loaded SAM 3D Body model from Load node"
-                }),
-                "image": ("IMAGE", {
-                    "tooltip": "Input image containing human subject"
-                }),
-                "bbox_threshold": ("FLOAT", {
-                    "default": 0.8,
-                    "min": 0.0,
-                    "max": 1.0,
-                    "step": 0.05,
-                    "tooltip": "Confidence threshold for human detection bounding boxes"
-                }),
-                "inference_type": (["full", "body", "hand"], {
-                    "default": "full",
-                    "tooltip": "full: body+hand decoders, body: body decoder only, hand: hand decoder only"
-                }),
-            },
-            "optional": {
-                "mask": ("MASK", {
-                    "tooltip": "Optional segmentation mask to guide reconstruction"
-                }),
-            }
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyProcess",
+            display_name="SAM 3D Body: Process Image",
+            category="SAM3DBody/processing",
+            inputs=[
+                io.Custom("SAM3D_MODEL").Input("model",
+                    tooltip="Loaded SAM 3D Body model from Load node"),
+                io.Image.Input("image",
+                    tooltip="Input image containing human subject"),
+                io.Float.Input("bbox_threshold", default=0.8, min=0.0, max=1.0, step=0.05,
+                    tooltip="Confidence threshold for human detection bounding boxes"),
+                io.Combo.Input("inference_type", options=["full", "body", "hand"],
+                    default="full",
+                    tooltip="full: body+hand decoders, body: body decoder only, hand: hand decoder only"),
+                io.Mask.Input("mask", optional=True,
+                    tooltip="Optional segmentation mask to guide reconstruction"),
+            ],
+            outputs=[
+                io.Custom("SAM3D_OUTPUT").Output(display_name="mesh_data"),
+                io.Custom("SKELETON").Output(display_name="skeleton"),
+                io.Image.Output(display_name="debug_image"),
+            ],
+        )
 
-    RETURN_TYPES = ("SAM3D_OUTPUT", "SKELETON", "IMAGE")
-    RETURN_NAMES = ("mesh_data", "skeleton", "debug_image")
-    FUNCTION = "process"
-    CATEGORY = "SAM3DBody/processing"
-
-    def _compute_bbox_from_mask(self, mask):
+    @staticmethod
+    def _compute_bbox_from_mask(mask):
         """Compute bounding box from binary mask."""
         rows = np.any(mask > 0.5, axis=1)
         cols = np.any(mask > 0.5, axis=0)
@@ -157,7 +147,8 @@ class SAM3DBodyProcess:
 
         return np.array([[cmin, rmin, cmax, rmax]], dtype=np.float32)
 
-    def process(self, model, image, bbox_threshold=0.8, inference_type="full", mask=None):
+    @classmethod
+    def execute(cls, model, image, bbox_threshold=0.8, inference_type="full", mask=None):
         """Process image and reconstruct 3D human mesh.
 
         Args:
@@ -193,7 +184,7 @@ class SAM3DBodyProcess:
             mask_np = comfy_mask_to_numpy(mask)
             if mask_np.ndim == 3:
                 mask_np = mask_np[0]
-            bboxes = self._compute_bbox_from_mask(mask_np)
+            bboxes = cls._compute_bbox_from_mask(mask_np)
 
         # Save image to temporary file (required by SAM3DBodyEstimator)
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp:
@@ -270,88 +261,68 @@ class SAM3DBodyProcess:
             pass
 
         # Create debug visualization
-        debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
+        debug_img = cls._create_debug_visualization(img_bgr, outputs, estimator.faces)
         debug_img_comfy = numpy_to_comfy_image(debug_img)
 
 
-        return (mesh_data, skeleton, debug_img_comfy)
+        return io.NodeOutput(mesh_data, skeleton, debug_img_comfy)
 
-    def _create_debug_visualization(self, img_bgr, outputs, faces):
+    @staticmethod
+    def _create_debug_visualization(img_bgr, outputs, faces):
         """Create a debug visualization of the results."""
         # Return original image for now
         return img_bgr
 
-class SAM3DBodyProcessAdvanced:
+class SAM3DBodyProcessAdvanced(io.ComfyNode):
     """
     Advanced processing node with full control over detection, segmentation, and FOV estimation.
     """
 
     @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "model": ("SAM3D_MODEL", {
-                    "tooltip": "Loaded SAM 3D Body model from Load node"
-                }),
-                "image": ("IMAGE", {
-                    "tooltip": "Input image containing human subject"
-                }),
-                "bbox_threshold": ("FLOAT", {
-                    "default": 0.8,
-                    "min": 0.0,
-                    "max": 1.0,
-                    "step": 0.05,
-                    "tooltip": "Confidence threshold for human detection"
-                }),
-                "nms_threshold": ("FLOAT", {
-                    "default": 0.3,
-                    "min": 0.0,
-                    "max": 1.0,
-                    "step": 0.05,
-                    "tooltip": "Non-maximum suppression threshold for detection"
-                }),
-                "inference_type": (["full", "body", "hand"], {
-                    "default": "full",
-                    "tooltip": "Inference mode: full (body+hand), body only, or hand only"
-                }),
-                "detector_name": (["none", "vitdet"], {
-                    "default": "none",
-                    "tooltip": "Human detector to use (requires detector_path)"
-                }),
-                "segmentor_name": (["none", "sam2"], {
-                    "default": "none",
-                    "tooltip": "Segmentation model to use (requires segmentor_path)"
-                }),
-                "fov_name": (["none", "moge2"], {
-                    "default": "none",
-                    "tooltip": "FOV estimator to use (requires fov_path)"
-                }),
-            },
-            "optional": {
-                "detector_path": ("STRING", {
-                    "default": "",
-                    "tooltip": "Path to detector model or set SAM3D_DETECTOR_PATH env var"
-                }),
-                "segmentor_path": ("STRING", {
-                    "default": "",
-                    "tooltip": "Path to segmentor model or set SAM3D_SEGMENTOR_PATH env var"
-                }),
-                "fov_path": ("STRING", {
-                    "default": "",
-                    "tooltip": "Path to FOV model or set SAM3D_FOV_PATH env var"
-                }),
-                "mask": ("MASK", {
-                    "tooltip": "Optional pre-computed segmentation mask"
-                }),
-            }
-        }
+    def define_schema(cls):
+        return io.Schema(
+            node_id="SAM3DBodyProcessAdvanced",
+            display_name="SAM 3D Body: Process Image (Advanced)",
+            category="SAM3DBody/advanced",
+            inputs=[
+                io.Custom("SAM3D_MODEL").Input("model",
+                    tooltip="Loaded SAM 3D Body model from Load node"),
+                io.Image.Input("image",
+                    tooltip="Input image containing human subject"),
+                io.Float.Input("bbox_threshold", default=0.8, min=0.0, max=1.0, step=0.05,
+                    tooltip="Confidence threshold for human detection"),
+                io.Float.Input("nms_threshold", default=0.3, min=0.0, max=1.0, step=0.05,
+                    tooltip="Non-maximum suppression threshold for detection"),
+                io.Combo.Input("inference_type", options=["full", "body", "hand"],
+                    default="full",
+                    tooltip="Inference mode: full (body+hand), body only, or hand only"),
+                io.Combo.Input("detector_name", options=["none", "vitdet"],
+                    default="none",
+                    tooltip="Human detector to use (requires detector_path)"),
+                io.Combo.Input("segmentor_name", options=["none", "sam2"],
+                    default="none",
+                    tooltip="Segmentation model to use (requires segmentor_path)"),
+                io.Combo.Input("fov_name", options=["none", "moge2"],
+                    default="none",
+                    tooltip="FOV estimator to use (requires fov_path)"),
+                io.String.Input("detector_path", default="", optional=True,
+                    tooltip="Path to detector model or set SAM3D_DETECTOR_PATH env var"),
+                io.String.Input("segmentor_path", default="", optional=True,
+                    tooltip="Path to segmentor model or set SAM3D_SEGMENTOR_PATH env var"),
+                io.String.Input("fov_path", default="", optional=True,
+                    tooltip="Path to FOV model or set SAM3D_FOV_PATH env var"),
+                io.Mask.Input("mask", optional=True,
+                    tooltip="Optional pre-computed segmentation mask"),
+            ],
+            outputs=[
+                io.Custom("SAM3D_OUTPUT").Output(display_name="mesh_data"),
+                io.Custom("SKELETON").Output(display_name="skeleton"),
+                io.Image.Output(display_name="debug_image"),
+            ],
+        )
 
-    RETURN_TYPES = ("SAM3D_OUTPUT", "SKELETON", "IMAGE")
-    RETURN_NAMES = ("mesh_data", "skeleton", "debug_image")
-    FUNCTION = "process_advanced"
-    CATEGORY = "SAM3DBody/advanced"
-
-    def _compute_bbox_from_mask(self, mask):
+    @staticmethod
+    def _compute_bbox_from_mask(mask):
         """Compute bounding box from binary mask."""
         rows = np.any(mask > 0.5, axis=1)
         cols = np.any(mask > 0.5, axis=0)
@@ -364,7 +335,8 @@ class SAM3DBodyProcessAdvanced:
 
         return np.array([[cmin, rmin, cmax, rmax]], dtype=np.float32)
 
-    def process_advanced(self, model, image, bbox_threshold=0.8, nms_threshold=0.3,
+    @classmethod
+    def execute(cls, model, image, bbox_threshold=0.8, nms_threshold=0.3,
                         inference_type="full", detector_name="none", segmentor_name="none",
                         fov_name="none", detector_path="", segmentor_path="", fov_path="", mask=None):
         """Process image with advanced options.
@@ -435,7 +407,7 @@ class SAM3DBodyProcessAdvanced:
             mask_np = comfy_mask_to_numpy(mask)
             if mask_np.ndim == 3:
                 mask_np = mask_np[0]
-            bboxes = self._compute_bbox_from_mask(mask_np)
+            bboxes = cls._compute_bbox_from_mask(mask_np)
 
         # Save to temp file
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp:
@@ -513,13 +485,14 @@ class SAM3DBodyProcessAdvanced:
             pass
 
         # Create debug visualization
-        debug_img = self._create_debug_visualization(img_bgr, outputs, estimator.faces)
+        debug_img = cls._create_debug_visualization(img_bgr, outputs, estimator.faces)
         debug_img_comfy = numpy_to_comfy_image(debug_img)
 
 
-        return (mesh_data, skeleton, debug_img_comfy)
+        return io.NodeOutput(mesh_data, skeleton, debug_img_comfy)
 
-    def _create_debug_visualization(self, img_bgr, outputs, faces):
+    @staticmethod
+    def _create_debug_visualization(img_bgr, outputs, faces):
         """Create debug visualization."""
         return img_bgr
 

@@ -5,12 +5,10 @@ from typing import Dict, Optional
 import torch
 import torch.nn as nn
 
-import comfy.ops
-
 from .layers import build_norm_layer
 from .transformer import TransformerDecoderLayer
 
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 class PromptableDecoder(nn.Module):

@@ -5,9 +5,7 @@ from typing import Dict, Union
 import torch
 import torch.nn as nn
 
-import comfy.ops
-
-ops = comfy.ops.manual_cast
+from ._lazy_ops import ops
 
 
 # =============================================================================
