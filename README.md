@@ -17,6 +17,9 @@ Three options, in order of speed → reliability:
 
 > **macOS**: If `xtcocotools` build errors, the install script handles it. For manual install: `pip install --no-build-isolation xtcocotools`.
 
+---
+
+
 
 <div align="center">
 <a href="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/">
@@ -37,7 +40,6 @@ https://github.com/user-attachments/assets/8429690a-a251-458f-8b4f-aad5e723525e
 
 https://github.com/user-attachments/assets/2906d9b5-bdf7-4593-a3ae-1f2c866d2b2e
 
----
 
 
 ## Multi people support
