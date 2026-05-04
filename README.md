@@ -1,5 +1,26 @@
 # ComfyUI-SAM3DBody
 
+## Installation
+
+Three options, in order of speed → reliability:
+
+1. **ComfyUI Manager (nightly)** — search for `ComfyUI-SAM3DBody` in the Manager and click Install. Fastest, but the Manager's nightly index can lag.
+2. **Manager via Git URL** — in ComfyUI Manager: "Install via Git URL" with `https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody.git`.
+3. **Manual (most reliable)**:
+   ```bash
+   cd ComfyUI/custom_nodes
+   git clone https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody.git
+   cd ComfyUI-SAM3DBody
+   pip install -r requirements.txt --upgrade
+   python install.py
+   ```
+
+> **macOS**: If `xtcocotools` build errors, the install script handles it. For manual install: `pip install --no-build-isolation xtcocotools`.
+
+---
+
+
+
 <div align="center">
 <a href="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/">
 <img src="https://pozzettiandrea.github.io/ComfyUI-SAM3DBody/gallery-preview.png" alt="Workflow Test Gallery" width="800">
@@ -19,6 +40,8 @@ https://github.com/user-attachments/assets/8429690a-a251-458f-8b4f-aad5e723525e
 
 https://github.com/user-attachments/assets/2906d9b5-bdf7-4593-a3ae-1f2c866d2b2e
 
+
+
 ## Multi people support
 
 I have also added multi people support.
@@ -34,12 +57,6 @@ I have tried to include some depth-supported size correction.
 ![body](docs/fellowship_depth_corrected.png)
 
 Still needs some work!
-
-## Installation
-
-Run the installation script: `python install.py`
-
-**macOS Note**: If you encounter build errors with `xtcocotools`, the install script handles this automatically. For manual installation: `pip install --no-build-isolation xtcocotools`
 
 ## License
 
