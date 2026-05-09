@@ -1,0 +1,29 @@
+Capturing execution frames: rigged_mesh_manipulation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=4ms shot=210ms unfreeze=15ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.7s)
+  [capture-periodic] freeze=4ms shot=199ms unfreeze=14ms saved=True
+  Node executed (1 total), capturing...
+  Frame 4 saved (frame_003.jpg, t=6.0s)
+  [capture-node] freeze=4ms shot=181ms unfreeze=0ms saved=True
+  Execution complete (t=5.9s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 done in 0.0s
+  [3d-wait] Phase 2: iframes=1
+  [3d-wait] iframe viewer_ready=False (matched 0 console logs)
+  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...
+  [3d-wait] iframe wait exception: Timeout 60000ms exceeded while waiting for event "console"
+=========================== logs ===========================
+waiting for event "console"
+============================================================
+  [3d-wait] Total 3D wait: 60.0s
+  Captured 4 unique frames over 66.2s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-SAM3DBody/viewer_fbx.html?v=17780155676, canvas=300x150, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+  [timing] final_screenshot: 0.7s
+    Captured 5 video frames

@@ -1,0 +1,143 @@
+Capturing execution frames: multiple_masks.json
+  [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  Queuing workflow for execution...
+  [ComfyUI] Prompt has 8 nodes
+  [ComfyUI]   Node 4: PreviewImage
+  [ComfyUI]     Inputs: {"images": ["16", 1]}
+  [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
+  [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": false, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0]}
+  [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
+  [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
+  [ComfyUI]   Node 24: LoadSAM3DBodyModel
+  [ComfyUI]     Inputs: {"precision": "auto"}
+  [ComfyUI]   Node 29: Preview3D
+  [ComfyUI]     Inputs: {"model_file": ["18", 0], "image": ""}
+  [ComfyUI]   Node 35: MultibandLoad
+  [ComfyUI]     Inputs: {"image": "people.npz", "normalize": true}
+  [ComfyUI]   Node 36: MultibandToImage
+  [ComfyUI]     Inputs: {"channels": "0,1,2", "multiband": ["35", 0]}
+  [ComfyUI]   Node 39: MultibandToMasks
+  [ComfyUI]     Inputs: {"channels": "0", "auto_detect_masks": true, "multiband": ["35", 0]}
+  [ComfyUI] Generated prompt_id: a3351a49-11f8-466b-b73d-e6ca21259ab2
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] got prompt
+  [ComfyUI] Precision: bf16
+  [ComfyUI] Model not found locally. Downloading from HuggingFace...
+  [ComfyUI] HTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/revision/main "HTTP/1.1 200 OK"
+  [ComfyUI] 
+  [ComfyUI] Downloading (incomplete total...): 0.00B [00:00, ?B/s]
+  [ComfyUI] 
+  [ComfyUI] Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s][AHTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 307 Temporary Redirect"
+  [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [ComfyUI] HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/assets/mhr_model.pt "HTTP/1.1 302 Found"
+  [ComfyUI] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 200 OK"
+  [ComfyUI] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 200 OK"
+  [ComfyUI] 
+  [ComfyUI] Downloading (incomplete total...): 1.49kB [00:00, 9.49kB/s]HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model.safetensors "HTTP/1.1 302 Found"
+  [ComfyUI] HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+  [ComfyUI] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 200 OK"
+  [ComfyUI] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 200 OK"
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  4.69it/s][AHTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/xet-read-token/0c0bd82453ec0a6c14caa2de3ae47c667c11546a "HTTP/1.1 200 OK"
+  [ComfyUI] 
+  [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/696M [00:00<20:22:27, 9.49kB/s]
+  [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/696M [00:00<17:48:00, 10.9kB/s]HTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/xet-read-token/0c0bd82453ec0a6c14caa2de3ae47c667c11546a "HTTP/1.1 200 OK"
+  [ComfyUI] 
+  [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/2.83G [00:00<72:20:09, 10.9kB/s]
+  [ComfyUI] Downloading (incomplete total...):   6%|▌         | 165M/2.83G [00:01<00:22, 117MB/s]
+  [ComfyUI] Downloading (incomplete total...):  16%|█▌        | 452M/2.83G [00:01<00:07, 324MB/s]
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=2ms shot=167ms unfreeze=8ms saved=True
+  [ComfyUI] Downloading (incomplete total...):  25%|██▍       | 696M/2.83G [00:02<00:04, 470MB/s]
+  [ComfyUI] 
+  [ComfyUI] Fetching 4 files:  50%|█████     | 2/4 [00:02<00:03,  1.51s/it][A
+  Frame 3 saved (frame_002.jpg, t=4.8s)
+  [capture-periodic] freeze=2ms shot=151ms unfreeze=7ms saved=True
+  [ComfyUI] Downloading (incomplete total...):  30%|██▉       | 836M/2.83G [00:04<00:10, 181MB/s]
+  [ComfyUI] Downloading (incomplete total...):  32%|███▏      | 904M/2.83G [00:04<00:11, 172MB/s]
+  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2
+  [ComfyUI] Downloading (incomplete total...):  34%|███▎      | 952M/2.83G [00:05<00:12, 155MB/s]
+  [ComfyUI] Downloading (incomplete total...):  36%|███▌      | 1.01G/2.83G [00:05<00:12, 146MB/s]
+  Frame 4 saved (frame_003.jpg, t=7.0s)
+  [capture-periodic] freeze=2ms shot=160ms unfreeze=6ms saved=True
+  [ComfyUI] Downloading (incomplete total...):  37%|███▋      | 1.04G/2.83G [00:05<00:12, 140MB/s]
+  [ComfyUI] Downloading (incomplete total...):  38%|███▊      | 1.09G/2.83G [00:07<00:19, 88.1MB/s]
+  [ComfyUI] Downloading (incomplete total...):  43%|████▎     | 1.23G/2.83G [00:07<00:10, 148MB/s]
+  [ComfyUI] Downloading (incomplete total...):  46%|████▌     | 1.30G/2.83G [00:07<00:10, 151MB/s]
+  [ComfyUI] Downloading (incomplete total...):  48%|████▊     | 1.36G/2.83G [00:08<00:08, 164MB/s]
+  [ComfyUI] Downloading (incomplete total...):  51%|█████     | 1.44G/2.83G [00:08<00:08, 162MB/s]
+  [ComfyUI] Downloading (incomplete total...):  52%|█████▏    | 1.48G/2.83G [00:09<00:10, 133MB/s]
+  [ComfyUI] Downloading (incomplete total...):  53%|█████▎    | 1.50G/2.83G [00:09<00:10, 128MB/s]
+  [ComfyUI] Downloading (incomplete total...):  55%|█████▌    | 1.56G/2.83G [00:09<00:10, 122MB/s]
+  [ComfyUI] Downloading (incomplete total...):  58%|█████▊    | 1.63G/2.83G [00:10<00:09, 128MB/s]
+  [capture-loop] iter=100 t=11.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4
+  [ComfyUI] Downloading (incomplete total...):  58%|█████▊    | 1.65G/2.83G [00:10<00:09, 120MB/s]
+  [ComfyUI] Downloading (incomplete total...):  61%|██████    | 1.72G/2.83G [00:11<00:11, 95.1MB/s]
+  [ComfyUI] Downloading (incomplete total...):  66%|██████▌   | 1.87G/2.83G [00:12<00:07, 132MB/s]
+  [ComfyUI] Downloading (incomplete total...):  67%|██████▋   | 1.90G/2.83G [00:12<00:07, 132MB/s]
+  [ComfyUI] Downloading (incomplete total...):  70%|██████▉   | 1.97G/2.83G [00:13<00:08, 105MB/s]
+  [ComfyUI] Downloading (incomplete total...):  75%|███████▍  | 2.11G/2.83G [00:14<00:04, 145MB/s]
+  [ComfyUI] Downloading (incomplete total...):  76%|███████▋  | 2.16G/2.83G [00:14<00:04, 154MB/s]
+  [ComfyUI] Downloading (incomplete total...):  78%|███████▊  | 2.22G/2.83G [00:14<00:03, 166MB/s]
+  [ComfyUI] Downloading (incomplete total...):  79%|███████▉  | 2.24G/2.83G [00:15<00:04, 128MB/s]
+  [ComfyUI] Downloading (incomplete total...):  82%|████████▏ | 2.32G/2.83G [00:15<00:04, 119MB/s]
+  [ComfyUI] Downloading (incomplete total...):  85%|████████▍ | 2.40G/2.83G [00:16<00:03, 127MB/s]
+  [ComfyUI] Downloading (incomplete total...):  86%|████████▌ | 2.44G/2.83G [00:16<00:02, 134MB/s]
+  [capture-loop] iter=150 t=17.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4
+  [ComfyUI] Downloading (incomplete total...):  88%|████████▊ | 2.48G/2.83G [00:16<00:02, 140MB/s]
+  [ComfyUI] Downloading (incomplete total...):  89%|████████▉ | 2.53G/2.83G [00:17<00:01, 154MB/s]
+  [ComfyUI] Downloading (incomplete total...):  91%|█████████ | 2.58G/2.83G [00:17<00:01, 131MB/s]
+  [ComfyUI] Downloading (incomplete total...):  93%|█████████▎| 2.63G/2.83G [00:18<00:01, 105MB/s]
+  [ComfyUI] Downloading (incomplete total...):  96%|█████████▌| 2.71G/2.83G [00:18<00:00, 142MB/s]
+  [ComfyUI] Downloading (incomplete total...): 2.83GB [00:18, 208MB/s]
+  [ComfyUI] 
+  [ComfyUI] Fetching 4 files:  75%|███████▌  | 3/4 [00:19<00:08,  8.63s/it][A
+  [ComfyUI] Fetching 4 files: 100%|██████████| 4/4 [00:19<00:00,  4.93s/it]
+  [ComfyUI] 
+  [ComfyUI] Download complete: : 2.83GB [00:19, 208MB/s]              Download complete.
+  [ComfyUI] LoadMultibandImage: Loaded /workspaces/SAM3DBody-1648/ComfyUI/input/people.npz
+  [ComfyUI]   Shape: (1, 9, 720, 1280)
+  [ComfyUI]   Channels: 9
+  [ComfyUI]   Names: img_01_r,img_01_g,img_01_b,mask_01,mask_02,mask_03,mask_04,mask_05,mask_06
+  [ComfyUI] MultibandToMasks: Auto-detected 6 mask channels: ['mask_01', 'mask_02', 'mask_03', 'mask_04', 'mask_05', 'mask_06']
+  [ComfyUI] !!! Exception during processing !!! No module named 'roma'
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func
+  [ComfyUI]     return method(locked_class, **inputs)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+  [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute
+  [ComfyUI]     from .sam_3d_body import SAM3DBodyEstimator
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>
+  [ComfyUI]     from .build_models import load_sam_3d_body
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>
+  [ComfyUI]     from .model import SAM3DBody
+  [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>
+  [ComfyUI]     import roma
+  [ComfyUI] ModuleNotFoundError: No module named 'roma'
+  [ComfyUI] 
+  [ComfyUI] Prompt executed in 20.05 seconds
+  [ComfyUI] 
+  [ComfyUI] Download complete: : 2.83GB [00:20, 141MB/s]
+  Execution complete (t=20.6s)
+  Execution error: {'prompt_id': 'c64f54b4-4856-4fae-b210-c9f837b5d6b6', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '36', '24', '39'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['35', '29', '24', '4', '18', '16', '39', '36'], 'timestamp': 1778345498027}
+    Status: FAILED
+    Error: Workflow execution failed: {'prompt_id': 'c64f54b4-4856-4fae-b210-c9f837b5d6b6', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '36', '24', '39'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['35', '29', '24', '4', '18', '16', '39', '36'], 'timestamp': 1778345498027}
+    Details: Workflow: /node/ComfyUI-SAM3DBody/workflows/multiple_masks.json
+Node error: SAM3DBodyProcessMultiple

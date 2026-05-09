@@ -1,0 +1,23 @@
+Capturing execution frames: rigged_mesh_manipulation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Node executed (1 total), capturing...
+  Frame 2 saved (frame_001.jpg, t=0.4s)
+  [capture-node] freeze=934ms shot=196ms unfreeze=0ms saved=True
+  Execution complete (t=0.4s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 done in 0.0s
+  [3d-wait] Phase 2: iframes=1
+  [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+  [3d-wait] Unfrozen in 0.002s, rendering for 5s...
+  [3d-wait] JS halted via CDP after 5.0s
+  [3d-wait] Re-frozen in 6.0s
+  [3d-wait] Total 3D wait: 6.1s
+  Captured 2 unique frames over 7.63s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=17783433, canvas=486x710, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 3 video frames

@@ -1,0 +1,71 @@
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | executing workflow.json [5/5]  [DEBUG] _resolve_workflow_path: input=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/workflow.json
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: node_dir=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: resolved=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/workflow.json
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: exists=True
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | Capturing execution frames: workflow.json
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:04] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[10:05] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[10:07] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0001608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0001608C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Error loading model: zy: fetch for "http://127.0.0.1:8188/api/view?type=output&subfolder=&filename=output_mesh.stl" responded with 404: Not Found
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     at http://127.0.0.1:8188/assets/vendor-three-DH0o8VQ7.js:3824:114758
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Error loading model: zy: fetch for "http://127.0.0.1:8188/api/view?type=output&subfolder=&filename=output_mesh.stl" responded with 404: Not Found
+[10:08] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     at http://127.0.0.1:8188/assets/vendor-three-DH0o8VQ7.js:3824:114758
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Validating workflow...
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 6 nodes
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 2: SAM3DBodyProcess
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 2: SAM3DBodyProcess
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["11", 0], "image": ["3", 0], "mask": ["3", 1]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["11", 0], "image": ["3", 0], "mask": ["3", 1]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 3: LoadImage
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: PreviewImage
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["2", 2]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"images": ["2", 2]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 7: SAM3DBodyExportMesh
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 7: SAM3DBodyExportMesh
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"filename": "output_mesh.stl", "mesh_data": ["2", 0]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"filename": "output_mesh.stl", "mesh_data": ["2", 0]}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: Preview3D
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 10: Preview3D
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_file": ["7", 0], "image": ""}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_file": ["7", 0], "image": ""}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 11: LoadSAM3DBodyModel
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 11: LoadSAM3DBodyModel
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"model_path": "/home/shadeform/sam3dbody/ComfyUI/models/sam3dbody"}
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 03cd8d21-8a86-4115-b709-7c2f421f8057
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 03cd8d21-8a86-4115-b709-7c2f421f8057
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Queuing workflow for execution...
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[10:10] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[10:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 2.84 seconds
+[10:13] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 2.84 seconds
+[10:16] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Captured 16 frames over 6.06s
+[10:17] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   4 unique frames saved as WebP
+[10:17] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Waiting 5000ms for previews to render...
+[10:24] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Saved high-quality screenshot: workflow_executed.png
+[10:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     Captured 5 video frames
+[10:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | [00:20] workflow.json [5/5] - PASS

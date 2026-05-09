@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-05-09T16:16:17.591007+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "commit_hash": "7b1ab71a1988693b13ce9c26283014fb55f47efd",
+  "success": true,
+  "summary": {
+    "total": 5,
+    "passed": 1,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "pass",
+      "duration_seconds": 16.46,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
+      },
+      "resources": {
+        "ram": {
+          "peak": 2.31,
+          "avg": 2.19
+        },
+        "total_ram_gb": 15.6,
+        "samples": 17
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "workflow",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}

@@ -1,0 +1,986 @@
+[00:00] Crash dump logging enabled: /logs/SAM3DBody-1648/dev/linux-gpu/crash_dump.log
+[00:00] 
+[00:00] [1/5] SYNTAX
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=None, server_url=None, api=None
+[00:00] Found pyproject.toml (modern format)
+[00:00] Found requirements.txt (legacy format)
+[00:00] Unicode check: OK (all characters cp1252-safe)
+[00:00] Forbidden patterns check: OK
+[00:00] [SYNTAX] PASSED
+[00:00] 
+[00:00] [2/5] INSTALL
+[00:00] ----------------------------------------
+[00:00] [DEBUG] server=None, server_url=None, api=None
+[00:00] Setting up ComfyUI...
+[00:00] Creating virtual environment...
+[00:00] Running: uv venv /workspaces/SAM3DBody-1648/.venv --python 3.10
+[00:00] Cloning ComfyUI (latest)...
+[00:00] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /workspaces/SAM3DBody-1648/ComfyUI
+[00:01] Installing ComfyUI requirements...
+[00:01] Running: uv pip install --python /workspaces/SAM3DBody-1648/.venv/bin/python --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r /workspaces/SAM3DBody-1648/ComfyUI/requirements.txt
+[01:19] Installing custom node...
+[01:20] Copying ComfyUI-SAM3DBody to custom_nodes/...
+[01:20] Installing node requirements...
+[01:20] Running: uv pip install --python /workspaces/SAM3DBody-1648/.venv/bin/python --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/requirements.txt
+[01:22] Running install.py...
+[01:22] Running: /workspaces/SAM3DBody-1648/.venv/bin/python /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/install.py
+[01:23]   
+[01:23]   Installing 3 node dependencies...
+[01:23]     Cloning ComfyUI-Multiband...
+[01:23]     Installing requirements for ComfyUI-Multiband...
+[01:23]     Cloning ComfyUI-DepthAnythingV3...
+[01:25]     Installing requirements for ComfyUI-DepthAnythingV3...
+[01:25]     Running install.py for ComfyUI-DepthAnythingV3...
+[01:26]   
+[01:26]   Installing 3 node dependencies...
+[01:26]     Cloning ComfyUI-VideoHelperSuite...
+[01:26]     Installing requirements for ComfyUI-VideoHelperSuite...
+[01:28]     Cloning ComfyUI-KJNodes...
+[01:31]     Installing requirements for ComfyUI-KJNodes...
+[01:33]     Cloning ComfyUI-GeometryPack...
+[01:38]     Installing requirements for ComfyUI-GeometryPack...
+[01:39]     Running install.py for ComfyUI-GeometryPack...
+[01:41]   [comfy-env] Workspace: /workspaces/SAM3DBody-1648/ComfyUI/.ce
+[01:41]   [comfy-env] ComfyUI: /workspaces/SAM3DBody-1648/ComfyUI
+[01:41]   [comfy-env] Found 3 node config(s):
+[01:41]     - depthanythingv3-nodes <- custom_nodes/ComfyUI-DepthAnythingV3/nodes/comfy-env.toml (python=host)
+[01:41]     - geometrypack-nodes <- custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml (python=host)
+[01:41]     - sam3dbody-nodes <- custom_nodes/ComfyUI-SAM3DBody/nodes/comfy-env.toml (python=host)
+[01:41]   [comfy-env] Bootstrap interpreter has python 3.10 + torch 2.11.0 (cu128). Looking for cuda-only wheels matching cu128/torch2.11/cp310.
+[01:41]   [comfy-env] GPU: Detection: smi
+[01:41]   Driver: 580.126.20
+[01:41]   CUDA: 13.0
+[01:41]   Recommended: CUDA 13.0
+[01:41]   
+[01:41]     GPU 0: NVIDIA GeForce RTX 5060 (sm_120) [Blackwell] 8151MB
+[01:41]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu128 (CUDA 12.8 via bootstrap torch)
+[01:41]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[01:41]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu12.8/torch2.11/cp310
+[01:41]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:41]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:41]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:41]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:41]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:41]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:42]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:42]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:42]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:42]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:42]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:42]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:42]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:42]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:42]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:42]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [comfy-env] cuda-wheels combo: cu12.8/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[01:43]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[01:43]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[01:43]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
+[01:43]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[01:43]   [comfy-env] Host glibc 2.35 -> comfyui feature system-requirements
+[01:43]   [comfy-env] Root conda deps: ['av', 'ffmpeg']
+[01:43]   [comfy-env] comfyui310: python 3.10, torch from https://download.pytorch.org/whl/cu128
+[01:43]   [comfy-env] cuda-wheels combo: per-node cuda features will pin ['torch', 'torchaudio', 'torchvision'] via pypi-options.dependency-overrides (https://download.pytorch.org/whl/cu128)
+[01:43]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[01:43]   [comfy-env] depthanythingv3-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:43]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:43]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[01:43]   [comfy-env] geometrypack-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:43]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:43]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:43]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:44]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:44]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[01:44]   [comfy-env] sam3dbody-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:44]   Generated /workspaces/SAM3DBody-1648/ComfyUI/.ce/pixi.toml
+[01:44]   [comfy-env] Installing 3 environment(s):
+[01:44]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[01:44]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[01:44]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[01:44]   [comfy-env] Running `pixi install --all`...
+[01:46]     Error:   × failed to solve requirements of environment 'comfyui310' for platform
+[01:46]       │ 'linux-64'
+[01:46]       ├─▶   × failed to solve the environment
+[01:46]       │   
+[01:46]       ╰─▶ Cannot solve the request because of: mmgpy >=0.5.2 cannot be installed
+[01:46]           because there are no viable options:
+[01:46]           └─ mmgpy 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.8.0 | 0.8.0 | 0.8.0 | 0.8.0 |
+[01:46]           0.8.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.10.0 | 0.10.0 | 0.10.0
+[01:46]           | 0.10.0 | 0.10.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.12.0
+[01:46]           | 0.12.0 | 0.12.0 | 0.12.0 | 0.12.0 would require
+[01:46]              └─ numpy >=2.0.2, for which no candidates were found.
+[01:46]     Warning: ComfyUI-GeometryPack install.py failed (exit code 1)
+[01:46]   
+[01:46]   [requirements] Re-installing main package requirements...
+[01:46]     Installing requirements for ComfyUI-DepthAnythingV3...
+[01:46]   [comfy-env] Workspace: /workspaces/SAM3DBody-1648/ComfyUI/.ce
+[01:46]   [comfy-env] ComfyUI: /workspaces/SAM3DBody-1648/ComfyUI
+[01:46]   [comfy-env] Found 3 node config(s):
+[01:46]     - depthanythingv3-nodes <- custom_nodes/ComfyUI-DepthAnythingV3/nodes/comfy-env.toml (python=host)
+[01:46]     - geometrypack-nodes <- custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml (python=host)
+[01:46]     - sam3dbody-nodes <- custom_nodes/ComfyUI-SAM3DBody/nodes/comfy-env.toml (python=host)
+[01:46]   [comfy-env] Bootstrap interpreter has python 3.10 + torch 2.11.0 (cu128). Looking for cuda-only wheels matching cu128/torch2.11/cp310.
+[01:46]   [comfy-env] GPU: Detection: smi
+[01:46]   Driver: 580.126.20
+[01:46]   CUDA: 13.0
+[01:46]   Recommended: CUDA 13.0
+[01:47]   
+[01:47]     GPU 0: NVIDIA GeForce RTX 5060 (sm_120) [Blackwell] 8151MB
+[01:47]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu128 (CUDA 12.8 via bootstrap torch)
+[01:47]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[01:47]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu12.8/torch2.11/cp310
+[01:47]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [comfy-env] cuda-wheels combo: cu12.8/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[01:47]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[01:47]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[01:47]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
+[01:47]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[01:47]   [comfy-env] Host glibc 2.35 -> comfyui feature system-requirements
+[01:47]   [comfy-env] Root conda deps: ['av', 'ffmpeg']
+[01:47]   [comfy-env] comfyui310: python 3.10, torch from https://download.pytorch.org/whl/cu128
+[01:47]   [comfy-env] cuda-wheels combo: per-node cuda features will pin ['torch', 'torchaudio', 'torchvision'] via pypi-options.dependency-overrides (https://download.pytorch.org/whl/cu128)
+[01:47]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:47]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[01:47]   [comfy-env] depthanythingv3-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:47]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:47]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[01:47]   [comfy-env] geometrypack-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:47]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:47]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:47]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:48]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:48]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:48]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:48]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:48]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:48]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:48]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:48]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:48]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:48]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:48]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:48]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:48]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:48]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[01:48]   [comfy-env] sam3dbody-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:48]   Generated /workspaces/SAM3DBody-1648/ComfyUI/.ce/pixi.toml
+[01:48]   [comfy-env] Installing 3 environment(s):
+[01:48]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[01:48]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[01:48]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[01:48]   [comfy-env] Running `pixi install --all`...
+[01:49]     Error:   × failed to solve requirements of environment 'comfyui310' for platform
+[01:49]       │ 'linux-64'
+[01:49]       ├─▶   × failed to solve the environment
+[01:49]       │   
+[01:49]       ╰─▶ Cannot solve the request because of: mmgpy >=0.5.2 cannot be installed
+[01:49]           because there are no viable options:
+[01:49]           └─ mmgpy 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.8.0 | 0.8.0 | 0.8.0 | 0.8.0 |
+[01:49]           0.8.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.10.0 | 0.10.0 | 0.10.0
+[01:49]           | 0.10.0 | 0.10.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.12.0
+[01:49]           | 0.12.0 | 0.12.0 | 0.12.0 | 0.12.0 would require
+[01:49]              └─ numpy >=2.0.2, for which no candidates were found.
+[01:49]     Warning: ComfyUI-DepthAnythingV3 install.py failed (exit code 1)
+[01:49]     ComfyUI-VideoHelperSuite: exists
+[01:49]     ComfyUI-KJNodes: exists
+[01:50]     ComfyUI-GeometryPack: exists
+[01:50]     Cloning ComfyUI-CameraPack...
+[01:50]   
+[01:50]   [requirements] Re-installing main package requirements...
+[01:50]     Installing requirements for ComfyUI-SAM3DBody...
+[01:50]   [comfy-env] Workspace: /workspaces/SAM3DBody-1648/ComfyUI/.ce
+[01:50]   [comfy-env] ComfyUI: /workspaces/SAM3DBody-1648/ComfyUI
+[01:50]   [comfy-env] Found 3 node config(s):
+[01:50]     - depthanythingv3-nodes <- custom_nodes/ComfyUI-DepthAnythingV3/nodes/comfy-env.toml (python=host)
+[01:50]     - geometrypack-nodes <- custom_nodes/ComfyUI-GeometryPack/nodes/comfy-env.toml (python=host)
+[01:50]     - sam3dbody-nodes <- custom_nodes/ComfyUI-SAM3DBody/nodes/comfy-env.toml (python=host)
+[01:50]   [comfy-env] Bootstrap interpreter has python 3.10 + torch 2.11.0 (cu128). Looking for cuda-only wheels matching cu128/torch2.11/cp310.
+[01:50]   [comfy-env] GPU: Detection: smi
+[01:50]   Driver: 580.126.20
+[01:50]   CUDA: 13.0
+[01:50]   Recommended: CUDA 13.0
+[01:50]   
+[01:50]     GPU 0: NVIDIA GeForce RTX 5060 (sm_120) [Blackwell] 8151MB
+[01:50]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu128 (CUDA 12.8 via bootstrap torch)
+[01:50]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[01:50]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu12.8/torch2.11/cp310
+[01:50]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:50]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:50]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:50]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:50]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:50]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:50]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:50]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:50]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:50]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [comfy-env] cuda-wheels combo: cu12.8/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[01:51]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[01:51]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[01:51]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
+[01:51]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[01:51]   [comfy-env] Host glibc 2.35 -> comfyui feature system-requirements
+[01:51]   [comfy-env] Root conda deps: ['av', 'ffmpeg']
+[01:51]   [comfy-env] comfyui310: python 3.10, torch from https://download.pytorch.org/whl/cu128
+[01:51]   [comfy-env] cuda-wheels combo: per-node cuda features will pin ['torch', 'torchaudio', 'torchvision'] via pypi-options.dependency-overrides (https://download.pytorch.org/whl/cu128)
+[01:51]   [cuda-wheels] Looking up flash_attn: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[01:51]   [comfy-env] depthanythingv3-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:51]   [cuda-wheels] Looking up cumesh: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.11-cp310-cp310-manylinux_2_35_x86_64.whl
+[01:51]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[01:51]   [comfy-env] geometrypack-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:51]   [cuda-wheels] Looking up detectron2: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[01:51]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:51]   [cuda-wheels] Looking up flash-attn: cu128 torch2.11 cp310 manylinux linux
+[01:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[01:52]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:52]   [cuda-wheels] Looking up sageattention: cu128 torch2.11 cp310 manylinux linux
+[01:52]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.11-cp310-cp310-manylinux_2_34_x86_64.manylinux_2_35_x86_64.whl
+[01:52]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[01:52]   [comfy-env] sam3dbody-nodes: torch override -> torch==2.11.0, torchvision==0.26.*, torchaudio==2.11.* from https://download.pytorch.org/whl/cu128
+[01:52]   Generated /workspaces/SAM3DBody-1648/ComfyUI/.ce/pixi.toml
+[01:52]   [comfy-env] Installing 3 environment(s):
+[01:52]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[01:52]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[01:52]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[01:52]   [comfy-env] Running `pixi install --all`...
+[01:53]     Error:   × failed to solve requirements of environment 'comfyui310' for platform
+[01:53]       │ 'linux-64'
+[01:53]       ├─▶   × failed to solve the environment
+[01:53]       │   
+[01:53]       ╰─▶ Cannot solve the request because of: mmgpy >=0.5.2 cannot be installed
+[01:53]           because there are no viable options:
+[01:53]           └─ mmgpy 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.8.0 | 0.8.0 | 0.8.0 | 0.8.0 |
+[01:53]           0.8.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.9.0 | 0.10.0 | 0.10.0 | 0.10.0
+[01:53]           | 0.10.0 | 0.10.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.11.0 | 0.12.0
+[01:53]           | 0.12.0 | 0.12.0 | 0.12.0 | 0.12.0 would require
+[01:53]              └─ numpy >=2.0.2, for which no candidates were found.
+[01:53] Warning: install.py failed (exit code 1), continuing...
+[01:53] Installing 3 node dependency(ies)...
+[01:53]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
+[01:53]   ComfyUI-Multiband already exists, skipping...
+[01:53]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
+[01:53]   ComfyUI-DepthAnythingV3 already exists, skipping...
+[01:53]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[01:53]   ComfyUI-CameraPack already exists, skipping...
+[01:53] Installing validation endpoint...
+[01:53]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[01:53] Running: git clone --depth 1 https://github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[01:54] COMFY_TEST_GPU env var = '1'
+[01:54] GPU mode: using real CUDA (no mocking)
+[01:54] [INSTALL] PASSED
+[01:54] 
+[01:54] [3/5] REGISTRATION
+[01:54] ----------------------------------------
+[01:54] [DEBUG] server=None, server_url=None, api=None
+[01:54] 
+Starting ComfyUI server...
+[01:54] Starting ComfyUI server on port 41881...
+[01:54] Starting ComfyUI server on port 41881...
+[01:54] Waiting for server to be ready (timeout: 600s)...
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.schemas
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.tables
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.types
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.constraints
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.defaults
+[01:55]   [ComfyUI] setup plugin alembic.autogenerate.comments
+[01:55]   [ComfyUI] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
+[01:55]   [ComfyUI] [comfy-env]   nodes -> /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes
+[01:55]   [ComfyUI] [comfy-env] prestartup complete
+[01:55]   [ComfyUI] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
+[01:55]   [ComfyUI] [comfy-env]   nodes -> /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes
+[01:55]   [ComfyUI] [comfy-env] prestartup complete
+[01:55]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[01:55]   [ComfyUI] [comfy-env]   nodes -> /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes
+[01:55]   [ComfyUI] [comfy-env] prestartup complete
+[01:55]   [ComfyUI] 
+[01:55]   [ComfyUI] Prestartup times for custom nodes:
+[01:55]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody
+[01:55]   [ComfyUI]    0.1 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[01:55]   [ComfyUI]    0.2 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3
+[01:55]   [ComfyUI] 
+[02:00]   [ComfyUI] WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+[02:00]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': True, 'disabled': True, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8']}
+[02:00]   [ComfyUI] Found comfy_kitchen backend triton: {'available': True, 'disabled': True, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8']}
+[02:00]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[02:00]   [ComfyUI] Checkpoint files will always be loaded safely.
+[02:00]   [ComfyUI] Total VRAM 7704 MB, total RAM 32011 MB
+[02:00]   [ComfyUI] pytorch version: 2.11.0+cu128
+[02:00]   [ComfyUI] Set vram state to: NORMAL_VRAM
+[02:01]   [ComfyUI] Device: cuda:0 NVIDIA GeForce RTX 5060 : cudaMallocAsync
+[02:01]   [ComfyUI] Using async weight offloading with 2 streams
+[02:01]   [ComfyUI] Enabled pinned memory 28810.0
+[02:01]   [ComfyUI] Using pytorch attention
+[02:05]   [ComfyUI] aimdo: /project/src-posix/cuda-funchooks.c:52:DEBUG:aimdo_setup_hooks: hooks successfully installed
+[02:05]   [ComfyUI] aimdo: /project/src/control.c:151:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce RTX 5060 (VRAM: 7703 MB)
+[02:05]   [ComfyUI] DynamicVRAM support detected and enabled
+[02:05]   [ComfyUI] Python version: 3.10.20 (main, Apr 14 2026, 14:28:08) [Clang 22.1.3 ]
+[02:05]   [ComfyUI] ComfyUI version: 0.20.1
+[02:05]   [ComfyUI] comfy-aimdo version: 0.3.0
+[02:05]   [ComfyUI] comfy-kitchen version: 0.2.8
+[02:05]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[02:05]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[02:05]   [ComfyUI] ComfyUI frontend version: 1.43.18
+[02:05]   [ComfyUI] [Prompt Server] web root: /workspaces/SAM3DBody-1648/.venv/lib/python3.10/site-packages/comfyui_frontend_package/static
+[02:05]   [ComfyUI] Asset seeder disabled
+[02:06]   [ComfyUI] [comfy-env] Version: 0.3.78
+[02:07]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
+[02:07]   [ComfyUI] [comfy-env] ComfyUI source dir: /workspaces/SAM3DBody-1648/ComfyUI
+[02:07]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:07]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[02:07]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[02:07]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
+[02:07]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:07]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[02:07]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[02:07]   [ComfyUI] ComfyUI-Multiband loaded: 15 nodes registered
+[02:07]   [ComfyUI] [comfy-env] Version: 0.3.78
+[02:07]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-SAM3DBody
+[02:07]   [ComfyUI] [comfy-env] ComfyUI source dir: /workspaces/SAM3DBody-1648/ComfyUI
+[02:07]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:07]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[02:07]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[02:07]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
+[02:07]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:07]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[02:07]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[02:07]   [ComfyUI] loading...
+[02:07]   [ComfyUI] calling register_nodes
+[02:07]   [ComfyUI] [comfy-env] Version: 0.3.78
+[02:07]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[02:07]   [ComfyUI] [comfy-env] ComfyUI source dir: /workspaces/SAM3DBody-1648/ComfyUI
+[02:07]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:07]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[02:07]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[02:07]   [ComfyUI] [comfy-env] Failed to import nodes root: No module named 'bpy'
+[02:07]   [ComfyUI] [comfy-env] Importing analysis...
+[02:07]   [ComfyUI] [comfy-env] Failed to import .nodes.analysis: No module named 'bpy'
+[02:07]   [ComfyUI] [comfy-env] Importing blender_boolean...
+[02:07]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_boolean: No module named 'bpy'
+[02:07]   [ComfyUI] [comfy-env] Importing blender_io...
+[02:07]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_io: No module named 'bpy'
+[02:07]   [ComfyUI] [comfy-env] Importing blender_remeshing...
+[02:07]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_remeshing: No module named 'bpy'
+[02:07]   [ComfyUI] [comfy-env] Importing blender_texture_remeshing...
+[02:07]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_texture_remeshing: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing blender_uv...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_uv: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing boolean...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.boolean: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing combine...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.combine: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing conversion...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.conversion: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing decimation...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing decimation_cgal...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation_cgal: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing distance...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.distance: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing fill_holes_gpu...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.fill_holes_gpu: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing io...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.io: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing paraview...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.paraview: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing primitives...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.primitives: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing reconstruction...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing reconstruction_cgal...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction_cgal: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing remeshing...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing remeshing_cgal...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_cgal: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing remeshing_gpu...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_gpu: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing repair...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.repair: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing repair_cgal...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.repair_cgal: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing skeleton...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.skeleton: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing smoothing...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.smoothing: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing texture_remeshing...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.texture_remeshing: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing transforms...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.transforms: No module named 'bpy'
+[02:08]   [ComfyUI] [comfy-env] Importing uv...
+[02:08]   [ComfyUI] [comfy-env] Failed to import .nodes.uv: No module named 'bpy'
+[02:09]   [ComfyUI] [comfy-env] Importing uv_gpu...
+[02:09]   [ComfyUI] [comfy-env] Failed to import .nodes.uv_gpu: No module named 'bpy'
+[02:09]   [ComfyUI] [comfy-env] Importing visualization...
+[02:09]   [ComfyUI] [comfy-env] Failed to import .nodes.visualization: No module named 'bpy'
+[02:09]   [ComfyUI] [comfy-env] isolation env not found at /workspaces/SAM3DBody-1648/ComfyUI/.ce/.pixi/envs/geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[02:09]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[02:09]   [ComfyUI] [comfy-env] Registered 0 total nodes
+[02:09]   [ComfyUI] 
+[02:09]   [ComfyUI] Import times for custom nodes:
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/websocket_image_save.py
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-CameraPack
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[02:09]   [ComfyUI]    0.0 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite
+[02:09]   [ComfyUI]    0.1 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-KJNodes
+[02:09]   [ComfyUI]    0.1 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-Multiband
+[02:09]   [ComfyUI]    0.2 seconds: /workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3
+[02:09]   [ComfyUI] 
+[02:09]   [ComfyUI] Context impl SQLiteImpl.
+[02:09]   [ComfyUI] Will assume non-transactional DDL.
+[02:09]   [ComfyUI] Context impl SQLiteImpl.
+[02:09]   [ComfyUI] Will assume non-transactional DDL.
+[02:09]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
+[02:09]   [ComfyUI] Revision ID: 0001_assets
+[02:09]   [ComfyUI] Revises: None
+[02:09]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[02:09]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[02:10]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[02:10]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[02:10]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
+[02:10]   [ComfyUI] Starting server
+[02:10]   [ComfyUI] 
+[02:10]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41881
+[02:11] Server responding, waiting for nodes to load...
+[02:31] Server is ready!
+[02:31] Checking for import errors in server logs...
+[02:31] No import errors detected
+[02:31] Found 1024 registered nodes
+[02:31] [REGISTRATION] PASSED
+[02:31] 
+[02:31] [4/5] INSTANTIATION
+[02:31] ----------------------------------------
+[02:31] [DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7b44b8f05480>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7b44b8f06410>
+[02:31] Testing node constructors...
+[02:33] All 15 node(s) instantiated successfully!
+[02:33] [INSTANTIATION] PASSED
+[02:33] 
+[02:33] [5/5] EXECUTION
+[02:33] ----------------------------------------
+[02:33] [DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7b44b8f05480>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7b44b8f06410>
+[02:33] GPU runner - will execute 4 workflow(s)
+[02:33] Running 5 workflow(s) (all with videos)...
+[02:33] Installing screenshot dependencies (playwright, pillow)...
+[02:34]   Packages installed, downloading chromium browser...
+[02:50]   Screenshot dependencies installed successfully
+[02:51] Starting headless browser...
+[02:51]   Installing Vulkan stack (apt)...
+[02:51]   Vulkan install error: [Errno 2] No such file or directory: 'sudo'
+[02:51]   GPU detected (no Vulkan) — using ANGLE/OpenGL rendering
+[02:51] Capturing execution frames: multiple_masks.json
+[02:52]   [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[02:58]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[02:58]   Validating workflow...
+[02:58]   [ComfyUI] === /validate endpoint called ===
+[02:58]   [ComfyUI] Received JSON with keys: ['prompt']
+[02:58]   [ComfyUI] Prompt has 8 nodes
+[02:58]   Queuing workflow for execution...
+[02:58]   [ComfyUI]   Node 4: PreviewImage
+[02:58]   [ComfyUI]     Inputs: {"images": ["16", 1]}
+[02:58]   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
+[02:58]   [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": false, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0]}
+[02:58]   [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
+[02:58]   [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
+[02:58]   [ComfyUI]   Node 24: LoadSAM3DBodyModel
+[02:58]   [ComfyUI]     Inputs: {"precision": "auto"}
+[02:58]   [ComfyUI]   Node 29: Preview3D
+[02:58]   [ComfyUI]     Inputs: {"model_file": ["18", 0], "image": ""}
+[02:58]   [ComfyUI]   Node 35: MultibandLoad
+[02:58]   [ComfyUI]     Inputs: {"image": "people.npz", "normalize": true}
+[02:58]   [ComfyUI]   Node 36: MultibandToImage
+[02:58]   [ComfyUI]     Inputs: {"channels": "0,1,2", "multiband": ["35", 0]}
+[02:58]   [ComfyUI]   Node 39: MultibandToMasks
+[02:58]   [ComfyUI]     Inputs: {"channels": "0", "auto_detect_masks": true, "multiband": ["35", 0]}
+[02:58]   [ComfyUI] Generated prompt_id: a3351a49-11f8-466b-b73d-e6ca21259ab2
+[02:58]   [ComfyUI] Calling execution.validate_prompt()...
+[02:58]   [ComfyUI] Validation result: valid=True
+[02:58]   [ComfyUI] === Validation PASSED ===
+[02:58]   [ComfyUI] got prompt
+[02:58]   [ComfyUI] Precision: bf16
+[02:58]   [ComfyUI] Model not found locally. Downloading from HuggingFace...
+[02:58]   [ComfyUI] HTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/revision/main "HTTP/1.1 200 OK"
+[02:58]   [ComfyUI] 
+[02:58]   [ComfyUI] Downloading (incomplete total...): 0.00B [00:00, ?B/s]
+[02:58]   [ComfyUI] 
+[02:58]   [ComfyUI] Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s][AHTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 307 Temporary Redirect"
+[02:58]   [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[02:58]   [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[02:58]   [ComfyUI] HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/assets/mhr_model.pt "HTTP/1.1 302 Found"
+[02:58]   [ComfyUI] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 200 OK"
+[02:58]   [ComfyUI] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model_config.yaml "HTTP/1.1 200 OK"
+[02:59]   [ComfyUI] 
+[02:59]   [ComfyUI] Downloading (incomplete total...): 1.49kB [00:00, 9.49kB/s]HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/model.safetensors "HTTP/1.1 302 Found"
+[02:59]   [ComfyUI] HTTP Request: HEAD https://huggingface.co/apozz/sam-3d-body-safetensors/resolve/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+[02:59]   [ComfyUI] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 200 OK"
+[02:59]   [ComfyUI] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/apozz/sam-3d-body-safetensors/0c0bd82453ec0a6c14caa2de3ae47c667c11546a/.gitattributes "HTTP/1.1 200 OK"
+[02:59]   [ComfyUI] 
+[02:59]   [ComfyUI] 
+[02:59]   [ComfyUI] Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  4.69it/s][AHTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/xet-read-token/0c0bd82453ec0a6c14caa2de3ae47c667c11546a "HTTP/1.1 200 OK"
+[02:59]   [ComfyUI] 
+[02:59]   [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/696M [00:00<20:22:27, 9.49kB/s]
+[02:59]   [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/696M [00:00<17:48:00, 10.9kB/s]HTTP Request: GET https://huggingface.co/api/models/apozz/sam-3d-body-safetensors/xet-read-token/0c0bd82453ec0a6c14caa2de3ae47c667c11546a "HTTP/1.1 200 OK"
+[02:59]   [ComfyUI] 
+[03:00]   [ComfyUI] Downloading (incomplete total...):   0%|          | 3.01k/2.83G [00:00<72:20:09, 10.9kB/s]
+[03:00]   [ComfyUI] Downloading (incomplete total...):   6%|▌         | 165M/2.83G [00:01<00:22, 117MB/s]
+[03:00]   [ComfyUI] Downloading (incomplete total...):  16%|█▌        | 452M/2.83G [00:01<00:07, 324MB/s]
+[03:00]   Frame 2 saved (frame_001.jpg, t=2.4s)
+[03:01]   [capture-periodic] freeze=2ms shot=167ms unfreeze=8ms saved=True
+[03:01]   [ComfyUI] Downloading (incomplete total...):  25%|██▍       | 696M/2.83G [00:02<00:04, 470MB/s]
+[03:01]   [ComfyUI] 
+[03:02]   [ComfyUI] Fetching 4 files:  50%|█████     | 2/4 [00:02<00:03,  1.51s/it][A
+[03:03]   Frame 3 saved (frame_002.jpg, t=4.8s)
+[03:03]   [capture-periodic] freeze=2ms shot=151ms unfreeze=7ms saved=True
+[03:03]   [ComfyUI] Downloading (incomplete total...):  30%|██▉       | 836M/2.83G [00:04<00:10, 181MB/s]
+[03:03]   [ComfyUI] Downloading (incomplete total...):  32%|███▏      | 904M/2.83G [00:04<00:11, 172MB/s]
+[03:04]   [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2
+[03:04]   [ComfyUI] Downloading (incomplete total...):  34%|███▎      | 952M/2.83G [00:05<00:12, 155MB/s]
+[03:04]   [ComfyUI] Downloading (incomplete total...):  36%|███▌      | 1.01G/2.83G [00:05<00:12, 146MB/s]
+[03:05]   Frame 4 saved (frame_003.jpg, t=7.0s)
+[03:05]   [capture-periodic] freeze=2ms shot=160ms unfreeze=6ms saved=True
+[03:05]   [ComfyUI] Downloading (incomplete total...):  37%|███▋      | 1.04G/2.83G [00:05<00:12, 140MB/s]
+[03:06]   [ComfyUI] Downloading (incomplete total...):  38%|███▊      | 1.09G/2.83G [00:07<00:19, 88.1MB/s]
+[03:06]   [ComfyUI] Downloading (incomplete total...):  43%|████▎     | 1.23G/2.83G [00:07<00:10, 148MB/s]
+[03:06]   [ComfyUI] Downloading (incomplete total...):  46%|████▌     | 1.30G/2.83G [00:07<00:10, 151MB/s]
+[03:07]   [ComfyUI] Downloading (incomplete total...):  48%|████▊     | 1.36G/2.83G [00:08<00:08, 164MB/s]
+[03:07]   [ComfyUI] Downloading (incomplete total...):  51%|█████     | 1.44G/2.83G [00:08<00:08, 162MB/s]
+[03:08]   [ComfyUI] Downloading (incomplete total...):  52%|█████▏    | 1.48G/2.83G [00:09<00:10, 133MB/s]
+[03:08]   [ComfyUI] Downloading (incomplete total...):  53%|█████▎    | 1.50G/2.83G [00:09<00:10, 128MB/s]
+[03:09]   [ComfyUI] Downloading (incomplete total...):  55%|█████▌    | 1.56G/2.83G [00:09<00:10, 122MB/s]
+[03:09]   [ComfyUI] Downloading (incomplete total...):  58%|█████▊    | 1.63G/2.83G [00:10<00:09, 128MB/s]
+[03:10]   [capture-loop] iter=100 t=11.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4
+[03:10]   [ComfyUI] Downloading (incomplete total...):  58%|█████▊    | 1.65G/2.83G [00:10<00:09, 120MB/s]
+[03:11]   [ComfyUI] Downloading (incomplete total...):  61%|██████    | 1.72G/2.83G [00:11<00:11, 95.1MB/s]
+[03:11]   [ComfyUI] Downloading (incomplete total...):  66%|██████▌   | 1.87G/2.83G [00:12<00:07, 132MB/s]
+[03:12]   [ComfyUI] Downloading (incomplete total...):  67%|██████▋   | 1.90G/2.83G [00:12<00:07, 132MB/s]
+[03:12]   [ComfyUI] Downloading (incomplete total...):  70%|██████▉   | 1.97G/2.83G [00:13<00:08, 105MB/s]
+[03:13]   [ComfyUI] Downloading (incomplete total...):  75%|███████▍  | 2.11G/2.83G [00:14<00:04, 145MB/s]
+[03:13]   [ComfyUI] Downloading (incomplete total...):  76%|███████▋  | 2.16G/2.83G [00:14<00:04, 154MB/s]
+[03:13]   [ComfyUI] Downloading (incomplete total...):  78%|███████▊  | 2.22G/2.83G [00:14<00:03, 166MB/s]
+[03:14]   [ComfyUI] Downloading (incomplete total...):  79%|███████▉  | 2.24G/2.83G [00:15<00:04, 128MB/s]
+[03:15]   [ComfyUI] Downloading (incomplete total...):  82%|████████▏ | 2.32G/2.83G [00:15<00:04, 119MB/s]
+[03:15]   [ComfyUI] Downloading (incomplete total...):  85%|████████▍ | 2.40G/2.83G [00:16<00:03, 127MB/s]
+[03:15]   [ComfyUI] Downloading (incomplete total...):  86%|████████▌ | 2.44G/2.83G [00:16<00:02, 134MB/s]
+[03:15]   [capture-loop] iter=150 t=17.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4
+[03:15]   [ComfyUI] Downloading (incomplete total...):  88%|████████▊ | 2.48G/2.83G [00:16<00:02, 140MB/s]
+[03:16]   [ComfyUI] Downloading (incomplete total...):  89%|████████▉ | 2.53G/2.83G [00:17<00:01, 154MB/s]
+[03:17]   [ComfyUI] Downloading (incomplete total...):  91%|█████████ | 2.58G/2.83G [00:17<00:01, 131MB/s]
+[03:17]   [ComfyUI] Downloading (incomplete total...):  93%|█████████▎| 2.63G/2.83G [00:18<00:01, 105MB/s]
+[03:17]   [ComfyUI] Downloading (incomplete total...):  96%|█████████▌| 2.71G/2.83G [00:18<00:00, 142MB/s]
+[03:18]   [ComfyUI] Downloading (incomplete total...): 2.83GB [00:18, 208MB/s]
+[03:18]   [ComfyUI] 
+[03:18]   [ComfyUI] Fetching 4 files:  75%|███████▌  | 3/4 [00:19<00:08,  8.63s/it][A
+[03:18]   [ComfyUI] Fetching 4 files: 100%|██████████| 4/4 [00:19<00:00,  4.93s/it]
+[03:18]   [ComfyUI] 
+[03:18]   [ComfyUI] Download complete: : 2.83GB [00:19, 208MB/s]              Download complete.
+[03:18]   [ComfyUI] LoadMultibandImage: Loaded /workspaces/SAM3DBody-1648/ComfyUI/input/people.npz
+[03:18]   [ComfyUI]   Shape: (1, 9, 720, 1280)
+[03:18]   [ComfyUI]   Channels: 9
+[03:18]   [ComfyUI]   Names: img_01_r,img_01_g,img_01_b,mask_01,mask_02,mask_03,mask_04,mask_05,mask_06
+[03:18]   [ComfyUI] MultibandToMasks: Auto-detected 6 mask channels: ['mask_01', 'mask_02', 'mask_03', 'mask_04', 'mask_05', 'mask_06']
+[03:18]   [ComfyUI] !!! Exception during processing !!! No module named 'roma'
+[03:18]   [ComfyUI] Traceback (most recent call last):
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute
+[03:18]   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data
+[03:18]   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+[03:18]   [ComfyUI]     await process_inputs(input_dict, i)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs
+[03:18]   [ComfyUI]     result = f(**inputs)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func
+[03:18]   [ComfyUI]     return method(locked_class, **inputs)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+[03:18]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute
+[03:18]   [ComfyUI]     from .sam_3d_body import SAM3DBodyEstimator
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>
+[03:18]   [ComfyUI]     from .build_models import load_sam_3d_body
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>
+[03:18]   [ComfyUI]     from .model import SAM3DBody
+[03:18]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>
+[03:18]   [ComfyUI]     import roma
+[03:18]   [ComfyUI] ModuleNotFoundError: No module named 'roma'
+[03:18]   [ComfyUI] 
+[03:18]   [ComfyUI] Prompt executed in 20.05 seconds
+[03:18]   [ComfyUI] 
+[03:18]   [ComfyUI] Download complete: : 2.83GB [00:20, 141MB/s]
+[03:19]   Execution complete (t=20.6s)
+[03:19]   Execution error: {'prompt_id': 'c64f54b4-4856-4fae-b210-c9f837b5d6b6', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '36', '24', '39'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['35', '29', '24', '4', '18', '16', '39', '36'], 'timestamp': 1778345498027}
+[03:19] Capturing execution frames: multiple_masks_depthcorrected.json
+[03:25]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[03:25]   Validating workflow...
+[03:25]   [ComfyUI] === /validate endpoint called ===
+[03:25]   [ComfyUI] Received JSON with keys: ['prompt']
+[03:25]   [ComfyUI] Prompt has 16 nodes
+[03:25]   [ComfyUI]   Node 4: PreviewImage
+[03:25]   [ComfyUI]     Inputs: {"images": ["16", 1]}
+[03:25]   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
+[03:25]   [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": true, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0], "depth_map": ["40", 0], "intrinsics": ["40", 9], "depth_confidence": ["40", 1
+[03:25]   [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
+[03:25]   [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
+[03:25]   [ComfyUI]   Node 24: LoadSAM3DBodyModel
+[03:25]   [ComfyUI]     Inputs: {"precision": "auto"}
+[03:25]   [ComfyUI]   Node 29: Preview3D
+[03:25]   [ComfyUI]     Inputs: {"model_file": ["18", 0], "image": "", "camera_info": ["60", 0]}
+[03:25]   Queuing workflow for execution...
+[03:25]   [ComfyUI]   Node 35: MultibandLoad
+[03:25]   [ComfyUI]     Inputs: {"image": "fellowship.npz", "normalize": true}
+[03:25]   [ComfyUI]   Node 36: MultibandToImage
+[03:25]   [ComfyUI]     Inputs: {"channels": "0,1,2", "multiband": ["35", 0]}
+[03:25]   [ComfyUI]   Node 39: MultibandToMasks
+[03:25]   [ComfyUI]     Inputs: {"channels": "0", "auto_detect_masks": true, "multiband": ["35", 0]}
+[03:25]   [ComfyUI]   Node 40: DepthAnything_V3
+[03:25]   [ComfyUI]     Inputs: {"normalization_mode": "Raw", "resize_method": "resize", "invert_depth": false, "keep_model_size": false, "da3_model": ["41", 0], "images": ["36", 0]}
+[03:25]   [ComfyUI]   Node 41: DownloadAndLoadDepthAnythingV3Model
+[03:25]   [ComfyUI]     Inputs: {"model": "da3_giant.safetensors", "precision": "auto", "attention": "auto"}
+[03:25]   [ComfyUI]   Node 43: MaskPreview
+[03:25]   [ComfyUI]     Inputs: {"mask": ["39", 0]}
+[03:25]   [ComfyUI]   Node 44: PreviewImage
+[03:25]   [ComfyUI]     Inputs: {"images": ["36", 0]}
+[03:25]   [ComfyUI]   Node 46: PreviewAny
+[03:25]   [ComfyUI]     Inputs: {"source": ["40", 9]}
+[03:25]   [ComfyUI]   Node 58: LoadImageDataSetFromFolder
+[03:25]   [ComfyUI]     Inputs: {"folder": "3d"}
+[03:25]   [ComfyUI]   Node 59: PreviewAny
+[03:25]   [ComfyUI]     Inputs: {"source": ["40", 8]}
+[03:25]   [ComfyUI]   Node 60: CreateLoad3DCamera
+[03:25]   [ComfyUI]     Inputs: {"pos_x": 3, "pos_y": 5.1, "pos_z": 8, "target_x": -0.5, "target_y": 2.1, "target_z": 0.4, "zoom": 3, "camera_type": "perspective"}
+[03:25]   [ComfyUI] Generated prompt_id: faf3e4d6-69f5-4cb2-804b-5c30976ffaf1
+[03:25]   [ComfyUI] Calling execution.validate_prompt()...
+[03:25]   [ComfyUI] Validation result: valid=True
+[03:25]   [ComfyUI] === Validation PASSED ===
+[03:25]   [ComfyUI] got prompt
+[03:25]   [ComfyUI] LoadMultibandImage: Loaded /workspaces/SAM3DBody-1648/ComfyUI/input/fellowship.npz
+[03:25]   [ComfyUI]   Shape: (1, 14, 497, 1200)
+[03:25]   [ComfyUI]   Channels: 14
+[03:25]   [ComfyUI]   Names: img_01_r,img_01_g,img_01_b,mask_01,mask_02,mask_03,mask_04,mask_05,mask_06,mask_07,mask_08,mask_09,m...
+[03:25]   [ComfyUI] MultibandToMasks: Auto-detected 11 mask channels: ['mask_01', 'mask_02', 'mask_03', 'mask_04', 'mask_05', 'mask_06', 'mask_07', 'mask_08', 'mask_09', 'mask_10', 'mask_11']
+[03:25]   Node executed (1 total), capturing...
+[03:26]   [ComfyUI] Auto-downloading da3_giant.safetensors from HuggingFace (depth-anything/DA3-GIANT-1.1)...
+[03:26]   [ComfyUI] HTTP Request: HEAD https://huggingface.co/depth-anything/DA3-GIANT-1.1/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+[03:26]   [ComfyUI] HTTP Request: GET https://huggingface.co/api/models/depth-anything/DA3-GIANT-1.1/xet-read-token/72ee9f89ce4e50d704e9d55ee9c646ec8dc25a19 "HTTP/1.1 200 OK"
+[03:26]   [ComfyUI] 
+[03:26]   Frame 2 saved (frame_001.jpg, t=0.6s)
+[03:26]   [capture-node] freeze=3ms shot=228ms unfreeze=7ms saved=True
+[03:26]   Node executed (2 total), capturing...
+[03:26]   [ComfyUI] model.safetensors:   0%|          | 0.00/5.42G [00:00<?, ?B/s]
+[03:26]   Frame 3 saved (frame_002.jpg, t=1.2s)
+[03:26]   [capture-node] freeze=2ms shot=229ms unfreeze=2ms saved=True
+[03:31]   Frame 4 saved (frame_003.jpg, t=5.8s)
+[03:31]   [capture-periodic] freeze=2ms shot=175ms unfreeze=11ms saved=True
+[03:32]   [capture-loop] iter=50 t=6.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[03:32]   [ComfyUI] model.safetensors:   0%|          | 140k/5.42G [00:00<5:30:22, 274kB/s]
+[03:33]   [ComfyUI] model.safetensors:   5%|▍         | 268M/5.42G [00:06<01:52, 45.8MB/s]
+[03:33]   [ComfyUI] model.safetensors:   7%|▋         | 402M/5.42G [00:06<01:15, 66.4MB/s]
+[03:33]   Frame 5 saved (frame_004.jpg, t=8.1s)
+[03:33]   [capture-periodic] freeze=11ms shot=194ms unfreeze=2ms saved=True
+[03:36]   Frame 6 saved (frame_005.jpg, t=10.4s)
+[03:36]   [capture-periodic] freeze=2ms shot=238ms unfreeze=13ms saved=True
+[03:36]   [ComfyUI] model.safetensors:   9%|▊         | 469M/5.42G [00:07<01:01, 80.2MB/s]
+[03:38]   [capture-loop] iter=100 t=12.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[03:38]   Frame 7 saved (frame_006.jpg, t=12.8s)
+[03:38]   [capture-periodic] freeze=1ms shot=197ms unfreeze=15ms saved=True
+[03:40]   Frame 8 saved (frame_007.jpg, t=15.2s)
+[03:40]   [capture-periodic] freeze=2ms shot=218ms unfreeze=10ms saved=True
+[03:41]   [ComfyUI] model.safetensors:  11%|█         | 604M/5.42G [00:10<01:22, 58.4MB/s]
+[03:43]   Frame 9 saved (frame_008.jpg, t=17.6s)
+[03:43]   [capture-periodic] freeze=2ms shot=225ms unfreeze=8ms saved=True
+[03:44]   [capture-loop] iter=150 t=18.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4
+[03:45]   Frame 10 saved (frame_009.jpg, t=19.9s)
+[03:45]   [capture-periodic] freeze=2ms shot=233ms unfreeze=7ms saved=True
+[03:48]   [ComfyUI] model.safetensors:  15%|█▍        | 805M/5.42G [00:14<01:30, 51.2MB/s]
+[03:49]   [capture-loop] iter=200 t=24.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[03:50]   Frame 11 saved (frame_010.jpg, t=24.5s)
+[03:50]   [capture-periodic] freeze=2ms shot=199ms unfreeze=11ms saved=True
+[03:52]   Frame 12 saved (frame_011.jpg, t=26.9s)
+[03:52]   [capture-periodic] freeze=2ms shot=190ms unfreeze=11ms saved=True
+[03:52]   [ComfyUI] model.safetensors:  30%|██▉       | 1.61G/5.42G [00:22<00:45, 83.9MB/s]
+[03:54]   Frame 13 saved (frame_012.jpg, t=29.2s)
+[03:54]   [capture-periodic] freeze=1ms shot=285ms unfreeze=8ms saved=True
+[03:55]   [ComfyUI] model.safetensors:  35%|███▍      | 1.88G/5.42G [00:26<00:45, 77.4MB/s]
+[03:55]   [capture-loop] iter=250 t=30.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[03:57]   Frame 14 saved (frame_013.jpg, t=31.6s)
+[03:57]   [capture-periodic] freeze=2ms shot=143ms unfreeze=5ms saved=True
+[03:57]   [ComfyUI] model.safetensors:  43%|████▎     | 2.35G/5.42G [00:28<00:30, 100MB/s]
+[03:58]   [ComfyUI] model.safetensors:  49%|████▉     | 2.68G/5.42G [00:31<00:25, 106MB/s]
+[03:59]   Frame 15 saved (frame_014.jpg, t=33.9s)
+[03:59]   [capture-periodic] freeze=2ms shot=230ms unfreeze=11ms saved=True
+[04:01]   [capture-loop] iter=300 t=36.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[04:01]   Frame 16 saved (frame_015.jpg, t=36.3s)
+[04:01]   [capture-periodic] freeze=2ms shot=203ms unfreeze=9ms saved=True
+[04:05]   [ComfyUI] model.safetensors:  52%|█████▏    | 2.82G/5.42G [00:31<00:21, 119MB/s]
+[04:06]   Frame 17 saved (frame_016.jpg, t=41.0s)
+[04:06]   [capture-periodic] freeze=2ms shot=199ms unfreeze=8ms saved=True
+[04:07]   [capture-loop] iter=350 t=42.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2
+[04:07]   [ComfyUI] model.safetensors:  62%|██████▏   | 3.35G/5.42G [00:38<00:21, 95.6MB/s]
+[04:08]   Frame 18 saved (frame_017.jpg, t=43.2s)
+[04:08]   [capture-periodic] freeze=1ms shot=165ms unfreeze=2ms saved=True
+[04:09]   [ComfyUI] model.safetensors:  75%|███████▌  | 4.09G/5.42G [00:41<00:09, 137MB/s]
+[04:10]   [ComfyUI] model.safetensors:  80%|████████  | 4.36G/5.42G [00:43<00:07, 140MB/s]
+[04:11]   [ComfyUI] model.safetensors:  90%|█████████ | 4.90G/5.42G [00:44<00:02, 190MB/s]
+[04:11]   Frame 19 saved (frame_018.jpg, t=45.5s)
+[04:11]   [capture-periodic] freeze=2ms shot=196ms unfreeze=10ms saved=True
+[04:13]   Frame 20 saved (frame_019.jpg, t=47.9s)
+[04:13]   [capture-periodic] freeze=2ms shot=244ms unfreeze=4ms saved=True
+[04:14]   [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:44<00:00, 261MB/s]
+[04:14]   [capture-loop] iter=400 t=48.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3
+[04:14]   [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:47<00:00, 113MB/s]
+[04:14]   [ComfyUI] Downloaded model to: /workspaces/SAM3DBody-1648/ComfyUI/models/depthanything3/da3_giant.safetensors
+[04:14]   [ComfyUI] Auto-detected model variant: da3-giant
+[04:14]   [ComfyUI] [build] model_key=da3-giant, dtype=torch.bfloat16, attention=auto
+[04:14]   [ComfyUI] [build] config: encoder=vitg, dim_in=3072, features=256, out_channels=[256, 512, 1024, 1024]
+[04:14]   [ComfyUI] Dependency 'e3nn' not found. Required for rotating the camera space SH coeff
+[04:14]   [ComfyUI] Built GS head and adapter for Giant model (Gaussian splatting enabled)
+[04:14]   [ComfyUI] [build] Loading model from: /workspaces/SAM3DBody-1648/ComfyUI/models/depthanything3/da3_giant.safetensors
+[04:14]   [ComfyUI] [build] Checkpoint: 971 keys loaded
+[04:14]   [ComfyUI] [build] Stripped 'model.' prefix from 971 keys
+[04:14]   [ComfyUI] [build] Expanded 6 shared-weight keys for output_conv2_aux
+[04:14]   [ComfyUI] Model ready (torch.bfloat16)
+[04:14]   [ComfyUI] Requested to load DepthAnything3Net
+[04:15]   [ComfyUI] loaded completely; 6331.74 MB usable, 2581.72 MB loaded, full load: True
+[04:15]   [ComfyUI] Input image size: 497x1200
+[04:15]   [ComfyUI] Model input size (after resize): 504x1204
+[04:15]   [ComfyUI] Model supports 3D Gaussians - will output raw Gaussians
+[04:16]   [ComfyUI] [VRAM backbone] DONE: allocated=2.63GB reserved=2.78GB
+[04:16]   [ComfyUI] plyfile not installed - cannot save Gaussians to PLY. Install with: pip install plyfile
+[04:16]   [ComfyUI] Precision: bf16
+[04:16]   [ComfyUI] !!! Exception during processing !!! No module named 'roma'
+[04:16]   [ComfyUI] Traceback (most recent call last):
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute
+[04:16]   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data
+[04:16]   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+[04:16]   [ComfyUI]     await process_inputs(input_dict, i)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs
+[04:16]   [ComfyUI]     result = f(**inputs)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func
+[04:16]   [ComfyUI]     return method(locked_class, **inputs)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+[04:16]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[04:16]   Frame 21 saved (frame_020.jpg, t=50.8s)
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute
+[04:16]   [capture-periodic] freeze=1ms shot=339ms unfreeze=9ms saved=True
+[04:16]   [ComfyUI]     from .sam_3d_body import SAM3DBodyEstimator
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>
+[04:16]   [ComfyUI]     from .build_models import load_sam_3d_body
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>
+[04:16]   [ComfyUI]     from .model import SAM3DBody
+[04:16]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>
+[04:16]   [ComfyUI]     import roma
+[04:16]   [ComfyUI] ModuleNotFoundError: No module named 'roma'
+[04:16]   [ComfyUI] 
+[04:16]   [ComfyUI] Prompt executed in 50.89 seconds
+[04:16]   Node executed (4 total), capturing...
+[04:17]   Frame 22 saved (frame_021.jpg, t=51.5s)
+[04:17]   [capture-node] freeze=15ms shot=185ms unfreeze=3ms saved=True
+[04:17]   Execution complete (t=51.8s)
+[04:17]   Execution error: {'prompt_id': '19985d97-9730-402d-988d-51a97abb6d93', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '41', '24', '59', '60', '40', '39', '44', '46', '43', '36'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [True], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0275, 0.0314, 0.0000],\n          [0.0745, 0.0549, 0.0000],\n          [0.1490, 0.1216, 0.0667],\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0549, 0.0471, 0.0000],\n          [0.0824, 0.0667, 0.0078],\n          [0.1686, 0.1333, 0.0824],\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0706, 0.0510, 0.0000],\n          [0.1059, 0.0784, 0.0275],\n          [0.1922, 0.1451, 0.0980],\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         [[0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0706, 0.0431, 0.0000],\n          [0.1412, 0.0980, 0.0510],\n          [0.2078, 0.1529, 0.1098],\n          [0.2275, 0.1647, 0.1216],\n          [0.2353, 0.1608, 0.1216],\n          [0.1294, 0.0471, 0.0118]],\n\n         [[0.0235, 0.0627, 0.0510],\n          [0.0235, 0.0627, 0.0510],\n          [0.0235, 0.0627, 0.0510],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0157, 0.0549, 0.0392],\n          ...,\n          [0.1608, 0.1137, 0.0667],\n          [0.1882, 0.1333, 0.0902],\n          [0.2196, 0.1451, 0.1098],\n          [0.2078, 0.1255, 0.0902],\n          [0.2235, 0.1294, 0.0980],\n          [0.1451, 0.0392, 0.0118]],\n\n         [[0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0157, 0.0549, 0.0392],\n          [0.0157, 0.0549, 0.0392],\n          ...,\n          [0.2157, 0.1608, 0.1176],\n          [0.2235, 0.1569, 0.1176],\n          [0.2392, 0.1569, 0.1216],\n          [0.2196, 0.1255, 0.0941],\n          [0.2196, 0.1176, 0.0902],\n          [0.1451, 0.0314, 0.0078]],\n\n         ...,\n\n         [[0.4235, 0.1961, 0.1216],\n          [0.5725, 0.3373, 0.2549],\n          [0.5412, 0.3059, 0.2078],\n          [0.5843, 0.3373, 0.2235],\n          [0.6078, 0.3412, 0.2157],\n          [0.6314, 0.3529, 0.2078],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4314, 0.1922, 0.1294],\n          [0.5216, 0.2824, 0.2118],\n          [0.5373, 0.2941, 0.2039],\n          [0.5804, 0.3216, 0.2235],\n          [0.6078, 0.3333, 0.2118],\n          [0.6431, 0.3608, 0.2157],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4275, 0.1882, 0.1255],\n          [0.5176, 0.2706, 0.2039],\n          [0.5333, 0.2824, 0.1961],\n          [0.5686, 0.3098, 0.2078],\n          [0.5961, 0.3216, 0.2000],\n          [0.6353, 0.3451, 0.2118],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          [0.5529, 0.2941, 0.1961],\n          [0.5804, 0.3059, 0.1843],\n          [0.6196, 0.3294, 0.1961],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          [0.5412, 0.2824, 0.1804],\n          [0.5725, 0.2980, 0.1765],\n          [0.6118, 0.3216, 0.1882],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          [0.5373, 0.2667, 0.1725],\n          [0.5765, 0.2941, 0.1765],\n          [0.6118, 0.3216, 0.1882],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])'], 'masks': ['tensor([[[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]]])'], 'depth_map': ['tensor([[[[2.4994, 2.4994, 2.4994],\n          [2.5016, 2.5016, 2.5016],\n          [2.4987, 2.4987, 2.4987],\n          [2.4986, 2.4986, 2.4986],\n          [2.4949, 2.4949, 2.4949],\n          [2.4948, 2.4948, 2.4948],\n          ...,\n          [1.5907, 1.5907, 1.5907],\n          [1.5880, 1.5880, 1.5880],\n          [1.5869, 1.5869, 1.5869],\n          [1.5825, 1.5825, 1.5825],\n          [1.5709, 1.5709, 1.5709],\n          [1.5437, 1.5437, 1.5437]],\n\n         [[2.4693, 2.4693, 2.4693],\n          [2.4917, 2.4917, 2.4917],\n          [2.5065, 2.5065, 2.5065],\n          [2.5075, 2.5075, 2.5075],\n          [2.4992, 2.4992, 2.4992],\n          [2.4992, 2.4992, 2.4992],\n          ...,\n          [1.5874, 1.5874, 1.5874],\n          [1.5856, 1.5856, 1.5856],\n          [1.5860, 1.5860, 1.5860],\n          [1.5774, 1.5774, 1.5774],\n          [1.5694, 1.5694, 1.5694],\n          [1.5479, 1.5479, 1.5479]],\n\n         [[2.4990, 2.4990, 2.4990],\n          [2.5041, 2.5041, 2.5041],\n          [2.5021, 2.5021, 2.5021],\n          [2.4999, 2.4999, 2.4999],\n          [2.4993, 2.4993, 2.4993],\n          [2.4979, 2.4979, 2.4979],\n          ...,\n          [1.5886, 1.5886, 1.5886],\n          [1.5859, 1.5859, 1.5859],\n          [1.5838, 1.5838, 1.5838],\n          [1.5781, 1.5781, 1.5781],\n          [1.5675, 1.5675, 1.5675],\n          [1.5638, 1.5638, 1.5638]],\n\n         [[2.5060, 2.5060, 2.5060],\n          [2.5031, 2.5031, 2.5031],\n          [2.5017, 2.5017, 2.5017],\n          [2.5048, 2.5048, 2.5048],\n          [2.5006, 2.5006, 2.5006],\n          [2.5001, 2.5001, 2.5001],\n          ...,\n          [1.5889, 1.5889, 1.5889],\n          [1.5860, 1.5860, 1.5860],\n          [1.5831, 1.5831, 1.5831],\n          [1.5770, 1.5770, 1.5770],\n          [1.5680, 1.5680, 1.5680],\n          [1.5159, 1.5159, 1.5159]],\n\n         [[2.5063, 2.5063, 2.5063],\n          [2.5001, 2.5001, 2.5001],\n          [2.5040, 2.5040, 2.5040],\n          [2.5085, 2.5085, 2.5085],\n          [2.5012, 2.5012, 2.5012],\n          [2.5031, 2.5031, 2.5031],\n          ...,\n          [1.5884, 1.5884, 1.5884],\n          [1.5847, 1.5847, 1.5847],\n          [1.5807, 1.5807, 1.5807],\n          [1.5744, 1.5744, 1.5744],\n          [1.5637, 1.5637, 1.5637],\n          [1.5257, 1.5257, 1.5257]],\n\n         [[2.5132, 2.5132, 2.5132],\n          [2.5047, 2.5047, 2.5047],\n          [2.5088, 2.5088, 2.5088],\n          [2.5101, 2.5101, 2.5101],\n          [2.5043, 2.5043, 2.5043],\n          [2.5064, 2.5064, 2.5064],\n          ...,\n          [1.5881, 1.5881, 1.5881],\n          [1.5842, 1.5842, 1.5842],\n          [1.5800, 1.5800, 1.5800],\n          [1.5733, 1.5733, 1.5733],\n          [1.5622, 1.5622, 1.5622],\n          [1.5316, 1.5316, 1.5316]],\n\n         ...,\n\n         [[1.3419, 1.3419, 1.3419],\n          [1.3528, 1.3528, 1.3528],\n          [1.3539, 1.3539, 1.3539],\n          [1.3554, 1.3554, 1.3554],\n          [1.3548, 1.3548, 1.3548],\n          [1.3545, 1.3545, 1.3545],\n          ...,\n          [1.0922, 1.0922, 1.0922],\n          [1.0926, 1.0926, 1.0926],\n          [1.0921, 1.0921, 1.0921],\n          [1.0922, 1.0922, 1.0922],\n          [1.0919, 1.0919, 1.0919],\n          [1.0955, 1.0955, 1.0955]],\n\n         [[1.3369, 1.3369, 1.3369],\n          [1.3446, 1.3446, 1.3446],\n          [1.3521, 1.3521, 1.3521],\n          [1.3536, 1.3536, 1.3536],\n          [1.3518, 1.3518, 1.3518],\n          [1.3518, 1.3518, 1.3518],\n          ...,\n          [1.0920, 1.0920, 1.0920],\n          [1.0924, 1.0924, 1.0924],\n          [1.0920, 1.0920, 1.0920],\n          [1.0925, 1.0925, 1.0925],\n          [1.0923, 1.0923, 1.0923],\n          [1.0954, 1.0954, 1.0954]],\n\n         [[1.3366, 1.3366, 1.3366],\n          [1.3510, 1.3510, 1.3510],\n          [1.3515, 1.3515, 1.3515],\n          [1.3519, 1.3519, 1.3519],\n          [1.3514, 1.3514, 1.3514],\n          [1.3509, 1.3509, 1.3509],\n          ...,\n          [1.0920, 1.0920, 1.0920],\n          [1.0923, 1.0923, 1.0923],\n          [1.0919, 1.0919, 1.0919],\n          [1.0924, 1.0924, 1.0924],\n          [1.0925, 1.0925, 1.0925],\n          [1.0951, 1.0951, 1.0951]],\n\n         [[1.3365, 1.3365, 1.3365],\n          [1.3459, 1.3459, 1.3459],\n          [1.3436, 1.3436, 1.3436],\n          [1.3499, 1.3499, 1.3499],\n          [1.3462, 1.3462, 1.3462],\n          [1.3476, 1.3476, 1.3476],\n          ...,\n          [1.0909, 1.0909, 1.0909],\n          [1.0912, 1.0912, 1.0912],\n          [1.0909, 1.0909, 1.0909],\n          [1.0923, 1.0923, 1.0923],\n          [1.0925, 1.0925, 1.0925],\n          [1.0947, 1.0947, 1.0947]],\n\n         [[1.3461, 1.3461, 1.3461],\n          [1.3361, 1.3361, 1.3361],\n          [1.3416, 1.3416, 1.3416],\n          [1.3461, 1.3461, 1.3461],\n          [1.3425, 1.3425, 1.3425],\n          [1.3442, 1.3442, 1.3442],\n          ...,\n          [1.0949, 1.0949, 1.0949],\n          [1.0949, 1.0949, 1.0949],\n          [1.0941, 1.0941, 1.0941],\n          [1.0947, 1.0947, 1.0947],\n          [1.0943, 1.0943, 1.0943],\n          [1.0963, 1.0963, 1.0963]],\n\n         [[1.3287, 1.3287, 1.3287],\n          [1.3381, 1.3381, 1.3381],\n          [1.3172, 1.3172, 1.3172],\n          [1.3230, 1.3230, 1.3230],\n          [1.3234, 1.3234, 1.3234],\n          [1.3263, 1.3263, 1.3263],\n          ...,\n          [1.0938, 1.0938, 1.0938],\n          [1.0931, 1.0931, 1.0931],\n          [1.0933, 1.0933, 1.0933],\n          [1.0938, 1.0938, 1.0938],\n          [1.0902, 1.0902, 1.0902],\n          [1.0993, 1.0993, 1.0993]]]])'], 'intrinsics': ['tensor([[[2.7941e+03, 0.0000e+00, 6.0000e+02, 0.0000e+00],\n         [0.0000e+00, 2.7589e+03, 2.4800e+02, 0.0000e+00],\n         [0.0000e+00, 0.0000e+00, 1.0000e+00, 0.0000e+00],\n         [0.0000e+00, 0.0000e+00, 0.0000e+00, 1.0000e+00]]])'], 'depth_confidence': ['tensor([[[[1.0722e-04, 1.0722e-04, 1.0722e-04],\n          [1.7060e-05, 1.7060e-05, 1.7060e-05],\n          [1.4908e-05, 1.4908e-05, 1.4908e-05],\n          [7.6037e-06, 7.6037e-06, 7.6037e-06],\n          [4.9320e-06, 4.9320e-06, 4.9320e-06],\n          [4.2822e-06, 4.2822e-06, 4.2822e-06],\n          ...,\n          [1.6143e-03, 1.6143e-03, 1.6143e-03],\n          [1.6490e-03, 1.6490e-03, 1.6490e-03],\n          [1.2263e-03, 1.2263e-03, 1.2263e-03],\n          [1.4704e-03, 1.4704e-03, 1.4704e-03],\n          [2.3616e-03, 2.3616e-03, 2.3616e-03],\n          [2.4363e-03, 2.4363e-03, 2.4363e-03]],\n\n         [[6.6127e-06, 6.6127e-06, 6.6127e-06],\n          [1.4701e-06, 1.4701e-06, 1.4701e-06],\n          [2.3377e-06, 2.3377e-06, 2.3377e-06],\n          [1.1503e-06, 1.1503e-06, 1.1503e-06],\n          [5.7655e-07, 5.7655e-07, 5.7655e-07],\n          [4.8448e-07, 4.8448e-07, 4.8448e-07],\n          ...,\n          [5.7728e-04, 5.7728e-04, 5.7728e-04],\n          [6.8183e-04, 6.8183e-04, 6.8183e-04],\n          [6.4139e-04, 6.4139e-04, 6.4139e-04],\n          [7.0301e-04, 7.0301e-04, 7.0301e-04],\n          [6.9062e-04, 6.9062e-04, 6.9062e-04],\n          [1.1831e-03, 1.1831e-03, 1.1831e-03]],\n\n         [[9.6641e-06, 9.6641e-06, 9.6641e-06],\n          [2.1171e-06, 2.1171e-06, 2.1171e-06],\n          [1.7980e-06, 1.7980e-06, 1.7980e-06],\n          [6.8167e-07, 6.8167e-07, 6.8167e-07],\n          [3.1917e-07, 3.1917e-07, 3.1917e-07],\n          [2.2853e-07, 2.2853e-07, 2.2853e-07],\n          ...,\n          [2.6391e-04, 2.6391e-04, 2.6391e-04],\n          [3.8075e-04, 3.8075e-04, 3.8075e-04],\n          [5.2815e-04, 5.2815e-04, 5.2815e-04],\n          [5.6958e-04, 5.6958e-04, 5.6958e-04],\n          [3.3014e-04, 3.3014e-04, 3.3014e-04],\n          [6.5810e-04, 6.5810e-04, 6.5810e-04]],\n\n         [[6.8197e-06, 6.8197e-06, 6.8197e-06],\n          [1.3512e-06, 1.3512e-06, 1.3512e-06],\n          [8.6361e-07, 8.6361e-07, 8.6361e-07],\n          [3.2132e-07, 3.2132e-07, 3.2132e-07],\n          [1.6287e-07, 1.6287e-07, 1.6287e-07],\n          [1.1638e-07, 1.1638e-07, 1.1638e-07],\n          ...,\n          [1.3412e-04, 1.3412e-04, 1.3412e-04],\n          [2.1984e-04, 2.1984e-04, 2.1984e-04],\n          [3.6000e-04, 3.6000e-04, 3.6000e-04],\n          [3.4549e-04, 3.4549e-04, 3.4549e-04],\n          [1.5917e-04, 1.5917e-04, 1.5917e-04],\n          [4.1965e-04, 4.1965e-04, 4.1965e-04]],\n\n         [[4.5010e-06, 4.5010e-06, 4.5010e-06],\n          [9.1914e-07, 9.1914e-07, 9.1914e-07],\n          [5.2497e-07, 5.2497e-07, 5.2497e-07],\n          [2.5088e-07, 2.5088e-07, 2.5088e-07],\n          [1.5950e-07, 1.5950e-07, 1.5950e-07],\n          [1.1428e-07, 1.1428e-07, 1.1428e-07],\n          ...,\n          [1.1458e-04, 1.1458e-04, 1.1458e-04],\n          [1.8206e-04, 1.8206e-04, 1.8206e-04],\n          [2.8289e-04, 2.8289e-04, 2.8289e-04],\n          [2.6222e-04, 2.6222e-04, 2.6222e-04],\n          [1.2040e-04, 1.2040e-04, 1.2040e-04],\n          [3.7538e-04, 3.7538e-04, 3.7538e-04]],\n\n         [[3.5684e-06, 3.5684e-06, 3.5684e-06],\n          [7.5009e-07, 7.5009e-07, 7.5009e-07],\n          [3.9134e-07, 3.9134e-07, 3.9134e-07],\n          [1.8200e-07, 1.8200e-07, 1.8200e-07],\n          [1.1441e-07, 1.1441e-07, 1.1441e-07],\n          [9.0576e-08, 9.0576e-08, 9.0576e-08],\n          ...,\n          [9.9107e-05, 9.9107e-05, 9.9107e-05],\n          [1.4976e-04, 1.4976e-04, 1.4976e-04],\n          [2.2077e-04, 2.2077e-04, 2.2077e-04],\n          [2.0847e-04, 2.0847e-04, 2.0847e-04],\n          [1.0814e-04, 1.0814e-04, 1.0814e-04],\n          [2.9064e-04, 2.9064e-04, 2.9064e-04]],\n\n         ...,\n\n         [[7.5373e-04, 7.5373e-04, 7.5373e-04],\n          [2.0481e-04, 2.0481e-04, 2.0481e-04],\n          [2.6249e-04, 2.6249e-04, 2.6249e-04],\n          [2.3024e-04, 2.3024e-04, 2.3024e-04],\n          [2.8037e-04, 2.8037e-04, 2.8037e-04],\n          [2.9112e-04, 2.9112e-04, 2.9112e-04],\n          ...,\n          [1.4675e-01, 1.4675e-01, 1.4675e-01],\n          [1.4729e-01, 1.4729e-01, 1.4729e-01],\n          [1.4110e-01, 1.4110e-01, 1.4110e-01],\n          [1.4376e-01, 1.4376e-01, 1.4376e-01],\n          [1.5175e-01, 1.5175e-01, 1.5175e-01],\n          [1.7014e-01, 1.7014e-01, 1.7014e-01]],\n\n         [[9.2812e-04, 9.2812e-04, 9.2812e-04],\n          [3.4935e-04, 3.4935e-04, 3.4935e-04],\n          [3.5411e-04, 3.5411e-04, 3.5411e-04],\n          [2.4217e-04, 2.4217e-04, 2.4217e-04],\n          [2.8294e-04, 2.8294e-04, 2.8294e-04],\n          [3.0784e-04, 3.0784e-04, 3.0784e-04],\n          ...,\n          [1.5163e-01, 1.5163e-01, 1.5163e-01],\n          [1.5209e-01, 1.5209e-01, 1.5209e-01],\n          [1.4554e-01, 1.4554e-01, 1.4554e-01],\n          [1.4778e-01, 1.4778e-01, 1.4778e-01],\n          [1.5609e-01, 1.5609e-01, 1.5609e-01],\n          [1.7610e-01, 1.7610e-01, 1.7610e-01]],\n\n         [[8.6518e-04, 8.6518e-04, 8.6518e-04],\n          [5.3731e-04, 5.3731e-04, 5.3731e-04],\n          [4.5469e-04, 4.5469e-04, 4.5469e-04],\n          [2.5154e-04, 2.5154e-04, 2.5154e-04],\n          [2.4402e-04, 2.4402e-04, 2.4402e-04],\n          [2.4130e-04, 2.4130e-04, 2.4130e-04],\n          ...,\n          [1.5072e-01, 1.5072e-01, 1.5072e-01],\n          [1.5100e-01, 1.5100e-01, 1.5100e-01],\n          [1.4486e-01, 1.4486e-01, 1.4486e-01],\n          [1.4746e-01, 1.4746e-01, 1.4746e-01],\n          [1.5797e-01, 1.5797e-01, 1.5797e-01],\n          [1.7203e-01, 1.7203e-01, 1.7203e-01]],\n\n         [[5.8928e-04, 5.8928e-04, 5.8928e-04],\n          [5.1575e-04, 5.1575e-04, 5.1575e-04],\n          [6.1673e-04, 6.1673e-04, 6.1673e-04],\n          [3.9440e-04, 3.9440e-04, 3.9440e-04],\n          [3.4898e-04, 3.4898e-04, 3.4898e-04],\n          [3.0121e-04, 3.0121e-04, 3.0121e-04],\n          ...,\n          [1.5267e-01, 1.5267e-01, 1.5267e-01],\n          [1.5285e-01, 1.5285e-01, 1.5285e-01],\n          [1.4792e-01, 1.4792e-01, 1.4792e-01],\n          [1.5248e-01, 1.5248e-01, 1.5248e-01],\n          [1.6789e-01, 1.6789e-01, 1.6789e-01],\n          [1.6697e-01, 1.6697e-01, 1.6697e-01]],\n\n         [[4.7749e-04, 4.7749e-04, 4.7749e-04],\n          [3.4118e-04, 3.4118e-04, 3.4118e-04],\n          [5.8580e-04, 5.8580e-04, 5.8580e-04],\n          [5.8557e-04, 5.8557e-04, 5.8557e-04],\n          [5.4929e-04, 5.4929e-04, 5.4929e-04],\n          [4.5238e-04, 4.5238e-04, 4.5238e-04],\n          ...,\n          [1.6629e-01, 1.6629e-01, 1.6629e-01],\n          [1.6653e-01, 1.6653e-01, 1.6653e-01],\n          [1.6278e-01, 1.6278e-01, 1.6278e-01],\n          [1.7606e-01, 1.7606e-01, 1.7606e-01],\n          [1.9825e-01, 1.9825e-01, 1.9825e-01],\n          [2.0145e-01, 2.0145e-01, 2.0145e-01]],\n\n         [[3.0432e-03, 3.0432e-03, 3.0432e-03],\n          [1.3587e-03, 1.3587e-03, 1.3587e-03],\n          [3.0736e-03, 3.0736e-03, 3.0736e-03],\n          [4.0627e-03, 4.0627e-03, 4.0627e-03],\n          [3.0159e-03, 3.0159e-03, 3.0159e-03],\n          [2.1808e-03, 2.1808e-03, 2.1808e-03],\n          ...,\n          [1.5714e-01, 1.5714e-01, 1.5714e-01],\n          [1.5742e-01, 1.5742e-01, 1.5742e-01],\n          [1.5292e-01, 1.5292e-01, 1.5292e-01],\n          [1.7898e-01, 1.7898e-01, 1.7898e-01],\n          [1.9823e-01, 1.9823e-01, 1.9823e-01],\n          [1.8285e-01, 1.8285e-01, 1.8285e-01]]]])']}, 'current_outputs': ['35', '29', '41', '24', '4', '46', '59', '40', '58', '60', '18', '16', '39', '44', '43', '36'], 'timestamp': 1778345555850}
+[04:17]   [3/5] SKIPPED (not in gpu list) rigged_mesh_manipulation.json
+[04:17] Capturing execution frames: rigging.json
+[04:24]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[04:24]   Validating workflow...
+[04:24]   [ComfyUI] === /validate endpoint called ===
+[04:24]   [ComfyUI] Received JSON with keys: ['prompt']
+[04:24]   [ComfyUI] Prompt has 6 nodes
+[04:24]   [ComfyUI]   Node 3: LoadImage
+[04:24]   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[04:24]   [ComfyUI]   Node 4: PreviewImage
+[04:24]   [ComfyUI]     Inputs: {"images": ["10", 2]}
+[04:24]   [ComfyUI]   Node 10: SAM3DBodyProcess
+[04:24]   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["15", 0], "image": ["3", 0], "mask": ["3", 1]}
+[04:24]   Queuing workflow for execution...
+[04:24]   [ComfyUI]   Node 12: SAM3DBodyExportFBX
+[04:24]   [ComfyUI]     Inputs: {"output_filename": "sam3d_rigged.fbx", "mesh_data": ["10", 0]}
+[04:24]   [ComfyUI]   Node 13: SAM3DBodyPreviewRiggedMesh
+[04:24]   [ComfyUI]     Inputs: {"fbx_output_path": ["12", 0], "preview": ""}
+[04:24]   [ComfyUI]   Node 15: LoadSAM3DBodyModel
+[04:24]   [ComfyUI]     Inputs: {"precision": "auto"}
+[04:24]   [ComfyUI] Generated prompt_id: 5de1ffa7-6254-47f8-952c-1ddd39048b65
+[04:24]   [ComfyUI] Calling execution.validate_prompt()...
+[04:24]   [ComfyUI] Validation result: valid=True
+[04:24]   [ComfyUI] === Validation PASSED ===
+[04:24]   [ComfyUI] got prompt
+[04:24]   [ComfyUI] Precision: bf16
+[04:24]   [ComfyUI] !!! Exception during processing !!! No module named 'roma'
+[04:24]   [ComfyUI] Traceback (most recent call last):
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute
+[04:24]   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data
+[04:24]   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+[04:24]   [ComfyUI]     await process_inputs(input_dict, i)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs
+[04:24]   [ComfyUI]     result = f(**inputs)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func
+[04:24]   [ComfyUI]     return method(locked_class, **inputs)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+[04:24]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute
+[04:24]   [ComfyUI]     from .sam_3d_body import SAM3DBodyEstimator
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>
+[04:24]   [ComfyUI]     from .build_models import load_sam_3d_body
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>
+[04:24]   [ComfyUI]     from .model import SAM3DBody
+[04:24]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>
+[04:24]   [ComfyUI]     import roma
+[04:24]   [ComfyUI] ModuleNotFoundError: No module named 'roma'
+[04:24]   [ComfyUI] 
+[04:24]   [ComfyUI] Prompt executed in 0.17 seconds
+[04:24]   Execution complete (t=0.7s)
+[04:24]   Execution error: {'prompt_id': '86d43c54-decc-4a1f-8e51-87806a12a70f', 'node_id': '10', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '15'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8745, 0.8078, 0.7373],\n          [0.8745, 0.8078, 0.7373],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6196, 0.3373, 0.2784],\n          [0.6118, 0.3490, 0.2863],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3451, 0.2863],\n          [0.6118, 0.3490, 0.2863]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8902, 0.8235, 0.7529],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2667],\n          [0.6275, 0.3294, 0.2745],\n          [0.6157, 0.3333, 0.2745],\n          [0.6157, 0.3451, 0.2863],\n          [0.6157, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2078, 0.2275],\n          [0.2941, 0.2039, 0.2275],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4157, 0.3490, 0.3216],\n          [0.4118, 0.3451, 0.3176],\n          [0.4078, 0.3412, 0.3137],\n          [0.4118, 0.3451, 0.3176],\n          [0.3882, 0.3216, 0.2941],\n          [0.3843, 0.3176, 0.2902]],\n\n         [[0.2784, 0.2000, 0.2078],\n          [0.2784, 0.2000, 0.2078],\n          [0.2824, 0.2000, 0.2196],\n          [0.2824, 0.2000, 0.2196],\n          [0.2902, 0.2000, 0.2235],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4706, 0.4039, 0.3765],\n          [0.4706, 0.4039, 0.3765],\n          [0.4549, 0.3882, 0.3608],\n          [0.4275, 0.3608, 0.3333],\n          [0.4235, 0.3569, 0.3294]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2745, 0.1961, 0.2039],\n          [0.2745, 0.1961, 0.2039],\n          [0.2824, 0.1961, 0.2078],\n          [0.2863, 0.2000, 0.2118],\n          ...,\n          [0.4627, 0.3882, 0.3647],\n          [0.4706, 0.3961, 0.3725],\n          [0.4627, 0.3961, 0.3686],\n          [0.4549, 0.3882, 0.3608],\n          [0.4353, 0.3686, 0.3412],\n          [0.4431, 0.3765, 0.3490]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          [0.2667, 0.1882, 0.1961],\n          [0.2745, 0.1882, 0.2000],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4471, 0.3725, 0.3490],\n          [0.4627, 0.3882, 0.3647],\n          [0.4627, 0.3961, 0.3686],\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          [0.2745, 0.1882, 0.2000],\n          [0.2745, 0.1882, 0.2000],\n          [0.2824, 0.1961, 0.2078],\n          ...,\n          [0.4431, 0.3686, 0.3529],\n          [0.4588, 0.3843, 0.3686],\n          [0.4667, 0.3922, 0.3765],\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          [0.2863, 0.2000, 0.2118],\n          [0.2863, 0.2000, 0.2118],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4078, 0.3333, 0.3176],\n          [0.4235, 0.3490, 0.3333],\n          [0.4275, 0.3529, 0.3373],\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         ...,\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.]]])']}, 'current_outputs': ['3', '15', '12', '4', '10', '13'], 'timestamp': 1778345564057}
+[04:25] Capturing execution frames: workflow.json
+[04:31]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[04:31]   Validating workflow...
+[04:31]   [ComfyUI] === /validate endpoint called ===
+[04:31]   [ComfyUI] Received JSON with keys: ['prompt']
+[04:31]   Queuing workflow for execution...
+[04:31]   [ComfyUI] Prompt has 6 nodes
+[04:32]   [ComfyUI]   Node 3: LoadImage
+[04:32]   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
+[04:32]   [ComfyUI]   Node 4: PreviewImage
+[04:32]   [ComfyUI]     Inputs: {"images": ["13", 2]}
+[04:32]   [ComfyUI]   Node 10: Preview3D
+[04:32]   [ComfyUI]     Inputs: {"model_file": ["15", 0], "image": ""}
+[04:32]   [ComfyUI]   Node 12: LoadSAM3DBodyModel
+[04:32]   [ComfyUI]     Inputs: {"precision": "auto"}
+[04:32]   [ComfyUI]   Node 13: SAM3DBodyProcess
+[04:32]   [ComfyUI]     Inputs: {"bbox_threshold": 0.8, "inference_type": "full", "model": ["12", 0], "image": ["3", 0], "mask": ["3", 1]}
+[04:32]   [ComfyUI]   Node 15: SAM3DBodyExportMesh
+[04:32]   [ComfyUI]     Inputs: {"filename": "output_mesh.stl", "mesh_data": ["13", 0]}
+[04:32]   [ComfyUI] Generated prompt_id: 73a2bb42-5b75-4474-85ee-291e51106cad
+[04:32]   [ComfyUI] Calling execution.validate_prompt()...
+[04:32]   [ComfyUI] Validation result: valid=True
+[04:32]   [ComfyUI] === Validation PASSED ===
+[04:32]   Execution complete (t=0.6s)
+[04:32]   [ComfyUI] got prompt
+[04:32]   Execution error: {'prompt_id': '5122a672-1454-4da1-9b14-2a2e3d67f298', 'node_id': '13', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '12'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8745, 0.8078, 0.7373],\n          [0.8745, 0.8078, 0.7373],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6196, 0.3373, 0.2784],\n          [0.6118, 0.3490, 0.2863],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3451, 0.2863],\n          [0.6118, 0.3490, 0.2863]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8902, 0.8235, 0.7529],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2667],\n          [0.6275, 0.3294, 0.2745],\n          [0.6157, 0.3333, 0.2745],\n          [0.6157, 0.3451, 0.2863],\n          [0.6157, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2078, 0.2275],\n          [0.2941, 0.2039, 0.2275],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4157, 0.3490, 0.3216],\n          [0.4118, 0.3451, 0.3176],\n          [0.4078, 0.3412, 0.3137],\n          [0.4118, 0.3451, 0.3176],\n          [0.3882, 0.3216, 0.2941],\n          [0.3843, 0.3176, 0.2902]],\n\n         [[0.2784, 0.2000, 0.2078],\n          [0.2784, 0.2000, 0.2078],\n          [0.2824, 0.2000, 0.2196],\n          [0.2824, 0.2000, 0.2196],\n          [0.2902, 0.2000, 0.2235],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4706, 0.4039, 0.3765],\n          [0.4706, 0.4039, 0.3765],\n          [0.4549, 0.3882, 0.3608],\n          [0.4275, 0.3608, 0.3333],\n          [0.4235, 0.3569, 0.3294]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2745, 0.1961, 0.2039],\n          [0.2745, 0.1961, 0.2039],\n          [0.2824, 0.1961, 0.2078],\n          [0.2863, 0.2000, 0.2118],\n          ...,\n          [0.4627, 0.3882, 0.3647],\n          [0.4706, 0.3961, 0.3725],\n          [0.4627, 0.3961, 0.3686],\n          [0.4549, 0.3882, 0.3608],\n          [0.4353, 0.3686, 0.3412],\n          [0.4431, 0.3765, 0.3490]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          [0.2667, 0.1882, 0.1961],\n          [0.2745, 0.1882, 0.2000],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4471, 0.3725, 0.3490],\n          [0.4627, 0.3882, 0.3647],\n          [0.4627, 0.3961, 0.3686],\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          [0.2745, 0.1882, 0.2000],\n          [0.2745, 0.1882, 0.2000],\n          [0.2824, 0.1961, 0.2078],\n          ...,\n          [0.4431, 0.3686, 0.3529],\n          [0.4588, 0.3843, 0.3686],\n          [0.4667, 0.3922, 0.3765],\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          [0.2863, 0.2000, 0.2118],\n          [0.2863, 0.2000, 0.2118],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4078, 0.3333, 0.3176],\n          [0.4235, 0.3490, 0.3333],\n          [0.4275, 0.3529, 0.3373],\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         ...,\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.]]])']}, 'current_outputs': ['3', '15', '12', '4', '10', '13'], 'timestamp': 1778345571438}
+[04:32]   [ComfyUI] Precision: bf16
+[04:32]   [ComfyUI] !!! Exception during processing !!! No module named 'roma'
+[04:32]   [ComfyUI] Traceback (most recent call last):
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute
+[04:32]   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data
+[04:32]   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+[04:32]   [ComfyUI]     await process_inputs(input_dict, i)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs
+[04:32]   [ComfyUI]     result = f(**inputs)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func
+[04:32]   [ComfyUI]     return method(locked_class, **inputs)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+[04:32]   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute
+[04:32]   [ComfyUI]     from .sam_3d_body import SAM3DBodyEstimator
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>
+[04:32]   [ComfyUI]     from .build_models import load_sam_3d_body
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>
+[04:32]   [ComfyUI]     from .model import SAM3DBody
+[04:32]   [ComfyUI]   File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>
+[04:32]   [ComfyUI]     import roma
+[04:32]   [ComfyUI] ModuleNotFoundError: No module named 'roma'
+[04:32]   [ComfyUI] 
+[04:32]   [ComfyUI] Prompt executed in 0.14 seconds
+[04:32] Results saved to /logs/SAM3DBody-1648/dev/linux-gpu/results.json
+[04:32] Model report: 14 files, 7.7 GB -> /logs/SAM3DBody-1648/dev/linux-gpu/models.json
+[04:32] Saved: /logs/SAM3DBody-1648/dev/linux-gpu/index.html
+[04:32] 
+linux: FAILED
+[04:32] Error: Workflow execution failed (4 error(s))
+[04:32] Details: multiple_masks.json: Workflow execution failed: {'prompt_id': 'c64f54b4-4856-4fae-b210-c9f837b5d6b6', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '36', '24', '39'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['35', '29', '24', '4', '18', '16', '39', '36'], 'timestamp': 1778345498027}
+
+Details:
+Workflow: /node/ComfyUI-SAM3DBody/workflows/multiple_masks.json
+Node error: SAM3DBodyProcessMultiple
+multiple_masks_depthcorrected.json: Workflow execution failed: {'prompt_id': '19985d97-9730-402d-988d-51a97abb6d93', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['35', '41', '24', '59', '60', '40', '39', '44', '46', '43', '36'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [True], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0275, 0.0314, 0.0000],\n          [0.0745, 0.0549, 0.0000],\n          [0.1490, 0.1216, 0.0667],\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0549, 0.0471, 0.0000],\n          [0.0824, 0.0667, 0.0078],\n          [0.1686, 0.1333, 0.0824],\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0706, 0.0510, 0.0000],\n          [0.1059, 0.0784, 0.0275],\n          [0.1922, 0.1451, 0.0980],\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         [[0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          [0.0078, 0.0588, 0.0392],\n          ...,\n          [0.0706, 0.0431, 0.0000],\n          [0.1412, 0.0980, 0.0510],\n          [0.2078, 0.1529, 0.1098],\n          [0.2275, 0.1647, 0.1216],\n          [0.2353, 0.1608, 0.1216],\n          [0.1294, 0.0471, 0.0118]],\n\n         [[0.0235, 0.0627, 0.0510],\n          [0.0235, 0.0627, 0.0510],\n          [0.0235, 0.0627, 0.0510],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0157, 0.0549, 0.0392],\n          ...,\n          [0.1608, 0.1137, 0.0667],\n          [0.1882, 0.1333, 0.0902],\n          [0.2196, 0.1451, 0.1098],\n          [0.2078, 0.1255, 0.0902],\n          [0.2235, 0.1294, 0.0980],\n          [0.1451, 0.0392, 0.0118]],\n\n         [[0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0196, 0.0588, 0.0471],\n          [0.0157, 0.0549, 0.0392],\n          [0.0157, 0.0549, 0.0392],\n          ...,\n          [0.2157, 0.1608, 0.1176],\n          [0.2235, 0.1569, 0.1176],\n          [0.2392, 0.1569, 0.1216],\n          [0.2196, 0.1255, 0.0941],\n          [0.2196, 0.1176, 0.0902],\n          [0.1451, 0.0314, 0.0078]],\n\n         ...,\n\n         [[0.4235, 0.1961, 0.1216],\n          [0.5725, 0.3373, 0.2549],\n          [0.5412, 0.3059, 0.2078],\n          [0.5843, 0.3373, 0.2235],\n          [0.6078, 0.3412, 0.2157],\n          [0.6314, 0.3529, 0.2078],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4314, 0.1922, 0.1294],\n          [0.5216, 0.2824, 0.2118],\n          [0.5373, 0.2941, 0.2039],\n          [0.5804, 0.3216, 0.2235],\n          [0.6078, 0.3333, 0.2118],\n          [0.6431, 0.3608, 0.2157],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4275, 0.1882, 0.1255],\n          [0.5176, 0.2706, 0.2039],\n          [0.5333, 0.2824, 0.1961],\n          [0.5686, 0.3098, 0.2078],\n          [0.5961, 0.3216, 0.2000],\n          [0.6353, 0.3451, 0.2118],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          [0.5529, 0.2941, 0.1961],\n          [0.5804, 0.3059, 0.1843],\n          [0.6196, 0.3294, 0.1961],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          [0.5412, 0.2824, 0.1804],\n          [0.5725, 0.2980, 0.1765],\n          [0.6118, 0.3216, 0.1882],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          [0.5373, 0.2667, 0.1725],\n          [0.5765, 0.2941, 0.1765],\n          [0.6118, 0.3216, 0.1882],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])'], 'masks': ['tensor([[[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]],\n\n        [[0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         ...,\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.],\n         [0., 0., 0., 0., 0., 0.,  ..., 0., 0., 0., 0., 0., 0.]]])'], 'depth_map': ['tensor([[[[2.4994, 2.4994, 2.4994],\n          [2.5016, 2.5016, 2.5016],\n          [2.4987, 2.4987, 2.4987],\n          [2.4986, 2.4986, 2.4986],\n          [2.4949, 2.4949, 2.4949],\n          [2.4948, 2.4948, 2.4948],\n          ...,\n          [1.5907, 1.5907, 1.5907],\n          [1.5880, 1.5880, 1.5880],\n          [1.5869, 1.5869, 1.5869],\n          [1.5825, 1.5825, 1.5825],\n          [1.5709, 1.5709, 1.5709],\n          [1.5437, 1.5437, 1.5437]],\n\n         [[2.4693, 2.4693, 2.4693],\n          [2.4917, 2.4917, 2.4917],\n          [2.5065, 2.5065, 2.5065],\n          [2.5075, 2.5075, 2.5075],\n          [2.4992, 2.4992, 2.4992],\n          [2.4992, 2.4992, 2.4992],\n          ...,\n          [1.5874, 1.5874, 1.5874],\n          [1.5856, 1.5856, 1.5856],\n          [1.5860, 1.5860, 1.5860],\n          [1.5774, 1.5774, 1.5774],\n          [1.5694, 1.5694, 1.5694],\n          [1.5479, 1.5479, 1.5479]],\n\n         [[2.4990, 2.4990, 2.4990],\n          [2.5041, 2.5041, 2.5041],\n          [2.5021, 2.5021, 2.5021],\n          [2.4999, 2.4999, 2.4999],\n          [2.4993, 2.4993, 2.4993],\n          [2.4979, 2.4979, 2.4979],\n          ...,\n          [1.5886, 1.5886, 1.5886],\n          [1.5859, 1.5859, 1.5859],\n          [1.5838, 1.5838, 1.5838],\n          [1.5781, 1.5781, 1.5781],\n          [1.5675, 1.5675, 1.5675],\n          [1.5638, 1.5638, 1.5638]],\n\n         [[2.5060, 2.5060, 2.5060],\n          [2.5031, 2.5031, 2.5031],\n          [2.5017, 2.5017, 2.5017],\n          [2.5048, 2.5048, 2.5048],\n          [2.5006, 2.5006, 2.5006],\n          [2.5001, 2.5001, 2.5001],\n          ...,\n          [1.5889, 1.5889, 1.5889],\n          [1.5860, 1.5860, 1.5860],\n          [1.5831, 1.5831, 1.5831],\n          [1.5770, 1.5770, 1.5770],\n          [1.5680, 1.5680, 1.5680],\n          [1.5159, 1.5159, 1.5159]],\n\n         [[2.5063, 2.5063, 2.5063],\n          [2.5001, 2.5001, 2.5001],\n          [2.5040, 2.5040, 2.5040],\n          [2.5085, 2.5085, 2.5085],\n          [2.5012, 2.5012, 2.5012],\n          [2.5031, 2.5031, 2.5031],\n          ...,\n          [1.5884, 1.5884, 1.5884],\n          [1.5847, 1.5847, 1.5847],\n          [1.5807, 1.5807, 1.5807],\n          [1.5744, 1.5744, 1.5744],\n          [1.5637, 1.5637, 1.5637],\n          [1.5257, 1.5257, 1.5257]],\n\n         [[2.5132, 2.5132, 2.5132],\n          [2.5047, 2.5047, 2.5047],\n          [2.5088, 2.5088, 2.5088],\n          [2.5101, 2.5101, 2.5101],\n          [2.5043, 2.5043, 2.5043],\n          [2.5064, 2.5064, 2.5064],\n          ...,\n          [1.5881, 1.5881, 1.5881],\n          [1.5842, 1.5842, 1.5842],\n          [1.5800, 1.5800, 1.5800],\n          [1.5733, 1.5733, 1.5733],\n          [1.5622, 1.5622, 1.5622],\n          [1.5316, 1.5316, 1.5316]],\n\n         ...,\n\n         [[1.3419, 1.3419, 1.3419],\n          [1.3528, 1.3528, 1.3528],\n          [1.3539, 1.3539, 1.3539],\n          [1.3554, 1.3554, 1.3554],\n          [1.3548, 1.3548, 1.3548],\n          [1.3545, 1.3545, 1.3545],\n          ...,\n          [1.0922, 1.0922, 1.0922],\n          [1.0926, 1.0926, 1.0926],\n          [1.0921, 1.0921, 1.0921],\n          [1.0922, 1.0922, 1.0922],\n          [1.0919, 1.0919, 1.0919],\n          [1.0955, 1.0955, 1.0955]],\n\n         [[1.3369, 1.3369, 1.3369],\n          [1.3446, 1.3446, 1.3446],\n          [1.3521, 1.3521, 1.3521],\n          [1.3536, 1.3536, 1.3536],\n          [1.3518, 1.3518, 1.3518],\n          [1.3518, 1.3518, 1.3518],\n          ...,\n          [1.0920, 1.0920, 1.0920],\n          [1.0924, 1.0924, 1.0924],\n          [1.0920, 1.0920, 1.0920],\n          [1.0925, 1.0925, 1.0925],\n          [1.0923, 1.0923, 1.0923],\n          [1.0954, 1.0954, 1.0954]],\n\n         [[1.3366, 1.3366, 1.3366],\n          [1.3510, 1.3510, 1.3510],\n          [1.3515, 1.3515, 1.3515],\n          [1.3519, 1.3519, 1.3519],\n          [1.3514, 1.3514, 1.3514],\n          [1.3509, 1.3509, 1.3509],\n          ...,\n          [1.0920, 1.0920, 1.0920],\n          [1.0923, 1.0923, 1.0923],\n          [1.0919, 1.0919, 1.0919],\n          [1.0924, 1.0924, 1.0924],\n          [1.0925, 1.0925, 1.0925],\n          [1.0951, 1.0951, 1.0951]],\n\n         [[1.3365, 1.3365, 1.3365],\n          [1.3459, 1.3459, 1.3459],\n          [1.3436, 1.3436, 1.3436],\n          [1.3499, 1.3499, 1.3499],\n          [1.3462, 1.3462, 1.3462],\n          [1.3476, 1.3476, 1.3476],\n          ...,\n          [1.0909, 1.0909, 1.0909],\n          [1.0912, 1.0912, 1.0912],\n          [1.0909, 1.0909, 1.0909],\n          [1.0923, 1.0923, 1.0923],\n          [1.0925, 1.0925, 1.0925],\n          [1.0947, 1.0947, 1.0947]],\n\n         [[1.3461, 1.3461, 1.3461],\n          [1.3361, 1.3361, 1.3361],\n          [1.3416, 1.3416, 1.3416],\n          [1.3461, 1.3461, 1.3461],\n          [1.3425, 1.3425, 1.3425],\n          [1.3442, 1.3442, 1.3442],\n          ...,\n          [1.0949, 1.0949, 1.0949],\n          [1.0949, 1.0949, 1.0949],\n          [1.0941, 1.0941, 1.0941],\n          [1.0947, 1.0947, 1.0947],\n          [1.0943, 1.0943, 1.0943],\n          [1.0963, 1.0963, 1.0963]],\n\n         [[1.3287, 1.3287, 1.3287],\n          [1.3381, 1.3381, 1.3381],\n          [1.3172, 1.3172, 1.3172],\n          [1.3230, 1.3230, 1.3230],\n          [1.3234, 1.3234, 1.3234],\n          [1.3263, 1.3263, 1.3263],\n          ...,\n          [1.0938, 1.0938, 1.0938],\n          [1.0931, 1.0931, 1.0931],\n          [1.0933, 1.0933, 1.0933],\n          [1.0938, 1.0938, 1.0938],\n          [1.0902, 1.0902, 1.0902],\n          [1.0993, 1.0993, 1.0993]]]])'], 'intrinsics': ['tensor([[[2.7941e+03, 0.0000e+00, 6.0000e+02, 0.0000e+00],\n         [0.0000e+00, 2.7589e+03, 2.4800e+02, 0.0000e+00],\n         [0.0000e+00, 0.0000e+00, 1.0000e+00, 0.0000e+00],\n         [0.0000e+00, 0.0000e+00, 0.0000e+00, 1.0000e+00]]])'], 'depth_confidence': ['tensor([[[[1.0722e-04, 1.0722e-04, 1.0722e-04],\n          [1.7060e-05, 1.7060e-05, 1.7060e-05],\n          [1.4908e-05, 1.4908e-05, 1.4908e-05],\n          [7.6037e-06, 7.6037e-06, 7.6037e-06],\n          [4.9320e-06, 4.9320e-06, 4.9320e-06],\n          [4.2822e-06, 4.2822e-06, 4.2822e-06],\n          ...,\n          [1.6143e-03, 1.6143e-03, 1.6143e-03],\n          [1.6490e-03, 1.6490e-03, 1.6490e-03],\n          [1.2263e-03, 1.2263e-03, 1.2263e-03],\n          [1.4704e-03, 1.4704e-03, 1.4704e-03],\n          [2.3616e-03, 2.3616e-03, 2.3616e-03],\n          [2.4363e-03, 2.4363e-03, 2.4363e-03]],\n\n         [[6.6127e-06, 6.6127e-06, 6.6127e-06],\n          [1.4701e-06, 1.4701e-06, 1.4701e-06],\n          [2.3377e-06, 2.3377e-06, 2.3377e-06],\n          [1.1503e-06, 1.1503e-06, 1.1503e-06],\n          [5.7655e-07, 5.7655e-07, 5.7655e-07],\n          [4.8448e-07, 4.8448e-07, 4.8448e-07],\n          ...,\n          [5.7728e-04, 5.7728e-04, 5.7728e-04],\n          [6.8183e-04, 6.8183e-04, 6.8183e-04],\n          [6.4139e-04, 6.4139e-04, 6.4139e-04],\n          [7.0301e-04, 7.0301e-04, 7.0301e-04],\n          [6.9062e-04, 6.9062e-04, 6.9062e-04],\n          [1.1831e-03, 1.1831e-03, 1.1831e-03]],\n\n         [[9.6641e-06, 9.6641e-06, 9.6641e-06],\n          [2.1171e-06, 2.1171e-06, 2.1171e-06],\n          [1.7980e-06, 1.7980e-06, 1.7980e-06],\n          [6.8167e-07, 6.8167e-07, 6.8167e-07],\n          [3.1917e-07, 3.1917e-07, 3.1917e-07],\n          [2.2853e-07, 2.2853e-07, 2.2853e-07],\n          ...,\n          [2.6391e-04, 2.6391e-04, 2.6391e-04],\n          [3.8075e-04, 3.8075e-04, 3.8075e-04],\n          [5.2815e-04, 5.2815e-04, 5.2815e-04],\n          [5.6958e-04, 5.6958e-04, 5.6958e-04],\n          [3.3014e-04, 3.3014e-04, 3.3014e-04],\n          [6.5810e-04, 6.5810e-04, 6.5810e-04]],\n\n         [[6.8197e-06, 6.8197e-06, 6.8197e-06],\n          [1.3512e-06, 1.3512e-06, 1.3512e-06],\n          [8.6361e-07, 8.6361e-07, 8.6361e-07],\n          [3.2132e-07, 3.2132e-07, 3.2132e-07],\n          [1.6287e-07, 1.6287e-07, 1.6287e-07],\n          [1.1638e-07, 1.1638e-07, 1.1638e-07],\n          ...,\n          [1.3412e-04, 1.3412e-04, 1.3412e-04],\n          [2.1984e-04, 2.1984e-04, 2.1984e-04],\n          [3.6000e-04, 3.6000e-04, 3.6000e-04],\n          [3.4549e-04, 3.4549e-04, 3.4549e-04],\n          [1.5917e-04, 1.5917e-04, 1.5917e-04],\n          [4.1965e-04, 4.1965e-04, 4.1965e-04]],\n\n         [[4.5010e-06, 4.5010e-06, 4.5010e-06],\n          [9.1914e-07, 9.1914e-07, 9.1914e-07],\n          [5.2497e-07, 5.2497e-07, 5.2497e-07],\n          [2.5088e-07, 2.5088e-07, 2.5088e-07],\n          [1.5950e-07, 1.5950e-07, 1.5950e-07],\n          [1.1428e-07, 1.1428e-07, 1.1428e-07],\n          ...,\n          [1.1458e-04, 1.1458e-04, 1.1458e-04],\n          [1.8206e-04, 1.8206e-04, 1.8206e-04],\n          [2.8289e-04, 2.8289e-04, 2.8289e-04],\n          [2.6222e-04, 2.6222e-04, 2.6222e-04],\n          [1.2040e-04, 1.2040e-04, 1.2040e-04],\n          [3.7538e-04, 3.7538e-04, 3.7538e-04]],\n\n         [[3.5684e-06, 3.5684e-06, 3.5684e-06],\n          [7.5009e-07, 7.5009e-07, 7.5009e-07],\n          [3.9134e-07, 3.9134e-07, 3.9134e-07],\n          [1.8200e-07, 1.8200e-07, 1.8200e-07],\n          [1.1441e-07, 1.1441e-07, 1.1441e-07],\n          [9.0576e-08, 9.0576e-08, 9.0576e-08],\n          ...,\n          [9.9107e-05, 9.9107e-05, 9.9107e-05],\n          [1.4976e-04, 1.4976e-04, 1.4976e-04],\n          [2.2077e-04, 2.2077e-04, 2.2077e-04],\n          [2.0847e-04, 2.0847e-04, 2.0847e-04],\n          [1.0814e-04, 1.0814e-04, 1.0814e-04],\n          [2.9064e-04, 2.9064e-04, 2.9064e-04]],\n\n         ...,\n\n         [[7.5373e-04, 7.5373e-04, 7.5373e-04],\n          [2.0481e-04, 2.0481e-04, 2.0481e-04],\n          [2.6249e-04, 2.6249e-04, 2.6249e-04],\n          [2.3024e-04, 2.3024e-04, 2.3024e-04],\n          [2.8037e-04, 2.8037e-04, 2.8037e-04],\n          [2.9112e-04, 2.9112e-04, 2.9112e-04],\n          ...,\n          [1.4675e-01, 1.4675e-01, 1.4675e-01],\n          [1.4729e-01, 1.4729e-01, 1.4729e-01],\n          [1.4110e-01, 1.4110e-01, 1.4110e-01],\n          [1.4376e-01, 1.4376e-01, 1.4376e-01],\n          [1.5175e-01, 1.5175e-01, 1.5175e-01],\n          [1.7014e-01, 1.7014e-01, 1.7014e-01]],\n\n         [[9.2812e-04, 9.2812e-04, 9.2812e-04],\n          [3.4935e-04, 3.4935e-04, 3.4935e-04],\n          [3.5411e-04, 3.5411e-04, 3.5411e-04],\n          [2.4217e-04, 2.4217e-04, 2.4217e-04],\n          [2.8294e-04, 2.8294e-04, 2.8294e-04],\n          [3.0784e-04, 3.0784e-04, 3.0784e-04],\n          ...,\n          [1.5163e-01, 1.5163e-01, 1.5163e-01],\n          [1.5209e-01, 1.5209e-01, 1.5209e-01],\n          [1.4554e-01, 1.4554e-01, 1.4554e-01],\n          [1.4778e-01, 1.4778e-01, 1.4778e-01],\n          [1.5609e-01, 1.5609e-01, 1.5609e-01],\n          [1.7610e-01, 1.7610e-01, 1.7610e-01]],\n\n         [[8.6518e-04, 8.6518e-04, 8.6518e-04],\n          [5.3731e-04, 5.3731e-04, 5.3731e-04],\n          [4.5469e-04, 4.5469e-04, 4.5469e-04],\n          [2.5154e-04, 2.5154e-04, 2.5154e-04],\n          [2.4402e-04, 2.4402e-04, 2.4402e-04],\n          [2.4130e-04, 2.4130e-04, 2.4130e-04],\n          ...,\n          [1.5072e-01, 1.5072e-01, 1.5072e-01],\n          [1.5100e-01, 1.5100e-01, 1.5100e-01],\n          [1.4486e-01, 1.4486e-01, 1.4486e-01],\n          [1.4746e-01, 1.4746e-01, 1.4746e-01],\n          [1.5797e-01, 1.5797e-01, 1.5797e-01],\n          [1.7203e-01, 1.7203e-01, 1.7203e-01]],\n\n         [[5.8928e-04, 5.8928e-04, 5.8928e-04],\n          [5.1575e-04, 5.1575e-04, 5.1575e-04],\n          [6.1673e-04, 6.1673e-04, 6.1673e-04],\n          [3.9440e-04, 3.9440e-04, 3.9440e-04],\n          [3.4898e-04, 3.4898e-04, 3.4898e-04],\n          [3.0121e-04, 3.0121e-04, 3.0121e-04],\n          ...,\n          [1.5267e-01, 1.5267e-01, 1.5267e-01],\n          [1.5285e-01, 1.5285e-01, 1.5285e-01],\n          [1.4792e-01, 1.4792e-01, 1.4792e-01],\n          [1.5248e-01, 1.5248e-01, 1.5248e-01],\n          [1.6789e-01, 1.6789e-01, 1.6789e-01],\n          [1.6697e-01, 1.6697e-01, 1.6697e-01]],\n\n         [[4.7749e-04, 4.7749e-04, 4.7749e-04],\n          [3.4118e-04, 3.4118e-04, 3.4118e-04],\n          [5.8580e-04, 5.8580e-04, 5.8580e-04],\n          [5.8557e-04, 5.8557e-04, 5.8557e-04],\n          [5.4929e-04, 5.4929e-04, 5.4929e-04],\n          [4.5238e-04, 4.5238e-04, 4.5238e-04],\n          ...,\n          [1.6629e-01, 1.6629e-01, 1.6629e-01],\n          [1.6653e-01, 1.6653e-01, 1.6653e-01],\n          [1.6278e-01, 1.6278e-01, 1.6278e-01],\n          [1.7606e-01, 1.7606e-01, 1.7606e-01],\n          [1.9825e-01, 1.9825e-01, 1.9825e-01],\n          [2.0145e-01, 2.0145e-01, 2.0145e-01]],\n\n         [[3.0432e-03, 3.0432e-03, 3.0432e-03],\n          [1.3587e-03, 1.3587e-03, 1.3587e-03],\n          [3.0736e-03, 3.0736e-03, 3.0736e-03],\n          [4.0627e-03, 4.0627e-03, 4.0627e-03],\n          [3.0159e-03, 3.0159e-03, 3.0159e-03],\n          [2.1808e-03, 2.1808e-03, 2.1808e-03],\n          ...,\n          [1.5714e-01, 1.5714e-01, 1.5714e-01],\n          [1.5742e-01, 1.5742e-01, 1.5742e-01],\n          [1.5292e-01, 1.5292e-01, 1.5292e-01],\n          [1.7898e-01, 1.7898e-01, 1.7898e-01],\n          [1.9823e-01, 1.9823e-01, 1.9823e-01],\n          [1.8285e-01, 1.8285e-01, 1.8285e-01]]]])']}, 'current_outputs': ['35', '29', '41', '24', '4', '46', '59', '40', '58', '60', '18', '16', '39', '44', '43', '36'], 'timestamp': 1778345555850}
+
+Details:
+Workflow: /node/ComfyUI-SAM3DBody/workflows/multiple_masks_depthcorrected.json
+Node error: SAM3DBodyProcessMultiple
+rigging.json: Workflow execution failed: {'prompt_id': '86d43c54-decc-4a1f-8e51-87806a12a70f', 'node_id': '10', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '15'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8745, 0.8078, 0.7373],\n          [0.8745, 0.8078, 0.7373],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6196, 0.3373, 0.2784],\n          [0.6118, 0.3490, 0.2863],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3451, 0.2863],\n          [0.6118, 0.3490, 0.2863]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8902, 0.8235, 0.7529],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2667],\n          [0.6275, 0.3294, 0.2745],\n          [0.6157, 0.3333, 0.2745],\n          [0.6157, 0.3451, 0.2863],\n          [0.6157, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2078, 0.2275],\n          [0.2941, 0.2039, 0.2275],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4157, 0.3490, 0.3216],\n          [0.4118, 0.3451, 0.3176],\n          [0.4078, 0.3412, 0.3137],\n          [0.4118, 0.3451, 0.3176],\n          [0.3882, 0.3216, 0.2941],\n          [0.3843, 0.3176, 0.2902]],\n\n         [[0.2784, 0.2000, 0.2078],\n          [0.2784, 0.2000, 0.2078],\n          [0.2824, 0.2000, 0.2196],\n          [0.2824, 0.2000, 0.2196],\n          [0.2902, 0.2000, 0.2235],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4706, 0.4039, 0.3765],\n          [0.4706, 0.4039, 0.3765],\n          [0.4549, 0.3882, 0.3608],\n          [0.4275, 0.3608, 0.3333],\n          [0.4235, 0.3569, 0.3294]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2745, 0.1961, 0.2039],\n          [0.2745, 0.1961, 0.2039],\n          [0.2824, 0.1961, 0.2078],\n          [0.2863, 0.2000, 0.2118],\n          ...,\n          [0.4627, 0.3882, 0.3647],\n          [0.4706, 0.3961, 0.3725],\n          [0.4627, 0.3961, 0.3686],\n          [0.4549, 0.3882, 0.3608],\n          [0.4353, 0.3686, 0.3412],\n          [0.4431, 0.3765, 0.3490]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          [0.2667, 0.1882, 0.1961],\n          [0.2745, 0.1882, 0.2000],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4471, 0.3725, 0.3490],\n          [0.4627, 0.3882, 0.3647],\n          [0.4627, 0.3961, 0.3686],\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          [0.2745, 0.1882, 0.2000],\n          [0.2745, 0.1882, 0.2000],\n          [0.2824, 0.1961, 0.2078],\n          ...,\n          [0.4431, 0.3686, 0.3529],\n          [0.4588, 0.3843, 0.3686],\n          [0.4667, 0.3922, 0.3765],\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          [0.2863, 0.2000, 0.2118],\n          [0.2863, 0.2000, 0.2118],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4078, 0.3333, 0.3176],\n          [0.4235, 0.3490, 0.3333],\n          [0.4275, 0.3529, 0.3373],\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         ...,\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.]]])']}, 'current_outputs': ['3', '15', '12', '4', '10', '13'], 'timestamp': 1778345564057}
+
+Details:
+Workflow: /node/ComfyUI-SAM3DBody/workflows/rigging.json
+Node error: SAM3DBodyProcess
+workflow.json: Workflow execution failed: {'prompt_id': '5122a672-1454-4da1-9b14-2a2e3d67f298', 'node_id': '13', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '12'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/internal/__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "/workspaces/SAM3DBody-1648/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody', 'ckpt_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/model.safetensors', 'mhr_path': '/workspaces/SAM3DBody-1648/ComfyUI/models/sam3dbody/assets/mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8745, 0.8078, 0.7373],\n          [0.8745, 0.8078, 0.7373],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2588],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6314, 0.3333, 0.2784],\n          [0.6196, 0.3373, 0.2784],\n          [0.6118, 0.3490, 0.2863],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6510, 0.3333, 0.2667],\n          [0.6353, 0.3333, 0.2627],\n          [0.6275, 0.3294, 0.2745],\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3451, 0.2863],\n          [0.6118, 0.3490, 0.2863]],\n\n         [[0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8863, 0.8196, 0.7490],\n          [0.8902, 0.8235, 0.7529],\n          ...,\n          [0.6471, 0.3294, 0.2627],\n          [0.6314, 0.3294, 0.2667],\n          [0.6275, 0.3294, 0.2745],\n          [0.6157, 0.3333, 0.2745],\n          [0.6157, 0.3451, 0.2863],\n          [0.6157, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2078, 0.2157],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2078, 0.2275],\n          [0.2941, 0.2039, 0.2275],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4157, 0.3490, 0.3216],\n          [0.4118, 0.3451, 0.3176],\n          [0.4078, 0.3412, 0.3137],\n          [0.4118, 0.3451, 0.3176],\n          [0.3882, 0.3216, 0.2941],\n          [0.3843, 0.3176, 0.2902]],\n\n         [[0.2784, 0.2000, 0.2078],\n          [0.2784, 0.2000, 0.2078],\n          [0.2824, 0.2000, 0.2196],\n          [0.2824, 0.2000, 0.2196],\n          [0.2902, 0.2000, 0.2235],\n          [0.2863, 0.1961, 0.2196],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4706, 0.4039, 0.3765],\n          [0.4706, 0.4039, 0.3765],\n          [0.4549, 0.3882, 0.3608],\n          [0.4275, 0.3608, 0.3333],\n          [0.4235, 0.3569, 0.3294]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2745, 0.1961, 0.2039],\n          [0.2745, 0.1961, 0.2039],\n          [0.2824, 0.1961, 0.2078],\n          [0.2863, 0.2000, 0.2118],\n          ...,\n          [0.4627, 0.3882, 0.3647],\n          [0.4706, 0.3961, 0.3725],\n          [0.4627, 0.3961, 0.3686],\n          [0.4549, 0.3882, 0.3608],\n          [0.4353, 0.3686, 0.3412],\n          [0.4431, 0.3765, 0.3490]],\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          [0.2667, 0.1882, 0.1961],\n          [0.2745, 0.1882, 0.2000],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4471, 0.3725, 0.3490],\n          [0.4627, 0.3882, 0.3647],\n          [0.4627, 0.3961, 0.3686],\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          [0.2745, 0.1882, 0.2000],\n          [0.2745, 0.1882, 0.2000],\n          [0.2824, 0.1961, 0.2078],\n          ...,\n          [0.4431, 0.3686, 0.3529],\n          [0.4588, 0.3843, 0.3686],\n          [0.4667, 0.3922, 0.3765],\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          [0.2863, 0.2000, 0.2118],\n          [0.2863, 0.2000, 0.2118],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4078, 0.3333, 0.3176],\n          [0.4235, 0.3490, 0.3333],\n          [0.4275, 0.3529, 0.3373],\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         ...,\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.],\n         [1., 1., 1., 1., 1., 1.,  ..., 1., 1., 1., 1., 1., 1.]]])']}, 'current_outputs': ['3', '15', '12', '4', '10', '13'], 'timestamp': 1778345571438}
+
+Details:
+Workflow: /node/ComfyUI-SAM3DBody/workflows/workflow.json
+Node error: SAM3DBodyProcess
+[04:32] Stopping ComfyUI server...

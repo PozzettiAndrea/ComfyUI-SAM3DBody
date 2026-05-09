@@ -1,0 +1,71 @@
+[00:00] Crash dump logging enabled: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/crash_dump.log
+[00:00] 
+[00:00] [1/5] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 1145 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/5] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x104704be0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x104704b80>
+[00:00] Testing node constructors...
+[00:02] All 15 node(s) instantiated successfully!
+[00:02] [INSTANTIATION] PASSED
+[00:02] 
+[00:02] [3/5] STATIC_CAPTURE
+[00:02] ----------------------------------------
+[00:02] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x104704be0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x104704b80>
+[00:02] Capturing 5 static screenshot(s)...
+[00:03] Starting headless browser...
+[00:03]   macOS — using Apple Metal GPU via ANGLE
+[00:06]   [1/5] STATIC multiple_masks.json
+[00:06] Capturing: multiple_masks.json
+[00:20]   Saved: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/screenshots/multiple_masks.png
+[00:20]   [2/5] STATIC multiple_masks_depthcorrected.json
+[00:20] Capturing: multiple_masks_depthcorrected.json
+[00:28]   Saved: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/screenshots/multiple_masks_depthcorrected.png
+[00:28]   [3/5] STATIC rigged_mesh_manipulation.json
+[00:28] Capturing: rigged_mesh_manipulation.json
+[00:35]   Saved: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/screenshots/rigged_mesh_manipulation.png
+[00:35]   [4/5] STATIC rigging.json
+[00:35] Capturing: rigging.json
+[00:42]   Saved: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/screenshots/rigging.png
+[00:42]   [5/5] STATIC workflow.json
+[00:42] Capturing: workflow.json
+[00:49]   Saved: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1505/macos-cpu/screenshots/workflow.png
+[00:49] [STATIC_CAPTURE] PASSED
+[00:49] 
+[00:49] [4/5] VALIDATION
+[00:49] ----------------------------------------
+[00:49] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x104704be0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x104704b80>
+[00:49] Validating 5 workflow(s)...
+[00:49]   [1/5] Validating multiple_masks.json
+[00:49]     FAILED: 1 error(s)
+[00:49]       [schema] Node 16 (SAM3DBodyProcessMultiple): 'adjust_position_from_depth': expected BOOLEAN, got str
+[00:49]   [2/5] Validating multiple_masks_depthcorrected.json
+[00:49]     FAILED: 3 error(s)
+[00:49]       [schema] Node 16 (SAM3DBodyProcessMultiple): 'adjust_position_from_depth': expected BOOLEAN, got str
+[00:49]       [schema] Node 40 (DepthAnything_V3): 'invert_depth': expected BOOLEAN, got str
+[00:49]       [schema] Node 40 (DepthAnything_V3): 'keep_model_size': expected BOOLEAN, got str
+[00:49]   [3/5] Validating rigged_mesh_manipulation.json
+[00:49]     OK
+[00:49]   [4/5] Validating rigging.json
+[00:49]     OK
+[00:49]   [5/5] Validating workflow.json
+[00:49]     OK
+[00:49] 
+macos: FAILED
+[00:49] Error: Workflow validation failed (2 error(s))
+[00:49] Details:   - multiple_masks.json: [schema] Node 16 (SAM3DBodyProcessMultiple): 'adjust_position_from_depth': expected BOOLEAN, got str
+  - multiple_masks_depthcorrected.json: [schema] Node 16 (SAM3DBodyProcessMultiple): 'adjust_position_from_depth': expected BOOLEAN, got str; [schema] Node 40 (DepthAnything_V3): 'invert_depth': expected BOOLEAN, got str; [schema] Node 40 (DepthAnything_V3): 'keep_model_size': expected BOOLEAN, got str

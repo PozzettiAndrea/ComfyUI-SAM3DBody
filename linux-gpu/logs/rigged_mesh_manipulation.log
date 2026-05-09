@@ -1,0 +1,51 @@
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | executing rigged_mesh_manipulation.json [3/5]  [DEBUG] _resolve_workflow_path: input=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigged_mesh_manipulation.json
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: node_dir=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: resolved=/tmp/comfy-test-5ls3qa7l/ComfyUI-SAM3DBody/workflows/rigged_mesh_manipulation.json
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [DEBUG] _resolve_workflow_path: exists=True
+[08:22] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | Capturing execution frames: rigged_mesh_manipulation.json
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WARNING: Multiple instances of Three.js being imported.
+[08:23] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[08:25] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0901800C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[08:37] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] WebGL: INVALID_OPERATION: loseContext: context already lost
+[08:45] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] Parent element not found
+[08:46] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [Console-warning] [GroupMarkerNotSet(crbug.com/242999)!:A0C0D902C40B0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Validating workflow...
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === /validate endpoint called ===
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Queuing workflow for execution...
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Received JSON with keys: ['prompt']
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 2 nodes
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt has 2 nodes
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: SAM3DBodySelectMesh
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]   Node 4: SAM3DBodySelectMesh
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 866a57e6-c08e-4845-867d-55e1b086a5cb
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Generated prompt_id: 866a57e6-c08e-4845-867d-55e1b086a5cb
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Calling execution.validate_prompt()...
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Validation result: valid=True
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] === Validation PASSED ===
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] got prompt
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 0.16 seconds
+[08:47] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   [ComfyUI] Prompt executed in 0.16 seconds
+[08:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Captured 4 frames over 4.61s
+[08:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   3 unique frames saved as WebP
+[08:51] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Waiting 5000ms for previews to render...
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   |     Captured 4 video frames
+[08:59] [ComfyUI Installation Test Matrix (Local)/test-linux  ]   | [00:37] rigged_mesh_manipulation.json [3/5] - PASS

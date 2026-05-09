@@ -1,0 +1,31 @@
+Capturing execution frames: rigged_mesh_manipulation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=6ms shot=144ms unfreeze=6ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.6s)
+  [capture-periodic] freeze=4ms shot=149ms unfreeze=6ms saved=True
+  [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=5.7/16.0GB (36%) swap=0.3/2.9GB (10%) cpu=55% browser_rss=0.71GB
+  [capture-loop] iter=100 t=13.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=14 ram=5.7/16.0GB (35%) swap=0.3/2.9GB (10%) cpu=88% browser_rss=0.71GB
+  Frame 4 saved (frame_003.jpg, t=15.8s)
+  [capture-periodic] freeze=6ms shot=190ms unfreeze=7ms saved=True
+  Node executed (1 total), capturing...
+  Frame 5 saved (frame_004.jpg, t=16.3s)
+  [capture-node] freeze=1489ms shot=251ms unfreeze=0ms saved=True
+  Execution complete (t=16.3s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 done in 0.0s
+  [3d-wait] Phase 2: iframes=1
+  [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+  [3d-wait] Unfrozen in 0.004s, rendering for 5s...
+  [3d-wait] JS halted via CDP after 5.1s
+  [3d-wait] Re-frozen in 6.1s
+  [3d-wait] Total 3D wait: 6.1s
+  Captured 5 unique frames over 24.14s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=17782394, canvas=486x710, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 6 video frames

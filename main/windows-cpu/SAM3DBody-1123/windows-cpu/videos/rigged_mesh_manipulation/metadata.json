@@ -1,0 +1,35 @@
+{
+  "frames": [
+    {
+      "file": "frame_000.jpg",
+      "time": 0.0,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json"
+    },
+    {
+      "file": "frame_001.jpg",
+      "time": 2.36,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."
+    },
+    {
+      "file": "frame_002.jpg",
+      "time": 4.61,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.4s)\n  [capture-periodic] freeze=6ms shot=144ms unfreeze=6ms saved=True"
+    },
+    {
+      "file": "frame_003.jpg",
+      "time": 15.76,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.4s)\n  [capture-periodic] freeze=6ms shot=144ms unfreeze=6ms saved=True\n  Frame 3 saved (frame_002.jpg, t=4.6s)\n  [capture-periodic] freeze=4ms shot=149ms unfreeze=6ms saved=True\n  [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=5.7/16.0GB (36%) swap=0.3/2.9GB (10%) cpu=55% browser_rss=0.71GB\n  [capture-loop] iter=100 t=13.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=14 ram=5.7/16.0GB (35%) swap=0.3/2.9GB (10%) cpu=88% browser_rss=0.71GB"
+    },
+    {
+      "file": "frame_004.jpg",
+      "time": 16.26,
+      "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.4s)\n  [capture-periodic] freeze=6ms shot=144ms unfreeze=6ms saved=True\n  Frame 3 saved (frame_002.jpg, t=4.6s)\n  [capture-periodic] freeze=4ms shot=149ms unfreeze=6ms saved=True\n  [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=5.7/16.0GB (36%) swap=0.3/2.9GB (10%) cpu=55% browser_rss=0.71GB\n  [capture-loop] iter=100 t=13.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=14 ram=5.7/16.0GB (35%) swap=0.3/2.9GB (10%) cpu=88% browser_rss=0.71GB\n  Frame 4 saved (frame_003.jpg, t=15.8s)\n  [capture-periodic] freeze=6ms shot=190ms unfreeze=7ms saved=True"
+    },
+    {
+      "file": "frame_005.jpg",
+      "time": 26.397868394851685,
+      "log": "Final screenshot"
+    }
+  ],
+  "total_time": 24.14
+}

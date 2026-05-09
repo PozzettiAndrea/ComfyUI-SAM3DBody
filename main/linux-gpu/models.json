@@ -1,0 +1,98 @@
+{
+  "models_dir": "/workspaces/SAM3DBody-1208/ComfyUI/models",
+  "summary": {
+    "total_files": 14,
+    "total_size_bytes": 8251669939,
+    "total_size_human": "7.7 GB"
+  },
+  "folders": {
+    "depthanything3": {
+      "total_size_bytes": 5422814961,
+      "total_size_human": "5.1 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "da3_giant.safetensors",
+          "size_bytes": 5422814644,
+          "size_human": "5.1 GB"
+        },
+        {
+          "path": ".cache/huggingface/CACHEDIR.TAG",
+          "size_bytes": 191,
+          "size_human": "191.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/model.safetensors.metadata",
+          "size_bytes": 125,
+          "size_human": "125.0 B"
+        },
+        {
+          "path": ".cache/huggingface/.gitignore",
+          "size_bytes": 1,
+          "size_human": "1.0 B"
+        }
+      ]
+    },
+    "sam3dbody": {
+      "total_size_bytes": 2828854978,
+      "total_size_human": "2.6 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "model.safetensors",
+          "size_bytes": 2132741080,
+          "size_human": "2.0 GB"
+        },
+        {
+          "path": "assets/mhr_model.pt",
+          "size_bytes": 696110248,
+          "size_human": "663.9 MB"
+        },
+        {
+          "path": ".gitattributes",
+          "size_bytes": 1519,
+          "size_human": "1.5 KB"
+        },
+        {
+          "path": "model_config.yaml",
+          "size_bytes": 1488,
+          "size_human": "1.5 KB"
+        },
+        {
+          "path": ".cache/huggingface/CACHEDIR.TAG",
+          "size_bytes": 191,
+          "size_human": "191.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/assets/mhr_model.pt.metadata",
+          "size_bytes": 125,
+          "size_human": "125.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/model.safetensors.metadata",
+          "size_bytes": 124,
+          "size_human": "124.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/.gitattributes.metadata",
+          "size_bytes": 101,
+          "size_human": "101.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/model_config.yaml.metadata",
+          "size_bytes": 101,
+          "size_human": "101.0 B"
+        },
+        {
+          "path": ".cache/huggingface/.gitignore",
+          "size_bytes": 1,
+          "size_human": "1.0 B"
+        }
+      ]
+    }
+  }
+}

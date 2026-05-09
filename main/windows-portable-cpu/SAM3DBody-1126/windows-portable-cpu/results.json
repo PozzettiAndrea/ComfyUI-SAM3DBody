@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-05-08T11:27:02.315484+00:00",
+  "platform": "windows_portable",
+  "hardware": {
+    "os": "Windows-2025Server-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+  },
+  "commit_hash": "8a63063c5133f8489c2046338d8c6ea798078bff",
+  "success": true,
+  "summary": {
+    "total": 5,
+    "passed": 1,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "multiple_masks",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "multiple_masks_depthcorrected",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_mesh_manipulation",
+      "status": "pass",
+      "duration_seconds": 35.36,
+      "error": null,
+      "hardware": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 6.45,
+          "avg": 5.99
+        },
+        "total_ram_gb": 16.0,
+        "samples": 36
+      }
+    },
+    {
+      "name": "rigging",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "workflow",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}
