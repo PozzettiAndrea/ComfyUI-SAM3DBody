@@ -5,6 +5,31 @@ from comfy_api.latest import io
 
 log = logging.getLogger("sam3dbody")
 
+
+def _comfy_tqdm():
+    """tqdm that shows download progress in ComfyUI's UI."""
+    try:
+        import comfy.utils
+        import tqdm as _tqdm_mod
+    except ImportError:
+        return None
+    holder = {"pbar": None, "total": 0, "done": 0}
+    class _T(_tqdm_mod.tqdm):
+        def __init__(self, *a, **kw):
+            super().__init__(*a, **kw)
+            if self.total and self.total > 0 and holder["pbar"] is None:
+                holder["total"] = self.total
+                holder["done"] = 0
+                holder["pbar"] = comfy.utils.ProgressBar(self.total)
+        def update(self, n=1):
+            ret = super().update(n)
+            if n and holder["pbar"] and holder["total"] > 0:
+                holder["done"] = min(holder["done"] + n, holder["total"])
+                holder["pbar"].update_absolute(holder["done"], holder["total"])
+            return ret
+    return _T
+
+
 # Default model path in ComfyUI models folder
 DEFAULT_MODEL_PATH = os.path.join(folder_paths.models_dir, "sam3dbody")
 os.makedirs(DEFAULT_MODEL_PATH, exist_ok=True)
@@ -72,7 +97,8 @@ class LoadSAM3DBodyModel(io.ComfyNode):
                 os.makedirs(model_path, exist_ok=True)
                 snapshot_download(
                     repo_id=cls.REPO_ID,
-                    local_dir=model_path
+                    local_dir=model_path,
+                    tqdm_class=_comfy_tqdm(),
                 )
                 log.info(f"Download complete.")
 

@@ -1,16 +1,17 @@
-python = "3.11"
-
-[cuda]
-packages = ["detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
+[workspace]
+channels = ["conda-forge", "pozzettiandrea"]
 
 [dependencies]
 numpy = "<2.0"
+bpy = {version = "*", channel = "pozzettiandrea"}
 
 [target.linux-64.dependencies]
 xorg-libsm = "*"     # libSM.so.6 required by bpy
 
+[cuda]
+packages = ["detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
+
 [pypi-dependencies]
-bpy = ">=4.2"
 trimesh = { version = "*", extras = ["easy"] }
 pillow = ">=9.0.0"
 opencv-python-headless = ">=4.8.0"
