@@ -9,8 +9,9 @@
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-log] [VTK Bundle] GLTFImporter included in bundle
-[Console-warning] WARNING: Multiple instances of Three.js being imported.
-[Console-log] [VTK Bundle] GLTFImporter included in bundle
+[Console-log] [GeomPack] Loading mesh preview extension...
+[Console-log] [GeomPack] Mesh preview extension registered
+[Console-log] [GeomPack Gaussian] Loading extension...
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-GeometryPack
@@ -27,9 +28,26 @@
 [Console-log] [UniRig Compare] Loading compare skeleton widget...
 [Console-log] [UniRig Compare] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [UniRig Compare] Compare skeleton widget registered
-[Console-log] [GeomPack Gaussian] Loading extension...
-[Console-log] [GeomPack] Loading mesh preview extension...
-[Console-log] [GeomPack] Mesh preview extension registered
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
+[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
+[Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
+[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
+[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
+[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
+[Console-log] [BVHViewer] Loading BVH Viewer extension
+[Console-log] [BVHViewer] Loading BVH viewer extension...
+[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
+[Console-log] [UniRig Debug] Loading FBX mesh preview extension...
+[Console-log] [UniRig Debug] Detected extension folder: ComfyUI-GeometryPack
+[Console-log] [UniRig Debug] FBX mesh preview extension registered
+[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
+[Console-log] [GeomPack] Loading UV mesh preview extension...
+[Console-log] [GeomPack] UV mesh preview extension registered
+[Console-warning] WARNING: Multiple instances of Three.js being imported.
+[Console-log] [VTK Bundle] GLTFImporter included in bundle
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-SAM3DBody
@@ -39,32 +57,14 @@
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-SAM3DBody
 [Console-log] [MotionCapture] Loading FBX mesh preview extension...
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-SAM3DBody
-[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
-[Console-log] [BVHViewer] Loading BVH Viewer extension
-[Console-log] [BVHViewer] Loading BVH viewer extension...
-[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
-[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
-[Console-log] [GeomPack] Loading UV mesh preview extension...
-[Console-log] [GeomPack] UV mesh preview extension registered
-[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
-[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
-[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
-[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
-[Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
-[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
-[Console-log] [UniRig Debug] Loading FBX mesh preview extension...
-[Console-log] [UniRig Debug] Detected extension folder: ComfyUI-GeometryPack
-[Console-log] [UniRig Debug] FBX mesh preview extension registered
 [Console-warning] [ComfyUI Notice] "extensions/core/widgetInputs.js" is an internal module, not part of the public API. Future updates may break this import.
 [Console-warning] [ComfyUI Notice] "scripts/utils.js" is an internal module, not part of the public API. Future updates may break this import.
 [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
 [Console-log] [SAM3DBody] Registering Preview Rigged Mesh node
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
-[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41887/api/view?type=output&subfolder=&filename=sam3d_multi_rigged.fbx" responded with 404: Not Found
-    at http://127.0.0.1:41887/assets/vendor-three-Br-dHl2j.js:3824:116006
-[Console-warning] [.WebGL-0x8540b3b8600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x8540b3b8600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x8540b3b8600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41899/api/view?type=output&subfolder=&filename=sam3d_multi_rigged.fbx" responded with 404: Not Found
+    at http://127.0.0.1:41899/assets/vendor-three-Br-dHl2j.js:3824:116006
+[Console-warning] [.WebGL-0x35040b346400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x35040b346400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x35040b346400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
 [Console-log] [comfy-test] graphToPrompt: 8 nodes, missing class_type: [], sample: {"inputs":{"images":["16",1]},"class_type":"PreviewImage","_meta":{"title":"Preview Image"}}
