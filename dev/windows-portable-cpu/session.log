@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2011\dev\windows-portable-cpu\crash_dump.log
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2029\dev\windows-portable-cpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -17,579 +17,598 @@
 [00:00] 
 Setting up ComfyUI...
 [00:00] Fetching latest release version...
-[00:01] Latest version: v0.20.1
-[00:01] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.20.1/ComfyUI_windows_portable_nvidia.7z...
-[00:02]   Downloaded: 10%
-[00:04]   Downloaded: 20%
-[00:06]   Downloaded: 30%
-[00:08]   Downloaded: 40%
-[00:10]   Downloaded: 50%
-[00:12]   Downloaded: 60%
-[00:14]   Downloaded: 70%
-[00:15]   Downloaded: 80%
-[00:17]   Downloaded: 90%
-[00:19]   Downloaded: 100%
-[00:19] Downloaded to C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1.7z
-[00:19] Extracting to cache: C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1
-[00:19] Extracting ComfyUI_portable_v0.20.1.7z...
-[00:19] Using 7z: 7z
-[02:41] Extracted to C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1
-[02:41] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui
-[03:01] Installing uv into embedded Python...
-[03:01] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
-[03:06] Installing ComfyUI requirements...
-[03:06] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
-[03:06] 
+[00:00] Latest version: v0.20.1
+[00:00] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.20.1/ComfyUI_windows_portable_nvidia.7z...
+[00:01]   Downloaded: 10%
+[00:02]   Downloaded: 20%
+[00:03]   Downloaded: 30%
+[00:04]   Downloaded: 40%
+[00:05]   Downloaded: 50%
+[00:07]   Downloaded: 60%
+[00:08]   Downloaded: 70%
+[00:09]   Downloaded: 80%
+[00:10]   Downloaded: 90%
+[00:11]   Downloaded: 100%
+[00:11] Downloaded to C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1.7z
+[00:11] Extracting to cache: C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1
+[00:11] Extracting ComfyUI_portable_v0.20.1.7z...
+[00:12] Using 7z: 7z
+[02:00] Extracted to C:\Users\runneradmin\.comfy-test\cache\portable\ComfyUI_portable_v0.20.1
+[02:00] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui
+[02:16] Installing uv into embedded Python...
+[02:16] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
+[02:18] Installing ComfyUI requirements...
+[02:18] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
+[02:18] 
 Installing custom node...
-[03:06] Copying ComfyUI-SAM3DBody to custom_nodes/...
-[03:08] Installing node requirements...
-[03:08] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
-[03:21] 
+[02:18] Copying ComfyUI-SAM3DBody to custom_nodes/...
+[02:18] Installing node requirements...
+[02:18] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
+[02:23] 
 Running install.py...
-[03:21] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
-[03:22]   [comfy-env] Enabled Windows long path support
-[03:22]   
-[03:22]   Installing 3 node dependencies...
-[03:22]     Cloning ComfyUI-Multiband...
-[03:23]     Installing requirements for ComfyUI-Multiband...
-[03:24]     Cloning ComfyUI-DepthAnythingV3...
-[03:25]     Installing requirements for ComfyUI-DepthAnythingV3...
-[03:25]     Running install.py for ComfyUI-DepthAnythingV3...
-[03:25]   [comfy-env] Enabled Windows long path support
-[03:25]   
-[03:25]   Installing 3 node dependencies...
-[03:25]     Cloning ComfyUI-VideoHelperSuite...
-[03:25]     Installing requirements for ComfyUI-VideoHelperSuite...
-[03:26]     Cloning ComfyUI-KJNodes...
-[03:28]     Installing requirements for ComfyUI-KJNodes...
-[03:30]     Cloning ComfyUI-GeometryPack...
-[03:32]     Installing requirements for ComfyUI-GeometryPack...
-[03:33]     Running install.py for ComfyUI-GeometryPack...
-[03:33]   [comfy-env] Enabled Windows long path support
-[03:36]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
-[03:36]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[03:36]   [comfy-env] Found 3 node config(s):
-[03:36]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
-[03:36]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[03:36]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
-[03:36]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[03:37]   [comfy-env] GPU: No GPU detected
-[03:37]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[03:37]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
-[03:37]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[03:37]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:38]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:38]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:38]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:38]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:38]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:39]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:39]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[03:39]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:39]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:40]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[03:40]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:40]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[03:40]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[03:40]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:40]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[03:41]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[03:41]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:41]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[03:41]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:41]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:41]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
-[03:41]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
-[03:41]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
-[03:41]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
-[03:41]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
-[03:41]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
-[03:41]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
-[03:41]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:41]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:42]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:42]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:42]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:42]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
-[03:42]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:42]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:42]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
-[03:42]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[03:42]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:42]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[03:43]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:43]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[03:43]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[03:43]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:43]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[03:44]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[03:44]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:44]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[03:44]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:44]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:44]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:44]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:44]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
-[03:44]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
-[03:44]   [comfy-env] Installing 3 environment(s):
-[03:44]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
-[03:44]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
-[03:44]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
-[03:44]   [comfy-env] Running `pixi install --all`...
-[03:46]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
-[03:46]       â”œâ”€â–¶   Ã— failed to solve the environment
-[03:46]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
-[03:46]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
-[03:46]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
-[03:46]     Warning: ComfyUI-GeometryPack install.py failed (exit code 1)
-[03:46]   
-[03:46]   [requirements] Re-installing main package requirements...
-[03:46]     Installing requirements for ComfyUI-DepthAnythingV3...
-[03:46]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
-[03:46]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[03:46]   [comfy-env] Found 3 node config(s):
-[03:46]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
-[03:46]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[03:46]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
-[03:46]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[03:48]   [comfy-env] GPU: No GPU detected
-[03:48]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[03:48]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
-[03:48]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[03:48]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:48]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:48]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:48]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:49]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:49]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:49]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:49]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[03:49]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:49]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:50]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[03:50]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:50]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[03:50]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[03:50]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:50]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[03:50]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[03:50]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:50]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[03:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:51]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:51]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
-[03:51]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
-[03:51]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
-[03:51]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
-[03:51]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
-[03:51]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
-[03:51]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
-[03:51]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:51]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:51]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:52]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:52]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
-[03:52]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:52]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:52]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
-[03:52]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[03:52]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:52]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:52]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[03:52]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:52]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[03:53]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[03:53]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:53]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[03:53]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[03:53]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:53]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[03:54]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:54]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:54]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:54]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:54]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
-[03:54]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
-[03:54]   [comfy-env] Installing 3 environment(s):
-[03:54]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
-[03:54]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
-[03:54]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
-[03:54]   [comfy-env] Running `pixi install --all`...
-[03:55]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
-[03:55]       â”œâ”€â–¶   Ã— failed to solve the environment
-[03:55]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
-[03:55]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
-[03:55]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
-[03:56]     Warning: ComfyUI-DepthAnythingV3 install.py failed (exit code 1)
-[03:56]     ComfyUI-VideoHelperSuite: exists
-[03:56]     ComfyUI-KJNodes: exists
-[03:56]     ComfyUI-GeometryPack: exists
-[03:56]     Cloning ComfyUI-CameraPack...
-[03:56]   
-[03:56]   [requirements] Re-installing main package requirements...
-[03:56]     Installing requirements for ComfyUI-SAM3DBody...
-[03:56]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
-[03:56]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[03:56]   [comfy-env] Found 3 node config(s):
-[03:56]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
-[03:56]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[03:56]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
-[03:56]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[03:58]   [comfy-env] GPU: No GPU detected
-[03:58]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[03:58]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
-[03:58]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[03:58]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:58]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[03:58]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:58]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:58]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:58]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:59]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:59]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[03:59]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:59]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:59]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[03:59]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:59]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[04:00]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[04:00]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:00]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[04:00]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[04:00]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:00]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[04:01]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[04:01]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:01]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
-[04:01]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
-[04:01]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
-[04:01]   [comfy-env] Root conda deps from ComfyUI-SAM3DBody: ['av', 'ffmpeg']
-[04:01]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
-[04:01]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
-[04:01]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
-[04:01]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[04:01]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[04:01]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:01]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[04:01]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:01]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
-[04:01]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[04:02]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:02]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
-[04:02]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
-[04:02]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:02]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[04:02]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
-[04:02]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:02]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
-[04:03]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
-[04:03]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:03]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[04:03]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
-[04:03]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:03]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[04:04]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[04:04]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:04]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[04:04]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[04:04]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
-[04:04]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
-[04:04]   [comfy-env] Installing 3 environment(s):
-[04:04]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
-[04:04]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
-[04:04]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
-[04:04]   [comfy-env] Running `pixi install --all`...
-[04:05]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
-[04:05]       â”œâ”€â–¶   Ã— failed to solve the environment
-[04:05]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
-[04:05]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
-[04:05]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
-[04:05] Warning: install.py failed (exit code 1), continuing...
-[04:05]   [!]     install()
-[04:05]   [!]     ~~~~~~~^^
-[04:05]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\install\__init__.py", line 91, in install
-[04:05]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
-[04:05]   [!]     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[04:05]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\install\workspace.py", line 546, in install_workspace
-[04:05]   [!]     raise RuntimeError(
-[04:05]   [!]         f"pixi install --all failed:\nstderr: {result.stderr}\nstdout: {result.stdout}"
-[04:05]   [!]     )
-[04:05]   [!] RuntimeError: pixi install --all failed:
-[04:05]   [!] stderr: Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
-[04:05]   [!]   â”œâ”€â–¶   Ã— failed to solve the environment
-[04:05]   [!] 
-[04:05]   [!]   â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
-[04:05]   [!]       â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
-[04:05]   [!]          â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
-[04:05]   [!] 
-[04:05]   [!] 
-[04:05]   [!] 
-[04:05]   [!] stdout:
-[04:05] Installing 3 node dependency(ies)...
-[04:05]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
-[04:05]   ComfyUI-Multiband already exists, skipping...
-[04:05]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
-[04:05]   ComfyUI-DepthAnythingV3 already exists, skipping...
-[04:05]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[04:05]   ComfyUI-CameraPack already exists, skipping...
-[04:05] Installing validation endpoint...
-[04:05]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[04:05] Running: git clone --depth 1 https://github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[04:07] CUDA packages absent (will mock): detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
-[04:07] [INSTALL] PASSED
-[04:07] 
-[04:07] [3/5] REGISTRATION
-[04:07] ----------------------------------------
-[04:07] 
+[02:23] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
+[02:23]   [comfy-env] Enabled Windows long path support
+[02:23]   
+[02:23]   Installing 3 node dependencies...
+[02:23]     Cloning ComfyUI-Multiband...
+[02:23]     Installing requirements for ComfyUI-Multiband...
+[02:24]     Cloning ComfyUI-DepthAnythingV3...
+[02:25]     Installing requirements for ComfyUI-DepthAnythingV3...
+[02:25]     Running install.py for ComfyUI-DepthAnythingV3...
+[02:25]   [comfy-env] Enabled Windows long path support
+[02:25]   
+[02:25]   Installing 3 node dependencies...
+[02:25]     Cloning ComfyUI-VideoHelperSuite...
+[02:25]     Installing requirements for ComfyUI-VideoHelperSuite...
+[02:27]     Cloning ComfyUI-KJNodes...
+[02:28]     Installing requirements for ComfyUI-KJNodes...
+[02:31]     Cloning ComfyUI-GeometryPack...
+[02:33]     Installing requirements for ComfyUI-GeometryPack...
+[02:34]     Running install.py for ComfyUI-GeometryPack...
+[02:35]   [comfy-env] Enabled Windows long path support
+[02:36]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[02:36]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[02:36]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[02:36]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[02:36]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[02:36]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[02:36]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[02:36]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
+[02:36]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[02:36]   [comfy-env] Found 3 node config(s):
+[02:36]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
+[02:36]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[02:36]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
+[02:36]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[02:38]   [comfy-env] GPU: No GPU detected
+[02:38]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[02:38]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[02:38]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[02:38]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:38]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:39]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:39]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:39]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:39]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:39]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:39]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:40]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:40]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:40]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[02:40]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:40]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:41]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[02:41]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:41]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:42]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[02:42]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:42]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:42]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:42]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:42]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[02:42]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[02:42]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[02:42]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[02:42]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
+[02:42]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
+[02:42]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:42]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:43]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:43]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:43]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:43]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[02:43]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:43]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:43]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[02:43]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:43]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:43]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:44]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[02:44]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:44]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:44]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[02:44]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:44]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:45]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[02:45]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:45]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:45]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:45]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:45]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:46]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:46]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[02:46]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
+[02:46]   [comfy-env] Installing 3 environment(s):
+[02:46]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[02:46]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[02:46]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[02:46]   [comfy-env] Running `pixi install --all`...
+[02:48]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
+[02:48]       â”œâ”€â–¶   Ã— failed to solve the environment
+[02:48]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
+[02:48]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
+[02:48]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
+[02:48]     Warning: ComfyUI-GeometryPack install.py failed (exit code 1)
+[02:48]   
+[02:48]   [requirements] Re-installing main package requirements...
+[02:48]     Installing requirements for ComfyUI-DepthAnythingV3...
+[02:48]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[02:48]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[02:48]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[02:48]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[02:48]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[02:48]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[02:48]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[02:48]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
+[02:48]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[02:48]   [comfy-env] Found 3 node config(s):
+[02:48]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
+[02:48]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[02:48]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
+[02:48]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[02:50]   [comfy-env] GPU: No GPU detected
+[02:50]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[02:50]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[02:50]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[02:50]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:50]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:50]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:50]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:51]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:51]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:51]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:51]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:51]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:51]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:52]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[02:52]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:52]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:52]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[02:52]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:52]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:53]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[02:53]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:53]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:53]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:53]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:53]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[02:53]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[02:53]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[02:53]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[02:53]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
+[02:53]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
+[02:53]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:54]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:54]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:54]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:54]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:54]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[02:54]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:54]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:54]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[02:54]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:55]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:55]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:55]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[02:55]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:55]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:56]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[02:56]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:56]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:56]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[02:56]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:56]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:57]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[02:57]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:57]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:57]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:57]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[02:57]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
+[02:57]   [comfy-env] Installing 3 environment(s):
+[02:57]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[02:57]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[02:57]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[02:57]   [comfy-env] Running `pixi install --all`...
+[02:58]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
+[02:58]       â”œâ”€â–¶   Ã— failed to solve the environment
+[02:58]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
+[02:58]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
+[02:58]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
+[02:59]     Warning: ComfyUI-DepthAnythingV3 install.py failed (exit code 1)
+[02:59]     ComfyUI-VideoHelperSuite: exists
+[02:59]     ComfyUI-KJNodes: exists
+[02:59]     ComfyUI-GeometryPack: exists
+[02:59]     Cloning ComfyUI-CameraPack...
+[02:59]   
+[02:59]   [requirements] Re-installing main package requirements...
+[02:59]     Installing requirements for ComfyUI-SAM3DBody...
+[02:59]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[02:59]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[02:59]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[02:59]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[02:59]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[02:59]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[02:59]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[02:59]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[02:59]   [comfy-env] Workspace: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce
+[02:59]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[02:59]   [comfy-env] Found 3 node config(s):
+[02:59]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
+[02:59]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[02:59]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
+[02:59]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[03:01]   [comfy-env] GPU: No GPU detected
+[03:01]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[03:01]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[03:01]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[03:01]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[03:01]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[03:01]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:01]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[03:02]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:02]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[03:02]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:02]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[03:02]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:02]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[03:02]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[03:02]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:02]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[03:03]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[03:03]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:03]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[03:03]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[03:03]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:03]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[03:04]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[03:04]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:04]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[03:04]   [comfy-env] Root conda deps from ComfyUI-DepthAnythingV3: ['av', 'ffmpeg']
+[03:04]   [comfy-env] Root conda deps from ComfyUI-GeometryPack: ['av', 'ffmpeg']
+[03:04]   [comfy-env] Comfyui feature pin: torch ==2.11.0, torchvision ==0.26.*, torchaudio ==2.11.*
+[03:04]   [comfy-env] Root conda deps (comfyui env only): ['av', 'ffmpeg']
+[03:04]   [comfy-env] comfyui env: python 3.13, torch from https://download.pytorch.org/whl/cu130
+[03:04]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[03:04]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[03:04]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:04]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[03:05]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:05]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[03:05]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[03:05]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:05]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[03:05]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[03:05]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:05]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[03:06]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_scatter/: HTTPError: HTTP Error 404: Not Found
+[03:06]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:06]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[03:06]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_sparse/: HTTPError: HTTP Error 404: Not Found
+[03:06]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:06]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[03:07]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/torch_cluster/: HTTPError: HTTP Error 404: Not Found
+[03:07]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:07]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[03:07]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[03:07]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:07]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[03:07]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[03:07]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[03:07]   Generated D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\pixi.toml
+[03:07]   [comfy-env] Installing 3 environment(s):
+[03:07]     - depthanythingv3-nodes (python=host, 9 pypi deps, 2 cuda wheels)
+[03:07]     - geometrypack-nodes (python=host, 13 pypi deps, 1 cuda wheels)
+[03:07]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[03:07]   [comfy-env] Running `pixi install --all`...
+[03:09]     Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
+[03:09]       â”œâ”€â–¶   Ã— failed to solve the environment
+[03:09]       â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
+[03:09]           â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
+[03:09]              â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
+[03:09] Warning: install.py failed (exit code 1), continuing...
+[03:09]   [!]     install()
+[03:09]   [!]     ~~~~~~~^^
+[03:09]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\install\__init__.py", line 91, in install
+[03:09]   [!]     install_workspace(comfyui_dir, log=log, dry_run=dry_run)
+[03:09]   [!]     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[03:09]   [!]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\install\workspace.py", line 565, in install_workspace
+[03:09]   [!]     raise RuntimeError(
+[03:09]   [!]         f"pixi install --all failed:\nstderr: {result.stderr}\nstdout: {result.stdout}"
+[03:09]   [!]     )
+[03:09]   [!] RuntimeError: pixi install --all failed:
+[03:09]   [!] stderr: Error:   Ã— failed to solve requirements of environment 'sam3dbody-nodes' for platform 'win-64'
+[03:09]   [!]   â”œâ”€â–¶   Ã— failed to solve the environment
+[03:09]   [!] 
+[03:09]   [!]   â•°â”€â–¶ Cannot solve the request because of: numpy <2.0 cannot be installed because there are no viable options:
+[03:09]   [!]       â””â”€ numpy 1.11.3 | 1.11.3 | 1.11.3 | 1.14.0 | 1.14.0 | 1.14.1 | 1.14.1 | 1.14.2 | 1.14.2 | 1.14.3 | 1.14.3 | 1.14.4 | 1.14.4 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.5 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.14.6 | 1.15.0 | 1.15.0 | 1.15.0 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.1 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.2 | 1.15.3 | 1.15.3 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.15.4 | 1.16.0 | 1.16.0 | 1.16.1 | 1.16.1 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.2 | 1.16.3 | 1.16.3 | 1.16.3 | 1.16.4 | 1.16.4 | 1.16.4 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.5 | 1.16.6 | 1.16.6 | 1.16.6 | 1.17.0 | 1.17.0 | 1.17.1 | 1.17.2 | 1.17.3 | 1.17.3 | 1.17.3 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.17.5 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.1 | 1.18.4 | 1.18.4 | 1.18.4 | 1.18.5 | 1.18.5 | 1.18.5 | 1.19.0 | 1.19.0 | 1.19.0 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.1 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.2 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.4 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.19.5 | 1.20.0 | 1.20.0 | 1.20.0 | 1.20.1 | 1.20.1 | 1.20.1 | 1.20.2 | 1.20.2 | 1.20.2 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.20.3 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.0 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.1 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.2 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.3 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.4 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.5 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.21.6 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.0 | 1.22.1 | 1.22.1 | 1.22.1 | 1.22.2 | 1.22.2 | 1.22.2 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.3 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.22.4 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.0 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.1 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.2 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.3 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.4 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.23.5 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.0 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.1 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.2 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.3 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.24.4 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.0 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.1 | 1.25.2 | 1.25.2 | 1.25.2 | 1.25.2 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.0 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.2 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.3 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 | 1.26.4 would require
+[03:09]   [!]          â””â”€ python >=2.7,<2.8.0a0, for which no candidates were found.
+[03:09]   [!] 
+[03:09]   [!] 
+[03:09]   [!] 
+[03:09]   [!] stdout:
+[03:09] Installing 3 node dependency(ies)...
+[03:09]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
+[03:09]   ComfyUI-Multiband already exists, skipping...
+[03:09]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
+[03:09]   ComfyUI-DepthAnythingV3 already exists, skipping...
+[03:09]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[03:09]   ComfyUI-CameraPack already exists, skipping...
+[03:09] Installing validation endpoint...
+[03:09]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[03:09] Running: git clone --depth 1 https://github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[03:09] CUDA packages absent (will mock): detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[03:09] [INSTALL] PASSED
+[03:09] 
+[03:09] [3/5] REGISTRATION
+[03:09] ----------------------------------------
+[03:09] 
 [DEBUG] server=None, server_url=None, api=None
-[04:07] 
+[03:09] 
 Starting ComfyUI server...
-[04:07] Starting ComfyUI server on port 41882...
-[04:07] CUDA mock packages: detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
-[04:07] Starting ComfyUI server on port 41882...
-[04:07] Waiting for server to be ready (timeout: 600s)...
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.schemas
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.tables
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.types
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.constraints
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.defaults
-[04:07]   [ComfyUI] setup plugin alembic.autogenerate.comments
-[04:08]   [ComfyUI] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
-[04:08]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes
-[04:08]   [ComfyUI] [comfy-env] prestartup complete
-[04:08]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
-[04:08]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
-[04:08]   [ComfyUI] [comfy-env] prestartup complete
-[04:08]   [ComfyUI] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
-[04:08]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes
-[04:08]   [ComfyUI] [comfy-env] prestartup complete
-[04:08]   [ComfyUI] 
-[04:08]   [ComfyUI] Prestartup times for custom nodes:
-[04:08]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
-[04:08]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[04:08]   [ComfyUI]    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
-[04:08]   [ComfyUI] 
-[04:10]   [ComfyUI] D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:180: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
-[04:10]   [ComfyUI]   return torch._C._cuda_getDeviceCount() > 0
-[04:11]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-[04:11]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
-[04:11]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-[04:11]   [ComfyUI] Checkpoint files will always be loaded safely.
-[04:11]   [ComfyUI] Total VRAM 16379 MB, total RAM 16379 MB
-[04:11]   [ComfyUI] pytorch version: 2.11.0+cu130
-[04:11]   [ComfyUI] Set vram state to: DISABLED
-[04:11]   [ComfyUI] Device: cpu
-[04:11]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[04:17]   [ComfyUI] Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
-[04:17]   [ComfyUI] ComfyUI version: 0.20.1
-[04:17]   [ComfyUI] comfy-aimdo version: 0.2.14
-[04:17]   [ComfyUI] comfy-kitchen version: 0.2.8
-[04:17]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
-[04:17]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-[04:17]   [ComfyUI] ComfyUI frontend version: 1.42.15
-[04:17]   [ComfyUI] [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
-[04:17]   [ComfyUI] Asset seeder disabled
-[04:19]   [ComfyUI] [comfy-env] Version: 0.3.79
-[04:21]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
-[04:21]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[04:21]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:21]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
-[04:21]   [ComfyUI] [comfy-env] Importing nodes (root)...
-[04:21]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
-[04:21]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:21]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
-[04:21]   [ComfyUI] [comfy-env] Registered 15 total nodes
-[04:21]   [ComfyUI] loading...
-[04:21]   [ComfyUI] calling register_nodes
-[04:21]   [ComfyUI] [comfy-env] Version: 0.3.79
-[04:21]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
-[04:21]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[04:21]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:21]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
-[04:21]   [ComfyUI] [comfy-env] Importing nodes (root)...
-[04:21]   [ComfyUI] [comfy-env] Failed to import nodes root: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing analysis...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.analysis: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing blender_boolean...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_boolean: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing blender_io...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_io: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing blender_remeshing...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_remeshing: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing blender_texture_remeshing...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_texture_remeshing: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing blender_uv...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_uv: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing boolean...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.boolean: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing combine...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.combine: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing conversion...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.conversion: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing decimation...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing decimation_cgal...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation_cgal: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing distance...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.distance: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing fill_holes_gpu...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.fill_holes_gpu: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing io...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.io: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing paraview...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.paraview: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing primitives...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.primitives: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing reconstruction...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing reconstruction_cgal...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction_cgal: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing remeshing...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing remeshing_cgal...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_cgal: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing remeshing_gpu...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_gpu: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing repair...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.repair: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing repair_cgal...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.repair_cgal: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing skeleton...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.skeleton: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing smoothing...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.smoothing: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing texture_remeshing...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.texture_remeshing: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing transforms...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.transforms: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing uv...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.uv: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing uv_gpu...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.uv_gpu: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] Importing visualization...
-[04:21]   [ComfyUI] [comfy-env] Failed to import .nodes.visualization: No module named 'bpy'
-[04:21]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:21]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
-[04:21]   [ComfyUI] [comfy-env] Registered 0 total nodes
-[04:22]   [ComfyUI] ComfyUI-Multiband loaded: 15 nodes registered
-[04:22]   [ComfyUI] [comfy-env] Version: 0.3.79
-[04:22]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-SAM3DBody
-[04:22]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[04:22]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:22]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
-[04:22]   [ComfyUI] [comfy-env] Importing nodes (root)...
-[04:22]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
-[04:22]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
-[04:22]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
-[04:22]   [ComfyUI] [comfy-env] Registered 15 total nodes
-[04:22]   [ComfyUI] 
-[04:22]   [ComfyUI] Import times for custom nodes:
-[04:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
-[04:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[04:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
-[04:22]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[04:22]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
-[04:22]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-VideoHelperSuite
-[04:22]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-KJNodes
-[04:22]   [ComfyUI]    0.9 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-Multiband
-[04:22]   [ComfyUI]    1.8 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
-[04:22]   [ComfyUI] 
-[04:22]   [ComfyUI] Context impl SQLiteImpl.
-[04:22]   [ComfyUI] Will assume non-transactional DDL.
-[04:22]   [ComfyUI] Context impl SQLiteImpl.
-[04:22]   [ComfyUI] Will assume non-transactional DDL.
-[04:22]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
-[04:22]   [ComfyUI] Revision ID: 0001_assets
-[04:22]   [ComfyUI] Revises: None
-[04:22]   [ComfyUI] Create Date: 2025-12-10 00:00:00
-[04:22]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-[04:22]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
-[04:22]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
-[04:22]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
-[04:23]   [ComfyUI] Starting server
-[04:23]   [ComfyUI] 
-[04:23]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41882
-[04:23] Server responding, waiting for nodes to load...
-[04:30]   [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
-[04:43] Server is ready!
-[04:43] Checking for import errors in server logs...
-[04:43] No import errors detected
-[04:43] Found 1012 registered nodes
-[04:43] [REGISTRATION] PASSED
-[04:43] 
-[04:43] [4/5] INSTANTIATION
-[04:43] ----------------------------------------
-[04:43] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002C1500A1D50>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002C1500BFEE0>
-[04:43] Testing node constructors...
-[04:47] All 15 node(s) instantiated successfully!
-[04:47] [INSTANTIATION] PASSED
-[04:47] 
-[04:47] [5/5] EXECUTION
-[04:47] ----------------------------------------
-[04:47] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002C1500A1D50>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002C1500BFEE0>
-[04:47] CPU runner - will execute 1 workflow(s)
-[04:47] Running 5 workflow(s) (all with videos)...
-[04:47] Installing screenshot dependencies (playwright, pillow)...
-[04:49]   Packages installed, downloading chromium browser...
-[05:07]   Screenshot dependencies installed successfully
-[05:09] Starting headless browser...
-[05:09]   Downloading Mesa llvmpipe for Windows...
-[05:14]   Copied opengl32.dll to Chromium dir
-[05:14]   Copied libgallium_wgl.dll to Chromium dir
-[05:14]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
-[05:15]   [1/5] SKIPPED (not in cpu list) multiple_masks.json
-[05:15]   [2/5] SKIPPED (not in cpu list) multiple_masks_depthcorrected.json
-[05:15] Capturing execution frames: rigged_mesh_manipulation.json
-[05:25]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[05:25]   Validating workflow...
-[05:25]   [ComfyUI] === /validate endpoint called ===
-[05:25]   [ComfyUI] Received JSON with keys: ['prompt']
-[05:25]   [ComfyUI] Prompt has 2 nodes
-[05:25]   [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
-[05:25]   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-[05:25]   [ComfyUI]   Node 4: SAM3DBodySelectMesh
-[05:25]   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-[05:25]   [ComfyUI] Generated prompt_id: 6a2fd6a4-3fae-4a8a-afd8-bafa862e79d5
-[05:25]   [ComfyUI] Calling execution.validate_prompt()...
-[05:25]   Queuing workflow for execution...
-[05:25]   [ComfyUI] Validation result: valid=True
-[05:25]   [ComfyUI] === Validation PASSED ===
-[05:25]   [ComfyUI] got prompt
-[05:25]   [ComfyUI]  Selecting mesh from input folder...
-[05:25]   [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-[05:25]   [ComfyUI]  Preparing preview...
-[05:25]   [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2011\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-[05:25]   [ComfyUI]  Has skinning: True
-[05:25]   [ComfyUI]  Has skeleton: True
-[05:25]   [ComfyUI] Prompt executed in 0.01 seconds
-[05:25]   Node executed (1 total), capturing...
-[05:26]   Frame 2 saved (frame_001.jpg, t=0.5s)
-[05:26]   [capture-node] freeze=1124ms shot=226ms unfreeze=0ms saved=True
-[05:26]   Execution complete (t=0.5s)
-[05:26]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
-[05:26]   [3d-wait] Phase 1 done in 0.0s
-[05:26]   [3d-wait] Phase 2: iframes=1
-[05:26]   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
-[05:26]   [3d-wait] Unfrozen in 0.003s, rendering for 5s...
-[05:32]   [3d-wait] JS halted via CDP after 5.1s
-[05:33]   [3d-wait] Re-frozen in 6.1s
-[05:33]   [3d-wait] Total 3D wait: 6.1s
-[05:33]   Captured 2 unique frames over 7.99s
-[05:33]   [debug] iframes: 1
-[05:33]   [debug]   iframe[0]: src=http://127.0.0.1:41882/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778444, canvas=486x710, rafFrozen=True
-[05:33]   [timing] trigger_3d_previews: 0.0s
-[05:35]   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
-[05:35]   [timing] final_screenshot: 0.2s
-[05:35]   [4/5] SKIPPED (not in cpu list) rigging.json
-[05:35]   [5/5] SKIPPED (not in cpu list) workflow.json
-[05:35] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2011\dev\windows-portable-cpu\results.json
-[05:36] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2011\dev\windows-portable-cpu\models.json
-[05:36] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2011\dev\windows-portable-cpu\index.html
-[05:36] [EXECUTION] PASSED
-[05:36] 
+[03:09] Starting ComfyUI server on port 41885...
+[03:09] CUDA mock packages: detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[03:09] Starting ComfyUI server on port 41885...
+[03:09] Waiting for server to be ready (timeout: 600s)...
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.schemas
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.tables
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.types
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.constraints
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.defaults
+[03:10]   [ComfyUI] setup plugin alembic.autogenerate.comments
+[03:10]   [ComfyUI] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
+[03:10]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes
+[03:10]   [ComfyUI] [comfy-env] prestartup complete
+[03:10]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[03:10]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
+[03:10]   [ComfyUI] [comfy-env] prestartup complete
+[03:10]   [ComfyUI] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
+[03:10]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes
+[03:10]   [ComfyUI] [comfy-env] prestartup complete
+[03:10]   [ComfyUI] 
+[03:10]   [ComfyUI] Prestartup times for custom nodes:
+[03:10]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
+[03:10]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[03:10]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
+[03:10]   [ComfyUI] 
+[03:12]   [ComfyUI] D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:180: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
+[03:12]   [ComfyUI]   return torch._C._cuda_getDeviceCount() > 0
+[03:13]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[03:13]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[03:13]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[03:13]   [ComfyUI] Checkpoint files will always be loaded safely.
+[03:13]   [ComfyUI] Total VRAM 16379 MB, total RAM 16379 MB
+[03:13]   [ComfyUI] pytorch version: 2.11.0+cu130
+[03:13]   [ComfyUI] Set vram state to: DISABLED
+[03:13]   [ComfyUI] Device: cpu
+[03:13]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[03:17]   [ComfyUI] Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+[03:17]   [ComfyUI] ComfyUI version: 0.20.1
+[03:17]   [ComfyUI] comfy-aimdo version: 0.2.14
+[03:17]   [ComfyUI] comfy-kitchen version: 0.2.8
+[03:17]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[03:17]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[03:17]   [ComfyUI] ComfyUI frontend version: 1.42.15
+[03:17]   [ComfyUI] [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
+[03:17]   [ComfyUI] Asset seeder disabled
+[03:19]   [ComfyUI] [comfy-env] Version: 0.3.80
+[03:20]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
+[03:20]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[03:20]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:20]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[03:20]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[03:20]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
+[03:20]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\depthanythingv3-nodes: pixi has not materialized `depthanythingv3-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:20]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[03:20]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[03:20]   [ComfyUI] loading...
+[03:20]   [ComfyUI] calling register_nodes
+[03:20]   [ComfyUI] [comfy-env] Version: 0.3.80
+[03:20]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[03:20]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[03:20]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:20]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[03:20]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[03:21]   [ComfyUI] [comfy-env] Failed to import nodes root: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing analysis...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.analysis: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing blender_boolean...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_boolean: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing blender_io...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_io: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing blender_remeshing...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_remeshing: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing blender_texture_remeshing...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_texture_remeshing: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing blender_uv...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.blender_uv: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing boolean...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.boolean: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing combine...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.combine: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing conversion...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.conversion: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing decimation...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing decimation_cgal...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.decimation_cgal: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing distance...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.distance: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing fill_holes_gpu...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.fill_holes_gpu: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing io...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.io: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing paraview...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.paraview: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing primitives...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.primitives: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing reconstruction...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing reconstruction_cgal...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.reconstruction_cgal: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing remeshing...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing remeshing_cgal...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_cgal: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing remeshing_gpu...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.remeshing_gpu: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing repair...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.repair: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing repair_cgal...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.repair_cgal: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing skeleton...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.skeleton: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing smoothing...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.smoothing: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing texture_remeshing...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.texture_remeshing: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing transforms...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.transforms: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing uv...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.uv: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing uv_gpu...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.uv_gpu: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] Importing visualization...
+[03:21]   [ComfyUI] [comfy-env] Failed to import .nodes.visualization: No module named 'bpy'
+[03:21]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\geometrypack-nodes: pixi has not materialized `geometrypack-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:21]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[03:21]   [ComfyUI] [comfy-env] Registered 0 total nodes
+[03:22]   [ComfyUI] ComfyUI-Multiband loaded: 15 nodes registered
+[03:22]   [ComfyUI] [comfy-env] Version: 0.3.80
+[03:22]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-SAM3DBody
+[03:22]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[03:22]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:22]   [ComfyUI] [comfy-env] Found 0 isolation env(s)
+[03:22]   [ComfyUI] [comfy-env] Importing nodes (root)...
+[03:22]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes
+[03:22]   [ComfyUI] [comfy-env] isolation env not found at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\sam3dbody-nodes: pixi has not materialized `sam3dbody-nodes`; using in-process import. Run `comfy-env install` (or your node's `install.py`) to create it.
+[03:22]   [ComfyUI] [comfy-env] No env for nodes -- run 'comfy-env install'
+[03:22]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[03:22]   [ComfyUI] 
+[03:22]   [ComfyUI] Import times for custom nodes:
+[03:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
+[03:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[03:22]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
+[03:22]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
+[03:22]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[03:22]   [ComfyUI]    0.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-VideoHelperSuite
+[03:22]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-KJNodes
+[03:22]   [ComfyUI]    0.9 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-Multiband
+[03:22]   [ComfyUI]    1.7 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
+[03:22]   [ComfyUI] 
+[03:22]   [ComfyUI] Context impl SQLiteImpl.
+[03:22]   [ComfyUI] Will assume non-transactional DDL.
+[03:22]   [ComfyUI] Context impl SQLiteImpl.
+[03:22]   [ComfyUI] Will assume non-transactional DDL.
+[03:22]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
+[03:22]   [ComfyUI] Revision ID: 0001_assets
+[03:22]   [ComfyUI] Revises: None
+[03:22]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[03:22]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[03:22]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[03:22]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[03:22]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
+[03:22]   [ComfyUI] Starting server
+[03:22]   [ComfyUI] 
+[03:22]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41885
+[03:23] Server responding, waiting for nodes to load...
+[03:27]   [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[03:43] Server is ready!
+[03:43] Checking for import errors in server logs...
+[03:43] No import errors detected
+[03:43] Found 1012 registered nodes
+[03:43] [REGISTRATION] PASSED
+[03:43] 
+[03:43] [4/5] INSTANTIATION
+[03:43] ----------------------------------------
+[03:43] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x00000222D3D91330>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x00000222D3DAFEE0>
+[03:43] Testing node constructors...
+[03:46] All 15 node(s) instantiated successfully!
+[03:46] [INSTANTIATION] PASSED
+[03:46] 
+[03:46] [5/5] EXECUTION
+[03:46] ----------------------------------------
+[03:46] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x00000222D3D91330>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x00000222D3DAFEE0>
+[03:46] CPU runner - will execute 1 workflow(s)
+[03:46] Running 5 workflow(s) (all with videos)...
+[03:47] Installing screenshot dependencies (playwright, pillow)...
+[03:49]   Packages installed, downloading chromium browser...
+[04:04]   Screenshot dependencies installed successfully
+[04:04] Starting headless browser...
+[04:04]   Downloading Mesa llvmpipe for Windows...
+[04:09]   Copied opengl32.dll to Chromium dir
+[04:09]   Copied libgallium_wgl.dll to Chromium dir
+[04:09]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
+[04:09]   [1/5] SKIPPED (not in cpu list) multiple_masks.json
+[04:09]   [2/5] SKIPPED (not in cpu list) multiple_masks_depthcorrected.json
+[04:10] Capturing execution frames: rigged_mesh_manipulation.json
+[04:19]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[04:19]   Validating workflow...
+[04:19]   [ComfyUI] === /validate endpoint called ===
+[04:19]   [ComfyUI] Received JSON with keys: ['prompt']
+[04:19]   [ComfyUI] Prompt has 2 nodes
+[04:19]   [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
+[04:19]   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+[04:19]   [ComfyUI]   Node 4: SAM3DBodySelectMesh
+[04:19]   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+[04:19]   [ComfyUI] Generated prompt_id: f0358e89-3a88-4280-a972-4c360869c52c
+[04:19]   Queuing workflow for execution...
+[04:19]   [ComfyUI] Calling execution.validate_prompt()...
+[04:19]   [ComfyUI] Validation result: valid=True
+[04:19]   [ComfyUI] === Validation PASSED ===
+[04:19]   [ComfyUI] got prompt
+[04:19]   [ComfyUI]  Selecting mesh from input folder...
+[04:19]   [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+[04:19]   [ComfyUI]  Preparing preview...
+[04:19]   [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2029\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+[04:19]   [ComfyUI]  Has skinning: True
+[04:19]   [ComfyUI]  Has skeleton: True
+[04:19]   [ComfyUI] Prompt executed in 0.01 seconds
+[04:20]   Node executed (1 total), capturing...
+[04:21]   Frame 2 saved (frame_001.jpg, t=1.6s)
+[04:21]   [capture-node] freeze=57ms shot=190ms unfreeze=0ms saved=True
+[04:21]   Execution complete (t=1.6s)
+[04:21]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[04:21]   [3d-wait] Phase 1 done in 0.0s
+[04:21]   [3d-wait] Phase 2: iframes=1
+[04:21]   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+[04:21]   [3d-wait] Unfrozen in 0.002s, rendering for 5s...
+[04:26]   [3d-wait] JS halted via CDP after 5.1s
+[04:27]   [3d-wait] Re-frozen in 6.1s
+[04:27]   [3d-wait] Total 3D wait: 6.1s
+[04:27]   Captured 2 unique frames over 8.03s
+[04:27]   [debug] iframes: 1
+[04:27]   [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778445, canvas=486x710, rafFrozen=True
+[04:27]   [timing] trigger_3d_previews: 0.0s
+[04:29]   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+[04:29]   [timing] final_screenshot: 0.2s
+[04:29]   [4/5] SKIPPED (not in cpu list) rigging.json
+[04:30]   [5/5] SKIPPED (not in cpu list) workflow.json
+[04:30] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2029\dev\windows-portable-cpu\results.json
+[04:30] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2029\dev\windows-portable-cpu\models.json
+[04:30] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2029\dev\windows-portable-cpu\index.html
+[04:30] [EXECUTION] PASSED
+[04:30] 
 windows_portable: PASSED
-[05:36] Stopping ComfyUI server...
+[04:30] Stopping ComfyUI server...
