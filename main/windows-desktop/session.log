@@ -1,0 +1,289 @@
+[   2s] CDP targets: 1
+[   2s]   page: file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/not-supported | ComfyUI
+[   3s] Main page: file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/not-supported | ComfyUI
+[   3s] Buttons: ['Learn More', 'Report Issue', 'Continue']
+[   3s]   wizard: COMFY_TEST_GPU=0 platform=win32 preferred=['CPU']
+[   6s]   clicked [BTN|Continue]
+[   9s]   url: file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/not-supported -> file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/install
+[  10s]   clicked [TILE|CPU]
+[  13s]   clicked [BTN|Next]
+[  20s]   clicked [BTN|Next]
+[  25s]   clicked [BTN|Install]
+[  28s]   url: file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/install -> file:///C:/Users/runneradmin/.comfy-test-cache/desktop/ComfyUI/resources/desktop-ui/index.html#/server-start
+[ 149s]   /system_stats up after 146s
+[ 149s]   app: waiting for backend stability (continuous /system_stats up for 30s)
+[ 149s]   app: /system_stats up; awaiting 30s of stability
+[ 180s]   app: backend stable for 30s; proceeding
+[ 180s]   capturing canvas load...
+[ 189s]   post: waiting for Cloud upsell
+[ 222s]   post: Cloud upsell not found, skipping
+[ 222s]   post: pressed Escape (Cloud upsell fallback)
+[ 224s]   post: waiting for Close Templates
+[ 236s]   post: Close Templates not found, skipping
+[ 236s]   post: pressed Escape (Close Templates fallback)
+[ 238s]   post: waiting for Extensions
+[ 239s]   post: clicked Extensions via [button[aria-label="Extensions"]:visible]
+[ 241s]   ext: node meta = display='SAM3DBody' publisher='pznodes' version='0.2.10'
+[ 244s]   ext: searching "SAM3DBody"
+[ 248s]   ext: clicking SAM3DBody by pznodes tile
+[ 251s]   ext: scrolling to + opening version selector
+[ 255s]   ext: selected 0.2.10
+[ 256s]   ext: clicking right-panel Install
+[ 258s]   ext: clicked Install (last of 4 visible)
+[ 266s]   ext: waiting for "Apply Changes" toast
+[ 266s]   ext: clicked Apply Changes
+[ 271s]   app: Apply Changes already triggered in-app restart, skipping pkill
+[ 276s]   app: relaunching with CDP
+[ 276s]   app: waiting for CDP
+[ 277s]   app: CDP up after 1s
+[ 277s]   app: reconnecting Playwright
+[ 278s]   app: attached to http://127.0.0.1:8000/
+[ 778s]   app: server ready after 122s
+[ 778s]   app: waiting for main canvas (window.app.graph)
+[ 778s]   app: canvas ready after 1s (http://127.0.0.1:8000/)
+[ 783s]   app: forcing renderer reload to refresh node-pack manifest
+[ 787s]   app: canvas re-ready after reload in 3s
+[ 790s]   ext: closing Nodes Manager dialog
+[ 790s]   ext: dismissing What's New popup
+[ 790s]   ext: closed What's New popup
+[ 792s]   ext: dismissing Node Pack Issues modal (if present)
+[ 792s]   ext: Node Pack Issues modal not present
+[ 792s]   ext: opening Templates sidebar
+[ 793s]   ext: clicked Templates
+[ 797s]   ext: locating "comfyui-sam3dbody" section in Templates panel
+[ 799s]   ext: clicked comfyui-sam3dbody section
+[ 802s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
+[ 802s]   ext: cpu spec = include ['rigged_mesh_manipulation']
+[ 802s]   ext: picking first matching comfyui-sam3dbody template
+[ 802s]   ext: 5 visible cards
+[ 802s]   ext: skipping multiple_masks (not in CPU list)
+[ 802s]   ext: skipping multiple_masks_depthcorrected (not in CPU list)
+[ 804s]   ext: clicked template rigged_mesh_manipulation
+[ 809s]   ext: installing WS execution listener
+[ 809s]   ext: clicking Run
+[ 809s]   ext: clicked Run
+[ 809s]   ext: waiting for execution_success / execution_error
+[ 831s]   ext: WS events=14 elapsed=21s
+[ 831s]     ws: {'type': 'status', 'ts': 1778383017041}
+[ 831s]     ws: {'type': 'status', 'ts': 1778383017043}
+[ 831s]     ws: {'type': 'execution_start', 'ts': 1778383017051}
+[ 831s]     ws: {'type': 'execution_cached', 'ts': 1778383017065}
+[ 831s]     ws: {'type': 'progress_state', 'ts': 1778383017074}
+[ 831s]     ws: {'type': 'executing', 'ts': 1778383017075}
+[ 831s]     ws: {'type': 'progress_state', 'ts': 1778383035454}
+[ 831s]     ws: {'type': 'progress_state', 'ts': 1778383035456}
+[ 831s]     ws: {'type': 'executing', 'ts': 1778383035469}
+[ 831s]     ws: {'type': 'executed', 'ts': 1778383035715}
+[ 831s]     ws: {'type': 'progress_state', 'ts': 1778383035738}
+[ 831s]     ws: {'type': 'execution_success', 'ts': 1778383035743}
+[ 831s]     ws: {'type': 'status', 'ts': 1778383035744}
+[ 831s]     ws: {'type': 'executing', 'ts': 1778383035744}
+[ 831s]   ext: execution_success after 21s
+[ 838s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
+[ 838s]   ext: cpu spec = include ['rigged_mesh_manipulation']
+[ 838s]   loop: spec=include items=['rigged_mesh_manipulation'] -> 1 workflow(s) ['rigged_mesh_manipulation']
+[ 838s]   loop: matching=1 first_ran='rigged_mesh_manipulation' remaining=0 -> []
+[ 839s] Captured 457 frames
+[ 841s] Wrote D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\results.json (1 workflow(s), sha=d941baa62d5b)
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, image2, from 'D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\debug\electron_inspect\frames\frame_%06d.png':
+  Duration: 00:01:31.40, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1008x681, 5 fps, 5 tbr, 5 tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 000002008d0f5580] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 000002008d0f5580] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 000002008d0f5580] 264 - core 164 r3192 c24e06c - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\debug\electron_inspect\driver.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1008x682, q=2-31, 5 fps, 10240 tbn
+      Metadata:
+        encoder         : Lavc61.19.100 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgba(pc, gbr), 1008x681
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    9 fps=0.5 q=23.0 size=       0KiB time=00:00:01.40 bitrate=   0.3kbits/s speed=0.0795x    
+frame=    9 fps=0.5 q=23.0 size=       0KiB time=00:00:01.40 bitrate=   0.3kbits/s speed=0.0767x    
+frame=    9 fps=0.4 q=23.0 size=       0KiB time=00:00:01.40 bitrate=   0.3kbits/s speed=0.0692x    
+frame=   15 fps=0.7 q=23.0 size=       0KiB time=00:00:02.60 bitrate=   0.1kbits/s speed=0.116x    
+frame=   16 fps=0.7 q=23.0 size=       0KiB time=00:00:02.80 bitrate=   0.1kbits/s speed=0.122x    
+frame=   16 fps=0.7 q=23.0 size=       0KiB time=00:00:02.80 bitrate=   0.1kbits/s speed=0.119x    
+frame=   26 fps=1.0 q=23.0 size=       0KiB time=00:00:04.80 bitrate=   0.1kbits/s speed=0.181x    
+frame=   28 fps=1.0 q=23.0 size=       0KiB time=00:00:05.20 bitrate=   0.1kbits/s speed=0.191x    
+frame=   28 fps=1.0 q=23.0 size=       0KiB time=00:00:05.20 bitrate=   0.1kbits/s speed=0.187x    
+frame=   36 fps=1.2 q=23.0 size=       0KiB time=00:00:06.80 bitrate=   0.1kbits/s speed=0.224x    
+frame=   36 fps=1.2 q=23.0 size=       0KiB time=00:00:06.80 bitrate=   0.1kbits/s speed=0.219x    
+frame=   36 fps=1.1 q=23.0 size=       0KiB time=00:00:06.80 bitrate=   0.1kbits/s speed=0.215x    
+frame=   44 fps=1.3 q=23.0 size=       0KiB time=00:00:08.40 bitrate=   0.0kbits/s speed=0.247x    
+frame=   44 fps=1.3 q=23.0 size=       0KiB time=00:00:08.40 bitrate=   0.0kbits/s speed=0.243x    
+frame=   50 fps=1.4 q=23.0 size=       0KiB time=00:00:09.60 bitrate=   0.0kbits/s speed=0.26x    
+frame=   50 fps=1.3 q=23.0 size=       0KiB time=00:00:09.60 bitrate=   0.0kbits/s speed=0.256x    
+frame=   50 fps=1.3 q=23.0 size=       0KiB time=00:00:09.60 bitrate=   0.0kbits/s speed=0.252x    
+frame=   50 fps=1.3 q=23.0 size=       0KiB time=00:00:09.60 bitrate=   0.0kbits/s speed=0.248x    
+frame=   55 fps=1.3 q=20.0 size=     256KiB time=00:00:10.60 bitrate= 197.9kbits/s speed=0.259x    
+frame=   56 fps=1.3 q=23.0 size=     256KiB time=00:00:10.80 bitrate= 194.2kbits/s speed=0.259x    
+frame=   56 fps=1.3 q=23.0 size=     256KiB time=00:00:10.80 bitrate= 194.2kbits/s speed=0.255x    
+frame=   57 fps=1.3 q=23.0 size=     256KiB time=00:00:11.00 bitrate= 190.7kbits/s speed=0.257x    
+frame=   57 fps=1.3 q=23.0 size=     256KiB time=00:00:11.00 bitrate= 190.7kbits/s speed=0.253x    
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgb24(pc, gbr), 1008x681
+frame=   68 fps=1.5 q=23.0 size=     256KiB time=00:00:13.20 bitrate= 158.9kbits/s speed=0.292x    
+frame=   69 fps=1.5 q=23.0 size=     256KiB time=00:00:13.40 bitrate= 156.5kbits/s speed=0.292x    
+frame=   76 fps=1.6 q=23.0 size=     256KiB time=00:00:14.80 bitrate= 141.7kbits/s speed=0.316x    
+frame=   89 fps=1.9 q=23.0 size=     256KiB time=00:00:17.40 bitrate= 120.5kbits/s speed=0.365x    
+frame=   96 fps=2.0 q=23.0 size=     256KiB time=00:00:18.80 bitrate= 111.6kbits/s speed=0.39x    
+frame=  105 fps=2.2 q=23.0 size=     256KiB time=00:00:20.60 bitrate= 101.8kbits/s speed=0.423x    
+frame=  116 fps=2.3 q=23.0 size=     256KiB time=00:00:22.80 bitrate=  92.0kbits/s speed=0.459x    
+frame=  120 fps=2.4 q=20.0 size=     256KiB time=00:00:23.60 bitrate=  88.9kbits/s speed=0.47x    
+frame=  126 fps=2.5 q=23.0 size=     512KiB time=00:00:24.80 bitrate= 169.1kbits/s speed=0.488x    
+frame=  141 fps=2.7 q=20.0 size=     512KiB time=00:00:27.80 bitrate= 150.9kbits/s speed=0.537x    
+frame=  146 fps=2.8 q=23.0 size=     512KiB time=00:00:28.80 bitrate= 145.6kbits/s speed=0.55x    
+frame=  151 fps=2.9 q=23.0 size=     512KiB time=00:00:29.80 bitrate= 140.8kbits/s speed=0.563x    
+frame=  162 fps=3.0 q=23.0 size=     512KiB time=00:00:32.00 bitrate= 131.1kbits/s speed=0.596x    
+frame=  169 fps=3.1 q=23.0 size=     512KiB time=00:00:33.40 bitrate= 125.6kbits/s speed=0.615x    
+frame=  179 fps=3.2 q=23.0 size=     512KiB time=00:00:35.40 bitrate= 118.5kbits/s speed=0.641x    
+frame=  186 fps=3.3 q=23.0 size=     512KiB time=00:00:36.80 bitrate= 114.0kbits/s speed=0.658x    
+frame=  195 fps=3.4 q=23.0 size=     512KiB time=00:00:38.60 bitrate= 108.7kbits/s speed=0.68x    
+frame=  202 fps=3.5 q=23.0 size=     512KiB time=00:00:40.00 bitrate= 104.9kbits/s speed=0.698x    
+frame=  209 fps=3.6 q=23.0 size=     512KiB time=00:00:41.40 bitrate= 101.3kbits/s speed=0.716x    
+frame=  217 fps=3.7 q=23.0 size=     512KiB time=00:00:43.00 bitrate=  97.6kbits/s speed=0.734x    
+frame=  223 fps=3.8 q=23.0 size=     512KiB time=00:00:44.20 bitrate=  94.9kbits/s speed=0.748x    
+frame=  234 fps=3.9 q=23.0 size=     512KiB time=00:00:46.40 bitrate=  90.4kbits/s speed=0.776x    
+frame=  244 fps=4.0 q=23.0 size=     512KiB time=00:00:48.40 bitrate=  86.7kbits/s speed=0.799x    
+frame=  257 fps=4.2 q=23.0 size=     512KiB time=00:00:51.00 bitrate=  82.2kbits/s speed=0.829x    
+frame=  271 fps=4.3 q=23.0 size=     512KiB time=00:00:53.80 bitrate=  78.0kbits/s speed=0.863x    
+frame=  277 fps=4.4 q=23.0 size=     512KiB time=00:00:55.00 bitrate=  76.3kbits/s speed=0.874x    
+frame=  285 fps=4.5 q=23.0 size=     512KiB time=00:00:56.60 bitrate=  74.1kbits/s speed=0.89x    
+frame=  299 fps=4.6 q=23.0 size=     512KiB time=00:00:59.40 bitrate=  70.6kbits/s speed=0.922x    
+frame=  309 fps=4.7 q=23.0 size=     512KiB time=00:01:01.40 bitrate=  68.3kbits/s speed=0.943x    
+frame=  323 fps=4.9 q=23.0 size=     512KiB time=00:01:04.20 bitrate=  65.3kbits/s speed=0.972x    
+frame=  330 fps=4.9 q=23.0 size=     512KiB time=00:01:05.60 bitrate=  63.9kbits/s speed=0.981x    
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgba(pc, gbr), 1008x681
+frame=  338 fps=5.0 q=23.0 size=     512KiB time=00:01:07.20 bitrate=  62.4kbits/s speed=0.994x    
+frame=  342 fps=5.0 q=23.0 size=     512KiB time=00:01:08.00 bitrate=  61.7kbits/s speed=0.998x    
+frame=  350 fps=5.1 q=23.0 size=     512KiB time=00:01:09.60 bitrate=  60.3kbits/s speed=1.01x    
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgb24(pc, gbr), 1008x681
+frame=  354 fps=5.1 q=23.0 size=     512KiB time=00:01:10.40 bitrate=  59.6kbits/s speed=1.01x    
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgba(pc, gbr), 1008x681
+[vf#0:0 @ 000002008d0f3840] Reconfiguring filter graph because video parameters changed to rgb24(pc, gbr), 1008x681
+frame=  362 fps=5.2 q=23.0 size=     512KiB time=00:01:12.00 bitrate=  58.3kbits/s speed=1.03x    
+frame=  370 fps=5.2 q=23.0 size=     512KiB time=00:01:13.60 bitrate=  57.0kbits/s speed=1.04x    
+frame=  376 fps=5.3 q=23.0 size=     512KiB time=00:01:14.80 bitrate=  56.1kbits/s speed=1.05x    
+frame=  383 fps=5.3 q=23.0 size=     768KiB time=00:01:16.20 bitrate=  82.6kbits/s speed=1.06x    
+frame=  390 fps=5.4 q=23.0 size=     768KiB time=00:01:17.60 bitrate=  81.1kbits/s speed=1.07x    
+frame=  397 fps=5.4 q=23.0 size=     768KiB time=00:01:19.00 bitrate=  79.6kbits/s speed=1.08x    
+frame=  403 fps=5.5 q=23.0 size=     768KiB time=00:01:20.20 bitrate=  78.5kbits/s speed=1.09x    
+frame=  403 fps=5.4 q=23.0 size=     768KiB time=00:01:20.20 bitrate=  78.5kbits/s speed=1.08x    
+frame=  410 fps=5.5 q=23.0 size=     768KiB time=00:01:21.60 bitrate=  77.1kbits/s speed=1.09x    
+frame=  417 fps=5.6 q=23.0 size=    1024KiB time=00:01:23.00 bitrate= 101.1kbits/s speed= 1.1x    
+frame=  429 fps=5.7 q=23.0 size=    1024KiB time=00:01:25.40 bitrate=  98.2kbits/s speed=1.13x    
+frame=  446 fps=5.8 q=23.0 size=    1024KiB time=00:01:28.80 bitrate=  94.5kbits/s speed=1.16x    
+[out#0/mp4 @ 000002008d3d7e00] video:1122KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.546750%
+frame=  457 fps=6.0 q=-1.0 Lsize=    1128KiB time=00:01:31.00 bitrate= 101.5kbits/s speed=1.19x    
+[libx264 @ 000002008d0f5580] frame I:9     Avg QP: 8.69  size: 46832
+[libx264 @ 000002008d0f5580] frame P:123   Avg QP:15.87  size:  4249
+[libx264 @ 000002008d0f5580] frame B:325   Avg QP:22.13  size:   626
+[libx264 @ 000002008d0f5580] consecutive B-frames:  3.7%  2.6%  5.3% 88.4%
+[libx264 @ 000002008d0f5580] mb I  I16..4: 51.7% 13.9% 34.4%
+[libx264 @ 000002008d0f5580] mb P  I16..4:  3.5%  2.8%  2.4%  P16..4:  2.1%  0.7%  0.4%  0.0%  0.0%    skip:88.1%
+[libx264 @ 000002008d0f5580] mb B  I16..4:  0.2%  0.3%  0.1%  B16..8:  2.6%  0.4%  0.1%  direct: 0.1%  skip:96.1%  L0:54.9% L1:41.9% BI: 3.2%
+[libx264 @ 000002008d0f5580] 8x8 transform intra:26.6% inter:44.9%
+[libx264 @ 000002008d0f5580] coded y,uvDC,uvAC intra: 34.6% 16.7% 13.3% inter: 0.8% 0.6% 0.2%
+[libx264 @ 000002008d0f5580] i16 v,h,dc,p: 65% 32%  2%  2%
+[libx264 @ 000002008d0f5580] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 17% 37%  1%  2%  2%  2%  2%  3%
+[libx264 @ 000002008d0f5580] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 39% 31% 13%  2%  3%  3%  3%  2%  3%
+[libx264 @ 000002008d0f5580] i8c dc,h,v,p: 80% 12%  6%  2%
+[libx264 @ 000002008d0f5580] Weighted P-Frames: Y:2.4% UV:1.6%
+[libx264 @ 000002008d0f5580] ref P L0: 71.4%  5.9% 15.0%  7.6%  0.1%
+[libx264 @ 000002008d0f5580] ref B L0: 64.0% 32.8%  3.1%
+[libx264 @ 000002008d0f5580] ref B L1: 97.0%  3.0%
+[libx264 @ 000002008d0f5580] kb/s:100.46
+[ 920s] Wrote D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\debug\electron_inspect\driver.mp4
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, image2, from 'D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\debug\electron_inspect\frames\frame_%06d.png':
+  Duration: 00:00:06.80, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1008x681, 5 fps, 5 tbr, 5 tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 00000295d417e140] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 00000295d417e140] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 00000295d417e140] 264 - core 164 r3192 c24e06c - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\videos\rigged_mesh_manipulation\driver.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1008x682, q=2-31, 5 fps, 10240 tbn
+      Metadata:
+        encoder         : Lavc61.19.100 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    6 fps=2.3 q=23.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=   22 fps=7.0 q=23.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=   29 fps=8.0 q=23.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+[out#0/mp4 @ 00000295d417bac0] video:55KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.232474%
+frame=   34 fps=9.1 q=-1.0 Lsize=      56KiB time=00:00:06.40 bitrate=  72.3kbits/s speed=1.71x    
+[libx264 @ 00000295d417e140] frame I:1     Avg QP:10.70  size: 41609
+[libx264 @ 00000295d417e140] frame P:9     Avg QP:15.15  size:  1238
+[libx264 @ 00000295d417e140] frame B:24    Avg QP:21.55  size:   130
+[libx264 @ 00000295d417e140] consecutive B-frames:  2.9%  5.9%  8.8% 82.4%
+[libx264 @ 00000295d417e140] mb I  I16..4: 48.7% 24.8% 26.5%
+[libx264 @ 00000295d417e140] mb P  I16..4:  1.2%  0.9%  0.5%  P16..4:  1.7%  0.2%  0.1%  0.0%  0.0%    skip:95.5%
+[libx264 @ 00000295d417e140] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  3.7%  0.1%  0.0%  direct: 0.0%  skip:96.1%  L0:59.8% L1:40.2% BI: 0.0%
+[libx264 @ 00000295d417e140] 8x8 transform intra:26.8% inter:64.5%
+[libx264 @ 00000295d417e140] coded y,uvDC,uvAC intra: 36.2% 10.1% 7.9% inter: 0.1% 0.1% 0.0%
+[libx264 @ 00000295d417e140] i16 v,h,dc,p: 51% 48%  1%  0%
+[libx264 @ 00000295d417e140] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 43% 14% 40%  0%  0%  0%  2%  0%  1%
+[libx264 @ 00000295d417e140] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 36% 14%  2%  2%  2%  5%  2%  4%
+[libx264 @ 00000295d417e140] i8c dc,h,v,p: 77% 14%  9%  0%
+[libx264 @ 00000295d417e140] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 00000295d417e140] ref P L0: 59.8%  2.9% 35.8%  1.5%
+[libx264 @ 00000295d417e140] ref B L0: 28.2% 61.7% 10.0%
+[libx264 @ 00000295d417e140] ref B L1: 96.4%  3.6%
+[libx264 @ 00000295d417e140] kb/s:65.75
+[ 924s]   videos/rigged_mesh_manipulation/driver.mp4 placed (frames 424..457)
+[ 924s]   screenshots/rigged_mesh_manipulation_executed.png placed
+[ 924s]   removed D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-0302\dev\windows-desktop\debug\electron_inspect\frames after successful encode
