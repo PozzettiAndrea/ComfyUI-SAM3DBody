@@ -2,7 +2,6 @@
 channels = ["conda-forge", "pozzettiandrea"]
 
 [dependencies]
-numpy = "<2.0"
 bpy = {version = "*", channel = "pozzettiandrea"}
 av = "*"
 
