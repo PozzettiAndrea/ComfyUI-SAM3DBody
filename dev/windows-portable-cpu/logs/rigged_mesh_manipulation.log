@@ -22,58 +22,58 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI] Generated prompt_id: e285c90c-78e1-4a88-8066-fb93c82abf9e
+  [ComfyUI] Generated prompt_id: e285c90c-78e1-4a88-8066-fb93c82abf9e
+  [ComfyUI] Generated prompt_id: e285c90c-78e1-4a88-8066-fb93c82abf9e
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] === Validation PASSED ===
   Queuing workflow for execution...
-  [ComfyUI] Generated prompt_id: a57936aa-3106-4e33-9433-56ebfd8c0ac4
-  [ComfyUI] Generated prompt_id: a57936aa-3106-4e33-9433-56ebfd8c0ac4
-  [ComfyUI] Generated prompt_id: a57936aa-3106-4e33-9433-56ebfd8c0ac4
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
   [ComfyUI] got prompt
   [ComfyUI] got prompt
   [ComfyUI] got prompt
   [ComfyUI]  Selecting mesh from input folder...
   [ComfyUI]  Selecting mesh from input folder...
   [ComfyUI]  Selecting mesh from input folder...
-  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  Selected: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
   [ComfyUI]  Preparing preview...
   [ComfyUI]  Preparing preview...
   [ComfyUI]  Preparing preview...
-  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2121\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+  [ComfyUI]  FBX path: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2137\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
   [ComfyUI]  Has skinning: True
   [ComfyUI]  Has skinning: True
   [ComfyUI]  Has skinning: True
   [ComfyUI]  Has skeleton: True
   [ComfyUI]  Has skeleton: True
   [ComfyUI]  Has skeleton: True
-  [ComfyUI] Prompt executed in 0.02 seconds
-  [ComfyUI] Prompt executed in 0.02 seconds
-  [ComfyUI] Prompt executed in 0.02 seconds
+  [ComfyUI] Prompt executed in 0.01 seconds
+  [ComfyUI] Prompt executed in 0.01 seconds
+  [ComfyUI] Prompt executed in 0.01 seconds
   Node executed (1 total), capturing...
   Frame 2 saved (frame_001.jpg, t=0.5s)
-  [capture-node] freeze=1152ms shot=214ms unfreeze=0ms saved=True
+  [capture-node] freeze=1255ms shot=227ms unfreeze=0ms saved=True
   Execution complete (t=0.5s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 done in 0.0s
   [3d-wait] Phase 2: iframes=1
   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
-  [3d-wait] Unfrozen in 0.004s, rendering for 5s...
+  [3d-wait] Unfrozen in 0.003s, rendering for 5s...
   [3d-wait] JS halted via CDP after 5.2s
-  [3d-wait] Re-frozen in 6.3s
-  [3d-wait] Total 3D wait: 6.3s
-  Captured 2 unique frames over 8.19s
+  [3d-wait] Re-frozen in 6.2s
+  [3d-wait] Total 3D wait: 6.2s
+  Captured 2 unique frames over 8.26s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41898/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778448, canvas=486x710, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41887/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778449, canvas=486x710, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
   [timing] final_screenshot: 0.2s
