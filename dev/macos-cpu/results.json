@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-10T01:24:34.130440+00:00",
+  "timestamp": "2026-05-10T03:12:10.471131+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
     "cpu": "arm"
   },
-  "commit_hash": "7b1ab71a1988693b13ce9c26283014fb55f47efd",
+  "commit_hash": "e0c959292042a34e1c599700f76e3e4591462b06",
   "success": true,
   "summary": {
     "total": 5,
@@ -30,19 +30,19 @@
     {
       "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 19.94,
+      "duration_seconds": 16.15,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.62,
-          "avg": 0.58
+          "peak": 0.57,
+          "avg": 0.54
         },
         "total_ram_gb": 7.0,
-        "samples": 19
+        "samples": 15
       }
     },
     {
