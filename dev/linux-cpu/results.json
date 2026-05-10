@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-10T01:20:48.265868+00:00",
+  "timestamp": "2026-05-10T03:03:44.285039+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-    "cpu": "AMD EPYC 9V74 80-Core Processor"
+    "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "7b1ab71a1988693b13ce9c26283014fb55f47efd",
+  "commit_hash": "e0c959292042a34e1c599700f76e3e4591462b06",
   "success": true,
   "summary": {
     "total": 5,
@@ -30,16 +30,16 @@
     {
       "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 18.02,
+      "duration_seconds": 17.18,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 0.93,
-          "avg": 0.93
+          "peak": 0.88,
+          "avg": 0.88
         },
         "total_ram_gb": 15.6,
         "samples": 18
