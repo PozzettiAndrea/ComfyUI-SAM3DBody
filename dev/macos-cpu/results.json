@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-10T19:59:15.440316+00:00",
+  "timestamp": "2026-05-10T20:14:09.175424+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
   "commit_hash": "69929832a14c20adda83a38aaef96f493ab0249a",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25638289667",
-  "success": true,
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25638605692",
+  "success": false,
   "summary": {
     "total": 5,
-    "passed": 1,
-    "failed": 0
+    "passed": 0,
+    "failed": 1
   },
   "workflows": [
     {
@@ -30,20 +30,20 @@
     },
     {
       "name": "rigged_mesh_manipulation",
-      "status": "pass",
-      "duration_seconds": 19.63,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 7.02,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [2,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.53,
-          "avg": 0.53
+          "peak": 0.56,
+          "avg": 0.55
         },
         "total_ram_gb": 7.0,
-        "samples": 19
+        "samples": 7
       }
     },
     {
