@@ -1,11 +1,23 @@
 {
+  "timestamp": "2026-05-10T03:16:45.981890+00:00",
+  "platform": "macos_desktop",
+  "hardware": {
+    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "cpu": "arm"
+  },
+  "commit_hash": "d941baa62d5b6f0b4f396c36952c6050f99106f1",
+  "success": true,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  },
   "workflows": [
     {
-      "name": "system",
+      "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 0,
-      "error": null,
-      "hardware": null
+      "duration_seconds": 1,
+      "error": null
     }
   ]
 }
