@@ -2,8 +2,8 @@
 channels = ["conda-forge", "pozzettiandrea"]
 
 [dependencies]
-numpy = "<2.0"
 bpy = {version = "*", channel = "pozzettiandrea"}
+av = "*"
 
 [target.linux-64.dependencies]
 xorg-libsm = "*"     # libSM.so.6 required by bpy
