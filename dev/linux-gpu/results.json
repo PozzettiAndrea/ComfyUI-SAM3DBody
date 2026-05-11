@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-11T06:54:32.714762+00:00",
+  "timestamp": "2026-05-11T10:54:36.005666+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-    "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
-    "gpu": "NVIDIA GeForce RTX 3090"
+    "cpu": "AMD Ryzen 5 3600 6-Core Processor",
+    "gpu": "NVIDIA GeForce RTX 5060"
   },
-  "commit_hash": "416f90b0c9491a0bec1e14d5155a860b0e44801e",
-  "run_url": null,
+  "commit_hash": "1a90db67a6f148841545d34845a0ea5a00c49871",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663884791",
   "success": true,
   "summary": {
     "total": 5,
@@ -18,46 +18,46 @@
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 130.3,
+      "duration_seconds": 56.62,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 5060"
       },
       "resources": {
         "ram": {
-          "peak": 4.85,
-          "avg": 3.55
+          "peak": 5.34,
+          "avg": 3.18
         },
-        "total_ram_gb": 31.2,
-        "samples": 127,
+        "total_ram_gb": 31.3,
+        "samples": 56,
         "vram": {
-          "peak": 4.14,
-          "avg": 3.0
+          "peak": 3.95,
+          "avg": 1.72
         }
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
       "status": "pass",
-      "duration_seconds": 205.2,
+      "duration_seconds": 179.0,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 5060"
       },
       "resources": {
         "ram": {
-          "peak": 12.1,
-          "avg": 7.43
+          "peak": 15.55,
+          "avg": 8.09
         },
-        "total_ram_gb": 31.2,
-        "samples": 200,
+        "total_ram_gb": 31.3,
+        "samples": 174,
         "vram": {
-          "peak": 9.33,
-          "avg": 2.32
+          "peak": 5.01,
+          "avg": 1.21
         }
       }
     },
@@ -71,46 +71,46 @@
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 55.19,
+      "duration_seconds": 41.03,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 5060"
       },
       "resources": {
         "ram": {
-          "peak": 12.1,
-          "avg": 10.2
+          "peak": 7.92,
+          "avg": 5.95
         },
-        "total_ram_gb": 31.2,
-        "samples": 54,
+        "total_ram_gb": 31.3,
+        "samples": 40,
         "vram": {
-          "peak": 4.23,
-          "avg": 2.28
+          "peak": 3.62,
+          "avg": 1.7
         }
       }
     },
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 88.69,
+      "duration_seconds": 80.33,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
+        "gpu": "NVIDIA GeForce RTX 5060"
       },
       "resources": {
         "ram": {
-          "peak": 11.91,
-          "avg": 11.1
+          "peak": 7.8,
+          "avg": 7.01
         },
-        "total_ram_gb": 31.2,
-        "samples": 86,
+        "total_ram_gb": 31.3,
+        "samples": 78,
         "vram": {
-          "peak": 4.23,
-          "avg": 1.55
+          "peak": 3.62,
+          "avg": 0.85
         }
       }
     }
