@@ -1,13 +1,13 @@
 [project]
 name = "ComfyUI-SAM3DBody"
 description = "SAM 3D Body integration for ComfyUI. Robust full-body human mesh recovery from single images"
-version = "0.2.12"
+version = "0.2.13"
 license = {file = "LICENSE"}
 
 [tool.comfy]
 PublisherId = "pznodes"
 DisplayName = "SAM3DBody"
-Icon = ""
+Icon = "https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/assets/icon.png"
 
 [project.urls]
 Repository = "https://github.com/PozzettiAndrea/ComfyUI-SAM3DBody"
