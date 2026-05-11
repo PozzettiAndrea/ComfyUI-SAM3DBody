@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-05-10T21:59:40.085840+00:00",
+  "timestamp": "2026-05-11T00:28:41.594570+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26200-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "2c1da4bc8733a080cf8711721d9dde71d4e9f6f0",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640619108",
-  "success": false,
+  "commit_hash": "416f90b0c9491a0bec1e14d5155a860b0e44801e",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25642379499",
+  "success": true,
   "summary": {
     "total": 5,
-    "passed": 3,
-    "failed": 1
+    "passed": 4,
+    "failed": 0
   },
   "workflows": [
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 164.22,
+      "duration_seconds": 165.96,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -25,29 +25,29 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.0,
-          "avg": 2.65
+          "peak": 4.02,
+          "avg": 2.66
         },
         "total_ram_gb": 31.9,
-        "samples": 162
+        "samples": 164
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
-      "status": "fail",
-      "duration_seconds": 20.05,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 16 nodes, missing class_type: [40,41], sample: {\"inputs\":{\"images\":[\"16\",1]},\"class_type\":\"PreviewImage\",\"_meta\":{\"title\":\"Preview Image\"}}",
+      "status": "pass",
+      "duration_seconds": 232.8,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 3.37,
-          "avg": 1.68
+          "peak": 7.28,
+          "avg": 4.62
         },
         "total_ram_gb": 31.9,
-        "samples": 20
+        "samples": 230
       }
     },
     {
@@ -60,7 +60,7 @@
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 48.72,
+      "duration_seconds": 59.96,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -68,17 +68,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.0,
-          "avg": 2.54
+          "peak": 7.05,
+          "avg": 4.7
         },
         "total_ram_gb": 31.9,
-        "samples": 49
+        "samples": 60
       }
     },
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 87.62,
+      "duration_seconds": 79.2,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -86,11 +86,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 6.14,
-          "avg": 5.09
+          "peak": 6.96,
+          "avg": 4.25
         },
         "total_ram_gb": 31.9,
-        "samples": 87
+        "samples": 79
       }
     }
   ]
