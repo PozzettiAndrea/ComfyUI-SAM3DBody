@@ -19,16 +19,16 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+  [ComfyUI]   Node 4: SAM3DBodySelectMesh
+  [ComfyUI]   Node 4: SAM3DBodySelectMesh
+  [ComfyUI]   Node 4: SAM3DBodySelectMesh
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
   Queuing workflow for execution...
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI] Generated prompt_id: 3dc980ed-fa7b-4c33-ba68-c8c7767bbd4c
-  [ComfyUI] Generated prompt_id: 3dc980ed-fa7b-4c33-ba68-c8c7767bbd4c
-  [ComfyUI] Generated prompt_id: 3dc980ed-fa7b-4c33-ba68-c8c7767bbd4c
+  [ComfyUI] Generated prompt_id: 558cc960-3e76-4b16-a79c-543e8c8978c3
+  [ComfyUI] Generated prompt_id: 558cc960-3e76-4b16-a79c-543e8c8978c3
+  [ComfyUI] Generated prompt_id: 558cc960-3e76-4b16-a79c-543e8c8978c3
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
@@ -47,32 +47,32 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] [comfy-env] SubprocessWorker: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [comfy-env] SubprocessWorker: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [comfy-env] SubprocessWorker: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 234 DLLs
-  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 234 DLLs
-  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 234 DLLs
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 236 DLLs
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 236 DLLs
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 236 DLLs
   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-0920\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-1011\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_o762la1d\\persistent_worker.py', 'tcp://127.0.0.1:52405']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_o762la1d\\persistent_worker.py', 'tcp://127.0.0.1:52405']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_o762la1d\\persistent_worker.py', 'tcp://127.0.0.1:52405']...
-  Frame 2 saved (frame_001.jpg, t=2.2s)
-  [capture-periodic] freeze=5ms shot=126ms unfreeze=4ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_ajze4ili\\persistent_worker.py', 'tcp://127.0.0.1:54895']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_ajze4ili\\persistent_worker.py', 'tcp://127.0.0.1:54895']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_ajze4ili\\persistent_worker.py', 'tcp://127.0.0.1:54895']...
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=12ms shot=110ms unfreeze=5ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
@@ -91,12 +91,14 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+  Frame 3 saved (frame_002.jpg, t=4.5s)
+  [capture-periodic] freeze=3ms shot=66ms unfreeze=3ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (3.24s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (3.24s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (3.24s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (4.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (4.43s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (4.43s): result: NodeOutput
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3...
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3...
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3...
@@ -130,28 +132,30 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.08s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.08s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.08s): result: NodeOutput
-  [ComfyUI] Prompt executed in 3.34 seconds
-  [ComfyUI] Prompt executed in 3.34 seconds
-  [ComfyUI] Prompt executed in 3.34 seconds
+  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.40s): result: NodeOutput
+  [ComfyUI] Prompt executed in 4.83 seconds
+  [ComfyUI] Prompt executed in 4.83 seconds
+  [ComfyUI] Prompt executed in 4.83 seconds
   Node executed (1 total), capturing...
-  Frame 3 saved (frame_002.jpg, t=3.8s)
-  [capture-node] freeze=5ms shot=129ms unfreeze=0ms saved=True
-  Execution complete (t=3.8s)
+  Frame 4 saved (frame_003.jpg, t=5.2s)
+  [capture-node] freeze=3ms shot=74ms unfreeze=0ms saved=True
+  Execution complete (t=5.2s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 done in 0.0s
   [3d-wait] Phase 2: iframes=1
-  [3d-wait] iframe viewer_ready=True (matched 1 console logs)
-  [3d-wait] Unfrozen in 0.015s, rendering for 5s...
-  [3d-wait] JS halted via CDP after 5.1s
-  [3d-wait] Re-frozen in 6.1s
-  [3d-wait] Total 3D wait: 6.1s
-  Captured 3 unique frames over 10.78s
+  [3d-wait] iframe viewer_ready=False (matched 0 console logs)
+  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...
+  [3d-wait] Got 'Loaded successfully' after 0.5s
+  [3d-wait] Unfrozen in 0.076s, rendering for 5s...
+  [3d-wait] JS halted via CDP after 5.2s
+  [3d-wait] Re-frozen in 6.2s
+  [3d-wait] Total 3D wait: 6.7s
+  Captured 4 unique frames over 12.0s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41888/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778491, canvas=486x710, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41881/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778495, canvas=486x710, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
   [timing] final_screenshot: 0.2s
-    Captured 4 video frames
+    Captured 5 video frames
