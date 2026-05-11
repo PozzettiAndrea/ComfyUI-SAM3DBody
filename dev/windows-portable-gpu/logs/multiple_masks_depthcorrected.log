@@ -1,24 +1,24 @@
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1271 / 24575 MB
 Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: failed
   [ComfyUI] [ComfyUI-SAM3DBody] Socket unhealthy, restarting worker...
   [ComfyUI] [comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
-  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 235 DLLs
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 237 DLLs
   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_jmmp98ue\\persistent_worker.py', 'tcp://127.0.0.1:49989']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_t4ouep8f\\persistent_worker.py', 'tcp://127.0.0.1:49414']...
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] call_id=4 sending model_to_device
   [ComfyUI] Model 'SAM3DBody_1' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1042 / 12287 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1271 / 24575 MB
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   [ComfyUI] === /validate endpoint called ===
-  Queuing workflow for execution...
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Prompt has 16 nodes
+  Queuing workflow for execution...
   [ComfyUI]   Node 4: PreviewImage
   [ComfyUI]     Inputs: {"images": ["16", 1]}
   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
@@ -44,19 +44,19 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI]   Node 44: PreviewImage
   [ComfyUI]     Inputs: {"images": ["36", 0]}
   [ComfyUI]   Node 46: PreviewAny
-  [ComfyUI]     Inputs: {"preview_markdown": "", "preview_text": "", "previewMode": null, "source": ["40", 9]}
+  [ComfyUI]     Inputs: {"source": ["40", 9]}
   [ComfyUI]   Node 58: LoadImageDataSetFromFolder
   [ComfyUI]     Inputs: {"folder": "3d"}
   [ComfyUI]   Node 59: PreviewAny
-  [ComfyUI]     Inputs: {"preview_markdown": "", "preview_text": "", "previewMode": null, "source": ["40", 8]}
+  [ComfyUI]     Inputs: {"source": ["40", 8]}
   [ComfyUI]   Node 60: CreateLoad3DCamera
   [ComfyUI]     Inputs: {"pos_x": 3, "pos_y": 5.1, "pos_z": 8, "target_x": -0.5, "target_y": 2.1, "target_z": 0.4, "zoom": 3, "camera_type": "perspective"}
-  [ComfyUI] Generated prompt_id: ecbc8d48-292e-467e-8796-19fef382e43f
+  [ComfyUI] Generated prompt_id: d353d552-3aa9-4a66-b12e-777018c5900d
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
   [ComfyUI] === Validation PASSED ===
   [ComfyUI] got prompt
-  [ComfyUI] LoadMultibandImage: Loaded C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\fellowship.npz
+  [ComfyUI] LoadMultibandImage: Loaded C:\workspaces\SAM3DBody-1349\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\fellowship.npz
   [ComfyUI]   Shape: (1, 14, 497, 1200)
   [ComfyUI]   Channels: 14
   [ComfyUI]   Names: img_01_r,img_01_g,img_01_b,mask_01,mask_02,mask_03,mask_04,mask_05,mask_06,mask_07,mask_08,mask_09,m...
@@ -64,202 +64,218 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   Node executed (1 total), capturing...
   [ComfyUI] [comfy-env] Running DownloadAndLoadDepthAnythingV3Model: model: 'da3_giant.safetensors', precision: 'auto', attention: 'auto'
   [ComfyUI] [comfy-env] SubprocessWorker: C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
-  [ComfyUI] [VRAM] Before DownloadAndLoadDepthAnythingV3Model: 1042 / 12287 MB
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
+  [ComfyUI] [VRAM] Before DownloadAndLoadDepthAnythingV3Model: 1271 / 24575 MB
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadDepthAnythingV3Model.EXECUTE_NORMALIZED
-  [ComfyUI] [ComfyUI-DepthAnythingV3] python: C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3', 'C:\\ce\\.pixi\\envs\\depthanythingv3-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3']
-  [ComfyUI] [comfy-env] depthanythingv3-nodes: Library/bin has 235 DLLs
+  [ComfyUI] [comfy-env] depthanythingv3-nodes: Library/bin has 237 DLLs
+  [ComfyUI] [ComfyUI-DepthAnythingV3] python: C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
+  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3', 'C:\\ce\\.pixi\\envs\\depthanythingv3-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'depthanythingv3-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_kxie54m0\\persistent_worker.py', 'tcp://127.0.0.1:62201']...
-  Frame 2 saved (frame_001.jpg, t=0.9s)
-  [capture-node] freeze=4ms shot=138ms unfreeze=5ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'depthanythingv3-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_vvbtn6l0\\persistent_worker.py', 'tcp://127.0.0.1:51913']...
+  Frame 2 saved (frame_001.jpg, t=0.6s)
+  [capture-node] freeze=4ms shot=144ms unfreeze=5ms saved=True
   Node executed (2 total), capturing...
-  [capture-node] freeze=5ms shot=139ms unfreeze=5ms saved=False
-  Frame 3 saved (frame_002.jpg, t=5.7s)
-  [capture-periodic] freeze=4ms shot=127ms unfreeze=5ms saved=True
-  [capture-loop] iter=50 t=6.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.9/31.9GB (34%) swap=0.2/5.0GB (4%) cpu=5% browser_rss=1.23GB
-  [capture-loop] iter=100 t=12.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=11.7/31.9GB (37%) swap=0.2/5.0GB (4%) cpu=7% browser_rss=1.02GB
-  [capture-loop] iter=150 t=18.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=11.0/31.9GB (35%) swap=0.2/5.0GB (4%) cpu=6% browser_rss=1.01GB
+  Frame 3 saved (frame_002.jpg, t=1.1s)
+  [capture-node] freeze=4ms shot=148ms unfreeze=4ms saved=True
+  Frame 4 saved (frame_003.jpg, t=5.6s)
+  [capture-periodic] freeze=4ms shot=131ms unfreeze=5ms saved=True
+  [capture-loop] iter=50 t=6.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.8/31.9GB (34%) swap=0.4/12.3GB (3%) cpu=5% browser_rss=1.31GB
+  [capture-loop] iter=100 t=12.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=11.4/31.9GB (36%) swap=0.4/12.3GB (3%) cpu=4% browser_rss=0.98GB
+  [capture-loop] iter=150 t=18.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.8/31.9GB (34%) swap=0.4/12.3GB (3%) cpu=4% browser_rss=0.98GB
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+  [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] 
-  [capture-loop] iter=200 t=24.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=10.1/31.9GB (32%) swap=0.2/5.0GB (4%) cpu=7% browser_rss=1.01GB
   [ComfyUI] model.safetensors:   0%|          | 0.00/5.42G [00:00<?, ?B/s]
-  [ComfyUI] model.safetensors:   0%|          | 140k/5.42G [00:01<10:54:06, 138kB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:   0%|          | 140k/5.42G [00:01<13:36:52, 111kB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [capture-loop] iter=200 t=24.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=9.8/31.9GB (31%) swap=0.4/12.3GB (3%) cpu=4% browser_rss=0.98GB
+  Frame 5 saved (frame_004.jpg, t=25.6s)
+  [capture-periodic] freeze=4ms shot=167ms unfreeze=6ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   1%|          | 66.9M/5.42G [00:04<05:16, 16.9MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:   1%|          | 66.9M/5.42G [00:04<05:10, 17.2MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 6 saved (frame_005.jpg, t=27.9s)
+  [capture-periodic] freeze=4ms shot=162ms unfreeze=7ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   2%|▏         | 134M/5.42G [00:04<02:20, 37.7MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:   2%|▏         | 134M/5.42G [00:05<02:41, 32.8MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   5%|▍         | 256M/5.42G [00:04<01:00, 85.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 4 saved (frame_003.jpg, t=30.3s)
-  [capture-periodic] freeze=5ms shot=167ms unfreeze=5ms saved=True
-  [capture-loop] iter=250 t=31.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.6/31.9GB (33%) swap=0.2/5.0GB (4%) cpu=21% browser_rss=1.02GB
+  [ComfyUI] model.safetensors:   5%|▍         | 268M/5.42G [00:05<01:04, 79.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   6%|▌         | 335M/5.42G [00:12<03:25, 24.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:   7%|▋         | 402M/5.42G [00:12<02:27, 34.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=300 t=37.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.3/31.9GB (35%) swap=0.2/5.0GB (4%) cpu=24% browser_rss=1.02GB
-  Frame 5 saved (frame_004.jpg, t=37.2s)
-  [capture-periodic] freeze=5ms shot=175ms unfreeze=6ms saved=True
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  11%|█         | 604M/5.42G [00:17<02:12, 36.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  15%|█▍        | 805M/5.42G [00:17<01:12, 63.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  17%|█▋        | 939M/5.42G [00:18<00:52, 86.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 6 saved (frame_005.jpg, t=41.8s)
-  [capture-periodic] freeze=5ms shot=188ms unfreeze=10ms saved=True
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  20%|█▉        | 1.07G/5.42G [00:19<00:45, 96.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=350 t=43.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.6/31.9GB (36%) swap=0.2/5.0GB (4%) cpu=25% browser_rss=1.02GB
-  Frame 7 saved (frame_006.jpg, t=44.1s)
-  [capture-periodic] freeze=6ms shot=175ms unfreeze=5ms saved=True
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  22%|██▏       | 1.21G/5.42G [00:21<00:51, 81.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  25%|██▍       | 1.34G/5.42G [00:21<00:37, 109MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  27%|██▋       | 1.48G/5.42G [00:21<00:27, 143MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  30%|██▉       | 1.61G/5.42G [00:22<00:20, 184MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 8 saved (frame_007.jpg, t=46.4s)
-  [capture-periodic] freeze=5ms shot=174ms unfreeze=6ms saved=True
-  [capture-loop] iter=400 t=50.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.9/31.9GB (37%) swap=0.2/5.0GB (4%) cpu=25% browser_rss=1.02GB
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  32%|███▏      | 1.74G/5.42G [00:29<01:13, 49.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 9 saved (frame_008.jpg, t=53.2s)
-  [capture-periodic] freeze=13ms shot=180ms unfreeze=8ms saved=True
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  33%|███▎      | 1.81G/5.42G [00:31<01:16, 47.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  36%|███▌      | 1.94G/5.42G [00:31<00:50, 68.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  38%|███▊      | 2.08G/5.42G [00:31<00:35, 95.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] 
-  [ComfyUI] model.safetensors:  42%|████▏     | 2.28G/5.42G [00:31<00:21, 149MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 10 saved (frame_009.jpg, t=55.5s)
+  [ComfyUI] model.safetensors:   6%|▌         | 335M/5.42G [00:07<01:25, 59.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 7 saved (frame_006.jpg, t=30.1s)
   [capture-periodic] freeze=4ms shot=180ms unfreeze=6ms saved=True
+  [capture-loop] iter=250 t=30.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.3/31.9GB (32%) swap=0.4/12.3GB (3%) cpu=12% browser_rss=0.98GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  45%|████▍     | 2.41G/5.42G [00:32<00:16, 187MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:   7%|▋         | 402M/5.42G [00:09<01:49, 45.7MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  47%|████▋     | 2.55G/5.42G [00:32<00:12, 230MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=450 t=56.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.9/31.9GB (37%) swap=0.2/5.0GB (4%) cpu=25% browser_rss=1.02GB
+  [ComfyUI] model.safetensors:   9%|▊         | 469M/5.42G [00:09<01:20, 61.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 8 saved (frame_007.jpg, t=32.5s)
+  [capture-periodic] freeze=5ms shot=171ms unfreeze=6ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  48%|████▊     | 2.62G/5.42G [00:33<00:19, 148MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  10%|▉         | 537M/5.42G [00:11<01:34, 51.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  49%|████▉     | 2.68G/5.42G [00:33<00:16, 162MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  11%|█         | 604M/5.42G [00:11<01:10, 68.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 9 saved (frame_008.jpg, t=34.8s)
+  [capture-periodic] freeze=7ms shot=161ms unfreeze=9ms saved=True
+  [capture-loop] iter=300 t=37.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.8/31.9GB (34%) swap=0.4/12.3GB (3%) cpu=17% browser_rss=0.98GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  51%|█████     | 2.75G/5.42G [00:34<00:15, 177MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 11 saved (frame_010.jpg, t=57.8s)
-  [capture-periodic] freeze=10ms shot=190ms unfreeze=12ms saved=True
+  [ComfyUI] model.safetensors:  12%|█▏        | 671M/5.42G [00:14<01:57, 40.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  53%|█████▎    | 2.88G/5.42G [00:35<00:16, 158MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  15%|█▍        | 805M/5.42G [00:16<01:21, 56.7MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  56%|█████▌    | 3.02G/5.42G [00:35<00:14, 165MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  17%|█▋        | 939M/5.42G [00:16<00:50, 88.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 10 saved (frame_009.jpg, t=39.2s)
+  [capture-periodic] freeze=7ms shot=177ms unfreeze=8ms saved=True
+  Frame 11 saved (frame_010.jpg, t=41.5s)
+  [capture-periodic] freeze=4ms shot=178ms unfreeze=13ms saved=True
+  [capture-loop] iter=350 t=43.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.3/31.9GB (35%) swap=0.4/12.3GB (3%) cpu=19% browser_rss=0.99GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  59%|█████▉    | 3.22G/5.42G [00:36<00:08, 251MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  20%|█▉        | 1.07G/5.42G [00:21<01:33, 46.7MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 12 saved (frame_011.jpg, t=46.1s)
+  [capture-periodic] freeze=4ms shot=168ms unfreeze=7ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  62%|██████▏   | 3.35G/5.42G [00:36<00:06, 297MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 12 saved (frame_011.jpg, t=60.1s)
-  [capture-periodic] freeze=4ms shot=202ms unfreeze=5ms saved=True
+  [ComfyUI] model.safetensors:  22%|██▏       | 1.21G/5.42G [00:26<01:53, 37.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  63%|██████▎   | 3.42G/5.42G [00:36<00:06, 291MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  26%|██▌       | 1.41G/5.42G [00:26<01:04, 62.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 13 saved (frame_012.jpg, t=49.7s)
+  [capture-periodic] freeze=7ms shot=377ms unfreeze=5ms saved=True
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  28%|██▊       | 1.54G/5.42G [00:27<00:46, 83.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  31%|███       | 1.68G/5.42G [00:27<00:33, 111MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  33%|███▎      | 1.81G/5.42G [00:27<00:25, 144MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  35%|███▍      | 1.88G/5.42G [00:27<00:22, 157MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  36%|███▌      | 1.94G/5.42G [00:32<01:04, 54.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  38%|███▊      | 2.08G/5.42G [00:32<00:41, 80.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 14 saved (frame_013.jpg, t=55.4s)
+  [capture-periodic] freeze=6ms shot=374ms unfreeze=9ms saved=True
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  41%|████      | 2.21G/5.42G [00:32<00:28, 113MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  45%|████▍     | 2.41G/5.42G [00:33<00:16, 178MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  47%|████▋     | 2.55G/5.42G [00:33<00:13, 220MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  49%|████▉     | 2.68G/5.42G [00:33<00:10, 265MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  52%|█████▏    | 2.82G/5.42G [00:33<00:08, 312MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  53%|█████▎    | 2.88G/5.42G [00:34<00:13, 191MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  56%|█████▌    | 3.02G/5.42G [00:35<00:09, 243MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 15 saved (frame_014.jpg, t=57.9s)
+  [capture-periodic] freeze=7ms shot=386ms unfreeze=5ms saved=True
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  58%|█████▊    | 3.15G/5.42G [00:35<00:07, 294MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  61%|██████    | 3.29G/5.42G [00:35<00:06, 343MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  62%|██████▏   | 3.35G/5.42G [00:35<00:06, 326MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  66%|██████▌   | 3.55G/5.42G [00:39<00:19, 95.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  67%|██████▋   | 3.62G/5.42G [00:40<00:16, 108MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 16 saved (frame_015.jpg, t=62.9s)
+  [capture-periodic] freeze=6ms shot=396ms unfreeze=11ms saved=True
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3]
   [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] Thread 0x000045c0 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] Thread 0x000047c4 (most recent call first):
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 363 in wait
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 660 in wait
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1015 in _bootstrap
   [ComfyUI] 
-  [ComfyUI] Thread 0x000017fc (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_kxie54m0\persistent_worker.py", line 106 in _vram_poller
+  [ComfyUI] Thread 0x00002cc8 (most recent call first):
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_vvbtn6l0\persistent_worker.py", line 106 in _vram_poller
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 995 in run
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1015 in _bootstrap
   [ComfyUI] 
-  [ComfyUI] Current thread 0x00003368 (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_kxie54m0\persistent_worker.py", line 52 in _watchdog
+  [ComfyUI] Current thread 0x00004434 (most recent call first):
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_vvbtn6l0\persistent_worker.py", line 52 in _watchdog
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 995 in run
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\threading.py", line 1015 in _bootstrap
   [ComfyUI] 
-  [ComfyUI] Thread 0x00001320 (most recent call first):
+  [ComfyUI] Thread 0x00004648 (most recent call first):
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\huggingface_hub\file_download.py", line 558 in xet_get
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\huggingface_hub\file_download.py", line 1842 in _download_to_tmp_and_move
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\huggingface_hub\file_download.py", line 1427 in _hf_hub_download_to_local_dir
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\huggingface_hub\file_download.py", line 976 in hf_hub_download
   [ComfyUI]   File "C:\ce\.pixi\envs\depthanythingv3-nodes\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88 in _inner_fn
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes\load_model.py", line 633 in execute
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_kxie54m0\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_kxie54m0\persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "C:\workspaces\SAM3DBody-1349\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes\load_model.py", line 633 in execute
+  [ComfyUI]   File "C:\workspaces\SAM3DBody-1349\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1833 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_vvbtn6l0\persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_vvbtn6l0\persistent_worker.py", line 1807 in <module>
   [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] === END ===
   [ComfyUI] 
-  Frame 13 saved (frame_012.jpg, t=62.4s)
-  [capture-periodic] freeze=5ms shot=166ms unfreeze=5ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  67%|██████▋   | 3.62G/5.42G [00:39<00:13, 138MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  68%|██████▊   | 3.69G/5.42G [00:42<00:24, 70.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  69%|██████▉   | 3.76G/5.42G [00:39<00:09, 176MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  69%|██████▉   | 3.76G/5.42G [00:42<00:21, 79.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 17 saved (frame_016.jpg, t=65.4s)
+  [capture-periodic] freeze=6ms shot=461ms unfreeze=5ms saved=True
   [ComfyUI] 
-  [capture-loop] iter=500 t=63.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.7/31.9GB (37%) swap=0.2/5.0GB (4%) cpu=25% browser_rss=1.03GB
-  [ComfyUI] model.safetensors:  73%|███████▎  | 3.96G/5.42G [00:39<00:05, 250MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  72%|███████▏  | 3.89G/5.42G [00:43<00:12, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [capture-loop] iter=400 t=66.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=7 ram=11.6/31.9GB (36%) swap=0.4/12.3GB (3%) cpu=16% browser_rss=0.99GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  75%|███████▌  | 4.09G/5.42G [00:39<00:04, 292MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 14 saved (frame_013.jpg, t=64.7s)
-  [capture-periodic] freeze=4ms shot=170ms unfreeze=11ms saved=True
+  [ComfyUI] model.safetensors:  73%|███████▎  | 3.96G/5.42G [00:45<00:19, 76.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 18 saved (frame_017.jpg, t=68.0s)
+  [capture-periodic] freeze=4ms shot=170ms unfreeze=9ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  78%|███████▊  | 4.23G/5.42G [00:43<00:11, 103MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  75%|███████▌  | 4.09G/5.42G [00:45<00:11, 114MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  79%|███████▉  | 4.29G/5.42G [00:44<00:11, 101MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  78%|███████▊  | 4.23G/5.42G [00:45<00:07, 157MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  83%|████████▎ | 4.49G/5.42G [00:44<00:05, 158MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  82%|████████▏ | 4.43G/5.42G [00:46<00:04, 213MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  87%|████████▋ | 4.69G/5.42G [00:44<00:03, 224MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  84%|████████▍ | 4.56G/5.42G [00:46<00:03, 227MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  89%|████████▉ | 4.83G/5.42G [00:44<00:02, 264MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  88%|████████▊ | 4.76G/5.42G [00:46<00:02, 313MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  93%|█████████▎| 5.03G/5.42G [00:45<00:01, 349MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  90%|█████████ | 4.90G/5.42G [00:47<00:01, 349MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  95%|█████████▌| 5.16G/5.42G [00:45<00:00, 382MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 15 saved (frame_014.jpg, t=69.1s)
-  [capture-periodic] freeze=4ms shot=155ms unfreeze=10ms saved=True
+  [ComfyUI] model.safetensors:  94%|█████████▍| 5.10G/5.42G [00:47<00:00, 440MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 19 saved (frame_018.jpg, t=70.3s)
+  [capture-periodic] freeze=4ms shot=142ms unfreeze=5ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  99%|█████████▉| 5.37G/5.42G [00:45<00:00, 469MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  96%|█████████▋| 5.23G/5.42G [00:47<00:00, 462MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:45<00:00, 119MB/s]
+  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:47<00:00, 554MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:47<00:00, 114MB/s]
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1271 / 24575 MB
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: failed
   [ComfyUI] [ComfyUI-SAM3DBody] Socket unhealthy, restarting worker...
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 237 DLLs
   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 235 DLLs
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_jmmp98ue\\persistent_worker.py', 'tcp://127.0.0.1:62243']...
-  [capture-loop] iter=550 t=69.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.6/31.9GB (33%) swap=0.2/5.0GB (4%) cpu=19% browser_rss=1.03GB
-  Frame 16 saved (frame_015.jpg, t=71.4s)
-  [capture-periodic] freeze=4ms shot=137ms unfreeze=6ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_t4ouep8f\\persistent_worker.py', 'tcp://127.0.0.1:51955']...
+  Frame 20 saved (frame_019.jpg, t=72.6s)
+  [capture-periodic] freeze=4ms shot=126ms unfreeze=4ms saved=True
+  [capture-loop] iter=450 t=72.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.6/31.9GB (33%) swap=0.4/12.3GB (3%) cpu=10% browser_rss=0.99GB
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] call_id=5 sending model_to_device
   [ComfyUI] Model 'SAM3DBody_1' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1042 / 12287 MB
-  [ComfyUI] [comfy-env] DownloadAndLoadDepthAnythingV3Model done (72.02s): result: NodeOutput
-  [ComfyUI] [VRAM] After DownloadAndLoadDepthAnythingV3Model: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1271 / 24575 MB
+  [ComfyUI] [comfy-env] DownloadAndLoadDepthAnythingV3Model done (73.39s): result: NodeOutput
+  [ComfyUI] [VRAM] After DownloadAndLoadDepthAnythingV3Model: 1271 / 24575 MB
   [ComfyUI] [comfy-env] Running DepthAnything_V3: normalization_mode: 'Raw', resize_method: 'resize', invert_depth: False, keep_model_size: False, da3_model: dict, images: torch.float32 [1,497,1200,3] cpu
-  [ComfyUI] [VRAM] Before DepthAnything_V3: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before DepthAnything_V3: 1271 / 24575 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.DepthAnything_V3.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [ComfyUI-DepthAnythingV3] Health check: ping (timeout=5.0s)...
@@ -274,27 +290,27 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 497, 1200, 3]
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 497, 1200, 3])
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] WARNING: No comfy kitchen, using old apply_rope functions.
-  Frame 17 saved (frame_016.jpg, t=73.6s)
-  [capture-periodic] freeze=4ms shot=139ms unfreeze=6ms saved=True
-  [capture-loop] iter=600 t=75.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.9/31.9GB (34%) swap=0.2/5.0GB (4%) cpu=9% browser_rss=1.03GB
-  [capture-loop] iter=650 t=81.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=7 ram=17.0/31.9GB (53%) swap=0.2/5.0GB (4%) cpu=14% browser_rss=1.03GB
+  Frame 21 saved (frame_020.jpg, t=74.8s)
+  [capture-periodic] freeze=4ms shot=130ms unfreeze=6ms saved=True
+  [capture-loop] iter=500 t=78.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.6/31.9GB (33%) swap=0.4/12.3GB (3%) cpu=6% browser_rss=0.99GB
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=2
-  [ComfyUI] [comfy-env] VRAM request: 2.71GB, free before eviction: 11.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 11.79GB
+  [ComfyUI] [comfy-env] VRAM request: 2.71GB, free before eviction: 24.44GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 24.44GB
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] +336MB (now 336MB) reserved=352MB peak=336MB
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] +2189MB (now 2525MB) reserved=2528MB peak=2525MB
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] +273MB (now 2798MB) reserved=2912MB peak=2798MB
+  [capture-loop] iter=550 t=84.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.8/31.9GB (37%) swap=0.3/12.3GB (3%) cpu=15% browser_rss=0.99GB
+  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] +2056MB (now 2392MB) reserved=2400MB peak=2392MB
+  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] +511MB (now 2903MB) reserved=3040MB peak=2903MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=2
-  Frame 18 saved (frame_017.jpg, t=87.0s)
-  [capture-periodic] freeze=12ms shot=167ms unfreeze=5ms saved=True
-  [capture-loop] iter=700 t=88.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.8/31.9GB (37%) swap=0.6/5.0GB (12%) cpu=15% browser_rss=1.03GB
+  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [VRAM] -203MB (now 2701MB) reserved=4448MB peak=3360MB
+  Frame 22 saved (frame_021.jpg, t=88.1s)
+  [capture-periodic] freeze=4ms shot=149ms unfreeze=4ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] Created 1 model patchers: ['DepthAnything3Net_1']
-  [ComfyUI] [comfy-env] DepthAnything_V3 done (17.63s): result: NodeOutput
-  [ComfyUI] [VRAM] After DepthAnything_V3: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] DepthAnything_V3 done (16.77s): result: NodeOutput
+  [ComfyUI] [VRAM] After DepthAnything_V3: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (2585 MB)
   [ComfyUI] [comfy-env] Running LoadSAM3DBodyModel: precision: 'auto'
-  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (2585 MB)
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.LoadSAM3DBodyModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -305,18 +321,17 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=6 sending call_method
+  [capture-loop] iter=600 t=91.0s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=16 ram=11.4/31.9GB (36%) swap=0.3/12.3GB (3%) cpu=11% browser_rss=1.00GB
   Node executed (4 total), capturing...
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (0.40s): result: NodeOutput
-  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (0.39s): result: NodeOutput
+  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (2585 MB)
   [ComfyUI] [comfy-env] Running SAM3DBodyProcessMultiple: inference_type: 'full', adjust_position_from_depth: True, model: dict, image: torch.float32 [1,497,1200,3] cpu, masks: torch.float32 [11,497,1200] cpu, depth_map: torch.float32 [1,496,1200,3] cpu, intrinsics: torch.float32 [1,4,4] cpu, depth_confidence: torch.float32 [1,496,1200,3] cpu
-  [ComfyUI] [VRAM] Before SAM3DBodyProcessMultiple: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyProcessMultiple: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (2585 MB)
   [ComfyUI] [SubprocessWorker] call_method: nodes.process_multiple.SAM3DBodyProcessMultiple.EXECUTE_NORMALIZED
-  Frame 19 saved (frame_018.jpg, t=90.7s)
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [capture-node] freeze=4ms shot=142ms unfreeze=4ms saved=True
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -337,48 +352,47 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([11, 497, 1200])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 496, 1200, 3]
+  Frame 23 saved (frame_022.jpg, t=91.1s)
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 496, 1200, 3])
+  [capture-node] freeze=4ms shot=144ms unfreeze=8ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 4, 4]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 4, 4])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 496, 1200, 3]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 496, 1200, 3])
-  [ComfyUI] C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\sam_3d_body\heads.py:40: UserWarning: Momentum is not enabled
+  [ComfyUI] C:\workspaces\SAM3DBody-1349\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\sam_3d_body\heads.py:40: UserWarning: Momentum is not enabled
   [ComfyUI]   warnings.warn("Momentum is not enabled")
-  Frame 20 saved (frame_019.jpg, t=93.0s)
-  [capture-periodic] freeze=4ms shot=139ms unfreeze=5ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] WARNING: No comfy kitchen, using old apply_rope functions.
-  [capture-loop] iter=750 t=94.4s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=5 ram=12.6/31.9GB (39%) swap=0.6/5.0GB (12%) cpu=11% browser_rss=1.03GB
+  Frame 24 saved (frame_023.jpg, t=93.4s)
+  [capture-periodic] freeze=4ms shot=141ms unfreeze=5ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=7
-  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 11.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 11.79GB
+  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 24.44GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 24.44GB
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +633MB (now 633MB) reserved=640MB peak=633MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +1721MB (now 2354MB) reserved=2368MB peak=2354MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +1496MB (now 2129MB) reserved=2144MB peak=2129MB
+  [capture-loop] iter=650 t=97.4s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=5 ram=13.5/31.9GB (42%) swap=0.3/12.3GB (3%) cpu=14% browser_rss=0.99GB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +1013MB (now 3143MB) reserved=3168MB peak=3143MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +788MB (now 3143MB) reserved=3168MB peak=3143MB
-  Frame 21 saved (frame_020.jpg, t=99.7s)
-  [capture-periodic] freeze=4ms shot=156ms unfreeze=7ms saved=True
-  [capture-loop] iter=800 t=100.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=12.3/31.9GB (38%) swap=0.6/5.0GB (12%) cpu=18% browser_rss=1.03GB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +238MB (now 3381MB) reserved=3968MB peak=3760MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +283MB (now 3664MB) reserved=4160MB peak=3767MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -250MB (now 3415MB) reserved=4160MB peak=3830MB
-  [capture-loop] iter=850 t=106.8s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=12.2/31.9GB (38%) swap=0.6/5.0GB (12%) cpu=12% browser_rss=1.03GB
+  Frame 25 saved (frame_024.jpg, t=100.1s)
+  [capture-periodic] freeze=4ms shot=142ms unfreeze=5ms saved=True
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +209MB (now 3352MB) reserved=3968MB peak=3621MB
+  [capture-loop] iter=700 t=103.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=5 ram=12.3/31.9GB (39%) swap=0.3/12.3GB (3%) cpu=10% browser_rss=0.99GB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -264MB (now 3152MB) reserved=4160MB peak=3830MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -201MB (now 3152MB) reserved=4160MB peak=3767MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=7
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] Created 1 model patchers: ['SAM3DBody_1']
-  [ComfyUI] [comfy-env] SAM3DBodyProcessMultiple done (16.40s): result: NodeOutput
-  [ComfyUI] [VRAM] After SAM3DBodyProcessMultiple: 5115 / 12287 MB
+  [ComfyUI] [comfy-env] SAM3DBodyProcessMultiple done (14.15s): result: NodeOutput
+  [ComfyUI] [VRAM] After SAM3DBodyProcessMultiple: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB), SubprocessModel (2585 MB)
   [ComfyUI] [comfy-env] Running SAM3DBodyExportMultipleFBX: output_filename: 'sam3d_multi_rigged.fbx', combine: True, multi_mesh_data: dict
-  [ComfyUI] [VRAM] Before SAM3DBodyExportMultipleFBX: 5115 / 12287 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyExportMultipleFBX: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB), SubprocessModel (2585 MB)
   [ComfyUI] [SubprocessWorker] call_method: nodes.export.SAM3DBodyExportMultipleFBX.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -612,59 +626,6 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[266]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([266])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  Frame 22 saved (frame_021.jpg, t=108.5s)
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [capture-periodic] freeze=5ms shot=146ms unfreeze=6ms saved=True
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[497, 1200, 1]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([497, 1200, 1])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 2]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 2])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[266]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([266])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
@@ -844,6 +805,59 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 2]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 2])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[266]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([266])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[497, 1200, 1]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([497, 1200, 1])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
+  Frame 26 saved (frame_025.jpg, t=106.7s)
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
+  [capture-periodic] freeze=4ms shot=143ms unfreeze=5ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
@@ -955,26 +969,26 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'manager_path', 'storage_key', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[36874, 3]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([36874, 3])
-  [capture-loop] iter=900 t=112.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=12.3/31.9GB (39%) swap=0.6/5.0GB (12%) cpu=11% browser_rss=1.03GB
+  [capture-loop] iter=750 t=109.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=12.4/31.9GB (39%) swap=0.3/12.3GB (3%) cpu=12% browser_rss=0.99GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
+  Frame 27 saved (frame_026.jpg, t=111.3s)
+  [capture-periodic] freeze=4ms shot=143ms unfreeze=5ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
-  Frame 23 saved (frame_022.jpg, t=115.2s)
-  [capture-periodic] freeze=8ms shot=143ms unfreeze=8ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=8
-  Frame 24 saved (frame_023.jpg, t=117.4s)
-  [capture-periodic] freeze=4ms shot=146ms unfreeze=5ms saved=True
-  [capture-loop] iter=950 t=118.8s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=13.0/31.9GB (41%) swap=0.6/5.0GB (12%) cpu=7% browser_rss=1.03GB
-  [capture-loop] iter=1000 t=124.8s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=13.0/31.9GB (41%) swap=0.6/5.0GB (12%) cpu=10% browser_rss=1.03GB
+  Frame 28 saved (frame_027.jpg, t=113.5s)
+  [capture-periodic] freeze=4ms shot=148ms unfreeze=5ms saved=True
+  [capture-loop] iter=800 t=115.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=13.0/31.9GB (41%) swap=0.3/12.3GB (3%) cpu=5% browser_rss=1.00GB
+  [capture-loop] iter=850 t=121.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=13.1/31.9GB (41%) swap=0.3/12.3GB (3%) cpu=8% browser_rss=1.00GB
   [ComfyUI] [worker:ComfyUI-SAM3DBody]
-  [ComfyUI] FBX export starting... 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\output\\sam3d_multi_rigged.fbx'
+  [ComfyUI] FBX export starting... 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\output\\sam3d_multi_rigged.fbx'
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_0'], 'POSE')
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_1'], 'POSE')
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_10'], 'POSE')
@@ -986,88 +1000,52 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_7'], 'POSE')
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_8'], 'POSE')
   [ComfyUI] [worker:ComfyUI-SAM3DBody] (bpy.data.armatures['SAM3D_Skeleton_9'], 'POSE')
-  [ComfyUI] [worker:ComfyUI-SAM3DBody]
-  [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] Thread 0x00001764 (most recent call first):
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\encode_bin.py", line 74 in insert_compressed_array
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\fbx_utils_threading.py", line 131 in _task_consumer_callable
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\concurrent\futures\thread.py", line 59 in run
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\concurrent\futures\thread.py", line 93 in _worker
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x000045a4 (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_jmmp98ue\persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Current thread 0x000026a0 (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_jmmp98ue\persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000970 (most recent call first):
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\numpy\lib\_arraysetops_impl.py", line 358 in _unique1d
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\numpy\lib\_arraysetops_impl.py", line 296 in unique
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\fbx_utils.py", line 555 in fast_first_axis_unique
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\export_fbx_bin.py", line 1015 in fbx_data_mesh_elements
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\export_fbx_bin.py", line 3417 in fbx_objects_elements
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\export_fbx_bin.py", line 3623 in save_single
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\export_fbx_bin.py", line 3754 in save
-  [ComfyUI]   File "C:\ce\.pixi\envs\sam3dbody-nodes\Lib\site-packages\bpy\5.1\scripts\addons_core\io_scene_fbx\__init__.py", line 622 in execute
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\export.py", line 446 in _export_combined
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\export.py", line 41 in export
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\export.py", line 1012 in execute
-  [ComfyUI]   File "C:\workspaces\SAM3DBody-0354\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_jmmp98ue\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_jmmp98ue\persistent_worker.py", line 1807 in <module>
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] === END ===
-  [ComfyUI] 
-  [capture-loop] iter=1050 t=130.7s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=5 ram=13.1/31.9GB (41%) swap=0.6/5.0GB (12%) cpu=13% browser_rss=1.03GB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] export finished in 3.7735 sec.
+  [capture-loop] iter=900 t=127.6s state={'complete': False, 'error': None, 'executedCount': 4, 'wsState': 1} eval_ms=4 ram=13.2/31.9GB (41%) swap=0.3/12.3GB (3%) cpu=9% browser_rss=0.99GB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] export finished in 3.7273 sec.
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] SAM3DBodyExportMultipleFBX done (25.49s): result: NodeOutput
-  [ComfyUI] [VRAM] After SAM3DBodyExportMultipleFBX: 5309 / 12287 MB
+  [ComfyUI] [comfy-env] SAM3DBodyExportMultipleFBX done (23.44s): result: NodeOutput
+  [ComfyUI] [VRAM] After SAM3DBodyExportMultipleFBX: 1271 / 24575 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB), SubprocessModel (2585 MB)
-  [ComfyUI] Prompt executed in 132.58 seconds
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'DepthAnything3Net_1' (2585 MB) -> cpu: 5309 / 12287 MB
+  [ComfyUI] Prompt executed in 128.74 seconds
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'DepthAnything3Net_1' (2585 MB) -> cpu: 1271 / 24575 MB
   [ComfyUI] [ComfyUI-DepthAnythingV3] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-DepthAnythingV3] Health check: failed
   [ComfyUI] [ComfyUI-DepthAnythingV3] Socket unhealthy, restarting worker...
-  [ComfyUI] [ComfyUI-DepthAnythingV3] python: C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
   [ComfyUI] [comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
-  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3', 'C:\\ce\\.pixi\\envs\\depthanythingv3-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-0354\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3']
-  [ComfyUI] [comfy-env] depthanythingv3-nodes: Library/bin has 235 DLLs
+  [ComfyUI] [comfy-env] depthanythingv3-nodes: Library/bin has 237 DLLs
+  [ComfyUI] [ComfyUI-DepthAnythingV3] python: C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
+  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3', 'C:\\ce\\.pixi\\envs\\depthanythingv3-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\depthanythingv3-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'depthanythingv3-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_kxie54m0\\persistent_worker.py', 'tcp://127.0.0.1:62246']...
-  Node executed (5 total), capturing...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'depthanythingv3-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_vvbtn6l0\\persistent_worker.py', 'tcp://127.0.0.1:51958']...
+  Node executed (6 total), capturing...
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] call_id=3 sending model_to_device
   [ComfyUI] Model 'DepthAnything3Net_1' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'DepthAnything3Net_1' (2585 MB): 1042 / 12287 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'DepthAnything3Net_1' (2585 MB): 1271 / 24575 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1271 / 24575 MB
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
+  [ComfyUI] [ComfyUI-SAM3DBody] Health check: failed
+  [ComfyUI] [ComfyUI-SAM3DBody] Socket unhealthy, restarting worker...
+  [ComfyUI] [comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
+  [ComfyUI] [comfy-env] sam3dbody-nodes: Library/bin has 237 DLLs
+  [ComfyUI] [ComfyUI-SAM3DBody] python: C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\ce\\.pixi\\envs\\sam3dbody-nodes\\Lib\\site-packages', 'C:\\workspaces\\SAM3DBody-1349\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\sam3dbody-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'sam3dbody-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_t4ouep8f\\persistent_worker.py', 'tcp://127.0.0.1:51960']...
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] call_id=9 sending model_to_device
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -303MB (now 2850MB) reserved=4160MB peak=3830MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1998MB (now 852MB) reserved=4160MB peak=3830MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1042 / 12287 MB
-  Frame 25 saved (frame_024.jpg, t=133.0s)
-  [capture-node] freeze=8567ms shot=8950ms unfreeze=4ms saved=True
-  Node executed (6 total), capturing...
-  [capture-node] freeze=4ms shot=153ms unfreeze=0ms saved=False
-  Execution complete (t=150.9s)
+  [ComfyUI] Model 'SAM3DBody_1' gone from worker (restarted?), treating as offloaded
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1271 / 24575 MB
+  Frame 29 saved (frame_028.jpg, t=129.2s)
+  [capture-node] freeze=8280ms shot=8531ms unfreeze=17ms saved=True
+  Execution complete (t=146.1s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
   [3d-wait] Phase 2: iframes=0
   [3d-wait] Total 3D wait: 60.0s
-  Captured 25 unique frames over 211.06s
+  Captured 29 unique frames over 206.18s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: multiple_masks_depthcorrected_executed.png
   [timing] final_screenshot: 0.3s
-    Captured 26 video frames
+    Captured 30 video frames

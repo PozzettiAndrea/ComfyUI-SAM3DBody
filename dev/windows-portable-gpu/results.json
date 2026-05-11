@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T02:10:54.710350+00:00",
+  "timestamp": "2026-05-11T12:06:10.933273+00:00",
   "platform": "windows_portable",
   "hardware": {
     "os": "Windows-11-10.0.26200-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "416f90b0c9491a0bec1e14d5155a860b0e44801e",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25644118666",
+  "commit_hash": "1a90db67a6f148841545d34845a0ea5a00c49871",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663892092",
   "success": true,
   "summary": {
     "total": 5,
@@ -17,7 +17,7 @@
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 155.1,
+      "duration_seconds": 162.31,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -25,17 +25,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.0,
-          "avg": 2.63
+          "peak": 3.99,
+          "avg": 2.66
         },
         "total_ram_gb": 31.9,
-        "samples": 153
+        "samples": 161
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
       "status": "pass",
-      "duration_seconds": 233.4,
+      "duration_seconds": 230.16,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -43,11 +43,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 8.01,
-          "avg": 4.64
+          "peak": 7.91,
+          "avg": 2.98
         },
         "total_ram_gb": 31.9,
-        "samples": 231
+        "samples": 210
       }
     },
     {
@@ -60,7 +60,7 @@
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 60.68,
+      "duration_seconds": 48.39,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -68,17 +68,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 7.03,
-          "avg": 4.82
+          "peak": 4.91,
+          "avg": 3.06
         },
         "total_ram_gb": 31.9,
-        "samples": 60
+        "samples": 48
       }
     },
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 89.79,
+      "duration_seconds": 78.87,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -87,10 +87,10 @@
       "resources": {
         "ram": {
           "peak": 6.87,
-          "avg": 5.95
+          "avg": 4.2
         },
         "total_ram_gb": 31.9,
-        "samples": 89
+        "samples": 79
       }
     }
   ]
