@@ -1,53 +1,53 @@
 {
-  "timestamp": "2026-05-11T16:48:21.184392+00:00",
+  "timestamp": "2026-05-11T18:01:24.532524+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26200-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": null,
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663887775",
-  "success": false,
+  "commit_hash": "1a90db67a6f148841545d34845a0ea5a00c49871",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25687120619",
+  "success": true,
   "summary": {
     "total": 5,
-    "passed": 0,
-    "failed": 4
+    "passed": 4,
+    "failed": 0
   },
   "workflows": [
     {
       "name": "multiple_masks",
-      "status": "fail",
-      "duration_seconds": 17570.58,
-      "error": "Page.wait_for_timeout: Target page, context or browser has been closed",
+      "status": "pass",
+      "duration_seconds": 158.35,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.85,
-          "avg": 5.43
+          "peak": 3.94,
+          "avg": 2.6
         },
         "total_ram_gb": 31.9,
-        "samples": 17328
+        "samples": 156
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
-      "status": "fail",
-      "duration_seconds": 0.06,
-      "error": "Failed to connect to ComfyUI at http://127.0.0.1:41897\n\nDetails:\nPage.goto: Target page, context or browser has been closed",
+      "status": "pass",
+      "duration_seconds": 175.16,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.44,
-          "avg": 5.44
+          "peak": 7.74,
+          "avg": 3.31
         },
         "total_ram_gb": 31.9,
-        "samples": 1
+        "samples": 173
       }
     },
     {
@@ -59,38 +59,38 @@
     },
     {
       "name": "rigging",
-      "status": "fail",
-      "duration_seconds": 0.03,
-      "error": "Failed to connect to ComfyUI at http://127.0.0.1:41897\n\nDetails:\nPage.goto: Target page, context or browser has been closed",
+      "status": "pass",
+      "duration_seconds": 42.17,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.44,
-          "avg": 5.44
+          "peak": 4.36,
+          "avg": 3.04
         },
         "total_ram_gb": 31.9,
-        "samples": 1
+        "samples": 42
       }
     },
     {
       "name": "workflow",
-      "status": "fail",
-      "duration_seconds": 0.06,
-      "error": "Failed to connect to ComfyUI at http://127.0.0.1:41897\n\nDetails:\nPage.goto: Target page, context or browser has been closed",
+      "status": "pass",
+      "duration_seconds": 78.96,
+      "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.44,
-          "avg": 5.44
+          "peak": 6.81,
+          "avg": 4.14
         },
         "total_ram_gb": 31.9,
-        "samples": 1
+        "samples": 79
       }
     }
   ]

@@ -1,25 +1,54 @@
 {
-  "models_dir": "C:\\workspaces\\SAM3DBody-1347\\ComfyUI\\models",
+  "models_dir": "C:\\workspaces\\SAM3DBody-1946\\ComfyUI\\models",
   "summary": {
-    "total_files": 8,
-    "total_size_bytes": 2828854739,
-    "total_size_human": "2.6 GB"
+    "total_files": 14,
+    "total_size_bytes": 8251669961,
+    "total_size_human": "7.7 GB"
   },
   "folders": {
+    "depthanything3": {
+      "total_size_bytes": 5422814967,
+      "total_size_human": "5.1 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "da3_giant.safetensors",
+          "size_bytes": 5422814644,
+          "size_human": "5.1 GB"
+        },
+        {
+          "path": ".cache\\huggingface\\CACHEDIR.TAG",
+          "size_bytes": 195,
+          "size_human": "195.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\download\\model.safetensors.metadata",
+          "size_bytes": 127,
+          "size_human": "127.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\.gitignore",
+          "size_bytes": 1,
+          "size_human": "1.0 B"
+        }
+      ]
+    },
     "sam3dbody": {
-      "total_size_bytes": 2828854739,
+      "total_size_bytes": 2828854994,
       "total_size_human": "2.6 GB",
       "source": {
         "type": "unknown"
       },
       "files": [
         {
-          "path": ".cache\\huggingface\\download\\xGOKKLRSlIhH692hSVvI1-gpoa8=.d5c6a3346723737ac1067813bbc337d59ffd9f0c1dbdb0ef2fc1a7fff19f011f.incomplete",
+          "path": "model.safetensors",
           "size_bytes": 2132741080,
           "size_human": "2.0 GB"
         },
         {
-          "path": ".cache\\huggingface\\download\\assets\\pDIxFZlRSG-4tDpwAFxIGKAaPsA=.352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc.incomplete",
+          "path": "assets\\mhr_model.pt",
           "size_bytes": 696110248,
           "size_human": "663.9 MB"
         },
@@ -37,6 +66,16 @@
           "path": ".cache\\huggingface\\CACHEDIR.TAG",
           "size_bytes": 195,
           "size_human": "195.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\download\\assets\\mhr_model.pt.metadata",
+          "size_bytes": 128,
+          "size_human": "128.0 B"
+        },
+        {
+          "path": ".cache\\huggingface\\download\\model.safetensors.metadata",
+          "size_bytes": 127,
+          "size_human": "127.0 B"
         },
         {
           "path": ".cache\\huggingface\\download\\.gitattributes.metadata",
