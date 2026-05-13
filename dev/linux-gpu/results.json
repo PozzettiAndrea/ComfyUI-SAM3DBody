@@ -1,24 +1,24 @@
 {
-  "timestamp": "2026-05-11T10:54:36.005666+00:00",
+  "timestamp": "2026-05-13T08:53:28.646759+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
     "cpu": "AMD Ryzen 5 3600 6-Core Processor",
     "gpu": "NVIDIA GeForce RTX 5060"
   },
-  "commit_hash": "1a90db67a6f148841545d34845a0ea5a00c49871",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663884791",
-  "success": true,
+  "commit_hash": "de7e964e72f7f5a9d80fc03d922241954cbf78c6",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25787839326",
+  "success": false,
   "summary": {
     "total": 5,
-    "passed": 4,
-    "failed": 0
+    "passed": 3,
+    "failed": 1
   },
   "workflows": [
     {
       "name": "multiple_masks",
       "status": "pass",
-      "duration_seconds": 56.62,
+      "duration_seconds": 123.2,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -27,22 +27,22 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.34,
-          "avg": 3.18
+          "peak": 5.39,
+          "avg": 3.99
         },
         "total_ram_gb": 31.3,
-        "samples": 56,
+        "samples": 120,
         "vram": {
           "peak": 3.95,
-          "avg": 1.72
+          "avg": 2.75
         }
       }
     },
     {
       "name": "multiple_masks_depthcorrected",
-      "status": "pass",
-      "duration_seconds": 179.0,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 73.17,
+      "error": "Workflow execution failed: {'prompt_id': 'c8e9bd02-76b6-4209-89ce-adca02e9b2cf', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['39', '35', '43', '60', '36', '41', '44'], 'exception_message': 'No module named \\'transformers\\'\\n\\nWorker traceback:\\nTraceback (most recent call last):\\n  File \"/tmp/comfyui_pvenv_bzcu_x1z/persistent_worker.py\", line 1762, in main\\n    result = method(**inputs)\\n             ^^^^^^^^^^^^^^^^\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy_api/latest/_io.py\", line 1833, in EXECUTE_NORMALIZED\\n    to_return = cls.execute(*args, **kwargs)\\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py\", line 86, in execute\\n    patcher = _get_or_build_da3_model(da3_model)\\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py\", line 193, in _get_or_build_da3_model\\n    import comfy.model_patcher\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/model_patcher.py\", line 32, in <module>\\n    import comfy.hooks\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/hooks.py\", line 14, in <module>\\n    import comfy.lora\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/lora.py\", line 23, in <module>\\n    import comfy.model_base\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/model_base.py\", line 61, in <module>\\n    import comfy.ldm.hidream_o1.model\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/ldm/hidream_o1/model.py\", line 20, in <module>\\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/text_encoders/qwen35.py\", line 10, in <module>\\n    from comfy import sd1_clip\\n  File \"/workspaces/SAM3DBody-0843/ComfyUI/comfy/sd1_clip.py\", line 3, in <module>\\n    from transformers import CLIPTokenizer\\nModuleNotFoundError: No module named \\'transformers\\'\\n\\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File \"/workspaces/SAM3DBody-0843/ComfyUI/execution.py\", line 535, in execute\\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/workspaces/SAM3DBody-0843/ComfyUI/execution.py\", line 335, in get_output_data\\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n', '  File \"/workspaces/SAM3DBody-0843/ComfyUI/execution.py\", line 309, in _async_map_node_over_list\\n    await process_inputs(input_dict, i)\\n', '  File \"/workspaces/SAM3DBody-0843/ComfyUI/execution.py\", line 297, in process_inputs\\n    result = f(**inputs)\\n             ^^^^^^^^^^^\\n', '  File \"/workspaces/SAM3DBody-0843/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py\", line 556, in proxy\\n    result = worker.call_method(\\n             ^^^^^^^^^^^^^^^^^^^\\n', '  File \"/workspaces/SAM3DBody-0843/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py\", line 674, in call_method\\n    raise WorkerError(\\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': [\"{'model_path': '/workspaces/SAM3DBody-0843/ComfyUI/models/depthanything3/da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}\"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          ...,\\n          [0.1922, 0.1451, 0.0980],\\n          [0.2392, 0.1843, 0.1412],\\n          [0.1608, 0.1059, 0.0627]],\\n\\n         [[0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          ...,\\n          [0.1961, 0.1529, 0.1059],\\n          [0.2353, 0.1804, 0.1373],\\n          [0.1569, 0.0902, 0.0510]],\\n\\n         [[0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          [0.0039, 0.0510, 0.0353],\\n          ...,\\n          [0.2118, 0.1569, 0.1137],\\n          [0.2314, 0.1686, 0.1255],\\n          [0.1373, 0.0627, 0.0275]],\\n\\n         ...,\\n\\n         [[0.4078, 0.1686, 0.1059],\\n          [0.5020, 0.2549, 0.1843],\\n          [0.5176, 0.2627, 0.1804],\\n          ...,\\n          [0.0039, 0.0039, 0.0039],\\n          [0.0039, 0.0039, 0.0039],\\n          [0.0039, 0.0039, 0.0039]],\\n\\n         [[0.4000, 0.1608, 0.0980],\\n          [0.4902, 0.2431, 0.1765],\\n          [0.5059, 0.2549, 0.1686],\\n          ...,\\n          [0.0039, 0.0039, 0.0039],\\n          [0.0039, 0.0039, 0.0039],\\n          [0.0039, 0.0039, 0.0039]],\\n\\n         [[0.4000, 0.1529, 0.0941],\\n          [0.4588, 0.2118, 0.1451],\\n          [0.5059, 0.2549, 0.1686],\\n          ...,\\n          [0.0000, 0.0000, 0.0000],\\n          [0.0000, 0.0000, 0.0000],\\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['39', '35', '16', '43', '24', '4', '60', '46', '58', '36', '59', '40', '41', '44', '18', '29'], 'timestamp': 1778662290284}\n\nDetails:\nWorkflow: /node/ComfyUI-SAM3DBody/workflows/multiple_masks_depthcorrected.json\nNode error: DepthAnything_V3",
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
         "cpu": "AMD Ryzen 5 3600 6-Core Processor",
@@ -50,14 +50,14 @@
       },
       "resources": {
         "ram": {
-          "peak": 15.55,
-          "avg": 8.09
+          "peak": 4.89,
+          "avg": 3.26
         },
         "total_ram_gb": 31.3,
-        "samples": 174,
+        "samples": 72,
         "vram": {
-          "peak": 5.01,
-          "avg": 1.21
+          "peak": 3.95,
+          "avg": 0.35
         }
       }
     },
@@ -71,7 +71,7 @@
     {
       "name": "rigging",
       "status": "pass",
-      "duration_seconds": 41.03,
+      "duration_seconds": 36.24,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -80,21 +80,21 @@
       },
       "resources": {
         "ram": {
-          "peak": 7.92,
-          "avg": 5.95
+          "peak": 5.6,
+          "avg": 3.91
         },
         "total_ram_gb": 31.3,
-        "samples": 40,
+        "samples": 36,
         "vram": {
           "peak": 3.62,
-          "avg": 1.7
+          "avg": 1.85
         }
       }
     },
     {
       "name": "workflow",
       "status": "pass",
-      "duration_seconds": 80.33,
+      "duration_seconds": 81.08,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -103,11 +103,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 7.8,
-          "avg": 7.01
+          "peak": 8.0,
+          "avg": 7.15
         },
         "total_ram_gb": 31.3,
-        "samples": 78,
+        "samples": 79,
         "vram": {
           "peak": 3.62,
           "avg": 0.85
