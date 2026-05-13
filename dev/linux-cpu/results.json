@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T10:13:44.984917+00:00",
+  "timestamp": "2026-05-13T07:59:48.498522+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-    "cpu": "AMD EPYC 9V74 80-Core Processor"
+    "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "1a90db67a6f148841545d34845a0ea5a00c49871",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663883606",
+  "commit_hash": "de7e964e72f7f5a9d80fc03d922241954cbf78c6",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786141962",
   "success": true,
   "summary": {
     "total": 5,
@@ -31,16 +31,16 @@
     {
       "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 18.72,
+      "duration_seconds": 18.87,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
           "peak": 1.32,
-          "avg": 1.16
+          "avg": 1.15
         },
         "total_ram_gb": 15.6,
         "samples": 19
