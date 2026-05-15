@@ -8,10 +8,20 @@
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-warning] WARNING: Multiple instances of Three.js being imported.
-[Console-log] [GeomPack] Loading mesh preview extension...
-[Console-log] [GeomPack] Mesh preview extension registered
-[Console-log] [GeomPack] Loading UV mesh preview extension...
-[Console-log] [GeomPack] UV mesh preview extension registered
+[Console-log] [VTK Bundle] GLTFImporter included in bundle
+[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
+[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
+[Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
+[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
+[Console-log] [BVHViewer] Loading BVH Viewer extension
+[Console-log] [BVHViewer] Loading BVH viewer extension...
+[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
+[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
+[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-GeometryPack
@@ -28,24 +38,16 @@
 [Console-log] [UniRig Compare] Loading compare skeleton widget...
 [Console-log] [UniRig Compare] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [UniRig Compare] Compare skeleton widget registered
-[Console-log] [BVHViewer] Loading BVH Viewer extension
-[Console-log] [BVHViewer] Loading BVH viewer extension...
-[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
+[Console-log] [GeomPack] Loading mesh preview extension...
+[Console-log] [GeomPack] Mesh preview extension registered
 [Console-log] [GeomPack Gaussian] Loading extension...
-[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
-[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
-[Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
-[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
-[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
-[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
-[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
 [Console-log] [UniRig Debug] Loading FBX mesh preview extension...
 [Console-log] [UniRig Debug] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [UniRig Debug] FBX mesh preview extension registered
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
-[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
+[Console-log] [GeomPack] Loading UV mesh preview extension...
+[Console-log] [GeomPack] UV mesh preview extension registered
 [Console-log] [VTK Bundle] GLTFImporter included in bundle
+[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-SAM3DBody
@@ -55,8 +57,6 @@
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-SAM3DBody
 [Console-log] [MotionCapture] Loading FBX mesh preview extension...
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-SAM3DBody
-[Console-log] [VTK Bundle] GLTFImporter included in bundle
-[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-warning] [ComfyUI Notice] "extensions/core/widgetInputs.js" is an internal module, not part of the public API. Future updates may break this import.
 [Console-warning] [ComfyUI Notice] "scripts/utils.js" is an internal module, not part of the public API. Future updates may break this import.
 [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
@@ -64,18 +64,18 @@
 [Console-log] [GeomPack] Registering Preview Mesh UV node
 [Console-log] [GeomPack Gaussian] Registering Preview Gaussian node
 [Console-log] [SAM3DBody] Registering Preview Rigged Mesh node
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41891/api/view?type=output&subfolder=&filename=sam3d_multi_rigged.fbx" responded with 404: Not Found
+    at http://127.0.0.1:41891/assets/vendor-three-Br-dHl2j.js:3824:116006
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41891/api/view?type=output&subfolder=&filename=sam3d_multi_rigged.fbx" responded with 404: Not Found
+    at http://127.0.0.1:41891/assets/vendor-three-Br-dHl2j.js:3824:116006
 [Console-log] [SAM3DBody] Node created, adding FBX viewer widget
-[Console-log] [SAM3DBody] Setting iframe src to: /extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778662301915
+[Console-log] [SAM3DBody] Setting iframe src to: /extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778847576215
 [Console-log] [SAM3DBody] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41880/extensions/ComfyUI-GeometryPack/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41891/extensions/ComfyUI-GeometryPack/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [SAM3DBody] Viewer iframe is ready!
 [Console-log] [SAM3DBody] Iframe loaded successfully
 [Console-log] [comfy-test] graphToPrompt: 6 nodes, missing class_type: [], sample: {"inputs":{"image":"masked_dancing.png"},"class_type":"LoadImage","_meta":{"title":"Load Image"}}
-[Console-log] [SAM3DBody] onExecuted called with message: {fbx_file: Array(1), has_skinning: Array(1), has_skeleton: Array(1)}
-[Console-log] [SAM3DBody] Loading FBX: /workspaces/SAM3DBody-0843/ComfyUI/output/sam3d_rigged.fbx
-[Console-log] [SAM3DBody] Sending postMessage to iframe: http://127.0.0.1:41880/view?filename=sam3d_rigged.fbx&type=output&subfolder=
-[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41880/view?filename=sam3d_rigged.fbx&type=output&subfolder=, timestamp: 1778662317477}
-[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41880/view?filename=sam3d_rigged.fbx&type=output&subfolder=
-[Console-log] [FBX Viewer] FBX Loaded successfully
