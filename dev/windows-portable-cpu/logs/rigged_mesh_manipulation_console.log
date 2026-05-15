@@ -9,10 +9,16 @@
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-log] [VTK Bundle] GLTFImporter included in bundle
 [Console-warning] WARNING: Multiple instances of Three.js being imported.
-[Console-log] [VTK Bundle] GLTFImporter included in bundle
-[Console-log] [GeomPack Gaussian] Loading extension...
 [Console-log] [GeomPack] Loading mesh preview extension...
 [Console-log] [GeomPack] Mesh preview extension registered
+[Console-log] [GeomPack Gaussian] Loading extension...
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
+[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
+[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
+[Console-log] [BVHViewer] Loading BVH Viewer extension
+[Console-log] [BVHViewer] Loading BVH viewer extension...
+[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-GeometryPack
@@ -26,28 +32,22 @@
 [Console-log] [MotionCapture] Loading FBX mesh preview extension...
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [MotionCapture] FBX mesh preview extension registered
-[Console-log] [BVHViewer] Loading BVH Viewer extension
-[Console-log] [BVHViewer] Loading BVH viewer extension...
-[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
-[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
 [Console-log] [UniRig Compare] Loading compare skeleton widget...
 [Console-log] [UniRig Compare] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [UniRig Compare] Compare skeleton widget registered
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
-[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
-[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
 [Console-log] [GeomPack] Loading UV mesh preview extension...
 [Console-log] [GeomPack] UV mesh preview extension registered
+[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
+[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
+[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
 [Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
 [Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
 [Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
-[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
-[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
-[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-log] [UniRig Debug] Loading FBX mesh preview extension...
 [Console-log] [UniRig Debug] Detected extension folder: ComfyUI-GeometryPack
 [Console-log] [UniRig Debug] FBX mesh preview extension registered
-[Console-error] [vite:preloadError] {url: null, fileType: unknown, chunkName: null, message: Extension named 'comfy3d.pointcloud.vtk' already registered.}
+[Console-log] [VTK Bundle] GLTFImporter included in bundle
+[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-SAM3DBody
@@ -65,22 +65,22 @@
 [Console-log] [GeomPack Gaussian] Registering Preview Gaussian node
 [Console-log] [SAM3DBody] Registering Preview Rigged Mesh node
 [Console-log] [SAM3DBody] Node created, adding FBX viewer widget
-[Console-log] [SAM3DBody] Setting iframe src to: /extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778823330354
+[Console-log] [SAM3DBody] Setting iframe src to: /extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778831017863
 [Console-log] [SAM3DBody] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41898/extensions/ComfyUI-GeometryPack/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41887/extensions/ComfyUI-GeometryPack/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 401.65283203125, height: 586.7767333984375}
 [Console-log] [SAM3DBody] Viewer iframe is ready!
 [Console-log] [SAM3DBody] Iframe loaded successfully
-[Console-warning] [.WebGL-0x7d6409e4d800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x7d6409e4d800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x7d6409e4d800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x7d6409e4d800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[Console-warning] [.WebGL-0x61440399c200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x61440399c200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x61440399c200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x61440399c200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
 [Console-log] [comfy-test] graphToPrompt: 2 nodes, missing class_type: [], sample: {"inputs":{"fbx_output_path":["4",0],"preview":""},"class_type":"SAM3DBodyPreviewRiggedMesh","_meta":{"title":"SAM 3D Body: Preview Rigged Mesh"}}
 [Console-log] [SAM3DBody] onExecuted called with message: {fbx_file: Array(1), has_skinning: Array(1), has_skeleton: Array(1)}
-[Console-log] [SAM3DBody] Loading FBX: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-0524\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
-[Console-log] [SAM3DBody] Sending postMessage to iframe: http://127.0.0.1:41898/view?filename=sam3d_rigged.fbx&type=input&subfolder=
-[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41898/view?filename=sam3d_rigged.fbx&type=input&subfolder=, timestamp: 1778823333711}
-[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41898/view?filename=sam3d_rigged.fbx&type=input&subfolder=
+[Console-log] [SAM3DBody] Loading FBX: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-0735\portable-comfyui\ComfyUI_windows_portable\ComfyUI\input\sam3d_rigged.fbx
+[Console-log] [SAM3DBody] Sending postMessage to iframe: http://127.0.0.1:41887/view?filename=sam3d_rigged.fbx&type=input&subfolder=
+[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41887/view?filename=sam3d_rigged.fbx&type=input&subfolder=, timestamp: 1778831021777}
+[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41887/view?filename=sam3d_rigged.fbx&type=input&subfolder=
 [Console-log] [FBX Viewer] FBX Loaded successfully
