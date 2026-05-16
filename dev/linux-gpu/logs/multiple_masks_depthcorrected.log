@@ -4,13 +4,13 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] === /validate endpoint called ===
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Prompt has 16 nodes
+  Queuing workflow for execution...
   [ComfyUI]   Node 4: PreviewImage
   [ComfyUI]     Inputs: {"images": ["16", 1]}
   [ComfyUI]   Node 16: SAM3DBodyProcessMultiple
   [ComfyUI]     Inputs: {"inference_type": "full", "adjust_position_from_depth": true, "model": ["24", 0], "image": ["36", 0], "masks": ["39", 0], "depth_map": ["40", 0], "intrinsics": ["40", 9], "depth_confidence": ["40", 1
   [ComfyUI]   Node 18: SAM3DBodyExportMultipleFBX
   [ComfyUI]     Inputs: {"output_filename": "sam3d_multi_rigged.fbx", "combine": true, "multi_mesh_data": ["16", 0]}
-  Queuing workflow for execution...
   [ComfyUI]   Node 24: LoadSAM3DBodyModel
   [ComfyUI]     Inputs: {"precision": "auto"}
   [ComfyUI]   Node 29: Preview3D
@@ -37,32 +37,32 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI]     Inputs: {"source": ["40", 8]}
   [ComfyUI]   Node 60: CreateLoad3DCamera
   [ComfyUI]     Inputs: {"pos_x": 3, "pos_y": 5.1, "pos_z": 8, "target_x": -0.5, "target_y": 2.1, "target_z": 0.4, "zoom": 3, "camera_type": "perspective"}
-  [ComfyUI] Generated prompt_id: bb94af61-8144-48cd-bb81-b70d37edf65e
+  [ComfyUI] Generated prompt_id: ad70f44d-0599-415c-80cb-db2d2d915b22
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
   [ComfyUI] === Validation PASSED ===
   [ComfyUI] got prompt
-  [ComfyUI] LoadMultibandImage: Loaded /workspaces/SAM3DBody-1213/ComfyUI/input/fellowship.npz
+  [ComfyUI] LoadMultibandImage: Loaded /workspaces/SAM3DBody-2053/ComfyUI/input/fellowship.npz
   [ComfyUI]   Shape: (1, 14, 497, 1200)
   [ComfyUI]   Channels: 14
   [ComfyUI]   Names: img_01_r,img_01_g,img_01_b,mask_01,mask_02,mask_03,mask_04,mask_05,mask_06,mask_07,mask_08,mask_09,m...
   [ComfyUI] MultibandToMasks: Auto-detected 11 mask channels: ['mask_01', 'mask_02', 'mask_03', 'mask_04', 'mask_05', 'mask_06', 'mask_07', 'mask_08', 'mask_09', 'mask_10', 'mask_11']
   Node executed (1 total), capturing...
-  [ComfyUI] [comfy-env] Running DownloadAndLoadDepthAnythingV3Model: model: 'da3_giant.safetensors', precision: 'auto', attention: 'auto'
   [ComfyUI] [comfy-env] SubprocessWorker: /root/.ce/.pixi/envs/depthanythingv3-nodes/bin/python
-  [ComfyUI] [VRAM] Before DownloadAndLoadDepthAnythingV3Model: 612 / 7672 MB
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/SAM3DBody-1213/ComfyUI'}
-  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadDepthAnythingV3Model.EXECUTE_NORMALIZED
+  [ComfyUI] [comfy-env] Running DownloadAndLoadDepthAnythingV3Model: model: 'da3_giant.safetensors', precision: 'auto', attention: 'auto'
+  [ComfyUI] [VRAM] Before DownloadAndLoadDepthAnythingV3Model: 302 / 24124 MB
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/SAM3DBody-2053/ComfyUI'}
   [ComfyUI] [ComfyUI-DepthAnythingV3] python: /root/.ce/.pixi/envs/depthanythingv3-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.DownloadAndLoadDepthAnythingV3Model.EXECUTE_NORMALIZED
+  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['/workspaces/SAM3DBody-2053/ComfyUI', '/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3', '/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.1/site-packages', '/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3']
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-DepthAnythingV3] sys_path sent to worker: ['/workspaces/SAM3DBody-1213/ComfyUI', '/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3', '/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages', '/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/root/.ce/.pixi/envs/depthanythingv3-nodes/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'depthanythingv3-nodes', 'python', '/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py', 'abstract://comfy_worker_9f71608c05fc']...
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_9f71608c05fc (abstract, no filesystem path)
-  Frame 2 saved (frame_001.jpg, t=0.7s)
-  [capture-node] freeze=11ms shot=144ms unfreeze=6ms saved=True
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'depthanythingv3-nodes', 'python', '/tmp/comfyui_pvenv_5rashvha/persistent_worker.py', 'abstract://comfy_worker_a6197363c047']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_a6197363c047 (abstract, no filesystem path)
+  Frame 2 saved (frame_001.jpg, t=0.8s)
+  [capture-node] freeze=11ms shot=347ms unfreeze=7ms saved=True
   Node executed (2 total), capturing...
-  [capture-node] freeze=2ms shot=167ms unfreeze=3ms saved=False
+  [capture-node] freeze=3ms shot=224ms unfreeze=3ms saved=False
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
@@ -73,82 +73,79 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] 
   [ComfyUI] model.safetensors:   0%|          | 0.00/5.42G [00:00<?, ?B/s]
-  [ComfyUI] model.safetensors:   0%|          | 140k/5.42G [00:01<10:58:25, 137kB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 3 saved (frame_002.jpg, t=5.7s)
-  [capture-periodic] freeze=1ms shot=161ms unfreeze=4ms saved=True
-  [capture-loop] iter=50 t=6.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=5.0/23.4GB (21%) swap=2.0/32.0GB (6%) cpu=12% browser_rss=0.89GB
+  [ComfyUI] model.safetensors:   0%|          | 140k/5.42G [00:01<11:02:10, 136kB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 3 saved (frame_002.jpg, t=6.1s)
+  [capture-periodic] freeze=4ms shot=257ms unfreeze=4ms saved=True
+  [capture-loop] iter=50 t=7.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=5.5/31.2GB (18%) swap=0.6/32.0GB (2%) cpu=6% browser_rss=1.00GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   6%|▌         | 335M/5.42G [00:07<01:49, 46.5MB/s]  [SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=100 t=12.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=5.2/23.4GB (22%) swap=2.0/32.0GB (6%) cpu=12% browser_rss=0.90GB
-  Frame 4 saved (frame_003.jpg, t=12.4s)
-  [capture-periodic] freeze=2ms shot=165ms unfreeze=5ms saved=True
+  [ComfyUI] model.safetensors:   1%|          | 66.9M/5.42G [00:03<03:57, 22.5MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 4 saved (frame_003.jpg, t=8.5s)
+  [capture-periodic] freeze=3ms shot=252ms unfreeze=17ms saved=True
+  [capture-loop] iter=100 t=13.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=6.0/31.2GB (19%) swap=0.6/32.0GB (2%) cpu=7% browser_rss=0.89GB
+  [capture-loop] iter=150 t=19.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=6.7/31.2GB (22%) swap=0.6/32.0GB (2%) cpu=5% browser_rss=0.89GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:   7%|▋         | 402M/5.42G [00:09<01:53, 44.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 5 saved (frame_004.jpg, t=14.7s)
-  [capture-periodic] freeze=1ms shot=160ms unfreeze=4ms saved=True
+  [ComfyUI] model.safetensors:   1%|          | 66.9M/5.42G [00:19<03:57, 22.5MB/s]
+  [ComfyUI] model.safetensors:  25%|██▍       | 1.34G/5.42G [00:20<00:58, 69.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [capture-loop] iter=200 t=25.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=6.3/31.2GB (20%) swap=0.6/32.0GB (2%) cpu=7% browser_rss=0.89GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  12%|█▏        | 671M/5.42G [00:12<01:21, 58.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 6 saved (frame_005.jpg, t=16.9s)
-  [capture-periodic] freeze=1ms shot=163ms unfreeze=3ms saved=True
+  [ComfyUI] model.safetensors:  26%|██▌       | 1.41G/5.42G [00:21<00:58, 69.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  15%|█▍        | 805M/5.42G [00:14<01:11, 64.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=150 t=17.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=6 ram=5.6/23.4GB (24%) swap=2.0/32.0GB (6%) cpu=13% browser_rss=0.90GB
-  Frame 7 saved (frame_006.jpg, t=19.2s)
-  [capture-periodic] freeze=2ms shot=169ms unfreeze=5ms saved=True
+  [ComfyUI] model.safetensors:  27%|██▋       | 1.48G/5.42G [00:21<00:54, 72.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 5 saved (frame_004.jpg, t=26.8s)
+  [capture-periodic] freeze=3ms shot=257ms unfreeze=15ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  20%|█▉        | 1.07G/5.42G [00:16<00:53, 81.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 8 saved (frame_007.jpg, t=21.5s)
-  [capture-periodic] freeze=1ms shot=163ms unfreeze=6ms saved=True
-  [capture-loop] iter=200 t=23.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=5.8/23.4GB (25%) swap=2.1/32.0GB (6%) cpu=14% browser_rss=0.91GB
+  [ComfyUI] model.safetensors:  43%|████▎     | 2.35G/5.42G [00:26<00:26, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [capture-loop] iter=250 t=31.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=6.1/31.2GB (20%) swap=0.6/32.0GB (2%) cpu=6% browser_rss=0.89GB
+  Frame 6 saved (frame_005.jpg, t=31.5s)
+  [capture-periodic] freeze=3ms shot=260ms unfreeze=9ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  21%|██        | 1.14G/5.42G [00:23<01:49, 39.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  47%|████▋     | 2.55G/5.42G [00:28<00:24, 118MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 7 saved (frame_006.jpg, t=33.9s)
+  [capture-periodic] freeze=3ms shot=244ms unfreeze=4ms saved=True
+  [capture-loop] iter=300 t=37.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=6.7/31.2GB (22%) swap=0.6/32.0GB (2%) cpu=6% browser_rss=0.89GB
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  27%|██▋       | 1.48G/5.42G [00:25<00:58, 68.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 9 saved (frame_008.jpg, t=28.3s)
-  [capture-periodic] freeze=2ms shot=156ms unfreeze=2ms saved=True
-  [capture-loop] iter=250 t=29.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=6.4/23.4GB (28%) swap=2.1/32.0GB (6%) cpu=13% browser_rss=0.90GB
-  Frame 10 saved (frame_009.jpg, t=30.6s)
-  [capture-periodic] freeze=2ms shot=167ms unfreeze=5ms saved=True
+  [ComfyUI] model.safetensors:  48%|████▊     | 2.62G/5.42G [00:36<00:47, 58.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  43%|████▎     | 2.35G/5.42G [00:31<00:30, 102MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=300 t=34.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=7 ram=6.0/23.4GB (26%) swap=2.1/32.0GB (7%) cpu=13% browser_rss=0.90GB
+  [ComfyUI] model.safetensors:  49%|████▉     | 2.68G/5.42G [00:36<00:44, 62.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 8 saved (frame_007.jpg, t=40.9s)
+  [capture-periodic] freeze=4ms shot=215ms unfreeze=3ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  51%|█████     | 2.75G/5.42G [00:31<00:19, 138MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 11 saved (frame_010.jpg, t=35.1s)
-  [capture-periodic] freeze=2ms shot=164ms unfreeze=8ms saved=True
+  [ComfyUI] model.safetensors:  53%|█████▎    | 2.88G/5.42G [00:37<00:29, 84.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  57%|█████▋    | 3.08G/5.42G [00:32<00:13, 169MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] model.safetensors:  61%|██████    | 3.29G/5.42G [00:38<00:17, 123MB/s] [SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  66%|██████▌   | 3.55G/5.42G [00:33<00:07, 235MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 12 saved (frame_011.jpg, t=37.5s)
-  [capture-periodic] freeze=2ms shot=187ms unfreeze=19ms saved=True
+  [ComfyUI] model.safetensors:  68%|██████▊   | 3.69G/5.42G [00:38<00:08, 194MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 9 saved (frame_008.jpg, t=43.2s)
+  [capture-periodic] freeze=4ms shot=258ms unfreeze=12ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  68%|██████▊   | 3.69G/5.42G [00:37<00:13, 131MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  [capture-loop] iter=350 t=41.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=5.6/23.4GB (24%) swap=2.1/32.0GB (7%) cpu=17% browser_rss=0.89GB
-  Frame 13 saved (frame_012.jpg, t=42.2s)
-  [capture-periodic] freeze=2ms shot=176ms unfreeze=2ms saved=True
+  [ComfyUI] model.safetensors:  72%|███████▏  | 3.89G/5.42G [00:39<00:07, 195MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [capture-loop] iter=350 t=44.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=8 ram=6.3/31.2GB (20%) swap=0.6/32.0GB (2%) cpu=8% browser_rss=0.90GB
+  Frame 10 saved (frame_009.jpg, t=45.6s)
+  [capture-periodic] freeze=3ms shot=257ms unfreeze=10ms saved=True
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  73%|███████▎  | 3.96G/5.42G [00:39<00:11, 124MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 14 saved (frame_013.jpg, t=44.6s)
-  [capture-periodic] freeze=2ms shot=168ms unfreeze=4ms saved=True
-  [capture-loop] iter=400 t=46.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=5.9/23.4GB (25%) swap=2.1/32.0GB (7%) cpu=15% browser_rss=0.90GB
+  [ComfyUI] model.safetensors:  73%|███████▎  | 3.96G/5.42G [00:41<00:10, 134MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors:  90%|█████████ | 4.90G/5.42G [00:45<00:03, 143MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 15 saved (frame_014.jpg, t=49.2s)
+  [ComfyUI] model.safetensors:  74%|███████▍  | 4.02G/5.42G [00:42<00:09, 143MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [capture-periodic] freeze=1ms shot=167ms unfreeze=5ms saved=True
-  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:46<00:00, 196MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
-  Frame 16 saved (frame_015.jpg, t=52.3s)
-  [capture-periodic] freeze=2ms shot=169ms unfreeze=5ms saved=True
-  [capture-loop] iter=450 t=53.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=4.7/23.4GB (20%) swap=2.1/32.0GB (7%) cpu=8% browser_rss=0.90GB
-  [capture-loop] iter=500 t=59.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=2 ram=4.7/23.4GB (20%) swap=2.1/32.0GB (7%) cpu=4% browser_rss=0.89GB
+  [ComfyUI] model.safetensors:  78%|███████▊  | 4.23G/5.42G [00:43<00:08, 140MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
   [ComfyUI] 
-  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:56<00:00, 95.9MB/s]
+  [ComfyUI] model.safetensors:  83%|████████▎ | 4.49G/5.42G [00:43<00:04, 212MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  Frame 11 saved (frame_010.jpg, t=48.0s)
+  [capture-periodic] freeze=3ms shot=270ms unfreeze=13ms saved=True
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  93%|█████████▎| 5.03G/5.42G [00:44<00:01, 368MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors:  96%|█████████▋| 5.23G/5.42G [00:44<00:00, 418MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:45<00:00, 409MB/s][SubprocessWorker] callback 'report_progress' from call_id=1
+  [ComfyUI] 
+  [ComfyUI] model.safetensors: 100%|██████████| 5.42G/5.42G [00:45<00:00, 120MB/s]
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] DownloadAndLoadDepthAnythingV3Model done (59.38s): result: NodeOutput
-  [ComfyUI] [VRAM] After DownloadAndLoadDepthAnythingV3Model: 729 / 7672 MB
+  [ComfyUI] [comfy-env] DownloadAndLoadDepthAnythingV3Model done (48.88s): result: NodeOutput
+  [ComfyUI] [VRAM] After DownloadAndLoadDepthAnythingV3Model: 563 / 24124 MB
   [ComfyUI] [comfy-env] Running DepthAnything_V3: normalization_mode: 'Raw', resize_method: 'resize', invert_depth: False, keep_model_size: False, da3_model: dict, images: torch.float32 [1,497,1200,3] cpu
-  [ComfyUI] [VRAM] Before DepthAnything_V3: 729 / 7672 MB
+  [ComfyUI] [VRAM] Before DepthAnything_V3: 563 / 24124 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.nodes_inference.DepthAnything_V3.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [ComfyUI-DepthAnythingV3] Health check: ping (timeout=5.0s)...
@@ -162,208 +159,95 @@ Capturing execution frames: multiple_masks_depthcorrected.json
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 497, 1200, 3]
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 497, 1200, 3])
+  [capture-loop] iter=400 t=50.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=5.4/31.2GB (17%) swap=0.6/32.0GB (2%) cpu=8% browser_rss=0.90GB
   [ComfyUI] [worker:ComfyUI-DepthAnythingV3] WARNING: No comfy kitchen, using old apply_rope functions.
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3]
-  [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] Thread 0x0000758bbd956640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 359 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 655 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x0000758f70faf640 (most recent call first):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Current thread 0x0000758f717b4640 (most recent call first):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1012 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/threading.py", line 1032 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] Thread 0x0000758f71daf740 (most recent call first):
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 147 in _path_stat
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 153 in _path_is_mode_type
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 161 in _path_isfile
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 1638 in find_spec
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 1506 in _get_spec
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 1532 in find_spec
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1262 in _find_spec
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1322 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torch/onnx/_internal/exporter/_ir_passes.py", line 9 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torch/onnx/_internal/exporter/_onnx_program.py", line 21 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torch/onnx/__init__.py", line 28 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torchvision/ops/_register_onnx_ops.py", line 5 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torchvision/ops/__init__.py", line 1 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1310 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torchvision/models/convnext.py", line 9 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torchvision/models/__init__.py", line 2 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
-  [ComfyUI]   File "/root/.ce/.pixi/envs/depthanythingv3-nodes/lib/python3.12/site-packages/torchvision/__init__.py", line 10 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/ldm/cosmos/model.py", line 25 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_base.py", line 40 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/lora.py", line 23 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/hooks.py", line 14 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_patcher.py", line 32 in <module>
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
-  [ComfyUI]   File "<frozen importlib._bootstrap_external>", line 999 in exec_module
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
-  [ComfyUI]   File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193 in _get_or_build_da3_model
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86 in execute
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy_api/latest/_io.py", line 1833 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 1762 in main
-  [ComfyUI]   ...
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-DepthAnythingV3] === END ===
-  [ComfyUI] 
-  Frame 17 saved (frame_016.jpg, t=61.6s)
-  [capture-periodic] freeze=2ms shot=172ms unfreeze=4ms saved=True
+  Frame 12 saved (frame_011.jpg, t=50.4s)
+  [capture-periodic] freeze=3ms shot=219ms unfreeze=12ms saved=True
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] !!! Exception during processing !!! No module named 'transformers'
   [ComfyUI] 
   [ComfyUI] Worker traceback:
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/tmp/comfyui_pvenv_5rashvha/persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute
   [ComfyUI]     patcher = _get_or_build_da3_model(da3_model)
   [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model
   [ComfyUI]     import comfy.model_patcher
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_patcher.py", line 32, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_patcher.py", line 32, in <module>
   [ComfyUI]     import comfy.hooks
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/hooks.py", line 14, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/hooks.py", line 14, in <module>
   [ComfyUI]     import comfy.lora
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/lora.py", line 23, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/lora.py", line 23, in <module>
   [ComfyUI]     import comfy.model_base
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_base.py", line 61, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_base.py", line 61, in <module>
   [ComfyUI]     import comfy.ldm.hidream_o1.model
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>
   [ComfyUI]     from comfy.text_encoders.qwen35 import Qwen35VisionModel
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>
   [ComfyUI]     from comfy import sd1_clip
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/sd1_clip.py", line 3, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/sd1_clip.py", line 3, in <module>
   [ComfyUI]     from transformers import CLIPTokenizer
   [ComfyUI] ModuleNotFoundError: No module named 'transformers'
   [ComfyUI] 
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 535, in execute
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 535, in execute
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 335, in get_output_data
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 335, in get_output_data
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 309, in _async_map_node_over_list
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 309, in _async_map_node_over_list
   [ComfyUI]     await process_inputs(input_dict, i)
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 297, in process_inputs
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 297, in process_inputs
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]              ^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]              ^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method
   [ComfyUI]     raise WorkerError(
   [ComfyUI] comfy_env.isolation.workers.base.WorkerError: No module named 'transformers'
   [ComfyUI] 
   [ComfyUI] Worker traceback:
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "/tmp/comfyui_pvenv_5rashvha/persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]              ^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute
   [ComfyUI]     patcher = _get_or_build_da3_model(da3_model)
   [ComfyUI]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model
   [ComfyUI]     import comfy.model_patcher
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_patcher.py", line 32, in <module>
-  Execution complete (t=64.4s)
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_patcher.py", line 32, in <module>
   [ComfyUI]     import comfy.hooks
-  Execution error: {'prompt_id': '519baa6b-1a71-4834-8914-b50e1d11651d', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['39', '43', '41', '36', '60', '44', '35'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/hooks.py", line 14, in <module>\n    import comfy.lora\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/lora.py", line 23, in <module>\n    import comfy.model_base\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': '/workspaces/SAM3DBody-1213/ComfyUI/models/depthanything3/da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['16', '40', '4', '46', '59', '39', '43', '18', '29', '41', '24', '36', '60', '58', '44', '35'], 'timestamp': 1778847572176}
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/hooks.py", line 14, in <module>
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/hooks.py", line 14, in <module>
+  [ComfyUI]     import comfy.lora
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/lora.py", line 23, in <module>
+  [ComfyUI]     import comfy.model_base
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_base.py", line 61, in <module>
+  [ComfyUI]     import comfy.ldm.hidream_o1.model
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>
+  [ComfyUI]     from comfy.text_encoders.qwen35 import Qwen35VisionModel
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>
+  [ComfyUI]     from comfy import sd1_clip
+  [ComfyUI]   File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/sd1_clip.py", line 3, in <module>
+  [ComfyUI]     from transformers import CLIPTokenizer
+  [ComfyUI] ModuleNotFoundError: No module named 'transformers'
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Prompt executed in 53.83 seconds
+  Execution complete (t=54.6s)
+  Execution error: {'prompt_id': '044632b1-fe32-4993-94c0-be9b31b675be', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['35', '39', '44', '43', '41', '36', '60'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_5rashvha/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/hooks.py", line 14, in <module>\n    import comfy.lora\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/lora.py", line 23, in <module>\n    import comfy.model_base\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': '/workspaces/SAM3DBody-2053/ComfyUI/models/depthanything3/da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['35', '39', '59', '44', '43', '58', '41', '36', '40', '18', '4', '46', '24', '60', '29', '16'], 'timestamp': 1778965091589}
     Status: FAILED
-    Error: Workflow execution failed: {'prompt_id': '519baa6b-1a71-4834-8914-b50e1d11651d', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['39', '43', '41', '36', '60', '44', '35'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_ps0cjdi0/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-1213/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/hooks.py", line 14, in <module>\n    import comfy.lora\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/lora.py", line 23, in <module>\n    import comfy.model_base\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-1213/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-1213/.venv/lib/python3.12/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': '/workspaces/SAM3DBody-1213/ComfyUI/models/depthanything3/da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['16', '40', '4', '46', '59', '39', '43', '18', '29', '41', '24', '36', '60', '58', '44', '35'], 'timestamp': 1778847572176}
+    Error: Workflow execution failed: {'prompt_id': '044632b1-fe32-4993-94c0-be9b31b675be', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['35', '39', '44', '43', '41', '36', '60'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "/tmp/comfyui_pvenv_5rashvha/persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n             ^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy_api/latest/_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/workspaces/SAM3DBody-2053/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes/load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/hooks.py", line 14, in <module>\n    import comfy.lora\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/lora.py", line 23, in <module>\n    import comfy.model_base\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/ldm/hidream_o1/model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/text_encoders/qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "/workspaces/SAM3DBody-2053/ComfyUI/comfy/sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/workspaces/SAM3DBody-2053/ComfyUI/execution.py", line 297, in process_inputs\n    result = f(**inputs)\n             ^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/metadata.py", line 556, in proxy\n    result = worker.call_method(\n             ^^^^^^^^^^^^^^^^^^^\n', '  File "/workspaces/SAM3DBody-2053/.venv/lib/python3.11/site-packages/comfy_env/isolation/workers/subprocess.py", line 674, in call_method\n    raise WorkerError(\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': '/workspaces/SAM3DBody-2053/ComfyUI/models/depthanything3/da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['35', '39', '59', '44', '43', '58', '41', '36', '40', '18', '4', '46', '24', '60', '29', '16'], 'timestamp': 1778965091589}
     Details: Workflow: /node/ComfyUI-SAM3DBody/workflows/multiple_masks_depthcorrected.json
 Node error: DepthAnything_V3
-  [ComfyUI]     import comfy.lora
-  [ComfyUI]   File "/workspaces/SAM3DBody-1213/ComfyUI/comfy/lora.py", line 23, in <module>
-  [ComfyUI]     import comfy.model_base
