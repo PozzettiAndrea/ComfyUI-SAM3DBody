@@ -3,22 +3,20 @@ Capturing execution frames: rigged_mesh_manipulation.json
   Validating workflow...
   Queuing workflow for execution...
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=0.9s)
-  [capture-node] freeze=12ms shot=125ms unfreeze=0ms saved=True
-  Execution complete (t=0.9s)
+  Frame 2 saved (frame_001.jpg, t=1.6s)
+  [capture-node] freeze=97ms shot=157ms unfreeze=0ms saved=True
+  Execution complete (t=1.6s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 done in 0.0s
   [3d-wait] Phase 2: iframes=1
-  [3d-wait] iframe viewer_ready=False (matched 0 console logs)
-  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...
-  [3d-wait] Got 'Loaded successfully' after 0.8s
-  [3d-wait] Unfrozen in 0.107s, rendering for 5s...
-  [3d-wait] JS halted via CDP after 5.7s
-  [3d-wait] Re-frozen in 6.7s
-  [3d-wait] Total 3D wait: 7.6s
-  Captured 2 unique frames over 8.65s
+  [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+  [3d-wait] Unfrozen in 0.002s, rendering for 5s...
+  [3d-wait] JS halted via CDP after 5.5s
+  [3d-wait] Re-frozen in 6.5s
+  [3d-wait] Total 3D wait: 6.5s
+  Captured 2 unique frames over 8.35s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41887/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778831, canvas=486x710, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778961, canvas=486x710, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
   [timing] final_screenshot: 0.3s

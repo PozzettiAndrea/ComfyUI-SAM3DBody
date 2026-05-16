@@ -68,6 +68,17 @@
             color: #8ba3c1;
         }
 
+        a.meta-chip {
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+
+        a.meta-chip:hover {
+            background: #25395a;
+            border-color: #3a5587;
+            color: #cfe1f7;
+        }
+
         .meta-chip svg {
             width: 12px;
             height: 12px;
@@ -924,7 +935,7 @@
     <header>
         <h1><a href="https://github.com/PozzettiAndrea/PozzettiAndrea/ComfyUI-SAM3DBody">PozzettiAndrea/ComfyUI-SAM3DBody</a> Test Results</h1>
         <div class="meta-chips">
-            <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm.5 4.5a.5.5 0 00-1 0v3.793L5.854 9.854a.5.5 0 10.708.708l1.853-1.854a.5.5 0 00.085-.094V4.5z"/></svg> 2026-05-15 07:43 UTC</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M2.5 4a.5.5 0 100 1 .5.5 0 000-1zM4 4.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zM2.5 7a.5.5 0 100 1 .5.5 0 000-1zM4 7.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 014 7.5zM2.5 10a.5.5 0 100 1 .5.5 0 000-1zM4 10.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5z"/></svg> Windows-10-10.0.26100-SP0</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M5 0a.5.5 0 01.5.5V2h1V.5a.5.5 0 011 0V2h1V.5a.5.5 0 011 0V2h.5A2.5 2.5 0 0112.5 4.5H14v1h-1.5v1H14v1h-1.5v1H14v1h-1.5A2.5 2.5 0 0110 12h-.5v1.5a.5.5 0 01-1 0V12h-1v1.5a.5.5 0 01-1 0V12H6v1.5a.5.5 0 01-1 0V12h-.5A2.5 2.5 0 012 9.5H.5v-1H2v-1H.5v-1H2v-1H.5v-1H2A2.5 2.5 0 014.5 2V.5A.5.5 0 015 0zm-.5 4A1.5 1.5 0 003 5.5v4A1.5 1.5 0 004.5 11h6a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0010.5 4h-6z"/></svg> AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD</span>
+            <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm.5 4.5a.5.5 0 00-1 0v3.793L5.854 9.854a.5.5 0 10.708.708l1.853-1.854a.5.5 0 00.085-.094V4.5z"/></svg> 2026-05-16 19:53 UTC</span> <a class="meta-chip" href="https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971136823" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM6.5 4.5l5 3.5-5 3.5v-7z"/></svg> Test run</a> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M2.5 4a.5.5 0 100 1 .5.5 0 000-1zM4 4.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zM2.5 7a.5.5 0 100 1 .5.5 0 000-1zM4 7.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 014 7.5zM2.5 10a.5.5 0 100 1 .5.5 0 000-1zM4 10.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5z"/></svg> Windows-10-10.0.26100-SP0</span> <span class="meta-chip"><svg viewBox="0 0 16 16"><path d="M5 0a.5.5 0 01.5.5V2h1V.5a.5.5 0 011 0V2h1V.5a.5.5 0 011 0V2h.5A2.5 2.5 0 0112.5 4.5H14v1h-1.5v1H14v1h-1.5v1H14v1h-1.5A2.5 2.5 0 0110 12h-.5v1.5a.5.5 0 01-1 0V12h-1v1.5a.5.5 0 01-1 0V12H6v1.5a.5.5 0 01-1 0V12h-.5A2.5 2.5 0 012 9.5H.5v-1H2v-1H.5v-1H2v-1H.5v-1H2A2.5 2.5 0 014.5 2V.5A.5.5 0 015 0zm-.5 4A1.5 1.5 0 003 5.5v4A1.5 1.5 0 004.5 11h6a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0010.5 4h-6z"/></svg> AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD</span>
         </div>
     </header>
 
@@ -963,7 +974,7 @@
                         <span class="workflow-badge pass">pass</span>
                     </div>
                     <div class="workflow-meta">
-                        <span>21.35s</span>
+                        <span>20.65s</span>
                     </div>
                 </div>
             </div>
@@ -1057,9 +1068,9 @@
             });
         }
 
-        const workflowData = {"rigged_mesh_manipulation": {"src": "screenshots/rigged_mesh_manipulation_executed.png", "title": "rigged_mesh_manipulation", "status": "pass", "duration": "21.35", "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Node executed (1 total), capturing...\n  Frame 2 saved (frame_001.jpg, t=0.9s)\n  [capture-node] freeze=12ms shot=125ms unfreeze=0ms saved=True\n  Execution complete (t=0.9s)\n  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...\n  [3d-wait] Phase 1 done in 0.0s\n  [3d-wait] Phase 2: iframes=1\n  [3d-wait] iframe viewer_ready=False (matched 0 console logs)\n  [3d-wait] Waiting for 'Loaded successfully' console message (timeout=60s)...\n  [3d-wait] Got 'Loaded successfully' after 0.8s\n  [3d-wait] Unfrozen in 0.107s, rendering for 5s...\n  [3d-wait] JS halted via CDP after 5.7s\n  [3d-wait] Re-frozen in 6.7s\n  [3d-wait] Total 3D wait: 7.6s\n  Captured 2 unique frames over 8.65s\n  [debug] iframes: 1\n  [debug]   iframe[0]: src=http://127.0.0.1:41887/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778831, canvas=486x710, rafFrozen=True\n  [timing] trigger_3d_previews: 0.0s\n  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png\n  [timing] final_screenshot: 0.3s\n    Captured 3 video frames", "hardware": {"os": "Windows-10-10.0.26100-SP0", "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"}}};
+        const workflowData = {"rigged_mesh_manipulation": {"src": "screenshots/rigged_mesh_manipulation_executed.png", "title": "rigged_mesh_manipulation", "status": "pass", "duration": "20.65", "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Node executed (1 total), capturing...\n  Frame 2 saved (frame_001.jpg, t=1.6s)\n  [capture-node] freeze=97ms shot=157ms unfreeze=0ms saved=True\n  Execution complete (t=1.6s)\n  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...\n  [3d-wait] Phase 1 done in 0.0s\n  [3d-wait] Phase 2: iframes=1\n  [3d-wait] iframe viewer_ready=True (matched 1 console logs)\n  [3d-wait] Unfrozen in 0.002s, rendering for 5s...\n  [3d-wait] JS halted via CDP after 5.5s\n  [3d-wait] Re-frozen in 6.5s\n  [3d-wait] Total 3D wait: 6.5s\n  Captured 2 unique frames over 8.35s\n  [debug] iframes: 1\n  [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1778961, canvas=486x710, rafFrozen=True\n  [timing] trigger_3d_previews: 0.0s\n  Saved high-quality screenshot: rigged_mesh_manipulation_executed.png\n  [timing] final_screenshot: 0.3s\n    Captured 3 video frames", "hardware": {"os": "Windows-10-10.0.26100-SP0", "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"}}};
         const workflowNames = Object.keys(workflowData);
-        const videoData = {"rigged_mesh_manipulation": {"frames": [{"file": "frame_000.jpg", "time": 0.0, "log": "Capturing execution frames: rigged_mesh_manipulation.json"}, {"file": "frame_001.jpg", "time": 0.86, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_002.jpg", "time": 11.029083490371704, "log": "Final screenshot"}], "total_time": 8.65}};
+        const videoData = {"rigged_mesh_manipulation": {"frames": [{"file": "frame_000.jpg", "time": 0.0, "log": "Capturing execution frames: rigged_mesh_manipulation.json"}, {"file": "frame_001.jpg", "time": 1.55, "log": "Capturing execution frames: rigged_mesh_manipulation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."}, {"file": "frame_002.jpg", "time": 10.69638180732727, "log": "Final screenshot"}], "total_time": 8.35}};
 
         const inIframe = window !== window.top;
         let currentWorkflow = null;
