@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-16T19:46:20.802167+00:00",
+  "timestamp": "2026-05-18T16:09:57.772064+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
     "cpu": "arm"
   },
-  "commit_hash": "a402f6e16c6286138342e9c1827870f62732b28b",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971137596",
+  "commit_hash": "9e0474f8d2ff4a5570862f2941bf27c99ac3985e",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26045267614",
   "success": true,
   "summary": {
     "total": 5,
@@ -31,19 +31,19 @@
     {
       "name": "rigged_mesh_manipulation",
       "status": "pass",
-      "duration_seconds": 17.04,
+      "duration_seconds": 18.66,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.55,
-          "avg": 0.51
+          "peak": 0.82,
+          "avg": 0.69
         },
         "total_ram_gb": 7.0,
-        "samples": 16
+        "samples": 18
       }
     },
     {
