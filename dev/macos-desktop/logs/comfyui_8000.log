@@ -1,103 +1,101 @@
-** ComfyUI startup time: 2026-05-11 10:27:42.993
-[2026-05-11 10:27:42.994] ** Platform: Darwin
-[2026-05-11 10:27:42.994] ** Python version: 3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]
-[2026-05-11 10:27:42.995] ** Python executable: /Users/runner/Documents/ComfyUI/.venv/bin/python
-[2026-05-11 10:27:42.995] ** ComfyUI Path: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
-[2026-05-11 10:27:42.995] ** ComfyUI Base Folder Path: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
-[2026-05-11 10:27:42.995] ** User directory: /Users/runner/Documents/ComfyUI/user
-[2026-05-11 10:27:42.997] ** ComfyUI-Manager config path: /Users/runner/Documents/ComfyUI/user/__manager/config.ini
-[2026-05-11 10:27:42.997] ** Log path: /Users/runner/Documents/ComfyUI/user/comfyui.log
+** ComfyUI startup time: 2026-05-18 18:35:43.213
+[2026-05-18 18:35:43.214] ** Platform: Darwin
+[2026-05-18 18:35:43.214] ** Python version: 3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]
+[2026-05-18 18:35:43.214] ** Python executable: /Users/runner/Documents/ComfyUI/.venv/bin/python
+[2026-05-18 18:35:43.214] ** ComfyUI Path: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
+[2026-05-18 18:35:43.214] ** ComfyUI Base Folder Path: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
+[2026-05-18 18:35:43.215] ** User directory: /Users/runner/Documents/ComfyUI/user
+[2026-05-18 18:35:43.215] ** ComfyUI-Manager config path: /Users/runner/Documents/ComfyUI/user/__manager/config.ini
+[2026-05-18 18:35:43.215] ** Log path: /Users/runner/Documents/ComfyUI/user/comfyui.log
 [ComfyUI-Manager] Skipped fixing the 'comfyui-frontend-package' dependency because the ComfyUI is outdated.
-[2026-05-11 10:27:43.336] [PRE] ComfyUI-Manager
-[2026-05-11 10:27:44.282] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
-[2026-05-11 10:27:44.289] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes
-[2026-05-11 10:27:49.372] [comfy-env] prestartup complete
-[2026-05-11 10:27:50.113] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
-[2026-05-11 10:27:50.114] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes
-[2026-05-11 10:27:50.127] [comfy-env] prestartup complete
-[2026-05-11 10:27:50.300] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
-[2026-05-11 10:27:50.300] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes
-[2026-05-11 10:27:50.309] [comfy-env] prestartup complete
-[2026-05-11 10:27:50.892] WARNING: Potential Error in code: Torch already imported, torch should never be imported before this point.
-[2026-05-11 10:27:56.194] Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'Extension file not found: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfy_kitchen/backends/cuda/_C.abi3.so', 'capabilities': []}
-[2026-05-11 10:27:56.195] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-[2026-05-11 10:27:56.196] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
-[2026-05-11 10:27:56.226] Checkpoint files will always be loaded safely.
-[2026-05-11 10:27:56.342] Total VRAM 7168 MB, total RAM 7168 MB
-[2026-05-11 10:27:56.344] pytorch version: 2.10.0
-[2026-05-11 10:27:56.373] Mac Version (15, 7, 4)
-[2026-05-11 10:27:56.375] Set vram state to: SHARED
-[2026-05-11 10:27:56.377] Device: mps
-[2026-05-11 10:27:57.999] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[2026-05-11 10:28:11.757] Python version: 3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]
-[2026-05-11 10:28:11.760] ComfyUI version: 0.20.1
-[2026-05-11 10:28:11.778] comfy-aimdo version: 0.2.14
-[2026-05-11 10:28:11.782] comfy-kitchen version: 0.2.8
-[2026-05-11 10:28:11.794] [Prompt Server] web root: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI/web_custom_versions/desktop_app
-[2026-05-11 10:28:11.809] Asset seeder disabled
-[2026-05-11 10:28:11.811] [START] ComfyUI-Manager
-[2026-05-11 10:28:12.175] [ComfyUI-Manager] Using GitPython backend
-[2026-05-11 10:28:12.288] [ComfyUI-Manager] network_mode: public
-[2026-05-11 10:28:12.307] [ComfyUI-Manager] The matrix sharing feature has been disabled because the `matrix-nio` dependency is not installed.
+[2026-05-18 18:35:43.329] [PRE] ComfyUI-Manager
+[2026-05-18 18:35:43.569] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
+[2026-05-18 18:35:43.570] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3/nodes
+[2026-05-18 18:35:44.729] [comfy-env] prestartup complete
+[2026-05-18 18:35:44.832] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
+[2026-05-18 18:35:44.832] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes
+[2026-05-18 18:35:44.836] [comfy-env] prestartup complete
+[2026-05-18 18:35:44.894] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[2026-05-18 18:35:44.895] [comfy-env]   nodes -> /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes
+[2026-05-18 18:35:44.900] [comfy-env] prestartup complete
+[2026-05-18 18:35:45.162] WARNING: Potential Error in code: Torch already imported, torch should never be imported before this point.
+[2026-05-18 18:35:47.137] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[2026-05-18 18:35:47.137] Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'Extension file not found: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfy_kitchen/backends/cuda/_C.abi3.so', 'capabilities': []}
+[2026-05-18 18:35:47.137] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[2026-05-18 18:35:47.156] Checkpoint files will always be loaded safely.
+[2026-05-18 18:35:47.222] Total VRAM 7168 MB, total RAM 7168 MB
+[2026-05-18 18:35:47.222] pytorch version: 2.10.0
+[2026-05-18 18:35:47.231] Mac Version (15, 7, 4)
+[2026-05-18 18:35:47.232] Set vram state to: SHARED
+[2026-05-18 18:35:47.232] Device: mps
+[2026-05-18 18:35:47.808] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[2026-05-18 18:35:53.953] Python version: 3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]
+[2026-05-18 18:35:53.953] ComfyUI version: 0.21.1
+[2026-05-18 18:35:53.954] comfy-aimdo version: 0.3.0
+[2026-05-18 18:35:53.954] comfy-kitchen version: 0.2.8
+[2026-05-18 18:35:53.957] [Prompt Server] web root: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI/web_custom_versions/desktop_app
+[2026-05-18 18:35:53.958] Asset seeder disabled
+[2026-05-18 18:35:53.958] [START] ComfyUI-Manager
+[2026-05-18 18:35:54.116] [ComfyUI-Manager] Using GitPython backend
+[2026-05-18 18:35:54.159] [ComfyUI-Manager] network_mode: public
+[2026-05-18 18:35:54.170] [ComfyUI-Manager] The matrix sharing feature has been disabled because the `matrix-nio` dependency is not installed.
 	To use this feature, please run the following command:
 	/Users/runner/Documents/ComfyUI/.venv/bin/python -m pip install matrix-nio
 
-[2026-05-11 10:28:16.773] [comfy-env] Version: 0.3.84
-[2026-05-11 10:28:17.373] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
-[2026-05-11 10:28:17.389] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
-[2026-05-11 10:28:17.408] [comfy-env] Scanning nodes metadata (isolation root)...
-[2026-05-11 10:28:36.347] [comfy-env] Scanned nodes: 15 nodes (18.9s)
-[2026-05-11 10:28:36.360] [comfy-env] Scanned nodes root: 15 nodes (19.0s)
-[2026-05-11 10:28:36.373] [comfy-env] Imported nodes root: 15 nodes (isolation)
-[2026-05-11 10:28:36.379] [comfy-env] Registered 15 total nodes
-[2026-05-11 10:28:37.130] [comfy-env] Version: 0.3.84
-[2026-05-11 10:28:37.265] [comfy-env] register_nodes: ComfyUI-SAM3DBody
-[2026-05-11 10:28:37.276] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
-[2026-05-11 10:28:37.345] [comfy-env] Scanning nodes metadata (isolation root)...
-[2026-05-11 10:28:56.082] [comfy-env] Scanned nodes: 15 nodes (18.7s)
-[2026-05-11 10:28:56.106] [comfy-env] Scanned nodes root: 15 nodes (18.8s)
-[2026-05-11 10:28:56.119] [comfy-env] Imported nodes root: 15 nodes (isolation)
-[2026-05-11 10:28:56.125] [comfy-env] Registered 15 total nodes
-[2026-05-11 10:28:56.572] loading...
-[2026-05-11 10:28:56.573] calling register_nodes
-[2026-05-11 10:28:56.579] [comfy-env] Version: 0.3.84
-[2026-05-11 10:28:56.697] [comfy-env] register_nodes: ComfyUI-GeometryPack
-[2026-05-11 10:28:56.755] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
-[2026-05-11 10:28:57.089] [comfy-env] Scanning nodes metadata (isolation root)...
-[2026-05-11 10:29:34.680] [comfy-env] Scanned nodes: 125 nodes (37.5s)
-[2026-05-11 10:29:34.726] [comfy-env] Scanned nodes root: 125 nodes (37.6s)
-[2026-05-11 10:29:34.746] [comfy-env] Imported nodes root: 125 nodes (isolation)
-[2026-05-11 10:29:34.760] [comfy-env] Registered 125 total nodes
-[2026-05-11 10:29:35.449] ComfyUI-Multiband loaded: 15 nodes registered
-[2026-05-11 10:29:35.464] 
+[2026-05-18 18:35:56.010] [comfy-env] Version: 0.3.84
+[2026-05-18 18:35:56.203] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
+[2026-05-18 18:35:56.206] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
+[2026-05-18 18:35:56.212] [comfy-env] Scanning nodes metadata (isolation root)...
+[2026-05-18 18:36:05.112] [comfy-env] Scanned nodes: 15 nodes (8.9s)
+[2026-05-18 18:36:05.122] [comfy-env] Scanned nodes root: 15 nodes (8.9s)
+[2026-05-18 18:36:05.124] [comfy-env] Imported nodes root: 15 nodes (isolation)
+[2026-05-18 18:36:05.124] [comfy-env] Registered 15 total nodes
+[2026-05-18 18:36:05.457] [comfy-env] Version: 0.3.84
+[2026-05-18 18:36:05.594] [comfy-env] register_nodes: ComfyUI-SAM3DBody
+[2026-05-18 18:36:05.598] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
+[2026-05-18 18:36:05.613] [comfy-env] Scanning nodes metadata (isolation root)...
+[2026-05-18 18:36:14.117] [comfy-env] Scanned nodes: 15 nodes (8.5s)
+[2026-05-18 18:36:14.119] [comfy-env] Scanned nodes root: 15 nodes (8.5s)
+[2026-05-18 18:36:14.120] [comfy-env] Imported nodes root: 15 nodes (isolation)
+[2026-05-18 18:36:14.120] [comfy-env] Registered 15 total nodes
+[2026-05-18 18:36:14.312] loading...
+[2026-05-18 18:36:14.312] calling register_nodes
+[2026-05-18 18:36:14.315] [comfy-env] Version: 0.3.84
+[2026-05-18 18:36:14.460] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[2026-05-18 18:36:14.468] [comfy-env] ComfyUI source dir: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI
+[2026-05-18 18:36:14.744] [comfy-env] Scanning nodes metadata (isolation root)...
+[2026-05-18 18:36:29.074] [comfy-env] Scanned nodes: 125 nodes (14.3s)
+[2026-05-18 18:36:29.083] [comfy-env] Scanned nodes root: 125 nodes (14.3s)
+[2026-05-18 18:36:29.673] [comfy-env] Imported nodes root: 125 nodes (isolation)
+[2026-05-18 18:36:29.676] [comfy-env] Registered 125 total nodes
+[2026-05-18 18:36:30.100] ComfyUI-Multiband loaded: 15 nodes registered
+[2026-05-18 18:36:30.102] 
 Import times for custom nodes:
-[2026-05-11 10:29:35.464]    0.0 seconds: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI/custom_nodes/websocket_image_save.py
-[2026-05-11 10:29:35.464]    0.0 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-CameraPack
-[2026-05-11 10:29:35.465]    0.4 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite
-[2026-05-11 10:29:35.465]    0.7 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-Multiband
-[2026-05-11 10:29:35.465]    0.7 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-KJNodes
-[2026-05-11 10:29:35.465]   19.0 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody
-[2026-05-11 10:29:35.465]   19.7 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3
-[2026-05-11 10:29:35.465]   38.2 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-GeometryPack
-[2026-05-11 10:29:35.465] 
-[2026-05-11 10:29:35.482] Context impl SQLiteImpl.
-[2026-05-11 10:29:35.482] Will assume non-transactional DDL.
-[2026-05-11 10:29:36.313] Starting server
+[2026-05-18 18:36:30.102]    0.0 seconds: /Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI/custom_nodes/websocket_image_save.py
+[2026-05-18 18:36:30.102]    0.0 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-CameraPack
+[2026-05-18 18:36:30.102]    0.2 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite
+[2026-05-18 18:36:30.102]    0.3 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-KJNodes
+[2026-05-18 18:36:30.102]    0.4 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-Multiband
+[2026-05-18 18:36:30.103]    8.7 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody
+[2026-05-18 18:36:30.103]    9.1 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-DepthAnythingV3
+[2026-05-18 18:36:30.103]   15.4 seconds: /Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-GeometryPack
+[2026-05-18 18:36:30.103] 
+[2026-05-18 18:36:30.109] Context impl SQLiteImpl.
+[2026-05-18 18:36:30.109] Will assume non-transactional DDL.
+[2026-05-18 18:36:30.318] Starting server
 
-[2026-05-11 10:29:36.330] To see the GUI go to: http://127.0.0.1:8000
-[2026-05-11 10:29:45.604] [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
-[2026-05-11 10:29:45.695] FETCH DATA from: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfyui_manager/custom-node-list.json [DONE]
-[2026-05-11 10:29:46.158] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
-[2026-05-11 10:29:51.514] [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
-[2026-05-11 10:29:51.584] FETCH DATA from: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfyui_manager/custom-node-list.json [DONE]
-[2026-05-11 10:30:02.266] FETCH ComfyRegistry Data [DONE]
-[2026-05-11 10:30:02.928] [ComfyUI-Manager] default cache updated: https://api.comfy.org/nodes
-[2026-05-11 10:30:03.004] FETCH DATA from: /Users/runner/Documents/ComfyUI/user/__manager/cache/1514988643_custom-node-list.json [DONE]
-[2026-05-11 10:30:03.110] [ComfyUI-Manager] All startup tasks have been completed.
-[2026-05-11 10:30:17.049] got prompt
-[2026-05-11 10:30:17.510] [ComfyUI-SAM3DBody] python: /Users/runner/.ce/.pixi/envs/sam3dbody-nodes/bin/python
-[2026-05-11 10:30:17.511] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI', '/Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/Users/runner/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.1/site-packages', '/Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
-[2026-05-11 10:30:23.146] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[2026-05-11 10:30:24.959] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
-[2026-05-11 10:30:24.962] [ComfyUI-SAM3DBody] Health check: ok
-[2026-05-11 10:30:25.280] Prompt executed in 8.16 seconds
+[2026-05-18 18:36:30.318] To see the GUI go to: http://127.0.0.1:8000
+[2026-05-18 18:36:32.512] [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
+[2026-05-18 18:36:32.614] FETCH DATA from: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfyui_manager/custom-node-list.json [DONE]
+[2026-05-18 18:36:37.490] [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
+[2026-05-18 18:36:37.558] FETCH DATA from: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfyui_manager/custom-node-list.json [DONE]
+[2026-05-18 18:36:37.942] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[2026-05-18 18:36:44.256] [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
+[2026-05-18 18:36:44.335] FETCH DATA from: /Users/runner/Documents/ComfyUI/.venv/lib/python3.12/site-packages/comfyui_manager/custom-node-list.json [DONE]
+[2026-05-18 18:37:04.829] got prompt
+[2026-05-18 18:37:04.901] [ComfyUI-SAM3DBody] python: /Users/runner/.ce/.pixi/envs/sam3dbody-nodes/bin/python
+[2026-05-18 18:37:04.901] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/ComfyUI', '/Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/Users/runner/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.1/site-packages', '/Users/runner/Documents/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+[2026-05-18 18:37:08.744] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[2026-05-18 18:37:10.536] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
+[2026-05-18 18:37:10.538] [ComfyUI-SAM3DBody] Health check: ok
+[2026-05-18 18:37:10.570] Prompt executed in 5.71 seconds
