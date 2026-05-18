@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: C:\logs\SAM3DBody-1514\dev\windows-portable-gpu\crash_dump.log
+[00:00] Crash dump logging enabled: C:\logs\SAM3DBody-1732\dev\windows-portable-gpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -22,322 +22,448 @@ Setting up ComfyUI...
 [00:04]   Downloaded: 10%
 [00:08]   Downloaded: 20%
 [00:11]   Downloaded: 30%
-[00:14]   Downloaded: 40%
+[00:15]   Downloaded: 40%
 [00:19]   Downloaded: 50%
 [00:22]   Downloaded: 60%
 [00:26]   Downloaded: 70%
 [00:30]   Downloaded: 80%
 [00:33]   Downloaded: 90%
-[00:38]   Downloaded: 100%
-[00:38] Downloaded to C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1.7z
-[00:38] Extracting to cache: C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
-[00:38] Extracting ComfyUI_portable_v0.21.1.7z...
-[00:38] Using 7z: C:\Program Files\7-Zip\7z.exe
-[02:11] Extracted to C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
-[02:11] Copying from cache to: C:\workspaces\SAM3DBody-1514\portable-comfyui
-[02:27] Installing uv into embedded Python...
-[02:27] Running: C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
-[02:32] Installing ComfyUI requirements...
-[02:32] Running: C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
-[02:34] 
+[00:37]   Downloaded: 100%
+[00:37] Downloaded to C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1.7z
+[00:37] Extracting to cache: C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
+[00:37] Extracting ComfyUI_portable_v0.21.1.7z...
+[00:37] Using 7z: C:\Program Files\7-Zip\7z.exe
+[01:36] Extracted to C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
+[01:36] Copying from cache to: C:\workspaces\SAM3DBody-1732\portable-comfyui
+[01:59] Installing uv into embedded Python...
+[01:59] Running: C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
+[02:03] Installing ComfyUI requirements...
+[02:03] Running: C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
+[02:04] 
 Installing custom node...
-[02:34] Copying ComfyUI-SAM3DBody to custom_nodes/...
-[02:34] Installing node requirements...
-[02:34] Running: C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
-[02:39] 
+[02:04] Copying ComfyUI-SAM3DBody to custom_nodes/...
+[02:04] Installing node requirements...
+[02:04] Running: C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
+[02:08] 
 Running install.py...
-[02:39] Running: C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
-[02:40]   
-[02:40]   Installing 3 node dependencies...
-[02:40]     Cloning ComfyUI-Multiband...
-[02:41]     Installing requirements for ComfyUI-Multiband...
-[02:41]     Cloning ComfyUI-DepthAnythingV3...
-[02:43]     Installing requirements for ComfyUI-DepthAnythingV3...
-[02:43]     Running install.py for ComfyUI-DepthAnythingV3...
-[02:44]   
-[02:44]   Installing 3 node dependencies...
-[02:44]     Cloning ComfyUI-VideoHelperSuite...
-[02:44]     Installing requirements for ComfyUI-VideoHelperSuite...
-[02:46]     Cloning ComfyUI-KJNodes...
-[02:48]     Installing requirements for ComfyUI-KJNodes...
-[02:50]     Cloning ComfyUI-GeometryPack...
-[02:55]     Installing requirements for ComfyUI-GeometryPack...
-[02:56]     Running install.py for ComfyUI-GeometryPack...
-[02:59]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[02:59]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[02:59]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[02:59]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[02:59]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[02:59]   [comfy-env] _discover: FAILED to load C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml: TOMLDecodeError: Cannot overwrite a value (at line 26, column 19)
-[02:59]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[02:59]   [comfy-env] Workspace: C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env
-[02:59]   [comfy-env] ComfyUI: C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[02:59]   [comfy-env] Found 2 node config(s):
-[02:59]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
-[02:59]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[03:00]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[03:25]   [comfy-env] GPU: Detection: torch
-[03:25]   Recommended: CUDA 13.0
-[03:25]   
-[03:25]     GPU 0: NVIDIA GeForce RTX 3060 (sm_86) [Ampere] 12287MB
-[03:25]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[03:25]   [comfy-env] cuda-wheels: 3 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh']
-[03:25]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[03:25]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:26]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:26]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:27]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:27]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:27]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:27]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
-[03:27]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
-[03:28]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:28]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
-[03:28]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:28]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
-[03:28]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
-[03:28]   [cuda-wheels]   Found: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:28]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
-[03:28]   Generated C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\pixi.toml
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.13.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:28]   [comfy-env] Installing 2 environment(s):
-[03:28]     - depthanythingv3-nodes (python=host, 10 pypi deps, 2 cuda wheels)
-[03:28]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
-[03:28]   [comfy-env] Running `pixi install -e depthanythingv3-nodes -e geometrypack-nodes`...
-[03:39]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[03:39]     	- Scripts/.librsvg-pre-unlink.bat
-[03:39]     To enable them, run:
-[03:39]     	pixi config set --local run-post-link-scripts insecure
-[03:39]     More info:
-[03:39]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[04:35]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[04:35]     	- Scripts/.librsvg-pre-unlink.bat
-[04:35]     To enable them, run:
-[04:35]     	pixi config set --local run-post-link-scripts insecure
-[04:35]     More info:
-[04:35]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[05:05]     The following environments have been installed: depthanythingv3-nodes, geometrypack-nodes.
-[05:05]   [comfy-env] depthanythingv3-nodes: installing cuda-wheels with --no-deps (flash_attn, sageattention)
-[05:05]     Using Python 3.13.13 environment at: .pixi\envs\depthanythingv3-nodes
-[05:06]     Resolved 2 packages in 1.04s
-[05:06]     Downloading sageattention (35.4MiB)
-[05:06]     Downloading flash-attn (228.4MiB)
-[05:08]      Downloaded sageattention
-[05:12]      Downloaded flash-attn
-[05:12]     Prepared 2 packages in 5.28s
-[05:12]     Installed 2 packages in 33ms
-[05:12]      + flash-attn==2.8.3+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
-[05:12]      + sageattention==2.2.0+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
-[05:12]   [comfy-env] geometrypack-nodes: installing cuda-wheels with --no-deps (cumesh)
-[05:12]     Using Python 3.13.13 environment at: .pixi\envs\geometrypack-nodes
-[05:13]     Resolved 1 package in 527ms
-[05:13]     Downloading cumesh (3.8MiB)
-[05:13]      Downloaded cumesh
-[05:13]     Prepared 1 package in 91ms
-[05:13]     Installed 1 package in 11ms
-[05:13]      + cumesh==0.0.1+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumesh-latest/cumesh-0.0.1%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
-[05:13]   [comfy-env] Recorded install hash 95a8114d1b0f -> C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.hash
-[05:13]   [comfy-env] Install log: C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.log
-[05:13]   
-[05:13]   Installation complete!
-[05:13]   
-[05:13]   [requirements] Re-installing main package requirements...
-[05:13]     Installing requirements for ComfyUI-DepthAnythingV3...
-[05:13]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[05:13]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[05:13]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[05:13]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[05:13]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[05:13]   [comfy-env] _discover: FAILED to load C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml: TOMLDecodeError: Cannot overwrite a value (at line 26, column 19)
-[05:13]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[05:13]   [comfy-env] Workspace inputs unchanged (hash 95a8114d1b0f) -- skipping install. Delete C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.hash to force.
-[05:13]   
-[05:13]   Installation complete!
-[05:13]     ComfyUI-VideoHelperSuite: exists
-[05:13]     ComfyUI-KJNodes: exists
-[05:13]     ComfyUI-GeometryPack: exists
-[05:13]     Cloning ComfyUI-CameraPack...
-[05:14]   
-[05:14]   [requirements] Re-installing main package requirements...
-[05:14]     Installing requirements for ComfyUI-SAM3DBody...
-[05:14]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[05:14]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[05:14]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[05:14]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[05:14]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[05:14]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[05:14]   [comfy-env] _discover: FAILED to load C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml: TOMLDecodeError: Cannot overwrite a value (at line 26, column 19)
-[05:14]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[05:14]   [comfy-env] Workspace inputs unchanged (hash 95a8114d1b0f) -- skipping install. Delete C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.hash to force.
-[05:14]   
-[05:14]   Installation complete!
-[05:14] Installing 3 node dependency(ies)...
-[05:14]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
-[05:14]   ComfyUI-Multiband already exists, skipping...
-[05:14]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
-[05:14]   ComfyUI-DepthAnythingV3 already exists, skipping...
-[05:14]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[05:14]   ComfyUI-CameraPack already exists, skipping...
-[05:14] Installing validation endpoint...
-[05:14]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[05:14] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git C:\workspaces\SAM3DBody-1514\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[05:15] [INSTALL] PASSED
-[05:15] 
-[05:15] [3/5] REGISTRATION
-[05:15] ----------------------------------------
-[05:15] 
+[02:08] Running: C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
+[02:09]   
+[02:09]   Installing 3 node dependencies...
+[02:09]     Cloning ComfyUI-Multiband...
+[02:10]     Installing requirements for ComfyUI-Multiband...
+[02:10]     Cloning ComfyUI-DepthAnythingV3...
+[02:12]     Installing requirements for ComfyUI-DepthAnythingV3...
+[02:12]     Running install.py for ComfyUI-DepthAnythingV3...
+[02:12]   
+[02:12]   Installing 3 node dependencies...
+[02:12]     Cloning ComfyUI-VideoHelperSuite...
+[02:13]     Installing requirements for ComfyUI-VideoHelperSuite...
+[02:14]     Cloning ComfyUI-KJNodes...
+[02:15]     Installing requirements for ComfyUI-KJNodes...
+[02:16]     Cloning ComfyUI-GeometryPack...
+[02:20]     Installing requirements for ComfyUI-GeometryPack...
+[02:21]     Running install.py for ComfyUI-GeometryPack...
+[02:23]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[02:23]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[02:23]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[02:23]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[02:23]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[02:23]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[02:23]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[02:23]   [comfy-env] Workspace: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env
+[02:23]   [comfy-env] ComfyUI: C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[02:23]   [comfy-env] Found 3 node config(s):
+[02:23]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
+[02:23]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[02:23]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
+[02:23]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[02:35]   [comfy-env] GPU: Detection: torch
+[02:35]   Recommended: CUDA 13.1
+[02:35]   
+[02:35]     GPU 0: NVIDIA GeForce RTX 5060 (sm_120) [Blackwell] 8150MB
+[02:35]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[02:36]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[02:36]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[02:36]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:36]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:36]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:37]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:37]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:37]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
+[02:39]   [cuda-wheels]   Found via API: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:39]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:39]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:39]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:40]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:40]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:40]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:40]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:41]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:41]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:42]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:42]   [comfy-env] cuda-wheels combo: cu13.0/torch2.11 (bootstrap matches; per-node envs will pin to this)
+[02:42]   [cuda-wheels] Looking up flash_attn: cu130 torch2.11 cp313 win_amd64
+[02:42]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:42]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:43]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:43]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[02:43]   [cuda-wheels] Looking up cumesh: cu130 torch2.11 cp313 win_amd64
+[02:43]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
+[02:44]   [cuda-wheels]   Found via API: cumesh-0.0.1+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:44]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[02:44]   [cuda-wheels] Looking up detectron2: cu130 torch2.11 cp313 win_amd64
+[02:44]   [cuda-wheels]   Found: detectron2-0.6+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:44]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:44]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:44]   [cuda-wheels] Looking up torch-sparse: cu130 torch2.11 cp313 win_amd64
+[02:45]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:45]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:46]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:46]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:46]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:46]   [cuda-wheels] Looking up sageattention: cu130 torch2.11 cp313 win_amd64
+[02:46]   [cuda-wheels]   Found: sageattention-2.2.0+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:46]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[02:46]   Generated C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\pixi.toml
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.13.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:46]   [comfy-env] Installing 3 environment(s):
+[02:46]     - depthanythingv3-nodes (python=host, 10 pypi deps, 2 cuda wheels)
+[02:46]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
+[02:46]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[02:46]   [comfy-env] Running `pixi install -e depthanythingv3-nodes -e geometrypack-nodes -e sam3dbody-nodes`...
+[03:08]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[03:08]     	- Scripts/.librsvg-pre-unlink.bat
+[03:08]     To enable them, run:
+[03:08]     	pixi config set --local run-post-link-scripts insecure
+[03:08]     More info:
+[03:08]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[04:59]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[04:59]     	- Scripts/.librsvg-pre-unlink.bat
+[04:59]     To enable them, run:
+[04:59]     	pixi config set --local run-post-link-scripts insecure
+[04:59]     More info:
+[04:59]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[05:05]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[05:05]     	- Scripts/.librsvg-pre-unlink.bat
+[05:05]     To enable them, run:
+[05:05]     	pixi config set --local run-post-link-scripts insecure
+[05:05]     More info:
+[05:05]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[05:24]     The following environments have been installed: depthanythingv3-nodes, geometrypack-nodes, sam3dbody-nodes.
+[05:24]   [comfy-env] depthanythingv3-nodes: installing cuda-wheels with --no-deps (flash_attn, sageattention)
+[05:24]     Using Python 3.13.13 environment at: .pixi\envs\depthanythingv3-nodes
+[05:25]     Resolved 2 packages in 939ms
+[05:25]     Downloading sageattention (35.4MiB)
+[05:25]     Downloading flash-attn (228.4MiB)
+[05:26]      Downloaded sageattention
+[05:29]      Downloaded flash-attn
+[05:29]     Prepared 2 packages in 4.26s
+[05:29]     Installed 2 packages in 20ms
+[05:29]      + flash-attn==2.8.3+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:29]      + sageattention==2.2.0+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:30]   [comfy-env] geometrypack-nodes: installing cuda-wheels with --no-deps (cumesh)
+[05:30]     Using Python 3.13.13 environment at: .pixi\envs\geometrypack-nodes
+[05:30]     Resolved 1 package in 393ms
+[05:30]     Downloading cumesh (3.8MiB)
+[05:30]      Downloaded cumesh
+[05:30]     Prepared 1 package in 77ms
+[05:30]     Installed 1 package in 6ms
+[05:30]      + cumesh==0.0.1+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumesh-latest/cumesh-0.0.1%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:30]   [comfy-env] sam3dbody-nodes: installing cuda-wheels with --no-deps (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[05:30]     Using Python 3.13.13 environment at: .pixi\envs\sam3dbody-nodes
+[05:31]     Resolved 6 packages in 968ms
+[05:31]     Downloading torch-scatter (5.0MiB)
+[05:31]     Downloading torch-sparse (4.1MiB)
+[05:31]     Downloading flash-attn (228.4MiB)
+[05:31]     Downloading torch-cluster (2.8MiB)
+[05:31]     Downloading sageattention (35.4MiB)
+[05:31]     Downloading detectron2 (1.3MiB)
+[05:31]      Downloaded detectron2
+[05:32]      Downloaded torch-cluster
+[05:32]      Downloaded torch-sparse
+[05:32]      Downloaded torch-scatter
+[05:33]      Downloaded sageattention
+[05:36]      Downloaded flash-attn
+[05:36]     Prepared 6 packages in 4.84s
+[05:36]     Installed 6 packages in 66ms
+[05:36]      + detectron2==0.6+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/detectron2-latest/detectron2-0.6%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]      + flash-attn==2.8.3+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]      + sageattention==2.2.0+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]      + torch-cluster==1.6.3+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]      + torch-scatter==2.1.2+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]      + torch-sparse==0.6.18+cu130torch2.11 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_sparse-latest/torch_sparse-0.6.18%2Bcu130torch2.11-cp313-cp313-win_amd64.whl)
+[05:36]   [comfy-env] Recorded install hash 719c474c9b04 -> C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.hash
+[05:36]   [comfy-env] Install log: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.log
+[05:36]   
+[05:36]   Installation complete!
+[05:37]   
+[05:37]   [requirements] Re-installing main package requirements...
+[05:37]     Installing requirements for ComfyUI-DepthAnythingV3...
+[05:37]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[05:37]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[05:37]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[05:37]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[05:37]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[05:37]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[05:37]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[05:37]   [comfy-env] Workspace inputs unchanged (hash 719c474c9b04) -- skipping install. Delete C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.hash to force.
+[05:37]   
+[05:37]   Installation complete!
+[05:37]     ComfyUI-VideoHelperSuite: exists
+[05:37]     ComfyUI-KJNodes: exists
+[05:37]     ComfyUI-GeometryPack: exists
+[05:37]     Cloning ComfyUI-CameraPack...
+[05:38]   
+[05:38]   [requirements] Re-installing main package requirements...
+[05:38]     Installing requirements for ComfyUI-SAM3DBody...
+[05:38]   [comfy-env] _discover: scanning C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[05:38]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[05:38]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[05:38]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[05:38]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[05:38]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[05:38]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[05:38]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[05:38]   [comfy-env] Workspace inputs unchanged (hash 719c474c9b04) -- skipping install. Delete C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.hash to force.
+[05:38]   
+[05:38]   Installation complete!
+[05:38] Installing 3 node dependency(ies)...
+[05:38]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
+[05:38]   ComfyUI-Multiband already exists, skipping...
+[05:38]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
+[05:38]   ComfyUI-DepthAnythingV3 already exists, skipping...
+[05:38]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[05:38]   ComfyUI-CameraPack already exists, skipping...
+[05:38] Installing validation endpoint...
+[05:38]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[05:38] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git C:\workspaces\SAM3DBody-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[05:39] CUDA packages absent (will mock): detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[05:39] [INSTALL] PASSED
+[05:39] 
+[05:39] [3/5] REGISTRATION
+[05:39] ----------------------------------------
+[05:39] 
 [DEBUG] server=None, api=None
-[05:15] 
+[05:39] 
 Starting ComfyUI server...
-[05:15] Starting ComfyUI server on port 41893...
-[05:15] Starting ComfyUI server on port 41893...
-[05:15] Server stdout/stderr -> C:\workspaces\SAM3DBody-1514\server.log
-[05:16] Waiting for server to be ready (timeout: 600s)...
-[05:16]   [ComfyUI:stdout] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[05:16]   [ComfyUI:stderr] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[06:34] Server responding, waiting for nodes to load...
-[06:54] Server is ready!
-[06:54] Checking for import errors in server logs...
-[06:54] No import errors detected
-[06:54] Found 1163 registered nodes
+[05:39] Starting ComfyUI server on port 41886...
+[05:39] CUDA mock packages: detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[05:39] Starting ComfyUI server on port 41886...
+[05:39] Server stdout/stderr -> C:\workspaces\SAM3DBody-1732\server.log
+[05:39] Waiting for server to be ready (timeout: 600s)...
+[05:39]   [ComfyUI:stderr] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
+[05:39]   [ComfyUI:stdout] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
+[06:33] Server responding, waiting for nodes to load...
+[06:53] Server is ready!
+[06:53] Checking for import errors in server logs...
+[06:53] No import errors detected
+[06:53] Found 1164 registered nodes
 [06:54] [REGISTRATION] PASSED
 [06:54] 
 [06:54] [4/5] INSTANTIATION
 [06:54] ----------------------------------------
 [06:54] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x0000021233105940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000021233106900>
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001C8CECE5A90>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001C8CECE6CF0>
 [06:54] Testing node constructors...
-[06:58] All 15 node(s) instantiated successfully!
-[06:58] [INSTANTIATION] PASSED
-[06:58] 
-[06:58] [5/5] EXECUTION
-[06:58] ----------------------------------------
-[06:58] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x0000021233105940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000021233106900>
-[06:58] GPU runner - will execute 4 workflow(s)
-[06:58] Running 5 workflow(s) (all with videos)...
-[06:58] Installing screenshot dependencies (playwright, pillow)...
-[07:00]   Packages installed, downloading chromium browser...
-[07:18]   Screenshot dependencies installed successfully
-[07:18] Starting headless browser...
-[07:19]   Downloading Mesa llvmpipe for Windows...
-[07:19]   Mesa download error: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>
-[07:19]   Mesa unavailable -- falling back to SwiftShader
-[07:24] Capturing execution frames: multiple_masks.json
-[07:33]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[07:33]   Validating workflow...
-[07:33]   Queuing workflow for execution...
-[07:35]   Frame 2 saved (frame_001.jpg, t=2.3s)
-[07:35]   [capture-periodic] freeze=4ms shot=123ms unfreeze=7ms saved=True
-[07:38]   Frame 3 saved (frame_002.jpg, t=4.5s)
-[07:38]   [capture-periodic] freeze=5ms shot=140ms unfreeze=5ms saved=True
-[07:40]   [capture-loop] iter=50 t=6.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=8.7/31.9GB (27%) swap=0.4/5.0GB (9%) cpu=8% browser_rss=0.73GB
-[07:46]   [capture-loop] iter=100 t=12.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=22% browser_rss=0.73GB
-[07:52]   [capture-loop] iter=150 t=19.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=24% browser_rss=0.73GB
-[07:53]   Execution complete (t=20.4s)
-[07:53]   Execution error: {'prompt_id': '4adc7d74-353e-4c12-848d-070cdf29af59', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['36', '39', '24', '35'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['24', '29', '35', '16', '36', '39', '4', '18'], 'timestamp': 1778851330831}
-[07:54] Capturing execution frames: multiple_masks_depthcorrected.json
-[08:01]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[08:01]   Validating workflow...
-[08:01]   Queuing workflow for execution...
-[08:01]   Node executed (1 total), capturing...
-[08:02]   Frame 2 saved (frame_001.jpg, t=0.6s)
-[08:02]   [capture-node] freeze=6ms shot=150ms unfreeze=5ms saved=True
-[08:02]   Node executed (2 total), capturing...
-[08:02]   Frame 3 saved (frame_002.jpg, t=1.1s)
-[08:02]   [capture-node] freeze=6ms shot=155ms unfreeze=4ms saved=True
-[08:07]   Frame 4 saved (frame_003.jpg, t=5.7s)
-[08:07]   [capture-periodic] freeze=4ms shot=142ms unfreeze=4ms saved=True
-[08:08]   [capture-loop] iter=50 t=6.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=9.9/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=9% browser_rss=0.77GB
-[08:14]   [capture-loop] iter=100 t=12.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=11.0/31.9GB (34%) swap=0.4/5.0GB (9%) cpu=7% browser_rss=0.77GB
-[08:20]   [capture-loop] iter=150 t=18.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.2/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=6% browser_rss=0.77GB
-[08:26]   [capture-loop] iter=200 t=24.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=9.2/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=7% browser_rss=0.76GB
-[08:27]   Frame 5 saved (frame_004.jpg, t=25.8s)
-[08:27]   [capture-periodic] freeze=6ms shot=205ms unfreeze=7ms saved=True
-[08:32]   [capture-loop] iter=250 t=31.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=20% browser_rss=0.76GB
-[08:34]   Frame 6 saved (frame_005.jpg, t=32.7s)
-[08:34]   [capture-periodic] freeze=6ms shot=181ms unfreeze=11ms saved=True
-[08:38]   Frame 7 saved (frame_006.jpg, t=37.2s)
-[08:38]   [capture-periodic] freeze=4ms shot=192ms unfreeze=8ms saved=True
-[08:39]   [capture-loop] iter=300 t=37.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.1/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=22% browser_rss=0.76GB
-[08:40]   Frame 8 saved (frame_007.jpg, t=39.5s)
-[08:40]   [capture-periodic] freeze=11ms shot=197ms unfreeze=5ms saved=True
-[08:43]   Frame 9 saved (frame_008.jpg, t=41.8s)
-[08:43]   [capture-periodic] freeze=5ms shot=190ms unfreeze=5ms saved=True
-[08:45]   [capture-loop] iter=350 t=44.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.4/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=22% browser_rss=0.76GB
-[08:47]   Frame 10 saved (frame_009.jpg, t=46.3s)
-[08:47]   [capture-periodic] freeze=5ms shot=204ms unfreeze=5ms saved=True
-[08:52]   Frame 11 saved (frame_010.jpg, t=50.9s)
-[08:52]   [capture-periodic] freeze=9ms shot=206ms unfreeze=11ms saved=True
-[08:52]   [capture-loop] iter=400 t=51.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.6/31.9GB (33%) swap=0.4/5.0GB (9%) cpu=22% browser_rss=0.76GB
-[08:54]   Frame 12 saved (frame_011.jpg, t=53.2s)
-[08:54]   [capture-periodic] freeze=5ms shot=191ms unfreeze=5ms saved=True
-[08:57]   Frame 13 saved (frame_012.jpg, t=55.6s)
-[08:57]   [capture-periodic] freeze=4ms shot=192ms unfreeze=7ms saved=True
-[08:58]   [capture-loop] iter=450 t=57.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.6/31.9GB (33%) swap=0.4/5.0GB (9%) cpu=22% browser_rss=0.76GB
-[08:59]   Frame 14 saved (frame_013.jpg, t=57.8s)
-[08:59]   [capture-periodic] freeze=5ms shot=188ms unfreeze=5ms saved=True
-[09:01]   Frame 15 saved (frame_014.jpg, t=60.2s)
-[09:01]   [capture-periodic] freeze=5ms shot=199ms unfreeze=9ms saved=True
-[09:03]   Frame 16 saved (frame_015.jpg, t=62.5s)
-[09:03]   [capture-periodic] freeze=5ms shot=194ms unfreeze=5ms saved=True
-[09:05]   [capture-loop] iter=500 t=64.4s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=7 ram=10.3/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=21% browser_rss=0.76GB
-[09:06]   Frame 17 saved (frame_016.jpg, t=64.8s)
-[09:06]   [capture-periodic] freeze=5ms shot=199ms unfreeze=6ms saved=True
-[09:08]   Frame 18 saved (frame_017.jpg, t=67.1s)
-[09:08]   [capture-periodic] freeze=5ms shot=196ms unfreeze=5ms saved=True
-[09:10]   Frame 19 saved (frame_018.jpg, t=69.4s)
-[09:10]   [capture-periodic] freeze=4ms shot=173ms unfreeze=9ms saved=True
-[09:12]   [capture-loop] iter=550 t=70.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=17% browser_rss=0.77GB
-[09:13]   Frame 20 saved (frame_019.jpg, t=71.7s)
-[09:13]   [capture-periodic] freeze=4ms shot=152ms unfreeze=4ms saved=True
-[09:18]   [capture-loop] iter=600 t=76.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=9.5/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=4% browser_rss=0.77GB
-[09:19]   Execution complete (t=78.6s)
-[09:19]   Execution error: {'prompt_id': '0863e7b2-d4ee-421f-8c0f-353bfd75ebe6', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['39', '35', '36', '41', '43', '60', '44'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_96_kgk_k\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\hooks.py", line 14, in <module>\n    import comfy.lora\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\lora.py", line 23, in <module>\n    import comfy.model_base\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\ldm\\hidream_o1\\model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\text_encoders\\qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 556, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\depthanything3\\\\da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['46', '40', '24', '29', '35', '16', '36', '39', '44', '4', '58', '43', '18', '59', '60', '41'], 'timestamp': 1778851416764}
-[09:20]   [3/5] SKIPPED (not in gpu list) rigged_mesh_manipulation.json
-[09:20] Capturing execution frames: rigging.json
-[09:27]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[09:27]   Validating workflow...
-[09:27]   Queuing workflow for execution...
-[09:27]   Execution complete (t=0.6s)
-[09:27]   Execution error: {'prompt_id': '744d5106-149b-4505-b7c4-8d7d6148956a', 'node_id': '10', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '15'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         ...,\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.]]])']}, 'current_outputs': ['12', '3', '15', '13', '4', '10'], 'timestamp': 1778851424612}
-[09:28] Capturing execution frames: workflow.json
-[09:42]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[09:42]   Validating workflow...
-[09:42]   Queuing workflow for execution...
-[09:42]   Execution complete (t=0.5s)
-[09:42]   Execution error: {'prompt_id': '95e07387-0b73-4d2c-bb7c-4d05c1441972', 'node_id': '13', 'node_type': 'SAM3DBodyProcess', 'executed': ['12', '3'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         ...,\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.]]])']}, 'current_outputs': ['12', '3', '15', '13', '4', '10'], 'timestamp': 1778851439445}
-[09:43] Results saved to C:\logs\SAM3DBody-1514\dev\windows-portable-gpu\results.json
-[09:43] Model report: 22 files, 7.7 GB -> C:\logs\SAM3DBody-1514\dev\windows-portable-gpu\models.json
-[09:43] Saved: C:\logs\SAM3DBody-1514\dev\windows-portable-gpu\index.html
-[09:43] 
+[06:54] All 15 node(s) instantiated successfully!
+[06:54] [INSTANTIATION] PASSED
+[06:54] 
+[06:54] [5/5] EXECUTION
+[06:54] ----------------------------------------
+[06:54] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001C8CECE5A90>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001C8CECE6CF0>
+[06:54] GPU runner - will execute 4 workflow(s)
+[06:54] Running 5 workflow(s) (all with videos)...
+[06:54] Installing screenshot dependencies (playwright, pillow)...
+[06:55]   Packages installed, downloading chromium browser...
+[07:11]   Screenshot dependencies installed successfully
+[07:12] Starting headless browser...
+[07:12]   Downloading Mesa llvmpipe for Windows...
+[07:12]   Mesa download error: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>
+[07:12]   Mesa unavailable -- falling back to SwiftShader
+[07:15] Capturing execution frames: multiple_masks.json
+[07:22]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:22]   Validating workflow...
+[07:22]   Queuing workflow for execution...
+[07:24]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[07:24]   [capture-periodic] freeze=2ms shot=105ms unfreeze=4ms saved=True
+[07:27]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[07:27]   [capture-periodic] freeze=2ms shot=91ms unfreeze=4ms saved=True
+[07:28]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.7/23.9GB (41%) swap=0.0/3.9GB (0%) cpu=14% browser_rss=0.71GB
+[07:34]   [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.1/23.9GB (42%) swap=0.0/3.9GB (0%) cpu=13% browser_rss=0.71GB
+[07:39]   [capture-loop] iter=150 t=17.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=8.8/23.9GB (37%) swap=0.0/3.9GB (0%) cpu=12% browser_rss=0.71GB
+[07:45]   [capture-loop] iter=200 t=23.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=8.9/23.9GB (37%) swap=0.0/3.9GB (0%) cpu=12% browser_rss=0.71GB
+[07:48]   Frame 4 saved (frame_003.jpg, t=26.0s)
+[07:48]   [capture-periodic] freeze=2ms shot=85ms unfreeze=5ms saved=True
+[07:51]   [capture-loop] iter=250 t=28.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=9.5/23.9GB (40%) swap=0.0/3.9GB (0%) cpu=17% browser_rss=0.65GB
+[07:57]   [capture-loop] iter=300 t=34.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=9.8/23.9GB (41%) swap=0.0/3.9GB (0%) cpu=28% browser_rss=0.65GB
+[08:03]   [capture-loop] iter=350 t=40.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.1/23.9GB (42%) swap=0.0/3.9GB (0%) cpu=37% browser_rss=0.65GB
+[08:08]   Frame 5 saved (frame_004.jpg, t=45.6s)
+[08:08]   [capture-periodic] freeze=3ms shot=94ms unfreeze=4ms saved=True
+[08:09]   [capture-loop] iter=400 t=46.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.8/23.9GB (41%) swap=0.0/3.9GB (0%) cpu=36% browser_rss=0.65GB
+[08:14]   [capture-loop] iter=450 t=52.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.8/23.9GB (41%) swap=0.0/3.9GB (0%) cpu=21% browser_rss=0.65GB
+[08:19]   Frame 6 saved (frame_005.jpg, t=56.5s)
+[08:19]   [capture-periodic] freeze=3ms shot=105ms unfreeze=6ms saved=True
+[08:20]   [capture-loop] iter=500 t=58.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.8/23.9GB (45%) swap=0.0/3.9GB (0%) cpu=38% browser_rss=0.63GB
+[08:24]   Node executed (1 total), capturing...
+[08:24]   Frame 7 saved (frame_006.jpg, t=61.9s)
+[08:24]   [capture-node] freeze=3ms shot=87ms unfreeze=5ms saved=True
+[08:26]   [capture-loop] iter=550 t=64.3s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=10.9/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=29% browser_rss=0.64GB
+[08:28]   Frame 8 saved (frame_007.jpg, t=66.2s)
+[08:28]   [capture-periodic] freeze=4ms shot=104ms unfreeze=8ms saved=True
+[08:30]   Frame 9 saved (frame_008.jpg, t=68.4s)
+[08:30]   [capture-periodic] freeze=3ms shot=88ms unfreeze=3ms saved=True
+[08:32]   [capture-loop] iter=600 t=70.0s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=3 ram=11.6/23.9GB (49%) swap=0.0/3.9GB (0%) cpu=24% browser_rss=0.64GB
+[08:37]   Node executed (2 total), capturing...
+[08:40]   Frame 10 saved (frame_009.jpg, t=75.2s)
+[08:40]   [capture-node] freeze=3ms shot=3287ms unfreeze=0ms saved=True
+[08:40]   Execution complete (t=75.2s)
+[08:40]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[09:40]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+[09:40]   [3d-wait] Phase 2: iframes=0
+[09:40]   [3d-wait] Total 3D wait: 60.0s
+[09:40]   Captured 10 unique frames over 138.57s
+[09:40]   [debug] iframes: 0
+[09:40]   [timing] trigger_3d_previews: 0.0s
+[09:43]   Saved high-quality screenshot: multiple_masks_executed.png
+[09:43]   [timing] final_screenshot: 0.2s
+[09:43] Capturing execution frames: multiple_masks_depthcorrected.json
+[09:58]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[09:58]   Validating workflow...
+[09:58]   Queuing workflow for execution...
+[09:58]   Node executed (1 total), capturing...
+[09:59]   Frame 2 saved (frame_001.jpg, t=0.5s)
+[09:59]   [capture-node] freeze=18ms shot=146ms unfreeze=7ms saved=True
+[09:59]   Node executed (2 total), capturing...
+[09:59]   [capture-node] freeze=3ms shot=98ms unfreeze=3ms saved=False
+[10:04]   Frame 3 saved (frame_002.jpg, t=5.4s)
+[10:04]   [capture-periodic] freeze=3ms shot=95ms unfreeze=5ms saved=True
+[10:05]   [capture-loop] iter=50 t=6.5s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=10.9/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=18% browser_rss=1.56GB
+[10:10]   [capture-loop] iter=100 t=12.3s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=11.0/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=20% browser_rss=1.53GB
+[10:16]   [capture-loop] iter=150 t=18.1s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=9.5/23.9GB (40%) swap=0.0/3.9GB (0%) cpu=23% browser_rss=0.99GB
+[10:22]   [capture-loop] iter=200 t=23.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=9.6/23.9GB (40%) swap=0.0/3.9GB (0%) cpu=20% browser_rss=0.99GB
+[10:28]   [capture-loop] iter=250 t=29.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=9.9/23.9GB (42%) swap=0.0/3.9GB (0%) cpu=26% browser_rss=0.99GB
+[10:30]   Frame 4 saved (frame_003.jpg, t=31.7s)
+[10:30]   [capture-periodic] freeze=4ms shot=107ms unfreeze=6ms saved=True
+[10:34]   [capture-loop] iter=300 t=35.6s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.5/23.9GB (44%) swap=0.0/3.9GB (0%) cpu=28% browser_rss=0.99GB
+[10:34]   Frame 5 saved (frame_004.jpg, t=36.2s)
+[10:34]   [capture-periodic] freeze=4ms shot=125ms unfreeze=6ms saved=True
+[10:37]   Frame 6 saved (frame_005.jpg, t=38.4s)
+[10:37]   [capture-periodic] freeze=4ms shot=140ms unfreeze=9ms saved=True
+[10:39]   Frame 7 saved (frame_006.jpg, t=40.8s)
+[10:39]   [capture-periodic] freeze=10ms shot=150ms unfreeze=5ms saved=True
+[10:40]   [capture-loop] iter=350 t=41.7s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=10.9/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=34% browser_rss=1.00GB
+[10:41]   Frame 8 saved (frame_007.jpg, t=43.1s)
+[10:41]   [capture-periodic] freeze=4ms shot=137ms unfreeze=4ms saved=True
+[10:46]   Frame 9 saved (frame_008.jpg, t=47.5s)
+[10:46]   [capture-periodic] freeze=5ms shot=142ms unfreeze=5ms saved=True
+[10:46]   [capture-loop] iter=400 t=47.9s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=11.1/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=35% browser_rss=1.00GB
+[10:48]   Frame 10 saved (frame_009.jpg, t=49.8s)
+[10:48]   [capture-periodic] freeze=4ms shot=134ms unfreeze=6ms saved=True
+[10:50]   Frame 11 saved (frame_010.jpg, t=52.0s)
+[10:50]   [capture-periodic] freeze=5ms shot=130ms unfreeze=11ms saved=True
+[10:52]   [capture-loop] iter=450 t=53.8s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=4 ram=11.3/23.9GB (48%) swap=0.0/3.9GB (0%) cpu=35% browser_rss=1.01GB
+[10:53]   Frame 12 saved (frame_011.jpg, t=54.2s)
+[10:53]   [capture-periodic] freeze=7ms shot=147ms unfreeze=13ms saved=True
+[10:55]   Frame 13 saved (frame_012.jpg, t=56.5s)
+[10:55]   [capture-periodic] freeze=4ms shot=126ms unfreeze=4ms saved=True
+[10:57]   Frame 14 saved (frame_013.jpg, t=58.8s)
+[10:57]   [capture-periodic] freeze=5ms shot=149ms unfreeze=10ms saved=True
+[10:58]   [capture-loop] iter=500 t=60.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=5 ram=10.9/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=40% browser_rss=1.02GB
+[10:59]   Frame 15 saved (frame_014.jpg, t=61.0s)
+[10:59]   [capture-periodic] freeze=3ms shot=134ms unfreeze=6ms saved=True
+[11:04]   Frame 16 saved (frame_015.jpg, t=65.4s)
+[11:04]   [capture-periodic] freeze=7ms shot=174ms unfreeze=8ms saved=True
+[11:04]   [capture-loop] iter=550 t=66.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=11 ram=11.0/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=36% browser_rss=1.02GB
+[11:06]   Frame 17 saved (frame_016.jpg, t=67.7s)
+[11:06]   [capture-periodic] freeze=4ms shot=124ms unfreeze=6ms saved=True
+[11:08]   Frame 18 saved (frame_017.jpg, t=69.9s)
+[11:08]   [capture-periodic] freeze=4ms shot=93ms unfreeze=5ms saved=True
+[11:10]   [capture-loop] iter=600 t=72.2s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=9.9/23.9GB (42%) swap=0.0/3.9GB (0%) cpu=27% browser_rss=1.02GB
+[11:10]   Frame 19 saved (frame_018.jpg, t=72.2s)
+[11:10]   [capture-periodic] freeze=3ms shot=92ms unfreeze=6ms saved=True
+[11:13]   Frame 20 saved (frame_019.jpg, t=74.4s)
+[11:13]   [capture-periodic] freeze=3ms shot=101ms unfreeze=6ms saved=True
+[11:16]   [capture-loop] iter=650 t=78.0s state={'complete': False, 'error': None, 'executedCount': 2, 'wsState': 1} eval_ms=3 ram=10.0/23.9GB (42%) swap=0.0/3.9GB (0%) cpu=15% browser_rss=1.02GB
+[11:17]   Execution complete (t=79.1s)
+[11:17]   Execution error: {'prompt_id': '46b42430-d817-401d-ac0e-a5fa4653b786', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['35', '44', '43', '39', '60', '36', '41'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_im984q61\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\hooks.py", line 14, in <module>\n    import comfy.lora\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\lora.py", line 23, in <module>\n    import comfy.model_base\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\ldm\\hidream_o1\\model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\text_encoders\\qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 556, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1732\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\depthanything3\\\\da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['4', '18', '35', '46', '44', '58', '43', '39', '59', '24', '16', '29', '40', '60', '36', '41'], 'timestamp': 1779119035158}
+[11:17]   [3/5] SKIPPED (not in gpu list) rigged_mesh_manipulation.json
+[11:18] Capturing execution frames: rigging.json
+[11:30]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[11:30]   Validating workflow...
+[11:30]   Queuing workflow for execution...
+[11:32]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[11:32]   [capture-periodic] freeze=3ms shot=83ms unfreeze=3ms saved=True
+[11:34]   Frame 3 saved (frame_002.jpg, t=4.4s)
+[11:34]   [capture-periodic] freeze=2ms shot=80ms unfreeze=3ms saved=True
+[11:36]   [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=10.8/23.9GB (45%) swap=0.0/3.9GB (0%) cpu=24% browser_rss=1.24GB
+[11:42]   [capture-loop] iter=100 t=12.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=11.5/23.9GB (48%) swap=0.0/3.9GB (0%) cpu=41% browser_rss=1.24GB
+[11:43]   Node executed (1 total), capturing...
+[11:43]   Frame 4 saved (frame_003.jpg, t=13.2s)
+[11:43]   [capture-node] freeze=4ms shot=105ms unfreeze=3ms saved=True
+[11:48]   [capture-loop] iter=150 t=18.2s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=5 ram=12.3/23.9GB (52%) swap=0.0/3.9GB (0%) cpu=29% browser_rss=1.27GB
+[11:48]   Node executed (2 total), capturing...
+[11:48]   Frame 5 saved (frame_004.jpg, t=18.6s)
+[11:48]   [capture-node] freeze=5ms shot=113ms unfreeze=0ms saved=True
+[11:48]   Execution complete (t=18.6s)
+[11:48]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[11:49]   [3d-wait] Phase 1 done in 0.5s
+[11:49]   [3d-wait] Phase 2: iframes=1
+[11:49]   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+[11:49]   [3d-wait] Unfrozen in 0.002s, rendering for 5s...
+[11:54]   [3d-wait] JS halted via CDP after 5.1s
+[11:55]   [3d-wait] Re-frozen in 6.1s
+[11:55]   [3d-wait] Total 3D wait: 6.6s
+[11:55]   Captured 5 unique frames over 25.39s
+[11:55]   [debug] iframes: 1
+[11:55]   [debug]   iframe[0]: src=http://127.0.0.1:41886/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1779119, canvas=486x710, rafFrozen=True
+[11:55]   [timing] trigger_3d_previews: 0.0s
+[11:57]   Saved high-quality screenshot: rigging_executed.png
+[11:57]   [timing] final_screenshot: 0.2s
+[11:57] Capturing execution frames: workflow.json
+[12:03]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[12:03]   Validating workflow...
+[12:03]   Queuing workflow for execution...
+[12:06]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[12:06]   [capture-periodic] freeze=2ms shot=88ms unfreeze=4ms saved=True
+[12:08]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[12:08]   [capture-periodic] freeze=4ms shot=91ms unfreeze=4ms saved=True
+[12:09]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.5/23.9GB (40%) swap=0.0/3.9GB (0%) cpu=35% browser_rss=0.95GB
+[12:15]   [capture-loop] iter=100 t=11.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.9/23.9GB (46%) swap=0.0/3.9GB (0%) cpu=28% browser_rss=0.92GB
+[12:15]   Node executed (1 total), capturing...
+[12:15]   Frame 4 saved (frame_003.jpg, t=12.2s)
+[12:15]   [capture-node] freeze=3ms shot=92ms unfreeze=5ms saved=True
+[12:18]   Frame 5 saved (frame_004.jpg, t=14.4s)
+[12:18]   [capture-periodic] freeze=2ms shot=91ms unfreeze=6ms saved=True
+[12:18]   Node executed (2 total), capturing...
+[12:19]   Frame 6 saved (frame_005.jpg, t=14.9s)
+[12:19]   [capture-node] freeze=203ms shot=341ms unfreeze=0ms saved=True
+[12:19]   Execution complete (t=14.9s)
+[12:19]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[13:19]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+[13:19]   [3d-wait] Phase 2: iframes=0
+[13:19]   [3d-wait] Total 3D wait: 60.0s
+[13:19]   Captured 6 unique frames over 75.52s
+[13:19]   [debug] iframes: 0
+[13:19]   [timing] trigger_3d_previews: 0.0s
+[13:21]   Saved high-quality screenshot: workflow_executed.png
+[13:21]   [timing] final_screenshot: 0.2s
+[13:21] Results saved to C:\logs\SAM3DBody-1732\dev\windows-portable-gpu\results.json
+[13:21] Model report: 22 files, 7.7 GB -> C:\logs\SAM3DBody-1732\dev\windows-portable-gpu\models.json
+[13:21] Saved: C:\logs\SAM3DBody-1732\dev\windows-portable-gpu\index.html
+[13:21] 
 windows_portable: FAILED
-[09:43] Error: Workflow execution failed (4 error(s))
-[09:43] Details: multiple_masks.json: Workflow execution failed: {'prompt_id': '4adc7d74-353e-4c12-848d-070cdf29af59', 'node_id': '16', 'node_type': 'SAM3DBodyProcessMultiple', 'executed': ['36', '39', '24', '35'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process_multiple.py", line 1116, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'inference_type': ['full'], 'adjust_position_from_depth': [False], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3294, 0.5765, 0.7137],\n          [0.3451, 0.5882, 0.7333],\n          [0.3686, 0.6118, 0.7569]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3490, 0.5608, 0.6941],\n          [0.3529, 0.5647, 0.6980],\n          [0.3647, 0.5765, 0.7098]],\n\n         [[0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          [0.2902, 0.4667, 0.5961],\n          ...,\n          [0.3765, 0.5373, 0.6471],\n          [0.3725, 0.5333, 0.6431],\n          [0.3765, 0.5373, 0.6471]],\n\n         ...,\n\n         [[0.4941, 0.4824, 0.4157],\n          [0.4941, 0.4824, 0.4157],\n          [0.4980, 0.4863, 0.4196],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5098, 0.4980, 0.4314],\n          [0.5098, 0.4980, 0.4314],\n          [0.5137, 0.5020, 0.4353],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]],\n\n         [[0.5176, 0.5059, 0.4392],\n          [0.5216, 0.5098, 0.4431],\n          [0.5216, 0.5098, 0.4431],\n          ...,\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059],\n          [0.5647, 0.5569, 0.5059]]]])'], 'masks': ['tensor([[[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]],\n\n        [[0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         ...,\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.],\n         [0., 0., 0.,  ..., 0., 0., 0.]]])']}, 'current_outputs': ['24', '29', '35', '16', '36', '39', '4', '18'], 'timestamp': 1778851330831}
-
-Details:
-Workflow: C:\ComfyUI-SAM3DBody\workflows\multiple_masks.json
-Node error: SAM3DBodyProcessMultiple
-multiple_masks_depthcorrected.json: Workflow execution failed: {'prompt_id': '0863e7b2-d4ee-421f-8c0f-353bfd75ebe6', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['39', '35', '36', '41', '43', '60', '44'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_96_kgk_k\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\hooks.py", line 14, in <module>\n    import comfy.lora\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\lora.py", line 23, in <module>\n    import comfy.model_base\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\ldm\\hidream_o1\\model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\text_encoders\\qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 556, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\depthanything3\\\\da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['46', '40', '24', '29', '35', '16', '36', '39', '44', '4', '58', '43', '18', '59', '60', '41'], 'timestamp': 1778851416764}
+[13:21] Error: Workflow execution failed (1 error(s))
+[13:21] Details: multiple_masks_depthcorrected.json: Workflow execution failed: {'prompt_id': '46b42430-d817-401d-ac0e-a5fa4653b786', 'node_id': '40', 'node_type': 'DepthAnything_V3', 'executed': ['35', '44', '43', '39', '60', '36', '41'], 'exception_message': 'No module named \'transformers\'\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerUser\\AppData\\Local\\Temp\\comfyui_pvenv_im984q61\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\nodes_inference.py", line 86, in execute\n    patcher = _get_or_build_da3_model(da3_model)\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-DepthAnythingV3\\nodes\\load_model.py", line 193, in _get_or_build_da3_model\n    import comfy.model_patcher\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_patcher.py", line 32, in <module>\n    import comfy.hooks\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\hooks.py", line 14, in <module>\n    import comfy.lora\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\lora.py", line 23, in <module>\n    import comfy.model_base\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\model_base.py", line 61, in <module>\n    import comfy.ldm.hidream_o1.model\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\ldm\\hidream_o1\\model.py", line 20, in <module>\n    from comfy.text_encoders.qwen35 import Qwen35VisionModel\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\text_encoders\\qwen35.py", line 10, in <module>\n    from comfy import sd1_clip\n  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy\\sd1_clip.py", line 3, in <module>\n    from transformers import CLIPTokenizer\nModuleNotFoundError: No module named \'transformers\'\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 556, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\SAM3DBody-1732\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'normalization_mode': ['Raw'], 'resize_method': ['resize'], 'invert_depth': [False], 'keep_model_size': [False], 'da3_model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1732\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\depthanything3\\\\da3_giant.safetensors', 'model_key': 'da3-giant', 'dtype': 'bf16', 'attention': 'auto'}"], 'images': ['tensor([[[[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1922, 0.1451, 0.0980],\n          [0.2392, 0.1843, 0.1412],\n          [0.1608, 0.1059, 0.0627]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.1961, 0.1529, 0.1059],\n          [0.2353, 0.1804, 0.1373],\n          [0.1569, 0.0902, 0.0510]],\n\n         [[0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          [0.0039, 0.0510, 0.0353],\n          ...,\n          [0.2118, 0.1569, 0.1137],\n          [0.2314, 0.1686, 0.1255],\n          [0.1373, 0.0627, 0.0275]],\n\n         ...,\n\n         [[0.4078, 0.1686, 0.1059],\n          [0.5020, 0.2549, 0.1843],\n          [0.5176, 0.2627, 0.1804],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1608, 0.0980],\n          [0.4902, 0.2431, 0.1765],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039],\n          [0.0039, 0.0039, 0.0039]],\n\n         [[0.4000, 0.1529, 0.0941],\n          [0.4588, 0.2118, 0.1451],\n          [0.5059, 0.2549, 0.1686],\n          ...,\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000],\n          [0.0000, 0.0000, 0.0000]]]])']}, 'current_outputs': ['4', '18', '35', '46', '44', '58', '43', '39', '59', '24', '16', '29', '40', '60', '36', '41'], 'timestamp': 1779119035158}
 
 Details:
 Workflow: C:\ComfyUI-SAM3DBody\workflows\multiple_masks_depthcorrected.json
 Node error: DepthAnything_V3
-rigging.json: Workflow execution failed: {'prompt_id': '744d5106-149b-4505-b7c4-8d7d6148956a', 'node_id': '10', 'node_type': 'SAM3DBodyProcess', 'executed': ['3', '15'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         ...,\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.]]])']}, 'current_outputs': ['12', '3', '15', '13', '4', '10'], 'timestamp': 1778851424612}
-
-Details:
-Workflow: C:\ComfyUI-SAM3DBody\workflows\rigging.json
-Node error: SAM3DBodyProcess
-workflow.json: Workflow execution failed: {'prompt_id': '95e07387-0b73-4d2c-bb7c-4d05c1441972', 'node_id': '13', 'node_type': 'SAM3DBodyProcess', 'executed': ['12', '3'], 'exception_message': "No module named 'roma'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 535, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 335, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 309, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 297, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\internal\\__init__.py", line 149, in wrapped_func\n    return method(locked_class, **inputs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1833, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\process.py", line 161, in execute\n    from .sam_3d_body import SAM3DBodyEstimator\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\__init__.py", line 5, in <module>\n    from .build_models import load_sam_3d_body\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\build_models.py", line 5, in <module>\n    from .model import SAM3DBody\n', '  File "C:\\workspaces\\SAM3DBody-1514\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody\\nodes\\sam_3d_body\\model.py", line 12, in <module>\n    import roma\n'], 'current_inputs': {'bbox_threshold': [0.8], 'inference_type': ['full'], 'model': ["{'model_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody', 'ckpt_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\model.safetensors', 'mhr_path': 'C:\\\\workspaces\\\\SAM3DBody-1514\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\sam3dbody\\\\assets\\\\mhr_model.pt', 'precision': 'bf16'}"], 'image': ['tensor([[[[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6235, 0.3412, 0.2824],\n          [0.6196, 0.3569, 0.2941],\n          [0.6196, 0.3608, 0.2980]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          [0.8784, 0.8118, 0.7412],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         [[0.8784, 0.8118, 0.7412],\n          [0.8824, 0.8157, 0.7451],\n          [0.8824, 0.8157, 0.7451],\n          ...,\n          [0.6196, 0.3373, 0.2784],\n          [0.6157, 0.3529, 0.2902],\n          [0.6118, 0.3529, 0.2902]],\n\n         ...,\n\n         [[0.2784, 0.1961, 0.2157],\n          [0.2745, 0.1922, 0.2118],\n          [0.2667, 0.1882, 0.1961],\n          ...,\n          [0.4588, 0.3922, 0.3647],\n          [0.4588, 0.3922, 0.3647],\n          [0.4667, 0.4000, 0.3725]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2784, 0.1961, 0.2157],\n          [0.2784, 0.1922, 0.2039],\n          ...,\n          [0.4667, 0.3922, 0.3765],\n          [0.4392, 0.3647, 0.3490],\n          [0.4431, 0.3686, 0.3529]],\n\n         [[0.2824, 0.2000, 0.2196],\n          [0.2863, 0.2039, 0.2235],\n          [0.2902, 0.2039, 0.2157],\n          ...,\n          [0.4196, 0.3451, 0.3294],\n          [0.4157, 0.3412, 0.3255],\n          [0.4196, 0.3451, 0.3294]]]])'], 'mask': ['tensor([[[1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         ...,\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.],\n         [1., 1., 1.,  ..., 1., 1., 1.]]])']}, 'current_outputs': ['12', '3', '15', '13', '4', '10'], 'timestamp': 1778851439445}
-
-Details:
-Workflow: C:\ComfyUI-SAM3DBody\workflows\workflow.json
-Node error: SAM3DBodyProcess
-[09:43] Stopping ComfyUI server...
+[13:21] Stopping ComfyUI server...
