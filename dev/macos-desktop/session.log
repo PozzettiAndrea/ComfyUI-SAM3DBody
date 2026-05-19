@@ -1,86 +1,88 @@
 [   0s] CDP targets: 1
 [   0s]   page: file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/welcome | ComfyUI
-[   2s] Main page: file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/welcome | ComfyUI
+[   1s] Main page: file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/welcome | ComfyUI
 [   2s] Buttons: ['Get Started']
 [   2s]   wizard: COMFY_TEST_GPU=0 platform=darwin preferred=['Apple Silicon', 'MPS', 'M4', 'M3', 'M2', 'M1']
-[   3s]   clicked [BTN|Get Started]
+[   2s]   clicked [BTN|Get Started]
 [   4s]   url: file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/welcome -> file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/install
 [   5s]   clicked [BTN|Next]
 [  11s]   clicked [BTN|Next]
 [  13s]   clicked [BTN|Install]
 [  15s]   url: file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/install -> file:///Users/runner/.comfy-test-cache/desktop/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/server-start
-[  84s]   /system_stats up after 81s
-[  84s]   app: waiting for backend stability (continuous /system_stats up for 30s)
-[  84s]   app: /system_stats up; awaiting 30s of stability
-[ 115s]   app: backend stable for 30s; proceeding
-[ 115s]   capturing canvas load...
-[ 123s]   post: waiting for Cloud upsell
-[ 123s]   post: clicked Cloud upsell via [button:has-text("Continue Locally"):visible]
-[ 126s]   post: waiting for Close Templates
-[ 134s]   post: Close Templates not found, skipping
-[ 134s]   post: pressed Escape (Close Templates fallback)
-[ 137s]   post: waiting for Extensions
-[ 137s]   post: clicked Extensions via [button[aria-label="Extensions"]:visible]
-[ 140s]   ext: node meta = display='SAM3DBody' publisher='pznodes' version='0.2.14'
-[ 143s]   ext: searching "SAM3DBody"
-[ 147s]   ext: clicking SAM3DBody by pznodes tile
-[ 151s]   ext: scrolling to + opening version selector
-[ 154s]   ext: selected 0.2.14
-[ 156s]   ext: clicking right-panel Install
-[ 158s]   ext: clicked Install (last of 4 visible)
-[ 166s]   ext: waiting for "Apply Changes" toast
-[ 256s]   ext: clicked Apply Changes
-[ 261s]   app: Apply Changes already triggered in-app restart, skipping pkill
-[ 267s]   app: relaunching with CDP
-[ 267s]   app: waiting for CDP
-[ 267s]   app: CDP up after 1s
-[ 267s]   app: reconnecting Playwright
-[ 267s]   app: attached to http://127.0.0.1:8000/
-[ 306s]   app: server ready after 17s
-[ 306s]   app: waiting for main canvas (window.app.graph)
-[ 306s]   app: canvas ready after 1s (http://127.0.0.1:8000/)
-[ 311s]   app: forcing renderer reload to refresh node-pack manifest
-[ 315s]   app: canvas re-ready after reload in 3s
-[ 318s]   ext: closing Nodes Manager dialog
-[ 318s]   ext: dismissing What's New popup
-[ 319s]   ext: closed What's New popup
-[ 321s]   ext: dismissing Node Pack Issues modal (if present)
-[ 321s]   ext: Node Pack Issues modal not present
-[ 321s]   ext: opening Templates sidebar
-[ 322s]   ext: clicked Templates
-[ 326s]   ext: locating "comfyui-sam3dbody" section in Templates panel
-[ 328s]   ext: clicked comfyui-sam3dbody section
-[ 330s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
-[ 330s]   ext: cpu spec = include ['rigged_mesh_manipulation']
-[ 330s]   ext: picking first matching comfyui-sam3dbody template
-[ 330s]   ext: 5 visible cards
-[ 330s]   ext: skipping workflow (not in CPU list)
-[ 330s]   ext: skipping rigging (not in CPU list)
-[ 334s]   ext: clicked template rigged_mesh_manipulation
-[ 339s]   ext: installing WS execution listener
-[ 339s]   ext: clicking Run
-[ 340s]   ext: clicked Run
-[ 340s]   ext: waiting for execution_success / execution_error
-[ 346s]   ext: WS events=12 elapsed=5s
-[ 346s]     ws: {'type': 'status', 'ts': 1779129424910}
-[ 346s]     ws: {'type': 'status', 'ts': 1779129424926}
-[ 346s]     ws: {'type': 'execution_start', 'ts': 1779129424953}
-[ 346s]     ws: {'type': 'execution_cached', 'ts': 1779129424953}
-[ 346s]     ws: {'type': 'progress_state', 'ts': 1779129424957}
-[ 346s]     ws: {'type': 'executing', 'ts': 1779129424958}
-[ 346s]     ws: {'type': 'progress_state', 'ts': 1779129430552}
-[ 346s]     ws: {'type': 'progress_state', 'ts': 1779129430573}
-[ 346s]     ws: {'type': 'executing', 'ts': 1779129430576}
-[ 346s]     ws: {'type': 'executed', 'ts': 1779129430598}
-[ 346s]     ws: {'type': 'progress_state', 'ts': 1779129430602}
-[ 346s]     ws: {'type': 'execution_success', 'ts': 1779129430612}
-[ 346s]   ext: execution_success after 5s
-[ 351s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
-[ 351s]   ext: cpu spec = include ['rigged_mesh_manipulation']
-[ 351s]   loop: spec=include items=['rigged_mesh_manipulation'] -> 1 workflow(s) ['rigged_mesh_manipulation']
-[ 351s]   loop: matching=1 first_ran='rigged_mesh_manipulation' remaining=0 -> []
-[ 351s] Captured 400 frames
-[ 351s] Wrote /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/results.json (1 workflow(s), sha=841547d80aa6)
+[ 172s]   /system_stats up after 170s
+[ 172s]   app: waiting for backend stability (continuous /system_stats up for 30s)
+[ 172s]   app: /system_stats up; awaiting 30s of stability
+[ 203s]   app: backend stable for 30s; proceeding
+[ 203s]   capturing canvas load...
+[ 211s]   post: waiting for Cloud upsell
+[ 212s]   post: clicked Cloud upsell via [button:has-text("Continue Locally"):visible]
+[ 214s]   post: waiting for Close Templates
+[ 222s]   post: Close Templates not found, skipping
+[ 222s]   post: pressed Escape (Close Templates fallback)
+[ 224s]   post: waiting for Extensions
+[ 225s]   post: clicked Extensions via [button[aria-label="Extensions"]:visible]
+[ 228s]   ext: node meta = display='SAM3DBody' publisher='pznodes' version='0.2.16'
+[ 231s]   ext: searching "SAM3DBody"
+[ 235s]   ext: clicking SAM3DBody by pznodes tile
+[ 239s]   ext: scrolling to + opening version selector
+[ 242s]   ext: selected 0.2.16
+[ 244s]   ext: clicking right-panel Install
+[ 246s]   ext: clicked Install (last of 4 visible)
+[ 255s]   ext: waiting for "Apply Changes" toast
+[ 528s]   ext: clicked Apply Changes
+[ 533s]   app: Apply Changes already triggered in-app restart, skipping pkill
+[ 539s]   app: relaunching with CDP
+[ 539s]   app: waiting for CDP
+[ 539s]   app: CDP up after 1s
+[ 539s]   app: reconnecting Playwright
+[ 541s]   app: attached to http://127.0.0.1:8000/
+[ 600s]   app: server ready after 23s
+[ 600s]   app: waiting for main canvas (window.app.graph)
+[ 600s]   app: canvas ready after 1s (http://127.0.0.1:8000/)
+[ 606s]   app: forcing renderer reload to refresh node-pack manifest
+[ 608s]   app: canvas re-ready after reload in 2s
+[ 611s]   ext: closing Nodes Manager dialog
+[ 611s]   ext: dismissing What's New popup
+[ 612s]   ext: closed What's New popup
+[ 614s]   ext: dismissing Node Pack Issues modal (if present)
+[ 615s]   ext: closed Node Pack Issues modal
+[ 617s]   ext: opening Templates sidebar
+[ 618s]   ext: clicked Templates
+[ 622s]   ext: locating "comfyui-sam3dbody" section in Templates panel
+[ 625s]   ext: clicked comfyui-sam3dbody section
+[ 628s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
+[ 628s]   ext: cpu spec = include ['rigged_mesh_manipulation']
+[ 628s]   ext: picking first matching comfyui-sam3dbody template
+[ 628s]   ext: 5 visible cards
+[ 628s]   ext: skipping workflow (not in CPU list)
+[ 628s]   ext: skipping rigging (not in CPU list)
+[ 631s]   ext: clicked template rigged_mesh_manipulation
+[ 636s]   ext: installing WS execution listener
+[ 636s]   ext: clicking Run
+[ 637s]   ext: clicked Run
+[ 637s]   ext: waiting for execution_success / execution_error
+[ 644s]   ext: WS events=14 elapsed=6s
+[ 644s]     ws: {'type': 'status', 'ts': 1779189496286}
+[ 644s]     ws: {'type': 'status', 'ts': 1779189496316}
+[ 644s]     ws: {'type': 'execution_start', 'ts': 1779189496338}
+[ 644s]     ws: {'type': 'execution_cached', 'ts': 1779189496364}
+[ 644s]     ws: {'type': 'progress_state', 'ts': 1779189496410}
+[ 644s]     ws: {'type': 'executing', 'ts': 1779189496433}
+[ 644s]     ws: {'type': 'progress_state', 'ts': 1779189501235}
+[ 644s]     ws: {'type': 'progress_state', 'ts': 1779189501259}
+[ 644s]     ws: {'type': 'executing', 'ts': 1779189501292}
+[ 644s]     ws: {'type': 'executed', 'ts': 1779189501366}
+[ 644s]     ws: {'type': 'progress_state', 'ts': 1779189501404}
+[ 644s]     ws: {'type': 'execution_success', 'ts': 1779189501438}
+[ 644s]     ws: {'type': 'status', 'ts': 1779189502279}
+[ 644s]     ws: {'type': 'executing', 'ts': 1779189502284}
+[ 644s]   ext: execution_success after 6s
+[ 649s]   ext: fetching comfy-test.toml from https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-SAM3DBody/main/comfy-test.toml
+[ 649s]   ext: cpu spec = include ['rigged_mesh_manipulation']
+[ 649s]   loop: spec=include items=['rigged_mesh_manipulation'] -> 1 workflow(s) ['rigged_mesh_manipulation']
+[ 649s]   loop: matching=1 first_ran='rigged_mesh_manipulation' remaining=0 -> []
+[ 649s] Captured 551 frames
+[ 649s] Wrote /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/results.json (1 workflow(s), sha=9aaff445a280)
 ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
   built with Apple clang version 13.1.6 (clang-1316.0.21.2.5)
   configuration: --prefix=/Volumes/tempdisk/sw --extra-cflags=-fno-stack-check --arch=arm64 --cc=/usr/bin/clang --enable-gpl --enable-libvmaf --enable-libopenjpeg --enable-libopus --enable-libmp3lame --enable-libx264 --enable-libx265 --enable-libvpx --enable-libwebp --enable-libass --enable-libfreetype --enable-fontconfig --enable-libtheora --enable-libvorbis --enable-libsnappy --enable-libaom --enable-libvidstab --enable-libzimg --enable-libsvtav1 --enable-libharfbuzz --enable-libkvazaar --pkg-config-flags=--static --enable-ffplay --enable-postproc --enable-neon --enable-runtime-cpudetect --disable-indev=qtkit --disable-indev=x11grab_xcb
@@ -92,53 +94,77 @@ ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
   libswscale      8.  3.100 /  8.  3.100
   libswresample   5.  3.100 /  5.  3.100
   libpostproc    58.  3.100 / 58.  3.100
-Input #0, image2, from '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/debug/electron_inspect/frames/frame_%06d.png':
-  Duration: 00:01:20.00, start: 0.000000, bitrate: N/A
-  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1024x656, 5 fps, 5 tbr, 5 tbn
+Input #0, image2, from '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/debug/electron_inspect/frames/frame_%06d.png':
+  Duration: 00:01:50.20, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1024x653, 5 fps, 5 tbr, 5 tbn
 Stream mapping:
   Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
 Press [q] to stop, [?] for help
-[libx264 @ 0x153804b80] using cpu capabilities: ARMv8 NEON
-[libx264 @ 0x153804b80] profile High, level 3.1, 4:2:0, 8-bit
-[libx264 @ 0x153804b80] 264 - core 164 r3190 7ed753b - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mp4, to '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/debug/electron_inspect/driver.mp4':
+[libx264 @ 0x1448054e0] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0x1448054e0] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 0x1448054e0] 264 - core 164 r3190 7ed753b - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/debug/electron_inspect/driver.mp4':
   Metadata:
     encoder         : Lavf61.7.100
-  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1024x656, q=2-31, 5 fps, 10240 tbn
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1024x654, q=2-31, 5 fps, 10240 tbn
       Metadata:
         encoder         : Lavc61.19.100 libx264
       Side data:
         cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
-frame=   20 fps=0.0 q=23.0 size=       0KiB time=00:00:03.60 bitrate=   0.1kbits/s speed=5.56x    
-frame=   49 fps= 41 q=23.0 size=     256KiB time=00:00:09.40 bitrate= 223.1kbits/s speed=7.89x    
-frame=   93 fps= 54 q=23.0 size=     256KiB time=00:00:18.20 bitrate= 115.2kbits/s speed=10.7x    
-frame=  134 fps= 57 q=23.0 size=     512KiB time=00:00:26.40 bitrate= 158.9kbits/s speed=11.2x    
-frame=  188 fps= 63 q=23.0 size=     512KiB time=00:00:37.20 bitrate= 112.8kbits/s speed=12.4x    
-frame=  230 fps= 63 q=23.0 size=     512KiB time=00:00:45.60 bitrate=  92.0kbits/s speed=12.5x    
-frame=  279 fps= 65 q=23.0 size=     512KiB time=00:00:55.40 bitrate=  75.7kbits/s speed=  13x    
-frame=  346 fps= 70 q=23.0 size=     512KiB time=00:01:08.80 bitrate=  61.0kbits/s speed=  14x    
-frame=  365 fps= 67 q=23.0 size=     768KiB time=00:01:12.60 bitrate=  86.7kbits/s speed=13.4x    
-[out#0/mp4 @ 0x6000001d40c0] video:1079KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.508182%
-frame=  400 fps= 69 q=-1.0 Lsize=    1084KiB time=00:01:19.60 bitrate= 111.6kbits/s speed=13.8x    
-[libx264 @ 0x153804b80] frame I:9     Avg QP: 8.69  size: 46314
-[libx264 @ 0x153804b80] frame P:112   Avg QP:17.11  size:  3894
-[libx264 @ 0x153804b80] frame B:279   Avg QP:22.31  size:   899
-[libx264 @ 0x153804b80] consecutive B-frames:  4.5%  6.0%  4.5% 85.0%
-[libx264 @ 0x153804b80] mb I  I16..4: 53.1% 16.4% 30.5%
-[libx264 @ 0x153804b80] mb P  I16..4:  2.5%  3.1%  2.4%  P16..4:  2.0%  0.7%  0.5%  0.0%  0.0%    skip:88.8%
-[libx264 @ 0x153804b80] mb B  I16..4:  0.1%  0.4%  0.3%  B16..8:  3.4%  0.4%  0.2%  direct: 0.1%  skip:95.2%  L0:50.3% L1:47.5% BI: 2.3%
-[libx264 @ 0x153804b80] 8x8 transform intra:30.3% inter:47.5%
-[libx264 @ 0x153804b80] coded y,uvDC,uvAC intra: 37.2% 19.3% 14.4% inter: 0.7% 0.5% 0.1%
-[libx264 @ 0x153804b80] i16 v,h,dc,p: 67% 30%  2%  2%
-[libx264 @ 0x153804b80] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 16% 34%  2%  2%  2%  3%  2%  3%
-[libx264 @ 0x153804b80] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 29% 16%  2%  4%  4%  5%  3%  4%
-[libx264 @ 0x153804b80] i8c dc,h,v,p: 78% 13%  7%  2%
-[libx264 @ 0x153804b80] Weighted P-Frames: Y:2.7% UV:1.8%
-[libx264 @ 0x153804b80] ref P L0: 62.6%  3.3% 19.3% 14.6%  0.2%
-[libx264 @ 0x153804b80] ref B L0: 64.0% 31.2%  4.8%
-[libx264 @ 0x153804b80] ref B L1: 93.1%  6.9%
-[libx264 @ 0x153804b80] kb/s:110.38
-[ 357s] Wrote /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/debug/electron_inspect/driver.mp4
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A    
+frame=    4 fps=3.7 q=23.0 size=       0KiB time=00:00:00.40 bitrate=   1.0kbits/s speed=0.37x    
+frame=   22 fps= 14 q=23.0 size=       0KiB time=00:00:04.00 bitrate=   0.1kbits/s speed= 2.5x    
+frame=   34 fps= 16 q=23.0 size=       0KiB time=00:00:06.40 bitrate=   0.1kbits/s speed=3.03x    
+frame=   59 fps= 22 q=23.0 size=       0KiB time=00:00:11.40 bitrate=   0.0kbits/s speed= 4.2x    
+frame=   66 fps= 20 q=23.0 size=       0KiB time=00:00:12.80 bitrate=   0.0kbits/s speed=3.89x    
+frame=   81 fps= 21 q=23.0 size=     256KiB time=00:00:15.80 bitrate= 132.8kbits/s speed=4.02x    
+frame=   92 fps= 20 q=23.0 size=     256KiB time=00:00:18.00 bitrate= 116.5kbits/s speed=3.93x    
+frame=  104 fps= 20 q=23.0 size=     256KiB time=00:00:20.40 bitrate= 102.8kbits/s speed= 3.9x    
+frame=  114 fps= 20 q=23.0 size=     256KiB time=00:00:22.40 bitrate=  93.6kbits/s speed=3.89x    
+frame=  125 fps= 19 q=23.0 size=     512KiB time=00:00:24.60 bitrate= 170.5kbits/s speed=3.84x    
+frame=  135 fps= 19 q=23.0 size=     512KiB time=00:00:26.60 bitrate= 157.7kbits/s speed=3.84x    
+frame=  147 fps= 19 q=23.0 size=     512KiB time=00:00:29.00 bitrate= 144.6kbits/s speed=3.83x    
+frame=  162 fps= 20 q=23.0 size=     512KiB time=00:00:32.00 bitrate= 131.1kbits/s speed=3.92x    
+frame=  174 fps= 20 q=23.0 size=     512KiB time=00:00:34.40 bitrate= 121.9kbits/s speed=3.93x    
+frame=  189 fps= 20 q=23.0 size=     512KiB time=00:00:37.40 bitrate= 112.2kbits/s speed=4.04x    
+frame=  213 fps= 22 q=23.0 size=     512KiB time=00:00:42.20 bitrate=  99.4kbits/s speed=4.26x    
+frame=  233 fps= 22 q=23.0 size=     512KiB time=00:00:46.20 bitrate=  90.8kbits/s speed=4.38x    
+frame=  253 fps= 23 q=23.0 size=     512KiB time=00:00:50.20 bitrate=  83.6kbits/s speed=4.49x    
+frame=  277 fps= 23 q=23.0 size=     512KiB time=00:00:55.00 bitrate=  76.3kbits/s speed=4.66x    
+frame=  293 fps= 24 q=23.0 size=     512KiB time=00:00:58.20 bitrate=  72.1kbits/s speed= 4.7x    
+frame=  321 fps= 25 q=23.0 size=     512KiB time=00:01:03.80 bitrate=  65.7kbits/s speed= 4.9x    
+frame=  341 fps= 25 q=23.0 size=     512KiB time=00:01:07.80 bitrate=  61.9kbits/s speed=4.96x    
+frame=  362 fps= 25 q=23.0 size=     512KiB time=00:01:12.00 bitrate=  58.3kbits/s speed=5.02x    
+frame=  380 fps= 25 q=23.0 size=     768KiB time=00:01:15.60 bitrate=  83.2kbits/s speed=5.05x    
+frame=  401 fps= 26 q=23.0 size=     768KiB time=00:01:19.80 bitrate=  78.8kbits/s speed=5.15x    
+frame=  418 fps= 26 q=23.0 size=     768KiB time=00:01:23.20 bitrate=  75.6kbits/s speed= 5.2x    
+frame=  436 fps= 26 q=23.0 size=     768KiB time=00:01:26.80 bitrate=  72.5kbits/s speed=5.23x    
+frame=  455 fps= 26 q=23.0 size=     768KiB time=00:01:30.60 bitrate=  69.4kbits/s speed=5.26x    
+frame=  471 fps= 26 q=23.0 size=     768KiB time=00:01:33.80 bitrate=  67.1kbits/s speed=5.26x    
+frame=  487 fps= 27 q=23.0 size=     768KiB time=00:01:37.00 bitrate=  64.9kbits/s speed=5.28x    
+frame=  504 fps= 27 q=23.0 size=    1024KiB time=00:01:40.40 bitrate=  83.6kbits/s speed=5.28x    
+frame=  528 fps= 27 q=23.0 size=    1280KiB time=00:01:45.20 bitrate=  99.7kbits/s speed=5.35x    
+[out#0/mp4 @ 0x600000ac0300] video:1302KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.554502%
+frame=  551 fps= 28 q=-1.0 Lsize=    1310KiB time=00:01:49.80 bitrate=  97.7kbits/s speed=5.51x    
+[libx264 @ 0x1448054e0] frame I:11    Avg QP: 9.98  size: 45695
+[libx264 @ 0x1448054e0] frame P:150   Avg QP:15.53  size:  3701
+[libx264 @ 0x1448054e0] frame B:390   Avg QP:22.02  size:   705
+[libx264 @ 0x1448054e0] consecutive B-frames:  3.8%  3.3%  6.5% 86.4%
+[libx264 @ 0x1448054e0] mb I  I16..4: 52.7% 19.0% 28.3%
+[libx264 @ 0x1448054e0] mb P  I16..4:  2.2%  1.9%  2.5%  P16..4:  2.0%  0.6%  0.4%  0.0%  0.0%    skip:90.4%
+[libx264 @ 0x1448054e0] mb B  I16..4:  0.3%  0.3%  0.2%  B16..8:  2.8%  0.3%  0.2%  direct: 0.1%  skip:95.8%  L0:52.7% L1:45.0% BI: 2.3%
+[libx264 @ 0x1448054e0] 8x8 transform intra:26.3% inter:43.1%
+[libx264 @ 0x1448054e0] coded y,uvDC,uvAC intra: 38.8% 17.0% 12.7% inter: 0.7% 0.4% 0.1%
+[libx264 @ 0x1448054e0] i16 v,h,dc,p: 61% 36%  2%  2%
+[libx264 @ 0x1448054e0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 19% 35%  2%  2%  2%  3%  2%  3%
+[libx264 @ 0x1448054e0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 34% 29% 17%  2%  4%  3%  4%  3%  4%
+[libx264 @ 0x1448054e0] i8c dc,h,v,p: 79% 12%  6%  2%
+[libx264 @ 0x1448054e0] Weighted P-Frames: Y:1.3% UV:1.3%
+[libx264 @ 0x1448054e0] ref P L0: 68.1%  3.0% 14.6% 14.3%
+[libx264 @ 0x1448054e0] ref B L0: 66.7% 29.0%  4.3%
+[libx264 @ 0x1448054e0] ref B L1: 94.1%  5.9%
+[libx264 @ 0x1448054e0] kb/s:96.77
+[ 669s] Wrote /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/debug/electron_inspect/driver.mp4
 ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
   built with Apple clang version 13.1.6 (clang-1316.0.21.2.5)
   configuration: --prefix=/Volumes/tempdisk/sw --extra-cflags=-fno-stack-check --arch=arm64 --cc=/usr/bin/clang --enable-gpl --enable-libvmaf --enable-libopenjpeg --enable-libopus --enable-libmp3lame --enable-libx264 --enable-libx265 --enable-libvpx --enable-libwebp --enable-libass --enable-libfreetype --enable-fontconfig --enable-libtheora --enable-libvorbis --enable-libsnappy --enable-libaom --enable-libvidstab --enable-libzimg --enable-libsvtav1 --enable-libharfbuzz --enable-libkvazaar --pkg-config-flags=--static --enable-ffplay --enable-postproc --enable-neon --enable-runtime-cpudetect --disable-indev=qtkit --disable-indev=x11grab_xcb
@@ -150,43 +176,43 @@ ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
   libswscale      8.  3.100 /  8.  3.100
   libswresample   5.  3.100 /  5.  3.100
   libpostproc    58.  3.100 / 58.  3.100
-Input #0, image2, from '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/debug/electron_inspect/frames/frame_%06d.png':
-  Duration: 00:00:03.00, start: 0.000000, bitrate: N/A
-  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1024x656, 5 fps, 5 tbr, 5 tbn
+Input #0, image2, from '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/debug/electron_inspect/frames/frame_%06d.png':
+  Duration: 00:00:03.60, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/iec61966-2-1), 1024x653, 5 fps, 5 tbr, 5 tbn
 Stream mapping:
   Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
 Press [q] to stop, [?] for help
-[libx264 @ 0x139805980] using cpu capabilities: ARMv8 NEON
-[libx264 @ 0x139805980] profile High, level 3.1, 4:2:0, 8-bit
-[libx264 @ 0x139805980] 264 - core 164 r3190 7ed753b - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mp4, to '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/videos/rigged_mesh_manipulation/driver.mp4':
+[libx264 @ 0x147f05850] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0x147f05850] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 0x147f05850] 264 - core 164 r3190 7ed753b - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=4 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=5 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/videos/rigged_mesh_manipulation/driver.mp4':
   Metadata:
     encoder         : Lavf61.7.100
-  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1024x656, q=2-31, 5 fps, 10240 tbn
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1024x654, q=2-31, 5 fps, 10240 tbn
       Metadata:
         encoder         : Lavc61.19.100 libx264
       Side data:
         cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
-[out#0/mp4 @ 0x600002e8c180] video:47KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.155681%
-frame=   15 fps=0.0 q=-1.0 Lsize=      48KiB time=00:00:02.60 bitrate= 151.8kbits/s speed=9.15x    
-[libx264 @ 0x139805980] frame I:1     Avg QP:12.18  size: 37060
-[libx264 @ 0x139805980] frame P:4     Avg QP:15.16  size:  2087
-[libx264 @ 0x139805980] frame B:10    Avg QP:20.62  size:   219
-[libx264 @ 0x139805980] consecutive B-frames:  6.7% 13.3%  0.0% 80.0%
-[libx264 @ 0x139805980] mb I  I16..4: 43.4% 28.7% 27.9%
-[libx264 @ 0x139805980] mb P  I16..4:  2.3%  0.4%  0.9%  P16..4:  2.3%  0.5%  0.2%  0.0%  0.0%    skip:93.5%
-[libx264 @ 0x139805980] mb B  I16..4:  0.1%  0.0%  0.0%  B16..8:  6.2%  0.3%  0.0%  direct: 0.0%  skip:93.4%  L0:52.3% L1:47.6% BI: 0.1%
-[libx264 @ 0x139805980] 8x8 transform intra:26.6% inter:63.8%
-[libx264 @ 0x139805980] coded y,uvDC,uvAC intra: 34.9% 8.9% 6.2% inter: 0.4% 0.1% 0.1%
-[libx264 @ 0x139805980] i16 v,h,dc,p: 57% 43%  0%  0%
-[libx264 @ 0x139805980] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 52% 10% 35%  0%  0%  0%  1%  0%  1%
-[libx264 @ 0x139805980] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 34% 14%  2%  2%  2%  4%  2%  3%
-[libx264 @ 0x139805980] i8c dc,h,v,p: 81% 12%  7%  0%
-[libx264 @ 0x139805980] Weighted P-Frames: Y:0.0% UV:0.0%
-[libx264 @ 0x139805980] ref P L0: 76.0% 11.9% 10.6%  1.4%
-[libx264 @ 0x139805980] ref B L0: 45.9% 53.4%  0.7%
-[libx264 @ 0x139805980] ref B L1: 97.6%  2.4%
-[libx264 @ 0x139805980] kb/s:126.94
-[ 358s]   videos/rigged_mesh_manipulation/driver.mp4 placed (frames 386..400)
-[ 358s]   screenshots/rigged_mesh_manipulation_executed.png placed
-[ 358s]   removed /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1830/dev/macos-desktop/debug/electron_inspect/frames after successful encode
+[out#0/mp4 @ 0x600000338000] video:49KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.157612%
+frame=   18 fps=0.0 q=-1.0 Lsize=      50KiB time=00:00:03.20 bitrate= 127.7kbits/s speed=5.35x    
+[libx264 @ 0x147f05850] frame I:1     Avg QP:12.29  size: 37159
+[libx264 @ 0x147f05850] frame P:5     Avg QP:14.93  size:  1835
+[libx264 @ 0x147f05850] frame B:12    Avg QP:20.61  size:   249
+[libx264 @ 0x147f05850] consecutive B-frames: 11.1%  0.0%  0.0% 88.9%
+[libx264 @ 0x147f05850] mb I  I16..4: 45.3% 28.4% 26.3%
+[libx264 @ 0x147f05850] mb P  I16..4:  2.0%  0.4%  0.7%  P16..4:  1.7%  0.3%  0.1%  0.0%  0.0%    skip:94.7%
+[libx264 @ 0x147f05850] mb B  I16..4:  0.1%  0.0%  0.0%  B16..8:  5.5%  0.2%  0.0%  direct: 0.0%  skip:94.1%  L0:50.0% L1:49.9% BI: 0.2%
+[libx264 @ 0x147f05850] 8x8 transform intra:26.1% inter:55.4%
+[libx264 @ 0x147f05850] coded y,uvDC,uvAC intra: 38.4% 9.6% 6.1% inter: 0.2% 0.2% 0.1%
+[libx264 @ 0x147f05850] i16 v,h,dc,p: 59% 41%  1%  0%
+[libx264 @ 0x147f05850] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 44% 18% 34%  0%  0%  0%  1%  0%  1%
+[libx264 @ 0x147f05850] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 34% 16%  2%  2%  2%  4%  2%  3%
+[libx264 @ 0x147f05850] i8c dc,h,v,p: 81% 12%  6%  0%
+[libx264 @ 0x147f05850] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x147f05850] ref P L0: 82.6%  3.4% 13.7%  0.4%
+[libx264 @ 0x147f05850] ref B L0: 44.8% 55.2%
+[libx264 @ 0x147f05850] ref B L1: 98.0%  2.0%
+[libx264 @ 0x147f05850] kb/s:109.60
+[ 670s]   videos/rigged_mesh_manipulation/driver.mp4 placed (frames 534..551)
+[ 670s]   screenshots/rigged_mesh_manipulation_executed.png placed
+[ 670s]   removed /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/SAM3DBody-1107/dev/macos-desktop/debug/electron_inspect/frames after successful encode
