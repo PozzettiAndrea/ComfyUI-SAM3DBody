@@ -16,7 +16,7 @@ trimesh = { version = "*", extras = ["easy"] }
 pillow = ">=9.0.0"
 opencv-python-headless = ">=4.8.0"
 huggingface-hub = ">=0.16.0"
-transformers = ">=4.30.0"
+transformers = "*"
 einops = ">=0.6.0"
 timm = ">=0.9.0"
 roma = ">=1.3.0"
