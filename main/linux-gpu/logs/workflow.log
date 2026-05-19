@@ -1,27 +1,29 @@
 Capturing execution frames: workflow.json
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4390 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4390 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4434 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4434 / 24124 MB
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
-  [ComfyUI] [SubprocessWorker] call_id=15 sending model_to_device
-  [ComfyUI] [SubprocessWorker] call_id=15 sending model_to_device
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -251MB (now 2812MB) reserved=3296MB peak=3193MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -251MB (now 2812MB) reserved=3296MB peak=3193MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1284MB (now 1529MB) reserved=3296MB peak=3193MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1284MB (now 1529MB) reserved=3296MB peak=3193MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1158 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1158 / 24124 MB
+  [ComfyUI] [SubprocessWorker] call_id=10 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=10 sending model_to_device
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -216MB (now 2937MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -216MB (now 2937MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1214MB (now 1723MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1214MB (now 1723MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -872MB (now 852MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -872MB (now 852MB) reserved=3264MB peak=3201MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1234 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1234 / 24124 MB
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   [ComfyUI] === /validate endpoint called ===
   [ComfyUI] === /validate endpoint called ===
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Prompt has 6 nodes
-  [ComfyUI] Prompt has 6 nodes
   Queuing workflow for execution...
+  [ComfyUI] Prompt has 6 nodes
+  [ComfyUI] Prompt has 6 nodes
   [ComfyUI]   Node 3: LoadImage
   [ComfyUI]   Node 3: LoadImage
   [ComfyUI]     Inputs: {"image": "masked_dancing.png"}
@@ -46,8 +48,8 @@ Capturing execution frames: workflow.json
   [ComfyUI]   Node 15: SAM3DBodyExportMesh
   [ComfyUI]     Inputs: {"filename": "output_mesh.stl", "mesh_data": ["13", 0]}
   [ComfyUI]     Inputs: {"filename": "output_mesh.stl", "mesh_data": ["13", 0]}
-  [ComfyUI] Generated prompt_id: 14b55312-72c2-4fb0-900a-efd531e590a2
-  [ComfyUI] Generated prompt_id: 14b55312-72c2-4fb0-900a-efd531e590a2
+  [ComfyUI] Generated prompt_id: 739b5fb2-f82a-4291-b31c-a0e41022cd71
+  [ComfyUI] Generated prompt_id: 739b5fb2-f82a-4291-b31c-a0e41022cd71
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
@@ -58,34 +60,34 @@ Capturing execution frames: workflow.json
   [ComfyUI] got prompt
   [ComfyUI] [comfy-env] Running LoadSAM3DBodyModel: precision: 'auto'
   [ComfyUI] [comfy-env] Running LoadSAM3DBodyModel: precision: 'auto'
-  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1158 / 24124 MB
-  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1158 / 24124 MB
+  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1234 / 24124 MB
+  [ComfyUI] [VRAM] Before LoadSAM3DBodyModel: 1234 / 24124 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.LoadSAM3DBodyModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.LoadSAM3DBodyModel.EXECUTE_NORMALIZED
+  [ComfyUI] [ComfyUI-SAM3DBody] python: /tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/bin/python
+  [ComfyUI] [ComfyUI-SAM3DBody] python: /tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/bin/python
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-SAM3DBody] python: /root/.ce/.pixi/envs/sam3dbody-nodes/bin/python
-  [ComfyUI] [ComfyUI-SAM3DBody] python: /root/.ce/.pixi/envs/sam3dbody-nodes/bin/python
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/workspaces/SAM3DBody-1940/ComfyUI', '/workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.12/site-packages', '/workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/workspaces/SAM3DBody-1940/ComfyUI', '/workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.12/site-packages', '/workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/workspaces/SAM3DBody-0641/ComfyUI', '/workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/root/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.10/site-packages', '/workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/workspaces/SAM3DBody-0641/ComfyUI', '/workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/root/.ce/.pixi/envs/sam3dbody-nodes/lib/python3.10/site-packages', '/workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/tmp/comfytest-home/.ce/.pixi/envs/sam3dbody-nodes/bin/python
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: failed
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: failed
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/root/.ce/.pixi/envs/sam3dbody-nodes/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/root/.ce/.pixi/envs/sam3dbody-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/tmp/comfytest-home/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/tmp/comfytest-home/.ce/pixi.toml', '-e', 'sam3dbody-nodes', 'python', '/tmp/comfyui_pvenv__mdy_68_/persistent_worker.py', 'abstract://comfy_worker_860c1415dbf5']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/tmp/comfytest-home/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/tmp/comfytest-home/.ce/pixi.toml', '-e', 'sam3dbody-nodes', 'python', '/tmp/comfyui_pvenv__mdy_68_/persistent_worker.py', 'abstract://comfy_worker_860c1415dbf5']...
   [ComfyUI] [ComfyUI-SAM3DBody] Socket unhealthy, restarting worker...
   [ComfyUI] [ComfyUI-SAM3DBody] Socket unhealthy, restarting worker...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'sam3dbody-nodes', 'python', '/tmp/comfyui_pvenv_khfh0wni/persistent_worker.py', 'abstract://comfy_worker_1cf4739e252c']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'sam3dbody-nodes', 'python', '/tmp/comfyui_pvenv_khfh0wni/persistent_worker.py', 'abstract://comfy_worker_1cf4739e252c']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_860c1415dbf5 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_860c1415dbf5 (abstract, no filesystem path)
   [ComfyUI] [comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
   [ComfyUI] [comfy-env] Invalidated 1 stale model patchers (will be cleaned up during next unload)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_1cf4739e252c (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_1cf4739e252c (abstract, no filesystem path)
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=3ms shot=197ms unfreeze=5ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-  Frame 2 saved (frame_001.jpg, t=2.5s)
-  [capture-periodic] freeze=3ms shot=226ms unfreeze=25ms saved=True
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
@@ -94,30 +96,30 @@ Capturing execution frames: workflow.json
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=16 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=16 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=11 sending call_method
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1010 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1010 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1159 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 1159 / 24124 MB
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
-  [ComfyUI] [SubprocessWorker] call_id=17 sending model_to_device
-  [ComfyUI] [SubprocessWorker] call_id=17 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=12 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=12 sending model_to_device
   [ComfyUI] Model 'SAM3DBody_1' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'SAM3DBody_1' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1010 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1010 / 24124 MB
-  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (2.50s): result: NodeOutput
-  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (2.50s): result: NodeOutput
-  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1010 / 24124 MB
-  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1010 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1159 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1159 / 24124 MB
+  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (2.85s): result: NodeOutput
+  [ComfyUI] [comfy-env] LoadSAM3DBodyModel done (2.85s): result: NodeOutput
+  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1159 / 24124 MB
+  [ComfyUI] [VRAM] After LoadSAM3DBodyModel: 1159 / 24124 MB
   [ComfyUI] [comfy-env] Running SAM3DBodyProcess: bbox_threshold: 0.8, inference_type: 'full', model: dict, image: torch.float32 [1,1500,2250,3] cpu, mask: torch.float32 [1,1500,2250] cpu
   [ComfyUI] [comfy-env] Running SAM3DBodyProcess: bbox_threshold: 0.8, inference_type: 'full', model: dict, image: torch.float32 [1,1500,2250,3] cpu, mask: torch.float32 [1,1500,2250] cpu
-  [ComfyUI] [VRAM] Before SAM3DBodyProcess: 1010 / 24124 MB
-  [ComfyUI] [VRAM] Before SAM3DBodyProcess: 1010 / 24124 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyProcess: 1159 / 24124 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyProcess: 1159 / 24124 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.process.SAM3DBodyProcess.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.process.SAM3DBodyProcess.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -138,8 +140,8 @@ Capturing execution frames: workflow.json
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=18 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=13 sending call_method
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1500, 2250, 3]
@@ -152,40 +154,136 @@ Capturing execution frames: workflow.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[1, 1500, 2250]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1500, 2250])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([1, 1500, 2250])
-  [ComfyUI] /workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/heads.py:40: UserWarning: Momentum is not enabled
-  [ComfyUI] /workspaces/SAM3DBody-0641/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/heads.py:40: UserWarning: Momentum is not enabled
+  [ComfyUI] /workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/heads.py:40: UserWarning: Momentum is not enabled
+  [ComfyUI] /workspaces/SAM3DBody-1940/ComfyUI/custom_nodes/ComfyUI-SAM3DBody/nodes/sam_3d_body/heads.py:40: UserWarning: Momentum is not enabled
   [ComfyUI]   warnings.warn("Momentum is not enabled")
   [ComfyUI]   warnings.warn("Momentum is not enabled")
+  Frame 3 saved (frame_002.jpg, t=4.7s)
+  [capture-periodic] freeze=3ms shot=254ms unfreeze=6ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] WARNING: No comfy kitchen, using old apply_rope functions.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] WARNING: No comfy kitchen, using old apply_rope functions.
-  Frame 3 saved (frame_002.jpg, t=4.8s)
-  [capture-periodic] freeze=3ms shot=212ms unfreeze=23ms saved=True
-  [capture-loop] iter=50 t=6.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=10.7/31.2GB (34%) swap=1.5/32.0GB (4%) cpu=13% browser_rss=1.03GB
-  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=18
-  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=18
-  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 24.24GB
-  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 24.24GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 24.24GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 24.24GB
+  [capture-loop] iter=50 t=6.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=6.8/31.2GB (22%) swap=0.7/32.0GB (2%) cpu=17% browser_rss=0.97GB
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=13
+  [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=13
+  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 23.90GB
+  [ComfyUI] [comfy-env] VRAM request: 3.30GB, free before eviction: 23.90GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 23.90GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 23.90GB
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +633MB (now 633MB) reserved=640MB peak=633MB
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +633MB (now 633MB) reserved=640MB peak=633MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +2529MB (now 3162MB) reserved=3232MB peak=3172MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +2529MB (now 3162MB) reserved=3232MB peak=3172MB
-  [capture-loop] iter=100 t=12.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.0/31.2GB (35%) swap=1.5/32.0GB (4%) cpu=5% browser_rss=0.94GB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +2510MB (now 3143MB) reserved=3168MB peak=3143MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] +2510MB (now 3143MB) reserved=3168MB peak=3143MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [capture-loop] iter=100 t=12.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=8.2/31.2GB (26%) swap=0.7/32.0GB (2%) cpu=9% browser_rss=0.96GB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Error running sage attention: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl., using pytorch attention instead.
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] Created 1 model patchers: ['SAM3DBody_1']
   [ComfyUI] [comfy-env] Created 1 model patchers: ['SAM3DBody_1']
-  [ComfyUI] [comfy-env] SAM3DBodyProcess done (9.93s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodyProcess done (9.93s): result: NodeOutput
-  [ComfyUI] [VRAM] After SAM3DBodyProcess: 4358 / 24124 MB
-  [ComfyUI] [VRAM] After SAM3DBodyProcess: 4358 / 24124 MB
+  [ComfyUI] [comfy-env] SAM3DBodyProcess done (12.45s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodyProcess done (12.45s): result: NodeOutput
+  [ComfyUI] [VRAM] After SAM3DBodyProcess: 4936 / 24124 MB
+  [ComfyUI] [VRAM] After SAM3DBodyProcess: 4936 / 24124 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
   [ComfyUI] [comfy-env] Running SAM3DBodyExportMesh: filename: 'output_mesh.stl', mesh_data: dict
   [ComfyUI] [comfy-env] Running SAM3DBodyExportMesh: filename: 'output_mesh.stl', mesh_data: dict
-  [ComfyUI] [VRAM] Before SAM3DBodyExportMesh: 4358 / 24124 MB
-  [ComfyUI] [VRAM] Before SAM3DBodyExportMesh: 4358 / 24124 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyExportMesh: 4939 / 24124 MB
+  [ComfyUI] [VRAM] Before SAM3DBodyExportMesh: 4939 / 24124 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
   [ComfyUI] [SubprocessWorker] call_method: nodes.visualize.SAM3DBodyExportMesh.EXECUTE_NORMALIZED
@@ -200,101 +298,103 @@ Capturing execution frames: workflow.json
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=14 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=14 sending call_method
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[36874, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[36874, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([36874, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([36874, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  Frame 4 saved (frame_003.jpg, t=16.1s)
+  [capture-periodic] freeze=3ms shot=272ms unfreeze=3ms saved=True
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
   Node executed (1 total), capturing...
-  [ComfyUI] [SubprocessWorker] created 0 shm blocks
-  [ComfyUI] [SubprocessWorker] created 0 shm blocks
-  [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=19 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=19 sending call_method
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[18439, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([18439, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[36874, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[36874, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([36874, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([36874, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[127, 3, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([127, 3, 3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[133]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([3])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[45]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([45])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[72]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([72])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[70, 3]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([70, 3])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
@@ -341,8 +441,6 @@ Capturing execution frames: workflow.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
-  Frame 4 saved (frame_003.jpg, t=13.7s)
-  [capture-node] freeze=4ms shot=229ms unfreeze=3ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[28]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([28])
@@ -439,8 +537,10 @@ Capturing execution frames: workflow.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([133])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
+  Frame 5 saved (frame_004.jpg, t=16.7s)
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[108]
+  [capture-node] freeze=3ms shot=232ms unfreeze=8ms saved=True
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([108])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] _from_shm got dict with keys: ['__type__', 'strategy', 'parent_pid', 'fd', 'storage_size']
@@ -491,89 +591,96 @@ Capturing execution frames: workflow.json
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZE TensorRef: tensor_size=[4]
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
   [ComfyUI] [worker:ComfyUI-SAM3DBody] [comfy-env] DESERIALIZED tensor shape: torch.Size([4])
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  Frame 5 saved (frame_004.jpg, t=16.1s)
-  [capture-periodic] freeze=3ms shot=233ms unfreeze=9ms saved=True
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
-  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=19
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [capture-loop] iter=150 t=18.8s state={'complete': False, 'error': None, 'executedCount': 1, 'wsState': 1} eval_ms=4 ram=8.9/31.2GB (28%) swap=0.7/32.0GB (2%) cpu=12% browser_rss=0.99GB
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  Frame 6 saved (frame_005.jpg, t=19.1s)
+  [capture-periodic] freeze=4ms shot=257ms unfreeze=10ms saved=True
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=14
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] SAM3DBodyExportMesh done (3.20s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodyExportMesh done (3.20s): result: NodeOutput
-  [ComfyUI] [VRAM] After SAM3DBodyExportMesh: 4358 / 24124 MB
-  [ComfyUI] [VRAM] After SAM3DBodyExportMesh: 4358 / 24124 MB
+  [ComfyUI] [comfy-env] SAM3DBodyExportMesh done (3.49s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodyExportMesh done (3.49s): result: NodeOutput
+  [ComfyUI] [VRAM] After SAM3DBodyExportMesh: 5065 / 24124 MB
+  [ComfyUI] [VRAM] After SAM3DBodyExportMesh: 5065 / 24124 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (3143 MB)
-  [ComfyUI] Prompt executed in 16.33 seconds
-  [ComfyUI] Prompt executed in 16.33 seconds
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4358 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 4358 / 24124 MB
+  [ComfyUI] Prompt executed in 19.35 seconds
+  [ComfyUI] Prompt executed in 19.35 seconds
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 5065 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'SAM3DBody_1' (3143 MB) -> cpu: 5065 / 24124 MB
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
-  [ComfyUI] [SubprocessWorker] call_id=20 sending model_to_device
-  [ComfyUI] [SubprocessWorker] call_id=20 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=15 sending model_to_device
+  [ComfyUI] [SubprocessWorker] call_id=15 sending model_to_device
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -231MB (now 2912MB) reserved=3296MB peak=3202MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -231MB (now 2912MB) reserved=3296MB peak=3202MB
   Node executed (2 total), capturing...
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -301MB (now 2862MB) reserved=3264MB peak=3189MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -301MB (now 2862MB) reserved=3264MB peak=3189MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1334MB (now 1529MB) reserved=3264MB peak=3189MB
-  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1334MB (now 1529MB) reserved=3264MB peak=3189MB
-  Frame 6 saved (frame_005.jpg, t=17.0s)
-  [capture-node] freeze=495ms shot=469ms unfreeze=0ms saved=True
-  Execution complete (t=17.0s)
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1214MB (now 1698MB) reserved=3296MB peak=3202MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -1214MB (now 1698MB) reserved=3296MB peak=3202MB
+  Frame 7 saved (frame_006.jpg, t=20.0s)
+  [capture-node] freeze=563ms shot=848ms unfreeze=0ms saved=True
+  Execution complete (t=20.0s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1158 / 24124 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1158 / 24124 MB
-  [3d-wait] Phase 1 exception after 60.1s: Page.wait_for_function: Timeout 60000ms exceeded.
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -846MB (now 852MB) reserved=3296MB peak=3202MB
+  [ComfyUI] [worker:ComfyUI-SAM3DBody] [VRAM] -846MB (now 852MB) reserved=3296MB peak=3202MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1846 / 24124 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'SAM3DBody_1' (3143 MB): 1846 / 24124 MB
+  [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
   [3d-wait] Phase 2: iframes=0
-  [3d-wait] Total 3D wait: 60.1s
-  Captured 6 unique frames over 78.17s
+  [3d-wait] Total 3D wait: 60.0s
+  Captured 7 unique frames over 81.56s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: workflow_executed.png
-  [timing] final_screenshot: 0.5s
-    Captured 7 video frames
+  [timing] final_screenshot: 0.6s
+    Captured 8 video frames
