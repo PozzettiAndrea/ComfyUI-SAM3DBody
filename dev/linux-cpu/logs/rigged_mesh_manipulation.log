@@ -1,76 +1,82 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 Capturing execution frames: rigged_mesh_manipulation.json
-  [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
-  [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
-  [ComfyUI] [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [1m[33m[WARNING][0m [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+  [ComfyUI] [1m[33m[WARNING][0m [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+  [ComfyUI] [1m[33m[WARNING][0m [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Prompt has 2 nodes
-  [ComfyUI] Prompt has 2 nodes
-  [ComfyUI] Prompt has 2 nodes
-  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
-  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
-  [ComfyUI]   Node 2: SAM3DBodyPreviewRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]   Node 4: SAM3DBodySelectMesh
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-  [ComfyUI] Generated prompt_id: f67df1b3-9854-4ba4-8eb7-7ab472ab1aec
-  [ComfyUI] Generated prompt_id: f67df1b3-9854-4ba4-8eb7-7ab472ab1aec
-  [ComfyUI] Generated prompt_id: f67df1b3-9854-4ba4-8eb7-7ab472ab1aec
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+  [ComfyUI] [32m[INFO][0m Prompt has 2 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 2 nodes
+  [ComfyUI] [32m[INFO][0m Prompt has 2 nodes
+  [ComfyUI] [32m[INFO][0m   Node 2: SAM3DBodyPreviewRiggedMesh
+  [ComfyUI] [32m[INFO][0m   Node 2: SAM3DBodyPreviewRiggedMesh
+  [ComfyUI] [32m[INFO][0m   Node 2: SAM3DBodyPreviewRiggedMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
   Queuing workflow for execution...
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] got prompt
-  [ComfyUI] got prompt
-  [ComfyUI] got prompt
+  [ComfyUI] [32m[INFO][0m   Node 4: SAM3DBodySelectMesh
+  [ComfyUI] [32m[INFO][0m   Node 4: SAM3DBodySelectMesh
+  [ComfyUI] [32m[INFO][0m   Node 4: SAM3DBodySelectMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 2f71010d-5414-44a5-959a-6dcf81241565
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 2f71010d-5414-44a5-959a-6dcf81241565
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 2f71010d-5414-44a5-959a-6dcf81241565
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
+  [ComfyUI] [32m[INFO][0m got prompt
   [ComfyUI] [comfy-env] Running SAM3DBodySelectMesh: source_folder: 'input', file_path: 'sam3d_rigged.fbx'
   [ComfyUI] [comfy-env] Running SAM3DBodySelectMesh: source_folder: 'input', file_path: 'sam3d_rigged.fbx'
   [ComfyUI] [comfy-env] Running SAM3DBodySelectMesh: source_folder: 'input', file_path: 'sam3d_rigged.fbx'
   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
-  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
-  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.11/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1649/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [ComfyUI-SAM3DBody] python: /home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
+  [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody', '/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/lib/python3.1/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/SAM3DBody-1922/ComfyUI/custom_nodes/ComfyUI-SAM3DBody']
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/envs/sam3dbody-nodes/.pixi/envs/default/bin/python
-  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_3dkvp1he/persistent_worker.py', 'abstract://comfy_worker_2e5b54a2d3b9']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_3dkvp1he/persistent_worker.py', 'abstract://comfy_worker_2e5b54a2d3b9']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_3dkvp1he/persistent_worker.py', 'abstract://comfy_worker_2e5b54a2d3b9']...
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_2e5b54a2d3b9 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_2e5b54a2d3b9 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_2e5b54a2d3b9 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_5ph6mwiv/persistent_worker.py', 'abstract://comfy_worker_1e050b82f066']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_5ph6mwiv/persistent_worker.py', 'abstract://comfy_worker_1e050b82f066']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/envs/sam3dbody-nodes/pixi.toml', '-e', 'default', 'python', '/tmp/comfyui_pvenv_5ph6mwiv/persistent_worker.py', 'abstract://comfy_worker_1e050b82f066']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_1e050b82f066 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_1e050b82f066 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_1e050b82f066 (abstract, no filesystem path)
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
@@ -92,9 +98,9 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.67s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.67s): result: NodeOutput
-  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.67s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.80s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.80s): result: NodeOutput
+  [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (1.80s): result: NodeOutput
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
@@ -131,24 +137,24 @@ Capturing execution frames: rigged_mesh_manipulation.json
   [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.01s): result: NodeOutput
-  [ComfyUI] Prompt executed in 1.68 seconds
-  [ComfyUI] Prompt executed in 1.68 seconds
-  [ComfyUI] Prompt executed in 1.68 seconds
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.82 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.82 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 1.82 seconds[0m
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=3.3s)
-  [capture-node] freeze=103ms shot=249ms unfreeze=0ms saved=True
-  Execution complete (t=3.3s)
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-node] freeze=1024ms shot=256ms unfreeze=0ms saved=True
+  Execution complete (t=2.3s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 done in 0.0s
   [3d-wait] Phase 2: iframes=1
   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
-  [3d-wait] Unfrozen in 0.002s, rendering for 5s...
-  [3d-wait] JS halted via CDP after 5.1s
-  [3d-wait] Re-frozen in 6.1s
+  [3d-wait] Unfrozen in 0.003s, rendering for 5s...
+  [3d-wait] JS halted via CDP after 5.0s
+  [3d-wait] Re-frozen in 6.0s
   [3d-wait] Total 3D wait: 6.1s
-  Captured 2 unique frames over 9.75s
+  Captured 2 unique frames over 9.77s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41893/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1779209, canvas=486x710, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-SAM3DBody/viewer_fbx.html?v=1779737101, canvas=486x710, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
   [timing] final_screenshot: 0.2s
