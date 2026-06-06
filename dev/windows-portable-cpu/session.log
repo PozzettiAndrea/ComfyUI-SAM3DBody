@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2335\dev\windows-portable-cpu\crash_dump.log
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2342\dev\windows-portable-cpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -17,15 +17,15 @@
 [00:00] 
 Setting up ComfyUI...
 [00:00] Fetching latest release version...
-[00:01] Latest version: v0.24.0
-[00:01] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.24.0/ComfyUI_windows_portable_nvidia.7z...
-[00:03]   Downloaded: 10%
-[00:04]   Downloaded: 20%
-[00:05]   Downloaded: 30%
-[00:05]   Downloaded: 40%
-[00:06]   Downloaded: 50%
-[00:07]   Downloaded: 60%
-[00:08]   Downloaded: 70%
+[00:00] Latest version: v0.24.0
+[00:00] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.24.0/ComfyUI_windows_portable_nvidia.7z...
+[00:01]   Downloaded: 10%
+[00:02]   Downloaded: 20%
+[00:03]   Downloaded: 30%
+[00:04]   Downloaded: 40%
+[00:05]   Downloaded: 50%
+[00:06]   Downloaded: 60%
+[00:07]   Downloaded: 70%
 [00:08]   Downloaded: 80%
 [00:09]   Downloaded: 90%
 [00:10]   Downloaded: 100%
@@ -33,495 +33,499 @@ Setting up ComfyUI...
 [00:10] Extracting to cache: C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.24.0
 [00:10] Extracting ComfyUI_portable_v0.24.0.7z...
 [00:10] Using 7z: 7z
-[03:15] Extracted to C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.24.0
-[03:15] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui
-[04:15] Installing uv into embedded Python...
-[04:15] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
-[04:19] Installing ComfyUI requirements...
-[04:19] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
-[04:19] 
+[02:22] Extracted to C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.24.0
+[02:22] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui
+[05:03] Installing uv into embedded Python...
+[05:03] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
+[05:07] Installing ComfyUI requirements...
+[05:07] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
+[05:07] 
 Installing custom node...
-[04:19] Copying ComfyUI-SAM3DBody to custom_nodes/...
-[04:20] Installing node requirements...
-[04:20] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
-[04:24] 
+[05:07] Copying ComfyUI-SAM3DBody to custom_nodes/...
+[05:08] Installing node requirements...
+[05:08] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\requirements.txt
+[05:14] 
 Running install.py...
-[04:24] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
-[04:25]   
-[04:25]   Installing 3 node dependencies...
-[04:25]     Cloning ComfyUI-Multiband...
-[04:28]     Installing requirements for ComfyUI-Multiband...
-[04:32]     Cloning ComfyUI-DepthAnythingV3...
-[04:33]     Installing requirements for ComfyUI-DepthAnythingV3...
-[04:33]     Running install.py for ComfyUI-DepthAnythingV3...
-[04:33]   
-[04:33]   Installing 3 node dependencies...
-[04:33]     Cloning ComfyUI-VideoHelperSuite...
-[04:33]     Installing requirements for ComfyUI-VideoHelperSuite...
-[04:34]     Cloning ComfyUI-KJNodes...
-[04:35]     Installing requirements for ComfyUI-KJNodes...
-[04:37]     Cloning ComfyUI-GeometryPack...
-[04:39]     Installing requirements for ComfyUI-GeometryPack...
-[04:41]     Running install.py for ComfyUI-GeometryPack...
-[04:45]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[04:45]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[04:45]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[04:45]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[04:45]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[04:45]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
-[04:45]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[04:45]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[04:45]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[04:45]   [comfy-env] Found 3 node config(s):
-[04:45]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
-[04:45]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
-[04:45]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
-[04:46]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.12.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.12/cp313.
-[04:47]   [comfy-env] GPU: No GPU detected
-[04:47]   [comfy-env] Comfyui feature -> torch 2.12.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[04:47]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
-[04:47]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.12/cp313
-[04:47]   [cuda-wheels] Looking up flash_attn: cu130 torch2.12 cp313 win_amd64
-[04:47]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
-[04:51]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
-[04:51]   [cuda-wheels]   No wheel found via index or API. If your network blocks
-[04:51]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
-[04:51]   [comfy-env] cuda-wheels tier 1 incomplete: `flash_attn` not built for cu13.0+torch2.12; falling back
-[04:51]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
-[04:51]   [cuda-wheels] Looking up flash_attn: cu128 torch2.8 cp313 win_amd64
-[04:51]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:51]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
-[04:51]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:51]   [cuda-wheels] Looking up cumesh: cu128 torch2.8 cp313 win_amd64
-[04:51]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:51]   [cuda-wheels] Looking up detectron2: cu128 torch2.8 cp313 win_amd64
-[04:52]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:52]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[04:52]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:52]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.8 cp313 win_amd64
-[04:53]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:53]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[04:53]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:53]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[04:54]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:54]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
-[04:54]   [comfy-env] Writing 3 per-env manifest(s):
-[04:54]     - depthanythingv3-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml
-[04:54]   [cuda-wheels] Looking up flash_attn: cu128 torch2.8 cp313 win_amd64
-[04:54]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:54]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
-[04:54]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:54]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
-[04:54]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
-[04:54]   [cuda-wheels] Looking up cumesh: cu128 torch2.8 cp313 win_amd64
-[04:54]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:54]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
-[04:54]     - sam3dbody-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml
-[04:54]   [cuda-wheels] Looking up detectron2: cu128 torch2.8 cp313 win_amd64
-[04:54]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:54]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[04:55]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:55]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.8 cp313 win_amd64
-[04:55]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:55]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[04:55]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:55]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[04:56]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:56]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
-[04:56]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
-[04:56]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
-[04:56]   [comfy-env] Installing 3 environment(s):
-[04:56]     - depthanythingv3-nodes (python=host, 11 pypi deps, 2 cuda wheels)
-[04:56]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
-[04:56]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
-[04:56]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml` ...
-[05:35]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[05:35]     	- Scripts/.librsvg-pre-unlink.bat
-[05:35]     To enable them, run:
-[05:35]     	pixi config set --local run-post-link-scripts insecure
-[05:35]     More info:
-[05:35]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[07:36]     The default environment has been installed.
-[07:36]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
-[12:27]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[12:27]     	- Scripts/.librsvg-pre-unlink.bat
-[12:27]     To enable them, run:
-[12:27]     	pixi config set --local run-post-link-scripts insecure
-[12:27]     More info:
-[12:27]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[13:03]     The default environment has been installed.
-[13:04]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml` ...
-[13:42]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[13:42]     	- Scripts/.librsvg-pre-unlink.bat
-[13:42]     To enable them, run:
-[13:42]     	pixi config set --local run-post-link-scripts insecure
-[13:42]     More info:
-[13:42]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[14:15]     The default environment has been installed.
-[14:15]   [comfy-env] depthanythingv3-nodes: installing cuda-wheels with --no-deps (flash_attn, sageattention)
-[14:15]     Using Python 3.13.13 environment at: envs\depthanythingv3-nodes\.pixi\envs\default
-[14:17]     Resolved 2 packages in 1.57s
-[14:17]     Downloading flash-attn (239.2MiB)
-[14:17]     Downloading sageattention (41.6MiB)
-[14:17]      Downloaded sageattention
-[14:20]      Downloaded flash-attn
-[14:20]     Prepared 2 packages in 2.74s
-[14:20]     Installed 2 packages in 91ms
-[14:20]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:20]      + sageattention==2.2.0+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:20]   [comfy-env] geometrypack-nodes: installing cuda-wheels with --no-deps (cumesh)
-[14:20]     Using Python 3.13.13 environment at: envs\geometrypack-nodes\.pixi\envs\default
-[14:21]     Resolved 1 package in 1.01s
-[14:21]     Downloading cumesh (10.2MiB)
-[14:24]      Downloaded cumesh
-[14:24]     Prepared 1 package in 3.41s
-[14:24]     Installed 1 package in 18ms
-[14:24]      + cumesh==0.0.1+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumesh-latest/cumesh-0.0.1%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:24]   [comfy-env] sam3dbody-nodes: installing cuda-wheels with --no-deps (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
-[14:25]     Using Python 3.13.13 environment at: envs\sam3dbody-nodes\.pixi\envs\default
-[14:25]     Resolved 6 packages in 821ms
-[14:25]     Downloading torch-scatter (9.7MiB)
-[14:25]     Downloading flash-attn (239.2MiB)
-[14:25]     Downloading detectron2 (1.8MiB)
-[14:25]     Downloading torch-cluster (2.8MiB)
-[14:25]     Downloading torch-sparse (4.8MiB)
-[14:25]     Downloading sageattention (41.6MiB)
-[14:26]      Downloaded torch-cluster
-[14:26]      Downloaded torch-scatter
-[14:26]      Downloaded torch-sparse
-[14:26]      Downloaded sageattention
-[14:31]      Downloaded flash-attn
-[14:35]      Downloaded detectron2
-[14:35]     Prepared 6 packages in 9.42s
-[14:35]     Installed 6 packages in 539ms
-[14:35]      + detectron2==0.6+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/detectron2-latest/detectron2-0.6%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]      + sageattention==2.2.0+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]      + torch-sparse==0.6.18+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_sparse-latest/torch_sparse-0.6.18%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[14:35]   [comfy-env] Recorded install hash ec37af9cca71 -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
-[14:35]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
-[14:35]   
-[14:35]   Installation complete!
-[14:36]   
-[14:36]   [requirements] Re-installing main package requirements...
-[14:36]     Installing requirements for ComfyUI-DepthAnythingV3...
-[14:37]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[14:37]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[14:37]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[14:37]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[14:37]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[14:37]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
-[14:37]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[14:37]   [comfy-env] Workspace inputs unchanged (hash ec37af9cca71) -- skipping install. Delete C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash to force.
-[14:37]   
-[14:37]   Installation complete!
-[14:37]     ComfyUI-VideoHelperSuite: exists
-[14:37]     ComfyUI-KJNodes: exists
-[14:37]     ComfyUI-GeometryPack: exists
-[14:37]     Cloning ComfyUI-CameraPack...
-[14:39]   
-[14:39]   [requirements] Re-installing main package requirements...
-[14:39]     Installing requirements for ComfyUI-SAM3DBody...
-[14:39]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[14:39]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[14:39]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
-[14:39]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
-[14:39]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
-[14:39]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
-[14:39]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
-[14:39]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
-[14:39]   [comfy-env] Workspace inputs unchanged (hash ec37af9cca71) -- skipping install. Delete C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash to force.
-[14:39]   
-[14:39]   Installation complete!
-[14:39] Installing 3 node dependency(ies)...
-[14:39]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
-[14:39]   ComfyUI-Multiband already exists, skipping...
-[14:39]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
-[14:39]   ComfyUI-DepthAnythingV3 already exists, skipping...
-[14:39]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[14:39]   ComfyUI-CameraPack already exists, skipping...
-[14:39] Installing validation endpoint...
-[14:39]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[14:39] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[14:41] CUDA packages absent (will mock): detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
-[14:41] [INSTALL] PASSED
-[14:41] 
-[14:41] [3/5] REGISTRATION
-[14:41] ----------------------------------------
-[14:41] 
+[05:14] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\install.py
+[05:14]   
+[05:14]   Installing 3 node dependencies...
+[05:14]     Cloning ComfyUI-Multiband...
+[05:16]     Installing requirements for ComfyUI-Multiband...
+[05:18]     Cloning ComfyUI-DepthAnythingV3...
+[05:19]     Installing requirements for ComfyUI-DepthAnythingV3...
+[05:19]     Running install.py for ComfyUI-DepthAnythingV3...
+[05:19]   
+[05:19]   Installing 3 node dependencies...
+[05:19]     Cloning ComfyUI-VideoHelperSuite...
+[05:20]     Installing requirements for ComfyUI-VideoHelperSuite...
+[05:21]     Cloning ComfyUI-KJNodes...
+[05:22]     Installing requirements for ComfyUI-KJNodes...
+[05:24]     Cloning ComfyUI-GeometryPack...
+[05:26]     Installing requirements for ComfyUI-GeometryPack...
+[05:27]     Running install.py for ComfyUI-GeometryPack...
+[05:31]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[05:31]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[05:31]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[05:31]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[05:31]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[05:31]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[05:31]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[05:31]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[05:31]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[05:31]   [comfy-env] Found 3 node config(s):
+[05:31]     - depthanythingv3-nodes <- custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml (python=host)
+[05:31]     - geometrypack-nodes <- custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml (python=host)
+[05:31]     - sam3dbody-nodes <- custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml (python=host)
+[05:31]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.12.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.12/cp313.
+[05:33]   [comfy-env] GPU: No GPU detected
+[05:33]   [comfy-env] Comfyui feature -> torch 2.12.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[05:33]   [comfy-env] cuda-wheels: 8 package(s) need a matched (cuda, torch, python) combo: ['flash_attn', 'sageattention', 'cumesh', 'detectron2', 'torch-scatter', 'torch-sparse', 'torch-cluster', 'flash-attn']
+[05:33]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.12/cp313
+[05:33]   [cuda-wheels] Looking up flash_attn: cu130 torch2.12 cp313 win_amd64
+[05:34]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
+[05:37]   [cuda-wheels]   https://pozzettiandrea.github.io/cuda-wheels/v2/flash_attn/: HTTPError: HTTP Error 404: Not Found
+[05:37]   [cuda-wheels]   No wheel found via index or API. If your network blocks
+[05:37]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
+[05:37]   [comfy-env] cuda-wheels tier 1 incomplete: `flash_attn` not built for cu13.0+torch2.12; falling back
+[05:37]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
+[05:37]   [cuda-wheels] Looking up flash_attn: cu128 torch2.8 cp313 win_amd64
+[05:37]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:37]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
+[05:37]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:37]   [cuda-wheels] Looking up cumesh: cu128 torch2.8 cp313 win_amd64
+[05:37]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:37]   [cuda-wheels] Looking up detectron2: cu128 torch2.8 cp313 win_amd64
+[05:38]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:38]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[05:38]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:38]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.8 cp313 win_amd64
+[05:38]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:38]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[05:39]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:39]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[05:39]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:39]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
+[05:39]   [comfy-env] Writing 3 per-env manifest(s):
+[05:39]     - depthanythingv3-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml
+[05:39]   [cuda-wheels] Looking up flash_attn: cu128 torch2.8 cp313 win_amd64
+[05:40]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:40]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
+[05:40]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:40]   [comfy-env] depthanythingv3-nodes: cuda-wheels deferred for post-pixi install (flash_attn, sageattention)
+[05:40]     - geometrypack-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml
+[05:40]   [cuda-wheels] Looking up cumesh: cu128 torch2.8 cp313 win_amd64
+[05:40]   [cuda-wheels]   Found: cumesh-0.0.1+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:40]   [comfy-env] geometrypack-nodes: cuda-wheels deferred for post-pixi install (cumesh)
+[05:40]     - sam3dbody-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml
+[05:40]   [cuda-wheels] Looking up detectron2: cu128 torch2.8 cp313 win_amd64
+[05:40]   [cuda-wheels]   Found: detectron2-0.6+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:40]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[05:41]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:41]   [cuda-wheels] Looking up torch-sparse: cu128 torch2.8 cp313 win_amd64
+[05:41]   [cuda-wheels]   Found: torch_sparse-0.6.18+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:41]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[05:41]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:41]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[05:42]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:42]   [cuda-wheels] Looking up sageattention: cu128 torch2.8 cp313 win_amd64
+[05:42]   [cuda-wheels]   Found: sageattention-2.2.0+cu128torch2.8-cp313-cp313-win_amd64.whl
+[05:42]   [comfy-env] sam3dbody-nodes: cuda-wheels deferred for post-pixi install (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[05:42]   [comfy-env] Installing 3 environment(s):
+[05:42]     - depthanythingv3-nodes (python=host, 11 pypi deps, 2 cuda wheels)
+[05:42]     - geometrypack-nodes (python=host, 14 pypi deps, 1 cuda wheels)
+[05:42]     - sam3dbody-nodes (python=host, 11 pypi deps, 6 cuda wheels)
+[05:42]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml` ...
+[06:05]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[06:05]     	- Scripts/.librsvg-pre-unlink.bat
+[06:05]     To enable them, run:
+[06:05]     	pixi config set --local run-post-link-scripts insecure
+[06:05]     More info:
+[06:05]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[07:44]     The default environment has been installed.
+[07:44]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml` ...
+[09:47]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[09:47]     	- Scripts/.librsvg-pre-unlink.bat
+[09:47]     To enable them, run:
+[09:47]     	pixi config set --local run-post-link-scripts insecure
+[09:47]     More info:
+[09:47]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[10:03]     The default environment has been installed.
+[10:03]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml` ...
+[10:15]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[10:15]     	- Scripts/.librsvg-pre-unlink.bat
+[10:15]     To enable them, run:
+[10:15]     	pixi config set --local run-post-link-scripts insecure
+[10:15]     More info:
+[10:15]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[10:32]     The default environment has been installed.
+[10:32]   [comfy-env] depthanythingv3-nodes: installing cuda-wheels with --no-deps (flash_attn, sageattention)
+[10:32]     Using Python 3.13.13 environment at: envs\depthanythingv3-nodes\.pixi\envs\default
+[10:34]     Resolved 2 packages in 1.02s
+[10:34]     Downloading sageattention (41.6MiB)
+[10:34]     Downloading flash-attn (239.2MiB)
+[10:34]      Downloaded sageattention
+[10:38]      Downloaded flash-attn
+[10:38]     Prepared 2 packages in 3.96s
+[10:42]     Installed 2 packages in 4.03s
+[10:42]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:42]      + sageattention==2.2.0+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:42]   [comfy-env] geometrypack-nodes: installing cuda-wheels with --no-deps (cumesh)
+[10:42]     Using Python 3.13.13 environment at: envs\geometrypack-nodes\.pixi\envs\default
+[10:43]     Resolved 1 package in 335ms
+[10:43]     Downloading cumesh (10.2MiB)
+[10:43]      Downloaded cumesh
+[10:43]     Prepared 1 package in 159ms
+[10:43]     Installed 1 package in 14ms
+[10:43]      + cumesh==0.0.1+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumesh-latest/cumesh-0.0.1%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:43]   [comfy-env] sam3dbody-nodes: installing cuda-wheels with --no-deps (detectron2, torch-scatter, torch-sparse, torch-cluster, flash-attn, sageattention)
+[10:43]     Using Python 3.13.13 environment at: envs\sam3dbody-nodes\.pixi\envs\default
+[10:44]     Resolved 6 packages in 1.36s
+[10:44]     Downloading torch-sparse (4.8MiB)
+[10:44]     Downloading torch-cluster (2.8MiB)
+[10:44]     Downloading sageattention (41.6MiB)
+[10:44]     Downloading flash-attn (239.2MiB)
+[10:44]     Downloading torch-scatter (9.7MiB)
+[10:44]     Downloading detectron2 (1.8MiB)
+[10:45]      Downloaded torch-cluster
+[10:45]      Downloaded torch-scatter
+[10:45]      Downloaded torch-sparse
+[10:45]      Downloaded sageattention
+[10:48]      Downloaded flash-attn
+[10:48]      Downloaded detectron2
+[10:48]     Prepared 6 packages in 3.33s
+[10:49]     Installed 6 packages in 1.05s
+[10:49]      + detectron2==0.6+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/detectron2-latest/detectron2-0.6%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]      + sageattention==2.2.0+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/sageattention-latest/sageattention-2.2.0%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]      + torch-sparse==0.6.18+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_sparse-latest/torch_sparse-0.6.18%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[10:49]   [comfy-env] Recorded install hash ec37af9cca71 -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
+[10:49]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
+[10:49]   
+[10:49]   Installation complete!
+[10:50]   
+[10:50]   [requirements] Re-installing main package requirements...
+[10:50]     Installing requirements for ComfyUI-DepthAnythingV3...
+[10:53]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[10:53]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[10:53]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[10:53]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[10:53]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[10:53]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[10:53]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[10:53]   [comfy-env] Workspace inputs unchanged (hash ec37af9cca71) -- skipping install. Delete C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash to force.
+[10:53]   
+[10:53]   Installation complete!
+[10:53]     ComfyUI-VideoHelperSuite: exists
+[10:53]     ComfyUI-KJNodes: exists
+[10:53]     ComfyUI-GeometryPack: exists
+[10:53]     Cloning ComfyUI-CameraPack...
+[10:54]   
+[10:54]   [requirements] Re-installing main package requirements...
+[10:54]     Installing requirements for ComfyUI-SAM3DBody...
+[10:54]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[10:54]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[10:54]   [comfy-env] _discover: ComfyUI-DepthAnythingV3 -> depthanythingv3-nodes (custom_nodes\ComfyUI-DepthAnythingV3\nodes\comfy-env.toml)
+[10:54]   [comfy-env] _discover: ComfyUI-GeometryPack -> geometrypack-nodes (custom_nodes\ComfyUI-GeometryPack\nodes\comfy-env.toml)
+[10:54]   [comfy-env] _discover: ComfyUI-KJNodes: no comfy-env.toml found
+[10:54]   [comfy-env] _discover: ComfyUI-Multiband: no comfy-env.toml found
+[10:54]   [comfy-env] _discover: ComfyUI-SAM3DBody -> sam3dbody-nodes (custom_nodes\ComfyUI-SAM3DBody\nodes\comfy-env.toml)
+[10:54]   [comfy-env] _discover: ComfyUI-VideoHelperSuite: no comfy-env.toml found
+[10:54]   [comfy-env] Workspace inputs unchanged (hash ec37af9cca71) -- skipping install. Delete C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash to force.
+[10:54]   
+[10:54]   Installation complete!
+[10:54] Installing 3 node dependency(ies)...
+[10:54]   ComfyUI-Multiband from PozzettiAndrea/ComfyUI-Multiband
+[10:54]   ComfyUI-Multiband already exists, skipping...
+[10:54]   ComfyUI-DepthAnythingV3 from PozzettiAndrea/ComfyUI-DepthAnythingV3
+[10:54]   ComfyUI-DepthAnythingV3 already exists, skipping...
+[10:54]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[10:54]   ComfyUI-CameraPack already exists, skipping...
+[10:54] Installing validation endpoint...
+[10:54]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[10:54] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[10:55] CUDA packages absent (will mock): detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[10:55] [INSTALL] PASSED
+[10:55] 
+[10:55] [3/5] REGISTRATION
+[10:55] ----------------------------------------
+[10:55] 
 [DEBUG] server=None, api=None
-[14:41] 
+[10:55] 
 Starting ComfyUI server...
-[14:41] Starting ComfyUI server on port 41891...
-[14:41] CUDA mock packages: detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
-[14:41] Starting ComfyUI server on port 41891...
-[14:41] Server stdout/stderr -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\server.log
-[14:41] Waiting for server to be ready (timeout: 600s)...
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.schemas
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.tables
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.types
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.constraints
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.defaults
-[14:41]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.comments
-[14:42]   [ComfyUI] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
-[14:42]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes
-[14:42]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[14:42]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default  [OK]
-[14:42]   [ComfyUI] [comfy-env] prestartup complete
-[14:42]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
-[14:42]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
-[14:42]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default  [OK]
-[14:42]   [ComfyUI] [comfy-env] prestartup complete
-[14:42]   [ComfyUI] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
-[14:42]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes
-[14:42]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default  [OK]
-[14:42]   [ComfyUI] [comfy-env] prestartup complete
-[14:42]   [ComfyUI] [32m[INFO][0m
-[14:42]   [ComfyUI] Prestartup times for custom nodes:
-[14:42]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
-[14:42]   [ComfyUI] [32m[INFO][0m    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[14:42]   [ComfyUI] [32m[INFO][0m    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
-[14:42]   [ComfyUI] [32m[INFO][0m
-[14:46]   [ComfyUI] D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:187: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
-[14:46]   [ComfyUI]   return torch._C._cuda_getDeviceCount() > 0
-[14:48]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-[14:48]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
-[14:48]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-[14:48]   [ComfyUI] [32m[INFO][0m Checkpoint files will always be loaded safely.
-[14:48]   [ComfyUI] [32m[INFO][0m Total VRAM 16379 MB, total RAM 16379 MB
-[14:48]   [ComfyUI] [32m[INFO][0m pytorch version: 2.12.0+cu130
-[14:48]   [ComfyUI] [32m[INFO][0m Set vram state to: DISABLED
-[14:48]   [ComfyUI] [32m[INFO][0m Device: cpu
-[14:48]   [ComfyUI] [32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[14:53]   [ComfyUI] [32m[INFO][0m Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
-[14:53]   [ComfyUI] [32m[INFO][0m ComfyUI version: 0.24.0
-[14:53]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.8
-[14:53]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
-[14:53]   [ComfyUI] [1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
-[14:53]   [ComfyUI] [1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-[14:53]   [ComfyUI] [32m[INFO][0m comfyui-frontend-package version: 1.44.19
-[14:53]   [ComfyUI] [32m[INFO][0m comfyui-workflow-templates version: 0.9.94
-[14:53]   [ComfyUI] [32m[INFO][0m comfyui-embedded-docs version: 0.5.2
-[14:53]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
-[14:53]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.8
-[14:53]   [ComfyUI] [32m[INFO][0m [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
-[14:53]   [ComfyUI] [32m[INFO][0m Asset seeder disabled
-[14:55]   [ComfyUI] [comfy-env] Version: 0.4.1
-[14:55]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
-[14:55]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[14:55]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[14:55]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[14:55]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
-[14:55]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_4dv5283d.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3 nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_q_sq5k_2.pkl
-[14:55]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[14:55]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default
-[14:55]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Library\bin
-[14:55]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Scripts
-[14:55]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[14:55]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[14:55]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[14:55]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[15:28]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[15:28]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
-[15:28]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[15:28]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-[15:28]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[15:28]   [ComfyUI] [comfy-env] Scanned nodes: 15 nodes (33.4s)
-[15:28]   [ComfyUI] [comfy-env] Scanned nodes root: 15 nodes (33.4s)
-[15:28]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes (isolation)
-[15:28]   [ComfyUI] [comfy-env] Registered 15 total nodes
-[15:28]   [ComfyUI] [32m[INFO][0m loading...
-[15:28]   [ComfyUI] [32m[INFO][0m calling register_nodes
-[15:28]   [ComfyUI] [comfy-env] Version: 0.4.1
-[15:29]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
-[15:29]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[15:29]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[15:29]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[15:29]   [ComfyUI] [comfy-env] default: Library/bin has 613 DLLs
-[15:29]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta__0948roe.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_37mdcjzb.pkl
-[15:29]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[15:29]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default
-[15:29]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Library\bin
-[15:29]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Scripts
-[15:29]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[15:29]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[15:29]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[15:29]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[15:38]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[15:38]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[15:38]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[15:38]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-[15:38]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[15:38]   [ComfyUI] [comfy-env] Scanned nodes: 125 nodes (9.6s)
-[15:38]   [ComfyUI] [comfy-env] Scanned nodes root: 125 nodes (9.6s)
-[15:38]   [ComfyUI] [comfy-env] Imported nodes root: 125 nodes (isolation)
-[15:38]   [ComfyUI] [comfy-env] Registered 125 total nodes
-[15:39]   [ComfyUI] ComfyUI-Multiband loaded: 15 nodes registered
-[15:39]   [ComfyUI] [comfy-env] Version: 0.4.1
-[15:39]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-SAM3DBody
-[15:39]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[15:39]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[15:39]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[15:39]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
-[15:39]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_0b88o5ir.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_6m9ftx2u.pkl
-[15:39]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[15:39]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default
-[15:39]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Library\bin
-[15:39]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Scripts
-[15:39]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[15:39]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[15:39]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[15:39]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[15:46]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[15:46]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
-[15:46]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[15:46]   [ComfyUI] [comfy-env] Scanned nodes: 15 nodes (7.1s)
-[15:46]   [ComfyUI] [comfy-env] Scanned nodes root: 15 nodes (7.1s)
-[15:46]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes (isolation)
-[15:46]   [ComfyUI] [comfy-env] Registered 15 total nodes
-[15:47]   [ComfyUI] [32m[INFO][0m
-[15:47]   [ComfyUI] Import times for custom nodes:
-[15:47]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[15:47]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
-[15:47]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
-[15:47]   [ComfyUI] [32m[INFO][0m    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-KJNodes
-[15:47]   [ComfyUI] [32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-VideoHelperSuite
-[15:47]   [ComfyUI] [32m[INFO][0m    0.8 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-Multiband
-[15:47]   [ComfyUI] [32m[INFO][0m    7.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
-[15:47]   [ComfyUI] [32m[INFO][0m    9.7 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
-[15:47]   [ComfyUI] [32m[INFO][0m   33.8 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
-[15:47]   [ComfyUI] [32m[INFO][0m
-[15:47]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
-[15:47]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
-[15:47]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
-[15:47]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
-[15:47]   [ComfyUI] [32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
-[15:47]   [ComfyUI] Revision ID: 0001_assets
-[15:47]   [ComfyUI] Revises: None
-[15:47]   [ComfyUI] Create Date: 2025-12-10 00:00:00
-[15:47]   [ComfyUI] [32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-[15:47]   [ComfyUI] [32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
-[15:47]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
-[15:47]   [ComfyUI] [32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
-[15:47]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[15:47]   [ComfyUI] [32m[INFO][0m Starting server
-[15:47]   [ComfyUI] 
-[15:47]   [ComfyUI] [32m[INFO][0m To see the GUI go to: http://127.0.0.1:41891
-[15:49] Server responding, waiting for nodes to load...
-[16:05]   [ComfyUI] [1m[33m[WARNING][0m [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
-[16:09] Server is ready!
-[16:09] Checking for import errors in server logs...
-[16:09] No import errors detected
-[16:09] Found 1221 registered nodes
-[16:09] [REGISTRATION] PASSED
-[16:09] 
-[16:09] [4/5] INSTANTIATION
-[16:09] ----------------------------------------
-[16:09] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002A9C90E6590>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002A9C60CAD90>
-[16:09] Testing node constructors...
-[16:11] All 15 node(s) instantiated successfully!
-[16:11] [INSTANTIATION] PASSED
-[16:11] 
-[16:11] [5/5] EXECUTION
-[16:11] ----------------------------------------
-[16:11] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002A9C90E6590>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002A9C60CAD90>
-[16:11] CPU runner - will execute 1 workflow(s)
-[16:11] Running 5 workflow(s) (all with videos)...
-[16:12] Installing screenshot dependencies (playwright, pillow)...
-[16:14]   Packages installed, downloading chromium browser...
-[16:27]   Screenshot dependencies installed successfully
-[16:28] Starting headless browser...
-[16:28]   Downloading Mesa llvmpipe for Windows...
-[16:33]   Copied opengl32.dll to Chromium dir
-[16:33]   Copied libgallium_wgl.dll to Chromium dir
-[16:33]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
-[16:36]   [1/5] SKIPPED (not in cpu list) multiple_masks.json
-[16:36]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[16:37]   [2/5] SKIPPED (not in cpu list) multiple_masks_depthcorrected.json
-[16:37]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[16:37] Capturing execution frames: rigged_mesh_manipulation.json
-[16:37]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[16:37]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[16:46]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[16:46]   Validating workflow...
-[16:46]   Queuing workflow for execution...
-[16:46]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
-[16:46]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
-[16:46]   [ComfyUI] [32m[INFO][0m Prompt has 2 nodes
-[16:46]   [ComfyUI] [32m[INFO][0m   Node 2: SAM3DBodyPreviewRiggedMesh
-[16:46]   [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-[16:46]   [ComfyUI] [32m[INFO][0m   Node 4: SAM3DBodySelectMesh
-[16:46]   [ComfyUI] [32m[INFO][0m     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
-[16:46]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 3f8b0d4d-ac44-42cd-bb45-dd4fbe6ca37f
-[16:46]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-[16:46]   [ComfyUI] [32m[INFO][0m Validation result: valid=True
-[16:46]   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
-[16:46]   [ComfyUI] [32m[INFO][0m got prompt
-[16:46]   [ComfyUI] [comfy-env] Running SAM3DBodySelectMesh: source_folder: 'input', file_path: 'sam3d_rigged.fbx'
-[16:46]   [ComfyUI] [comfy-env] SubprocessWorker: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
-[16:46]   [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2335\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
-[16:46]   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
-[16:46]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[16:46]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
-[16:46]   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
-[16:46]   [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2335\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2335\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\envs\\sam3dbody-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2335\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
-[16:46]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
-[16:46]   [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\envs\\sam3dbody-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_ww84typw\\persistent_worker.py', 'tcp://127.0.0.1:62910']...
-[16:48]   Frame 2 saved (frame_001.jpg, t=2.4s)
-[16:48]   [capture-periodic] freeze=4ms shot=101ms unfreeze=5ms saved=True
-[16:49]   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[16:49]   [ComfyUI] [worker:ComfyUI-SAM3DBody] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
-[16:49]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[16:49]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[16:49]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[16:49]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[16:49]   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-[16:50]   [ComfyUI] [SubprocessWorker] got response: ok
-[16:50]   [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (3.68s): result: NodeOutput
-[16:50]   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3...
-[16:50]   [ComfyUI] [SubprocessWorker] call_method: nodes.preview.SAM3DBodyPreviewRiggedMesh.EXECUTE_NORMALIZED
-[16:50]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[16:50]   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
-[16:50]   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
-[16:50]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[16:50]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[16:50]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[16:50]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[16:50]   [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-[16:50]   [ComfyUI] [SubprocessWorker] got response: ok
-[16:50]   [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.14s): result: NodeOutput
-[16:50]   [ComfyUI] [32m[INFO][0m [32mPrompt executed in 3.83 seconds[0m
-[16:50]   Node executed (1 total), capturing...
-[16:50]   Frame 3 saved (frame_002.jpg, t=4.3s)
-[16:50]   [capture-node] freeze=9ms shot=128ms unfreeze=6ms saved=True
-[16:52]   Execution complete (t=5.7s)
-[16:52]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
-[16:52]   [3d-wait] Phase 1 done in 0.4s
-[16:53]   [3d-wait] Phase 2: iframes=1
-[16:53]   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
-[16:53]   [3d-wait] Unfrozen in 0.100s, rendering for 5s...
-[16:58]   [3d-wait] JS halted via CDP after 5.2s
-[16:59]   [3d-wait] Re-frozen in 6.2s
-[16:59]   [3d-wait] Total 3D wait: 7.1s
-[16:59]   Captured 3 unique frames over 12.93s
-[16:59]   [debug] iframes: 1
-[16:59]   [debug]   iframe[0]: src=http://127.0.0.1:41891/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1780789, canvas=486x710, rafFrozen=True
-[16:59]   [timing] trigger_3d_previews: 0.0s
-[17:01]   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
-[17:01]   [timing] final_screenshot: 0.2s
-[17:01]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[17:01]   [4/5] SKIPPED (not in cpu list) rigging.json
-[17:01]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[17:02]   [5/5] SKIPPED (not in cpu list) workflow.json
-[17:02]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
-[17:02] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2335\dev\windows-portable-cpu\results.json
-[17:02] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2335\dev\windows-portable-cpu\models.json
-[17:02] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2335\dev\windows-portable-cpu\index.html
-[17:02] [EXECUTION] PASSED
-[17:02] 
+[10:55] Starting ComfyUI server on port 41890...
+[10:55] CUDA mock packages: detectron2, torch_scatter, torch_sparse, torch_cluster, flash_attn, sageattention
+[10:55] Starting ComfyUI server on port 41890...
+[10:55] Server stdout/stderr -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\server.log
+[10:55] Waiting for server to be ready (timeout: 600s)...
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.schemas
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.tables
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.types
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.constraints
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.defaults
+[10:56]   [ComfyUI] [32m[INFO][0m setup plugin alembic.autogenerate.comments
+[10:57]   [ComfyUI] [comfy-env] ComfyUI-DepthAnythingV3: 1 isolation env(s):
+[10:57]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3\nodes
+[10:57]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[10:57]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default  [OK]
+[10:57]   [ComfyUI] [comfy-env] prestartup complete
+[10:57]   [ComfyUI] [comfy-env] ComfyUI-GeometryPack: 1 isolation env(s):
+[10:57]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack\nodes
+[10:57]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default  [OK]
+[10:57]   [ComfyUI] [comfy-env] prestartup complete
+[10:57]   [ComfyUI] [comfy-env] ComfyUI-SAM3DBody: 1 isolation env(s):
+[10:57]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody\nodes
+[10:57]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default  [OK]
+[10:57]   [ComfyUI] [comfy-env] prestartup complete
+[10:57]   [ComfyUI] [32m[INFO][0m
+[10:57]   [ComfyUI] Prestartup times for custom nodes:
+[10:57]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
+[10:57]   [ComfyUI] [32m[INFO][0m    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[10:57]   [ComfyUI] [32m[INFO][0m    0.4 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
+[10:57]   [ComfyUI] [32m[INFO][0m
+[11:00]   [ComfyUI] D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:187: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
+[11:00]   [ComfyUI]   return torch._C._cuda_getDeviceCount() > 0
+[11:01]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[11:01]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[11:01]   [ComfyUI] [32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[11:01]   [ComfyUI] [32m[INFO][0m Checkpoint files will always be loaded safely.
+[11:01]   [ComfyUI] [32m[INFO][0m Total VRAM 16379 MB, total RAM 16379 MB
+[11:01]   [ComfyUI] [32m[INFO][0m pytorch version: 2.12.0+cu130
+[11:01]   [ComfyUI] [32m[INFO][0m Set vram state to: DISABLED
+[11:01]   [ComfyUI] [32m[INFO][0m Device: cpu
+[11:02]   [ComfyUI] [32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[11:08]   [ComfyUI] [32m[INFO][0m Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+[11:08]   [ComfyUI] [32m[INFO][0m ComfyUI version: 0.24.0
+[11:08]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.8
+[11:08]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[11:08]   [ComfyUI] [1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[11:08]   [ComfyUI] [1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[11:08]   [ComfyUI] [32m[INFO][0m comfyui-frontend-package version: 1.44.19
+[11:08]   [ComfyUI] [32m[INFO][0m comfyui-workflow-templates version: 0.9.94
+[11:08]   [ComfyUI] [32m[INFO][0m comfyui-embedded-docs version: 0.5.2
+[11:08]   [ComfyUI] [32m[INFO][0m comfy-kitchen version: 0.2.10
+[11:08]   [ComfyUI] [32m[INFO][0m comfy-aimdo version: 0.4.8
+[11:08]   [ComfyUI] [32m[INFO][0m [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
+[11:08]   [ComfyUI] [32m[INFO][0m Asset seeder disabled
+[11:11]   [ComfyUI] [comfy-env] Version: 0.4.1
+[11:12]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-DepthAnythingV3
+[11:12]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[11:12]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[11:12]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[11:12]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
+[11:12]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_w8r4rwvc.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3 nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_367uw47w.pkl
+[11:12]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[11:12]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default
+[11:12]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Library\bin
+[11:12]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Scripts
+[11:12]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\depthanythingv3-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[11:12]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[11:12]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[11:12]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[11:27]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[11:27]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
+[11:27]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[11:27]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[11:27]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[11:27]   [ComfyUI] [comfy-env] Scanned nodes: 15 nodes (15.5s)
+[11:27]   [ComfyUI] [comfy-env] Scanned nodes root: 15 nodes (15.5s)
+[11:27]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes (isolation)
+[11:27]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[11:27]   [ComfyUI] [32m[INFO][0m loading...
+[11:27]   [ComfyUI] [32m[INFO][0m calling register_nodes
+[11:27]   [ComfyUI] [comfy-env] Version: 0.4.1
+[11:27]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-GeometryPack
+[11:27]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[11:27]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[11:27]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[11:27]   [ComfyUI] [comfy-env] default: Library/bin has 613 DLLs
+[11:27]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_wfutjlcy.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out__sre4aow.pkl
+[11:27]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[11:27]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default
+[11:27]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Library\bin
+[11:27]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Scripts
+[11:27]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\geometrypack-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[11:27]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[11:27]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[11:27]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[11:38]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[11:38]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[11:38]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[11:38]   [ComfyUI] [comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[11:38]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[11:38]   [ComfyUI] [comfy-env] Scanned nodes: 125 nodes (10.9s)
+[11:38]   [ComfyUI] [comfy-env] Scanned nodes root: 125 nodes (10.9s)
+[11:38]   [ComfyUI] [comfy-env] Imported nodes root: 125 nodes (isolation)
+[11:38]   [ComfyUI] [comfy-env] Registered 125 total nodes
+[11:40]   [ComfyUI] ComfyUI-Multiband loaded: 15 nodes registered
+[11:40]   [ComfyUI] [comfy-env] Version: 0.4.1
+[11:40]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-SAM3DBody
+[11:40]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[11:40]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[11:40]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[11:40]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
+[11:40]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_989ep2n5.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_aw15jmew.pkl
+[11:40]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[11:40]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default
+[11:40]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Library\bin
+[11:40]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Scripts
+[11:40]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[11:40]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[11:40]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[11:40]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[11:50]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[11:50]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
+[11:50]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[11:50]   [ComfyUI] [comfy-env] Scanned nodes: 15 nodes (10.1s)
+[11:50]   [ComfyUI] [comfy-env] Scanned nodes root: 15 nodes (10.1s)
+[11:50]   [ComfyUI] [comfy-env] Imported nodes root: 15 nodes (isolation)
+[11:50]   [ComfyUI] [comfy-env] Registered 15 total nodes
+[11:50]   [ComfyUI] [32m[INFO][0m
+[11:50]   [ComfyUI] Import times for custom nodes:
+[11:50]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
+[11:50]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[11:50]   [ComfyUI] [32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
+[11:50]   [ComfyUI] [32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-KJNodes
+[11:50]   [ComfyUI] [32m[INFO][0m    0.5 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-VideoHelperSuite
+[11:50]   [ComfyUI] [32m[INFO][0m    1.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-Multiband
+[11:50]   [ComfyUI] [32m[INFO][0m   10.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-SAM3DBody
+[11:50]   [ComfyUI] [32m[INFO][0m   11.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-GeometryPack
+[11:50]   [ComfyUI] [32m[INFO][0m   16.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\SAM3DBody-2342\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-DepthAnythingV3
+[11:50]   [ComfyUI] [32m[INFO][0m
+[11:50]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[11:50]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[11:50]   [ComfyUI] [32m[INFO][0m Context impl SQLiteImpl.
+[11:50]   [ComfyUI] [32m[INFO][0m Will assume non-transactional DDL.
+[11:50]   [ComfyUI] [32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
+[11:50]   [ComfyUI] Revision ID: 0001_assets
+[11:50]   [ComfyUI] Revises: None
+[11:50]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[11:50]   [ComfyUI] [32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[11:51]   [ComfyUI] [32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[11:51]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[11:51]   [ComfyUI] [32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
+[11:51]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[11:51]   [ComfyUI] [32m[INFO][0m Starting server
+[11:51]   [ComfyUI] 
+[11:51]   [ComfyUI] [32m[INFO][0m To see the GUI go to: http://127.0.0.1:41890
+[11:51] Server responding, waiting for nodes to load...
+[12:11] Server is ready!
+[12:11] Checking for import errors in server logs...
+[12:11] No import errors detected
+[12:12] Found 1221 registered nodes
+[12:12] [REGISTRATION] PASSED
+[12:12] 
+[12:12] [4/5] INSTANTIATION
+[12:12] ----------------------------------------
+[12:12] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001AFF57003A0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001AFF572E830>
+[12:12] Testing node constructors...
+[12:13]   [ComfyUI] [1m[33m[WARNING][0m [DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[12:15] All 15 node(s) instantiated successfully!
+[12:15] [INSTANTIATION] PASSED
+[12:15] 
+[12:15] [5/5] EXECUTION
+[12:15] ----------------------------------------
+[12:15] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001AFF57003A0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001AFF572E830>
+[12:15] CPU runner - will execute 1 workflow(s)
+[12:15] Running 5 workflow(s) (all with videos)...
+[12:16] Installing screenshot dependencies (playwright, pillow)...
+[12:20]   Packages installed, downloading chromium browser...
+[12:38]   Screenshot dependencies installed successfully
+[12:39] Starting headless browser...
+[12:40]   Downloading Mesa llvmpipe for Windows...
+[12:44]   Copied opengl32.dll to Chromium dir
+[12:44]   Copied libgallium_wgl.dll to Chromium dir
+[12:44]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
+[12:45]   [1/5] SKIPPED (not in cpu list) multiple_masks.json
+[12:45]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[12:46]   [2/5] SKIPPED (not in cpu list) multiple_masks_depthcorrected.json
+[12:46]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[12:46] Capturing execution frames: rigged_mesh_manipulation.json
+[12:46]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[12:46]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[12:56]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[12:56]   Validating workflow...
+[12:56]   Queuing workflow for execution...
+[12:57]   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
+[12:57]   [ComfyUI] [32m[INFO][0m Received JSON with keys: ['prompt']
+[12:57]   [ComfyUI] [32m[INFO][0m Prompt has 2 nodes
+[12:57]   [ComfyUI] [32m[INFO][0m   Node 2: SAM3DBodyPreviewRiggedMesh
+[12:57]   [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+[12:57]   [ComfyUI] [32m[INFO][0m   Node 4: SAM3DBodySelectMesh
+[12:57]   [ComfyUI] [32m[INFO][0m     Inputs: {"source_folder": "input", "file_path": "sam3d_rigged.fbx"}
+[12:57]   [ComfyUI] [32m[INFO][0m Generated prompt_id: 6ab3b065-cf13-43f3-9b3c-f4d8ed01a1b5
+[12:57]   [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+[12:57]   [ComfyUI] [32m[INFO][0m Validation result: valid=True
+[12:57]   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
+[12:57]   [ComfyUI] [32m[INFO][0m got prompt
+[12:57]   [ComfyUI] [comfy-env] Running SAM3DBodySelectMesh: source_folder: 'input', file_path: 'sam3d_rigged.fbx'
+[12:57]   [ComfyUI] [comfy-env] SubprocessWorker: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
+[12:57]   [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2342\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
+[12:57]   [ComfyUI] [SubprocessWorker] call_method: nodes.load_mesh.SAM3DBodySelectMesh.EXECUTE_NORMALIZED
+[12:57]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[12:57]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
+[12:57]   [ComfyUI] [ComfyUI-SAM3DBody] python: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
+[12:57]   [ComfyUI] [ComfyUI-SAM3DBody] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2342\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2342\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\envs\\sam3dbody-nodes\\.pixi\\envs\\default\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3DBody-2342\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-SAM3DBody']
+[12:57]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\sam3dbody-nodes\.pixi\envs\default\python.exe
+[12:57]   [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\stduser\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\Users\\stduser\\AppData\\Local\\Programs\\comfy-env\\envs\\sam3dbody-nodes\\pixi.toml', '-e', 'default', 'python', 'C:\\Users\\stduser\\AppData\\Local\\Temp\\comfyui_pvenv_50k9hpno\\persistent_worker.py', 'tcp://127.0.0.1:60869']...
+[12:59]   Frame 2 saved (frame_001.jpg, t=2.5s)
+[12:59]   [capture-periodic] freeze=15ms shot=156ms unfreeze=10ms saved=True
+[13:01]   Frame 3 saved (frame_002.jpg, t=4.7s)
+[13:01]   [capture-periodic] freeze=7ms shot=126ms unfreeze=7ms saved=True
+[13:02]   [ComfyUI] [worker:ComfyUI-SAM3DBody] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[13:02]   [ComfyUI] [worker:ComfyUI-SAM3DBody] WARNING: comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
+[13:02]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[13:02]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[13:02]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[13:02]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[13:02]   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+[13:04]   [capture-loop] iter=50 t=6.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=14 ram=6.2/16.0GB (38%) swap=0.2/2.9GB (6%) cpu=63% browser_rss=0.80GB
+[13:04]   [ComfyUI] [SubprocessWorker] got response: ok
+[13:04]   [ComfyUI] [comfy-env] SAM3DBodySelectMesh done (6.65s): result: NodeOutput
+[13:04]   [ComfyUI] [comfy-env] Running SAM3DBodyPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\SAM3...
+[13:04]   [ComfyUI] [SubprocessWorker] call_method: nodes.preview.SAM3DBodyPreviewRiggedMesh.EXECUTE_NORMALIZED
+[13:04]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[13:04]   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ping (timeout=5.0s)...
+[13:04]   [ComfyUI] [ComfyUI-SAM3DBody] Health check: ok
+[13:04]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[13:04]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[13:04]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[13:04]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[13:04]   [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+[13:04]   [ComfyUI] [SubprocessWorker] got response: ok
+[13:04]   [ComfyUI] [comfy-env] SAM3DBodyPreviewRiggedMesh done (0.10s): result: NodeOutput
+[13:04]   [ComfyUI] [32m[INFO][0m [32mPrompt executed in 6.76 seconds[0m
+[13:04]   Frame 4 saved (frame_003.jpg, t=6.8s)
+[13:04]   [capture-periodic] freeze=17ms shot=167ms unfreeze=11ms saved=True
+[13:04]   Node executed (1 total), capturing...
+[13:04]   [capture-node] freeze=18ms shot=162ms unfreeze=0ms saved=False
+[13:04]   Execution complete (t=8.2s)
+[13:04]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[13:06]   [3d-wait] Phase 1 done in 1.3s
+[13:06]   [3d-wait] Phase 2: iframes=1
+[13:06]   [3d-wait] iframe viewer_ready=True (matched 1 console logs)
+[13:06]   [3d-wait] Unfrozen in 0.002s, rendering for 5s...
+[13:11]   [3d-wait] JS halted via CDP after 5.2s
+[13:12]   [3d-wait] Re-frozen in 6.2s
+[13:12]   [3d-wait] Total 3D wait: 7.5s
+[13:12]   Captured 4 unique frames over 15.89s
+[13:12]   [debug] iframes: 1
+[13:12]   [debug]   iframe[0]: src=http://127.0.0.1:41890/extensions/ComfyUI-GeometryPack/viewer_fbx.html?v=1780790, canvas=486x710, rafFrozen=True
+[13:12]   [timing] trigger_3d_previews: 0.0s
+[13:14]   Saved high-quality screenshot: rigged_mesh_manipulation_executed.png
+[13:14]   [timing] final_screenshot: 0.3s
+[13:14]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[13:15]   [4/5] SKIPPED (not in cpu list) rigging.json
+[13:15]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[13:15]   [5/5] SKIPPED (not in cpu list) workflow.json
+[13:15]   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+[13:15] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2342\dev\windows-portable-cpu\results.json
+[13:15] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2342\dev\windows-portable-cpu\models.json
+[13:16] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\SAM3DBody-2342\dev\windows-portable-cpu\index.html
+[13:16] [EXECUTION] PASSED
+[13:16] 
 windows_portable: PASSED
-[17:02] Stopping ComfyUI server...
+[13:16] Stopping ComfyUI server...
