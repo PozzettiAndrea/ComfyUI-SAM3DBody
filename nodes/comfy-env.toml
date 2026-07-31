@@ -12,6 +12,7 @@ xorg-libsm = "*"     # libSM.so.6 required by bpy
 packages = ["detectron2", "torch-scatter", "torch-sparse", "torch-cluster", "flash-attn", "sageattention"]
 
 [pypi-dependencies]
+comfy-kitchen = "*"
 trimesh = { version = "*", extras = ["easy"] }
 pillow = ">=9.0.0"
 opencv-python-headless = ">=4.8.0"
